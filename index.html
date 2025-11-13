@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GoldenWay 官網備份自動索引</title>
+
+<style>
+    body {
+        margin: 0;
+        background: #f5f6f7;
+        font-family: "Noto Sans TC", sans-serif;
+        color: #222;
+    }
+    header {
+        background: #1e293b;
+        color: white;
+        padding: 26px 20px;
+        text-align: center;
+        font-size: 26px;
+        font-weight: 700;
+    }
+    #container {
+        max-width: 1000px;
+        margin: 25px auto;
+        padding: 0 20px;
+    }
+
+    .folder {
+        margin: 18px 0 8px;
+        font-size: 20px;
+        font-weight: 700;
+        border-left: 6px solid #0ea5e9;
+        padding-left: 10px;
+    }
+
+    ul {
+        list-style: none;
+        padding-left: 10px;
+        margin: 0 0 20px 0;
+    }
+    li {
+        margin: 5px 0;
+    }
+    a {
+        text-decoration: none;
+        font-size: 16px;
+        color: #0f172a;
+        font-weight: 600;
+    }
+    a:hover {
+        color: #0284c7;
+    }
+
+    footer {
+        text-align: center;
+        padding: 30px;
+        margin-top: 40px;
+        color: #666;
+        font-size: 14px;
+    }
+</style>
+</head>
+
+<body>
+<header>GoldenWay 官網備份自動索引（Auto Index）</header>
+
+<div id="container">
+    <p style="font-size:15px;color:#555;">此頁會自動掃描此 GitHub Pages 站內所有 HTML 檔。</p>
+</div>
+
+<footer>GoldenWay 官網備份 · 自動索引版本</footer>
+
+<script>
+// ========== 主要功能：自動掃描 Repo 內所有 HTML ==========
+// 透過 GitHub API 抓取 repo 內所有檔案，並自動依資料夾分類顯示
+
+const repoOwner = "TsenWu"; 
+const repoName = "goldenway-website-backup";
+
+async function fetchRepoFiles() {
+    const api = `https://api.github.com/repos/${repoOwner}/${repoName}/git/trees/main?recursive=1`;
+    const res = await fetch(api);
+    const data = await res.json();
+    return data.tree;
+}
+
+function buildUI(files) {
+    const container = document.getElementById("container");
+    const folders = {};
+
+    // 過濾所有 HTML
+    const htmlFiles = files.filter(f => f.path.endsWith(".html"));
+
+    // 依資料夾分組
+    htmlFiles.forEach(file => {
+        const parts = file.path.split("/");
+        const folder = parts.length > 1 ? parts[parts.length - 2] : "根目錄";
+
+        if (!folders[folder]) folders[folder] = [];
+        folders[folder].push(file.path);
+    });
+
+    // 依資料夾排序
+    const sortedFolders = Object.keys(folders).sort();
+
+    sortedFolders.forEach(folder => {
+        const section = document.createElement("div");
+        section.innerHTML = `<div class="folder">📁 ${folder}</div>`;
+        
+        const ul = document.createElement("ul");
+
+        // 排序檔名
+        folders[folder].sort().forEach(filePath => {
+            const fileName = filePath.split("/").pop().replace(".html", "");
+            const a = `<li><a href="${filePath}" target="_blank">${fileName}</a></li>`;
+            ul.innerHTML += a;
+        });
+
+        section.appendChild(ul);
+        container.appendChild(section);
+    });
+}
+
+async function init() {
+    const files = await fetchRepoFiles();
+    buildUI(files);
+}
+
+init();
+</script>
+
+</body>
+</html>
