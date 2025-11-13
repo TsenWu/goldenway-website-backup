@@ -1,874 +1,1182 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-Hant-TW">
 <head>
   <meta charset="UTF-8" />
-  <title>GoldenWay 官網內容備份索引</title>
+  <title>GoldenWay 官網內容備份 · Apple Glass Explorer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!--
-    GoldenWay 官網內容備份 ─ 自動樹狀索引首頁
-    - 左側：依 GitHub 目錄結構自動建立樹狀清單
-    - 右側：即時預覽 GitHub Pages 中對應的 HTML 檔案
-    - Author: ChatGPT for TsenWu
-  -->
-
   <style>
     :root {
-      --bg-body: #f5f5f7;
-      --bg-panel: #ffffff;
-      --bg-sidebar: #fbfbfd;
-      --border-subtle: #dde1e8;
-      --accent: #ff7a1a;
-      --accent-soft: rgba(255,122,26,0.12);
-      --accent-strong: #e8670a;
+      --bg-gradient-start: #f5f7fb;
+      --bg-gradient-end: #e8efff;
+      --glass-bg: rgba(255, 255, 255, 0.88);
+      --glass-border: rgba(255, 255, 255, 0.9);
+      --glass-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+      --accent: #ff7b5c;
+      --accent-soft: rgba(255, 123, 92, 0.09);
+      --accent-strong: #ff5a36;
       --text-main: #111827;
       --text-sub: #6b7280;
       --text-muted: #9ca3af;
-      --shadow-soft: 0 18px 55px rgba(15,23,42,0.08);
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --radius-sm: 8px;
-      --sidebar-width: 310px;
+      --divider: rgba(148, 163, 184, 0.25);
+      --folder: #111827;
+      --file: #4b5563;
+      --radius-xl: 26px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-sm: 10px;
+      --transition-fast: 160ms ease-out;
+      --transition-med: 220ms cubic-bezier(0.22, 0.61, 0.36, 1);
+      --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Noto Sans TC", system-ui, sans-serif;
     }
 
     * {
       box-sizing: border-box;
     }
 
-    html, body {
+    html,
+    body {
       margin: 0;
       padding: 0;
       height: 100%;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", system-ui, sans-serif;
-      background: var(--bg-body);
-      color: var(--text-main);
     }
 
     body {
-      display: flex;
-      align-items: stretch;
-      justify-content: center;
-      padding: 20px;
+      font-family: var(--font-sans);
+      background: radial-gradient(circle at 0% 0%, #ffffff 0, #f0f4ff 28%, #e5edff 70%)
+          fixed,
+        linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end))
+          fixed;
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
     }
 
-    .app-shell {
+    .page-shell {
+      min-height: 100vh;
+      padding: 18px;
       display: flex;
+      justify-content: center;
+      align-items: stretch;
+    }
+
+    .app-frame {
       width: 100%;
-      max-width: 1440px;
-      height: calc(100vh - 40px);
-      background: var(--bg-panel);
-      border-radius: 26px;
-      box-shadow: var(--shadow-soft);
+      max-width: 1460px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* Header */
+
+    .app-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.9), transparent 52%),
+        radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.85), transparent 45%),
+        linear-gradient(
+          120deg,
+          rgba(255, 255, 255, 0.92),
+          rgba(255, 255, 255, 0.86),
+          rgba(248, 250, 252, 0.85)
+        );
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 14px 40px rgba(15, 23, 42, 0.12);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      gap: 12px;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .header-orb {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 25% 20%, #ffffff 0, #f5f5ff 32%, #e0e7ff 70%),
+        conic-gradient(
+          from 200deg,
+          #ffb199,
+          #ff9a9e,
+          #fad0c4,
+          #e0c3fc,
+          #f5f7fa,
+          #ffb199
+        );
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.28);
+      position: relative;
       overflow: hidden;
     }
 
-    /* 左側：樹狀索引 */
+    .header-orb::after {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: inherit;
+      background: radial-gradient(
+        circle at 30% 20%,
+        rgba(255, 255, 255, 0.9),
+        rgba(255, 255, 255, 0.1)
+      );
+      mix-blend-mode: screen;
+      opacity: 0.9;
+    }
 
-    .sidebar {
-      width: var(--sidebar-width);
-      background: var(--bg-sidebar);
-      border-right: 1px solid var(--border-subtle);
+    .header-title-block {
       display: flex;
       flex-direction: column;
-      padding: 18px 14px 16px 18px;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .header-title {
+      font-size: 16px;
+      font-weight: 650;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: #111827;
+      white-space: nowrap;
+    }
+
+    .header-subtitle {
+      font-size: 12px;
+      color: var(--text-sub);
+      white-space: nowrap;
+    }
+
+    .header-divider {
+      flex: 1;
+      min-width: 16px;
+    }
+
+    .header-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .badge-soft {
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: linear-gradient(
+        135deg,
+        rgba(248, 250, 252, 0.9),
+        rgba(241, 245, 249, 0.86)
+      );
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      font-size: 11px;
+      color: var(--text-sub);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .badge-soft-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 25% 25%, #ffffff 0, #22c55e 52%, #16a34a 100%);
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18);
+    }
+
+    .badge-accent {
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(248, 113, 113, 0.55);
+      background: radial-gradient(circle at 0 0, #ffffff, #ffe9e3);
+      font-size: 11px;
+      font-weight: 600;
+      color: #b91c1c;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* Main layout */
+
+    .app-main {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      gap: 14px;
+    }
+
+    .sidebar {
+      width: 290px;
+      min-width: 240px;
+      max-width: 320px;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.98),
+          rgba(248, 250, 252, 0.96)
+        ),
+        radial-gradient(circle at 0 0, rgba(255, 255, 255, 1), transparent 50%);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+      backdrop-filter: blur(26px);
+      -webkit-backdrop-filter: blur(26px);
+      overflow: hidden;
     }
 
     .sidebar-header {
-      padding: 6px 6px 4px 4px;
-      border-radius: 16px;
+      padding: 14px 16px 8px;
+      border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+    }
+
+    .sidebar-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .sidebar-repo {
+      font-size: 13px;
+      font-weight: 600;
       display: flex;
       align-items: center;
-      margin-bottom: 14px;
+      justify-content: space-between;
+      color: var(--text-main);
     }
 
-    .logo-dot {
-      width: 26px;
-      height: 26px;
-      border-radius: 9px;
-      background: radial-gradient(circle at 30% 15%, #ffe7c2 0, #ffb977 33%, #f97316 75%, #ea580c 100%);
-      margin-right: 10px;
-      box-shadow: 0 8px 18px rgba(249,115,22,0.45);
-    }
-
-    .sidebar-title-main {
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-    }
-
-    .sidebar-title-sub {
+    .sidebar-repo span:nth-child(2) {
       font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 1px;
+      font-weight: 500;
+      color: var(--text-sub);
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      background: rgba(248, 250, 252, 0.9);
     }
 
-    .sidebar-section-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin: 6px 6px 4px;
-    }
-
-    .tree-container {
+    .sidebar-body {
       flex: 1;
-      padding: 6px 2px 6px 0;
-      overflow-y: auto;
-      overscroll-behavior: contain;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(148,163,184,0.8) transparent;
-      font-size: 13px;
+      min-height: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 6px 6px 10px 10px;
+      gap: 8px;
     }
 
-    .tree-container::-webkit-scrollbar {
-      width: 8px;
+    .tree-scroll {
+      flex: 1;
+      min-height: 0;
+      overflow: auto;
+      padding-right: 6px;
+      padding-bottom: 4px;
     }
-    .tree-container::-webkit-scrollbar-track {
+
+    .section-caption {
+      font-size: 11px;
+      color: var(--text-muted);
+      padding: 0 4px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .section-caption button {
+      border: 0;
       background: transparent;
-    }
-    .tree-container::-webkit-scrollbar-thumb {
-      background: rgba(148,163,184,0.8);
-      border-radius: 4px;
+      font-size: 11px;
+      color: #3b82f6;
+      cursor: pointer;
+      padding: 2px 4px;
+      border-radius: 999px;
     }
 
-    ul.tree-root {
+    .section-caption button:hover {
+      background: rgba(37, 99, 235, 0.06);
+    }
+
+    /* Tree styles */
+
+    .tree-root {
       list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 13px;
+      color: var(--file);
+    }
+
+    .tree-group {
       margin: 0;
       padding-left: 0;
     }
 
-    .tree-node {
-      margin: 1px 0;
+    .tree-item {
+      margin: 0;
+      padding: 1px 0;
     }
 
-    .tree-node-label {
+    .tree-row {
+      border-radius: 12px;
       display: flex;
       align-items: center;
-      padding: 4px 8px 4px 6px;
-      border-radius: 999px;
+      gap: 6px;
+      padding: 5px 7px;
+      cursor: default;
+      transition: background var(--transition-fast),
+        transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .tree-row.is-clickable {
       cursor: pointer;
-      color: var(--text-main);
-      transition: background 0.15s ease, color 0.15s ease;
-      user-select: none;
-      gap: 3px;
     }
 
-    .tree-node-label:hover {
-      background: rgba(148,163,184,0.16);
+    .tree-row:hover {
+      background: rgba(248, 250, 252, 0.9);
     }
 
-    .tree-node-label.is-folder {
+    .tree-row.folder-level-0 {
+      margin-top: 4px;
+      margin-bottom: 2px;
+    }
+
+    .tree-row.folder-level-0 .tree-title {
       font-weight: 600;
+      color: var(--folder);
     }
 
-    .tree-node-label.is-file {
-      font-weight: 400;
+    .tree-row.folder-level-0 .tree-icon-folder {
+      background: linear-gradient(135deg, #111827, #020617);
+      color: #f9fafb;
     }
 
-    .tree-node-label .twisty {
-      width: 14px;
-      display: inline-flex;
-      justify-content: center;
+    .tree-row.folder-level-0 .tree-count-pill {
+      opacity: 1;
+    }
+
+    .tree-indent {
+      width: 12px;
+      flex: 0 0 auto;
+    }
+
+    .tree-expander {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      display: flex;
       align-items: center;
+      justify-content: center;
       font-size: 11px;
-      color: var(--text-muted);
-      margin-right: 2px;
+      color: rgba(51, 65, 85, 0.9);
+      background: rgba(255, 255, 255, 0.8);
+      flex-shrink: 0;
+      transition: transform var(--transition-med), background var(--transition-fast),
+        border-color var(--transition-fast), box-shadow var(--transition-fast);
     }
 
-    .tree-node.folder.collapsed > .tree-node-label .twisty {
-      transform: rotate(0deg);
+    .tree-expander svg {
+      width: 9px;
+      height: 9px;
+      transition: transform var(--transition-med);
     }
 
-    .tree-node.folder.expanded > .tree-node-label .twisty {
-      transform: rotate(90deg);
+    .tree-row.is-collapsed .tree-expander svg {
+      transform: rotate(-90deg);
     }
 
-    .tree-node-label .node-icon {
-      font-size: 14px;
-      margin-right: 4px;
-      width: 16px;
-      text-align: center;
+    .tree-row.is-expanded .tree-expander {
+      background: rgba(248, 250, 252, 1);
+      border-color: rgba(148, 163, 184, 0.8);
+      box-shadow: 0 0 0 1px rgba(226, 232, 240, 0.7);
     }
 
-    .tree-node-label .node-text {
-      flex: 1;
+    .tree-icon-folder,
+    .tree-icon-file {
+      width: 20px;
+      height: 20px;
+      border-radius: 9px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      flex-shrink: 0;
+    }
+
+    .tree-icon-folder {
+      background: linear-gradient(135deg, #1f2937, #020617);
+      color: #f9fafb;
+    }
+
+    .tree-icon-file {
+      background: linear-gradient(135deg, #e5edff, #eef2ff);
+      color: #1d4ed8;
+      border: 1px solid rgba(191, 219, 254, 0.9);
+    }
+
+    .tree-title {
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
+      flex: 1;
     }
 
-    .tree-node-label .badge-root {
-      font-size: 10px;
-      padding: 1px 6px;
+    .tree-count-pill {
       border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--accent-strong);
+      padding: 2px 6px;
+      font-size: 10px;
+      color: var(--text-muted);
+      background: rgba(248, 250, 252, 0.95);
+      border: 1px solid rgba(226, 232, 240, 0.95);
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+    }
+
+    .file-meta-dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.9);
+      margin: 0 3px;
+      flex-shrink: 0;
+    }
+
+    .tree-row.level-1 {
       margin-left: 4px;
     }
 
-    .tree-node.children {
-      margin-left: 18px;
+    .tree-row.level-2 {
+      margin-left: 20px;
     }
 
-    .tree-node > ul {
-      list-style: none;
-      margin: 1px 0 2px 18px;
-      padding-left: 0;
-      border-left: 1px dashed rgba(148,163,184,0.45);
+    .tree-row.level-3 {
+      margin-left: 32px;
     }
 
-    .tree-node.folder.collapsed > ul {
+    .tree-children {
+      margin: 0;
+      padding-left: 10px;
+      border-left: 1px dashed rgba(203, 213, 225, 0.7);
+    }
+
+    .tree-children.is-collapsed {
       display: none;
     }
 
-    .tree-node-label.selected {
-      background: var(--accent-soft);
-      color: var(--accent-strong);
+    .tree-row.is-active-file {
+      background: radial-gradient(circle at 0 0, #ffffff, #e0edff);
+      box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.12);
+      transform: translateY(-0.5px);
     }
 
-    .tree-node-label.selected .twisty {
-      color: var(--accent-strong);
+    .tree-row.is-active-file .tree-icon-file {
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      border-color: rgba(37, 99, 235, 0.8);
+      color: #eff6ff;
     }
 
-    .tree-node-label.selected .node-icon {
-      color: var(--accent-strong);
-    }
-
-    .sidebar-footer {
-      padding: 6px 4px 0;
-      border-top: 1px solid rgba(148,163,184,0.25);
-      margin-top: 6px;
-      font-size: 11px;
-      color: var(--text-muted);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .sidebar-footer a {
-      color: var(--accent-strong);
-      text-decoration: none;
-    }
-
-    .sidebar-footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* 右側：預覽面板 */
-
-    .main-panel {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      padding: 20px 22px 20px 20px;
-      background: radial-gradient(circle at top left, #fdf2e9 0, #f5f5f7 45%, #f3f4f6 100%);
-    }
-
-    .main-header {
-      margin-bottom: 10px;
-    }
-
-    .main-title {
-      font-size: 22px;
-      font-weight: 750;
-      letter-spacing: 0.04em;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .main-title span.highlight {
-      padding: 2px 8px;
-      border-radius: 999px;
-      font-size: 11px;
+    .tree-row.is-active-file .tree-title {
+      color: #1d4ed8;
       font-weight: 600;
-      color: var(--accent-strong);
-      background: var(--accent-soft);
     }
 
-    .main-subtitle {
-      font-size: 13px;
-      color: var(--text-sub);
-      margin-top: 4px;
-    }
-
-    .toolbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 10px;
-      margin-bottom: 12px;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .breadcrumb {
-      font-size: 12px;
-      color: var(--text-sub);
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.85);
-      box-shadow: 0 6px 18px rgba(15,23,42,0.08);
-    }
-
-    .breadcrumb span.path {
-      max-width: 360px;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
-    }
-
-    .pill {
-      font-size: 11px;
-      padding: 4px 9px;
-      border-radius: 999px;
-      background: rgba(15,23,42,0.06);
-      color: var(--text-sub);
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .pill-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #10b981;
-    }
+    /* Preview area */
 
     .preview-shell {
       flex: 1;
-      border-radius: 22px;
-      background: rgba(255,255,255,0.94);
-      border: 1px solid rgba(209,213,219,0.8);
-      overflow: hidden;
+      min-width: 0;
       display: flex;
       flex-direction: column;
-      backdrop-filter: blur(14px);
+      gap: 10px;
     }
 
-    .preview-header {
-      padding: 8px 14px;
-      border-bottom: 1px solid rgba(209,213,219,0.8);
+    .preview-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: radial-gradient(circle at top left, #fef3c7 0, #fefdfb 50%, #f3f4f6 100%);
+      gap: 10px;
     }
 
-    .traffic-lights {
+    .path-pill {
+      flex: 1;
+      min-width: 0;
+      border-radius: 999px;
+      padding: 7px 12px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-sub);
+      box-shadow: 0 12px 28px rgba(148, 163, 184, 0.22);
+    }
+
+    .path-pill-label {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(248, 250, 252, 1);
+      border: 1px solid rgba(226, 232, 240, 1);
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.11em;
+      flex-shrink: 0;
+    }
+
+    .path-pill-text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .hint-pill {
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 11px;
+      background: rgba(248, 250, 252, 0.96);
+      border: 1px dashed rgba(148, 163, 184, 0.7);
+      color: var(--text-muted);
       display: inline-flex;
+      align-items: center;
       gap: 6px;
     }
 
-    .traffic-lights span {
+    .hint-pill strong {
+      color: #111827;
+      font-weight: 600;
+    }
+
+    .preview-panel {
+      flex: 1;
+      min-height: 0;
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at 0 0, #ffffff, #f1f5f9);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .preview-toolbar {
+      padding: 9px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+      background: linear-gradient(
+        135deg,
+        rgba(248, 250, 252, 0.98),
+        rgba(241, 245, 249, 0.96)
+      );
+    }
+
+    .window-dots {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dot {
       width: 9px;
       height: 9px;
       border-radius: 999px;
-      background: #f87171;
-      box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
+      background: #e5e7eb;
     }
 
-    .traffic-lights span:nth-child(2) {
-      background: #facc15;
+    .dot.red {
+      background: #fb7185;
     }
 
-    .traffic-lights span:nth-child(3) {
-      background: #4ade80;
+    .dot.amber {
+      background: #fbbf24;
     }
 
-    .preview-title {
+    .dot.green {
+      background: #22c55e;
+    }
+
+    .preview-toolbar-title {
       font-size: 12px;
       color: var(--text-sub);
-      flex: 1;
-      text-align: center;
       white-space: nowrap;
-      text-overflow: ellipsis;
       overflow: hidden;
-      padding: 0 10px;
+      text-overflow: ellipsis;
     }
 
-    .preview-open-link {
-      font-size: 11px;
-      color: var(--accent-strong);
-      text-decoration: none;
-      padding: 3px 7px;
+    .toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .toolbar-chip {
+      padding: 4px 9px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.75);
-      border: 1px solid rgba(248,250,252,0.9);
+      border: 1px solid rgba(209, 213, 219, 1);
+      font-size: 11px;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.96);
     }
 
-    .preview-open-link:hover {
-      text-decoration: underline;
+    .toolbar-btn {
+      outline: none;
+      border: 0;
+      border-radius: 999px;
+      padding: 5px 11px;
+      font-size: 11px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: radial-gradient(circle at 0 0, #ffffff, #e0ecff);
+      border: 1px solid rgba(59, 130, 246, 0.85);
+      color: #1d4ed8;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(59, 130, 246, 0.25);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+        background var(--transition-fast);
+    }
+
+    .toolbar-btn:hover {
+      transform: translateY(-0.5px);
+      box-shadow: 0 12px 26px rgba(37, 99, 235, 0.35);
+      background: radial-gradient(circle at 0 0, #ffffff, #dbeafe);
+    }
+
+    .toolbar-btn svg {
+      width: 11px;
+      height: 11px;
     }
 
     .preview-body {
       flex: 1;
+      min-height: 0;
       position: relative;
-      background: #111827;
+      background: #020617;
     }
 
     .preview-iframe {
       width: 100%;
       height: 100%;
-      border: none;
-      background: #111827;
+      border: 0;
+      background: #020617;
     }
 
-    .preview-empty-state {
+    .preview-loading {
       position: absolute;
       inset: 0;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      color: #e5e7eb;
-      padding: 0 40px;
-      text-align: center;
       pointer-events: none;
+      background: radial-gradient(circle at 50% 0, rgba(15, 23, 42, 0.65), transparent),
+        radial-gradient(circle at 50% 100%, rgba(15, 23, 42, 0.45), transparent);
+      color: #e5e7eb;
+      font-size: 12px;
+      opacity: 0;
+      transition: opacity var(--transition-med);
     }
 
-    .preview-empty-state h2 {
-      font-size: 18px;
-      margin-bottom: 6px;
-    }
-
-    .preview-empty-state p {
-      font-size: 13px;
-      color: #9ca3af;
-      max-width: 420px;
-    }
-
-    .preview-loader {
-      position: absolute;
-      inset: 0;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(circle at center, rgba(17,24,39,0) 0, rgba(17,24,39,0.85) 70%);
-      z-index: 4;
-    }
-
-    .preview-loader.active {
-      display: flex;
+    .preview-loading.visible {
+      opacity: 1;
     }
 
     .spinner {
-      width: 42px;
-      height: 42px;
+      width: 34px;
+      height: 34px;
       border-radius: 999px;
-      border: 4px solid rgba(209,213,219,0.25);
-      border-top-color: var(--accent-strong);
-      animation: spin 1s linear infinite;
+      border: 2px solid rgba(148, 163, 184, 0.6);
+      border-top-color: #f97316;
+      animation: spin 0.9s linear infinite;
+      margin-right: 10px;
     }
 
     @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    .preview-footer {
-      padding: 7px 14px;
-      border-top: 1px solid rgba(55,65,81,0.55);
-      background: linear-gradient(to right, rgba(31,41,55,0.96), rgba(15,23,42,0.94));
-      color: #9ca3af;
-      font-size: 11px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .preview-footer span.key {
-      color: #e5e7eb;
-      font-weight: 500;
-    }
-
-    .preview-footer .hint {
-      opacity: 0.8;
-    }
-
-    /* RWD */
-
-    @media (max-width: 960px) {
-      .app-shell {
-        flex-direction: column;
-        height: auto;
+      to {
+        transform: rotate(360deg);
       }
+    }
+
+    /* Empty state */
+
+    .empty-state {
+      padding: 24px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .empty-state strong {
+      color: var(--text-main);
+    }
+
+    /* Scrollbars */
+
+    .tree-scroll::-webkit-scrollbar,
+    .preview-body::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+
+    .tree-scroll::-webkit-scrollbar-track,
+    .preview-body::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .tree-scroll::-webkit-scrollbar-thumb,
+    .preview-body::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.45);
+      border-radius: 999px;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 1024px) {
+      .page-shell {
+        padding: 12px;
+      }
+
+      .app-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .header-badge-row {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .app-main {
+        flex-direction: column;
+      }
+
       .sidebar {
         width: 100%;
-        border-right: none;
-        border-bottom: 1px solid var(--border-subtle);
-        padding: 14px 16px;
+        max-width: none;
+        border-radius: 22px;
       }
-      .main-panel {
-        padding: 14px 14px 16px;
-      }
+
       .preview-shell {
-        border-radius: 18px;
-      }
-      .breadcrumb span.path {
-        max-width: 240px;
+        min-height: 260px;
       }
     }
 
     @media (max-width: 640px) {
-      body {
-        padding: 12px;
-      }
-      .app-shell {
-        border-radius: 20px;
-      }
-      .sidebar-header {
-        margin-bottom: 6px;
-      }
-      .sidebar-section-label {
-        display: none;
-      }
-      .tree-container {
-        max-height: 240px;
-      }
-      .toolbar {
-        align-items: flex-start;
-      }
-      .breadcrumb {
-        width: 100%;
-      }
-      .preview-footer {
+      .path-pill {
         flex-direction: column;
         align-items: flex-start;
+        gap: 4px;
+      }
+
+      .preview-toolbar {
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .toolbar-right {
+        width: 100%;
+        justify-content: flex-end;
       }
     }
   </style>
 </head>
 <body>
+  <div class="page-shell">
+    <div class="app-frame">
+      <!-- Header -->
+      <header class="app-header">
+        <div class="header-left">
+          <div class="header-orb"></div>
+          <div class="header-title-block">
+            <div class="header-title">GoldenWay 官網內容備份</div>
+            <div class="header-subtitle">
+              自動同步 GitHub 檔案樹 · 左側索引 / 右側 HTML 頁面預覽
+            </div>
+          </div>
+        </div>
+        <div class="header-divider"></div>
+        <div class="header-badge-row">
+          <div class="badge-soft">
+            <span class="badge-soft-dot"></span>
+            <span>GitHub Pages · Live Preview</span>
+          </div>
+          <div class="badge-accent">作品集模式</div>
+        </div>
+      </header>
 
-<div class="app-shell">
-  <!-- Sidebar -->
-  <aside class="sidebar">
-    <div class="sidebar-header">
-      <div class="logo-dot"></div>
-      <div>
-        <div class="sidebar-title-main">網站結構與產品索引</div>
-        <div class="sidebar-title-sub">GoldenWay 官網 HTML / CSS 備份</div>
-      </div>
+      <!-- Main -->
+      <main class="app-main">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+          <div class="sidebar-header">
+            <div class="sidebar-label">Repository</div>
+            <div class="sidebar-repo">
+              <span>goldenway-website-backup</span>
+              <span>HTML / CSS / JS 備份</span>
+            </div>
+          </div>
+          <div class="sidebar-body">
+            <div class="section-caption">
+              <span>網站結構與產品索引</span>
+              <button type="button" id="btn-expand-collapse">全部展開</button>
+            </div>
+            <div class="tree-scroll">
+              <ul id="tree-root" class="tree-root"></ul>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Preview area -->
+        <section class="preview-shell">
+          <div class="preview-top">
+            <div class="path-pill">
+              <span class="path-pill-label">Path</span>
+              <span id="current-path" class="path-pill-text">尚未載入檔案</span>
+            </div>
+            <div class="hint-pill">
+              提示：<strong>點選左側任一 HTML</strong>，即可在右側即時預覽
+            </div>
+          </div>
+
+          <div class="preview-panel">
+            <div class="preview-toolbar">
+              <div class="window-dots">
+                <span class="dot red"></span>
+                <span class="dot amber"></span>
+                <span class="dot green"></span>
+              </div>
+              <div id="preview-title" class="preview-toolbar-title">
+                尚未選擇檔案
+              </div>
+              <div class="toolbar-right">
+                <div class="toolbar-chip">來源：GitHub · /goldenway-website-backup/</div>
+                <button class="toolbar-btn" type="button" id="btn-open-new">
+                  <svg viewBox="0 0 20 20" fill="none">
+                    <path
+                      d="M5 5.75A.75.75 0 0 1 5.75 5h8.5a.75.75 0 0 1 .75.75v8.5a.75.75 0 0 1-1.5 0V7.56l-7.22 7.22a.75.75 0 0 1-1.06-1.06L12.44 6.5H5.75A.75.75 0 0 1 5 5.75Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  在新分頁開啟
+                </button>
+              </div>
+            </div>
+            <div class="preview-body">
+              <iframe
+                id="preview-iframe"
+                class="preview-iframe"
+                src="about:blank"
+                title="HTML 預覽"
+              ></iframe>
+              <div id="preview-loading" class="preview-loading">
+                <div class="spinner"></div>
+                <span>載入中，請稍候…</span>
+              </div>
+              <div id="empty-state" class="empty-state" style="display: none;">
+                <strong>尚未找到可預覽的 HTML 檔案。</strong><br /><br />
+                請確認：
+                <ul>
+                  <li>GitHub 根目錄存在 <code>tree-data.json</code></li>
+                  <li>其中節點有 <code>isFolder: false</code> 且副檔名為 <code>.html</code> 的項目</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
+  </div>
 
-    <div class="sidebar-section-label">REPOSITORY</div>
-    <div class="tree-container" id="treeContainer">
-      <ul class="tree-root" id="treeRoot">
-        <!-- 自動插入樹狀結構 -->
-      </ul>
-    </div>
+  <script>
+    // === 設定：依照 tree-data.json 結構調整 ========================
+    const TREE_DATA_URL = "tree-data.json";
 
-    <div class="sidebar-footer">
-      <span>來源：<a href="https://github.com/TsenWu/goldenway-website-backup" target="_blank" rel="noreferrer">goldenway-website-backup</a></span>
-      <span class="pill"><span class="pill-dot"></span> Live via GitHub Pages</span>
-    </div>
-  </aside>
+    /**
+     * tree-data.json 預期結構：
+     * [
+     *   {
+     *     "title": "about（關於我們）",
+     *     "path": "about/",
+     *     "isFolder": true,
+     *     "children": [
+     *       {
+     *         "title": "燈具介紹.html",
+     *         "path": "about/燈具介紹.html",
+     *         "isFolder": false
+     *       }
+     *     ]
+     *   },
+     *   ...
+     * ]
+     */
 
-  <!-- Main Panel -->
-  <main class="main-panel">
-    <header class="main-header">
-      <div class="main-title">
-        GoldenWay 官網內容備份
-        <span class="highlight">內部使用 · 線上預覽</span>
-      </div>
-      <div class="main-subtitle">
-        左側是依照 GitHub 目錄自動生成的樹狀索引，點選任一檔案即可在右側即時預覽實際網頁畫面。
-      </div>
+    const treeRootEl = document.getElementById("tree-root");
+    const currentPathEl = document.getElementById("current-path");
+    const previewTitleEl = document.getElementById("preview-title");
+    const previewIframe = document.getElementById("preview-iframe");
+    const previewLoadingEl = document.getElementById("preview-loading");
+    const emptyStateEl = document.getElementById("empty-state");
+    const btnOpenNew = document.getElementById("btn-open-new");
+    const btnExpandCollapse = document.getElementById("btn-expand-collapse");
 
-      <div class="toolbar">
-        <div class="breadcrumb" id="breadcrumb">
-          <span style="font-size: 13px; color:#9ca3af;">路徑</span>
-          <span>·</span>
-          <span class="path" id="breadcrumbPath">尚未選擇檔案</span>
-        </div>
-        <div class="pill hint">
-          ⌘ 提示：建議使用桌機搭配全螢幕瀏覽以取得最佳體驗
-        </div>
-      </div>
-    </header>
+    let currentFilePath = null;
+    let allFolderContainers = [];
+    let allFolderRows = [];
+    let allFileRows = [];
+    let expandAll = true;
 
-    <section class="preview-shell">
-      <div class="preview-header">
-        <div class="traffic-lights">
-          <span></span><span></span><span></span>
-        </div>
-        <div class="preview-title" id="previewTitle">
-          尚未載入任何頁面
-        </div>
-        <a id="openInNewTab" href="#" target="_blank" rel="noreferrer" class="preview-open-link" style="visibility:hidden;">
-          在新分頁開啟
-        </a>
-      </div>
+    // ===== 公用小工具 ============================================
 
-      <div class="preview-body">
-        <div class="preview-loader" id="previewLoader">
-          <div class="spinner"></div>
-        </div>
-        <iframe id="previewFrame" class="preview-iframe" src="about:blank"></iframe>
-        <div class="preview-empty-state" id="previewPlaceholder">
-          <h2>歡迎使用 GoldenWay 官網備份索引</h2>
-          <p>
-            從左側樹狀清單選擇任一產品介紹頁、規格表或視覺化圖表檔案，
-            即可在此即時預覽實際的 GitHub Pages 內容。
-          </p>
-        </div>
-      </div>
-
-      <div class="preview-footer">
-        <div>
-          <span class="key">部署：</span>
-          由 GitHub Pages 提供靜態託管。
-        </div>
-        <div class="hint">
-          若預覽無法顯示，請確認對應檔案是否為 HTML，或直接使用右上角連結在新分頁開啟。
-        </div>
-      </div>
-    </section>
-  </main>
-</div>
-
-<script>
-  // ====== 設定區（依你的 repo 調整） ======
-  const OWNER = "TsenWu";
-  const REPO = "goldenway-website-backup";
-  const BRANCH = "main";
-
-  const PAGES_BASE = `https://${OWNER.toLowerCase()}.github.io/${REPO}/`;
-  const API_BASE = `https://api.github.com/repos/${OWNER}/${REPO}/contents/`;
-
-  // 忽略不需要顯示的資料夾 / 檔案
-  const IGNORE_DIRS = [".github", ".git", "node_modules"];
-  const IGNORE_FILES = ["index.html"];
-
-  // 友善顯示用的名稱 Mapping
-  const DISPLAY_NAME_MAP = {
-    "about": "about（關於我們）",
-    "product": "product（產品）",
-    "installation": "installation（安裝說明）",
-    "shared": "shared／視覺化圖表",
-    "README.md": "README（使用說明）"
-  };
-
-  // ====== DOM 參照 ======
-  const treeRootEl = document.getElementById("treeRoot");
-  const previewFrame = document.getElementById("previewFrame");
-  const previewTitleEl = document.getElementById("previewTitle");
-  const previewPlaceholderEl = document.getElementById("previewPlaceholder");
-  const previewLoaderEl = document.getElementById("previewLoader");
-  const breadcrumbPathEl = document.getElementById("breadcrumbPath");
-  const openInNewTabEl = document.getElementById("openInNewTab");
-
-  let currentSelectedLabel = null;
-
-  // ====== Helper Functions ======
-
-  function friendlyName(name) {
-    return DISPLAY_NAME_MAP[name] || name;
-  }
-
-  function isIgnoredDir(name) {
-    return IGNORE_DIRS.includes(name);
-  }
-
-  function isIgnoredFile(name) {
-    return IGNORE_FILES.includes(name);
-  }
-
-  function buildPreviewUrl(path) {
-    // path 直接接在 GitHub Pages base 後面即可
-    return PAGES_BASE + encodeURI(path);
-  }
-
-  function updateBreadcrumb(path) {
-    if (!path) {
-      breadcrumbPathEl.textContent = "尚未選擇檔案";
-      return;
+    function isHtmlFile(node) {
+      if (!node || node.isFolder) return false;
+      if (!node.path) return false;
+      return node.path.toLowerCase().endsWith(".html");
     }
-    breadcrumbPathEl.textContent = "/" + path;
-  }
 
-  function setSelectedLabel(labelEl) {
-    if (currentSelectedLabel) {
-      currentSelectedLabel.classList.remove("selected");
+    function countHtmlFiles(node) {
+      if (!node) return 0;
+      if (!node.isFolder) {
+        return isHtmlFile(node) ? 1 : 0;
+      }
+      if (!Array.isArray(node.children)) return 0;
+      return node.children.reduce((sum, child) => sum + countHtmlFiles(child), 0);
     }
-    currentSelectedLabel = labelEl;
-    if (currentSelectedLabel) {
-      currentSelectedLabel.classList.add("selected");
+
+    function normalizePath(path) {
+      return path.replace(/^\/+/, "");
     }
-  }
 
-  function showLoader(show) {
-    if (show) {
-      previewLoaderEl.classList.add("active");
-    } else {
-      previewLoaderEl.classList.remove("active");
-    }
-  }
+    // ===== 建構樹狀 UI ============================================
 
-  // ====== 建立樹狀節點 ======
+    function buildTreeFromData(treeData) {
+      treeRootEl.innerHTML = "";
+      allFolderContainers = [];
+      allFolderRows = [];
+      allFileRows = [];
 
-  function createFolderNode(item) {
-    const li = document.createElement("li");
-    li.className = "tree-node folder collapsed";
-    li.dataset.path = item.path;
-    li.dataset.loaded = "false";
+      if (!Array.isArray(treeData) || treeData.length === 0) {
+        emptyStateEl.style.display = "block";
+        return;
+      }
 
-    const label = document.createElement("div");
-    label.className = "tree-node-label is-folder";
-    label.innerHTML = `
-      <span class="twisty">▸</span>
-      <span class="node-icon">📂</span>
-      <span class="node-text">${friendlyName(item.name)}</span>
-    `;
+      const ul = document.createElement("ul");
+      ul.className = "tree-group";
+      treeRootEl.appendChild(ul);
 
-    label.addEventListener("click", async (event) => {
-      event.stopPropagation();
-      const isCollapsed = li.classList.contains("collapsed");
-      if (isCollapsed) {
-        // 展開時，若尚未載入子項目就載入
-        if (li.dataset.loaded !== "true") {
-          await loadDirectoryChildren(item.path, li);
-          li.dataset.loaded = "true";
-        }
-        li.classList.remove("collapsed");
-        li.classList.add("expanded");
+      let firstHtmlNode = null;
+
+      function walk(nodes, parentUl, level) {
+        nodes.forEach((node) => {
+          const li = document.createElement("li");
+          li.className = "tree-item";
+
+          const row = document.createElement("div");
+          row.className = "tree-row level-" + level;
+          row.dataset.level = level;
+
+          const indent = document.createElement("div");
+          indent.className = "tree-indent";
+          row.appendChild(indent);
+
+          if (node.isFolder) {
+            const expander = document.createElement("div");
+            expander.className = "tree-expander";
+            expander.innerHTML =
+              '<svg viewBox="0 0 20 20"><path d="M7 6l6 4-6 4V6z" fill="currentColor"/></svg>';
+            row.appendChild(expander);
+
+            const icon = document.createElement("div");
+            icon.className = "tree-icon-folder";
+            icon.textContent = "◎";
+            row.appendChild(icon);
+
+            const title = document.createElement("div");
+            title.className = "tree-title";
+            title.textContent = node.title || node.path || "(未命名資料夾)";
+            row.appendChild(title);
+
+            const count = document.createElement("div");
+            count.className = "tree-count-pill";
+            const fileCount = countHtmlFiles(node);
+            if (fileCount > 0) {
+              count.textContent = fileCount + " files";
+              count.style.opacity = "1";
+            }
+            row.appendChild(count);
+
+            row.classList.add("folder-level-" + level);
+            row.classList.add("is-clickable");
+            row.classList.add("is-collapsed");
+            allFolderRows.push(row);
+
+            const childrenUl = document.createElement("ul");
+            childrenUl.className = "tree-children is-collapsed";
+            allFolderContainers.push(childrenUl);
+
+            row.addEventListener("click", () => {
+              const collapsed = childrenUl.classList.contains("is-collapsed");
+              if (collapsed) {
+                childrenUl.classList.remove("is-collapsed");
+                row.classList.remove("is-collapsed");
+                row.classList.add("is-expanded");
+              } else {
+                childrenUl.classList.add("is-collapsed");
+                row.classList.add("is-collapsed");
+                row.classList.remove("is-expanded");
+              }
+            });
+
+            li.appendChild(row);
+            li.appendChild(childrenUl);
+            parentUl.appendChild(li);
+
+            if (Array.isArray(node.children) && node.children.length) {
+              walk(node.children, childrenUl, level + 1);
+            }
+          } else {
+            // File
+            row.classList.add("is-clickable");
+
+            const fakeExpander = document.createElement("div");
+            fakeExpander.className = "tree-indent";
+            row.appendChild(fakeExpander);
+
+            const icon = document.createElement("div");
+            icon.className = "tree-icon-file";
+            icon.textContent = "H";
+            row.appendChild(icon);
+
+            const title = document.createElement("div");
+            title.className = "tree-title";
+            title.textContent = node.title || node.path || "(未命名檔案)";
+            row.appendChild(title);
+
+            const dot = document.createElement("div");
+            dot.className = "file-meta-dot";
+            row.appendChild(dot);
+
+            const meta = document.createElement("div");
+            meta.style.fontSize = "10px";
+            meta.style.color = "var(--text-muted)";
+            meta.textContent = "HTML";
+            row.appendChild(meta);
+
+            allFileRows.push({ row, node });
+
+            row.addEventListener("click", () => {
+              const path = normalizePath(node.path || "");
+              if (!path) return;
+              setActiveFile(path, node.title || path);
+            });
+
+            li.appendChild(row);
+            parentUl.appendChild(li);
+
+            if (!firstHtmlNode && isHtmlFile(node)) {
+              firstHtmlNode = node;
+            }
+          }
+        });
+      }
+
+      walk(treeData, ul, 0);
+
+      if (!firstHtmlNode) {
+        emptyStateEl.style.display = "block";
       } else {
-        li.classList.remove("expanded");
-        li.classList.add("collapsed");
+        emptyStateEl.style.display = "none";
+        setActiveFile(
+          normalizePath(firstHtmlNode.path),
+          firstHtmlNode.title || firstHtmlNode.path
+        );
+      }
+    }
+
+    // ===== 狀態更新 / Iframe 載入 ==================================
+
+    function setActiveFile(path, title) {
+      currentFilePath = path;
+      currentPathEl.textContent = path;
+      previewTitleEl.textContent = title;
+      btnOpenNew.disabled = false;
+
+      // 更新 active 樣式
+      allFileRows.forEach(({ row, node }) => {
+        const active =
+          normalizePath(node.path || "") === normalizePath(currentFilePath);
+        row.classList.toggle("is-active-file", active);
+      });
+
+      // 顯示 loading
+      previewLoadingEl.classList.add("visible");
+      previewIframe.style.opacity = "0";
+      previewIframe.src = path;
+    }
+
+    previewIframe.addEventListener("load", () => {
+      // 載入完成
+      previewLoadingEl.classList.remove("visible");
+      previewIframe.style.opacity = "1";
+    });
+
+    btnOpenNew.addEventListener("click", () => {
+      if (!currentFilePath) return;
+      window.open(currentFilePath, "_blank");
+    });
+
+    // ===== 全部展開 / 收合 =========================================
+
+    btnExpandCollapse.addEventListener("click", () => {
+      expandAll = !expandAll;
+      if (expandAll) {
+        btnExpandCollapse.textContent = "全部展開";
+        allFolderContainers.forEach((ul) => ul.classList.add("is-collapsed"));
+        allFolderRows.forEach((row) => {
+          row.classList.add("is-collapsed");
+          row.classList.remove("is-expanded");
+        });
+      } else {
+        btnExpandCollapse.textContent = "全部收合";
+        allFolderContainers.forEach((ul) => ul.classList.remove("is-collapsed"));
+        allFolderRows.forEach((row) => {
+          row.classList.add("is-expanded");
+          row.classList.remove("is-collapsed");
+        });
       }
     });
 
-    li.appendChild(label);
+    // ===== 初始化：載入 tree-data.json ==============================
 
-    const childrenUl = document.createElement("ul");
-    li.appendChild(childrenUl);
-
-    return li;
-  }
-
-  function createFileNode(item) {
-    const li = document.createElement("li");
-    li.className = "tree-node file";
-    li.dataset.path = item.path;
-
-    const label = document.createElement("div");
-    label.className = "tree-node-label is-file";
-    label.innerHTML = `
-      <span class="twisty"></span>
-      <span class="node-icon">📄</span>
-      <span class="node-text">${friendlyName(item.name)}</span>
-    `;
-
-    label.addEventListener("click", (event) => {
-      event.stopPropagation();
-      const path = item.path;
-      const url = buildPreviewUrl(path);
-      setSelectedLabel(label);
-      updateBreadcrumb(path);
-      previewTitleEl.textContent = path;
-      openInNewTabEl.href = url;
-      openInNewTabEl.style.visibility = "visible";
-
-      previewPlaceholderEl.style.display = "none";
-      showLoader(true);
-      // 設定 iframe src
-      previewFrame.src = url;
-    });
-
-    li.appendChild(label);
-    return li;
-  }
-
-  // ====== 載入目錄內容（透過 GitHub API） ======
-
-  async function fetchDirectory(path = "") {
-    const url = path ? API_BASE + encodeURI(path) + `?ref=${BRANCH}` : API_BASE + `?ref=${BRANCH}`;
-    const res = await fetch(url);
-    if (!res.ok) {
-      console.error("GitHub API error:", res.status, res.statusText);
-      return [];
-    }
-    const data = await res.json();
-    if (!Array.isArray(data)) return [];
-    return data;
-  }
-
-  async function loadDirectoryChildren(path, nodeLi) {
-    const containerUl = nodeLi.querySelector("ul");
-    containerUl.innerHTML = "";
-
-    const items = await fetchDirectory(path);
-
-    // 依 type 排序：資料夾在前，檔案在後；同類別再依名稱排序
-    items.sort((a, b) => {
-      if (a.type === b.type) return a.name.localeCompare(b.name, "zh-Hant");
-      return a.type === "dir" ? -1 : 1;
-    });
-
-    for (const item of items) {
-      if (item.type === "dir") {
-        if (isIgnoredDir(item.name)) continue;
-        const folderNode = createFolderNode(item);
-        containerUl.appendChild(folderNode);
-      } else if (item.type === "file") {
-        if (isIgnoredFile(item.name)) continue;
-        const fileNode = createFileNode(item);
-        containerUl.appendChild(fileNode);
-      }
-    }
-  }
-
-  async function buildRootTree() {
-    treeRootEl.innerHTML = "";
-
-    const items = await fetchDirectory("");
-
-    // 根目錄同樣先資料夾後檔案
-    items.sort((a, b) => {
-      if (a.type === b.type) return a.name.localeCompare(b.name, "zh-Hant");
-      return a.type === "dir" ? -1 : 1;
-    });
-
-    for (const item of items) {
-      if (item.type === "dir") {
-        if (isIgnoredDir(item.name)) continue;
-        const folderNode = createFolderNode(item);
-
-        // 預設展開幾個主要資料夾（about, product, shared）
-        if (["about", "product", "shared"].includes(item.name)) {
-          folderNode.classList.remove("collapsed");
-          folderNode.classList.add("expanded");
-          loadDirectoryChildren(item.path, folderNode).then(() => {
-            folderNode.dataset.loaded = "true";
-          });
+    async function init() {
+      try {
+        const res = await fetch(TREE_DATA_URL, { cache: "no-store" });
+        if (!res.ok) {
+          throw new Error("HTTP " + res.status);
         }
-
-        treeRootEl.appendChild(folderNode);
-      } else if (item.type === "file") {
-        if (isIgnoredFile(item.name)) continue;
-        const fileNode = createFileNode(item);
-        treeRootEl.appendChild(fileNode);
+        const data = await res.json();
+        buildTreeFromData(data);
+      } catch (err) {
+        console.error("載入 tree-data.json 失敗：", err);
+        emptyStateEl.style.display = "block";
+        emptyStateEl.innerHTML =
+          "<strong>無法載入 tree-data.json。</strong><br><br>" +
+          "請確認此檔案存在於 GitHub 根目錄，且 Pages 已重新部署。";
       }
     }
-  }
 
-  // ====== Iframe 載入事件：關閉 Loading ======
-  previewFrame.addEventListener("load", () => {
-    showLoader(false);
-  });
-
-  // ====== 初始化 ======
-  document.addEventListener("DOMContentLoaded", () => {
-    buildRootTree().catch(err => console.error(err));
-  });
-</script>
-
+    init();
+  </script>
 </body>
 </html>
