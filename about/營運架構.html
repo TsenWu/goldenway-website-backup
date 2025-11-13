@@ -1,0 +1,524 @@
+<!-- ★ 區塊名稱：公司介紹區塊（滿版＋圖片不裁切＋左右等高＋圖片下附註）★ -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* ✅ 整體區塊 */
+.company-intro {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+  background-color: #ffffff;
+}
+
+/* ✅ 左側文字區 */
+.company-intro .text-column {
+  flex: 1;
+  padding: 20px 10px;
+  box-sizing: border-box;
+  color: #333;
+  font-size: 16px;
+  line-height: 1.8;
+  min-width: 300px;
+}
+
+/* ✅ 標題設定：防止手機版換行 */
+.company-title {
+  font-size: 28px;              /* ✅ 桌機字體大小 */
+  white-space: nowrap;          /* ✅ 不換行 */
+  line-height: 1.2;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .company-title {
+    font-size: 24px;            /* ✅ 手機版自動縮小以避免被迫斷行 */
+  }
+}
+
+/* ✅ 右側圖片區 */
+.company-intro .image-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #f5f7fa;
+}
+
+.company-intro .image-column img.main-photo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* ✅ 圖片下方附註區塊 */
+.company-intro .note-box {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 20px;
+  background: rgba(201, 202, 202, 0.5);
+  padding: 10px 20px;
+  border-radius: 2px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: #222;
+  line-height: 1.6;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+}
+
+.company-intro .note-box img.icon {
+  width: 38px;
+  height: 38px;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+/* ✅ 手機版：改為上下堆疊 */
+@media (max-width: 768px) {
+  .company-intro {
+    flex-direction: column;
+  }
+  .company-intro .text-column,
+  .company-intro .image-column {
+    width: 100%;
+    padding: 24px 20px;
+  }
+  .company-intro .note-box {
+    flex-direction: row;
+    width: 100%;
+    font-size: 13px;
+  }
+}
+</style>
+<section class="company-intro"><!-- 左側文字 -->
+<div class="text-column">
+<h3 class="company-title">金鍏電子股份有限公司</h3>
+
+<p style="text-align: justify;">作為引領綠色照明創新的先驅，金鍏電子致力於研發與製造符合 ESG 精神的高效節能LED照明產品。我們專注於「節能、減碳、永續」的核心價值，為各類應用場域提供兼具品質與效能的照明解決方案。</p>
+
+<p style="text-align: justify;"><br />
+金鍏LED全系列燈具皆符合國際能效與安全標準，榮獲多項專利與專業認證，廣泛應用於住宅、商業空間、智慧建築與重工業場域，協助客戶有效降低能源消耗與營運支出，實現綠色轉型。</p>
+
+<p style="text-align: justify;"><br />
+<span style="color:#2980b9;">金鍏電子不以低價取勝，而是以「品質與價值」立足市場</span>。我們打造全台唯一 <strong>業界最長 5~10 年保固</strong> 的優質照明，<strong>燈具使用壽命超越 10 年</strong>，遠遠勝過市面上短壽命、高光衰、不省電的燈具。對客戶而言，使用金鍏優質燈具，不僅享有&nbsp;<strong>更高的品質保證</strong>，更得到&nbsp;<strong>卓越的節能成效&nbsp;</strong>與&nbsp;<strong>超長壽命減少維修汰換</strong>，燈具使用期間不僅回收燈具成本，更省下可觀的電費與維護支出。</p>
+
+<p style="text-align: justify;"><span style="color:#2980b9;"><strong>我們相信：燈具的價格是金鍏品質的保證；而節能省電、長效耐用，才是帶給客戶最實在的回饋。</strong></span></p>
+
+<p style="text-align: justify;"><br />
+未來，我們將持續以技術驅動、永續導向為動能，邁向「全球綠色照明領導品牌」的願景，攜手客戶與夥伴共創低碳永續的光明未來。</p>
+</div>
+<!-- 右側圖片與附註 -->
+
+<div class="image-column"><img alt="GoldenWay 公司外觀" class="main-photo" src="https://www.goldenwayled.com/archive/image//A1/Structure/a36a9f5654522424.jpg" />
+<div class="note-box"><img alt="icon 圖示" class="icon" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/10-years.png?v=tnisg8c" />
+<div>廉價的燈很好買，但壽命很短；<br />
+金鍏好燈雖不便宜，卻能亮十年以上，節能省電才是最長遠的回饋。</div>
+</div>
+</div>
+</section>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+<style type="text/css">.goldenway-org {
+  width: 100%;
+  padding: 20px 20px;
+  background: #f5f7fa;
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 100px;
+  box-sizing: border-box;
+}
+
+/* 區塊大標題 */
+.goldenway-org .main-title {
+  font-size: 36px;          /* ✅ 可調整：桌機標題大小 */
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 20px;
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .goldenway-org .main-title {
+    font-size: 26px;        /* ✅ 可調整：手機版標題大小 */
+  }
+}
+
+/* 每一層級的排版 */
+.goldenway-org .level {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 100px;
+  width: 100%;
+}
+
+/* 框框樣式 */
+.goldenway-org .box {
+  background: #5b9eb2;
+  color: white;
+  padding: 20px 32px;
+  border-radius: 10px;
+  font-weight: normal;
+  font-size: clamp(15px, 4.5vw, 22px); /* ✅ 自動縮放字體 */
+  white-space: nowrap; /* ✅ 不換行 */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  min-width: 260px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 滑鼠浮動效果 */
+.goldenway-org .box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* 框框下方說明文字 */
+.goldenway-org .subtext {
+  margin-top: 24px;
+  font-weight: normal;
+  color: #333;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* 清單樣式 */
+.goldenway-org ul {
+  text-align: left;
+  margin: 24px 0 0;
+  padding-left: 20px;
+}
+.goldenway-org ul li {
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+</style>
+<div class="_bd_row _bd_clearfix">
+<div class="_bd_column _bd_full">
+<hr /></div>
+</div>
+
+<div class="goldenway-org"><!-- 區塊大標題 -->
+<h2 class="main-title">公司營運架構圖</h2>
+
+<div class="level">
+<div class="box">金鍏集團</div>
+</div>
+
+<div class="level">
+<div>
+<div class="box">技術稽核</div>
+
+<div class="subtext">技術研發</div>
+</div>
+
+<div>
+<div class="box">品管稽核</div>
+
+<div class="subtext">品質管制</div>
+</div>
+</div>
+
+<div class="level">
+<div>
+<div class="box">金威綠能科技股份有限公司</div>
+
+<ul>
+	<li>工程及保固維修部門</li>
+	<li>廠辦與工程燈具銷售部門</li>
+</ul>
+</div>
+
+<div>
+<div class="box">金鍏電子股份有限公司</div>
+
+<ul>
+	<li>產品研發及品管部門</li>
+	<li>電子器材零件廠辦製程及銷售部門</li>
+</ul>
+</div>
+
+<div>
+<div class="box">城市綠能股份有限公司</div>
+
+<ul>
+	<li>工程及保固維修部門</li>
+	<li>店舖裝潢燈具廠辦製程及銷售部門</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- ★ 區塊名稱：金鍏技術四核心區塊（背景圖＋卡片展示）★ -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* ========== 🌐 公司特點外層包裝區 ========== */
+.company-feature-wrapper {
+  position: relative;
+  overflow: hidden;
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+  color: #333;
+  text-align: center;
+}
+
+/* ✅ 背景圖層：直接設在 wrapper 上，延伸覆蓋整個內容 */
+.company-feature-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/GW_OperationalStructure/bg_tree.png?v=y90wqr') no-repeat center center;
+  background-size: cover;
+  opacity: 0.5; /* ← ✅ 背景圖透明度調整 */
+  z-index: 0;
+}
+
+/* ✅ 卡片區塊內容，位於背景圖上層 */
+.company-feature {
+  position: relative;
+  z-index: 1;
+  padding: 20px 0;  /* ← ✅ 上下留白 */
+}
+.company-feature .inner {
+  max-width: 1400px;          /* ✅ 原本是1300，可以稍微放大一點來撐開四張卡片 */
+  padding: 0 10px !important;  /* ✅ 兩側再縮小留白，更貼齊畫面 */
+  margin: 0 auto;
+}
+
+/* 📌 標題區 */
+.company-feature h2 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+.company-feature p.subtitle {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 50px;
+}
+
+/* ========= 🧱 卡片排列設定 ========= */
+.feature-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* ✅ 把原本 center 改掉 */
+  gap: 24px;                      /* ✅ gap 稍微縮一點比較好看 */
+  padding: 0;
+  max-width: 100%;                /* ✅ 明確加上 max-width 撐滿區塊 */
+}
+
+/* 📦 單一卡片樣式 */
+.feature-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  width: calc(25% - 18px);        /* ✅ 重點：四張卡片+gap 剛好100%，避免中間被吃寬 */
+  border: 1px solid #000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  text-align: left;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* 🎌 旗標造型 */
+.feature-card::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  width: 30px;
+  height: 40px;
+  background: #333;
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
+}
+
+/* 文字設定 */
+.feature-card h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px 0 5px;
+}
+.feature-card .sub {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 12px;
+}
+.feature-card img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+.feature-card p {
+  font-size: 15px !important;
+  line-height: 1.8 !important;
+  color: #444;
+}
+
+/* 📱 中等螢幕（平板）→ 一排兩張 */
+@media (max-width: 1199px) {
+  .feature-card {
+    width: calc(50% - 30px); /* ← 兩張兩張排 */
+  }
+}
+/* 📱 小螢幕（手機）→ 一排一張 */
+@media (max-width: 767px) {
+  .feature-card {
+    width: 100%; /* ← 撐滿容器 */
+  }
+}
+</style>
+<!-- ✅ HTML 結構：只有一層 company-feature-wrapper，背景圖由 ::before 控制 -->
+<div class="_bd_row _bd_clearfix">
+<div class="_bd_column _bd_full">
+<hr /></div>
+</div>
+
+<section class="company-feature-wrapper">
+<section class="company-feature">
+<div class="inner">
+<h2>金鍏技術四核心，照亮綠色競爭力</h2>
+
+<p class="subtitle">以技術為本、品質為核，金鍏電子引領企業邁向高效節能與綠色轉型</p>
+
+<div class="feature-cards"><!-- 卡片一 -->
+<div class="feature-card">
+<h3>轉型創新</h3>
+
+<div class="sub">不是最便宜，卻最省電費</div>
+<img alt="高效節能" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/GW_OperationalStructure/p1_v.png?v=93m8q4d" />
+<p style="text-align: justify;">因應LED技術對傳統照明的衝擊，金鍏電子整合光學、散熱、電子與軟體等領域，打造高效、長壽、可控的<strong>LED光板式燈具</strong>。<strong>系統效率達160~180 lm/W，較傳統照明節能65%~80%</strong>，廣泛應用於商辦、工廠、醫院與倉儲空間，協助企業大幅降低用電成本。</p>
+</div>
+<!-- 卡片二 -->
+
+<div class="feature-card">
+<h3>節能環保</h3>
+
+<div class="sub">十年壽命，減碳更省錢</div>
+<img alt="五年保固" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/GW_OperationalStructure/p2_v.png?v=pmjyxx9" />
+<p style="text-align: justify;">金鍏LED燈具<strong>每瓦光效達160 lm，壽命長達10年</strong>，具備卓越節能與穩定性。以五年使用期估算，減碳效益相當於每年種植38棵樹，<strong data-end="202" data-start="182">帶來高於同業 50% 的減碳效益</strong>。節能不只是降低成本，更是金鍏對環境永續的實踐，積極推動綠色照明走入日常與企業應用。</p>
+</div>
+<!-- 卡片三 -->
+
+<div class="feature-card">
+<h3>認證保固</h3>
+
+<div class="sub">業界最長 5~10 年保固</div>
+<img alt="研發製造" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/GW_OperationalStructure/p3_v.png?v=g17tsp" />
+<p style="text-align: justify;">金鍏全系列燈具通過 <strong>BSMI 安全認證</strong>，符合 <strong>RoHS 無害標準</strong>，並有多款產品獲<strong>節能、環保及 MIT 微笑標章</strong>。針對特殊需求亦提供<strong>防塵防水</strong>或<strong>防爆</strong>型號，應用更彈性。全品項提供業界領先的 <strong>5~10 年超長保固</strong>，光束維持率超過 98%，兼具長期穩定與高投資效益。</p>
+</div>
+<!-- 卡片四 -->
+
+<div class="feature-card">
+<h3>智慧燈控</h3>
+
+<div class="sub">智慧連網，長效管理</div>
+<img alt="ESG助攻" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/GW_OperationalStructure/p4_v.png?v=k7q17yg" />
+<p style="text-align: justify;">金鍏燈具全面支援 <strong data-end="535" data-start="520">DC 0&ndash;10V 調光</strong>，並相容 <strong data-end="563" data-start="540">PWM、DALI、BLE、ZigBee</strong> 等 IoT 協議。可搭配感應器、行動裝置與雲端平台，打造智慧照明與能源管理，協助企業提升效率並降低長期營運成本。</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title></title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;family=Montserrat:wght@300;600&amp;display=swap" rel="stylesheet" />
+<style type="text/css">body {
+      margin: 0;
+      font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+    }
+
+    .full-bg {
+      width: 100%;
+      min-height: 280px;
+      background: linear-gradient(to right, #003366, #007acc);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .timeline-header {
+      text-align: center;
+      color: #ffffff;
+      z-index: 1;
+    }
+
+    .timeline-header h1 {
+      font-size: 42px;
+      font-weight: 700;
+      margin: 0;
+      letter-spacing: 2px;
+    }
+
+    .timeline-header p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 18px;
+      font-weight: 300;
+      color: #ffffff;
+      margin-top: 10px;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #ffffff;
+      width: 0;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      display: inline-block;
+      animation: typing 3s steps(40, end) forwards, blink 0.75s step-end infinite;
+      animation-delay: 0.5s;
+    }
+
+    .timeline-header::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      margin: 24px auto 0;
+      background: #00c2ff;
+      border-radius: 2px;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 300px; } /* 調整寬度，確保文字完整顯示 */
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    .svg-glow {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @media (max-width: 768px) {
+      .timeline-header h1 {
+        font-size: 28px;
+      }
+      .timeline-header p {
+        font-size: 16px;
+      }
+    }
+</style>
+<div class="full-bg"><svg class="svg-glow" preserveaspectratio="none" viewbox="0 0 1440 320"> <path d="M0,160L60,170.7C120,181,240,203,360,181.3C480,160,600,96,720,106.7C840,117,960,203,1080,218.7C1200,235,1320,181,1380,154.7L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z" fill="#ffffff22" fill-opacity="1"></path> </svg>
+<div class="timeline-header">
+<h1>金鍏發展里程碑</h1>
+
+<p>GoldenWay Legacy Timeline</p>
+</div>
+</div>
