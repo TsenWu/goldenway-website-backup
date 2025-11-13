@@ -1,0 +1,129 @@
+<!-- ★ PDF 檢視器 with 全框底部邊框 ★ -->
+<style type="text/css">/* 外層容器：框線＋圓角＋隱藏多餘溢出 */
+  .pdf-wrapper {
+    width: 100%;
+    max‐width: 1200px;        /* ↑↑↑ 可調：最大寬度 */
+    margin: 0 auto;           /* 置中 */
+    border: 1px solid #ccc;   /* ↑↑↑ 可調：整圈框線顏色＆粗細 */
+    border-radius: 4px;       /* ↑↑↑ 可調：圓角 */
+    overflow: hidden;         /* 隱藏 iframe 內建邊框或捲軸外框 */
+  }
+
+  /* iframe 本體：不要自己畫邊框 */
+  .pdf-wrapper iframe {
+    display: block;
+    width: 100%;
+    height: 600px;            /* ↑↑↑ 可調：桌機版高度 */
+    border: none;
+  }
+
+  /* 手機版：用長寬比自動縮放 */
+  @media (max-width: 768px) {
+    .pdf-wrapper iframe {
+      height: auto;
+      aspect-ratio: 1 / 1.414; /* ↑↑↑ 可調：長寬比 */
+    }
+  }
+</style>
+<div class="_bd_row _bd_clearfix">
+<div class="_bd_column _bd_full">
+<p>📑<b>金鍏電子【溫室氣體盤查報告書】</b></p>
+</div>
+</div>
+
+<div class="pdf-wrapper"><iframe frameborder="0" height="120" scrolling="no" src="https://1drv.ms/b/c/343d546307ac6ea3/IQRkvouISHM0SpTCa5jjn_S8AdPXbk8VjiYv3Mx5lj9CfJM" width="98"></iframe></div>
+<!-- ★ 區塊自訂 block-E-custom：標題框與內文各自獨立寬度 ★ -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* ====== 變數設定 ====== */
+.block-E-custom {
+  --title-padding-x: 12px;    /* 標題左右內距 */
+  --title-padding-y: 6px;     /* 標題上下內距 */
+  --title-font-size: 18px;    /* 標題文字大小 */
+  --title-color: #1A2E33;     /* 標題文字顏色 */
+  --title-border: 2px solid #1A2E33; /* 標題邊框 */
+  --title-bg: rgba(57,96,41,0.1);    /* 標題底色 */
+
+  --text-max-width: 900px;    /* 內文最大寬度 */
+  --text-font-size: 16px;     /* 內文字大小 */
+  --text-color: #555;         /* 內文字顏色 */
+
+  font-family: 'Noto Sans TC','Microsoft JhengHei',sans-serif;
+  text-align: center;
+  padding: 40px 20px;         /* 整區塊內距 */
+  box-sizing: border-box;
+}
+
+/* 容器置中 */
+.block-E-custom .wrapper {
+  margin: 0 auto;
+}
+
+/* 標題框：inline-block，自適寬度，不會拉滿 */
+.block-E-custom .subheadline {
+  display: inline-block;      /* 自動撐開寬度 */
+  width: auto;                
+  max-width: none;
+  padding: var(--title-padding-y) var(--title-padding-x);
+  font-size: var(--title-font-size);
+  color: var(--title-color);
+  background: var(--title-bg);
+  border: var(--title-border);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color .3s, color .3s;
+  margin-bottom: 24px;        /* 標題與內文間距 */
+}
+.block-E-custom .subheadline:hover {
+  background-color: var(--title-color);
+  color: #fff;
+  cursor: pointer;
+}
+
+/* 內文容器：更寬的 max-width，與標題無關 */
+.block-E-custom .text-wrapper {
+  width: 100%;
+  max-width: var(--text-max-width);
+  margin: 0 auto;
+}
+.block-E-custom .text-wrapper p {
+  margin: 0;
+  font-size: var(--text-font-size);
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+/* 如果還有 icon */
+.block-E-custom .icon {
+  margin-top: 24px;
+}
+.block-E-custom .icon img {
+  width: 20%;
+  height: auto;
+}
+@media (max-width: 768px) {
+  .block-E-custom .subheadline {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+  .block-E-custom .text-wrapper {
+    max-width: 100%;
+  }
+  .block-E-custom .text-wrapper p {
+    font-size: 14px;
+  }
+  .block-E-custom .icon img {
+    width: 50%;
+  }
+}
+</style>
+<div class="block-E-custom">
+<div class="wrapper"><!-- 標題框：自動撐開，不會影響下方內文寬度 --><a class="subheadline" href="https://your-link.com">ESG專業照明規劃實績 </a> <!-- 內文：可比標題框更寬 -->
+<div class="text-wrapper">
+<p>金鍏電子已全面通過溫室氣體盤查，並持續導入最嚴謹的ESG管理規範， 積極協助國內外各大企業實現永續發展。<br />
+我們不僅專注於節能減碳，更以高效能LED照明方案， 協助企業提升能源管理效率、降低營運碳足跡，落實綠色轉型。</p>
+</div>
+<!-- （選擇性）Icon -->
+
+<div class="icon"><img src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/gw+esg_l.png?v=o8a8d5" /></div>
+</div>
+</div>
