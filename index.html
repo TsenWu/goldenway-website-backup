@@ -1,1068 +1,874 @@
 <!DOCTYPE html>
-<html lang="zh-Hant-TW">
+<html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
   <title>GoldenWay 官網內容備份索引</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="GoldenWay 官網產品 HTML/CSS 備份 - 自動樹狀索引" />
-  <style>
-    /* ========== Global ========== */
-    :root {
-      --bg: #0b0c10;
-      --bg-elevated: #11131a;
-      --bg-soft: #171924;
-      --border-subtle: rgba(255, 255, 255, 0.06);
-      --divider: rgba(255, 255, 255, 0.08);
-      --accent: #2ecc71; /* GoldenWay 綠系 */
-      --accent-soft: rgba(46, 204, 113, 0.18);
-      --accent-strong: #27ae60;
-      --text-main: #f7f7f7;
-      --text-secondary: #a9afc5;
-      --text-muted: #6b7280;
-      --danger: #ff5f57;
-      --warning: #febc2e;
-      --info: #2fa4ff;
 
+  <!--
+    GoldenWay 官網內容備份 ─ 自動樹狀索引首頁
+    - 左側：依 GitHub 目錄結構自動建立樹狀清單
+    - 右側：即時預覽 GitHub Pages 中對應的 HTML 檔案
+    - Author: ChatGPT for TsenWu
+  -->
+
+  <style>
+    :root {
+      --bg-body: #f5f5f7;
+      --bg-panel: #ffffff;
+      --bg-sidebar: #fbfbfd;
+      --border-subtle: #dde1e8;
+      --accent: #ff7a1a;
+      --accent-soft: rgba(255,122,26,0.12);
+      --accent-strong: #e8670a;
+      --text-main: #111827;
+      --text-sub: #6b7280;
+      --text-muted: #9ca3af;
+      --shadow-soft: 0 18px 55px rgba(15,23,42,0.08);
       --radius-lg: 18px;
       --radius-md: 12px;
-      --radius-pill: 999px;
-
-      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
-      --transition-fast: 160ms ease-out;
-      --transition-med: 220ms ease-out;
-      --blur: 18px;
+      --radius-sm: 8px;
+      --sidebar-width: 310px;
     }
 
     * {
       box-sizing: border-box;
-      -webkit-font-smoothing: antialiased;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", system-ui, sans-serif;
+      background: var(--bg-body);
+      color: var(--text-main);
     }
 
     body {
-      margin: 0;
-      min-height: 100vh;
-      background: radial-gradient(circle at top, #1f2933 0, #020308 52%, #000 100%);
-      color: var(--text-main);
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        system-ui, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
       display: flex;
+      align-items: stretch;
       justify-content: center;
-      padding: 24px;
+      padding: 20px;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* ========== Shell Layout ========== */
     .app-shell {
+      display: flex;
       width: 100%;
-      max-width: 1180px;
-      min-height: min(820px, 100vh - 48px);
-      background: radial-gradient(circle at top left, rgba(46,204,113,0.18), transparent 62%),
-                  radial-gradient(circle at bottom right, rgba(47,164,255,0.16), transparent 60%),
-                  linear-gradient(135deg, #10121b 0, #040509 100%);
+      max-width: 1440px;
+      height: calc(100vh - 40px);
+      background: var(--bg-panel);
       border-radius: 26px;
-      border: 1px solid rgba(255, 255, 255, 0.04);
       box-shadow: var(--shadow-soft);
-      padding: 18px 20px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      position: relative;
       overflow: hidden;
     }
 
-    .app-shell::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      backdrop-filter: blur(var(--blur));
-      pointer-events: none;
-      opacity: 0.8;
-    }
+    /* 左側：樹狀索引 */
 
-    .app-inner {
-      position: relative;
-      z-index: 1;
+    .sidebar {
+      width: var(--sidebar-width);
+      background: var(--bg-sidebar);
+      border-right: 1px solid var(--border-subtle);
       display: flex;
       flex-direction: column;
-      height: 100%;
-      gap: 16px;
+      padding: 18px 14px 16px 18px;
     }
 
-    /* ========== Header (Apple-style titlebar) ========== */
-    .top-bar {
+    .sidebar-header {
+      padding: 6px 6px 4px 4px;
+      border-radius: 16px;
       display: flex;
       align-items: center;
-      gap: 14px;
-      padding: 6px 8px 8px;
-      border-radius: 999px;
-      background: radial-gradient(circle at top left, rgba(255,255,255,0.14), transparent 55%),
-                  rgba(0, 0, 0, 0.45);
-      border: 1px solid rgba(255, 255, 255, 0.16);
+      margin-bottom: 14px;
     }
 
-    .window-dots {
-      display: inline-flex;
-      gap: 6px;
-      padding-inline: 6px 4px;
+    .logo-dot {
+      width: 26px;
+      height: 26px;
+      border-radius: 9px;
+      background: radial-gradient(circle at 30% 15%, #ffe7c2 0, #ffb977 33%, #f97316 75%, #ea580c 100%);
+      margin-right: 10px;
+      box-shadow: 0 8px 18px rgba(249,115,22,0.45);
     }
 
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      box-shadow: 0 0 0 1px rgba(0,0,0,0.2);
-    }
-    .dot.red { background: var(--danger); }
-    .dot.yellow { background: var(--warning); }
-    .dot.green { background: var(--accent-strong); }
-
-    .title-block {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
+    .sidebar-title-main {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
     }
 
-    .title-main {
-      font-size: 16px;
+    .sidebar-title-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+
+    .sidebar-section-label {
+      font-size: 11px;
       font-weight: 600;
-      letter-spacing: 0.02em;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .title-main span.logo-pill {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
+      letter-spacing: 0.13em;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
-      padding: 2px 9px;
-      border-radius: var(--radius-pill);
-      background: linear-gradient(135deg, var(--accent-soft), transparent 90%);
-      color: var(--accent-strong);
-      border: 1px solid rgba(46, 204, 113, 0.35);
+      color: var(--text-muted);
+      margin: 6px 6px 4px;
     }
 
-    .title-sub {
-      font-size: 12px;
-      color: var(--text-secondary);
-    }
-
-    .top-bar-spacer {
+    .tree-container {
       flex: 1;
+      padding: 6px 2px 6px 0;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(148,163,184,0.8) transparent;
+      font-size: 13px;
     }
 
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 11px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.75);
-      border: 1px solid rgba(148, 163, 184, 0.26);
-      color: var(--text-secondary);
+    .tree-container::-webkit-scrollbar {
+      width: 8px;
     }
-
-    .status-dot-ok {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 4px rgba(46, 204, 113, 0.18);
-    }
-
-    /* ========== Search + Summary Bar ========== */
-    .toolbar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      padding: 10px 12px;
-      border-radius: 18px;
-      background: rgba(5, 7, 14, 0.7);
-      border: 1px solid var(--border-subtle);
-    }
-
-    .search-box {
-      flex: 1 1 220px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 14px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.7);
-      transition: box-shadow var(--transition-fast), border-color var(--transition-fast),
-                  background var(--transition-fast), transform var(--transition-fast);
-    }
-
-    .search-box:focus-within {
-      border-color: rgba(46, 204, 113, 0.8);
-      box-shadow: 0 0 0 1px rgba(46, 204, 113, 0.6),
-                  0 18px 35px rgba(0, 0, 0, 0.55);
-      background: radial-gradient(circle at top left, rgba(46,204,113,0.2), transparent 70%),
-                  rgba(15, 23, 42, 0.96);
-      transform: translateY(-1px);
-    }
-
-    .search-icon {
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      border: 1px solid rgba(148, 163, 184, 0.55);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(148, 163, 184, 0.85);
-      font-size: 10px;
-    }
-
-    .search-input {
-      flex: 1;
-      border: none;
-      outline: none;
+    .tree-container::-webkit-scrollbar-track {
       background: transparent;
-      color: var(--text-main);
-      font-size: 13px;
+    }
+    .tree-container::-webkit-scrollbar-thumb {
+      background: rgba(148,163,184,0.8);
+      border-radius: 4px;
     }
 
-    .search-input::placeholder {
-      color: var(--text-muted);
-    }
-
-    .toolbar-meta {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .pill {
-      padding: 4px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: radial-gradient(circle at top, rgba(148, 163, 184, 0.18), transparent 70%);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .pill strong {
-      color: var(--text-secondary);
-    }
-
-    .pill .dot {
-      width: 6px;
-      height: 6px;
-      box-shadow: none;
-    }
-
-    /* ========== Main Content ========== */
-    .content {
-      flex: 1;
-      display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.9fr);
-      gap: 14px;
-      min-height: 0;
-    }
-
-    @media (max-width: 960px) {
-      .content {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .panel {
-      background: rgba(5, 7, 14, 0.92);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-subtle);
-      padding: 14px 14px 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      min-height: 0;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .panel-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      padding-bottom: 6px;
-      border-bottom: 1px solid var(--divider);
-      margin-inline: 2px;
-    }
-
-    .panel-title {
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--text-secondary);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .panel-title-badge {
-      font-size: 10px;
-      padding: 2px 7px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-    }
-
-    .panel-actions {
-      font-size: 11px;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    /* ========== Tree ========== */
-    .tree-scroll {
-      flex: 1;
-      overflow: auto;
-      padding-right: 4px;
-      padding-top: 4px;
-    }
-
-    .tree-root,
-    .tree-children {
+    ul.tree-root {
       list-style: none;
       margin: 0;
       padding-left: 0;
     }
 
-    .tree-item {
-      --indent: 0;
-      padding: 3px 6px 3px calc(10px + var(--indent) * 14px);
-      border-radius: 10px;
+    .tree-node {
+      margin: 1px 0;
+    }
+
+    .tree-node-label {
       display: flex;
       align-items: center;
-      gap: 6px;
-      font-size: 13px;
-      color: var(--text-secondary);
-      cursor: default;
-      position: relative;
-      transition: background var(--transition-fast), color var(--transition-fast),
-                  transform var(--transition-fast), box-shadow var(--transition-fast);
-    }
-
-    .tree-item.folder {
+      padding: 4px 8px 4px 6px;
+      border-radius: 999px;
       cursor: pointer;
-    }
-
-    .tree-item.is-leaf {
-      padding-left: calc(22px + var(--indent) * 14px);
-    }
-
-    .tree-item:hover {
-      background: rgba(15, 23, 42, 0.95);
       color: var(--text-main);
-      box-shadow: 0 0 0 1px rgba(31, 41, 55, 0.85);
-      transform: translateY(-0.5px);
+      transition: background 0.15s ease, color 0.15s ease;
+      user-select: none;
+      gap: 3px;
     }
 
-    .tree-item.selected {
-      background: radial-gradient(circle at top left, var(--accent-soft), transparent 70%),
-                  rgba(15, 23, 42, 0.98);
-      color: var(--text-main);
-      box-shadow: 0 0 0 1px rgba(46, 204, 113, 0.7);
+    .tree-node-label:hover {
+      background: rgba(148,163,184,0.16);
     }
 
-    .chevron {
+    .tree-node-label.is-folder {
+      font-weight: 600;
+    }
+
+    .tree-node-label.is-file {
+      font-weight: 400;
+    }
+
+    .tree-node-label .twisty {
       width: 14px;
-      height: 14px;
       display: inline-flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       font-size: 11px;
       color: var(--text-muted);
-      transform: rotate(-90deg);
-      transition: transform var(--transition-med), color var(--transition-fast);
+      margin-right: 2px;
     }
 
-    .tree-item.expanded .chevron {
+    .tree-node.folder.collapsed > .tree-node-label .twisty {
       transform: rotate(0deg);
-      color: var(--accent);
     }
 
-    .tree-icon {
+    .tree-node.folder.expanded > .tree-node-label .twisty {
+      transform: rotate(90deg);
+    }
+
+    .tree-node-label .node-icon {
+      font-size: 14px;
+      margin-right: 4px;
       width: 16px;
-      height: 16px;
-      border-radius: 5px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      background: linear-gradient(135deg, rgba(148, 163, 184, 0.22), rgba(30, 64, 175, 0.1));
-      color: rgba(229, 231, 235, 0.9);
+      text-align: center;
     }
 
-    .tree-item.folder .tree-icon {
-      background: linear-gradient(135deg, rgba(46, 204, 113, 0.6), rgba(16, 185, 129, 0.2));
-      color: #022c22;
-    }
-
-    .tree-label {
+    .tree-node-label .node-text {
       flex: 1;
       white-space: nowrap;
-      overflow: hidden;
       text-overflow: ellipsis;
+      overflow: hidden;
     }
 
-    .tree-meta {
-      font-size: 11px;
-      color: var(--text-muted);
+    .tree-node-label .badge-root {
+      font-size: 10px;
+      padding: 1px 6px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      margin-left: 4px;
     }
 
-    .tree-children {
-      margin-left: 0;
+    .tree-node.children {
+      margin-left: 18px;
+    }
+
+    .tree-node > ul {
+      list-style: none;
+      margin: 1px 0 2px 18px;
       padding-left: 0;
+      border-left: 1px dashed rgba(148,163,184,0.45);
     }
 
-    .tree-children.collapsed {
+    .tree-node.folder.collapsed > ul {
       display: none;
     }
 
-    .tree-item.hidden-by-filter {
-      display: none !important;
+    .tree-node-label.selected {
+      background: var(--accent-soft);
+      color: var(--accent-strong);
     }
 
-    /* ========== Info Panel ========== */
-    .info-body {
+    .tree-node-label.selected .twisty {
+      color: var(--accent-strong);
+    }
+
+    .tree-node-label.selected .node-icon {
+      color: var(--accent-strong);
+    }
+
+    .sidebar-footer {
+      padding: 6px 4px 0;
+      border-top: 1px solid rgba(148,163,184,0.25);
+      margin-top: 6px;
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .sidebar-footer a {
+      color: var(--accent-strong);
+      text-decoration: none;
+    }
+
+    .sidebar-footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* 右側：預覽面板 */
+
+    .main-panel {
       flex: 1;
-      padding-top: 4px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      font-size: 13px;
-      color: var(--text-secondary);
+      padding: 20px 22px 20px 20px;
+      background: radial-gradient(circle at top left, #fdf2e9 0, #f5f5f7 45%, #f3f4f6 100%);
     }
 
-    .info-section {
-      padding: 8px 10px;
-      border-radius: 14px;
-      background: rgba(15, 23, 42, 0.95);
-      border: 1px solid rgba(31, 41, 55, 0.9);
+    .main-header {
+      margin-bottom: 10px;
     }
 
-    .info-heading {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--text-muted);
-      margin-bottom: 2px;
-    }
-
-    .info-path {
-      font-family: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono",
-        "Courier New", monospace;
-      font-size: 11px;
-      color: var(--text-secondary);
-      word-break: break-all;
-    }
-
-    .info-highlight {
-      color: var(--accent);
-      font-weight: 500;
-    }
-
-    .info-actions {
+    .main-title {
+      font-size: 22px;
+      font-weight: 750;
+      letter-spacing: 0.04em;
       display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .main-title span.highlight {
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent-strong);
+      background: var(--accent-soft);
+    }
+
+    .main-subtitle {
+      font-size: 13px;
+      color: var(--text-sub);
+      margin-top: 4px;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px;
+      margin-bottom: 12px;
       gap: 8px;
       flex-wrap: wrap;
-      margin-top: 6px;
     }
 
-    .btn {
-      border-radius: 999px;
-      padding: 7px 13px;
+    .breadcrumb {
       font-size: 12px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.85));
-      color: var(--text-secondary);
+      color: var(--text-sub);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.85);
+      box-shadow: 0 6px 18px rgba(15,23,42,0.08);
+    }
+
+    .breadcrumb span.path {
+      max-width: 360px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .pill {
+      font-size: 11px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.06);
+      color: var(--text-sub);
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      cursor: pointer;
-      transition: background var(--transition-fast), color var(--transition-fast),
-                  border-color var(--transition-fast), transform var(--transition-fast),
-                  box-shadow var(--transition-fast);
+      gap: 4px;
     }
 
-    .btn.primary {
-      border-color: rgba(46, 204, 113, 0.9);
-      background: radial-gradient(circle at top left, rgba(46, 204, 113, 0.32), transparent 70%),
-                  linear-gradient(135deg, rgba(22, 163, 74, 0.95), rgba(21, 128, 61, 0.98));
-      color: #ecfdf5;
-      box-shadow: 0 12px 32px rgba(22, 163, 74, 0.45);
-    }
-
-    .btn.primary:hover {
-      transform: translateY(-0.5px);
-      box-shadow: 0 16px 36px rgba(22, 163, 74, 0.65);
-    }
-
-    .btn.secondary:hover {
-      background: rgba(15, 23, 42, 0.98);
-      color: var(--text-main);
-      transform: translateY(-0.5px);
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
-    }
-
-    .info-kv {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px 12px;
-      font-size: 12px;
-    }
-
-    .info-kv span {
-      color: var(--text-muted);
-    }
-
-    .info-kv strong {
-      color: var(--text-secondary);
-    }
-
-    .badge-mini {
-      padding: 2px 6px;
+    .pill-dot {
+      width: 6px;
+      height: 6px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.95);
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      font-size: 10px;
+      background: #10b981;
     }
 
-    .muted {
-      color: var(--text-muted);
-      font-size: 11px;
+    .preview-shell {
+      flex: 1;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.94);
+      border: 1px solid rgba(209,213,219,0.8);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(14px);
     }
 
-    .info-footer {
-      margin-top: auto;
-      font-size: 11px;
-      color: var(--text-muted);
+    .preview-header {
+      padding: 8px 14px;
+      border-bottom: 1px solid rgba(209,213,219,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: radial-gradient(circle at top left, #fef3c7 0, #fefdfb 50%, #f3f4f6 100%);
     }
 
-    /* ========== Loading / Error ========== */
-    .loading,
-    .error {
+    .traffic-lights {
+      display: inline-flex;
+      gap: 6px;
+    }
+
+    .traffic-lights span {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: #f87171;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
+    }
+
+    .traffic-lights span:nth-child(2) {
+      background: #facc15;
+    }
+
+    .traffic-lights span:nth-child(3) {
+      background: #4ade80;
+    }
+
+    .preview-title {
       font-size: 12px;
-      padding: 8px 10px;
-      border-radius: 10px;
-      border: 1px dashed rgba(148, 163, 184, 0.45);
-      background: rgba(15, 23, 42, 0.9);
-      margin: 4px 2px 0;
+      color: var(--text-sub);
+      flex: 1;
+      text-align: center;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      padding: 0 10px;
     }
 
-    .loading span.spinner {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      border: 2px solid rgba(148, 163, 184, 0.35);
-      border-top-color: var(--accent);
-      display: inline-block;
-      margin-right: 6px;
-      animation: spin 680ms linear infinite;
+    .preview-open-link {
+      font-size: 11px;
+      color: var(--accent-strong);
+      text-decoration: none;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.75);
+      border: 1px solid rgba(248,250,252,0.9);
     }
 
-    .error {
-      border-color: rgba(248, 113, 113, 0.75);
-      color: #fecaca;
-      background: rgba(127, 29, 29, 0.9);
+    .preview-open-link:hover {
+      text-decoration: underline;
+    }
+
+    .preview-body {
+      flex: 1;
+      position: relative;
+      background: #111827;
+    }
+
+    .preview-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: #111827;
+    }
+
+    .preview-empty-state {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #e5e7eb;
+      padding: 0 40px;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .preview-empty-state h2 {
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .preview-empty-state p {
+      font-size: 13px;
+      color: #9ca3af;
+      max-width: 420px;
+    }
+
+    .preview-loader {
+      position: absolute;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at center, rgba(17,24,39,0) 0, rgba(17,24,39,0.85) 70%);
+      z-index: 4;
+    }
+
+    .preview-loader.active {
+      display: flex;
+    }
+
+    .spinner {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 4px solid rgba(209,213,219,0.25);
+      border-top-color: var(--accent-strong);
+      animation: spin 1s linear infinite;
     }
 
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
 
-    /* Scrollbars (subtle) */
-    .tree-scroll::-webkit-scrollbar {
-      width: 7px;
+    .preview-footer {
+      padding: 7px 14px;
+      border-top: 1px solid rgba(55,65,81,0.55);
+      background: linear-gradient(to right, rgba(31,41,55,0.96), rgba(15,23,42,0.94));
+      color: #9ca3af;
+      font-size: 11px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
     }
-    .tree-scroll::-webkit-scrollbar-track {
-      background: transparent;
+
+    .preview-footer span.key {
+      color: #e5e7eb;
+      font-weight: 500;
     }
-    .tree-scroll::-webkit-scrollbar-thumb {
-      background: rgba(31, 41, 55, 0.9);
-      border-radius: 999px;
+
+    .preview-footer .hint {
+      opacity: 0.8;
+    }
+
+    /* RWD */
+
+    @media (max-width: 960px) {
+      .app-shell {
+        flex-direction: column;
+        height: auto;
+      }
+      .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border-subtle);
+        padding: 14px 16px;
+      }
+      .main-panel {
+        padding: 14px 14px 16px;
+      }
+      .preview-shell {
+        border-radius: 18px;
+      }
+      .breadcrumb span.path {
+        max-width: 240px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 12px;
+      }
+      .app-shell {
+        border-radius: 20px;
+      }
+      .sidebar-header {
+        margin-bottom: 6px;
+      }
+      .sidebar-section-label {
+        display: none;
+      }
+      .tree-container {
+        max-height: 240px;
+      }
+      .toolbar {
+        align-items: flex-start;
+      }
+      .breadcrumb {
+        width: 100%;
+      }
+      .preview-footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="app-shell">
-    <div class="app-inner">
-      <!-- Header -->
-      <header class="top-bar">
-        <div class="window-dots" aria-hidden="true">
-          <span class="dot red"></span>
-          <span class="dot yellow"></span>
-          <span class="dot green"></span>
-        </div>
-        <div class="title-block">
-          <div class="title-main">
-            <span>GoldenWay 官網內容備份 Explorer</span>
-            <span class="logo-pill">HTML / CSS ARCHIVE</span>
-          </div>
-          <div class="title-sub">
-            依 GitHub 目錄結構自動產生樹狀索引 · 點擊任一檔案即可在 Pages 上預覽
-          </div>
-        </div>
-        <div class="top-bar-spacer"></div>
-        <div class="status-badge">
-          <span class="status-dot-ok"></span>
-          <span id="status-text">已連線至 GitHub</span>
-        </div>
-      </header>
 
-      <!-- Search / Summary -->
-      <section class="toolbar">
-        <div class="search-box">
-          <div class="search-icon">⌘K</div>
-          <input
-            id="search-input"
-            class="search-input"
-            type="search"
-            placeholder="搜尋資料夾或檔案名稱…"
-            autocomplete="off"
-          />
-        </div>
-        <div class="toolbar-meta">
-          <div class="pill">
-            <span class="dot" style="background: var(--accent);"></span>
-            <span>載入中的目錄：</span>
-            <strong id="meta-path">/</strong>
-          </div>
-          <div class="pill">
-            <span>資料夾 <strong id="meta-folders">0</strong></span>
-            <span>· 檔案 <strong id="meta-files">0</strong></span>
-          </div>
-        </div>
-      </section>
-
-      <!-- Main Content -->
-      <main class="content">
-        <!-- Tree Panel -->
-        <section class="panel">
-          <div class="panel-header">
-            <div class="panel-title">
-              <span>Tree</span>
-              <span class="panel-title-badge">GitHub &nbsp; main</span>
-            </div>
-            <div class="panel-actions">
-              <span class="muted" id="filter-hint">按 Enter 清除搜尋</span>
-            </div>
-          </div>
-          <div id="tree-loading" class="loading">
-            <span class="spinner"></span> 正在從 GitHub 載入目錄結構…
-          </div>
-          <div id="tree-error" class="error" style="display:none;"></div>
-          <div class="tree-scroll" id="tree-root-container">
-            <ul class="tree-root" id="tree-root"></ul>
-          </div>
-        </section>
-
-        <!-- Info Panel -->
-        <section class="panel">
-          <div class="panel-header">
-            <div class="panel-title">
-              <span>Details</span>
-              <span class="panel-title-badge">Selection</span>
-            </div>
-            <div class="panel-actions">
-              <span class="muted">選取左側任一檔案以預覽 / 開啟</span>
-            </div>
-          </div>
-          <div class="info-body">
-            <div class="info-section">
-              <div class="info-heading">目前選取</div>
-              <div id="info-label" class="info-path info-highlight">
-                尚未選取任何檔案
-              </div>
-              <div id="info-path" class="info-path muted">
-                （請在左側樹狀目錄點選一個檔案節點）
-              </div>
-              <div class="info-actions">
-                <button class="btn primary" id="btn-open" disabled>
-                  在新分頁預覽
-                </button>
-                <button class="btn secondary" id="btn-open-github" disabled>
-                  在 GitHub 上檢視
-                </button>
-              </div>
-            </div>
-
-            <div class="info-section">
-              <div class="info-heading">節點資訊</div>
-              <div class="info-kv">
-                <span>類型：<strong id="info-type">—</strong></span>
-                <span>階層深度：<strong id="info-depth">—</strong></span>
-                <span>子項目數量：<strong id="info-children">—</strong></span>
-              </div>
-              <div style="margin-top:6px;" class="muted">
-                ＊只有 <span class="info-highlight">.html 檔案</span> 會連結至 GitHub Pages 預覽；
-                其他格式則仍可於 GitHub 介面檢視。
-              </div>
-            </div>
-
-            <div class="info-footer">
-              <span class="badge-mini">Tip</span>
-              &nbsp;搜尋支援模糊比對；若想回到完整列表，只要清空搜尋欄位並按 Enter。
-            </div>
-          </div>
-        </section>
-      </main>
+<div class="app-shell">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo-dot"></div>
+      <div>
+        <div class="sidebar-title-main">網站結構與產品索引</div>
+        <div class="sidebar-title-sub">GoldenWay 官網 HTML / CSS 備份</div>
+      </div>
     </div>
-  </div>
 
-  <script>
-    // ====== Config ======
-    const OWNER = "TsenWu";
-    const REPO = "goldenway-website-backup";
-    const BRANCH = "main";
-    const API_BASE =
-      "https://api.github.com/repos/" + OWNER + "/" + REPO + "/contents";
-    const PAGES_BASE = "https://tsenwu.github.io/goldenway-website-backup/";
+    <div class="sidebar-section-label">REPOSITORY</div>
+    <div class="tree-container" id="treeContainer">
+      <ul class="tree-root" id="treeRoot">
+        <!-- 自動插入樹狀結構 -->
+      </ul>
+    </div>
 
-    const EXCLUDED_NAMES = ["index.html"]; // 不在索引中顯示首頁本身
+    <div class="sidebar-footer">
+      <span>來源：<a href="https://github.com/TsenWu/goldenway-website-backup" target="_blank" rel="noreferrer">goldenway-website-backup</a></span>
+      <span class="pill"><span class="pill-dot"></span> Live via GitHub Pages</span>
+    </div>
+  </aside>
 
-    // ====== DOM refs ======
-    const treeRootEl = document.getElementById("tree-root");
-    const treeLoadingEl = document.getElementById("tree-loading");
-    const treeErrorEl = document.getElementById("tree-error");
-    const metaPathEl = document.getElementById("meta-path");
-    const metaFoldersEl = document.getElementById("meta-folders");
-    const metaFilesEl = document.getElementById("meta-files");
-    const searchInputEl = document.getElementById("search-input");
-    const filterHintEl = document.getElementById("filter-hint");
+  <!-- Main Panel -->
+  <main class="main-panel">
+    <header class="main-header">
+      <div class="main-title">
+        GoldenWay 官網內容備份
+        <span class="highlight">內部使用 · 線上預覽</span>
+      </div>
+      <div class="main-subtitle">
+        左側是依照 GitHub 目錄自動生成的樹狀索引，點選任一檔案即可在右側即時預覽實際網頁畫面。
+      </div>
 
-    const infoLabelEl = document.getElementById("info-label");
-    const infoPathEl = document.getElementById("info-path");
-    const infoTypeEl = document.getElementById("info-type");
-    const infoDepthEl = document.getElementById("info-depth");
-    const infoChildrenEl = document.getElementById("info-children");
-    const btnOpenEl = document.getElementById("btn-open");
-    const btnOpenGithubEl = document.getElementById("btn-open-github");
+      <div class="toolbar">
+        <div class="breadcrumb" id="breadcrumb">
+          <span style="font-size: 13px; color:#9ca3af;">路徑</span>
+          <span>·</span>
+          <span class="path" id="breadcrumbPath">尚未選擇檔案</span>
+        </div>
+        <div class="pill hint">
+          ⌘ 提示：建議使用桌機搭配全螢幕瀏覽以取得最佳體驗
+        </div>
+      </div>
+    </header>
 
-    let currentSelectedNode = null;
-    let stats = { folders: 0, files: 0 };
+    <section class="preview-shell">
+      <div class="preview-header">
+        <div class="traffic-lights">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="preview-title" id="previewTitle">
+          尚未載入任何頁面
+        </div>
+        <a id="openInNewTab" href="#" target="_blank" rel="noreferrer" class="preview-open-link" style="visibility:hidden;">
+          在新分頁開啟
+        </a>
+      </div>
 
-    // ====== Utility ======
-    const encodePathForApi = (path) =>
-      path
-        .split("/")
-        .map((seg) => encodeURIComponent(seg))
-        .join("/");
+      <div class="preview-body">
+        <div class="preview-loader" id="previewLoader">
+          <div class="spinner"></div>
+        </div>
+        <iframe id="previewFrame" class="preview-iframe" src="about:blank"></iframe>
+        <div class="preview-empty-state" id="previewPlaceholder">
+          <h2>歡迎使用 GoldenWay 官網備份索引</h2>
+          <p>
+            從左側樹狀清單選擇任一產品介紹頁、規格表或視覺化圖表檔案，
+            即可在此即時預覽實際的 GitHub Pages 內容。
+          </p>
+        </div>
+      </div>
 
-    const humanType = (type) =>
-      type === "dir" ? "資料夾" : type === "file" ? "檔案" : type;
+      <div class="preview-footer">
+        <div>
+          <span class="key">部署：</span>
+          由 GitHub Pages 提供靜態託管。
+        </div>
+        <div class="hint">
+          若預覽無法顯示，請確認對應檔案是否為 HTML，或直接使用右上角連結在新分頁開啟。
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
 
-    const isHtmlFile = (name) => /\.html?$/.test(name.toLowerCase());
+<script>
+  // ====== 設定區（依你的 repo 調整） ======
+  const OWNER = "TsenWu";
+  const REPO = "goldenway-website-backup";
+  const BRANCH = "main";
 
-    const createPagesUrl = (path) =>
-      PAGES_BASE + path.split("/").map(encodeURIComponent).join("/");
+  const PAGES_BASE = `https://${OWNER.toLowerCase()}.github.io/${REPO}/`;
+  const API_BASE = `https://api.github.com/repos/${OWNER}/${REPO}/contents/`;
 
-    const createGithubBlobUrl = (path) =>
-      `https://github.com/${OWNER}/${REPO}/blob/${BRANCH}/${encodePathForApi(
-        path
-      )}`;
+  // 忽略不需要顯示的資料夾 / 檔案
+  const IGNORE_DIRS = [".github", ".git", "node_modules"];
+  const IGNORE_FILES = ["index.html"];
 
-    // ====== Tree Rendering ======
-    async function fetchDirectory(path = "") {
-      const url =
-        (path
-          ? `${API_BASE}/${encodePathForApi(path)}`
-          : API_BASE) + `?ref=${BRANCH}&per_page=100`;
+  // 友善顯示用的名稱 Mapping
+  const DISPLAY_NAME_MAP = {
+    "about": "about（關於我們）",
+    "product": "product（產品）",
+    "installation": "installation（安裝說明）",
+    "shared": "shared／視覺化圖表",
+    "README.md": "README（使用說明）"
+  };
 
-      metaPathEl.textContent = "/" + path;
-      try {
-        const res = await fetch(url);
-        if (!res.ok) {
-          throw new Error(`HTTP ${res.status}`);
+  // ====== DOM 參照 ======
+  const treeRootEl = document.getElementById("treeRoot");
+  const previewFrame = document.getElementById("previewFrame");
+  const previewTitleEl = document.getElementById("previewTitle");
+  const previewPlaceholderEl = document.getElementById("previewPlaceholder");
+  const previewLoaderEl = document.getElementById("previewLoader");
+  const breadcrumbPathEl = document.getElementById("breadcrumbPath");
+  const openInNewTabEl = document.getElementById("openInNewTab");
+
+  let currentSelectedLabel = null;
+
+  // ====== Helper Functions ======
+
+  function friendlyName(name) {
+    return DISPLAY_NAME_MAP[name] || name;
+  }
+
+  function isIgnoredDir(name) {
+    return IGNORE_DIRS.includes(name);
+  }
+
+  function isIgnoredFile(name) {
+    return IGNORE_FILES.includes(name);
+  }
+
+  function buildPreviewUrl(path) {
+    // path 直接接在 GitHub Pages base 後面即可
+    return PAGES_BASE + encodeURI(path);
+  }
+
+  function updateBreadcrumb(path) {
+    if (!path) {
+      breadcrumbPathEl.textContent = "尚未選擇檔案";
+      return;
+    }
+    breadcrumbPathEl.textContent = "/" + path;
+  }
+
+  function setSelectedLabel(labelEl) {
+    if (currentSelectedLabel) {
+      currentSelectedLabel.classList.remove("selected");
+    }
+    currentSelectedLabel = labelEl;
+    if (currentSelectedLabel) {
+      currentSelectedLabel.classList.add("selected");
+    }
+  }
+
+  function showLoader(show) {
+    if (show) {
+      previewLoaderEl.classList.add("active");
+    } else {
+      previewLoaderEl.classList.remove("active");
+    }
+  }
+
+  // ====== 建立樹狀節點 ======
+
+  function createFolderNode(item) {
+    const li = document.createElement("li");
+    li.className = "tree-node folder collapsed";
+    li.dataset.path = item.path;
+    li.dataset.loaded = "false";
+
+    const label = document.createElement("div");
+    label.className = "tree-node-label is-folder";
+    label.innerHTML = `
+      <span class="twisty">▸</span>
+      <span class="node-icon">📂</span>
+      <span class="node-text">${friendlyName(item.name)}</span>
+    `;
+
+    label.addEventListener("click", async (event) => {
+      event.stopPropagation();
+      const isCollapsed = li.classList.contains("collapsed");
+      if (isCollapsed) {
+        // 展開時，若尚未載入子項目就載入
+        if (li.dataset.loaded !== "true") {
+          await loadDirectoryChildren(item.path, li);
+          li.dataset.loaded = "true";
         }
-        const data = await res.json();
-        return Array.isArray(data) ? data : [];
-      } catch (err) {
-        throw err;
-      }
-    }
-
-    function sortEntries(entries) {
-      return entries
-        .filter((item) => !EXCLUDED_NAMES.includes(item.name))
-        .sort((a, b) => {
-          if (a.type === "dir" && b.type !== "dir") return -1;
-          if (a.type !== "dir" && b.type === "dir") return 1;
-          return a.name.localeCompare(b.name, "zh-Hant");
-        });
-    }
-
-    function buildTreeItem(entry, depth, parentPath) {
-      const li = document.createElement("li");
-      li.className =
-        "tree-item " + (entry.type === "dir" ? "folder" : "file is-leaf");
-      li.dataset.path = entry.path;
-      li.dataset.name = entry.name.toLowerCase();
-      li.style.setProperty("--indent", String(depth));
-
-      // Chevron for folder
-      if (entry.type === "dir") {
-        const chev = document.createElement("span");
-        chev.className = "chevron";
-        chev.innerHTML = "▸";
-        li.appendChild(chev);
+        li.classList.remove("collapsed");
+        li.classList.add("expanded");
       } else {
-        const spacer = document.createElement("span");
-        spacer.style.width = "14px";
-        li.appendChild(spacer);
-      }
-
-      // Icon
-      const icon = document.createElement("span");
-      icon.className = "tree-icon";
-      icon.textContent = entry.type === "dir" ? "▢" : "◆";
-      li.appendChild(icon);
-
-      const label = document.createElement("span");
-      label.className = "tree-label";
-      label.textContent = entry.name;
-      li.appendChild(label);
-
-      const meta = document.createElement("span");
-      meta.className = "tree-meta";
-      if (entry.type === "dir") {
-        meta.textContent = "資料夾";
-      } else if (isHtmlFile(entry.name)) {
-        meta.textContent = "HTML 預覽";
-      } else {
-        meta.textContent = entry.type;
-      }
-      li.appendChild(meta);
-
-      if (entry.type === "dir") {
-        const childrenUl = document.createElement("ul");
-        childrenUl.className = "tree-children collapsed";
-        li.appendChild(childrenUl);
-        li.dataset.loaded = "false";
-      }
-
-      // Click handler
-      li.addEventListener("click", async (evt) => {
-        evt.stopPropagation();
-        handleNodeClick(li, entry);
-      });
-
-      return li;
-    }
-
-    async function handleNodeClick(li, entry) {
-      // Selection UI
-      if (currentSelectedNode) {
-        currentSelectedNode.classList.remove("selected");
-      }
-      currentSelectedNode = li;
-      li.classList.add("selected");
-
-      // Info panel
-      const depth = Number(li.style.getPropertyValue("--indent") || 0);
-      const infoPath = entry.path;
-
-      infoLabelEl.textContent = entry.name;
-      infoPathEl.textContent = "/" + infoPath;
-      infoTypeEl.textContent = humanType(entry.type);
-      infoDepthEl.textContent = String(depth);
-      infoChildrenEl.textContent =
-        entry.type === "dir" && li.querySelector(".tree-children")
-          ? li.querySelector(".tree-children").childElementCount
-          : entry.type === "file"
-          ? "—"
-          : "0";
-
-      // Buttons
-      const isHtml = entry.type === "file" && isHtmlFile(entry.name);
-      const pagesUrl = isHtml ? createPagesUrl(entry.path) : null;
-      const githubUrl = createGithubBlobUrl(entry.path);
-
-      btnOpenEl.disabled = !isHtml;
-      btnOpenGithubEl.disabled = entry.type !== "file";
-
-      btnOpenEl.onclick = () => {
-        if (pagesUrl) window.open(pagesUrl, "_blank", "noopener");
-      };
-      btnOpenGithubEl.onclick = () => {
-        window.open(githubUrl, "_blank", "noopener");
-      };
-
-      // Folder: toggle expand, lazy load if needed
-      if (entry.type === "dir") {
-        const childrenUl = li.querySelector(".tree-children");
-        const loaded = li.dataset.loaded === "true";
-
-        if (!loaded) {
-          try {
-            childrenUl.innerHTML = "";
-            const placeholder = document.createElement("div");
-            placeholder.className = "loading";
-            placeholder.innerHTML =
-              '<span class="spinner"></span> 載入中…';
-            childrenUl.appendChild(placeholder);
-
-            const children = await fetchDirectory(entry.path);
-            const sorted = sortEntries(children);
-            childrenUl.innerHTML = "";
-            sorted.forEach((child) => {
-              const childLi = buildTreeItem(
-                child,
-                depth + 1,
-                entry.path
-              );
-              childrenUl.appendChild(childLi);
-              if (child.type === "dir") stats.folders++;
-              else stats.files++;
-            });
-            li.dataset.loaded = "true";
-            updateStats();
-          } catch (err) {
-            const errMsg = document.createElement("div");
-            errMsg.className = "error";
-            errMsg.textContent =
-              "載入子目錄失敗：" + (err.message || err.toString());
-            childrenUl.innerHTML = "";
-            childrenUl.appendChild(errMsg);
-          }
-        }
-
-        const isCollapsed = childrenUl.classList.contains("collapsed");
-        if (isCollapsed) {
-          childrenUl.classList.remove("collapsed");
-          li.classList.add("expanded");
-        } else {
-          childrenUl.classList.add("collapsed");
-          li.classList.remove("expanded");
-        }
-      }
-    }
-
-    function updateStats() {
-      metaFoldersEl.textContent = String(stats.folders);
-      metaFilesEl.textContent = String(stats.files);
-    }
-
-    async function initRootTree() {
-      treeLoadingEl.style.display = "block";
-      treeErrorEl.style.display = "none";
-      treeRootEl.innerHTML = "";
-      stats = { folders: 0, files: 0 };
-
-      try {
-        const rootEntries = await fetchDirectory("");
-        const sorted = sortEntries(rootEntries);
-
-        sorted.forEach((entry) => {
-          const li = buildTreeItem(entry, 0, "");
-          treeRootEl.appendChild(li);
-          if (entry.type === "dir") stats.folders++;
-          else stats.files++;
-        });
-
-        updateStats();
-        treeLoadingEl.style.display = "none";
-      } catch (err) {
-        treeLoadingEl.style.display = "none";
-        treeErrorEl.style.display = "block";
-        treeErrorEl.textContent =
-          "從 GitHub 取得目錄時發生錯誤：" +
-          (err.message || err.toString()) +
-          "（可稍後再試）";
-      }
-    }
-
-    // ====== Search / Filter ======
-    function applyFilter(query) {
-      const q = query.trim().toLowerCase();
-      const allNodes = Array.from(
-        document.querySelectorAll(".tree-item")
-      );
-
-      if (!q) {
-        allNodes.forEach((n) => n.classList.remove("hidden-by-filter"));
-        filterHintEl.textContent = "按 Enter 清除搜尋";
-        return;
-      }
-
-      filterHintEl.textContent = `搜尋中：「${query}」`;
-
-      // 先隱藏全部，再顯示符合的與其父層
-      allNodes.forEach((n) => n.classList.add("hidden-by-filter"));
-
-      allNodes.forEach((node) => {
-        const name = node.dataset.name || "";
-        if (name.includes(q)) {
-          showNodeAndParents(node);
-        }
-      });
-    }
-
-    function showNodeAndParents(node) {
-      node.classList.remove("hidden-by-filter");
-      let parent = node.parentElement;
-      while (parent && parent !== document.body) {
-        if (parent.classList.contains("tree-children")) {
-          parent.classList.remove("collapsed");
-          const li = parent.parentElement;
-          if (li && li.classList.contains("tree-item")) {
-            li.classList.add("expanded");
-            li.classList.remove("hidden-by-filter");
-          }
-        }
-        parent = parent.parentElement;
-      }
-    }
-
-    // ====== Keyboard / Events ======
-    searchInputEl.addEventListener("input", (e) => {
-      applyFilter(e.target.value);
-    });
-
-    searchInputEl.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        searchInputEl.value = "";
-        applyFilter("");
-      } else if (e.key === "Enter" && !searchInputEl.value.trim()) {
-        applyFilter("");
+        li.classList.remove("expanded");
+        li.classList.add("collapsed");
       }
     });
 
-    // 快速聚焦搜尋（Mac 感）
-    window.addEventListener("keydown", (e) => {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
-        e.preventDefault();
-        searchInputEl.focus();
-        searchInputEl.select();
-      }
+    li.appendChild(label);
+
+    const childrenUl = document.createElement("ul");
+    li.appendChild(childrenUl);
+
+    return li;
+  }
+
+  function createFileNode(item) {
+    const li = document.createElement("li");
+    li.className = "tree-node file";
+    li.dataset.path = item.path;
+
+    const label = document.createElement("div");
+    label.className = "tree-node-label is-file";
+    label.innerHTML = `
+      <span class="twisty"></span>
+      <span class="node-icon">📄</span>
+      <span class="node-text">${friendlyName(item.name)}</span>
+    `;
+
+    label.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const path = item.path;
+      const url = buildPreviewUrl(path);
+      setSelectedLabel(label);
+      updateBreadcrumb(path);
+      previewTitleEl.textContent = path;
+      openInNewTabEl.href = url;
+      openInNewTabEl.style.visibility = "visible";
+
+      previewPlaceholderEl.style.display = "none";
+      showLoader(true);
+      // 設定 iframe src
+      previewFrame.src = url;
     });
 
-    // ====== Boot ======
-    (async function boot() {
-      await initRootTree();
-    })();
-  </script>
+    li.appendChild(label);
+    return li;
+  }
+
+  // ====== 載入目錄內容（透過 GitHub API） ======
+
+  async function fetchDirectory(path = "") {
+    const url = path ? API_BASE + encodeURI(path) + `?ref=${BRANCH}` : API_BASE + `?ref=${BRANCH}`;
+    const res = await fetch(url);
+    if (!res.ok) {
+      console.error("GitHub API error:", res.status, res.statusText);
+      return [];
+    }
+    const data = await res.json();
+    if (!Array.isArray(data)) return [];
+    return data;
+  }
+
+  async function loadDirectoryChildren(path, nodeLi) {
+    const containerUl = nodeLi.querySelector("ul");
+    containerUl.innerHTML = "";
+
+    const items = await fetchDirectory(path);
+
+    // 依 type 排序：資料夾在前，檔案在後；同類別再依名稱排序
+    items.sort((a, b) => {
+      if (a.type === b.type) return a.name.localeCompare(b.name, "zh-Hant");
+      return a.type === "dir" ? -1 : 1;
+    });
+
+    for (const item of items) {
+      if (item.type === "dir") {
+        if (isIgnoredDir(item.name)) continue;
+        const folderNode = createFolderNode(item);
+        containerUl.appendChild(folderNode);
+      } else if (item.type === "file") {
+        if (isIgnoredFile(item.name)) continue;
+        const fileNode = createFileNode(item);
+        containerUl.appendChild(fileNode);
+      }
+    }
+  }
+
+  async function buildRootTree() {
+    treeRootEl.innerHTML = "";
+
+    const items = await fetchDirectory("");
+
+    // 根目錄同樣先資料夾後檔案
+    items.sort((a, b) => {
+      if (a.type === b.type) return a.name.localeCompare(b.name, "zh-Hant");
+      return a.type === "dir" ? -1 : 1;
+    });
+
+    for (const item of items) {
+      if (item.type === "dir") {
+        if (isIgnoredDir(item.name)) continue;
+        const folderNode = createFolderNode(item);
+
+        // 預設展開幾個主要資料夾（about, product, shared）
+        if (["about", "product", "shared"].includes(item.name)) {
+          folderNode.classList.remove("collapsed");
+          folderNode.classList.add("expanded");
+          loadDirectoryChildren(item.path, folderNode).then(() => {
+            folderNode.dataset.loaded = "true";
+          });
+        }
+
+        treeRootEl.appendChild(folderNode);
+      } else if (item.type === "file") {
+        if (isIgnoredFile(item.name)) continue;
+        const fileNode = createFileNode(item);
+        treeRootEl.appendChild(fileNode);
+      }
+    }
+  }
+
+  // ====== Iframe 載入事件：關閉 Loading ======
+  previewFrame.addEventListener("load", () => {
+    showLoader(false);
+  });
+
+  // ====== 初始化 ======
+  document.addEventListener("DOMContentLoaded", () => {
+    buildRootTree().catch(err => console.error(err));
+  });
+</script>
+
 </body>
 </html>
