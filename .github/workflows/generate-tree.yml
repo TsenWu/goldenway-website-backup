@@ -1,64 +1,74 @@
-name: Generate treeData.json
+name: Generate tree-data.json
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
-  build:
+  build-tree:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Generate treeData.json
+      - name: Generate tree-data.json
         run: |
-          echo "Generating treeData.json..."
-          python3 << 'EOF'
-import os, json
+          python << 'PY'
+          import os, json
 
-# 要掃描的根目錄
-root = "."
-ignore = {".git", ".github", ".DS_Store"}
+          ROOT = "."
+          EXCLUDE_DIRS = {".git", ".github", ".vscode", "__pycache__"}
+          EXCLUDE_FILES = {"tree-data.json"}
 
-def scan(path):
-    items = []
-    for name in sorted(os.listdir(path)):
-        if name in ignore: 
-            continue
-        full = os.path.join(path, name)
-        if os.path.isdir(full):
-            items.append({
-                "title": name,
-                "path": full,
-                "isFolder": True,
-                "children": scan(full)
-            })
-        else:
-            items.append({
-                "title": name,
-                "path": full,
-                "isFolder": False
-            })
-    return items
+          def build_tree(path):
+              items = []
+              for name in sorted(os.listdir(path)):
+                  # 可視需要調整：隱藏檔案先全部略過
+                  if name.startswith("."):
+                      if name not in EXCLUDE_DIRS:
+                          continue
 
-tree = scan(root)
+                  full = os.path.join(path, name)
+                  rel = os.path.relpath(full, ROOT).replace(os.sep, "/")
 
-with open("treeData.json", "w", encoding="utf-8") as f:
-    json.dump(tree, f, indent=2, ensure_ascii=False)
+                  if os.path.isdir(full):
+                      if name in EXCLUDE_DIRS:
+                          continue
+                      items.append({
+                          "title": name,
+                          "path": rel + "/",
+                          "isFolder": True,
+                          "children": build_tree(full)
+                      })
+                  else:
+                      if name in EXCLUDE_FILES:
+                          continue
+                      items.append({
+                          "title": name,
+                          "path": rel,
+                          "isFolder": False
+                      })
+              return items
 
-EOF
+          tree = build_tree(ROOT)
 
-      - name: Commit treeData.json
+          with open("tree-data.json", "w", encoding="utf-8") as f:
+              json.dump(tree, f, ensure_ascii=False, indent=2)
+
+          print("tree-data.json generated with", len(tree), "top-level items.")
+          PY
+
+      - name: Commit and push tree-data.json
         run: |
-          git config --global user.email "actions@github.com"
-          git config --global user.name "GitHub Action"
-          git add treeData.json
-          git commit -m "Auto-update treeData.json" || echo "No changes"
-          git push
+          if git status --porcelain tree-data.json | grep -q .; then
+            echo "Changes detected in tree-data.json, committing..."
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add tree-data.json
+            git commit -m "chore: update tree-data.json"
+            git push
+          else
+            echo "No changes in tree-data.json"
+          fi
