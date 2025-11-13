@@ -1,37 +1,71 @@
 name: Generate tree-data.json
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
-
-permissions:
-  contents: write
+  push:
+    branches: [ main ]
 
 jobs:
-  build:
+  build_tree:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
 
       - name: Generate tree-data.json
         run: |
+          echo "開始掃描資料夾並建立樹狀 JSON..."
+
+          generate_tree() {
+            local dir="$1"
+            local indent="$2"
+
+            echo "${indent}{"
+            echo "${indent}  \"title\": \"$(basename "$dir")\","
+            echo "${indent}  \"path\": \"$dir/\","
+            echo "${indent}  \"children\": ["
+
+            local first=1
+
+            for item in "$dir"/*; do
+              if [[ -d "$item" ]]; then
+                [[ $first -eq 0 ]] && echo ","
+                generate_tree "$item" "  $indent"
+                first=0
+              elif [[ "$item" == *.html ]]; then
+                [[ $first -eq 0 ]] && echo ","
+                name=$(basename "$item")
+                # Escape JSON
+                safe_name=$(printf '%s' "$name" | sed 's/"/\\"/g')
+                safe_path=$(printf '%s' "$item" | sed 's/"/\\"/g')
+                echo "${indent}    { \"title\": \"$safe_name\", \"path\": \"$safe_path\" }"
+                first=0
+              fi
+            done
+
+            echo ""
+            echo "${indent}  ]"
+            echo "${indent}}"
+          }
+
           echo "[" > tree-data.json
-          find . -type f \
-            ! -path "./.git/*" \
-            ! -path "./.github/*" \
-            ! -name "tree-data.json" \
-            | sed 's|^\./||' \
-            | jq -R -s -c 'split("\n")[:-1]' \
-            >> tree-data.json
+          first_dir=1
+          for dir in */; do
+            [[ "$dir" == ".github/" ]] && continue
+
+            dir="${dir%/}"
+
+            [[ $first_dir -eq 0 ]] && echo "," >> tree-data.json
+            generate_tree "$dir" "" >> tree-data.json
+            first_dir=0
+          done
           echo "]" >> tree-data.json
 
       - name: Commit tree-data.json
-        run: |
-          git config user.name "${{ github.actor }}"
-          git config user.email "${{ github.actor }}@users.noreply.github.com"
-          git add tree-data.json
-          git commit -m "Auto update tree-data.json" || echo "No changes"
-          git push
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Auto-update tree-data.json"
+          file_pattern: "tree-data.json"
