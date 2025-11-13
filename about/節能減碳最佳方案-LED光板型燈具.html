@@ -1,0 +1,767 @@
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+<style type="text/css">h2.mobile-shrink {
+  font-size: 36px;
+}
+p.mobile-shrink {
+  font-size: 20px;
+}
+@media (max-width: 768px) {
+  h2.mobile-shrink {
+    font-size: 30px !important;
+  }
+  p.mobile-shrink {
+    font-size: 18px !important;
+  }
+  .table-rwd06 img {
+    max-width: 100px;
+  }
+  .rwd_form {
+    padding: 10px;
+  }
+  .table-wrapper {
+    width: 100%;
+    padding: 10px;
+  }
+}
+.rwd_point {
+  text-align: center;
+  padding: 0px;
+}
+.rwd_form {
+  padding: 0px;
+  overflow-x: auto;
+}
+.table-rwd06 {
+  width: 100%;
+  max-width: 900px;
+  min-width: 600px;
+  border-radius: 10px;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+.table-rwd06 td {
+  padding: 10px;
+  text-align: center;
+}
+.table-rwd06 img {
+  border-radius: 150px;
+  width: 100%;
+  max-width: 150px;
+  transition: transform 0.3s, box-shadow 0.5s;
+}
+/* ✅ 新增的圖片 hover 特效 */
+.table-rwd06 img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+/* 手機裝置圖片最大寬度限制為 100px */
+@media (max-width: 768px) {
+  .table-rwd06 img {
+    max-width: 100px;
+  }
+}
+.table-rwd07 {
+  width: 100%;
+  max-width: 600px;
+  min-width: 400px;
+  border-radius: 0px;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+.table-rwd07 td {
+  padding: 0px;
+  text-align: center;
+}
+.table-rwd07 img {
+  border-radius: 100px;
+  width: 100%;
+  max-width: 100px;
+  min-width: 60px;
+  transition: transform 0.3s, box-shadow 0.5s;
+}
+/* 手機字體縮小約 30% */
+@media (max-width: 768px) {
+  .table-rwd07 {
+    font-size: 12px;
+  }
+}
+.table-wrapper {
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0px;
+  overflow-x: auto;
+  border-radius: 0px;
+}
+.table-rwd05 {
+  width: 100%;
+  border-collapse: collapse;
+}
+</style>
+<style type="text/css">.savings-highlight-number-001 {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #f2f2f2;
+  border-left: 6px solid #91c426;
+  border-right: 6px solid #3498db;
+  border-radius: 12px;
+  font-family: "Noto Sans TC", sans-serif;
+  color: #2c3e50;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  animation: fadeInUp 0.6s ease-out both;
+  text-align: center;
+}
+
+.savings-highlight-number-002 {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #f2f2f2;
+  border-left: 6px solid #ff8a00;
+  border-right: 6px solid #ff8a00;
+  border-radius: 12px;
+  font-family: "Noto Sans TC", sans-serif;
+  color: #2c3e50;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  animation: fadeInUp 0.6s ease-out both;
+  text-align: center;
+}
+
+.savings-highlight strong {
+  font-size: 22px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.savings-gradient-number-001 {
+  font-size: 26px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #91c426, #3498db);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: savingsPopIn 0.6s ease-out both;
+}
+
+.savings-gradient-number-002 {
+  font-size: 26px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #ff8a00, #e52e71);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: savingsPopIn 0.6s ease-out both;
+}
+
+.savings-gradient-number-003 {
+  font-size: 26px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #3a3dff, #8e44ad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: savingsPopIn 0.6s ease-out both;
+}
+
+.savings-note {
+  font-size: 16px;
+  color: #666;
+  margin-top: 8px;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes savingsPopIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title></title>
+<style type="text/css">body {
+    margin: 0;
+    padding: 20px;
+    font-family: "Noto Sans TC", sans-serif;
+    background-color: #fff;
+  }
+
+  .carousel-wrapper {
+    position: relative;
+  }
+
+  .carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 20px;
+    padding-bottom: 10px;
+  }
+
+  .carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .carousel-item {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #fff;
+  }
+
+  .carousel-item img {
+    width: 100%;
+    display: block;
+  }
+
+  .caption {
+    padding: 12px;
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+  }
+
+  /* 桌機版（寬度 ≥ 768px）隱藏 swipe hint */
+  @media (min-width: 768px) {
+    .carousel-item {
+      flex: 0 0 calc(33.333% - 13.33px);
+    }
+
+    .swipe-hint {
+      display: none !important;
+    }
+  }
+
+  /* swipe 提示箭頭樣式（僅手機版顯示） */
+  .swipe-hint {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    pointer-events: none;
+    padding: 0 10px;
+    z-index: 10;
+  }
+
+  .swipe-hint svg {
+    width: 30px;
+    height: 30px;
+    fill: rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    padding: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+</style>
+<!-- 區塊 1：底部大圖 --><!-- 產品介紹 -->
+<div style="width: 100%; padding: 20px; text-align: center;">
+<h2 class="mobile-shrink"><span data-darkreader-inline-color="" style="color: rgb(52, 152, 219); --darkreader-inline-color: var(--darkreader-text-3498db, #6c9ab8);">LED光板型燈具</span></h2>
+
+<p class="mobile-shrink">可替代現有的燈管型燈具，擁有最佳的節電效果、及超過10年的光源壽命。</p>
+</div>
+<!-- HTML 區塊 -->
+
+<div class="savings-highlight-number-001"><a href="#計算公式"><strong>每盞燈具10年可省下 <span class="savings-gradient-number-001">2,590 &ndash; 8,070 元</span> 費用</strong></a>
+
+<div class="savings-note">（以上金額為電費+每次汰換燈管成本，並依據使用時數有所不同，取最大最小值）</div>
+</div>
+<!-- 區塊 2：底部大圖 -->
+
+<div>
+<div>
+<div><img src="https://system49.webtech.com.tw/web/202200228/archive/image/article3/f8fa227ee2f743c7.jpg" style="width: 100%;" /></div>
+</div>
+</div>
+<!-- 滑動提示 --><!-- 區塊 3：底部大圖 -->
+
+<div class="rwd_point">
+<p><img class="notice_img" src="https://system49.webtech.com.tw/webadmin/webtech_lib/assets/minimalist-basic/ic_silder.png" />&nbsp;滑動看內容、點擊切換頁面</p>
+</div>
+<!-- 區塊 3：底部大圖 --><!-- 產品型號展示 -->
+
+<div class="rwd_form">
+<table align="center" border="0" cellpadding="3" class="table-rwd06" style="min-width:1100px;width:600px;">
+	<tbody>
+		<tr>
+			<td style="height: 42px; width: 150px; text-align: center;">
+			<div>
+			<div><a href="https://www.goldenwayled.com/product_d.php?lang=tw&amp;tb=1&amp;id=321"><img src="https://system49.webtech.com.tw/web/202200228/archive/image/article3/9700f2e3711dc0b2.jpg" /></a></div>
+			</div>
+			</td>
+			<td style="height: 42px; width: 150px; text-align: center;">
+			<div>
+			<div><a href="https://www.goldenwayled.com/product_d.php?lang=tw&amp;tb=1&amp;id=87"><img src="https://system49.webtech.com.tw/web/202200228/archive/image/article3/7725c552426415fb.jpg" /></a></div>
+			</div>
+			</td>
+			<td style="height: 42px; width: 150px; text-align: center;">
+			<div>
+			<div><a href="https://www.goldenwayled.com/product_d.php?lang=tw&amp;tb=1&amp;id=333"><img src="https://system49.webtech.com.tw/web/202200228/archive/image/article3/2367601e34f57390.jpg" /></a></div>
+			</div>
+			</td>
+			<td style="height: 42px; width: 150px; text-align: center;">
+			<div>
+			<div><a href="https://www.goldenwayled.com/product_d.php?lang=tw&amp;tb=1&amp;id=18"><img src="https://system49.webtech.com.tw/web/202200228/archive/image/article3/17f7233d1dfa9bcf.jpg" /></a></div>
+			</div>
+			</td>
+			<td style="height: 42px; width: 150px; text-align: center;">
+			<div>
+			<div><a href="https://www.goldenwayled.com/product_d.php?lang=tw&amp;tb=1&amp;id=18"><img src="https://system49.webtech.com.tw/web/202200228/archive/image/article3/6b8264b4985ac56d.jpg" /></a></div>
+			</div>
+			</td>
+			<td style="height: 42px; width: 150px; text-align: center;">
+			<div>
+			<div>
+			<div><a href="https://www.goldenwayled.com/product_d.php?lang=tw&amp;tb=1&amp;id=18"><img src="https://system49.webtech.com.tw/web/202200228/archive/image/article3/5d63fb7eeaedd842.jpg" /></a></div>
+			</div>
+			</div>
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: center;"><span style="font-size:16px;">BL-360 4、2呎<br />
+			(吸吊式)</span></td>
+			<td style="text-align: center;"><span style="font-size:16px;">BL-370 4</span>、<span style="font-size:16px;">2呎<br />
+			(吸吊式)</span></td>
+			<td style="text-align: center;"><span style="font-size:16px;">BL-380 4、2呎<br />
+			(吸頂式)</span></td>
+			<td style="text-align: center;"><span style="font-size:16px;">OL-747 2x2呎<br />
+			(嵌入式)</span></td>
+			<td style="text-align: center;"><span style="font-size:16px;">OL-747 4x1呎<br />
+			(嵌入式)</span></td>
+			<td style="text-align: center;"><span style="font-size:16px;">OL-747 4x2呎<br />
+			(嵌入式)</span></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<!-- 區塊 4：底部大圖 --><!-- 認證介紹 -->
+
+<div class="_bd_row _bd_clearfix" style="padding: 30px 0;">
+<h2 class="mobile-shrink" style="text-align: center;"><span data-darkreader-inline-color="" style="color: rgb(52, 152, 219); --darkreader-inline-color: var(--darkreader-text-3498db, #6c9ab8);">通過各項產品認證</span></h2>
+
+<p class="mobile-shrink" style="text-align: center;">台灣生產製造的堅持</p>
+</div>
+<!-- 區塊 5：底部大圖 -->
+
+<div class="rwd_form" style="background-image: url('https://system49.webtech.com.tw/web/202200228/archive/image/article3/03-jpg.jpg'); background-size: cover;">
+<table class="table-rwd07" height="146" width="671">
+	<tbody>
+		<tr>
+			<td><img alt="節能標章" src="https://system49.webtech.com.tw/web/202200228/archive/image/article3/48038ccaba70ebdf.png" /></td>
+			<td><img alt="MIT微笑標章" src="https://system49.webtech.com.tw/web/202200228/archive/image/article3/3cbcceb76a0c292d.png" /></td>
+			<td><img alt="BSMI" src="https://system49.webtech.com.tw/web/202200228/archive/image/article3/4708fb21ddeab62a.png" /></td>
+			<td><img alt="CNS" src="https://system49.webtech.com.tw/web/202200228/archive/image/article3/9b4880a62601253a.png" /></td>
+		</tr>
+		<tr>
+			<td><span data-darkreader-inline-color="" style="color: rgb(255, 255, 255); --darkreader-inline-color: var(--darkreader-text-ffffff, #e8e6e3);">節能標章</span></td>
+			<td><span data-darkreader-inline-color="" style="color: rgb(255, 255, 255); --darkreader-inline-color: var(--darkreader-text-ffffff, #e8e6e3);">MIT微笑標章</span></td>
+			<td><span data-darkreader-inline-color="" style="color: rgb(255, 255, 255); --darkreader-inline-color: var(--darkreader-text-ffffff, #e8e6e3);">BSMI</span></td>
+			<td><span data-darkreader-inline-color="" style="color: rgb(255, 255, 255); --darkreader-inline-color: var(--darkreader-text-ffffff, #e8e6e3);">各式 CNS 認證</span></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<!-- 區塊 6：節電效益標題 -->
+
+<div class="_bd_row _bd_clearfix" style="margin: 0; padding: 0;">
+<div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap;"><!-- 圖片區塊 -->
+<div class="timeline-header" style="background-image: url('https://system49.webtech.com.tw/web/202200228/archive/image/article3/3004453bf3ea3fb7.jpg'); background-size: cover; background-position: center; width: 50%; height: 650px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">&nbsp;</div>
+<!-- 文字區塊 -->
+
+<div style="width: 50%; padding: 20px; text-align: left;">
+<h2 class="mobile-shrink" style="text-align: center; margin: 0 0 10px 0;"><span data-darkreader-inline-color="" style="color: rgb(52, 152, 219); --darkreader-inline-color: var(--darkreader-text-3498db, #6c9ab8);">最優質晶粒</span></h2>
+
+<p class="mobile-shrink" style="text-align: center; margin: 0;">光源使用美國CREE晶粒可達10-20年以上的使用壽命，<br />
+光衰慢、無藍光危害，安心可靠。</p>
+</div>
+</div>
+</div>
+
+<div class="_bd_row _bd_clearfix" style="padding: 30px 0;">
+<h2 class="mobile-shrink" style="text-align: center;"><span data-darkreader-inline-color="" style="color: rgb(52, 152, 219); --darkreader-inline-color: var(--darkreader-text-3498db, #6c9ab8);"><a id="計算公式" name="計算公式"></a>極致的的節電效益</span></h2>
+
+<p class="mobile-shrink" style="text-align: center;">10年可省下可觀的電費及維護成本</p>
+</div>
+<!-- 區塊 7：背景表格 -->
+<style type="text/css">.rwd_form {
+    background-image: url('https://system49.webtech.com.tw/web/202200228/archive/image/article3/02-04-jpg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 10px;
+    margin: 0px;
+  }
+
+  .table-wrapper {
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 60%;
+    margin: 0 auto;
+    padding: 10px;
+    overflow-x: auto;
+    border-radius: 10px;
+  }
+
+  .table-rwd05 {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  @media (max-width: 768px) {
+    .table-wrapper {
+      width: 100%;
+      padding: 10px;
+    }
+    .table-rwd05 {
+      font-size: 10pt !important;
+    }
+
+    .table-rwd05 td span {
+      font-size: 10pt !important;
+    }
+  }
+</style>
+<div class="rwd_form">
+<div class="table-wrapper"><!-- 表格內容（保持原樣） -->
+<table border="1" cellpadding="3" class="table-rwd05"><!-- 表格內容請保持不變，此處省略 -->
+	<tbody>
+		<tr>
+			<td class="title-item m_text_left" colspan="3" data-darkreader-inline-bgcolor="" style="background-color: rgb(51, 153, 204); text-align: center; --darkreader-inline-bgcolor: var(--darkreader-background-3399cc, #4a7387);"><span data-darkreader-inline-color="" style="color: rgb(255, 255, 255); font-size: 22px; letter-spacing: 1px; --darkreader-inline-color: var(--darkreader-text-ffffff, #e8e6e3);"><strong>節電效益比較表</strong></span></td>
+		</tr>
+		<tr>
+			<td class="pro-item" style="width: 25%; text-align: center;">&nbsp;</td>
+			<td class="pro-item" style="width: 25%; text-align: center;"><span style="font-size:18px;">BL-360 線型光板燈</span></td>
+			<td class="pro-item" style="width: 25%; text-align: center;"><span style="font-size:18px;">市售4呎LED雙燈管</span></td>
+		</tr>
+		<tr>
+			<td class="pro-item" style="text-align: center;"><span style="font-size:18px;">發光效率(lm/W)</span></td>
+			<td class="pro-item" style="text-align: center;"><span style="font-size:18px;">160 (lm/W)</span></td>
+			<td class="pro-item" style="text-align: center;"><span style="font-size:18px;">100 (lm/W)</span></td>
+		</tr>
+		<tr>
+			<td class="pro-item" style="text-align: center;"><span style="font-size:18px;">消耗功率(W)</span></td>
+			<td class="pro-item" style="text-align: center;"><span style="font-size:18px;">25 W</span></td>
+			<td class="pro-item" style="text-align: center;"><span style="font-size:18px;">40 W</span></td>
+		</tr>
+		<tr>
+			<td class="pro-item" colspan="3" style="text-align: center;"><span style="font-size:18px;">10年電費估算元/盞</span></td>
+		</tr>
+		<tr>
+			<td class="pro-item" style="text-align: center;"><span style="font-size:18px;">學校</span></td>
+			<td class="pro-item" style="text-align: center;"><span style="font-size:18px;">2810 元<br />
+			<span data-darkreader-inline-color="" style="color: rgb(230, 126, 34); --darkreader-inline-color: var(--darkreader-text-e67e22, #c09167);"><strong>(省下1690元)</strong></span></span></td>
+			<td class="pro-item" style="text-align: center;"><span style="font-size:18px;">4500 元</span></td>
+		</tr>
+		<tr>
+			<td class="pro-item" style="text-align: center;"><span style="font-size:18px;">辦公室</span></td>
+			<td class="pro-item" style="text-align: center;"><span style="font-size:18px;">3750 元<br />
+			<span data-darkreader-inline-color="" style="color: rgb(230, 126, 34); --darkreader-inline-color: var(--darkreader-text-e67e22, #c09167);"><strong>(省下2250元)</strong></span></span></td>
+			<td class="pro-item" style="text-align: center;"><span style="font-size:18px;">6000 元</span></td>
+		</tr>
+		<tr>
+			<td class="pro-item" style="text-align: center;"><span style="font-size:18px;">店鋪、工廠</span></td>
+			<td class="pro-item" style="text-align: center;"><span style="font-size:18px;">5000 元<br />
+			<span data-darkreader-inline-color="" style="color: rgb(230, 126, 34); --darkreader-inline-color: var(--darkreader-text-e67e22, #c09167);"><strong>(省下3000元)</strong></span></span></td>
+			<td class="pro-item" style="text-align: center;"><span style="font-size:18px;">8000 元</span></td>
+		</tr>
+		<tr>
+			<td class="pro-item" style="text-align: center;"><span style="font-size:18px;">24小時便利商店</span></td>
+			<td class="pro-item" style="text-align: center;"><span style="font-size:18px;">10950 元<br />
+			<span data-darkreader-inline-color="" style="color: rgb(230, 126, 34); --darkreader-inline-color: var(--darkreader-text-e67e22, #c09167);"><strong>(省下6570元)</strong></span></span></td>
+			<td class="pro-item" style="text-align: center;"><span style="font-size:18px;">17520元</span></td>
+		</tr>
+		<tr>
+			<td class="pro-item" colspan="3" style="text-align: center;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td class="pro-item" style="text-align: center;"><span style="font-size:18px;">光源壽命</span></td>
+			<td class="pro-item" style="text-align: center;"><strong><span data-darkreader-inline-color="" style="font-size: 18px; color: rgb(230, 126, 34); --darkreader-inline-color: var(--darkreader-text-e67e22, #c09167);">10-20年</span></strong></td>
+			<td class="pro-item" style="text-align: center;"><span style="font-size:18px;">2-3年</span></td>
+		</tr>
+		<tr>
+			<td class="pro-item" style="text-align: center;"><span style="font-size:18px;">光衰</span></td>
+			<td class="pro-item" style="text-align: center;"><strong><span data-darkreader-inline-color="" style="font-size: 18px; color: rgb(230, 126, 34); --darkreader-inline-color: var(--darkreader-text-e67e22, #c09167);">5年小於95%</span></strong></td>
+			<td class="pro-item" style="text-align: center;"><span style="font-size:18px;">2年大於70%(註2)</span></td>
+		</tr>
+		<tr>
+			<td class="pro-item" style="text-align: center;"><span style="font-size:18px;">10年換修成本</span></td>
+			<td class="pro-item" style="text-align: center;"><span style="font-size:18px;">0 元<br />
+			<span data-darkreader-inline-color="" style="color: rgb(230, 126, 34); --darkreader-inline-color: var(--darkreader-text-e67e22, #c09167);"><strong>(省下900-1500元)</strong></span></span></td>
+			<td class="pro-item" style="text-align: center;"><span style="font-size:18px;">900-1500 元</span></td>
+		</tr>
+		<tr>
+			<td class="pro-item" style="text-align: center;"><span style="font-size:18px;">頻閃</span></td>
+			<td class="pro-item" style="text-align: center;"><span style="font-size:18px;">無頻閃</span></td>
+			<td class="pro-item" style="text-align: center;"><span style="font-size:18px;">有頻閃</span></td>
+		</tr>
+		<tr>
+			<td class="pro-item" style="text-align: center;"><span style="font-size:18px;">保固</span></td>
+			<td class="pro-item" style="text-align: center;"><strong><span data-darkreader-inline-color="" style="font-size: 18px; color: rgb(230, 126, 34); --darkreader-inline-color: var(--darkreader-text-e67e22, #c09167);">10年</span></strong>(註1)</td>
+			<td class="pro-item" style="text-align: center;"><span style="font-size:18px;">1-2年</span></td>
+		</tr>
+		<tr>
+			<td class="pro-item" colspan="3" style="text-align: center;"><span style="font-size:14px;">年使用時數推估(學校約2250小時、辦公室約3000小時、店鋪、工廠約4000小時、24小時便利商店8760小時) 每度電5元計算<br />
+			(註1)官網購買享10年保固(標準保固5年)、 (註2)燈具耗電不變但光源輸出降低(95%肉眼無法察覺、70%肉眼明顯看到光源昏暗)</span></td>
+		</tr>
+	</tbody>
+	<!-- ... -->
+</table>
+</div>
+</div>
+<!-- 區塊 8：圖文對照 --><!-- 區塊 9：背景圖說明 -->
+
+<div class="_bd_row _bd_clearfix">
+<div style="display: flex; justify-content: center;">
+<div class="timeline-header" style="background-image: url('https://system49.webtech.com.tw/web/202200228/archive/image/article3/05-jpg.jpg'); background-size: cover; background-position: center; width: 100%; height: 650px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+<h2 class="mobile-shrink" data-darkreader-inline-color="" style="color: rgb(52, 152, 219); --darkreader-inline-color: var(--darkreader-text-3498db, #6c9ab8);">當電費持續高漲</h2>
+
+<p class="mobile-shrink" data-darkreader-inline-color="" style="color: rgb(255, 255, 255); --darkreader-inline-color: var(--darkreader-text-ffffff, #e8e6e3);">照明是基本需求，但光衰快又易壞的燈管已經花太多冤望錢...</p>
+</div>
+</div>
+</div>
+<!-- 區塊 10：對照圖與文字介紹 -->
+
+<div class="_bd_row _bd_clearfix" style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; margin: 0; padding: 0;"><!-- 圖片區 -->
+<div class="timeline-header" style="background-image: url('https://system49.webtech.com.tw/web/202200228/archive/image/article3/e92eb4adbb46d41f.jpg'); background-size: cover; background-position: center; width: 50%; min-width: 300px; height: 650px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+<h1 class="mobile-shrink"><strong><span data-darkreader-inline-color="" style="color: white; --darkreader-inline-color: var(--darkreader-text-ffffff, #e8e6e3);">換掉燈管迎接改變</span></strong></h1>
+
+<p data-darkreader-inline-color="" style="color: white; --darkreader-inline-color: var(--darkreader-text-ffffff, #e8e6e3);">A smarter choice</p>
+</div>
+<!-- 文字區 -->
+
+<div style="width: 50%; min-width: 300px; padding: 30px; text-align: center;">
+<h2 class="mobile-shrink"><strong><span data-darkreader-inline-color="" style="color: rgb(52, 152, 219); --darkreader-inline-color: var(--darkreader-text-3498db, #6c9ab8);">省錢</span></strong></h2>
+
+<p class="mobile-shrink">比市售燈管節電 <span data-darkreader-inline-color="" style="color: rgb(52, 152, 219); --darkreader-inline-color: var(--darkreader-text-3498db, #6c9ab8);">37%</span>，比螢光燈管節電 <span data-darkreader-inline-color="" style="color: rgb(52, 152, 219); --darkreader-inline-color: var(--darkreader-text-3498db, #6c9ab8);">67%</span>。</p>
+
+<h2 class="mobile-shrink"><strong><span data-darkreader-inline-color="" style="color: rgb(52, 152, 219); --darkreader-inline-color: var(--darkreader-text-3498db, #6c9ab8);">省力</span></strong></h2>
+
+<p class="mobile-shrink">省去<span data-darkreader-inline-color="" style="color: rgb(52, 152, 219); --darkreader-inline-color: var(--darkreader-text-3498db, #6c9ab8);"> 頻繁換燈管</span>與<span data-darkreader-inline-color="" style="color: rgb(52, 152, 219); --darkreader-inline-color: var(--darkreader-text-3498db, #6c9ab8);">人力保養</span>。</p>
+
+<h2 class="mobile-shrink"><strong><span data-darkreader-inline-color="" style="color: rgb(52, 152, 219); --darkreader-inline-color: var(--darkreader-text-3498db, #6c9ab8);">省耗材</span></strong></h2>
+
+<p class="mobile-shrink">減少 <span data-darkreader-inline-color="" style="color: rgb(52, 152, 219); --darkreader-inline-color: var(--darkreader-text-3498db, #6c9ab8);">100%</span> 換燈管耗材。</p>
+</div>
+</div>
+<!-- 區塊 11：底部大圖 -->
+
+<div class="_bd_row _bd_clearfix" style="margin: 0; padding: 0;"><img src="https://system49.webtech.com.tw/web/202200228/archive/image/article3/0df8e8d34c13d7e2.jpg" style="width: 100%; display: block; margin: 0; padding: 0;" /></div>
+<!-- ===================================== --><!-- 引用 Font Awesome 圖標（放在 <head> 或最上方） --><!-- ===================================== -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" /><!-- ===================================== --><!-- 區塊 12：ICON 標語與說明 --><!-- ===================================== -->
+<div class="_bd_row _bd_clearfix">
+<h2 class="mobile-shrink" style="text-align: center;"><span data-darkreader-inline-color="" style="color: rgb(52, 152, 219); --darkreader-inline-color: var(--darkreader-text-3498db, #6c9ab8);">各項保證全台第一</span></h2>
+
+<p class="mobile-shrink" style="text-align: center;">CP值最高首選。<br />
+&nbsp;</p>
+</div>
+<!-- ===================================== --><!-- 區塊 12-1：ICON 內容區塊 --><!-- ===================================== -->
+
+<div data-darkreader-inline-bgcolor="" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; padding: 40px 20px; background-color: rgb(249, 249, 249); --darkreader-inline-bgcolor: var(--darkreader-background-f9f9f9, #1c1e1e);"><!-- ICON 1：10年保固 -->
+<div style="text-align: center; max-width: 150px;"><i class="fas fa-shield-alt" data-darkreader-inline-color="" style="font-size: 40px; color: rgb(52, 152, 219); --darkreader-inline-color: var(--darkreader-text-3498db, #6c9ab8);"></i>
+
+<h5 style="margin: 10px 0;"><strong>10年保固</strong></h5>
+
+<p data-darkreader-inline-color="" style="font-size: 14px; color: rgb(85, 85, 85); --darkreader-inline-color: var(--darkreader-text-555555, #afaca7);">長效保障，安心使用</p>
+</div>
+<!-- ICON 2：台灣製造 -->
+
+<div style="text-align: center; max-width: 150px;"><i class="fas fa-map-marker-alt" data-darkreader-inline-color="" style="font-size: 40px; color: rgb(52, 152, 219); --darkreader-inline-color: var(--darkreader-text-3498db, #6c9ab8);"></i>
+
+<h5 style="margin: 10px 0;"><strong>台灣製造</strong></h5>
+
+<p data-darkreader-inline-color="" style="font-size: 14px; color: rgb(85, 85, 85); --darkreader-inline-color: var(--darkreader-text-555555, #afaca7);">品質保證，本地製造</p>
+</div>
+<!-- ICON 3：省電最強 -->
+
+<div style="text-align: center; max-width: 150px;"><i class="fas fa-bolt" data-darkreader-inline-color="" style="font-size: 40px; color: rgb(52, 152, 219); --darkreader-inline-color: var(--darkreader-text-3498db, #6c9ab8);"></i>
+
+<h5 style="margin: 10px 0;"><strong>省電最強</strong></h5>
+
+<p data-darkreader-inline-color="" style="font-size: 14px; color: rgb(85, 85, 85); --darkreader-inline-color: var(--darkreader-text-555555, #afaca7);">效能最強，節能首選</p>
+</div>
+<!-- ICON 4：5萬小時耐用 -->
+
+<div style="text-align: center; max-width: 150px;"><i class="fas fa-clock" data-darkreader-inline-color="" style="font-size: 40px; color: rgb(52, 152, 219); --darkreader-inline-color: var(--darkreader-text-3498db, #6c9ab8);"></i>
+
+<h5 style="margin: 10px 0;"><strong>5萬小時耐用</strong></h5>
+
+<p data-darkreader-inline-color="" style="font-size: 14px; color: rgb(85, 85, 85); --darkreader-inline-color: var(--darkreader-text-555555, #afaca7);">壽命長久，耐用可靠</p>
+</div>
+</div>
+<!-- ===================================== --><!-- 區塊 13：底部大圖 --><!-- ===================================== -->
+
+<div class="_bd_row _bd_clearfix" style="margin-top: 0; padding-top: 0;">
+<div><img src="https://system49.webtech.com.tw/web/202200228/archive/image/article3/a29300570e17bd74.jpg" style="display: block; margin: 0; padding: 0;" /></div>
+</div>
+
+<div class="_bd_row _bd_clearfix">
+<h2 class="mobile-shrink" style="text-align: center;"><span data-darkreader-inline-color="" style="color: rgb(52, 152, 219); --darkreader-inline-color: var(--darkreader-text-3498db, #6c9ab8);">汰換燈管已經成趨勢 </span></h2>
+
+<p class="mobile-shrink" style="text-align: center;">目前各大超商、量販店都已逐步改用LED光板型燈具了，為何你還在用燈管?<br />
+&nbsp;</p>
+</div>
+
+<div class="carousel-wrapper"><!-- swipe 提示箭頭 -->
+<div class="swipe-hint"><svg viewbox="0 0 24 24"> <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path> </svg> <svg viewbox="0 0 24 24"> <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"></path> </svg></div>
+<!-- 圖片輪播 -->
+
+<div class="carousel">
+<div class="carousel-item">
+<div><img src="https://system49.webtech.com.tw/web/202200228/archive/image/article3/d6a496ac5480db73.jpg" /></div>
+
+<div class="caption">全聯福利中心</div>
+</div>
+
+<div class="carousel-item">
+<div><img src="https://system49.webtech.com.tw/web/202200228/archive/image/article3/685a174288a9ce1d.jpg" /></div>
+
+<div class="caption">家樂福</div>
+</div>
+
+<div class="carousel-item">
+<div><img src="https://system49.webtech.com.tw/web/202200228/archive/image/article3/9dcc91cbb8f8c797.jpg" /></div>
+
+<div class="caption">好市多</div>
+</div>
+
+<div class="carousel-item">
+<div><img src="https://system49.webtech.com.tw/web/202200228/archive/image/article3/77159ac0f79d93f6.jpg" /></div>
+
+<div class="caption">國立台灣藝術大學</div>
+</div>
+
+<div class="carousel-item">
+<div><img src="https://system49.webtech.com.tw/web/202200228/archive/image/article3/eb88818f2afb5a5d.jpg" /></div>
+
+<div class="caption">國立中興大學</div>
+</div>
+
+<div class="carousel-item">
+<div><img src="https://system49.webtech.com.tw/web/202200228/archive/image/article3/87b37cfce9f63b16.jpg" /></div>
+
+<div class="caption">台南亞太國際棒球訓練中心</div>
+</div>
+</div>
+</div>
+
+<div class="_bd_row _bd_clearfix"><!-- ===================================== --><!-- 區塊 15：CSS 樣式（表格 + Lightbox） --><!-- ===================================== -->
+<style type="text/css">.table-rwd08-wrapper {
+      background-color: rgba(249, 249, 249, 1);
+      padding: 20px;
+    }
+    .table-rwd08 {
+      width: 100%;
+      max-width: 900px;
+      border-collapse: collapse;
+      margin: 0 auto 30px auto;
+    }
+    .table-rwd08 td {
+      text-align: center;
+      padding: 0;
+      vertical-align: top;
+      width: 33.33%;
+    }
+    .table-rwd08 img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .table-rwd08 img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    .table-rwd08 td span {
+      display: inline-block;
+      padding: 8px;
+      font-size: 12px;
+    }
+    @media (max-width: 768px) {
+      .table-rwd08 td {
+        display: block;
+        width: 100%;
+      }
+      .table-rwd08 tr {
+        display: block;
+        width: 100%;
+      }
+      .table-rwd08 td span {
+        display: block;
+        padding: 10px 0;
+      }
+    }
+    .lightbox-overlay {
+      position: fixed;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+    }
+    .lightbox-overlay img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+    }
+</style>
+<!-- ===================================== --><!-- 區塊 16：圖片表格展示區 --><!-- ===================================== -->
+<div class="table-rwd08-wrapper">
+<div class="_bd_row _bd_clearfix">
+<h4 class="mobile-shrink" style="text-align: center;"><span>更多介紹請點選圖片</span></h4>
+</div>
+
+<table class="table-rwd08">
+	<tbody>
+		<tr>
+			<td colspan="3">吸頂、管吊、線吊式安裝</td>
+		</tr>
+		<tr>
+			<td><a href="https://www.goldenwayled.com/product_d.php?lang=tw&amp;tb=1&amp;id=321"><img onclick="openLightbox(this.src)" src="https://system49.webtech.com.tw/web/202200228/archive/image/article3/9700f2e3711dc0b2.jpg" /></a></td>
+			<td><a href="https://www.goldenwayled.com/product_d.php?lang=tw&amp;tb=1&amp;id=87"><img onclick="openLightbox(this.src)" src="https://system49.webtech.com.tw/web/202200228/archive/image/article3/7725c552426415fb.jpg" /></a></td>
+			<td><a href="https://www.goldenwayled.com/product_d.php?lang=tw&amp;tb=1&amp;id=333"><img onclick="openLightbox(this.src)" src="https://system49.webtech.com.tw/web/202200228/archive/image/article3/2367601e34f57390.jpg" /></a></td>
+		</tr>
+	</tbody>
+</table>
+
+<table class="table-rwd08">
+	<tbody>
+		<tr>
+			<td colspan="3">輕鋼架或暗架天花板安裝</td>
+		</tr>
+		<tr>
+			<td>
+			<div><a href="https://www.goldenwayled.com/product_d.php?lang=tw&amp;tb=1&amp;id=18"><img src="https://system49.webtech.com.tw/web/202200228/archive/image/article3/17f7233d1dfa9bcf.jpg" /></a></div>
+			</td>
+			<td>
+			<div><a href="https://www.goldenwayled.com/product_d.php?lang=tw&amp;tb=1&amp;id=18"><img src="https://system49.webtech.com.tw/web/202200228/archive/image/article3/6b8264b4985ac56d.jpg" /></a></div>
+			</td>
+			<td>
+			<div><a href="https://www.goldenwayled.com/product_d.php?lang=tw&amp;tb=1&amp;id=18"><img src="https://system49.webtech.com.tw/web/202200228/archive/image/article3/5d63fb7eeaedd842.jpg" /></a></div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+</div>
+<!-- ===================================== --><!-- 區塊 14：更換燈管標題與說明 --><!-- ===================================== -->
