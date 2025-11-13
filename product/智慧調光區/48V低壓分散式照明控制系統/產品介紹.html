@@ -1,0 +1,459 @@
+<!-- ★ 區塊：48V低壓分散式 II 表頭區塊 ★ -->
+<style type="text/css">.block-48v-header {
+  position: relative;
+  width: 100%;
+  height: 650px; /* ✅ 可調整：整體高度 */
+  background: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/control_sys/dimmate-ll-dali_bg2.png?v=xzz56k') center/cover no-repeat;
+  overflow: hidden;
+  font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  color: white;
+}
+
+/* ✅ 漸層遮罩 */
+.block-48v-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(255,255,255,0), rgba(0,0,0,0.3));
+  z-index: 1;
+}
+
+/* ✅ 主要內容容器 */
+.block-48v-header .content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding: 40px;
+  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+/* ✅ 左側內容 */
+.block-48v-header .left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  max-width: 50%;
+}
+
+.block-48v-header .main-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.block-48v-header .sub-title {
+  font-size: 20px;
+  color: #ccc;
+  margin-bottom: 24px;
+}
+
+.block-48v-header .product-img {
+  width: 450px;
+  height: auto;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border-radius: 6px;
+}
+
+.block-48v-header .product-img:hover {
+  transform: scale(1.05) translateY(-6px);
+}
+
+/* ✅ 右側內容 */
+.block-48v-header .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.block-48v-header .feature-title {
+  font-weight: bold;
+  font-size: 20px;
+  color: #000;
+  margin-bottom: 12px;
+}
+
+.block-48v-header .item {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #21365c;
+  transition: transform 0.3s ease;
+}
+
+.block-48v-header .item:hover {
+  transform: translateX(6px);
+}
+
+.block-48v-header .item img.icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 30px;
+  flex-shrink: 0;
+}
+
+/* ✅ 手機版 RWD */
+@media (max-width: 768px) {
+  .block-48v-header {
+    height: auto;
+    padding: 20px 16px;
+  }
+
+  .block-48v-header .content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .block-48v-header .left {
+    max-width: 100%;
+  }
+
+  .block-48v-header .product-img {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .block-48v-header .right {
+    align-items: flex-start;
+  }
+}
+</style>
+<div class="block-48v-header">
+<div class="content"><!-- 左半部：標題＋圖 -->
+<div class="left">
+<div class="main-title"><span style="color:#f1c40f;">低壓分散式智慧照明控制系統</span></div>
+
+<div class="sub-title">48V Low voltage distributed<br />
+Lighting Control System</div>
+<img alt="Low voltage" class="product-img" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/control_sys/48v_low_voltage_pic.png?v=qyngva9" /></div>
+<!-- 右半部：粗標題 + 三項說明 -->
+
+<div class="right">
+<div class="feature-title">結合<span style="color:#2980b9;">電源線</span>和<span style="color:#2980b9;">控制訊號線</span> 整合為一線式</div>
+
+<div class="item"><img alt="" class="icon" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/helmet.png?v=os34br9" /> 施工過程便利</div>
+
+<div class="item"><img alt="" class="icon" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/clock.png?v=oddvu7" /> 提高作業效率</div>
+
+<div class="item"><img alt="" class="icon" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/reduction__2_.png?v=dbcwoc" /> 省人力及成本</div>
+</div>
+</div>
+</div>
+<!-- ★ IP產品特性區塊：左側文字浮層 + 滿版背景 ★ -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" /><meta name="viewport" content="width=device-width, initial-scale=1">
+<style type="text/css">/* ========================================
+   ? 區塊設定：.block-IP產品特性
+   ======================================== */
+.block-IP產品特性 {
+  position: relative;
+  width: 100%;
+  height: 550px; /* ✅ 可依需求調整整體高度 */
+  background: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/control_sys/dimmate-ll-dali_bg3.png?v=0ax24c5') center/cover no-repeat;
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* ✅ 左側浮層：垂直置中 */
+.block-IP產品特性 .text-container {
+  position: absolute;
+  top: 50%;
+  left: 50px;
+  transform: translateY(-50%);
+  max-width: 500px;
+  color: #fff;
+  text-align: left;
+}
+
+/* ✅ 主標：框線樣式 + 滑入反白動畫 */
+.block-IP產品特性 .title {
+  font-size: 32px;            /* ✅ 桌機主標 */
+  font-weight: 700;
+  display: inline-block;
+  padding: 8px 16px;
+  border: 2px solid #000000;
+  border-radius: 6px;
+  background: transparent;
+  color: #000000;
+  margin-bottom: 12px;
+  transition: all 0.3s ease;
+}
+.block-IP產品特性 .title:hover {
+  background: #bfc3c6;
+  color: #000000;
+}
+
+/* ✅ 內容段落樣式 */
+.block-IP產品特性 .desc {
+  font-size: 16px;            /* ✅ 桌機內容描述字級 */
+  line-height: 1.6;
+  color: #000000;
+  margin-bottom: 10px; /* ✅ 每段描述與下一個標題的距離 */
+}
+
+/* ========================================
+   ? 手機版 RWD
+   ======================================== */
+@media (max-width: 768px) {
+  .block-IP產品特性 {
+    height: auto !important; /* ✅ 手機版區塊自動高度 */
+    padding: 40px 20px !important; /* ✅ 加 padding 增加間距 */
+  }
+
+  .block-IP產品特性 .text-container {
+    position: relative !important; /* ✅ 取消絕對定位 */
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important; /* ✅ 不要位移，改正常排列 */
+    max-width: 100% !important;
+    background: rgba(255, 255, 255, 0.00) !important;
+    padding: 0 !important;
+    text-align: left;
+    color: #000000 !important;
+  }
+  .block-IP產品特性 .desc {
+    font-size: 14px !important;
+    color: #000000 !important;
+  }
+}
+</style>
+<!-- ✅ HTML 區塊 -->
+<div class="block-IP產品特性">
+<div class="text-container">
+<div class="title">產品特性</div>
+
+<ul>
+	<li class="desc">型號:EV12048WI1JX &nbsp; &nbsp; 輸入電壓(100~120Vac)。</li>
+	<li class="desc">型號:EV22048WI1JX &nbsp; &nbsp; 輸入電壓(200~240Vac)。</li>
+	<li class="desc">最大可輸出320W的功率。</li>
+	<li class="desc">RS485/RJ45電腦介面: 可由電腦程式設定燈光亮度、 時間排程、 耗電量分析等。&nbsp;</li>
+	<li class="desc">數位控制訊號輸入: 可外接壁控開關、 遙控器、 光感測器、 人體感應器等配件。</li>
+	<li class="desc">智慧電表功能: 可讀取輸出之總耗電量/電流/功率因數等。</li>
+	<li class="desc">燈具需搭配對應的48V輸入之LED驅動器。</li>
+	<li class="desc">可無限串接。</li>
+	<li class="desc">可雙色溫調光， 群組控制。</li>
+</ul>
+</div>
+</div>
+<!-- ★ 配線示意圖區塊：標題浮層＋圖片放大動畫（含手機版不裁切調整） ★ -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* ✅ 整體區塊樣式 */
+.block-配線示意圖 {
+  width: 100%;
+  padding: 60px 20px; /* ✅ 可調整：區塊上下內距 */
+  background-color: #f7f9fa;
+  box-sizing: border-box;
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+}
+
+/* ✅ 區塊標題樣式 */
+.block-配線示意圖 .title {
+  display: block;                 /* ✅ 不用 inline-block，避免文字偏移 */
+  width: 70%;                    /* ✅ 底框寬度若為100%則撐滿父層 */
+  text-align: center;             /* ✅ 文字置中 */
+  font-size: 30px;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: #3d4854;
+  padding: 8px 24px;              /* ✅ 可調整：上下左右內距 */
+  border-radius: 6px;
+  margin: 0 auto 40px auto;       /* ✅ 上：0，下：40px，自動左右置中 */
+  transition: transform 0.3s ease;
+}
+.block-配線示意圖 .title:hover {
+  transform: translateX(6px);
+}
+
+/* ✅ 圖片容器與滑入動畫 */
+.block-配線示意圖 .image-wrapper {
+  overflow: visible; /* ✅ 預設桌機保留邊緣裁切 */
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.block-配線示意圖 .image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.block-配線示意圖 .image-wrapper:hover img {
+  transform: scale(1.05);
+}
+
+/* ✅ 手機版 RWD */
+@media (max-width: 768px) {
+  .block-配線示意圖 .title {
+    font-size: 24px !important;
+    padding: 6px 18px !important;
+    text-align: center;
+    display: block;
+    margin: 0 auto 24px auto;
+  }
+
+  .block-配線示意圖 .image-wrapper {
+    overflow: visible !important; /* ✅ 手機版不要裁切圖片 */
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .block-配線示意圖 .image-wrapper img {
+    transform: scale(1.1); /* ✅ 小幅放大即可，避免超出畫面 */
+  }
+
+  .block-配線示意圖 .image-wrapper:hover img {
+    transform: scale(1.15); /* ✅ 滑入再微幅放大 */
+  }
+}
+</style>
+<!-- ✅ HTML 結構 -->
+<div class="block-配線示意圖">
+<div class="title">配線示意圖</div>
+
+<div class="image-wrapper"><img alt="配線示意圖" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/control_sys/48v_low_voltage_pic2.png?v=2gxhq3" /></div>
+</div>
+
+<div class="_bd_row _bd_clearfix">
+<div class="_bd_column _bd_full">
+<hr /></div>
+</div>
+<!-- ★ 規格介面區塊：四欄規格說明＋手機版直式排列 ★ -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">.block-規格介面 {
+  width: 100%;
+  padding: 20px 20px; /* ✅ 可調整：區塊上下內距 */
+  background: #f9fafb url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/control_sys/spec-bg.png') center/cover no-repeat; /* ✅ 可替換背景圖 */
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+  box-sizing: border-box;
+}
+
+/* ✅ 桌機版四欄排版 */
+.spec-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ✅ 每欄位 */
+.spec-item {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.8); /* ✅ 可調整：背景透明度 */
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* ✅ 可調整陰影 */
+  transition: transform 0.3s ease;
+}
+
+.spec-item:hover {
+  transform: translateY(-6px);
+}
+
+/* ✅ 標題樣式 */
+.spec-item h3 {
+  font-size: 22px !important;  /* ✅ 加上 !important 覆蓋前台樣式 調整標題字級 */
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #333333;
+  text-align: center;
+}
+
+/* ✅ 規格條列樣式 */
+.spec-item ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.spec-item li {
+  font-size: 16px; /* ✅ 桌機內容描述字級 */
+  color: #444444;
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 18px;
+}
+
+.spec-item li::before {
+  content: '▪';
+  position: absolute;
+  left: 0;
+  color: #555;
+}
+
+/* ✅ 手機版：直式排列 + 字級調整 */
+@media (max-width: 768px) {
+  .spec-grid {
+    flex-direction: column;
+  }
+
+  .spec-item {
+    margin-bottom: 3px;  /* ✅ 可調整：手機版區塊間距 */
+    padding: 3px;
+  }
+
+  .spec-item h3 {
+    font-size: 18px;
+  }
+
+  .spec-item li {
+    font-size: 14px;
+  }
+}
+</style>
+<!-- ✅ HTML 區塊內容 -->
+<div class="block-規格介面">
+<div class="spec-grid">
+<div class="spec-item">
+<h3 style="text-align: left;">【輸入規格】</h3>
+
+<ul>
+	<li>輸入電壓：AC100~120V / AV200~240V</li>
+	<li>輸入頻率：50/60Hz</li>
+	<li>功率因數：&gt;0.95</li>
+	<li>最大輸入電流：2A</li>
+</ul>
+</div>
+
+<div class="spec-item">
+<h3 style="text-align: left;">【輸出規格】</h3>
+
+<ul>
+	<li>輸出電壓：48V+/-5%/定電壓型輸出</li>
+	<li>最大輸出電流：6.67A</li>
+	<li>最大可安裝燈數：20盞</li>
+</ul>
+</div>
+
+<div class="spec-item">
+<h3 style="text-align: left;">【RS485介面】</h3>
+
+<ul>
+	<li>位址可設定：0~31</li>
+	<li>鮑率：19200</li>
+	<li>同位元：n</li>
+	<li>資料位元：8</li>
+	<li>結束位元：1</li>
+</ul>
+</div>
+
+<div class="spec-item">
+<h3 style="text-align: left;">【RJ45網路介面】</h3>
+
+<ul>
+	<li>支援DHCP自動取得IP地址</li>
+	<li>支援10/100M，全雙工/半雙工字適應乙太網路接口</li>
+	<li>Auto-MDI/MIDXE功能</li>
+</ul>
+</div>
+</div>
+</div>
