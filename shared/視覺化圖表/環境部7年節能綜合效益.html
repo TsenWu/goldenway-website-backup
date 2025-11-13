@@ -1,0 +1,61 @@
+<!-- ★ 區塊名稱：節能數據多版本切換區塊 ★ -->
+<div style="max-width: 1200px; margin: 0 auto; padding: 16px; font-family: 'Noto Sans TC', sans-serif; box-sizing: border-box;"><!-- ✅ 主標題 -->
+<div style="text-align: center; margin-bottom: 24px;">
+<h2 style="font-size: 28px; font-weight: 700; margin-bottom: 4px; color: #111;">環境部換裝 LED 光板燈 節能總效益</h2>
+
+<p style="font-size: 15px; color: #555; margin-bottom: 12px;">量測資料來源 : 財團法人台灣綠色生產力基金會（108 - 114 年度）</p>
+
+<div style="height: 4px; width: 100px; background: #333; margin: 0 auto 8px auto;">&nbsp;</div>
+</div>
+<!-- ✅ 桌機版 iframe：數字滾動動畫 -->
+
+<div class="desktop-version" style="display: block;"><iframe height="300" src="https://tsenwu.github.io/goldenway-charts/環境部數字滾動三浮層.html" style="border: none; border-radius: 12px; box-shadow: 0 6px 16px rgba(0,0,0,0.06);" width="100%"></iframe></div>
+<!-- ✅ 手機版：靜態卡片上下堆疊 -->
+
+<div class="mobile-version" style="display: none; margin-top: 12px;"><!-- ? 卡片樣式 -->
+<div style="background: #f0f6ff; border: 1.5px solid #283f7c; border-radius: 12px; padding: 20px; margin-bottom: 16px;">
+<p style="font-size: 15px; color: #555;">七年節約 <span style="color: #283f7c; font-weight: bold;">耗電量</span>（總計）</p>
+
+<p style="font-size: 32px; font-weight: bold; color: #283f7c;">3,061,984 <span style="font-size: 20px;">度</span></p>
+
+<p style="font-size: 18px; font-weight: bold; color: #b12220;">省下高達 <span style="font-size: 24px;">1,164</span> 萬 <span style="font-size: 18px;">電費</span></p>
+</div>
+
+<div style="background: #fffaf2; border: 1.5px solid #d28445; border-radius: 12px; padding: 20px; margin-bottom: 16px;">
+<p style="font-size: 15px; color: #555;">七年節約 <span style="color: #d28445; font-weight: bold;">油當量</span>（總計）</p>
+
+<p style="font-size: 32px; font-weight: bold; color: #d28445;">292.62 <span style="font-size: 20px;">Kloe</span></p>
+
+<p style="font-size: 16px; color: #333;">約當於 292,620 公升 汽油當量</p>
+</div>
+
+<div style="background: #f2fcf8; border: 1.5px solid #2a9d8f; border-radius: 12px; padding: 20px;">
+<p style="font-size: 15px; color: #555;">七年節約 <span style="color: #2a9d8f; font-weight: bold;">碳排放</span>（總計）</p>
+
+<p style="font-size: 32px; font-weight: bold; color: #2a9d8f;">1,560.06 <span style="font-size: 20px;">噸</span></p>
+
+<p style="font-size: 16px; color: #333;">相當於數萬棵樹的 年吸收量</p>
+</div>
+</div>
+<!-- ✅ 手機版提示文字：僅在 mobile 版本顯示 -->
+
+<p class="mobile-only" style="font-size: 12px; text-align: center; color: #888; margin: 12px auto;">※ 手機版可左右滑動查看完整圖表</p>
+<!-- ✅ 嵌入互動式圖表（固定 iframe 寬度） -->
+
+<div style="background: #fff; border-radius: 16px; padding: 0px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); overflow-x: auto; -webkit-overflow-scrolling: touch;">
+<div style="width: 100%; min-width: 720px; display: flex; justify-content: center;"><iframe height="540" loading="lazy" src="https://tsenwu.github.io/goldenway-charts/環境部節能綜合效益多軸圖.html" style="border: none; border-radius: 16px; box-shadow: 0 6px 18px rgba(0,0,0,0.06); max-width: 1200px;" width="100%"></iframe></div>
+</div>
+<!-- ✅ RWD 切換 CSS -->
+<style type="text/css">/* 預設為桌機：顯示動畫 iframe 版本 */
+    .desktop-version { display: block; }
+    .mobile-version  { display: none; }
+    .mobile-only     { display: none; }
+
+    /* RWD 判斷：平板與手機以下切換為靜態卡片 */
+    @media screen and (max-width: 1024px) {
+      .desktop-version { display: none !important; }
+      .mobile-version  { display: block !important; }
+      .mobile-only     { display: block !important; }
+    }
+</style>
+</div>
