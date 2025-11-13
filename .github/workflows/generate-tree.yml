@@ -1,0 +1,64 @@
+name: Generate treeData.json
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Generate treeData.json
+        run: |
+          echo "Generating treeData.json..."
+          python3 << 'EOF'
+import os, json
+
+# 要掃描的根目錄
+root = "."
+ignore = {".git", ".github", ".DS_Store"}
+
+def scan(path):
+    items = []
+    for name in sorted(os.listdir(path)):
+        if name in ignore: 
+            continue
+        full = os.path.join(path, name)
+        if os.path.isdir(full):
+            items.append({
+                "title": name,
+                "path": full,
+                "isFolder": True,
+                "children": scan(full)
+            })
+        else:
+            items.append({
+                "title": name,
+                "path": full,
+                "isFolder": False
+            })
+    return items
+
+tree = scan(root)
+
+with open("treeData.json", "w", encoding="utf-8") as f:
+    json.dump(tree, f, indent=2, ensure_ascii=False)
+
+EOF
+
+      - name: Commit treeData.json
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Action"
+          git add treeData.json
+          git commit -m "Auto-update treeData.json" || echo "No changes"
+          git push
