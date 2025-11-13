@@ -1,0 +1,19 @@
+name: Delayed GitHub Pages Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  delay-pages:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Wait 30 seconds before deploying
+        run: sleep 30
+
+      - name: Trigger GitHub Pages build
+        uses: actions/github-pages@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
