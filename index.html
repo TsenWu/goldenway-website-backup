@@ -1,134 +1,1068 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant-TW">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GoldenWay 官網備份自動索引</title>
+  <meta charset="UTF-8" />
+  <title>GoldenWay 官網內容備份索引</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="GoldenWay 官網產品 HTML/CSS 備份 - 自動樹狀索引" />
+  <style>
+    /* ========== Global ========== */
+    :root {
+      --bg: #0b0c10;
+      --bg-elevated: #11131a;
+      --bg-soft: #171924;
+      --border-subtle: rgba(255, 255, 255, 0.06);
+      --divider: rgba(255, 255, 255, 0.08);
+      --accent: #2ecc71; /* GoldenWay 綠系 */
+      --accent-soft: rgba(46, 204, 113, 0.18);
+      --accent-strong: #27ae60;
+      --text-main: #f7f7f7;
+      --text-secondary: #a9afc5;
+      --text-muted: #6b7280;
+      --danger: #ff5f57;
+      --warning: #febc2e;
+      --info: #2fa4ff;
 
-<style>
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
+      --transition-fast: 160ms ease-out;
+      --transition-med: 220ms ease-out;
+      --blur: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+    }
+
     body {
-        margin: 0;
-        background: #f5f6f7;
-        font-family: "Noto Sans TC", sans-serif;
-        color: #222;
-    }
-    header {
-        background: #1e293b;
-        color: white;
-        padding: 26px 20px;
-        text-align: center;
-        font-size: 26px;
-        font-weight: 700;
-    }
-    #container {
-        max-width: 1000px;
-        margin: 25px auto;
-        padding: 0 20px;
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #1f2933 0, #020308 52%, #000 100%);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        system-ui, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      display: flex;
+      justify-content: center;
+      padding: 24px;
     }
 
-    .folder {
-        margin: 18px 0 8px;
-        font-size: 20px;
-        font-weight: 700;
-        border-left: 6px solid #0ea5e9;
-        padding-left: 10px;
-    }
-
-    ul {
-        list-style: none;
-        padding-left: 10px;
-        margin: 0 0 20px 0;
-    }
-    li {
-        margin: 5px 0;
-    }
     a {
-        text-decoration: none;
-        font-size: 16px;
-        color: #0f172a;
-        font-weight: 600;
-    }
-    a:hover {
-        color: #0284c7;
+      color: inherit;
+      text-decoration: none;
     }
 
-    footer {
-        text-align: center;
-        padding: 30px;
-        margin-top: 40px;
-        color: #666;
-        font-size: 14px;
+    /* ========== Shell Layout ========== */
+    .app-shell {
+      width: 100%;
+      max-width: 1180px;
+      min-height: min(820px, 100vh - 48px);
+      background: radial-gradient(circle at top left, rgba(46,204,113,0.18), transparent 62%),
+                  radial-gradient(circle at bottom right, rgba(47,164,255,0.16), transparent 60%),
+                  linear-gradient(135deg, #10121b 0, #040509 100%);
+      border-radius: 26px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      box-shadow: var(--shadow-soft);
+      padding: 18px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
     }
-</style>
+
+    .app-shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      backdrop-filter: blur(var(--blur));
+      pointer-events: none;
+      opacity: 0.8;
+    }
+
+    .app-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      gap: 16px;
+    }
+
+    /* ========== Header (Apple-style titlebar) ========== */
+    .top-bar {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 6px 8px 8px;
+      border-radius: 999px;
+      background: radial-gradient(circle at top left, rgba(255,255,255,0.14), transparent 55%),
+                  rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .window-dots {
+      display: inline-flex;
+      gap: 6px;
+      padding-inline: 6px 4px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.2);
+    }
+    .dot.red { background: var(--danger); }
+    .dot.yellow { background: var(--warning); }
+    .dot.green { background: var(--accent-strong); }
+
+    .title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .title-main {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .title-main span.logo-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding: 2px 9px;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, var(--accent-soft), transparent 90%);
+      color: var(--accent-strong);
+      border: 1px solid rgba(46, 204, 113, 0.35);
+    }
+
+    .title-sub {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .top-bar-spacer {
+      flex: 1;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid rgba(148, 163, 184, 0.26);
+      color: var(--text-secondary);
+    }
+
+    .status-dot-ok {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(46, 204, 113, 0.18);
+    }
+
+    /* ========== Search + Summary Bar ========== */
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      padding: 10px 12px;
+      border-radius: 18px;
+      background: rgba(5, 7, 14, 0.7);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .search-box {
+      flex: 1 1 220px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.7);
+      transition: box-shadow var(--transition-fast), border-color var(--transition-fast),
+                  background var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .search-box:focus-within {
+      border-color: rgba(46, 204, 113, 0.8);
+      box-shadow: 0 0 0 1px rgba(46, 204, 113, 0.6),
+                  0 18px 35px rgba(0, 0, 0, 0.55);
+      background: radial-gradient(circle at top left, rgba(46,204,113,0.2), transparent 70%),
+                  rgba(15, 23, 42, 0.96);
+      transform: translateY(-1px);
+    }
+
+    .search-icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(148, 163, 184, 0.85);
+      font-size: 10px;
+    }
+
+    .search-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--text-main);
+      font-size: 13px;
+    }
+
+    .search-input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .toolbar-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .pill {
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: radial-gradient(circle at top, rgba(148, 163, 184, 0.18), transparent 70%);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pill strong {
+      color: var(--text-secondary);
+    }
+
+    .pill .dot {
+      width: 6px;
+      height: 6px;
+      box-shadow: none;
+    }
+
+    /* ========== Main Content ========== */
+    .content {
+      flex: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.9fr);
+      gap: 14px;
+      min-height: 0;
+    }
+
+    @media (max-width: 960px) {
+      .content {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .panel {
+      background: rgba(5, 7, 14, 0.92);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 14px 14px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-height: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--divider);
+      margin-inline: 2px;
+    }
+
+    .panel-title {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .panel-title-badge {
+      font-size: 10px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .panel-actions {
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* ========== Tree ========== */
+    .tree-scroll {
+      flex: 1;
+      overflow: auto;
+      padding-right: 4px;
+      padding-top: 4px;
+    }
+
+    .tree-root,
+    .tree-children {
+      list-style: none;
+      margin: 0;
+      padding-left: 0;
+    }
+
+    .tree-item {
+      --indent: 0;
+      padding: 3px 6px 3px calc(10px + var(--indent) * 14px);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      cursor: default;
+      position: relative;
+      transition: background var(--transition-fast), color var(--transition-fast),
+                  transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .tree-item.folder {
+      cursor: pointer;
+    }
+
+    .tree-item.is-leaf {
+      padding-left: calc(22px + var(--indent) * 14px);
+    }
+
+    .tree-item:hover {
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--text-main);
+      box-shadow: 0 0 0 1px rgba(31, 41, 55, 0.85);
+      transform: translateY(-0.5px);
+    }
+
+    .tree-item.selected {
+      background: radial-gradient(circle at top left, var(--accent-soft), transparent 70%),
+                  rgba(15, 23, 42, 0.98);
+      color: var(--text-main);
+      box-shadow: 0 0 0 1px rgba(46, 204, 113, 0.7);
+    }
+
+    .chevron {
+      width: 14px;
+      height: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--text-muted);
+      transform: rotate(-90deg);
+      transition: transform var(--transition-med), color var(--transition-fast);
+    }
+
+    .tree-item.expanded .chevron {
+      transform: rotate(0deg);
+      color: var(--accent);
+    }
+
+    .tree-icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 5px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      background: linear-gradient(135deg, rgba(148, 163, 184, 0.22), rgba(30, 64, 175, 0.1));
+      color: rgba(229, 231, 235, 0.9);
+    }
+
+    .tree-item.folder .tree-icon {
+      background: linear-gradient(135deg, rgba(46, 204, 113, 0.6), rgba(16, 185, 129, 0.2));
+      color: #022c22;
+    }
+
+    .tree-label {
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .tree-meta {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .tree-children {
+      margin-left: 0;
+      padding-left: 0;
+    }
+
+    .tree-children.collapsed {
+      display: none;
+    }
+
+    .tree-item.hidden-by-filter {
+      display: none !important;
+    }
+
+    /* ========== Info Panel ========== */
+    .info-body {
+      flex: 1;
+      padding-top: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .info-section {
+      padding: 8px 10px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    .info-heading {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .info-path {
+      font-family: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono",
+        "Courier New", monospace;
+      font-size: 11px;
+      color: var(--text-secondary);
+      word-break: break-all;
+    }
+
+    .info-highlight {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .info-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 7px 13px;
+      font-size: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.85));
+      color: var(--text-secondary);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: background var(--transition-fast), color var(--transition-fast),
+                  border-color var(--transition-fast), transform var(--transition-fast),
+                  box-shadow var(--transition-fast);
+    }
+
+    .btn.primary {
+      border-color: rgba(46, 204, 113, 0.9);
+      background: radial-gradient(circle at top left, rgba(46, 204, 113, 0.32), transparent 70%),
+                  linear-gradient(135deg, rgba(22, 163, 74, 0.95), rgba(21, 128, 61, 0.98));
+      color: #ecfdf5;
+      box-shadow: 0 12px 32px rgba(22, 163, 74, 0.45);
+    }
+
+    .btn.primary:hover {
+      transform: translateY(-0.5px);
+      box-shadow: 0 16px 36px rgba(22, 163, 74, 0.65);
+    }
+
+    .btn.secondary:hover {
+      background: rgba(15, 23, 42, 0.98);
+      color: var(--text-main);
+      transform: translateY(-0.5px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+    }
+
+    .info-kv {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 12px;
+      font-size: 12px;
+    }
+
+    .info-kv span {
+      color: var(--text-muted);
+    }
+
+    .info-kv strong {
+      color: var(--text-secondary);
+    }
+
+    .badge-mini {
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 10px;
+    }
+
+    .muted {
+      color: var(--text-muted);
+      font-size: 11px;
+    }
+
+    .info-footer {
+      margin-top: auto;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* ========== Loading / Error ========== */
+    .loading,
+    .error {
+      font-size: 12px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px dashed rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.9);
+      margin: 4px 2px 0;
+    }
+
+    .loading span.spinner {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid rgba(148, 163, 184, 0.35);
+      border-top-color: var(--accent);
+      display: inline-block;
+      margin-right: 6px;
+      animation: spin 680ms linear infinite;
+    }
+
+    .error {
+      border-color: rgba(248, 113, 113, 0.75);
+      color: #fecaca;
+      background: rgba(127, 29, 29, 0.9);
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Scrollbars (subtle) */
+    .tree-scroll::-webkit-scrollbar {
+      width: 7px;
+    }
+    .tree-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .tree-scroll::-webkit-scrollbar-thumb {
+      background: rgba(31, 41, 55, 0.9);
+      border-radius: 999px;
+    }
+  </style>
 </head>
-
 <body>
-<header>GoldenWay 官網備份自動索引（Auto Index）</header>
+  <div class="app-shell">
+    <div class="app-inner">
+      <!-- Header -->
+      <header class="top-bar">
+        <div class="window-dots" aria-hidden="true">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+        </div>
+        <div class="title-block">
+          <div class="title-main">
+            <span>GoldenWay 官網內容備份 Explorer</span>
+            <span class="logo-pill">HTML / CSS ARCHIVE</span>
+          </div>
+          <div class="title-sub">
+            依 GitHub 目錄結構自動產生樹狀索引 · 點擊任一檔案即可在 Pages 上預覽
+          </div>
+        </div>
+        <div class="top-bar-spacer"></div>
+        <div class="status-badge">
+          <span class="status-dot-ok"></span>
+          <span id="status-text">已連線至 GitHub</span>
+        </div>
+      </header>
 
-<div id="container">
-    <p style="font-size:15px;color:#555;">此頁會自動掃描此 GitHub Pages 站內所有 HTML 檔。</p>
-</div>
+      <!-- Search / Summary -->
+      <section class="toolbar">
+        <div class="search-box">
+          <div class="search-icon">⌘K</div>
+          <input
+            id="search-input"
+            class="search-input"
+            type="search"
+            placeholder="搜尋資料夾或檔案名稱…"
+            autocomplete="off"
+          />
+        </div>
+        <div class="toolbar-meta">
+          <div class="pill">
+            <span class="dot" style="background: var(--accent);"></span>
+            <span>載入中的目錄：</span>
+            <strong id="meta-path">/</strong>
+          </div>
+          <div class="pill">
+            <span>資料夾 <strong id="meta-folders">0</strong></span>
+            <span>· 檔案 <strong id="meta-files">0</strong></span>
+          </div>
+        </div>
+      </section>
 
-<footer>GoldenWay 官網備份 · 自動索引版本</footer>
+      <!-- Main Content -->
+      <main class="content">
+        <!-- Tree Panel -->
+        <section class="panel">
+          <div class="panel-header">
+            <div class="panel-title">
+              <span>Tree</span>
+              <span class="panel-title-badge">GitHub &nbsp; main</span>
+            </div>
+            <div class="panel-actions">
+              <span class="muted" id="filter-hint">按 Enter 清除搜尋</span>
+            </div>
+          </div>
+          <div id="tree-loading" class="loading">
+            <span class="spinner"></span> 正在從 GitHub 載入目錄結構…
+          </div>
+          <div id="tree-error" class="error" style="display:none;"></div>
+          <div class="tree-scroll" id="tree-root-container">
+            <ul class="tree-root" id="tree-root"></ul>
+          </div>
+        </section>
 
-<script>
-// ========== 主要功能：自動掃描 Repo 內所有 HTML ==========
-// 透過 GitHub API 抓取 repo 內所有檔案，並自動依資料夾分類顯示
+        <!-- Info Panel -->
+        <section class="panel">
+          <div class="panel-header">
+            <div class="panel-title">
+              <span>Details</span>
+              <span class="panel-title-badge">Selection</span>
+            </div>
+            <div class="panel-actions">
+              <span class="muted">選取左側任一檔案以預覽 / 開啟</span>
+            </div>
+          </div>
+          <div class="info-body">
+            <div class="info-section">
+              <div class="info-heading">目前選取</div>
+              <div id="info-label" class="info-path info-highlight">
+                尚未選取任何檔案
+              </div>
+              <div id="info-path" class="info-path muted">
+                （請在左側樹狀目錄點選一個檔案節點）
+              </div>
+              <div class="info-actions">
+                <button class="btn primary" id="btn-open" disabled>
+                  在新分頁預覽
+                </button>
+                <button class="btn secondary" id="btn-open-github" disabled>
+                  在 GitHub 上檢視
+                </button>
+              </div>
+            </div>
 
-const repoOwner = "TsenWu"; 
-const repoName = "goldenway-website-backup";
+            <div class="info-section">
+              <div class="info-heading">節點資訊</div>
+              <div class="info-kv">
+                <span>類型：<strong id="info-type">—</strong></span>
+                <span>階層深度：<strong id="info-depth">—</strong></span>
+                <span>子項目數量：<strong id="info-children">—</strong></span>
+              </div>
+              <div style="margin-top:6px;" class="muted">
+                ＊只有 <span class="info-highlight">.html 檔案</span> 會連結至 GitHub Pages 預覽；
+                其他格式則仍可於 GitHub 介面檢視。
+              </div>
+            </div>
 
-async function fetchRepoFiles() {
-    const api = `https://api.github.com/repos/${repoOwner}/${repoName}/git/trees/main?recursive=1`;
-    const res = await fetch(api);
-    const data = await res.json();
-    return data.tree;
-}
+            <div class="info-footer">
+              <span class="badge-mini">Tip</span>
+              &nbsp;搜尋支援模糊比對；若想回到完整列表，只要清空搜尋欄位並按 Enter。
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
 
-function buildUI(files) {
-    const container = document.getElementById("container");
-    const folders = {};
+  <script>
+    // ====== Config ======
+    const OWNER = "TsenWu";
+    const REPO = "goldenway-website-backup";
+    const BRANCH = "main";
+    const API_BASE =
+      "https://api.github.com/repos/" + OWNER + "/" + REPO + "/contents";
+    const PAGES_BASE = "https://tsenwu.github.io/goldenway-website-backup/";
 
-    // 過濾所有 HTML
-    const htmlFiles = files.filter(f => f.path.endsWith(".html"));
+    const EXCLUDED_NAMES = ["index.html"]; // 不在索引中顯示首頁本身
 
-    // 依資料夾分組
-    htmlFiles.forEach(file => {
-        const parts = file.path.split("/");
-        const folder = parts.length > 1 ? parts[parts.length - 2] : "根目錄";
+    // ====== DOM refs ======
+    const treeRootEl = document.getElementById("tree-root");
+    const treeLoadingEl = document.getElementById("tree-loading");
+    const treeErrorEl = document.getElementById("tree-error");
+    const metaPathEl = document.getElementById("meta-path");
+    const metaFoldersEl = document.getElementById("meta-folders");
+    const metaFilesEl = document.getElementById("meta-files");
+    const searchInputEl = document.getElementById("search-input");
+    const filterHintEl = document.getElementById("filter-hint");
 
-        if (!folders[folder]) folders[folder] = [];
-        folders[folder].push(file.path);
-    });
+    const infoLabelEl = document.getElementById("info-label");
+    const infoPathEl = document.getElementById("info-path");
+    const infoTypeEl = document.getElementById("info-type");
+    const infoDepthEl = document.getElementById("info-depth");
+    const infoChildrenEl = document.getElementById("info-children");
+    const btnOpenEl = document.getElementById("btn-open");
+    const btnOpenGithubEl = document.getElementById("btn-open-github");
 
-    // 依資料夾排序
-    const sortedFolders = Object.keys(folders).sort();
+    let currentSelectedNode = null;
+    let stats = { folders: 0, files: 0 };
 
-    sortedFolders.forEach(folder => {
-        const section = document.createElement("div");
-        section.innerHTML = `<div class="folder">📁 ${folder}</div>`;
-        
-        const ul = document.createElement("ul");
+    // ====== Utility ======
+    const encodePathForApi = (path) =>
+      path
+        .split("/")
+        .map((seg) => encodeURIComponent(seg))
+        .join("/");
 
-        // 排序檔名
-        folders[folder].sort().forEach(filePath => {
-            const fileName = filePath.split("/").pop().replace(".html", "");
-            const a = `<li><a href="${filePath}" target="_blank">${fileName}</a></li>`;
-            ul.innerHTML += a;
+    const humanType = (type) =>
+      type === "dir" ? "資料夾" : type === "file" ? "檔案" : type;
+
+    const isHtmlFile = (name) => /\.html?$/.test(name.toLowerCase());
+
+    const createPagesUrl = (path) =>
+      PAGES_BASE + path.split("/").map(encodeURIComponent).join("/");
+
+    const createGithubBlobUrl = (path) =>
+      `https://github.com/${OWNER}/${REPO}/blob/${BRANCH}/${encodePathForApi(
+        path
+      )}`;
+
+    // ====== Tree Rendering ======
+    async function fetchDirectory(path = "") {
+      const url =
+        (path
+          ? `${API_BASE}/${encodePathForApi(path)}`
+          : API_BASE) + `?ref=${BRANCH}&per_page=100`;
+
+      metaPathEl.textContent = "/" + path;
+      try {
+        const res = await fetch(url);
+        if (!res.ok) {
+          throw new Error(`HTTP ${res.status}`);
+        }
+        const data = await res.json();
+        return Array.isArray(data) ? data : [];
+      } catch (err) {
+        throw err;
+      }
+    }
+
+    function sortEntries(entries) {
+      return entries
+        .filter((item) => !EXCLUDED_NAMES.includes(item.name))
+        .sort((a, b) => {
+          if (a.type === "dir" && b.type !== "dir") return -1;
+          if (a.type !== "dir" && b.type === "dir") return 1;
+          return a.name.localeCompare(b.name, "zh-Hant");
+        });
+    }
+
+    function buildTreeItem(entry, depth, parentPath) {
+      const li = document.createElement("li");
+      li.className =
+        "tree-item " + (entry.type === "dir" ? "folder" : "file is-leaf");
+      li.dataset.path = entry.path;
+      li.dataset.name = entry.name.toLowerCase();
+      li.style.setProperty("--indent", String(depth));
+
+      // Chevron for folder
+      if (entry.type === "dir") {
+        const chev = document.createElement("span");
+        chev.className = "chevron";
+        chev.innerHTML = "▸";
+        li.appendChild(chev);
+      } else {
+        const spacer = document.createElement("span");
+        spacer.style.width = "14px";
+        li.appendChild(spacer);
+      }
+
+      // Icon
+      const icon = document.createElement("span");
+      icon.className = "tree-icon";
+      icon.textContent = entry.type === "dir" ? "▢" : "◆";
+      li.appendChild(icon);
+
+      const label = document.createElement("span");
+      label.className = "tree-label";
+      label.textContent = entry.name;
+      li.appendChild(label);
+
+      const meta = document.createElement("span");
+      meta.className = "tree-meta";
+      if (entry.type === "dir") {
+        meta.textContent = "資料夾";
+      } else if (isHtmlFile(entry.name)) {
+        meta.textContent = "HTML 預覽";
+      } else {
+        meta.textContent = entry.type;
+      }
+      li.appendChild(meta);
+
+      if (entry.type === "dir") {
+        const childrenUl = document.createElement("ul");
+        childrenUl.className = "tree-children collapsed";
+        li.appendChild(childrenUl);
+        li.dataset.loaded = "false";
+      }
+
+      // Click handler
+      li.addEventListener("click", async (evt) => {
+        evt.stopPropagation();
+        handleNodeClick(li, entry);
+      });
+
+      return li;
+    }
+
+    async function handleNodeClick(li, entry) {
+      // Selection UI
+      if (currentSelectedNode) {
+        currentSelectedNode.classList.remove("selected");
+      }
+      currentSelectedNode = li;
+      li.classList.add("selected");
+
+      // Info panel
+      const depth = Number(li.style.getPropertyValue("--indent") || 0);
+      const infoPath = entry.path;
+
+      infoLabelEl.textContent = entry.name;
+      infoPathEl.textContent = "/" + infoPath;
+      infoTypeEl.textContent = humanType(entry.type);
+      infoDepthEl.textContent = String(depth);
+      infoChildrenEl.textContent =
+        entry.type === "dir" && li.querySelector(".tree-children")
+          ? li.querySelector(".tree-children").childElementCount
+          : entry.type === "file"
+          ? "—"
+          : "0";
+
+      // Buttons
+      const isHtml = entry.type === "file" && isHtmlFile(entry.name);
+      const pagesUrl = isHtml ? createPagesUrl(entry.path) : null;
+      const githubUrl = createGithubBlobUrl(entry.path);
+
+      btnOpenEl.disabled = !isHtml;
+      btnOpenGithubEl.disabled = entry.type !== "file";
+
+      btnOpenEl.onclick = () => {
+        if (pagesUrl) window.open(pagesUrl, "_blank", "noopener");
+      };
+      btnOpenGithubEl.onclick = () => {
+        window.open(githubUrl, "_blank", "noopener");
+      };
+
+      // Folder: toggle expand, lazy load if needed
+      if (entry.type === "dir") {
+        const childrenUl = li.querySelector(".tree-children");
+        const loaded = li.dataset.loaded === "true";
+
+        if (!loaded) {
+          try {
+            childrenUl.innerHTML = "";
+            const placeholder = document.createElement("div");
+            placeholder.className = "loading";
+            placeholder.innerHTML =
+              '<span class="spinner"></span> 載入中…';
+            childrenUl.appendChild(placeholder);
+
+            const children = await fetchDirectory(entry.path);
+            const sorted = sortEntries(children);
+            childrenUl.innerHTML = "";
+            sorted.forEach((child) => {
+              const childLi = buildTreeItem(
+                child,
+                depth + 1,
+                entry.path
+              );
+              childrenUl.appendChild(childLi);
+              if (child.type === "dir") stats.folders++;
+              else stats.files++;
+            });
+            li.dataset.loaded = "true";
+            updateStats();
+          } catch (err) {
+            const errMsg = document.createElement("div");
+            errMsg.className = "error";
+            errMsg.textContent =
+              "載入子目錄失敗：" + (err.message || err.toString());
+            childrenUl.innerHTML = "";
+            childrenUl.appendChild(errMsg);
+          }
+        }
+
+        const isCollapsed = childrenUl.classList.contains("collapsed");
+        if (isCollapsed) {
+          childrenUl.classList.remove("collapsed");
+          li.classList.add("expanded");
+        } else {
+          childrenUl.classList.add("collapsed");
+          li.classList.remove("expanded");
+        }
+      }
+    }
+
+    function updateStats() {
+      metaFoldersEl.textContent = String(stats.folders);
+      metaFilesEl.textContent = String(stats.files);
+    }
+
+    async function initRootTree() {
+      treeLoadingEl.style.display = "block";
+      treeErrorEl.style.display = "none";
+      treeRootEl.innerHTML = "";
+      stats = { folders: 0, files: 0 };
+
+      try {
+        const rootEntries = await fetchDirectory("");
+        const sorted = sortEntries(rootEntries);
+
+        sorted.forEach((entry) => {
+          const li = buildTreeItem(entry, 0, "");
+          treeRootEl.appendChild(li);
+          if (entry.type === "dir") stats.folders++;
+          else stats.files++;
         });
 
-        section.appendChild(ul);
-        container.appendChild(section);
+        updateStats();
+        treeLoadingEl.style.display = "none";
+      } catch (err) {
+        treeLoadingEl.style.display = "none";
+        treeErrorEl.style.display = "block";
+        treeErrorEl.textContent =
+          "從 GitHub 取得目錄時發生錯誤：" +
+          (err.message || err.toString()) +
+          "（可稍後再試）";
+      }
+    }
+
+    // ====== Search / Filter ======
+    function applyFilter(query) {
+      const q = query.trim().toLowerCase();
+      const allNodes = Array.from(
+        document.querySelectorAll(".tree-item")
+      );
+
+      if (!q) {
+        allNodes.forEach((n) => n.classList.remove("hidden-by-filter"));
+        filterHintEl.textContent = "按 Enter 清除搜尋";
+        return;
+      }
+
+      filterHintEl.textContent = `搜尋中：「${query}」`;
+
+      // 先隱藏全部，再顯示符合的與其父層
+      allNodes.forEach((n) => n.classList.add("hidden-by-filter"));
+
+      allNodes.forEach((node) => {
+        const name = node.dataset.name || "";
+        if (name.includes(q)) {
+          showNodeAndParents(node);
+        }
+      });
+    }
+
+    function showNodeAndParents(node) {
+      node.classList.remove("hidden-by-filter");
+      let parent = node.parentElement;
+      while (parent && parent !== document.body) {
+        if (parent.classList.contains("tree-children")) {
+          parent.classList.remove("collapsed");
+          const li = parent.parentElement;
+          if (li && li.classList.contains("tree-item")) {
+            li.classList.add("expanded");
+            li.classList.remove("hidden-by-filter");
+          }
+        }
+        parent = parent.parentElement;
+      }
+    }
+
+    // ====== Keyboard / Events ======
+    searchInputEl.addEventListener("input", (e) => {
+      applyFilter(e.target.value);
     });
-}
 
-async function init() {
-    const files = await fetchRepoFiles();
-    buildUI(files);
-}
+    searchInputEl.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        searchInputEl.value = "";
+        applyFilter("");
+      } else if (e.key === "Enter" && !searchInputEl.value.trim()) {
+        applyFilter("");
+      }
+    });
 
-init();
-</script>
+    // 快速聚焦搜尋（Mac 感）
+    window.addEventListener("keydown", (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        searchInputEl.focus();
+        searchInputEl.select();
+      }
+    });
 
+    // ====== Boot ======
+    (async function boot() {
+      await initRootTree();
+    })();
+  </script>
 </body>
 </html>
