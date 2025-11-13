@@ -1,0 +1,1397 @@
+<!-- ★ 品質宣告區塊：主標芫荽體＋內文 Noto Sans TC ★ --><!-- ✅ 引入字型：芫荽體 + Noto Sans TC -->
+<link href="https://cdn.jsdelivr.net/gh/ButTaiwan/iancnfont@latest/Iansui-Regular.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* ===============================================
+   ★ 品質宣告區塊 .block-品質宣告
+   =============================================== */
+.block-品質宣告 {
+  position: relative;  /* ← 加這行即可防止遮罩穿透 */
+  /* ✅ 區塊背景圖設定 */
+  background: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/4644232229e34b5f.png?v=4gw258i') center center / cover no-repeat;
+
+  /* ✅ 區塊整體上下左右內距（＝視覺上的高度）→ 想改背景區塊高就是改這裡！ */
+  padding: 100px 60px; /* ↑↑↑ 可改成 80px 40px 會變矮，或 140px 更高 */
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;               /* ✅ 左右文字與浮層的間距 */
+  flex-wrap: wrap;
+  box-sizing: border-box;
+
+  /* ✅ 預設內文字型（headline 除外） */
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+}
+
+/* ✅ 背景濾暗遮罩層 */
+.block-品質宣告::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3); /* ↑↑↑ 調整透明度／改成 rgba(0,0,0,0.1) 比較亮 */
+  z-index: 1;
+}
+.block-品質宣告 > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ===============================================
+   ★ 主標文字 .headline
+   =============================================== */
+.block-品質宣告 .headline {
+  flex: 2;
+  /* ✅ 主標使用芫荽體（fallback 備援字體照保留） */
+  font-family: 'Iansui', 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+
+  font-size: 28px;         /* ✅ 主標字級大小 */
+  font-weight: normal;     /* ✅ 芫荽體不建議用 bold */
+  line-height: 1.4;        /* ✅ 行高（上下段距離），可調小如 1.2 更緊湊 */
+  text-align: center;
+  white-space: pre-wrap;   /* ✅ 保留 <br> 換行 */
+
+  color: #ffffff;
+
+  /* ✅ 浮入動畫（可移除以下 3 行就會變成靜態主標） */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: headlineFadeUp 0.8s ease-out 0.2s forwards;
+}
+
+/* ✅ 動畫設定：主標從底部浮上來 */
+@keyframes headlineFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===============================================
+   ★ 毛玻璃群組 .glass-group
+   =============================================== */
+.block-品質宣告 .glass-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px; /* ✅ 每張浮層卡片之間的垂直間距 */
+}
+
+/* ===============================================
+   ★ 單張毛玻璃浮層 .glass-card
+   =============================================== */
+.block-品質宣告 .glass-card {
+  background: rgba(255, 255, 255, 0.2);      /* ✅ 浮層底色與透明度 */
+  backdrop-filter: blur(10px);               /* ✅ 毛玻璃核心效果 */
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 8px;                        /* ✅ 浮層圓角 */
+
+  padding: 20px;                             /* ✅ 浮層內距 */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 16px;                                 /* ✅ icon 與文字的間距 */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);     /* ✅ 初始陰影 */
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.block-品質宣告 .glass-card:hover {
+  transform: translateY(-4px);              /* ✅ 滑入上浮距離 */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);   /* ✅ 滑入陰影效果 */
+}
+
+/* ===============================================
+   ★ icon 圖示設定
+   =============================================== */
+.block-品質宣告 .glass-card .icon {
+  width: 48px;         /* ✅ icon 寬度（會等比例縮放） */
+  height: 48px;
+  flex-shrink: 0;
+}
+.block-品質宣告 .glass-card .icon img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ===============================================
+   ★ 浮層文字區（內文字體繼承）
+   =============================================== */
+.block-品質宣告 .glass-card .text-group {
+  font-size: 14px;     /* ✅ 內文文字大小 */
+  line-height: 1.6;    /* ✅ 行距（中文建議介於1.4~1.8之間） */
+  opacity: 0.95;       /* ✅ 文字透明度，讓字體稍微柔和一點 */
+}
+
+/* ===============================================
+   ★ RWD：手機寬度下的排版調整
+   =============================================== */
+@media (max-width: 768px) {
+  .block-品質宣告 {
+    flex-direction: column;
+    text-align: center;
+  }
+  .block-品質宣告 .glass-group {
+    width: 100%;
+    align-items: center;
+  }
+  .block-品質宣告 .glass-card {
+    width: 100%;
+    max-width: 360px;
+  }
+}
+</style>
+<!-- ✅ HTML 內容區塊 -->
+<div class="block-品質宣告"><!-- 主標 -->
+<div class="headline">燈具卓越之作<br />
+品質與工藝共襄盛名</div>
+<!-- 毛玻璃浮層群組 -->
+
+<div class="glass-group">
+<div class="glass-card">
+<div class="icon"><img alt="台灣製造" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/taiwan.png?v=ptelq5t" /></div>
+
+<div class="text-group">台灣研發 生產製造<br />
+Taiwan researches, develops, and manufactures.</div>
+</div>
+
+<div class="glass-card">
+<div class="icon"><img alt="日本驅動器" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/japan.png?v=vt32z2" /></div>
+
+<div class="text-group">驅動器 日本規格<br />
+Drivers compliant with Japanese specifications.</div>
+</div>
+
+<div class="glass-card">
+<div class="icon"><img alt="美國光源" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/statue.png?v=2yzlwij" /></div>
+
+<div class="text-group">光源 美國規格<br />
+Light sources compliant with U.S. specifications.</div>
+</div>
+</div>
+</div>
+
+<div style="height: 20px;">&nbsp;</div>
+<!-- ★ CREE晶粒區塊一 block-CREE晶粒（文字偏底＋漸層＋文字陰影） ★ -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">.block-CREE晶粒 {
+  --hero-height: 650px;
+  --hero-bg-opacity: 0.9;
+  --gradient-angle: 45deg;
+  --title-gradient-stops:
+    #000000,
+    #848484,
+    #000000;
+  font-family: 'Noto Sans TC','Microsoft JhengHei',sans-serif;
+}
+
+.block-CREE晶粒 .hero-section {
+  position: relative;
+  width: 100%;
+  height: var(--hero-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 40px;
+  align-items: center;
+  overflow: hidden;
+}
+.block-CREE晶粒 .hero-section::before {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/cree_led_01.png?v=f0x9gg4')
+    center/cover no-repeat;
+  opacity: var(--hero-bg-opacity);
+  z-index: -1;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* 副標 */
+.block-CREE晶粒 .hero-subtitle {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(0,0,0,0.6);
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+/* 主標：漸層＋文字陰影 */
+.block-CREE晶粒 .hero-title {
+  margin: 8px 0 0;
+  font-size: 28px;
+  font-weight: 700;
+  background: linear-gradient(
+    var(--gradient-angle),
+    var(--title-gradient-stops)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* 文字陰影，真正畫在字形後面 */
+  text-shadow:
+    2px 2px 4px rgba(44,44,44,0.0),
+    -1px -1px 2px rgba(255,255,255,0.0);
+
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+/* 底線 */
+.block-CREE晶粒 .hero-underline {
+  margin-top: 16px;
+  width: 120px;
+  height: 4px;
+  background: rgba(0,0,0,0.6);
+  border-radius: 2px;
+  animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+/* 手機微調 */
+@media (max-width: 768px) {
+  .block-CREE晶粒 .hero-section {
+    height: calc(var(--hero-height)*0.75);
+    padding-bottom: 20px;
+  }
+  .block-CREE晶粒 .hero-subtitle { font-size: 16px; animation-delay: 0.1s; }
+  .block-CREE晶粒 .hero-title    { font-size: 22px; animation-delay: 0.3s; }
+  .block-CREE晶粒 .hero-underline {
+    width: 80px; height: 3px; margin-top: 12px;
+    animation-delay: 0.5s;
+  }
+}
+</style>
+<div class="block-CREE晶粒">
+<div class="hero-section">
+<div class="hero-subtitle">─ 細節成就質感・光影定義空間 ─</div>
+
+<div class="hero-title">無藍光・無頻閃<br />
+專業照明新標竿</div>
+
+<div class="hero-underline">&nbsp;</div>
+</div>
+</div>
+<!-- ★ 區塊：燈具壽命比較 ★ -->
+<style type="text/css">.block-燈具壽命比較 {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: wrap;
+  padding: 60px 60px; /* ↑↑↑ 可調整上下左右間距 */
+  box-sizing: border-box;
+  background-color: #fff;
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+}
+
+/* 左側圖表（2/3寬） */
+.block-燈具壽命比較 .chart-area {
+  flex: 2;
+  min-width: 300px;
+  padding-right: 30px;
+}
+
+/* ★ Infogram 響應式容器 ★ */
+.block-燈具壽命比較 .infogram-responsive-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 75%; /* 600/800 = 75%，維持原始比例 */
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+.block-燈具壽命比較 .infogram-responsive-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+
+/* 右側文字區（1/3寬） */
+.block-燈具壽命比較 .text-overlay {
+  flex: 1;
+  min-width: 280px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/OL-747/Snipaste_2025-05-27_14-37-05.png?v=dayr3rm') center center / cover no-repeat;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.block-燈具壽命比較 .text-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.6); /* 可調透明度 */
+  z-index: 1;
+}
+.block-燈具壽命比較 .text-overlay .content {
+  position: relative;
+  z-index: 2;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #333;
+  white-space: pre-wrap;
+}
+
+/* 響應式調整：手機時垂直堆疊 */
+@media (max-width: 768px) {
+  .block-燈具壽命比較 {
+    flex-direction: column;
+    padding: 40px 20px;
+  }
+  .block-燈具壽命比較 .chart-area {
+    padding-right: 0;
+    margin-bottom: 40px;
+  }
+  .block-燈具壽命比較 .text-overlay {
+    padding: 24px;
+  }
+}
+</style>
+<!-- ✅ HTML 區塊本體 -->
+<div class="block-燈具壽命比較"><!-- 左側圖表區 -->
+<div class="chart-area">
+<div class="infogram-responsive-container"><iframe allowfullscreen="" frameborder="0" scrolling="no" src="https://e.infogram.com/4cebe1fc-1a77-43f7-9f73-bf2abcb6e1e2?src=embed" title="光源壽命"></iframe></div>
+</div>
+<!-- 右側文字區 -->
+
+<div class="text-overlay">
+<div class="content">金鍏電子超高光效光板燈使用壽命超越10萬小時，高光效、低光衰、無頻閃，不僅很有感地節省電費，還能大幅降低維修人力以及汰換成本。<br />
+目前市售LED燈管壽命僅約6千小時（2年），即使尚未故障，光衰也很明顯，導致照明不足、頻繁更換，為企業帶來一連串隱形成本與管理困難。<br />
+選擇高光效光板燈，不僅是投資於長效節能與低維護的高品質照明，更是企業實踐ESG永續發展承諾的具體行動。從源頭減少能耗與耗材浪費，全面優化營運成本，協助企業提升綠色競爭力，穩健邁向智慧、低碳、永續的經營新時代。</div>
+</div>
+</div>
+<!-- ★ 光效區塊 block-光效區塊：可調背景＋左上浮層＋置中標題＋Icon＋Hover動畫（Icon 垂直置中版） ★ -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* ============================================
+   區塊L： block-光效區塊（全域變數區，想改哪裡就改哪裡）
+============================================ */
+.block-光效區塊 {
+  --hero-height: 600px;    /* 區塊整體高度 */
+  --hero-bg-url: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/OL-747/snipaste_2025-05-27_15-36-24.png?v=dwtu7r'); /* 背景圖 URL */
+  --hero-bg-opacity: 0.1;  /* 背景圖遮罩透明度 0~1 */
+
+  --overlay-bg: rgba(50,50,50,0.5); /* 左上浮層底色＋透明度 */
+  --overlay-radius: 6px;            /* 左上浮層圓角 */
+  --overlay-padding: 16px;          /* 左上浮層內距 */
+  --overlay-width: 350px;           /* 左上浮層最大寬 */
+  --overlay-color: #fff;            /* 左上浮層文字顏色 */
+
+  --title-color: #ffffff;           /* 標題文字顏色 */
+  --title-hover-color: #ffde00;     /* 標題滑過文字顏色 */
+  --title-fontsize: 36px;           /* 標題字級 */
+  --title-padding: 8px 16px;        /* 標題內距 */
+
+  --icon-size: 48px;                /* Icon 寬高 */
+  /* （Icon 不再用 margin-top，flex 會自動置中） */
+
+  font-family: 'Noto Sans TC','Microsoft JhengHei',sans-serif;
+}
+
+/* Hero 區塊 & 背景 */
+.block-光效區塊 .hero-section {
+  position: relative;
+  width: 100%;
+  height: var(--hero-height);
+  background: var(--hero-bg-url) center/cover no-repeat;
+  overflow: hidden;
+}
+.block-光效區塊 .hero-section::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,var(--hero-bg-opacity));
+  z-index: 0;
+}
+
+/* 左上浮層 */
+.block-光效區塊 .hero-section .overlay {
+  position: absolute;
+  top: 20px; left: 30px;                         /* 浮層對頂與左的間距 */
+  max-width: var(--overlay-width);
+  padding: var(--overlay-padding);
+  background: var(--overlay-bg);
+  border-radius: var(--overlay-radius);
+  color: var(--overlay-color);
+  font-size: 14px;
+  line-height: 1.6;
+  z-index: 1;
+}
+
+/* 置中標題 + Icon 容器（flex 置中） */
+.block-光效區塊 .hero-section .center-content {
+  position: absolute;
+  top: 30%; left: 50%;                           /* 水平置中+上下偏移 */
+  transform: translate(-50%, -50%);
+  display: flex;                                  /* ← 新增：啟用 flex */
+  flex-direction: column;                         /* 直向排列 */
+  align-items: center;                            /* 垂直置中 */
+  text-align: center;
+  z-index: 1;
+}
+
+/* 標題文字 */
+.block-光效區塊 .center-content .title {
+  display: inline-block;
+  padding: var(--title-padding);
+  font-size: var(--title-fontsize);
+  font-weight: 700;
+  color: var(--title-color);
+  cursor: default;
+  transition: color .3s, transform .3s;
+  user-select: text;
+}
+/* hover 效果 */
+.block-光效區塊 .center-content .title:hover {
+  color: var(--title-hover-color);
+  transform: scale(1.05);
+}
+
+/* Icon：不需要 margin-top，flex 會自動置中 */
+.block-光效區塊 .center-content .icon {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  display: inline-block;
+  background: center/contain no-repeat var(--icon-url);
+}
+
+/* 手機版微調 */
+@media (max-width: 768px) {
+  .block-光效區塊 {
+    --hero-height: 500px;
+    --overlay-width: 80%;
+    --title-fontsize: 26px;
+    --icon-size: 36px;
+  }
+  .block-光效區塊 .hero-section .center-content {
+    top: 95%;                                    /* 手機上下偏移可獨立調整 */
+    transform: translate(-50%, -95%);            /* 手機上下偏移調整百分比 */
+  }
+}
+</style>
+<!-- ===== HTML 結構 ===== -->
+<div class="block-光效區塊">
+<div class="hero-section"><!-- 左上浮層文字 -->
+<div class="overlay" style="text-align: justify;">發光效率越高代表其電能轉換成光的效率越高，即發出相同光通量所消耗的電能越少。目前世界各國均積極進行節能省碳的措施，並逐漸提高光源之發光效率相關規定，以降低照明應用所消耗的電力。<br />
+<br />
+<span style="color:#ffff00;">光板燈相較傳統燈具能省下68.7%耗電量。</span></div>
+<!-- 置中標題 + Icon -->
+
+<div class="center-content">
+<div class="title">超高光效<br />
+160 lm/W</div>
+
+<div class="icon" style="--icon-url:url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/led-strip__3_.png?v=j2lhnnw');">&nbsp;</div>
+</div>
+</div>
+</div>
+<!-- ★ 四卡片區塊：四互動功能卡 ★ -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* ===========================================
+   四卡片區塊：四互動功能卡
+   ----------------------------------------------------------------
+   • --card-width: 桌機版卡片寬度（可自行調整 px/rem/% 等）
+   • --card-width-mobile: 手機版卡片寬度（可自行調整 px/rem/% 等）
+   • 其餘可修改項目都註在下面
+   =========================================== */
+.feature-single {
+  display: flex;
+  justify-content: center;       /* 卡片水平置中 */
+  gap: 20px;             /* ★★ 這行：左右兩張卡片的間距，隨意改成你想要的 px/rem */
+  padding: 10px 20px;            /* ↑↑↑ 可調：區塊上下左右內距 */
+  box-sizing: border-box;
+  font-family: 'Noto Sans TC','Microsoft JhengHei',sans-serif;
+
+  /* ★★ 可調整：卡片寬度 ★★ */
+  --card-width: 350px;           /* 桌機版 */
+  --card-width-mobile: 90%;      /* 手機版 */
+}
+
+.feature-single .card {
+  width: var(--card-width);
+  background: rgba(166, 119, 26, 0.05); /* ↑↑↑ 可調：卡片底色＆透明度 */
+  border: 1px solid #A6771A;      /* 可自訂外框顏色與粗細 */
+  border-radius: 12px;           /* ↑↑↑ 可調：圓角 */
+  padding: 24px 16px;            /* ↑↑↑ 可調：卡片內距 */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  text-align: center;
+  transition: transform .2s, box-shadow .2s, background .2s;
+  box-sizing: border-box;
+}
+.feature-single .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  background: rgba(166, 119, 26, 0.1);
+}
+
+.feature-single .card img {
+  width: 64px;                   /* ↑↑↑ 可調：圖示寬度 */
+  height: 64px;                  /* ↑↑↑ 可調：圖示高度 */
+  object-fit: contain;
+  margin-bottom: 16px;           /* ↑↑↑ 可調：圖示與標題間距 */
+}
+
+.feature-single .card h4 {
+  margin: 0 0 8px;               /* ↑↑↑ 可調：標題與內文間距 */
+  font-size: 18px;               /* ↑↑↑ 可調：標題字級 */
+  font-weight: 600;
+  color: #000000;                /* ↑↑↑ 可調：標題顏色 */
+}
+
+.feature-single .card p {
+  margin: 0;
+  font-size: 14px;               /* ↑↑↑ 可調：內文字級 */
+  line-height: 1.6;              /* ↑↑↑ 可調：內文行高 */
+  color: #7a7a7a;                /* ↑↑↑ 可調：內文顏色 */
+}
+
+/* 手機 RWD：調整卡片寬度 */
+@media (max-width: 768px) {
+  .feature-single {
+    flex-direction: column; /* ★★ 加這一行，讓卡片垂直排列 ★★ */
+    align-items: center;     /* 水平置中卡片 */
+  }
+
+  .feature-single .card {
+    width: var(--card-width-mobile);
+  }
+}
+</style>
+<!-- ===== HTML 部分 ===== -->
+<div class="feature-single">
+<div class="card"><!-- 替換成你自己的圖片 & alt --><img alt="節能標章" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/7eefbf924662abb9.png?v=h82q6i" />
+<h4>節能標章 認證</h4>
+
+<p>省下電費達50-80%<br />
+2-3年內可回收燈具成本</p>
+</div>
+
+<div class="card"><!-- 替換成你自己的圖片 & alt --><img alt="BSMI" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/5acba6da902e8056.png?v=j7rn8xn" />
+<h4>BSMI 認證</h4>
+
+<p>產品耐用年限 100,000小時<br />
+一盞高品質燈具可用上12年</p>
+</div>
+
+<div class="card"><!-- 替換成你自己的圖片 & alt --><img alt="CNS" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/b3c75efa65208e9e.png?v=91uc2t" />
+<h4>國家標準 CNS檢測</h4>
+
+<p>無藍光、無頻閃、低光衰<br />
+不造成眼睛危害</p>
+</div>
+
+<div class="card"><!-- 替換成你自己的圖片 & alt --><img alt="MIT" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/ef6c8577ac6ae0da.png?v=rxb6y5" />
+<h4>MIT 台灣製造</h4>
+
+<p>台灣研發生產製造<br />
+超高品質保障使用安全</p>
+</div>
+</div>
+<!-- ★ 色溫區塊：block-色溫區塊 ★ -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">.block-色溫區塊 {
+  /* ↑↑↑ 這裡調整 icon 寬度 ↓↓↓ */
+  --icon-width: 15%;              /* ← 可改：8% / 40px / 5rem 都行 */
+
+  /* 其它變數 */
+  --hero-height: 700px;
+  --hero-bg-opacity: 1.0;
+  --overlay-max-width: 40%;
+  --overlay-padding: 20px;
+  --overlay-radius: 8px;
+  --subtitle-size: 30px;
+  --subtitle-color: rgba(41,64,108,1.0);
+  --text-size: 16px;
+  --text-color: rgba(68,76,86,1.0);
+
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+.block-色溫區塊 .hero-section {
+  position: relative;
+  width: 100%;
+  height: var(--hero-height);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.block-色溫區塊 .hero-section::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/OL-747/snipaste_2025-05-27_17-12-38.png?v=94yrtd') center/cover no-repeat;
+  opacity: var(--hero-bg-opacity);
+  z-index: -1;
+}
+
+/* 動畫 */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0);     }
+}
+
+/* Overlay：底部置中 */
+.block-色溫區塊 .overlay {
+  position: absolute;               /* ★ 改這裡：絕對定位 */
+  bottom: 5%; left: 50%;            /* ↑↑↑ 可調：浮層距離底邊的百分比或像素 */
+  transform: translateX(-50%);      /* ★ 只做水平置中 */
+  background: rgba(255,255,255,0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: var(--overlay-padding);
+  border-radius: var(--overlay-radius);
+  max-width: var(--overlay-max-width);
+  text-align: center;
+  z-index: 1;
+}
+
+/* Icon */
+.block-色溫區塊 .hero-icon img {
+  width: var(--icon-width);
+  animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+/* 小標 */
+.block-色溫區塊 .hero-subtitle {
+  margin: 12px 0 0;
+  font-size: var(--subtitle-size);
+  font-weight: 700;
+  color: var(--subtitle-color);
+  animation: fadeInUp 0.6s ease-out 0.4s both;
+}
+
+/* 段落 */
+.block-色溫區塊 .hero-text {
+  margin: 16px 0 0;
+  font-size: var(--text-size);
+  line-height: 1.6;
+  color: var(--text-color);
+  animation: fadeInUp 0.6s ease-out 0.6s both;
+}
+
+/* 手機版 */
+@media (max-width: 768px) {
+  /* 1）把 overlay 的寬度變寬 */
+  .block-色溫區塊 {
+    /* 直接改變變數 */
+    --overlay-max-width: 95%;  /* 或 95% / 100% 任意你要多寬 */
+  }
+
+  /* 2）同時間把 padding、霧化強度也可以一起微調 */
+  .block-色溫區塊 .overlay {
+    padding: 10px;            /* 改小一點 */
+    max-width: var(--overlay-max-width);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  /* 3）還可以調高度、字級等等 */
+  .block-色溫區塊 .hero-section {
+    height: 400px; /* 手機版高度 */
+  }
+  .block-色溫區塊 .hero-subtitle {
+    font-size: 24px;
+    animation-delay: 0.3s;
+  }
+  .block-色溫區塊 .hero-text {
+    font-size: 14px;
+    animation-delay: 0.5s;
+  }
+  .block-色溫區塊 .hero-icon img {
+    animation-delay: 0.1s;
+  }
+}
+</style>
+<div class="block-色溫區塊">
+<div class="hero-section">
+<div class="overlay">
+<div class="hero-icon"><img src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/color-palette.png?v=x9z4r64" /></div>
+
+<div class="hero-subtitle">色溫(K)</div>
+
+<div class="hero-text">✓ 多種色溫可供選擇<br />
+✓ 5000K、5700K為標準品</div>
+</div>
+</div>
+</div>
+
+<div style="height: 20px;">&nbsp;</div>
+<!-- ★ 演色性區塊：右側文字浮層 + 滿版背景 ★ -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">.block-演色性 {
+  position: relative;
+  width: 100%;
+  height: 700px; /* ✅ 可依需求調整整體高度 */
+  background: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/OL-747/pexels-pavlo-275744-1226402.jpg?v=o3bsr9v') center/cover no-repeat;
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* ✅ 文字容器靠右、垂直置中 */
+.block-演色性 .text-container {
+  position: absolute;
+  top: 50%;
+  right: 50px;
+  transform: translateY(-50%);
+  max-width: 320px;
+  color: #fff;
+  text-align: left;
+}
+
+/* ✅ 主標框線樣式 + 字體變大 */
+.block-演色性 .title {
+  font-size: 30px;         /* ✅ 可調整：主標字級 */
+  font-weight: 700;
+  display: inline-block;
+  padding: 8px 16px;
+  border: 2px solid #fff;
+  border-radius: 6px;
+  background: transparent;
+  color: #fff;
+  margin-bottom: 12px;
+  transition: all 0.3s ease;
+}
+.block-演色性 .title:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* ✅ 說明文字段落 */
+.block-演色性 .desc {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ✅ RWD 手機版調整 */
+@media (max-width: 768px) {
+  .block-演色性 {
+    height: 300px; /* ✅ 手機版縮短高度 */
+  }
+  .block-演色性 .text-container {
+    right: 10px;
+    left: 10px;
+    max-width: none;
+    background: rgba(0, 0, 0, 0.6);  /* ✅ 加強可讀性 */
+    padding: 16px;
+    border-radius: 8px;
+    text-align: left;
+  }
+  .block-演色性 .title {
+    font-size: 18px;
+    padding: 6px 12px;
+  }
+  .block-演色性 .desc {
+    font-size: 14px;
+  }
+}
+</style>
+<!-- ✅ HTML 結構 -->
+<div class="block-演色性">
+<div class="text-container">
+<div class="title">演色性 Ra≧80</div>
+
+<div class="desc">演色性指數（CRI）是照明品質的重要衡量標準，用來判斷光源對物體色彩還原的真實度。<br />
+數值越高，色彩越自然鮮明，呈現效果也更貼近日光環境。</div>
+</div>
+</div>
+<!-- ★ 發光角度區塊：左文字＋右圖(img版) ★ -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* ====================================
+   發光角度區塊：block-發光角度區塊
+   ==================================== */
+.block-發光角度區塊 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+  padding: 60px 40px;
+  background: #fff;
+  flex-wrap: wrap;
+  gap: 10px; /* ↑↑↑ 左右區塊間距（可調） */
+}
+
+/* 左側文字內容 */
+.block-發光角度區塊 .left-content {
+  flex: 1;
+  max-width: 560px;
+  z-index: 2;
+}
+.block-發光角度區塊 .left-content h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+  text-align: center;
+}
+.block-發光角度區塊 .left-content .angle {
+  font-size: 46px;
+  font-weight: 700;
+  color: #E2B200;
+  margin-bottom: 16px; /* ↓↓↓ 數值與圖示距離 */
+  text-align: center;
+}
+.block-發光角度區塊 .left-content .icon-img {
+  width: 160px;          /* 圖片寬度 */
+  margin: 0 auto 24px;   /* 置中並與下方段落留白 */
+}
+.block-發光角度區塊 .left-content .desc {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.8;
+  text-align: center;
+  margin-bottom: 12px;
+}
+.block-發光角度區塊 .left-content .note {
+  font-size: 14px;
+  color: #999;
+  text-align: center;
+}
+
+/* 右側圖片（用 <img> 顯示） */
+.block-發光角度區塊 .right-image {
+  flex: 1;
+  max-width: 800px;
+}
+.block-發光角度區塊 .right-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+
+/* RWD 手機版 */
+@media (max-width: 768px) {
+  .block-發光角度區塊 {
+    flex-direction: column;
+    padding: 40px 20px;
+  }
+  .block-發光角度區塊 .left-content {
+    max-width: 100%;
+  }
+  .block-發光角度區塊 .right-image {
+    width: 100%;
+    margin-top: 24px;
+  }
+}
+</style>
+<!-- ✅ HTML 區塊內容 -->
+<div class="block-發光角度區塊">
+<div class="left-content">
+<h3>燈具發光角度</h3>
+
+<div class="angle">120&deg;</div>
+
+<div class="icon-img"><img alt="發光角度圖示" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/OL-747/120angle.png?v=32gog5" /></div>
+
+<div class="desc">燈具發光角度120&deg;，帶來照明無死角，<br />
+並提升環境光均勻度，能有效降低眩光。</div>
+
+<div class="note">(長期待在高眩光環境，會導致煩躁、不舒服或視力受損)</div>
+</div>
+
+<div class="right-image"><img alt="閱讀燈光情境圖" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/360%20370%20380/bl-360_bl-370_bl-380_angle_02.jpg?v=73b7tph" /></div>
+</div>
+<!-- ★ 調光區塊：三浮層區塊 + 右側說明文字 ★ -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">.block-調光區塊 {
+  display: flex;
+  flex-wrap: wrap;
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+  width: 100%;
+  background: #fff;
+}
+
+/* 左側底圖區域 */
+.block-調光區塊 .left-area {
+  flex: 2;
+  position: relative;
+  background: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/OL-747/pexels-andrew-8960464.jpg?v=ynzye1xe') center center / cover no-repeat;
+  min-height: 550px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px;
+  gap: 10px;   /* ✅ ← 這一行控制浮層間距 */
+  box-sizing: border-box;
+}
+
+/* 單一浮層 */
+.block-調光區塊 .color-layer {
+  flex: 1;
+  max-width: 350px;
+  min-height: 500px; /* ✅ 調高浮層高度 */
+  background: rgba(255, 255, 255, 0.0); /* ✅ 可針對每層覆蓋調整 */
+  border-radius: 12px;
+  padding: 32px 20px 20px; /* ✅ 上右下：調整文字靠上 */
+  box-sizing: border-box;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* ✅ 文字靠上 */
+  align-items: center;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: #000; /* ✅ 預設文字顏色 */
+}
+.block-調光區塊 .color-layer:hover {
+  transform: translateY(-6px); /* ✅ 滑入浮動效果 */
+}
+
+/* 右側說明文字區 */
+.block-調光區塊 .right-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+.block-調光區塊 .right-area .desc {
+  max-width: 400px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #333;
+}
+
+/* RWD 手機版 */
+@media (max-width: 768px) {
+  .block-調光區塊 {
+    flex-direction: column;
+  }
+  .block-調光區塊 .left-area {
+    flex-direction: column;
+    gap: 5px;
+
+    min-height: 450px; /* ✅ ← 加這一行：調整手機版左側區塊高度 */
+  }
+
+  .block-調光區塊 .color-layer {
+    max-width: 100%;
+    width: 100%;
+    min-height: auto;
+  }
+}
+</style>
+<!-- ✅ HTML 結構 -->
+<div class="block-調光區塊"><!-- 左側底圖與浮層群 -->
+<div class="left-area">
+<div class="color-layer" style="background: rgba(255,225,150,0.4); color: #5a3e00;">色溫3000K</div>
+
+<div class="color-layer" style="background: rgba(0,0,0,0.3); color: #000;">光源輸出50%</div>
+
+<div class="color-layer" style="background: rgba(255,255,255,0.2); color: #4982b5;">光源輸出100%<br />
+色溫6500K</div>
+</div>
+<!-- 右側文字區塊 -->
+
+<div class="right-area">
+<div class="desc" style="text-align: justify;">適合各種調光規格，並搭配<span style="color:#2980b9;">調光控制器</span>，作為光源輸出的控制；或搭配<span style="color:#2980b9;">智慧調光控制系統</span>做燈具群組控制、時間排程、或場域照明用電管理。（選購）</div>
+</div>
+</div>
+
+<div style="height: 20px;">&nbsp;</div>
+<!-- ★ 模組化區塊：手機版寬度與內距已優化 -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">.block-模組化區塊 {
+  --icon-width: 15%;
+  --hero-height: 800px;
+  --hero-bg-opacity: 1.0;
+  --overlay-max-width: 40%;
+  --overlay-padding: 20px;
+  --overlay-radius: 8px;
+  --subtitle-size: 32px;
+  --subtitle-color: rgba(78,110,133,1.0);
+  --text-size: 16px;
+  --text-color: rgba(46,68,81,1.0);
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+.block-模組化區塊 .hero-section {
+  position: relative;
+  width: 100%;
+  height: var(--hero-height);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.block-模組化區塊 .hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/OL-747/snipaste_2025-05-28_16-32-23.png?v=fyv32v8') center/cover no-repeat;
+  opacity: var(--hero-bg-opacity);
+  z-index: -1;
+}
+
+/* === Overlay 浮層區塊 === */
+.block-模組化區塊 .overlay {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: var(--overlay-padding);
+  border-radius: var(--overlay-radius);
+  max-width: var(--overlay-max-width);
+  text-align: center;
+  z-index: 1;
+}
+
+/* === Icon === */
+.block-模組化區塊 .hero-icon img {
+  width: var(--icon-width);
+  animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+/* === 標語字體 === */
+.block-模組化區塊 .hero-subtitle {
+  margin: 12px 0 0;
+  font-size: var(--subtitle-size);
+  font-weight: 700;
+  color: var(--subtitle-color);
+  animation: fadeInUp 0.6s ease-out 0.4s both;
+}
+
+/* === 說明文字 === */
+.block-模組化區塊 .hero-text {
+  margin: 16px 0 0;
+  font-size: var(--text-size);
+  line-height: 1.6;
+  color: var(--text-color);
+  animation: fadeInUp 0.6s ease-out 0.6s both;
+}
+
+/* === 動畫 === */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === 手機版 RWD 調整 === */
+@media (max-width: 768px) {
+  .block-模組化區塊 {
+    --overlay-padding: 20px;
+  }
+
+  .block-模組化區塊 .overlay {
+    left: 10% !important;              /* ✅ 加：左邊距離 */
+    right: 10% !important;             /* ✅ 加：右邊距離 */
+    max-width: none !important;       /* ✅ 取消 max-width 限制 */
+    transform: none !important;       /* ✅ 取消水平置中 transform */
+    padding: var(--overlay-padding);  /* ✅ 確保內距保留 */
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  .block-模組化區塊 .hero-section {
+    height: 600px;
+  }
+
+  .block-模組化區塊 .hero-subtitle {
+    font-size: 24px;
+    animation-delay: 0.3s;
+  }
+
+  .block-模組化區塊 .hero-text {
+    font-size: 14px;
+    animation-delay: 0.5s;
+  }
+
+  .block-模組化區塊 .hero-icon img {
+    width: 48px;
+    height: auto;
+    animation-delay: 0.1s;
+  }
+}
+</style>
+<!-- ✅ HTML 結構 -->
+<div class="block-模組化區塊">
+<div class="hero-section">
+<div class="overlay">
+<div class="hero-icon"><img src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/component.png?v=kb2169l" /></div>
+
+<div class="hero-subtitle">模組化設計 x 長使用壽命</div>
+
+<div class="hero-text" style="text-align: justify;">模組化設計將發熱的驅動器與光源分開，延長產品壽命。維修時可單獨更換損壞元件，降低維護成本。超越10年的使用壽命，更適合安裝於不易維護的空間場域，大幅減少後續管理難度與費用。</div>
+</div>
+</div>
+</div>
+<!-- ★ ESG形象及保固區塊：背景圖 + 左文 + 毛玻璃右浮框 ★ -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* ============================================
+   ? 區塊設定：.block-ESG形象及保固
+   • 區塊背景、內距、遮罩透明度
+   • 字體套用 Noto Sans TC
+   ============================================ */
+.block-ESG形象及保固 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 80px 60px; /* ✅ 可調：整體上下左右內距 */
+  min-height: 600px;  /* ✅ 加這行即可控制整塊區塊顯示高度 */
+  background: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/snipaste_2025-05-29_10-57-56.jpg?v=i0x3dxv') center center / cover no-repeat; /* ✅ 可調：背景圖網址 */
+  background-color: rgba(255,255,255,1.0); /* ✅ 可調：若圖片無法載入的背景色 */
+  box-sizing: border-box;
+  font-family: 'Noto Sans TC','Microsoft JhengHei',sans-serif;
+  flex-wrap: wrap;
+}
+
+/* ✅ 可調：整體區塊半透明遮罩層（越小越透明） */
+.block-ESG形象及保固::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.6);
+  z-index: 1;
+}
+
+/* 所有內容浮在遮罩上方 */
+.block-ESG形象及保固 > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================
+   ? 左側文字區：.left-text
+   ============================================ */
+.block-ESG形象及保固 .left-text {
+  flex: 2;
+  padding-right: 40px;             /* ✅ 可調：右間距 */
+  color: #555d32;                  /* ✅ 可調：文字顏色 */
+  font-size: 32px;                 /* ✅ 建議對應「內容描述」：16px（14px） */
+  line-height: 1.8;                /* ✅ 可調：行距 */
+  font-weight: 400;
+  text-align: left;
+}
+
+/* ============================================
+   ? 毛玻璃浮框卡片：.floating-box
+   ============================================ */
+.block-ESG形象及保固 .floating-box {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.1);   /* ✅ 可調：浮框底色透明度 */
+  backdrop-filter: blur(12px);            /* ✅ 可調：毛玻璃模糊程度 */
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 12px;                    /* ✅ 可調：圓角大小 */
+  padding: 32px 24px;                     /* ✅ 可調：內距 */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;                       /* ✅ 可調：卡片最大寬度 */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* ✅ 初始陰影 */
+}
+
+/* ✅ 浮入動畫效果（可關閉） */
+.block-ESG形象及保固 .floating-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* icon 區塊 */
+.block-ESG形象及保固 .floating-box .icon {
+  width: 60px;     /* ✅ 可調：圖示寬度 */
+  height: 60px;    /* ✅ 可調：圖示高度 */
+  margin-bottom: 24px;
+}
+.block-ESG形象及保固 .floating-box .icon img {
+  width: 100%;
+  height: auto;
+}
+
+/* 卡片標題 */
+.block-ESG形象及保固 .floating-box h3 {
+  font-size: 24px;       /* ✅ 對應「卡片標語」：18px（18px） */
+  font-weight: 700;
+  margin: 0 0 8px;
+  color: #555d32;
+}
+
+/* 分隔線樣式 */
+.block-ESG形象及保固 .floating-box hr {
+  width: 75%;
+  border: none;
+  border-top: 1px solid #555d32;
+  margin: 16px 0;
+}
+
+/* 卡片內文段落 */
+.block-ESG形象及保固 .floating-box p {
+  font-size: 18px;       /* ✅ 對應「卡片內文」：14px（14px） */
+  margin: 4px 0;
+  color: #555d32;
+  line-height: 1.6;
+}
+
+/* ============================================
+   ? 手機版調整（小於768px寬）
+   ============================================ */
+@media (max-width: 768px) {
+  .block-ESG形象及保固 {
+    flex-direction: column;
+    padding: 40px 20px; /* ✅ 可調：手機版上下內距 */
+    min-height: 480px; /* ↑↑↑ 手機版區塊高度 */
+    text-align: center;
+  }
+  .block-ESG形象及保固 .left-text {
+    padding-right: 0;
+    margin-bottom: 40px; /* ✅ 左右區塊間距 */
+    font-size: 24px;     /* ✅ 手機版內容描述大小 */
+  }
+  .block-ESG形象及保固 .floating-box h3 {
+    font-size: 20px;
+  }
+  .block-ESG形象及保固 .floating-box p {
+    font-size: 16px;
+  }
+}
+</style>
+<!-- ✅ HTML 區塊內容 -->
+<div class="block-ESG形象及保固"><!-- 左側 ESG 宣告 -->
+<div class="left-text" style="text-align: center;">金鍏電子完成溫室氣體盤查<br />
+踐行 ESG 承諾，與國際標準接軌</div>
+<!-- 右側毛玻璃浮框卡片 -->
+
+<div class="floating-box">
+<div class="icon"><img alt="永續圖示" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/company-icon2.png?v=sxcfwnu" /></div>
+
+<h3>業界最長保固<br />
+使用超越十年</h3>
+
+<hr />
+<p style="text-align: justify;">光板：10年 / 50,000小時</p>
+
+<p style="text-align: justify;">驅動器：5年 / 20,000小時</p>
+</div>
+</div>
+
+<div class="_bd_row _bd_clearfix">
+<div class="_bd_column _bd_full">
+<hr /></div>
+</div>
+<!-- ★ 特色結尾互動區塊：block-特色互動結尾 ★ -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* ===========================================
+   特色結尾互動區塊：block-特色互動結尾
+   ----------------------------------------------------------------
+   • --card-width: 桌機版卡片寬度（可自行調整 px/rem/% 等）
+   • --card-width-mobile: 手機版卡片寬度（可自行調整 px/rem/% 等）
+   • 其餘可修改項目都註在下面
+   =========================================== */
+.block-特色互動結尾 {
+  display: flex;
+  justify-content: center;       /* 卡片群水平置中 */
+  gap: 20px;                      /* ↑↑↑ 可調：左右卡片間距 */
+  padding: 10px 20px;             /* ↑↑↑ 可調：整體區塊內距 */
+  box-sizing: border-box;
+  font-family: 'Noto Sans TC','Microsoft JhengHei',sans-serif;
+  --card-width: 350px;            /* ★ 可調：桌機版卡片寬度 */
+  --card-width-mobile: 90%;       /* ★ 可調：手機版卡片寬度 */
+}
+
+.block-特色互動結尾 .card {
+  width: var(--card-width);
+  background: rgba(239, 239, 239, 0.2);  /* ↑↑↑ 可調：卡片底色透明度 */
+  border-radius: 12px;                  /* ↑↑↑ 可調：卡片圓角 */
+  padding: 24px 16px;                   /* ↑↑↑ 可調：卡片內距 */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  text-align: center;
+  transition: transform .2s, box-shadow .2s, background .2s;
+  box-sizing: border-box;
+}
+
+.block-特色互動結尾 .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  background: rgba(239, 239, 239, 0.3);
+}
+
+.block-特色互動結尾 .card img {
+  width: 64px;                    /* ↑↑↑ 可調：圖示寬度 */
+  height: 64px;                   /* ↑↑↑ 可調：圖示高度 */
+  object-fit: contain;
+  margin-bottom: 16px;            /* ↑↑↑ 可調：圖示與標題間距 */
+}
+
+.block-特色互動結尾 .card h4 {
+  margin: 0 0 8px;                /* ↑↑↑ 可調：標題與內文間距 */
+  font-size: 18px;               /* ↑↑↑ 可調：標題字級 */
+  font-weight: 600;
+  color: #000000;               /* ↑↑↑ 可調：標題顏色 */
+}
+
+.block-特色互動結尾 .card p {
+  margin: 0;
+  font-size: 14px;              /* ↑↑↑ 可調：內文字級 */
+  line-height: 1.6;
+  color: #7a7a7a;               /* ↑↑↑ 可調：內文顏色 */
+}
+
+@media (max-width: 768px) {
+  .block-特色互動結尾 {
+    flex-direction: column;     /* ★★ 手機版改為垂直排列卡片 */
+    align-items: center;        /* 水平置中卡片 */
+  }
+
+  .block-特色互動結尾 .card {
+    width: var(--card-width-mobile);
+  }
+}
+</style>
+<!-- ✅ HTML 結構 -->
+<div class="block-特色互動結尾">
+<div class="card"><img alt="照明節能技術" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/biosphere.png?v=wyw1h7n" />
+<h4>節能照明技術</h4>
+
+<p>超光效LED照明<br />
+比傳統燈具節能50%~80%</p>
+</div>
+
+<div class="card"><img alt="BSMI" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/5acba6da902e8056.png?v=j7rn8xn" />
+<h4>BSMI 認證</h4>
+
+<p>通過國家標準檢驗局檢驗<br />
+產品安全可靠，保障使用安全</p>
+</div>
+
+<div class="card"><img alt="無藍光" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/eye.png?v=1sl3ji" />
+<h4>無藍光 低光衰</h4>
+
+<p>安全且舒適的光源<br />
+保護眼睛不受藍光危害</p>
+</div>
+
+<div class="card"><img alt="壽命保固" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/reduction.png?v=m2ralzi" />
+<h4>長壽命 省成本</h4>
+
+<p>超過10萬小時使用壽命<br />
+大幅降低更換與維修成本</p>
+</div>
+</div>
+
+<div class="_bd_row _bd_clearfix">
+<div class="_bd_column _bd_full">
+<hr /></div>
+</div>
+
+<div class="_bd_row _bd_clearfix">
+<div class="_bd_column _bd_full">
+<h1 class="size-48 _bd_is-title1-48 _bd_is-title-bold _bd_is-upper" style="text-align: center;">適用安裝場域</h1>
+
+<p class="size-21" style="text-align: center;">傳統輕鋼架安裝 / 辦公室 / 學校 / 商業大樓 / 會議中心 / 圖書館 / 醫院 / 餐廳</p>
+</div>
+</div>
