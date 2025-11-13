@@ -1,55 +1,61 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GOLDENWAY 官網內容備份</title>
 
 <style>
     body {
         margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
-        background: #f5f7fb;
-        color: #222;
         display: flex;
         height: 100vh;
-    }
-
-    /* 左側欄 */
-    .sidebar {
-        width: 300px;
-        background: #ffffffcc;
-        backdrop-filter: blur(12px);
-        border-right: 1px solid #e6e8ef;
-        padding: 20px;
-        overflow-y: auto;
-    }
-
-    .sidebar h2 {
-        font-size: 18px;
-        font-weight: 700;
-        margin-bottom: 16px;
+        background: #f6f7fb;
+        font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", sans-serif;
         color: #333;
     }
 
-    .tree-item {
+    /* 左側：樹狀結構 */
+    .sidebar {
+        width: 320px;
+        background: #ffffffcc;
+        backdrop-filter: blur(14px);
+        border-right: 1px solid #e5e7eb;
+        overflow-y: auto;
+        padding: 20px;
+    }
+
+    .title {
+        font-weight: 700;
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+
+    /* folder */
+    .folder {
+        font-weight: 600;
+        margin: 8px 0 4px;
         cursor: pointer;
-        padding: 6px 4px;
-        border-radius: 6px;
-        margin-bottom: 4px;
-        transition: 0.2s;
+        user-select: none;
+    }
+
+    /* file */
+    .file {
+        padding-left: 16px;
+        cursor: pointer;
+        padding: 4px;
+        border-radius: 4px;
         font-size: 14px;
     }
 
-    .tree-item:hover {
-        background: #e9eefc;
+    .file:hover {
+        background: #eef2ff;
     }
 
-    /* 右側 iframe 預覽 */
+    /* 右側 iframe 預覽區（亮色版） */
     .preview {
         flex: 1;
-        background: white;
-        border-left: 1px solid #ddd;
+        background: #fff;
     }
 
     iframe {
@@ -62,45 +68,95 @@
 </head>
 
 <body>
-    <!-- 左側目錄 -->
-    <div class="sidebar">
-        <h2>網站檔案索引</h2>
-        <div id="tree"></div>
-    </div>
 
-    <!-- 右側預覽 -->
-    <div class="preview">
-        <iframe id="previewFrame" src=""></iframe>
-    </div>
+<div class="sidebar">
+    <div class="title">網站檔案索引</div>
+    <div id="tree"></div>
+</div>
+
+<div class="preview">
+    <iframe id="viewer" src=""></iframe>
+</div>
 
 <script>
 const TREE_URL = "https://raw.githubusercontent.com/TsenWu/goldenway-website-backup/refs/heads/main/tree-data.json";
 
-function buildTree(list) {
-    const tree = document.getElementById("tree");
-    tree.innerHTML = "";
+/* 產生階層式樹狀資料 */
+function buildHierarchy(list) {
+    const root = {};
 
-    list.forEach(path => {
-        const name = path.split("/").pop();
-        const item = document.createElement("div");
-        item.className = "tree-item";
-        item.textContent = name;
+    list.forEach(item => {
+        const parts = item.path.split("/");
+        let current = root;
 
-        item.onclick = () => {
-            const iframe = document.getElementById("previewFrame");
-            iframe.src = path.replace(/^\.\//, "");
-        };
+        parts.forEach((part, idx) => {
+            if (!current[part]) {
+                current[part] = {
+                    __files: [],
+                    __folders: {}
+                };
+            }
 
-        tree.appendChild(item);
+            if (idx === parts.length - 1) {
+                current[part].__files.push(item.path);
+            } else {
+                current = current[part].__folders;
+            }
+        });
+    });
+
+    return root;
+}
+
+/* 建立 HTML 樹狀 UI */
+function renderTree(node, container, basePath = "") {
+    Object.keys(node).forEach(key => {
+        const item = node[key];
+
+        // folder
+        if (item.__folders || item.__files.length > 0) {
+            const folderDiv = document.createElement("div");
+            folderDiv.className = "folder";
+            folderDiv.textContent = key;
+
+            const subContainer = document.createElement("div");
+            subContainer.style.paddingLeft = "16px";
+
+            folderDiv.onclick = () => {
+                subContainer.style.display =
+                    subContainer.style.display === "none" ? "block" : "none";
+            };
+
+            container.appendChild(folderDiv);
+            container.appendChild(subContainer);
+
+            // files
+            item.__files.forEach(filePath => {
+                const fileDiv = document.createElement("div");
+                fileDiv.className = "file";
+                fileDiv.textContent = filePath.split("/").pop();
+                fileDiv.onclick = () => {
+                    document.getElementById("viewer").src = filePath;
+                };
+                subContainer.appendChild(fileDiv);
+            });
+
+            // folders
+            renderTree(item.__folders, subContainer, key + "/");
+        }
     });
 }
 
+/* 讀取 JSON */
 fetch(TREE_URL)
-    .then(res => res.json())
-    .then(data => buildTree(data))
+    .then(r => r.json())
+    .then(data => {
+        const hierarchy = buildHierarchy(data);
+        renderTree(hierarchy, document.getElementById("tree"));
+    })
     .catch(err => {
         document.getElementById("tree").innerHTML =
-          "<p style='color:red;'>無法載入 tree-data.json<br>" + err + "</p>";
+            "<p style='color:red'>無法載入 tree-data.json<br>" + err + "</p>";
     });
 </script>
 
