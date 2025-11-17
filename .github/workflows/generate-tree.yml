@@ -15,9 +15,10 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Generate tree-data.json
+      - name: Generate tree-data.json (hierarchical)
+        shell: bash
         run: |
-          echo "開始掃描資料夾並建立樹狀 JSON..."
+          echo "開始建立樹狀 JSON..."
 
           generate_tree() {
             local dir="$1"
@@ -28,20 +29,30 @@ jobs:
             echo "${indent}  \"path\": \"$dir/\","
             echo "${indent}  \"children\": ["
 
+            shopt -s nullglob
+
             local first=1
 
-            for item in "$dir"/*; do
-              if [[ -d "$item" ]]; then
-                [[ $first -eq 0 ]] && echo ","
-                generate_tree "$item" "  $indent"
-                first=0
-              elif [[ "$item" == *.html ]]; then
-                [[ $first -eq 0 ]] && echo ","
-                name=$(basename "$item")
-                # Escape JSON
-                safe_name=$(printf '%s' "$name" | sed 's/"/\\"/g')
-                safe_path=$(printf '%s' "$item" | sed 's/"/\\"/g')
-                echo "${indent}    { \"title\": \"$safe_name\", \"path\": \"$safe_path\" }"
+            # 子資料夾
+            for subdir in "$dir"/*/ ; do
+              local d=$(basename "$subdir")
+              # 跳過 .github
+              if [[ "$d" == ".github" ]]; then
+                continue
+              fi
+
+              if [[ $first -eq 0 ]]; then echo "${indent},"; fi
+              generate_tree "$dir/$d" "  $indent"
+              first=0
+            done
+
+            # HTML 檔案
+            for file in "$dir"/*.html ; do
+              if [[ -f "$file" ]]; then
+                local f=$(basename "$file")
+
+                if [[ $first -eq 0 ]]; then echo "${indent},"; fi
+                echo "${indent}  { \"title\": \"$f\", \"path\": \"$file\" }"
                 first=0
               fi
             done
@@ -52,16 +63,22 @@ jobs:
           }
 
           echo "[" > tree-data.json
+
           first_dir=1
-          for dir in */; do
-            [[ "$dir" == ".github/" ]] && continue
+          for dir in */ ; do
+            dirname="${dir%/}"
+            if [[ "$dirname" == ".github" ]]; then
+              continue
+            fi
 
-            dir="${dir%/}"
+            if [[ $first_dir -eq 0 ]]; then
+              echo "," >> tree-data.json
+            fi
 
-            [[ $first_dir -eq 0 ]] && echo "," >> tree-data.json
-            generate_tree "$dir" "" >> tree-data.json
+            generate_tree "$dirname" "" >> tree-data.json
             first_dir=0
           done
+
           echo "]" >> tree-data.json
 
       - name: Commit tree-data.json
