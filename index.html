@@ -1,104 +1,120 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GOLDENWAY 官網內容備份</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOLDENWAY 官網內容備份</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-        background: #f5f5f7;
-        height: 100vh;
-        display: flex;
-        color: #1d1d1f;
-    }
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background: #f5f5f7;
+            height: 100vh;
+            display: flex;
+            color: #1d1d1f;
+        }
 
-    .sidebar {
-        width: 300px;
-        background: #ffffffcc;
-        backdrop-filter: blur(20px);
-        border-right: 1px solid #d2d2d7;
-        overflow-y: auto;
-        padding: 20px;
-    }
+        /* 左側欄 */
+        .sidebar {
+            width: 300px;
+            background: #ffffffcc;
+            backdrop-filter: blur(20px);
+            border-right: 1px solid #d2d2d7;
+            overflow-y: auto;
+            padding: 20px;
+        }
 
-    h2 {
-        margin: 0 0 10px;
-        font-size: 18px;
-        font-weight: 600;
-    }
+        h2 {
+            margin: 0 0 10px;
+            font-size: 18px;
+            font-weight: 600;
+        }
 
-    .folder, .file {
-        padding: 5px 0;
-        cursor: pointer;
-        user-select: none;
-    }
+        /* 樹狀清單 */
+        ul {
+            list-style: none;
+            margin: 0;
+            padding-left: 18px;
+        }
 
-    .folder > span::before {
-        content: "▸";
-        display: inline-block;
-        margin-right: 6px;
-        transition: transform 0.2s;
-    }
+        /* 子層預設收合 */
+        .folder > ul {
+            display: none;
+        }
 
-    .folder.open > span::before {
-        transform: rotate(90deg);
-    }
+        .folder.open > ul {
+            display: block;
+        }
 
-    ul {
-        list-style: none;
-        margin: 0;
-        padding-left: 18px;
-        display: none;
-    }
+        .folder, .file {
+            padding: 5px 0;
+            cursor: pointer;
+            user-select: none;
+        }
 
-    .folder.open > ul {
-        display: block;
-    }
+        .folder {
+            font-weight: 500;
+            margin-top: 8px;
+        }
 
-    .file {
-        font-weight: 400;
-        color: #0071e3;
-    }
+        .folder > span::before {
+            content: "▸";
+            display: inline-block;
+            margin-right: 6px;
+            transition: transform 0.2s;
+        }
 
-    .file:hover {
-        text-decoration: underline;
-    }
+        .folder.open > span::before {
+            transform: rotate(90deg);
+        }
 
-    .preview {
-        flex: 1;
-        background: #ffffff;
-        border-left: 1px solid #d2d2d7;
-        overflow: hidden;
-    }
+        .file {
+            font-weight: 400;
+            color: #0071e3;
+            padding-left: 14px;
+        }
 
-    iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-        background: white;
-    }
+        .file:hover {
+            text-decoration: underline;
+        }
 
-    .empty {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-        color: #86868b;
-        font-size: 18px;
-    }
-</style>
+        /* 右側預覽區 */
+        .preview {
+            flex: 1;
+            background: #ffffff;
+            border-left: 1px solid #d2d2d7;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: white;
+        }
+
+        .empty {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: #86868b;
+            font-size: 18px;
+        }
+    </style>
 </head>
+
 <body>
 
 <div class="sidebar">
     <h2>網站檔案索引</h2>
-    <div id="tree"></div>
+    <div id="tree">載入中...</div>
 </div>
 
 <div class="preview">
@@ -107,54 +123,45 @@
 </div>
 
 <script>
+
+/* 讀取 tree-data.json */
 fetch("tree-data.json")
     .then(res => res.json())
     .then(data => {
-        const treeContainer = document.getElementById("tree");
-        treeContainer.appendChild(renderTree(data));
+        const container = document.getElementById("tree");
+        container.innerHTML = "";
+        container.appendChild(renderTree(data));
     })
     .catch(err => {
         document.getElementById("tree").innerHTML =
             "<span style='color:red;'>無法載入 tree-data.json</span><br>" + err;
     });
 
-/* ★ 核心修正：空 children 不視為資料夾 ★ */
-function isFolder(node) {
-    return Array.isArray(node.children) && node.children.length > 0;
-}
-
-/* 建立樹狀 UI */
+/* 建立樹狀清單 */
 function renderTree(nodes) {
     const ul = document.createElement("ul");
-    ul.style.paddingLeft = "0";
 
     nodes.forEach(node => {
         const li = document.createElement("li");
 
-        const isFolder = Array.isArray(node.children) && node.children.length > 0;
-
-        if (isFolder) {
-            // 資料夾（有子項目）
+        if (node.children && node.children.length > 0) {
+            // 資料夾
             li.classList.add("folder");
-            li.innerHTML = `<span>${node.title}</span>`;
-            li.onclick = e => {
-                if (e.target.tagName !== "SPAN") return;
-                li.classList.toggle("open");
-            };
 
-            const childUL = renderTree(node.children);
-            li.appendChild(childUL);
+            const label = document.createElement("span");
+            label.textContent = node.title;
+
+            label.onclick = () => li.classList.toggle("open");
+
+            li.appendChild(label);
+            li.appendChild(renderTree(node.children));
+
         } else {
-            // 檔案 or 空資料夾
+            // 檔案
             li.classList.add("file");
             li.textContent = node.title;
-            li.onclick = () => {
-                if (node.path.endsWith("/")) {
-                    alert("這個資料夾目前沒有檔案");
-                } else {
-                    loadPreview(node.path);
-                }
-            };
+
+            li.onclick = () => loadPreview(node.path);
         }
 
         ul.appendChild(li);
@@ -163,8 +170,7 @@ function renderTree(nodes) {
     return ul;
 }
 
-
-/* 載入右側 HTML 預覽 */
+/* 載入預覽內容 */
 function loadPreview(path) {
     const frame = document.getElementById("previewFrame");
     const msg = document.getElementById("emptyMessage");
@@ -173,6 +179,7 @@ function loadPreview(path) {
     frame.style.display = "block";
     frame.src = path;
 }
+
 </script>
 
 </body>
