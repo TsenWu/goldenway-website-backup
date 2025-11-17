@@ -1,186 +1,753 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GOLDENWAY 官網內容備份</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GOLDENWAY 官網內容備份</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            background: #f5f5f7;
-            height: 100vh;
-            display: flex;
-            color: #1d1d1f;
-        }
+<style>
+  :root {
+    --bg-main: #f5f5f7;
+    --bg-sidebar: #ffffffcc;
+    --bg-preview: #ffffff;
+    --border-subtle: #d2d2d7;
+    --text-main: #1d1d1f;
+    --text-muted: #86868b;
+    --accent: #0071e3;
+    --accent-soft: #e5f1ff;
+    --folder-icon: #8e8e93;
+    --file-icon: #34c759;
+  }
 
-        /* 左側欄 */
-        .sidebar {
-            width: 300px;
-            background: #ffffffcc;
-            backdrop-filter: blur(20px);
-            border-right: 1px solid #d2d2d7;
-            overflow-y: auto;
-            padding: 20px;
-        }
+  * {
+    box-sizing: border-box;
+  }
 
-        h2 {
-            margin: 0 0 10px;
-            font-size: 18px;
-            font-weight: 600;
-        }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--bg-main);
+    height: 100vh;
+    display: flex;
+    color: var(--text-main);
+  }
 
-        /* 樹狀清單 */
-        ul {
-            list-style: none;
-            margin: 0;
-            padding-left: 18px;
-        }
+  /* 左側欄 */
+  .sidebar {
+    width: 320px;
+    max-width: 100%;
+    background: var(--bg-sidebar);
+    backdrop-filter: blur(20px);
+    border-right: 1px solid var(--border-subtle);
+    overflow-y: auto;
+    padding: 16px 18px 18px;
+    display: flex;
+    flex-direction: column;
+  }
 
-        /* 子層預設收合 */
-        .folder > ul {
-            display: none;
-        }
+  .sidebar-header {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
 
-        .folder.open > ul {
-            display: block;
-        }
+  h1 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
 
-        .folder, .file {
-            padding: 5px 0;
-            cursor: pointer;
-            user-select: none;
-        }
+  .sub-desc {
+    font-size: 11px;
+    color: var(--text-muted);
+  }
 
-        .folder {
-            font-weight: 500;
-            margin-top: 8px;
-        }
+  /* 控制列 */
+  .controls {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
 
-        .folder > span::before {
-            content: "▸";
-            display: inline-block;
-            margin-right: 6px;
-            transition: transform 0.2s;
-        }
+  .search-row {
+    display: flex;
+    gap: 6px;
+  }
 
-        .folder.open > span::before {
-            transform: rotate(90deg);
-        }
+  .search-input {
+    flex: 1;
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid var(--border-subtle);
+    font-size: 12px;
+    outline: none;
+    background: #fff;
+  }
 
-        .file {
-            font-weight: 400;
-            color: #0071e3;
-            padding-left: 14px;
-        }
+  .search-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent-soft);
+  }
 
-        .file:hover {
-            text-decoration: underline;
-        }
+  .control-btn {
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: 1px solid var(--border-subtle);
+    font-size: 11px;
+    background: #fff;
+    cursor: pointer;
+    color: var(--text-main);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+  }
 
-        /* 右側預覽區 */
-        .preview {
-            flex: 1;
-            background: #ffffff;
-            border-left: 1px solid #d2d2d7;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
+  .control-btn:hover {
+    background: #f0f0f5;
+  }
 
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            background: white;
-        }
+  .control-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
 
-        .empty {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            color: #86868b;
-            font-size: 18px;
-        }
-    </style>
+  .filter-chip {
+    padding: 2px 8px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font-size: 11px;
+    cursor: pointer;
+    background: transparent;
+    color: var(--text-muted);
+  }
+
+  .filter-chip.active {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* 搜尋結果 */
+  .search-results {
+    max-height: 120px;
+    overflow-y: auto;
+    margin-top: 4px;
+    padding: 4px 0;
+    border-top: 1px solid #e5e5ea;
+    display: none;
+  }
+
+  .search-result-item {
+    padding: 3px 4px;
+    cursor: pointer;
+    font-size: 11px;
+    border-radius: 4px;
+  }
+
+  .search-result-item:hover {
+    background: #f2f2f7;
+  }
+
+  .search-result-title {
+    color: var(--accent);
+  }
+
+  .search-result-path {
+    color: var(--text-muted);
+  }
+
+  /* 樹狀清單 */
+  #tree {
+    margin-top: 6px;
+    font-size: 12px;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 16px;
+  }
+
+  .root-list {
+    padding-left: 0;
+  }
+
+  .folder,
+  .file {
+    padding: 3px 0;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+  }
+
+  .folder > span,
+  .file-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* Folder arrow */
+  .folder > span::before {
+    content: "▸";
+    display: inline-block;
+    margin-right: 2px;
+    font-size: 10px;
+    color: var(--folder-icon);
+    transition: transform 0.18s ease-out;
+  }
+
+  .folder.open > span::before {
+    transform: rotate(90deg);
+  }
+
+  .folder-icon,
+  .file-icon {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+  }
+
+  .folder-icon {
+    background: var(--folder-icon);
+    opacity: 0.3;
+  }
+
+  .file-icon {
+    background: var(--file-icon);
+    opacity: 0.6;
+  }
+
+  .folder-title {
+    font-weight: 500;
+  }
+
+  .file {
+    font-weight: 400;
+    color: var(--accent);
+  }
+
+  .file:hover .file-label {
+    text-decoration: underline;
+  }
+
+  .file.active {
+    background: #e5f2ff;
+    border-radius: 4px;
+  }
+
+  .file.active .file-label {
+    text-decoration: none;
+  }
+
+  .folder-children {
+    display: none;
+  }
+
+  .folder.open > .folder-children {
+    display: block;
+  }
+
+  .hidden-by-filter {
+    display: none !important;
+  }
+
+  /* 右側預覽區 */
+  .preview {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-preview);
+    border-left: 1px solid var(--border-subtle);
+    overflow: hidden;
+  }
+
+  .preview-header {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border-subtle);
+    background: #fcfcff;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .breadcrumb {
+    font-size: 11px;
+    color: var(--text-muted);
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .breadcrumb span {
+    color: var(--text-main);
+  }
+
+  .breadcrumb .sep {
+    margin: 0 4px;
+    color: #c7c7cc;
+  }
+
+  .file-meta {
+    font-size: 11px;
+    color: var(--text-muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .file-meta strong {
+    color: var(--text-main);
+    font-weight: 500;
+  }
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: white;
+  }
+
+  .empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    color: var(--text-muted);
+    font-size: 16px;
+  }
+
+  @media (max-width: 900px) {
+    .sidebar {
+      width: 260px;
+    }
+  }
+
+  @media (max-width: 720px) {
+    body {
+      flex-direction: column;
+    }
+
+    .sidebar {
+      width: 100%;
+      border-right: none;
+      border-bottom: 1px solid var(--border-subtle);
+      max-height: 50vh;
+    }
+
+    .preview {
+      height: 50vh;
+    }
+  }
+</style>
 </head>
-
 <body>
 
+<!-- 左側 -->
 <div class="sidebar">
-    <h2>網站檔案索引</h2>
-    <div id="tree">載入中...</div>
+  <div class="sidebar-header">
+    <h1>網站檔案索引</h1>
+    <div class="sub-desc">自動同步 GitHub 檔案樹 · 點擊左側檔名可預覽 HTML</div>
+  </div>
+
+  <div class="controls">
+    <!-- 搜尋列 -->
+    <div class="search-row">
+      <input id="searchInput" class="search-input" type="text" placeholder="搜尋檔名或路徑…" />
+      <button id="clearSearchBtn" class="control-btn" type="button">清除</button>
+    </div>
+
+    <!-- Root 快速篩選 + 展開/收合 -->
+    <div class="control-row">
+      <button class="filter-chip active" data-root="all" type="button">全部</button>
+      <button class="filter-chip" data-root="about" type="button">about</button>
+      <button class="filter-chip" data-root="installation" type="button">installation</button>
+      <button class="filter-chip" data-root="product" type="button">product</button>
+      <button class="filter-chip" data-root="shared" type="button">shared</button>
+    </div>
+
+    <div class="control-row">
+      <button id="expandAllBtn" class="control-btn" type="button">展開全部</button>
+      <button id="collapseAllBtn" class="control-btn" type="button">收合全部</button>
+    </div>
+  </div>
+
+  <!-- 搜尋結果區 -->
+  <div id="searchResults" class="search-results"></div>
+
+  <!-- 樹狀清單 -->
+  <div id="tree"></div>
 </div>
 
+<!-- 右側 -->
 <div class="preview">
-    <div id="emptyMessage" class="empty">請從左側選擇一個 HTML 檔案預覽</div>
-    <iframe id="previewFrame" style="display:none;"></iframe>
+  <div class="preview-header">
+    <div id="breadcrumb" class="breadcrumb">尚未選擇檔案</div>
+    <div id="fileMeta" class="file-meta">
+      <div><strong>檔案大小：</strong><span id="metaSize">—</span></div>
+      <div><strong>最後更新時間：</strong><span id="metaTime">—</span></div>
+    </div>
+  </div>
+  <div id="emptyMessage" class="empty">請從左側選擇一個 HTML 檔案預覽</div>
+  <iframe id="previewFrame" style="display: none;"></iframe>
 </div>
 
 <script>
+  const treeContainer = document.getElementById("tree");
+  const searchInput = document.getElementById("searchInput");
+  const clearSearchBtn = document.getElementById("clearSearchBtn");
+  const searchResultsEl = document.getElementById("searchResults");
+  const breadcrumbEl = document.getElementById("breadcrumb");
+  const metaSizeEl = document.getElementById("metaSize");
+  const metaTimeEl = document.getElementById("metaTime");
+  const previewFrame = document.getElementById("previewFrame");
+  const emptyMessage = document.getElementById("emptyMessage");
+  const expandAllBtn = document.getElementById("expandAllBtn");
+  const collapseAllBtn = document.getElementById("collapseAllBtn");
+  const filterChips = Array.from(document.querySelectorAll(".filter-chip"));
 
-/* 讀取 tree-data.json */
-fetch("tree-data.json")
-    .then(res => res.json())
-    .then(data => {
-        const container = document.getElementById("tree");
-        container.innerHTML = "";
-        container.appendChild(renderTree(data));
+  let allFilesIndex = []; // {title, path, breadcrumb, liElement}
+  let currentFilePath = null;
+
+  /* 讀取 tree-data.json */
+  fetch("tree-data.json")
+    .then((res) => res.json())
+    .then((data) => {
+      const rootUl = renderTree(data, []);
+      rootUl.classList.add("root-list");
+      treeContainer.appendChild(rootUl);
+      buildFileIndex();
+      applyRootFilter("all");
     })
-    .catch(err => {
-        document.getElementById("tree").innerHTML =
-            "<span style='color:red;'>無法載入 tree-data.json</span><br>" + err;
+    .catch((err) => {
+      treeContainer.innerHTML =
+        "<span style='color:red;'>無法載入 tree-data.json</span><br><small>" +
+        err +
+        "</small>";
     });
 
-/* 建立樹狀清單 */
-function renderTree(nodes) {
+  /* 生成樹狀 UI */
+  function renderTree(nodes, parentTrail) {
     const ul = document.createElement("ul");
 
-    nodes.forEach(node => {
-        const li = document.createElement("li");
+    nodes.forEach((node) => {
+      const li = document.createElement("li");
+      const isFolder = Array.isArray(node.children) && node.children.length > 0;
 
-        if (node.children && node.children.length > 0) {
-            // 資料夾
-            li.classList.add("folder");
+      if (isFolder) {
+        li.classList.add("folder");
+        li.dataset.path = node.path || "";
+        li.dataset.root = parentTrail[0] || node.title; // 根節點分類
 
-            const label = document.createElement("span");
-            label.textContent = node.title;
+        const span = document.createElement("span");
+        const icon = document.createElement("span");
+        icon.className = "folder-icon";
+        const title = document.createElement("span");
+        title.className = "folder-title";
+        title.textContent = node.title;
 
-            label.onclick = () => li.classList.toggle("open");
+        span.appendChild(icon);
+        span.appendChild(title);
+        li.appendChild(span);
 
-            li.appendChild(label);
-            li.appendChild(renderTree(node.children));
+        span.addEventListener("click", (e) => {
+          li.classList.toggle("open");
+        });
 
-        } else {
-            // 檔案
-            li.classList.add("file");
-            li.textContent = node.title;
+        const childTrail = parentTrail.concat(node.title);
+        const childrenUl = renderTree(node.children, childTrail);
+        childrenUl.classList.add("folder-children");
+        li.appendChild(childrenUl);
+      } else {
+        li.classList.add("file");
+        li.dataset.path = node.path;
+        li.dataset.root = parentTrail[0] || ""; // 由上層 folder 決定 root
 
-            li.onclick = () => loadPreview(node.path);
-        }
+        const label = document.createElement("div");
+        label.className = "file-label";
 
-        ul.appendChild(li);
+        const icon = document.createElement("span");
+        icon.className = "file-icon";
+
+        const title = document.createElement("span");
+        title.textContent = node.title;
+
+        label.appendChild(icon);
+        label.appendChild(title);
+        li.appendChild(label);
+
+        const breadcrumbTrail = parentTrail.concat(node.title);
+
+        li.addEventListener("click", () => {
+          focusFile(li.dataset.path, breadcrumbTrail, li);
+        });
+      }
+
+      ul.appendChild(li);
     });
 
     return ul;
-}
+  }
 
-/* 載入預覽內容 */
-function loadPreview(path) {
-    const frame = document.getElementById("previewFrame");
-    const msg = document.getElementById("emptyMessage");
+  /* 建立檔案索引（搜尋用） */
+  function buildFileIndex() {
+    allFilesIndex = [];
+    const fileLis = treeContainer.querySelectorAll("li.file");
+    fileLis.forEach((li) => {
+      const path = li.dataset.path;
+      const labels = [];
+      let ptr = li.parentElement;
+      // 向上追溯資料夾名稱
+      while (ptr && ptr !== treeContainer) {
+        if (ptr.classList && ptr.classList.contains("folder")) {
+          const span = ptr.querySelector("> span .folder-title");
+          if (span) labels.unshift(span.textContent);
+        }
+        ptr = ptr.parentElement;
+      }
+      const fileTitle = li.textContent.trim();
+      const breadcrumb = labels.concat(fileTitle);
+      allFilesIndex.push({
+        title: fileTitle,
+        path,
+        breadcrumb,
+        liElement: li,
+      });
+    });
+  }
 
-    msg.style.display = "none";
-    frame.style.display = "block";
-    frame.src = path;
-}
+  /* 聚焦某檔案：展開父層 + 高亮 + 載入預覽 + breadcrumb + meta */
+  function focusFile(path, breadcrumbTrail, liElement) {
+    currentFilePath = path;
 
+    // 展開父層
+    if (!liElement) {
+      liElement = treeContainer.querySelector(`li.file[data-path="${CSS.escape(path)}"]`);
+    }
+    if (liElement) {
+      openAncestors(liElement);
+      // 高亮
+      treeContainer
+        .querySelectorAll("li.file.active")
+        .forEach((li) => li.classList.remove("active"));
+      liElement.classList.add("active");
+      // 確保在可視範圍
+      liElement.scrollIntoView({ block: "nearest" });
+    }
+
+    // 更新 breadcrumb
+    updateBreadcrumb(breadcrumbTrail || buildBreadcrumbFromLi(liElement));
+
+    // 載入 iframe
+    loadPreview(path);
+
+    // 更新 meta 資訊
+    updateFileMeta(path);
+  }
+
+  function openAncestors(li) {
+    let ptr = li.parentElement;
+    while (ptr && ptr !== treeContainer) {
+      if (ptr.classList && ptr.classList.contains("folder")) {
+        ptr.classList.add("open");
+      }
+      ptr = ptr.parentElement;
+    }
+  }
+
+  function buildBreadcrumbFromLi(li) {
+    if (!li) return [];
+    const names = [];
+    // 本身檔名
+    names.unshift(li.textContent.trim());
+    // 父層資料夾
+    let ptr = li.parentElement;
+    while (ptr && ptr !== treeContainer) {
+      if (ptr.classList && ptr.classList.contains("folder")) {
+        const span = ptr.querySelector("> span .folder-title");
+        if (span) names.unshift(span.textContent);
+      }
+      ptr = ptr.parentElement;
+    }
+    return names;
+  }
+
+  function updateBreadcrumb(trail) {
+    if (!trail || trail.length === 0) {
+      breadcrumbEl.textContent = "尚未選擇檔案";
+      return;
+    }
+    breadcrumbEl.innerHTML = "";
+    trail.forEach((seg, idx) => {
+      if (idx > 0) {
+        const sep = document.createElement("span");
+        sep.className = "sep";
+        sep.textContent = "/";
+        breadcrumbEl.appendChild(sep);
+      }
+      const span = document.createElement("span");
+      span.textContent = seg;
+      breadcrumbEl.appendChild(span);
+    });
+  }
+
+  /* 載入右側 HTML 預覽 */
+  function loadPreview(path) {
+    emptyMessage.style.display = "none";
+    previewFrame.style.display = "block";
+    previewFrame.src = path;
+  }
+
+  /* 更新檔案 meta（size + last-modified） */
+  function updateFileMeta(path) {
+    metaSizeEl.textContent = "讀取中…";
+    metaTimeEl.textContent = "讀取中…";
+
+    // 針對 GitHub Pages，可使用 HEAD 拿 Header 資訊
+    fetch(path, { method: "HEAD" })
+      .then((res) => {
+        const size = res.headers.get("content-length");
+        const lm = res.headers.get("last-modified");
+
+        if (size) {
+          const kb = (Number(size) / 1024).toFixed(1);
+          metaSizeEl.textContent = kb + " KB";
+        } else {
+          metaSizeEl.textContent = "—";
+        }
+
+        if (lm) {
+          const dt = new Date(lm);
+          if (!isNaN(dt.getTime())) {
+            metaTimeEl.textContent = dt.toLocaleString("zh-TW");
+          } else {
+            metaTimeEl.textContent = lm;
+          }
+        } else {
+          metaTimeEl.textContent = "—";
+        }
+      })
+      .catch(() => {
+        metaSizeEl.textContent = "—";
+        metaTimeEl.textContent = "—";
+      });
+  }
+
+  /* 搜尋功能 */
+  searchInput.addEventListener("input", handleSearchInput);
+  clearSearchBtn.addEventListener("click", () => {
+    searchInput.value = "";
+    handleSearchInput();
+    searchInput.focus();
+  });
+
+  function handleSearchInput() {
+    const q = searchInput.value.trim().toLowerCase();
+    if (!q) {
+      searchResultsEl.innerHTML = "";
+      searchResultsEl.style.display = "none";
+      return;
+    }
+
+    const matches = allFilesIndex.filter((item) => {
+      const joined = (item.title + " " + item.path + " " + item.breadcrumb.join(" ")).toLowerCase();
+      return joined.includes(q);
+    });
+
+    if (matches.length === 0) {
+      searchResultsEl.innerHTML = "<div class='search-result-item'><span class='search-result-path'>找不到符合的檔案</span></div>";
+      searchResultsEl.style.display = "block";
+      return;
+    }
+
+    const maxShow = 50;
+    searchResultsEl.innerHTML = "";
+    matches.slice(0, maxShow).forEach((item) => {
+      const div = document.createElement("div");
+      div.className = "search-result-item";
+      const titleSpan = document.createElement("div");
+      titleSpan.className = "search-result-title";
+      titleSpan.textContent = item.title;
+      const pathSpan = document.createElement("div");
+      pathSpan.className = "search-result-path";
+      pathSpan.textContent = item.path;
+
+      div.appendChild(titleSpan);
+      div.appendChild(pathSpan);
+
+      div.addEventListener("click", () => {
+        focusFile(item.path, item.breadcrumb, item.liElement);
+      });
+
+      searchResultsEl.appendChild(div);
+    });
+
+    if (matches.length > maxShow) {
+      const more = document.createElement("div");
+      more.className = "search-result-item";
+      more.innerHTML =
+        "<span class='search-result-path'>…尚有 " +
+        (matches.length - maxShow) +
+        " 筆結果未顯示</span>";
+      searchResultsEl.appendChild(more);
+    }
+
+    searchResultsEl.style.display = "block";
+  }
+
+  /* 展開 / 收合全部 */
+  expandAllBtn.addEventListener("click", () => {
+    treeContainer.querySelectorAll(".folder").forEach((f) => f.classList.add("open"));
+  });
+
+  collapseAllBtn.addEventListener("click", () => {
+    treeContainer.querySelectorAll(".folder").forEach((f) => f.classList.remove("open"));
+  });
+
+  /* Root 快速篩選 */
+  filterChips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      filterChips.forEach((c) => c.classList.remove("active"));
+      chip.classList.add("active");
+      const root = chip.dataset.root;
+      applyRootFilter(root);
+    });
+  });
+
+  function applyRootFilter(root) {
+    const folders = treeContainer.querySelectorAll(".folder, .file");
+    folders.forEach((node) => node.classList.remove("hidden-by-filter"));
+
+    if (root === "all") {
+      return;
+    }
+
+    // 只顯示指定 root 的節點，其餘隱藏
+    const allNodes = treeContainer.querySelectorAll(".folder, .file");
+    allNodes.forEach((node) => {
+      const nodeRoot = node.dataset.root || "";
+      if (nodeRoot && nodeRoot !== root) {
+        node.classList.add("hidden-by-filter");
+      }
+    });
+
+    // 根節點如果就是指定 root，仍然顯示
+    const rootNodes = treeContainer.querySelectorAll(".root-list > li");
+    rootNodes.forEach((li) => {
+      const titleSpan = li.querySelector("> span .folder-title");
+      if (titleSpan && titleSpan.textContent === root) {
+        li.classList.remove("hidden-by-filter");
+      }
+    });
+  }
 </script>
-
 </body>
 </html>
