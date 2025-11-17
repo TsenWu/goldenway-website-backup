@@ -131,7 +131,10 @@ function renderTree(nodes) {
     nodes.forEach(node => {
         const li = document.createElement("li");
 
-        if (isFolder(node)) {
+        const isFolder = Array.isArray(node.children) && node.children.length > 0;
+
+        if (isFolder) {
+            // 資料夾（有子項目）
             li.classList.add("folder");
             li.innerHTML = `<span>${node.title}</span>`;
             li.onclick = e => {
@@ -142,9 +145,16 @@ function renderTree(nodes) {
             const childUL = renderTree(node.children);
             li.appendChild(childUL);
         } else {
+            // 檔案 or 空資料夾
             li.classList.add("file");
             li.textContent = node.title;
-            li.onclick = () => loadPreview(node.path);
+            li.onclick = () => {
+                if (node.path.endsWith("/")) {
+                    alert("這個資料夾目前沒有檔案");
+                } else {
+                    loadPreview(node.path);
+                }
+            };
         }
 
         ul.appendChild(li);
@@ -152,6 +162,7 @@ function renderTree(nodes) {
 
     return ul;
 }
+
 
 /* 載入右側 HTML 預覽 */
 function loadPreview(path) {
