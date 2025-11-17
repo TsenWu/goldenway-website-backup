@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
+    /* ====== 全域風格 ====== */
     body {
         margin: 0;
         padding: 0;
@@ -16,9 +17,25 @@
         height: 100vh;
         display: flex;
         color: #1d1d1f;
+        opacity: 0;
+        animation: fadeIn 0.8s ease forwards;
     }
 
-    /* 左側選單 */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(8px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    ul.fade-in {
+        animation: fadeInTree 0.25s ease;
+    }
+
+    @keyframes fadeInTree {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    /* ====== 左側選單 ====== */
     .sidebar {
         width: 320px;
         background: #ffffffcc;
@@ -34,24 +51,28 @@
         font-weight: 600;
     }
 
-    /* 回首頁按鈕 */
-    .home-btn {
-        display: inline-block;
+    /* ====== 上方功能按鈕 ====== */
+    .action-bar {
+        display: flex;
+        gap: 8px;
         margin-bottom: 20px;
-        padding: 8px 14px;
+    }
+
+    .btn {
+        padding: 7px 14px;
         background: #e5e5ea;
         border-radius: 10px;
-        font-size: 14px;
+        font-size: 13px;
         cursor: pointer;
         color: #333;
-        transition: background 0.2s;
         user-select: none;
+        transition: background 0.2s;
     }
-    .home-btn:hover {
+    .btn:hover {
         background: #d2d2d7;
     }
 
-    /* Tree 樣式 */
+    /* ====== Tree 樣式 ====== */
     ul {
         list-style: none;
         margin: 0;
@@ -85,12 +106,13 @@
         padding-left: 12px;
         font-weight: 400;
         color: #0071e3;
+        transition: opacity 0.2s;
     }
     .file:hover {
         text-decoration: underline;
     }
 
-    /* 右側預覽框 */
+    /* ====== 右側預覽框 ====== */
     .preview {
         flex: 1;
         background: #ffffff;
@@ -106,7 +128,7 @@
         background: white;
     }
 
-    /* Apple 風格首頁畫面 */
+    /* ====== Apple 風格首頁畫面 ====== */
     .empty {
         position: absolute;
         inset: 0;
@@ -117,22 +139,27 @@
         color: #6e6e73;
         font-size: 18px;
         padding: 20px;
+        animation: fadeIn 1s ease;
     }
 </style>
 
 </head>
 <body>
 
-<!-- 左側 -->
+<!-- ====== 左側選單 ====== -->
 <div class="sidebar">
     <h2>網站檔案索引</h2>
 
-    <div class="home-btn" onclick="goHome()">回到首頁</div>
+    <div class="action-bar">
+        <div class="btn" onclick="goHome()">回到首頁</div>
+        <div class="btn" onclick="expandAll()">展開全部</div>
+        <div class="btn" onclick="collapseAll()">收合全部</div>
+    </div>
 
     <div id="tree"></div>
 </div>
 
-<!-- 右側 -->
+<!-- ====== 右側預覽區 ====== -->
 <div class="preview">
     <div id="emptyMessage" class="empty">
         <div>
@@ -152,34 +179,37 @@
 
 
 <script>
-/* 回首頁 */
+/* ====== 回首頁 ====== */
 function goHome() {
     document.getElementById("previewFrame").style.display = "none";
     document.getElementById("emptyMessage").style.display = "flex";
 }
 
-/* 載入 tree-data.json */
+/* ====== 載入 tree-data.json ====== */
 fetch("tree-data.json")
     .then(res => res.json())
     .then(data => {
         const treeContainer = document.getElementById("tree");
-        treeContainer.appendChild(renderTree(data));
+        const tree = renderTree(data);
+
+        tree.classList.add("fade-in");
+        treeContainer.appendChild(tree);
     })
     .catch(err => {
         document.getElementById("tree").innerHTML =
             "<span style='color:red;'>無法載入 tree-data.json</span><br>" + err;
     });
 
-/* 建立樹狀   */
+/* ====== 樹狀結構生成 ====== */
 function renderTree(nodes) {
     const ul = document.createElement("ul");
-    ul.style.paddingLeft = "0";
 
     nodes.forEach(node => {
         const li = document.createElement("li");
 
         if (node.children && node.children.length > 0) {
             li.classList.add("folder");
+
             const span = document.createElement("span");
             span.textContent = node.title;
             li.appendChild(span);
@@ -191,6 +221,7 @@ function renderTree(nodes) {
 
             const childUL = renderTree(node.children);
             li.appendChild(childUL);
+
         } else {
             li.classList.add("file");
             li.textContent = node.title;
@@ -203,7 +234,7 @@ function renderTree(nodes) {
     return ul;
 }
 
-/* 載入右側 HTML 預覽 */
+/* ====== 預覽頁面 ====== */
 function loadPreview(path) {
     const frame = document.getElementById("previewFrame");
     const msg = document.getElementById("emptyMessage");
@@ -211,6 +242,16 @@ function loadPreview(path) {
     msg.style.display = "none";
     frame.style.display = "block";
     frame.src = path;
+}
+
+/* ====== 展開全部 ====== */
+function expandAll() {
+    document.querySelectorAll(".folder").forEach(f => f.classList.add("open"));
+}
+
+/* ====== 收合全部 ====== */
+function collapseAll() {
+    document.querySelectorAll(".folder").forEach(f => f.classList.remove("open"));
 }
 </script>
 
