@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GOLDENWAY 官網內容備份</title>
 
-<!-- Apple-style font -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
@@ -19,7 +18,6 @@
         color: #1d1d1f;
     }
 
-    /* 左側欄 */
     .sidebar {
         width: 300px;
         background: #ffffffcc;
@@ -35,16 +33,10 @@
         font-weight: 600;
     }
 
-    /* 樹狀清單 */
     .folder, .file {
         padding: 5px 0;
         cursor: pointer;
         user-select: none;
-    }
-
-    .folder {
-        font-weight: 500;
-        margin-top: 8px;
     }
 
     .folder > span::before {
@@ -78,7 +70,6 @@
         text-decoration: underline;
     }
 
-    /* 右側預覽區 */
     .preview {
         flex: 1;
         background: #ffffff;
@@ -102,25 +93,20 @@
         font-size: 18px;
     }
 </style>
-
 </head>
 <body>
 
-<!-- 左側 -->
 <div class="sidebar">
     <h2>網站檔案索引</h2>
     <div id="tree"></div>
 </div>
 
-<!-- 右側 -->
 <div class="preview">
     <div id="emptyMessage" class="empty">請從左側選擇一個 HTML 檔案預覽</div>
     <iframe id="previewFrame" style="display:none;"></iframe>
 </div>
 
-
 <script>
-/* 載入 tree-data.json */
 fetch("tree-data.json")
     .then(res => res.json())
     .then(data => {
@@ -132,6 +118,11 @@ fetch("tree-data.json")
             "<span style='color:red;'>無法載入 tree-data.json</span><br>" + err;
     });
 
+/* ★ 核心修正：空 children 不視為資料夾 ★ */
+function isFolder(node) {
+    return Array.isArray(node.children) && node.children.length > 0;
+}
+
 /* 建立樹狀 UI */
 function renderTree(nodes) {
     const ul = document.createElement("ul");
@@ -140,8 +131,7 @@ function renderTree(nodes) {
     nodes.forEach(node => {
         const li = document.createElement("li");
 
-        if (node.children) {
-            // 資料夾
+        if (isFolder(node)) {
             li.classList.add("folder");
             li.innerHTML = `<span>${node.title}</span>`;
             li.onclick = e => {
@@ -152,7 +142,6 @@ function renderTree(nodes) {
             const childUL = renderTree(node.children);
             li.appendChild(childUL);
         } else {
-            // 檔案
             li.classList.add("file");
             li.textContent = node.title;
             li.onclick = () => loadPreview(node.path);
