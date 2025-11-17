@@ -8,7 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-    /* ====== 全域風格 ====== */
     body {
         margin: 0;
         padding: 0;
@@ -20,22 +19,11 @@
         opacity: 0;
         animation: fadeIn 0.8s ease forwards;
     }
-
     @keyframes fadeIn {
         from { opacity: 0; transform: translateY(8px); }
         to { opacity: 1; transform: translateY(0); }
     }
 
-    ul.fade-in {
-        animation: fadeInTree 0.25s ease;
-    }
-
-    @keyframes fadeInTree {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
-
-    /* ====== 左側選單 ====== */
     .sidebar {
         width: 320px;
         background: #ffffffcc;
@@ -44,20 +32,9 @@
         overflow-y: auto;
         padding: 25px;
     }
+    h2 { margin: 0 0 15px; font-size: 20px; font-weight: 600; }
 
-    h2 {
-        margin: 0 0 15px;
-        font-size: 20px;
-        font-weight: 600;
-    }
-
-    /* ====== 上方功能按鈕 ====== */
-    .action-bar {
-        display: flex;
-        gap: 8px;
-        margin-bottom: 20px;
-    }
-
+    .action-bar { display: flex; gap: 8px; margin-bottom: 20px; }
     .btn {
         padding: 7px 14px;
         background: #e5e5ea;
@@ -68,22 +45,10 @@
         user-select: none;
         transition: background 0.2s;
     }
-    .btn:hover {
-        background: #d2d2d7;
-    }
+    .btn:hover { background: #d2d2d7; }
 
-    /* ====== Tree 樣式 ====== */
-    ul {
-        list-style: none;
-        margin: 0;
-        padding-left: 18px;
-    }
-
-    .folder, .file {
-        padding: 4px 0;
-        cursor: pointer;
-        user-select: none;
-    }
+    ul { list-style: none; margin: 0; padding-left: 18px; }
+    .folder, .file { padding: 4px 0; cursor: pointer; user-select: none; }
 
     .folder > span::before {
         content: "▸";
@@ -92,43 +57,14 @@
         transition: transform 0.2s;
         color: #6e6e73;
     }
+    .folder.open > span::before { transform: rotate(90deg); }
 
-    .folder.open > span::before {
-        transform: rotate(90deg);
-    }
+    .file { padding-left: 12px; color: #0071e3; }
+    .file:hover { text-decoration: underline; }
 
-    .folder > span {
-        font-weight: 500;
-        color: #1d1d1f;
-    }
+    .preview { flex: 1; background: #ffffff; border-left: 1px solid #d2d2d7; overflow: hidden; position: relative; }
+    iframe { width: 100%; height: 100%; border: none; background: white; }
 
-    .file {
-        padding-left: 12px;
-        font-weight: 400;
-        color: #0071e3;
-        transition: opacity 0.2s;
-    }
-    .file:hover {
-        text-decoration: underline;
-    }
-
-    /* ====== 右側預覽框 ====== */
-    .preview {
-        flex: 1;
-        background: #ffffff;
-        border-left: 1px solid #d2d2d7;
-        overflow: hidden;
-        position: relative;
-    }
-
-    iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-        background: white;
-    }
-
-    /* ====== Apple 風格首頁畫面 ====== */
     .empty {
         position: absolute;
         inset: 0;
@@ -142,24 +78,22 @@
         animation: fadeIn 1s ease;
     }
 </style>
-
 </head>
+
 <body>
 
-<!-- ====== 左側選單 ====== -->
 <div class="sidebar">
     <h2>網站檔案索引</h2>
 
     <div class="action-bar">
         <div class="btn" onclick="goHome()">回到首頁</div>
-        <div class="btn" onclick="expandAll()">展開全部</div>
-        <div class="btn" onclick="collapseAll()">收合全部</div>
+        <div class="btn" id="expandBtn">展開全部</div>
+        <div class="btn" id="collapseBtn">收合全部</div>
     </div>
 
     <div id="tree"></div>
 </div>
 
-<!-- ====== 右側預覽區 ====== -->
 <div class="preview">
     <div id="emptyMessage" class="empty">
         <div>
@@ -169,17 +103,14 @@
             <div style="font-size:16px; margin-bottom:24px; color:#6e6e73;">
                 GoldenWay Website Archive Viewer
             </div>
-            <div style="font-size:15px;">
-                請從左側選擇一個 HTML 檔案預覽
-            </div>
+            <div style="font-size:15px;">請從左側選擇一個 HTML 檔案預覽</div>
         </div>
     </div>
     <iframe id="previewFrame" style="display:none;"></iframe>
 </div>
 
-
 <script>
-/* ====== 回首頁 ====== */
+/* ===== 回到首頁 ===== */
 function goHome() {
     document.getElementById("previewFrame").style.display = "none";
     document.getElementById("emptyMessage").style.display = "flex";
@@ -191,9 +122,15 @@ fetch("tree-data.json")
     .then(data => {
         const treeContainer = document.getElementById("tree");
         const tree = renderTree(data);
-
-        tree.classList.add("fade-in");
         treeContainer.appendChild(tree);
+
+        /* ====== 🔥 在樹生成後，綁定展開 & 收合功能 ====== */
+        document.getElementById("expandBtn").onclick = () => {
+            document.querySelectorAll(".folder").forEach(f => f.classList.add("open"));
+        };
+        document.getElementById("collapseBtn").onclick = () => {
+            document.querySelectorAll(".folder").forEach(f => f.classList.remove("open"));
+        };
     })
     .catch(err => {
         document.getElementById("tree").innerHTML =
@@ -234,7 +171,7 @@ function renderTree(nodes) {
     return ul;
 }
 
-/* ====== 預覽頁面 ====== */
+/* ====== 預覽 ====== */
 function loadPreview(path) {
     const frame = document.getElementById("previewFrame");
     const msg = document.getElementById("emptyMessage");
@@ -242,16 +179,6 @@ function loadPreview(path) {
     msg.style.display = "none";
     frame.style.display = "block";
     frame.src = path;
-}
-
-/* ====== 展開全部 ====== */
-function expandAll() {
-    document.querySelectorAll(".folder").forEach(f => f.classList.add("open"));
-}
-
-/* ====== 收合全部 ====== */
-function collapseAll() {
-    document.querySelectorAll(".folder").forEach(f => f.classList.remove("open"));
 }
 </script>
 
