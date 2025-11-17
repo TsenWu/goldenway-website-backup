@@ -458,7 +458,7 @@
         span.appendChild(title);
         li.appendChild(span);
 
-        span.addEventListener("click", (e) => {
+        span.addEventListener("click", () => {
           li.classList.toggle("open");
         });
 
@@ -508,7 +508,7 @@
       // 向上追溯資料夾名稱
       while (ptr && ptr !== treeContainer) {
         if (ptr.classList && ptr.classList.contains("folder")) {
-          const span = ptr.querySelector("> span .folder-title");
+          const span = ptr.querySelector(".folder-title"); // ← 修正這裡
           if (span) labels.unshift(span.textContent);
         }
         ptr = ptr.parentElement;
@@ -530,7 +530,9 @@
 
     // 展開父層
     if (!liElement) {
-      liElement = treeContainer.querySelector(`li.file[data-path="${CSS.escape(path)}"]`);
+      liElement = treeContainer.querySelector(
+        `li.file[data-path="${CSS.escape(path)}"]`
+      );
     }
     if (liElement) {
       openAncestors(liElement);
@@ -572,7 +574,7 @@
     let ptr = li.parentElement;
     while (ptr && ptr !== treeContainer) {
       if (ptr.classList && ptr.classList.contains("folder")) {
-        const span = ptr.querySelector("> span .folder-title");
+        const span = ptr.querySelector(".folder-title"); // ← 修正這裡
         if (span) names.unshift(span.textContent);
       }
       ptr = ptr.parentElement;
@@ -611,7 +613,6 @@
     metaSizeEl.textContent = "讀取中…";
     metaTimeEl.textContent = "讀取中…";
 
-    // 針對 GitHub Pages，可使用 HEAD 拿 Header 資訊
     fetch(path, { method: "HEAD" })
       .then((res) => {
         const size = res.headers.get("content-length");
@@ -658,12 +659,19 @@
     }
 
     const matches = allFilesIndex.filter((item) => {
-      const joined = (item.title + " " + item.path + " " + item.breadcrumb.join(" ")).toLowerCase();
+      const joined = (
+        item.title +
+        " " +
+        item.path +
+        " " +
+        item.breadcrumb.join(" ")
+      ).toLowerCase();
       return joined.includes(q);
     });
 
     if (matches.length === 0) {
-      searchResultsEl.innerHTML = "<div class='search-result-item'><span class='search-result-path'>找不到符合的檔案</span></div>";
+      searchResultsEl.innerHTML =
+        "<div class='search-result-item'><span class='search-result-path'>找不到符合的檔案</span></div>";
       searchResultsEl.style.display = "block";
       return;
     }
@@ -730,7 +738,6 @@
       return;
     }
 
-    // 只顯示指定 root 的節點，其餘隱藏
     const allNodes = treeContainer.querySelectorAll(".folder, .file");
     allNodes.forEach((node) => {
       const nodeRoot = node.dataset.root || "";
@@ -739,10 +746,9 @@
       }
     });
 
-    // 根節點如果就是指定 root，仍然顯示
     const rootNodes = treeContainer.querySelectorAll(".root-list > li");
     rootNodes.forEach((li) => {
-      const titleSpan = li.querySelector("> span .folder-title");
+      const titleSpan = li.querySelector(".folder-title"); // ← 修正這裡
       if (titleSpan && titleSpan.textContent === root) {
         li.classList.remove("hidden-by-filter");
       }
