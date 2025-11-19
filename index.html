@@ -1,186 +1,371 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GOLDENWAY 官網內容備份</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GOLDENWAY 官網內容管理系統</title>
 
-  <!-- Apple-style font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <!-- Apple / Inter 風格字體 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --bg-main: #f5f5f7;
+      --bg-elevated: rgba(255, 255, 255, 0.82);
+      --border-subtle: #d2d2d7;
+      --accent: #0071e3;
+      --accent-soft: rgba(0, 113, 227, 0.08);
+      --text-main: #1d1d1f;
+      --text-subtle: #6e6e73;
+      --sidebar-width: 280px;
+      --header-height: 64px;
+    }
+
     * {
       box-sizing: border-box;
     }
 
     body {
       margin: 0;
-      padding: 0;
       font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      background: #f5f5f7;
-      color: #1d1d1f;
+      background: var(--bg-main);
+      color: var(--text-main);
       height: 100vh;
       display: flex;
     }
 
-    /* 左側欄 */
-    .sidebar {
-      width: 280px;
-      background: #ffffffcc;
-      backdrop-filter: blur(18px);
-      border-right: 1px solid #d2d2d7;
-      padding: 16px 16px 12px;
+    .app {
       display: flex;
       flex-direction: column;
+      width: 100%;
+      height: 100vh;
+    }
+
+    /* 頂部品牌列 + 搜尋列 */
+    .topbar {
+      height: var(--header-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      border-bottom: 1px solid var(--border-subtle);
+      background: linear-gradient(120deg, rgba(255,255,255,0.9), rgba(245,245,247,0.92));
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
       overflow: hidden;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      font-size: 13px;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+
+    .brand-title {
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .brand-subtitle {
+      color: var(--text-subtle);
+      font-size: 11px;
+    }
+
+    .search-bar {
+      position: relative;
+      max-width: 420px;
+      width: 100%;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 8px 32px 8px 30px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      font-size: 14px;
+      outline: none;
+      background: rgba(255,255,255,0.9);
+      transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    .search-input::placeholder {
+      color: #a1a1a6;
+    }
+
+    .search-input:focus {
+      border-color: var(--accent);
+      background: #ffffff;
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 14px;
+      color: #a1a1a6;
+      pointer-events: none;
+    }
+
+    .search-clear {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 16px;
+      line-height: 1;
+      color: #b0b0b5;
+      cursor: pointer;
+      display: none;
+      user-select: none;
+    }
+
+    .search-clear.visible {
+      display: block;
+    }
+
+    /* 主體區：左側樹狀 + 右側預覽 */
+    .body {
+      flex: 1;
+      display: flex;
+      min-height: 0;
+    }
+
+    .sidebar {
+      width: var(--sidebar-width);
+      border-right: 1px solid var(--border-subtle);
+      background: #f9f9fb;
+      padding: 10px 10px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      overflow-y: auto;
     }
 
     .sidebar-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
     }
 
     .sidebar-title {
-      font-size: 15px;
+      font-size: 13px;
       font-weight: 600;
-      letter-spacing: 0.04em;
+      color: var(--text-main);
     }
 
     .sidebar-buttons {
       display: flex;
       gap: 6px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
     }
 
     .btn {
-      border: 1px solid #d2d2d7;
       border-radius: 999px;
-      padding: 3px 10px;
+      border: 1px solid var(--border-subtle);
+      padding: 4px 10px;
       font-size: 11px;
       background: #ffffff;
-      color: #1d1d1f;
       cursor: pointer;
-      line-height: 1.5;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.08s ease;
       white-space: nowrap;
-      transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
-    }
-
-    .btn:hover {
-      background: #f2f2f7;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.12);
-      transform: translateY(-0.5px);
-    }
-
-    .btn:active {
-      background: #e5e5ea;
-      box-shadow: none;
-      transform: translateY(0);
     }
 
     .btn-primary {
-      border-color: #0071e3;
-      background: #0071e3;
-      color: #fff;
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+
+    .btn:hover {
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(15,15,20,0.12);
+      transform: translateY(-0.5px);
     }
 
     .btn-primary:hover {
-      background: #0a84ff;
+      background: #0a7ff0;
+      border-color: #0a7ff0;
+    }
+
+    .btn:active {
+      transform: translateY(0);
+      box-shadow: none;
     }
 
     .tree-container {
-      margin-top: 6px;
-      padding-top: 6px;
-      border-top: 1px solid #e5e5ea;
-      overflow-y: auto;
       flex: 1;
+      overflow-y: auto;
+      padding-right: 4px;
     }
 
-    /* 樹狀清單 */
-    .tree-root {
+    /* 樹狀清單樣式 */
+    ul {
       list-style: none;
       margin: 0;
+      padding-left: 14px;
+    }
+
+    #tree > ul {
       padding-left: 0;
-      font-size: 13px;
+      margin-top: 4px;
     }
 
-    .tree-root ul {
-      list-style: none;
-      margin: 0;
-      padding-left: 16px;
+    .folder,
+    .file {
+      cursor: pointer;
+      user-select: none;
+      font-size: 13px;
+      line-height: 1.6;
     }
 
     .folder {
+      font-weight: 500;
+      color: var(--text-main);
       margin: 2px 0;
     }
 
     .folder-title {
       display: inline-flex;
       align-items: center;
-      cursor: pointer;
-      user-select: none;
-      padding: 2px 2px;
+      gap: 4px;
+      padding: 2px 4px;
       border-radius: 4px;
     }
 
-    .folder-title::before {
-      content: "▸";
+    .folder-arrow {
       font-size: 10px;
-      margin-right: 6px;
-      color: #86868b;
+      width: 10px;
+      text-align: center;
+      color: #a1a1a6;
       transition: transform 0.18s ease;
     }
 
-    .folder.open > .folder-title::before {
+    .folder.open > .folder-title .folder-arrow {
       transform: rotate(90deg);
     }
 
     .folder-title:hover {
-      background: #f5f5f7;
-    }
-
-    .folder > ul {
-      display: none;
-    }
-
-    .folder.open > ul {
-      display: block;
+      background: rgba(0,0,0,0.03);
     }
 
     .file {
+      font-weight: 400;
+      color: var(--accent);
+      padding: 1px 4px;
+      border-radius: 4px;
       margin: 1px 0;
-      cursor: pointer;
-      color: #0071e3;
-      text-decoration: none;
     }
 
     .file:hover {
       text-decoration: underline;
+      background: rgba(0,0,0,0.02);
     }
 
-    /* 右側主畫面 */
-    .main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
+    /* 搜尋結果區（取代樹狀清單顯示） */
+    #searchResults {
+      display: none;
+      font-size: 13px;
+    }
+
+    .search-result-title {
+      font-size: 11px;
+      color: var(--text-subtle);
+      margin: 4px 0 2px;
+    }
+
+    .search-item {
+      padding: 5px 6px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-bottom: 2px;
+      background: transparent;
+      transition: background 0.12s ease, transform 0.05s ease;
+    }
+
+    .search-item:hover {
+      background: rgba(0,0,0,0.03);
+      transform: translateY(-0.5px);
+    }
+
+    .search-item-name {
+      color: var(--accent);
+      white-space: nowrap;
       overflow: hidden;
+      text-overflow: ellipsis;
     }
 
+    .search-item-path {
+      font-size: 11px;
+      color: var(--text-subtle);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .search-empty {
+      font-size: 12px;
+      color: var(--text-subtle);
+      margin-top: 6px;
+    }
+
+    /* 右側預覽區 + 首頁 Hero */
     .preview {
       flex: 1;
       position: relative;
-      background: #ffffff;
+      overflow: hidden;
+      background: radial-gradient(circle at top left, #ffffff 0, #f5f5f7 40%, #e9ecf5 100%);
+      display: flex;
+      align-items: stretch;
+      justify-content: stretch;
     }
 
     iframe {
       width: 100%;
       height: 100%;
       border: none;
+      display: none;
       background: #ffffff;
-      display: none; /* 初始隱藏，等選檔案後顯示 */
     }
 
-    /* 首頁 Hero */
     .hero {
       position: absolute;
       inset: 0;
@@ -189,198 +374,339 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      color: #1d1d1f;
       pointer-events: none;
-      padding: 24px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    .hero-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero-badge {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.8);
+      background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(240,244,255,0.95));
+      color: var(--text-subtle);
+      margin-bottom: 16px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .hero-title {
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 600;
       letter-spacing: 0.08em;
-      margin-bottom: 8px;
+      text-transform: uppercase;
+      margin: 0 0 8px;
     }
 
     .hero-subtitle {
-      font-size: 13px;
-      color: #6e6e73;
-      margin-bottom: 16px;
+      font-size: 16px;
+      color: var(--text-subtle);
+      margin-bottom: 18px;
     }
 
-    .hero-hint {
+    .hero-meta {
       font-size: 12px;
       color: #a1a1a6;
     }
 
-    /* 淡入動畫 */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(8px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .hero-meta span {
+      margin: 0 8px;
     }
 
-    .fade-in {
-      animation: fadeInUp 0.35s ease-out;
-    }
-
+    /* RWD – 手機窄版簡化 */
     @media (max-width: 900px) {
-      body {
-        flex-direction: column;
+      :root {
+        --sidebar-width: 230px;
       }
 
-      .sidebar {
-        width: 100%;
-        height: 260px;
-        border-right: none;
-        border-bottom: 1px solid #d2d2d7;
+      .brand-subtitle {
+        display: none;
       }
 
-      .tree-container {
-        max-height: 200px;
+      .hero-title {
+        font-size: 20px;
       }
 
-      .main {
-        height: calc(100vh - 260px);
+      .hero-subtitle {
+        font-size: 14px;
+        padding: 0 20px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- 左側 -->
-  <aside class="sidebar">
-    <div class="sidebar-header">
-      <div class="sidebar-title">網站檔案索引</div>
+<div class="app">
+  <!-- 頂部品牌列 + 搜尋列 -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-logo">
+        <!-- TODO: 將 logo.png 換成你實際的 GoldenWay LOGO 路徑 -->
+        <img src="logo.png" alt="GoldenWay Logo">
+      </div>
+      <div class="brand-text">
+        <span class="brand-title">GOLDENWAY</span>
+        <span class="brand-subtitle">Website Archive Viewer</span>
+      </div>
+    </div>
+    <div class="search-bar">
+      <span class="search-icon">🔍</span>
+      <input id="searchInput" class="search-input" type="text" placeholder="搜尋檔名或關鍵字…">
+      <span id="searchClear" class="search-clear">×</span>
+    </div>
+  </header>
+
+  <div class="body">
+    <!-- 左側：控制列 + 樹狀目錄 / 搜尋結果 -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-title">網站檔案索引</div>
+      </div>
+
       <div class="sidebar-buttons">
-        <button id="homeBtn" class="btn">回到首頁</button>
-        <button id="expandAllBtn" class="btn">展開全部</button>
-        <button id="collapseAllBtn" class="btn">收合全部</button>
+        <button id="homeBtn" class="btn btn-primary">回到首頁</button>
+        <button id="expandBtn" class="btn">展開全部</button>
+        <button id="collapseBtn" class="btn">收合全部</button>
       </div>
-    </div>
 
-    <div class="tree-container">
-      <div id="tree"></div>
-    </div>
-  </aside>
+      <div class="tree-container">
+        <div id="tree"></div>
+        <div id="searchResults"></div>
+      </div>
+    </aside>
 
-  <!-- 右側 -->
-  <main class="main">
+    <!-- 右側：首頁 Hero + 檔案預覽 -->
     <section class="preview">
-      <!-- 首頁 Hero 畫面 -->
-      <div id="hero" class="hero fade-in">
-        <div class="hero-title">GOLDENWAY 官網內容管理系統</div>
-        <div class="hero-subtitle">GoldenWay Website Archive Viewer</div>
-        <div class="hero-hint">請從左側選擇一個 HTML 檔案預覽</div>
+      <div id="homeView" class="hero">
+        <div class="hero-badge">GoldenWay Internal · Archive</div>
+        <h1 class="hero-title">GOLDENWAY 官網內容管理系統</h1>
+        <div class="hero-subtitle">集中檢視、預覽與管理官網 HTML 檔案，隨時掌握內容版本。</div>
+        <div class="hero-meta">
+          <span>請從左側選擇一個 HTML 檔案預覽</span>
+          <span>·</span>
+          <span>支援搜尋與樹狀階層瀏覽</span>
+        </div>
       </div>
-
-      <!-- 內容預覽 iframe -->
       <iframe id="previewFrame"></iframe>
     </section>
-  </main>
+  </div>
+</div>
 
-  <script>
-    /* 載入 tree-data.json */
-    fetch("tree-data.json")
-      .then(res => res.json())
-      .then(data => {
-        const treeContainer = document.getElementById("tree");
-        const tree = renderTree(data, true);
-        tree.classList.add("tree-root");
-        treeContainer.appendChild(tree);
-      })
-      .catch(err => {
-        document.getElementById("tree").innerHTML =
-          "<span style='color:red;font-size:12px;'>無法載入 tree-data.json</span><br>" +
-          "<span style='font-size:11px;color:#777;'>" + err + "</span>";
-      });
+<script>
+  let fileIndex = [];  // 搜尋索引用
+  let treeData = null;
 
-    /* 建立樹狀 UI */
-    function renderTree(nodes, isRoot = false) {
-      const ul = document.createElement("ul");
-      if (isRoot) ul.classList.add("root");
+  // 載入 tree-data.json
+  fetch("tree-data.json")
+    .then(res => res.json())
+    .then(data => {
+      treeData = data;
+      buildFileIndex(data);
+      const treeContainer = document.getElementById("tree");
+      treeContainer.appendChild(renderTree(data));
+      showHomeView(); // 初始顯示首頁 + 淡入
+    })
+    .catch(err => {
+      document.getElementById("tree").innerHTML =
+        "<span style='color:red;'>無法載入 tree-data.json</span><br>" + err;
+    });
 
-      nodes.forEach(node => {
-        const li = document.createElement("li");
+  // 建立搜尋用索引：只針對「檔案節點」
+  function buildFileIndex(nodes, parents = []) {
+    nodes.forEach(node => {
+      if (node.children && node.children.length) {
+        buildFileIndex(node.children, parents.concat(node.title));
+      } else if (node.path) {
+        fileIndex.push({
+          title: node.title || "",
+          path: node.path,
+          breadcrumb: parents.join(" / ")
+        });
+      }
+    });
+  }
 
-        if (node.children && node.children.length) {
-          // 資料夾
-          li.classList.add("folder");
+  // 產生樹狀 UI
+  function renderTree(nodes) {
+    const ul = document.createElement("ul");
 
-          const span = document.createElement("span");
-          span.className = "folder-title";
-          span.textContent = node.title;
+    nodes.forEach(node => {
+      const li = document.createElement("li");
 
-          span.addEventListener("click", () => {
-            li.classList.toggle("open");
-          });
+      if (node.children && node.children.length) {
+        // 資料夾
+        li.classList.add("folder");
 
-          li.appendChild(span);
-          const childUL = renderTree(node.children, false);
-          li.appendChild(childUL);
-        } else {
-          // 檔案
-          li.classList.add("file");
-          li.textContent = node.title;
+        const title = document.createElement("span");
+        title.className = "folder-title";
 
-          li.addEventListener("click", () => {
-            loadPreview(node.path);
-          });
-        }
+        const arrow = document.createElement("span");
+        arrow.className = "folder-arrow";
+        arrow.textContent = "▸";
 
-        ul.appendChild(li);
-      });
+        const text = document.createElement("span");
+        text.textContent = node.title;
 
-      return ul;
+        title.appendChild(arrow);
+        title.appendChild(text);
+        li.appendChild(title);
+
+        title.addEventListener("click", () => {
+          li.classList.toggle("open");
+        });
+
+        const childUl = renderTree(node.children);
+        li.appendChild(childUl);
+      } else if (node.path) {
+        // 檔案
+        li.classList.add("file");
+        li.textContent = node.title;
+        li.addEventListener("click", () => loadPreview(node.path));
+      }
+
+      ul.appendChild(li);
+    });
+
+    return ul;
+  }
+
+  // 顯示首頁 Hero
+  function showHomeView() {
+    const frame = document.getElementById("previewFrame");
+    const home = document.getElementById("homeView");
+
+    frame.style.display = "none";
+    home.style.display = "flex";
+
+    // 觸發淡入動畫
+    requestAnimationFrame(() => {
+      home.classList.add("hero-visible");
+    });
+  }
+
+  // 隱藏首頁 Hero
+  function hideHomeView() {
+    const home = document.getElementById("homeView");
+    home.classList.remove("hero-visible");
+    setTimeout(() => {
+      home.style.display = "none";
+    }, 200);
+  }
+
+  // 載入右側 HTML 預覽
+  function loadPreview(path) {
+    hideHomeView();
+    const frame = document.getElementById("previewFrame");
+    frame.style.display = "block";
+    frame.src = path;
+  }
+
+  // 展開全部：只展開第一層（保持階層感）
+  function expandFirstLevel() {
+    const rootFolders = document.querySelectorAll("#tree > ul > li.folder");
+    rootFolders.forEach(folder => folder.classList.add("open"));
+  }
+
+  // 收合全部：全部資料夾關閉
+  function collapseAll() {
+    const allFolders = document.querySelectorAll(".folder");
+    allFolders.forEach(folder => folder.classList.remove("open"));
+  }
+
+  // 搜尋邏輯：輸入關鍵字即時篩選檔案
+  const searchInput = document.getElementById("searchInput");
+  const searchClear = document.getElementById("searchClear");
+  const searchResults = document.getElementById("searchResults");
+  const treeEl = document.getElementById("tree");
+
+  searchInput.addEventListener("input", () => {
+    const term = searchInput.value.trim().toLowerCase();
+    if (!term) {
+      searchResults.style.display = "none";
+      treeEl.style.display = "block";
+      searchClear.classList.remove("visible");
+      searchResults.innerHTML = "";
+      return;
     }
 
-    /* 載入右側 HTML 預覽 + 淡入效果 */
-    function loadPreview(path) {
-      const frame = document.getElementById("previewFrame");
-      const hero = document.getElementById("hero");
+    searchClear.classList.add("visible");
+    treeEl.style.display = "none";
+    searchResults.style.display = "block";
+    renderSearchResults(term);
+  });
 
-      // 顯示 iframe、隱藏首頁 Hero
-      hero.style.display = "none";
-      frame.style.display = "block";
+  searchClear.addEventListener("click", () => {
+    searchInput.value = "";
+    searchClear.classList.remove("visible");
+    searchResults.style.display = "none";
+    treeEl.style.display = "block";
+    searchResults.innerHTML = "";
+    searchInput.focus();
+  });
 
-      // 重新觸發淡入動畫
-      frame.classList.remove("fade-in");
-      void frame.offsetWidth; // 強制 reflow 以重啟動畫
-      frame.classList.add("fade-in");
+  function renderSearchResults(term) {
+    const lower = term.toLowerCase();
+    const matches = fileIndex.filter(item =>
+      item.title.toLowerCase().includes(lower) ||
+      (item.breadcrumb && item.breadcrumb.toLowerCase().includes(lower))
+    );
 
-      frame.src = path;
+    searchResults.innerHTML = "";
+
+    const header = document.createElement("div");
+    header.className = "search-result-title";
+    header.textContent = `搜尋結果 (${matches.length} 筆)`;
+    searchResults.appendChild(header);
+
+    if (!matches.length) {
+      const empty = document.createElement("div");
+      empty.className = "search-empty";
+      empty.textContent = "找不到符合的檔案，請嘗試其他關鍵字。";
+      searchResults.appendChild(empty);
+      return;
     }
 
-    /* 三個控制按鈕 */
+    matches.forEach(item => {
+      const row = document.createElement("div");
+      row.className = "search-item";
 
-    // 回到首頁：清空 iframe，顯示 Hero
-    document.getElementById("homeBtn").addEventListener("click", () => {
-      const frame = document.getElementById("previewFrame");
-      const hero = document.getElementById("hero");
+      const name = document.createElement("div");
+      name.className = "search-item-name";
+      name.textContent = item.title;
 
-      frame.src = "";
-      frame.style.display = "none";
+      const path = document.createElement("div");
+      path.className = "search-item-path";
+      path.textContent = item.breadcrumb ? `${item.breadcrumb} / ${item.title}` : item.title;
 
-      hero.style.display = "flex";
-      hero.classList.remove("fade-in");
-      void hero.offsetWidth;
-      hero.classList.add("fade-in");
+      row.appendChild(name);
+      row.appendChild(path);
+
+      row.addEventListener("click", () => {
+        loadPreview(item.path);
+      });
+
+      searchResults.appendChild(row);
     });
+  }
 
-    // 展開全部
-    document.getElementById("expandAllBtn").addEventListener("click", () => {
-      const folders = document.querySelectorAll("#tree .folder");
-      folders.forEach(f => f.classList.add("open"));
-    });
+  // 控制列按鈕
+  document.getElementById("homeBtn").addEventListener("click", () => {
+    showHomeView();
+  });
 
-    // 收合全部
-    document.getElementById("collapseAllBtn").addEventListener("click", () => {
-      const folders = document.querySelectorAll("#tree .folder");
-      folders.forEach(f => f.classList.remove("open"));
-    });
-  </script>
+  document.getElementById("expandBtn").addEventListener("click", () => {
+    expandFirstLevel();
+  });
+
+  document.getElementById("collapseBtn").addEventListener("click", () => {
+    collapseAll();
+  });
+</script>
 </body>
 </html>
