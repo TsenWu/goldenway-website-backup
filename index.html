@@ -1,133 +1,102 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GOLDENWAY 官網內容管理系統</title>
 
-  <!-- Apple / Inter 風格字體 -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --bg-main: #f5f5f7;
-      --bg-elevated: rgba(255, 255, 255, 0.82);
-      --border-subtle: #d2d2d7;
+      --bg: #f5f5f7;
       --accent: #0071e3;
-      --accent-soft: rgba(0, 113, 227, 0.08);
-      --text-main: #1d1d1f;
-      --text-subtle: #6e6e73;
-      --sidebar-width: 280px;
-      --header-height: 64px;
-    }
-
-    * {
-      box-sizing: border-box;
+      --accentSoft: rgba(0, 113, 227, 0.1);
+      --border: #d0d0d4;
+      --textMain: #1d1d1f;
+      --textSub: #6e6e73;
+      --sidebarW: 270px;
+      --headerH: 60px;
     }
 
     body {
       margin: 0;
-      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      background: var(--bg-main);
-      color: var(--text-main);
+      font-family: Inter, sans-serif;
+      background: var(--bg);
       height: 100vh;
-      display: flex;
+      overflow: hidden;
+      color: var(--textMain);
     }
 
     .app {
       display: flex;
       flex-direction: column;
-      width: 100%;
       height: 100vh;
     }
 
-    /* 頂部品牌列 + 搜尋列 */
+    /* ──────────────────────── Top Bar ──────────────────────── */
     .topbar {
-      height: var(--header-height);
+      height: var(--headerH);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 20px;
-      border-bottom: 1px solid var(--border-subtle);
-      background: linear-gradient(120deg, rgba(255,255,255,0.9), rgba(245,245,247,0.92));
+      padding: 0 18px;
+      background: rgba(255, 255, 255, 0.83);
+      border-bottom: 1px solid var(--border);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       position: sticky;
       top: 0;
-      z-index: 20;
+      z-index: 10;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 10px;
-      min-width: 0;
     }
 
     .brand-logo {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      overflow: hidden;
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
       background: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
+      overflow: hidden;
     }
 
     .brand-logo img {
       width: 100%;
       height: 100%;
       object-fit: contain;
-      display: block;
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      font-size: 13px;
-      line-height: 1.2;
-      white-space: nowrap;
     }
 
     .brand-title {
+      font-size: 13px;
       font-weight: 600;
-      letter-spacing: 0.08em;
-      font-size: 12px;
-      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
-    .brand-subtitle {
-      color: var(--text-subtle);
-      font-size: 11px;
-    }
-
+    /* ──────────────────────── Search ──────────────────────── */
     .search-bar {
       position: relative;
-      max-width: 420px;
-      width: 100%;
+      width: 380px;
+      max-width: 100%;
     }
 
     .search-input {
       width: 100%;
-      padding: 8px 32px 8px 30px;
+      padding: 8px 34px;
       border-radius: 999px;
-      border: 1px solid var(--border-subtle);
-      font-size: 14px;
-      outline: none;
+      border: 1px solid var(--border);
       background: rgba(255,255,255,0.9);
-      transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
-    }
-
-    .search-input::placeholder {
-      color: #a1a1a6;
+      outline: none;
+      font-size: 14px;
     }
 
     .search-input:focus {
       border-color: var(--accent);
-      background: #ffffff;
-      box-shadow: 0 0 0 3px var(--accent-soft);
+      box-shadow: 0 0 0 3px var(--accentSoft);
+      background: #fff;
     }
 
     .search-icon {
@@ -135,132 +104,75 @@
       left: 10px;
       top: 50%;
       transform: translateY(-50%);
+      color: #999;
       font-size: 14px;
-      color: #a1a1a6;
-      pointer-events: none;
     }
 
     .search-clear {
       position: absolute;
-      right: 8px;
+      right: 10px;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 16px;
-      line-height: 1;
-      color: #b0b0b5;
       cursor: pointer;
       display: none;
-      user-select: none;
+      font-size: 16px;
+      color: #aaa;
     }
 
     .search-clear.visible {
       display: block;
     }
 
-    /* 主體區：左側樹狀 + 右側預覽 */
+    /* ──────────────────────── Layout ──────────────────────── */
     .body {
-      flex: 1;
       display: flex;
+      flex: 1;
       min-height: 0;
     }
 
     .sidebar {
-      width: var(--sidebar-width);
-      border-right: 1px solid var(--border-subtle);
-      background: #f9f9fb;
-      padding: 10px 10px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+      width: var(--sidebarW);
+      border-right: 1px solid var(--border);
+      background: #fafafa;
+      padding: 10px;
       overflow-y: auto;
     }
 
-    .sidebar-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 4px;
-    }
-
-    .sidebar-title {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-main);
-    }
-
-    .sidebar-buttons {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 6px;
-      flex-wrap: wrap;
-    }
-
     .btn {
-      border-radius: 999px;
-      border: 1px solid var(--border-subtle);
+      font-size: 12px;
       padding: 4px 10px;
-      font-size: 11px;
-      background: #ffffff;
+      margin-right: 6px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: white;
       cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.08s ease;
-      white-space: nowrap;
     }
 
     .btn-primary {
       background: var(--accent);
       border-color: var(--accent);
-      color: #ffffff;
-    }
-
-    .btn:hover {
-      background: #ffffff;
-      box-shadow: 0 1px 3px rgba(15,15,20,0.12);
-      transform: translateY(-0.5px);
-    }
-
-    .btn-primary:hover {
-      background: #0a7ff0;
-      border-color: #0a7ff0;
-    }
-
-    .btn:active {
-      transform: translateY(0);
-      box-shadow: none;
+      color: white;
     }
 
     .tree-container {
-      flex: 1;
-      overflow-y: auto;
-      padding-right: 4px;
+      margin-top: 6px;
     }
 
-    /* 樹狀清單樣式 */
+    /* ──────────────────────── Tree ──────────────────────── */
     ul {
       list-style: none;
-      margin: 0;
       padding-left: 14px;
+      margin: 0;
     }
 
     #tree > ul {
       padding-left: 0;
-      margin-top: 4px;
-    }
-
-    .folder,
-    .file {
-      cursor: pointer;
-      user-select: none;
-      font-size: 13px;
-      line-height: 1.6;
     }
 
     .folder {
+      cursor: pointer;
       font-weight: 500;
-      color: var(--text-main);
-      margin: 2px 0;
+      margin: 3px 0;
     }
 
     .folder-title {
@@ -271,91 +183,60 @@
       border-radius: 4px;
     }
 
-    .folder-arrow {
-      font-size: 10px;
-      width: 10px;
-      text-align: center;
-      color: #a1a1a6;
-      transition: transform 0.18s ease;
+    .folder-title:hover {
+      background: rgba(0,0,0,0.05);
     }
 
-    .folder.open > .folder-title .folder-arrow {
+    .arrow {
+      font-size: 10px;
+      transition: transform 0.18s;
+      color: #a1a1a6;
+    }
+
+    .folder.open > .folder-title .arrow {
       transform: rotate(90deg);
     }
 
-    .folder-title:hover {
-      background: rgba(0,0,0,0.03);
-    }
-
     .file {
-      font-weight: 400;
-      color: var(--accent);
-      padding: 1px 4px;
+      cursor: pointer;
+      padding: 2px 4px;
       border-radius: 4px;
-      margin: 1px 0;
+      color: var(--accent);
+      margin: 2px 0;
     }
 
     .file:hover {
+      background: rgba(0,0,0,0.04);
       text-decoration: underline;
-      background: rgba(0,0,0,0.02);
     }
 
-    /* 搜尋結果區（取代樹狀清單顯示） */
+    /* ──────────────────────── Search Results ──────────────────────── */
     #searchResults {
       display: none;
-      font-size: 13px;
-    }
-
-    .search-result-title {
-      font-size: 11px;
-      color: var(--text-subtle);
-      margin: 4px 0 2px;
+      margin-top: 8px;
     }
 
     .search-item {
-      padding: 5px 6px;
+      padding: 5px;
       border-radius: 4px;
       cursor: pointer;
-      margin-bottom: 2px;
-      background: transparent;
-      transition: background 0.12s ease, transform 0.05s ease;
     }
 
     .search-item:hover {
-      background: rgba(0,0,0,0.03);
-      transform: translateY(-0.5px);
+      background: rgba(0,0,0,0.05);
     }
 
-    .search-item-name {
-      color: var(--accent);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .search-item-path {
+    .search-path {
       font-size: 11px;
-      color: var(--text-subtle);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      color: var(--textSub);
     }
 
-    .search-empty {
-      font-size: 12px;
-      color: var(--text-subtle);
-      margin-top: 6px;
-    }
-
-    /* 右側預覽區 + 首頁 Hero */
+    /* ──────────────────────── Preview / Home Hero ──────────────────────── */
     .preview {
       flex: 1;
       position: relative;
+      background: radial-gradient(circle at top left, #fff 0, #f5f5f7 40%, #e9ecf5 100%);
       overflow: hidden;
-      background: radial-gradient(circle at top left, #ffffff 0, #f5f5f7 40%, #e9ecf5 100%);
-      display: flex;
-      align-items: stretch;
-      justify-content: stretch;
     }
 
     iframe {
@@ -363,7 +244,7 @@
       height: 100%;
       border: none;
       display: none;
-      background: #ffffff;
+      background: white;
     }
 
     .hero {
@@ -371,13 +252,13 @@
       inset: 0;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      text-align: center;
-      pointer-events: none;
+      align-items: center;
       opacity: 0;
       transform: translateY(10px);
-      transition: opacity 0.35s ease, transform 0.35s ease;
+      transition: 0.35s;
+      text-align: center;
+      pointer-events: none;
     }
 
     .hero-visible {
@@ -385,95 +266,45 @@
       transform: translateY(0);
     }
 
-    .hero-badge {
-      font-size: 11px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.8);
-      background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(240,244,255,0.95));
-      color: var(--text-subtle);
-      margin-bottom: 16px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
     .hero-title {
       font-size: 26px;
       font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin: 0 0 8px;
     }
 
-    .hero-subtitle {
-      font-size: 16px;
-      color: var(--text-subtle);
-      margin-bottom: 18px;
-    }
-
-    .hero-meta {
-      font-size: 12px;
-      color: #a1a1a6;
-    }
-
-    .hero-meta span {
-      margin: 0 8px;
-    }
-
-    /* RWD – 手機窄版簡化 */
-    @media (max-width: 900px) {
-      :root {
-        --sidebar-width: 230px;
-      }
-
-      .brand-subtitle {
-        display: none;
-      }
-
-      .hero-title {
-        font-size: 20px;
-      }
-
-      .hero-subtitle {
-        font-size: 14px;
-        padding: 0 20px;
-      }
+    .hero-sub {
+      font-size: 15px;
+      color: var(--textSub);
+      margin-top: 10px;
     }
   </style>
 </head>
+
 <body>
 <div class="app">
-  <!-- 頂部品牌列 + 搜尋列 -->
+
+  <!-- Top Bar -->
   <header class="topbar">
     <div class="brand">
       <div class="brand-logo">
-        <!-- TODO: 將 logo.png 換成你實際的 GoldenWay LOGO 路徑 -->
-        <img src="logo.png" alt="GoldenWay Logo">
+        <img src="logo.png" alt="LOGO" />
       </div>
-      <div class="brand-text">
-        <span class="brand-title">GOLDENWAY</span>
-        <span class="brand-subtitle">Website Archive Viewer</span>
-      </div>
+      <div class="brand-title">GOLDENWAY</div>
     </div>
+
     <div class="search-bar">
       <span class="search-icon">🔍</span>
-      <input id="searchInput" class="search-input" type="text" placeholder="搜尋檔名或關鍵字…">
+      <input class="search-input" id="searchInput" placeholder="搜尋檔案..." />
       <span id="searchClear" class="search-clear">×</span>
     </div>
   </header>
 
   <div class="body">
-    <!-- 左側：控制列 + 樹狀目錄 / 搜尋結果 -->
-    <aside class="sidebar">
-      <div class="sidebar-header">
-        <div class="sidebar-title">網站檔案索引</div>
-      </div>
 
-      <div class="sidebar-buttons">
-        <button id="homeBtn" class="btn btn-primary">回到首頁</button>
-        <button id="expandBtn" class="btn">展開全部</button>
-        <button id="collapseBtn" class="btn">收合全部</button>
-      </div>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <button id="homeBtn" class="btn btn-primary">回到首頁</button>
+      <button id="expandBtn" class="btn">展開全部</button>
+      <button id="collapseBtn" class="btn">收合全部</button>
 
       <div class="tree-container">
         <div id="tree"></div>
@@ -481,17 +312,11 @@
       </div>
     </aside>
 
-    <!-- 右側：首頁 Hero + 檔案預覽 -->
+    <!-- Preview / Home Hero -->
     <section class="preview">
       <div id="homeView" class="hero">
-        <div class="hero-badge">GoldenWay Internal · Archive</div>
-        <h1 class="hero-title">GOLDENWAY 官網內容管理系統</h1>
-        <div class="hero-subtitle">集中檢視、預覽與管理官網 HTML 檔案，隨時掌握內容版本。</div>
-        <div class="hero-meta">
-          <span>請從左側選擇一個 HTML 檔案預覽</span>
-          <span>·</span>
-          <span>支援搜尋與樹狀階層瀏覽</span>
-        </div>
+        <div class="hero-title">GOLDENWAY 官網內容管理系統</div>
+        <div class="hero-sub">請從左側選擇任一 HTML 檔案進行預覽</div>
       </div>
       <iframe id="previewFrame"></iframe>
     </section>
@@ -499,214 +324,168 @@
 </div>
 
 <script>
-  let fileIndex = [];  // 搜尋索引用
-  let treeData = null;
+let treeData = [];
+let fileIndex = [];
 
-  // 載入 tree-data.json
-  fetch("tree-data.json")
-    .then(res => res.json())
-    .then(data => {
-      treeData = data;
-      buildFileIndex(data);
-      const treeContainer = document.getElementById("tree");
-      treeContainer.appendChild(renderTree(data));
-      showHomeView(); // 初始顯示首頁 + 淡入
-    })
-    .catch(err => {
-      document.getElementById("tree").innerHTML =
-        "<span style='color:red;'>無法載入 tree-data.json</span><br>" + err;
-    });
-
-  // 建立搜尋用索引：只針對「檔案節點」
-  function buildFileIndex(nodes, parents = []) {
-    nodes.forEach(node => {
-      if (node.children && node.children.length) {
-        buildFileIndex(node.children, parents.concat(node.title));
-      } else if (node.path) {
-        fileIndex.push({
-          title: node.title || "",
-          path: node.path,
-          breadcrumb: parents.join(" / ")
-        });
-      }
-    });
-  }
-
-  // 產生樹狀 UI
-  function renderTree(nodes) {
-    const ul = document.createElement("ul");
-
-    nodes.forEach(node => {
-      const li = document.createElement("li");
-
-      if (node.children && node.children.length) {
-        // 資料夾
-        li.classList.add("folder");
-
-        const title = document.createElement("span");
-        title.className = "folder-title";
-
-        const arrow = document.createElement("span");
-        arrow.className = "folder-arrow";
-        arrow.textContent = "▸";
-
-        const text = document.createElement("span");
-        text.textContent = node.title;
-
-        title.appendChild(arrow);
-        title.appendChild(text);
-        li.appendChild(title);
-
-        title.addEventListener("click", () => {
-          li.classList.toggle("open");
-        });
-
-        const childUl = renderTree(node.children);
-        li.appendChild(childUl);
-      } else if (node.path) {
-        // 檔案
-        li.classList.add("file");
-        li.textContent = node.title;
-        li.addEventListener("click", () => loadPreview(node.path));
-      }
-
-      ul.appendChild(li);
-    });
-
-    return ul;
-  }
-
-  // 顯示首頁 Hero
-  function showHomeView() {
-    const frame = document.getElementById("previewFrame");
-    const home = document.getElementById("homeView");
-
-    frame.style.display = "none";
-    home.style.display = "flex";
-
-    // 觸發淡入動畫
-    requestAnimationFrame(() => {
-      home.classList.add("hero-visible");
-    });
-  }
-
-  // 隱藏首頁 Hero
-  function hideHomeView() {
-    const home = document.getElementById("homeView");
-    home.classList.remove("hero-visible");
-    setTimeout(() => {
-      home.style.display = "none";
-    }, 200);
-  }
-
-  // 載入右側 HTML 預覽
-  function loadPreview(path) {
-    hideHomeView();
-    const frame = document.getElementById("previewFrame");
-    frame.style.display = "block";
-    frame.src = path;
-  }
-
-  // 展開全部：只展開第一層（保持階層感）
-  function expandFirstLevel() {
-    const rootFolders = document.querySelectorAll("#tree > ul > li.folder");
-    rootFolders.forEach(folder => folder.classList.add("open"));
-  }
-
-  // 收合全部：全部資料夾關閉
-  function collapseAll() {
-    const allFolders = document.querySelectorAll(".folder");
-    allFolders.forEach(folder => folder.classList.remove("open"));
-  }
-
-  // 搜尋邏輯：輸入關鍵字即時篩選檔案
-  const searchInput = document.getElementById("searchInput");
-  const searchClear = document.getElementById("searchClear");
-  const searchResults = document.getElementById("searchResults");
-  const treeEl = document.getElementById("tree");
-
-  searchInput.addEventListener("input", () => {
-    const term = searchInput.value.trim().toLowerCase();
-    if (!term) {
-      searchResults.style.display = "none";
-      treeEl.style.display = "block";
-      searchClear.classList.remove("visible");
-      searchResults.innerHTML = "";
-      return;
-    }
-
-    searchClear.classList.add("visible");
-    treeEl.style.display = "none";
-    searchResults.style.display = "block";
-    renderSearchResults(term);
+fetch("tree-data.json")
+  .then((res) => res.json())
+  .then((data) => {
+    treeData = data;
+    buildFileIndex(data);
+    document.getElementById("tree").appendChild(renderTree(data));
+    showHome();
   });
 
-  searchClear.addEventListener("click", () => {
-    searchInput.value = "";
-    searchClear.classList.remove("visible");
+function buildFileIndex(nodes, chain = []) {
+  nodes.forEach((node) => {
+    if (node.children?.length) {
+      buildFileIndex(node.children, chain.concat(node.title));
+    } else if (node.path) {
+      fileIndex.push({
+        title: node.title,
+        path: node.path,
+        full: [...chain, node.title].join(" / ")
+      });
+    }
+  });
+}
+
+function renderTree(nodes) {
+  const ul = document.createElement("ul");
+  nodes.forEach((node) => {
+    const li = document.createElement("li");
+
+    if (node.children?.length) {
+      li.classList.add("folder");
+
+      const title = document.createElement("div");
+      title.className = "folder-title";
+
+      const arrow = document.createElement("span");
+      arrow.className = "arrow";
+      arrow.textContent = "▸";
+
+      const text = document.createElement("span");
+      text.textContent = node.title;
+
+      title.appendChild(arrow);
+      title.appendChild(text);
+      li.appendChild(title);
+
+      const childUl = renderTree(node.children);
+      li.appendChild(childUl);
+
+      title.onclick = () => li.classList.toggle("open");
+    } else {
+      li.classList.add("file");
+      li.textContent = node.title;
+      li.onclick = () => loadPreview(node.path);
+    }
+
+    ul.appendChild(li);
+  });
+  return ul;
+}
+
+/* ───────────────────────── Home View ───────────────────────── */
+function showHome() {
+  document.getElementById("previewFrame").style.display = "none";
+  const home = document.getElementById("homeView");
+  home.style.display = "flex";
+  requestAnimationFrame(() => home.classList.add("hero-visible"));
+}
+
+function hideHome() {
+  const home = document.getElementById("homeView");
+  home.classList.remove("hero-visible");
+  setTimeout(() => (home.style.display = "none"), 250);
+}
+
+/* ───────────────────────── Preview ───────────────────────── */
+function loadPreview(path) {
+  hideHome();
+  const frame = document.getElementById("previewFrame");
+  frame.src = path;
+  frame.style.display = "block";
+}
+
+/* ───────────────────────── Expand / Collapse ───────────────────────── */
+document.getElementById("expandBtn").onclick = () => {
+  document.querySelectorAll("#tree > ul > li.folder").forEach((el) => {
+    el.classList.add("open");
+  });
+};
+
+document.getElementById("collapseBtn").onclick = () => {
+  document.querySelectorAll(".folder").forEach((el) => {
+    el.classList.remove("open");
+  });
+};
+
+/* ───────────────────────── Search ───────────────────────── */
+const searchInput = document.getElementById("searchInput");
+const searchClear = document.getElementById("searchClear");
+const searchResults = document.getElementById("searchResults");
+const treeEl = document.getElementById("tree");
+
+searchInput.oninput = () => {
+  const q = searchInput.value.trim().toLowerCase();
+
+  if (!q) {
     searchResults.style.display = "none";
     treeEl.style.display = "block";
-    searchResults.innerHTML = "";
-    searchInput.focus();
-  });
-
-  function renderSearchResults(term) {
-    const lower = term.toLowerCase();
-    const matches = fileIndex.filter(item =>
-      item.title.toLowerCase().includes(lower) ||
-      (item.breadcrumb && item.breadcrumb.toLowerCase().includes(lower))
-    );
-
-    searchResults.innerHTML = "";
-
-    const header = document.createElement("div");
-    header.className = "search-result-title";
-    header.textContent = `搜尋結果 (${matches.length} 筆)`;
-    searchResults.appendChild(header);
-
-    if (!matches.length) {
-      const empty = document.createElement("div");
-      empty.className = "search-empty";
-      empty.textContent = "找不到符合的檔案，請嘗試其他關鍵字。";
-      searchResults.appendChild(empty);
-      return;
-    }
-
-    matches.forEach(item => {
-      const row = document.createElement("div");
-      row.className = "search-item";
-
-      const name = document.createElement("div");
-      name.className = "search-item-name";
-      name.textContent = item.title;
-
-      const path = document.createElement("div");
-      path.className = "search-item-path";
-      path.textContent = item.breadcrumb ? `${item.breadcrumb} / ${item.title}` : item.title;
-
-      row.appendChild(name);
-      row.appendChild(path);
-
-      row.addEventListener("click", () => {
-        loadPreview(item.path);
-      });
-
-      searchResults.appendChild(row);
-    });
+    searchClear.classList.remove("visible");
+    return;
   }
 
-  // 控制列按鈕
-  document.getElementById("homeBtn").addEventListener("click", () => {
-    showHomeView();
-  });
+  searchClear.classList.add("visible");
+  treeEl.style.display = "none";
+  searchResults.style.display = "block";
+  renderSearch(q);
+};
 
-  document.getElementById("expandBtn").addEventListener("click", () => {
-    expandFirstLevel();
-  });
+searchClear.onclick = () => {
+  searchInput.value = "";
+  searchClear.classList.remove("visible");
+  searchResults.style.display = "none";
+  treeEl.style.display = "block";
+  searchInput.focus();
+};
 
-  document.getElementById("collapseBtn").addEventListener("click", () => {
-    collapseAll();
+function renderSearch(q) {
+  searchResults.innerHTML = "";
+  const list = fileIndex.filter((f) =>
+    f.title.toLowerCase().includes(q) || f.full.toLowerCase().includes(q)
+  );
+
+  if (!list.length) {
+    searchResults.innerHTML = "<div style='color:#999;'>找不到符合項目</div>";
+    return;
+  }
+
+  list.forEach((f) => {
+    const div = document.createElement("div");
+    div.className = "search-item";
+
+    const name = document.createElement("div");
+    name.textContent = f.title;
+    name.style.color = "var(--accent)";
+    name.style.fontWeight = "500";
+
+    const path = document.createElement("div");
+    path.className = "search-path";
+    path.textContent = f.full;
+
+    div.appendChild(name);
+    div.appendChild(path);
+
+    div.onclick = () => loadPreview(f.path);
+    searchResults.appendChild(div);
   });
+}
+
+/* ───────────────────────── Home Button ───────────────────────── */
+document.getElementById("homeBtn").onclick = showHome;
 </script>
 </body>
 </html>
