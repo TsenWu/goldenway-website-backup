@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GOLDENWAY 官網內容管理系統</title>
 
+  <!-- 字體 -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
@@ -19,9 +20,13 @@
       --headerH: 60px;
     }
 
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: Inter, sans-serif;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
       background: var(--bg);
       height: 100vh;
       overflow: hidden;
@@ -34,7 +39,7 @@
       height: 100vh;
     }
 
-    /* ──────────────────────── Top Bar ──────────────────────── */
+    /* ───── Top Bar ───── */
     .topbar {
       height: var(--headerH);
       display: flex;
@@ -62,12 +67,14 @@
       border-radius: 6px;
       background: #000;
       overflow: hidden;
+      flex-shrink: 0;
     }
 
     .brand-logo img {
       width: 100%;
       height: 100%;
       object-fit: contain;
+      display: block;
     }
 
     .brand-title {
@@ -76,7 +83,7 @@
       letter-spacing: 1px;
     }
 
-    /* ──────────────────────── Search ──────────────────────── */
+    /* ───── Search ───── */
     .search-bar {
       position: relative;
       width: 380px;
@@ -88,7 +95,7 @@
       padding: 8px 34px;
       border-radius: 999px;
       border: 1px solid var(--border);
-      background: rgba(255,255,255,0.9);
+      background: rgba(255, 255, 255, 0.9);
       outline: none;
       font-size: 14px;
     }
@@ -106,6 +113,7 @@
       transform: translateY(-50%);
       color: #999;
       font-size: 14px;
+      pointer-events: none;
     }
 
     .search-clear {
@@ -117,13 +125,14 @@
       display: none;
       font-size: 16px;
       color: #aaa;
+      user-select: none;
     }
 
     .search-clear.visible {
       display: block;
     }
 
-    /* ──────────────────────── Layout ──────────────────────── */
+    /* ───── Layout ───── */
     .body {
       display: flex;
       flex: 1;
@@ -136,6 +145,8 @@
       background: #fafafa;
       padding: 10px;
       overflow-y: auto;
+      display: flex;
+      flex-direction: column;
     }
 
     .btn {
@@ -156,15 +167,18 @@
 
     .tree-container {
       margin-top: 6px;
+      flex: 1;
+      overflow-y: auto;
     }
 
-    /* ──────────────────────── Tree ──────────────────────── */
+    /* ───── Tree Style ───── */
     ul {
       list-style: none;
       padding-left: 14px;
       margin: 0;
     }
 
+    /* 根層 ul 不縮起來，只有資料夾底下的 ul 會收合 */
     #tree > ul {
       padding-left: 0;
     }
@@ -184,7 +198,7 @@
     }
 
     .folder-title:hover {
-      background: rgba(0,0,0,0.05);
+      background: rgba(0, 0, 0, 0.05);
     }
 
     .arrow {
@@ -197,6 +211,15 @@
       transform: rotate(90deg);
     }
 
+    /* 真正控制展開 / 收合的關鍵：預設關閉，open 時才顯示 */
+    .folder > ul {
+      display: none;
+    }
+
+    .folder.open > ul {
+      display: block;
+    }
+
     .file {
       cursor: pointer;
       padding: 2px 4px;
@@ -206,11 +229,11 @@
     }
 
     .file:hover {
-      background: rgba(0,0,0,0.04);
+      background: rgba(0, 0, 0, 0.04);
       text-decoration: underline;
     }
 
-    /* ──────────────────────── Search Results ──────────────────────── */
+    /* ───── Search Result List ───── */
     #searchResults {
       display: none;
       margin-top: 8px;
@@ -223,7 +246,13 @@
     }
 
     .search-item:hover {
-      background: rgba(0,0,0,0.05);
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    .search-name {
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 500;
     }
 
     .search-path {
@@ -231,7 +260,7 @@
       color: var(--textSub);
     }
 
-    /* ──────────────────────── Preview / Home Hero ──────────────────────── */
+    /* ───── Preview / Home Hero ───── */
     .preview {
       flex: 1;
       position: relative;
@@ -269,12 +298,26 @@
     .hero-title {
       font-size: 26px;
       font-weight: 600;
+      letter-spacing: 0.12em;
     }
 
     .hero-sub {
       font-size: 15px;
       color: var(--textSub);
       margin-top: 10px;
+    }
+
+    @media (max-width: 900px) {
+      .search-bar {
+        max-width: 240px;
+      }
+      .hero-title {
+        font-size: 20px;
+      }
+      .hero-sub {
+        font-size: 13px;
+        padding: 0 16px;
+      }
     }
   </style>
 </head>
@@ -286,6 +329,7 @@
   <header class="topbar">
     <div class="brand">
       <div class="brand-logo">
+        <!-- 這裡可以換成你的實際 LOGO 檔案路徑 -->
         <img src="logo.png" alt="LOGO" />
       </div>
       <div class="brand-title">GOLDENWAY</div>
@@ -302,9 +346,11 @@
 
     <!-- Sidebar -->
     <aside class="sidebar">
-      <button id="homeBtn" class="btn btn-primary">回到首頁</button>
-      <button id="expandBtn" class="btn">展開全部</button>
-      <button id="collapseBtn" class="btn">收合全部</button>
+      <div>
+        <button id="homeBtn" class="btn btn-primary">回到首頁</button>
+        <button id="expandBtn" class="btn">展開全部</button>
+        <button id="collapseBtn" class="btn">收合全部</button>
+      </div>
 
       <div class="tree-container">
         <div id="tree"></div>
@@ -316,7 +362,7 @@
     <section class="preview">
       <div id="homeView" class="hero">
         <div class="hero-title">GOLDENWAY 官網內容管理系統</div>
-        <div class="hero-sub">請從左側選擇任一 HTML 檔案進行預覽</div>
+        <div class="hero-sub">請從左側選擇任一 HTML 檔案進行預覽，或使用上方搜尋快速定位。</div>
       </div>
       <iframe id="previewFrame"></iframe>
     </section>
@@ -324,168 +370,182 @@
 </div>
 
 <script>
-let treeData = [];
-let fileIndex = [];
+  let treeData = [];
+  let fileIndex = [];
 
-fetch("tree-data.json")
-  .then((res) => res.json())
-  .then((data) => {
-    treeData = data;
-    buildFileIndex(data);
-    document.getElementById("tree").appendChild(renderTree(data));
-    showHome();
-  });
+  // 讀取 tree-data.json
+  fetch("tree-data.json")
+    .then(res => res.json())
+    .then(data => {
+      treeData = data;
+      buildFileIndex(data);
+      document.getElementById("tree").appendChild(renderTree(data));
+      showHome();
+    })
+    .catch(err => {
+      document.getElementById("tree").innerHTML =
+        "<span style='color:red;'>無法載入 tree-data.json</span><br>" + err;
+    });
 
-function buildFileIndex(nodes, chain = []) {
-  nodes.forEach((node) => {
-    if (node.children?.length) {
-      buildFileIndex(node.children, chain.concat(node.title));
-    } else if (node.path) {
-      fileIndex.push({
-        title: node.title,
-        path: node.path,
-        full: [...chain, node.title].join(" / ")
-      });
+  // 建立搜尋索引
+  function buildFileIndex(nodes, chain = []) {
+    nodes.forEach(node => {
+      if (node.children && node.children.length) {
+        buildFileIndex(node.children, chain.concat(node.title));
+      } else if (node.path) {
+        fileIndex.push({
+          title: node.title,
+          path: node.path,
+          full: [...chain, node.title].join(" / ")
+        });
+      }
+    });
+  }
+
+  // 建立樹狀結構
+  function renderTree(nodes) {
+    const ul = document.createElement("ul");
+
+    nodes.forEach(node => {
+      const li = document.createElement("li");
+
+      if (node.children && node.children.length) {
+        li.classList.add("folder");
+
+        const title = document.createElement("div");
+        title.className = "folder-title";
+
+        const arrow = document.createElement("span");
+        arrow.className = "arrow";
+        arrow.textContent = "▸";
+
+        const text = document.createElement("span");
+        text.textContent = node.title;
+
+        title.appendChild(arrow);
+        title.appendChild(text);
+        li.appendChild(title);
+
+        const childUl = renderTree(node.children);
+        li.appendChild(childUl);
+
+        title.onclick = () => {
+          li.classList.toggle("open");
+        };
+      } else if (node.path) {
+        li.classList.add("file");
+        li.textContent = node.title;
+        li.onclick = () => loadPreview(node.path);
+      }
+
+      ul.appendChild(li);
+    });
+
+    return ul;
+  }
+
+  /* ───── Home View ───── */
+  function showHome() {
+    const frame = document.getElementById("previewFrame");
+    const home = document.getElementById("homeView");
+    frame.style.display = "none";
+    home.style.display = "flex";
+    requestAnimationFrame(() => home.classList.add("hero-visible"));
+  }
+
+  function hideHome() {
+    const home = document.getElementById("homeView");
+    home.classList.remove("hero-visible");
+    setTimeout(() => {
+      home.style.display = "none";
+    }, 250);
+  }
+
+  /* ───── Preview ───── */
+  function loadPreview(path) {
+    hideHome();
+    const frame = document.getElementById("previewFrame");
+    frame.src = path;
+    frame.style.display = "block";
+  }
+
+  /* ───── Expand / Collapse ───── */
+  // 展開全部：只展開第一層資料夾，保留階層感
+  document.getElementById("expandBtn").onclick = () => {
+    const roots = document.querySelectorAll("#tree > ul > li.folder");
+    roots.forEach(el => el.classList.add("open"));
+  };
+
+  // 收合全部：關閉所有資料夾
+  document.getElementById("collapseBtn").onclick = () => {
+    const all = document.querySelectorAll(".folder");
+    all.forEach(el => el.classList.remove("open"));
+  };
+
+  /* ───── Search ───── */
+  const searchInput = document.getElementById("searchInput");
+  const searchClear = document.getElementById("searchClear");
+  const searchResults = document.getElementById("searchResults");
+  const treeEl = document.getElementById("tree");
+
+  searchInput.oninput = () => {
+    const q = searchInput.value.trim().toLowerCase();
+
+    if (!q) {
+      searchResults.style.display = "none";
+      treeEl.style.display = "block";
+      searchClear.classList.remove("visible");
+      return;
     }
-  });
-}
 
-function renderTree(nodes) {
-  const ul = document.createElement("ul");
-  nodes.forEach((node) => {
-    const li = document.createElement("li");
+    searchClear.classList.add("visible");
+    treeEl.style.display = "none";
+    searchResults.style.display = "block";
+    renderSearch(q);
+  };
 
-    if (node.children?.length) {
-      li.classList.add("folder");
-
-      const title = document.createElement("div");
-      title.className = "folder-title";
-
-      const arrow = document.createElement("span");
-      arrow.className = "arrow";
-      arrow.textContent = "▸";
-
-      const text = document.createElement("span");
-      text.textContent = node.title;
-
-      title.appendChild(arrow);
-      title.appendChild(text);
-      li.appendChild(title);
-
-      const childUl = renderTree(node.children);
-      li.appendChild(childUl);
-
-      title.onclick = () => li.classList.toggle("open");
-    } else {
-      li.classList.add("file");
-      li.textContent = node.title;
-      li.onclick = () => loadPreview(node.path);
-    }
-
-    ul.appendChild(li);
-  });
-  return ul;
-}
-
-/* ───────────────────────── Home View ───────────────────────── */
-function showHome() {
-  document.getElementById("previewFrame").style.display = "none";
-  const home = document.getElementById("homeView");
-  home.style.display = "flex";
-  requestAnimationFrame(() => home.classList.add("hero-visible"));
-}
-
-function hideHome() {
-  const home = document.getElementById("homeView");
-  home.classList.remove("hero-visible");
-  setTimeout(() => (home.style.display = "none"), 250);
-}
-
-/* ───────────────────────── Preview ───────────────────────── */
-function loadPreview(path) {
-  hideHome();
-  const frame = document.getElementById("previewFrame");
-  frame.src = path;
-  frame.style.display = "block";
-}
-
-/* ───────────────────────── Expand / Collapse ───────────────────────── */
-document.getElementById("expandBtn").onclick = () => {
-  document.querySelectorAll("#tree > ul > li.folder").forEach((el) => {
-    el.classList.add("open");
-  });
-};
-
-document.getElementById("collapseBtn").onclick = () => {
-  document.querySelectorAll(".folder").forEach((el) => {
-    el.classList.remove("open");
-  });
-};
-
-/* ───────────────────────── Search ───────────────────────── */
-const searchInput = document.getElementById("searchInput");
-const searchClear = document.getElementById("searchClear");
-const searchResults = document.getElementById("searchResults");
-const treeEl = document.getElementById("tree");
-
-searchInput.oninput = () => {
-  const q = searchInput.value.trim().toLowerCase();
-
-  if (!q) {
+  searchClear.onclick = () => {
+    searchInput.value = "";
+    searchClear.classList.remove("visible");
     searchResults.style.display = "none";
     treeEl.style.display = "block";
-    searchClear.classList.remove("visible");
-    return;
+    searchInput.focus();
+  };
+
+  function renderSearch(q) {
+    searchResults.innerHTML = "";
+
+    const list = fileIndex.filter(f =>
+      f.title.toLowerCase().includes(q) || f.full.toLowerCase().includes(q)
+    );
+
+    if (!list.length) {
+      searchResults.innerHTML = "<div style='color:#999;'>找不到符合項目</div>";
+      return;
+    }
+
+    list.forEach(f => {
+      const row = document.createElement("div");
+      row.className = "search-item";
+
+      const name = document.createElement("div");
+      name.className = "search-name";
+      name.textContent = f.title;
+
+      const path = document.createElement("div");
+      path.className = "search-path";
+      path.textContent = f.full;
+
+      row.appendChild(name);
+      row.appendChild(path);
+      row.onclick = () => loadPreview(f.path);
+
+      searchResults.appendChild(row);
+    });
   }
 
-  searchClear.classList.add("visible");
-  treeEl.style.display = "none";
-  searchResults.style.display = "block";
-  renderSearch(q);
-};
-
-searchClear.onclick = () => {
-  searchInput.value = "";
-  searchClear.classList.remove("visible");
-  searchResults.style.display = "none";
-  treeEl.style.display = "block";
-  searchInput.focus();
-};
-
-function renderSearch(q) {
-  searchResults.innerHTML = "";
-  const list = fileIndex.filter((f) =>
-    f.title.toLowerCase().includes(q) || f.full.toLowerCase().includes(q)
-  );
-
-  if (!list.length) {
-    searchResults.innerHTML = "<div style='color:#999;'>找不到符合項目</div>";
-    return;
-  }
-
-  list.forEach((f) => {
-    const div = document.createElement("div");
-    div.className = "search-item";
-
-    const name = document.createElement("div");
-    name.textContent = f.title;
-    name.style.color = "var(--accent)";
-    name.style.fontWeight = "500";
-
-    const path = document.createElement("div");
-    path.className = "search-path";
-    path.textContent = f.full;
-
-    div.appendChild(name);
-    div.appendChild(path);
-
-    div.onclick = () => loadPreview(f.path);
-    searchResults.appendChild(div);
-  });
-}
-
-/* ───────────────────────── Home Button ───────────────────────── */
-document.getElementById("homeBtn").onclick = showHome;
+  /* ───── Home Button ───── */
+  document.getElementById("homeBtn").onclick = showHome;
 </script>
 </body>
 </html>
