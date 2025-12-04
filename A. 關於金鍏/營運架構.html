@@ -1,161 +1,228 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
 <div id="GW-公司介紹區塊">
+<div class="gw-content-container">
 <div class="gw-text-column">
 <h3 class="gw-title">金鍏電子股份有限公司</h3>
 
-<div class="gw-content">
+<div class="gw-article">
 <p>作為引領綠色照明創新的先驅，金鍏電子致力於研發與製造符合 ESG 精神的高效節能LED照明產品。我們專注於「節能、減碳、永續」的核心價值，為各類應用場域提供兼具品質與效能的照明解決方案。</p>
-&nbsp;
 
 <p>金鍏LED全系列燈具皆符合國際能效與安全標準，榮獲多項專利與專業認證，廣泛應用於住宅、商業空間、智慧建築與重工業場域，協助客戶有效降低能源消耗與營運支出，實現綠色轉型。</p>
-&nbsp;
 
 <p><span class="gw-highlight-blue">金鍏電子不以低價取勝，而是以「品質與價值」立足市場</span>。我們打造全台唯一 <strong>業界最長 5~10 年保固</strong> 的優質照明，<strong>燈具使用壽命超越 10 年</strong>，遠遠勝過市面上短壽命、高光衰、不省電的燈具。對客戶而言，使用金鍏優質燈具，不僅享有 <strong>更高的品質保證</strong>，更得到 <strong>卓越的節能成效</strong> 與 <strong>超長壽命減少維修汰換</strong>，燈具使用期間不僅回收燈具成本，更省下可觀的電費與維護支出。</p>
 
 <p class="gw-quote"><strong>我們相信：燈具的價格是金鍏品質的保證；而節能省電、長效耐用，才是帶給客戶最實在的回饋。</strong></p>
-&nbsp;
 
 <p>未來，我們將持續以技術驅動、永續導向為動能，邁向「全球綠色照明領導品牌」的願景，攜手客戶與夥伴共創低碳永續的光明未來。</p>
 </div>
 </div>
 
-<div class="gw-image-column"><img alt="GoldenWay 公司外觀" class="gw-main-photo" src="https://www.goldenwayled.com/archive/image/A1/Structure/a36a9f5654522424.jpg" />
-<div class="gw-note-box"><img alt="icon 圖示" class="gw-note-icon" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/10-years.png?v=tnisg8c" />
-<div class="gw-note-text">廉價的燈很好買，但壽命很短；<br />
-金鍏好燈雖不便宜，卻能亮十年以上，節能省電才是最長遠的回饋。</div>
+<div class="gw-image-column">
+<div class="gw-img-box gw-map-box gw-hover-effect"><img alt="金鍏電子地圖" class="gw-photo" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/GW_OperationalStructure/gemini_generated_image_f2mv6wf2mv6wf2mv.jpg?v=ky8lf4c" />
+<div class="gw-hover-overlay">
+<h4 class="gw-hover-title">金鍏電子 - 台灣燈具領導品牌</h4>
+
+<p class="gw-hover-text">位於新北市深坑區，在地深耕，放眼全球</p>
 </div>
+</div>
+
+<div class="gw-img-box gw-photo-box"><img alt="金鍏公司外觀" class="gw-photo" src="https://www.goldenwayled.com/archive/image/A1/Structure/a36a9f5654522424.jpg" /></div>
+</div>
+</div>
+
+<div class="gw-footer-note-box">
+<div class="gw-note-content">價格是一時的，效益是長久的。 低價往往伴隨著高頻率的更換成本。我們堅持以『品質』立足，以十年長效壽命，<b>將您省下的鉅額電費與維修費，轉化為最實質的獲利回饋。</b></div>
 </div>
 <style type="text/css">/* =========================================
        ★ 區塊樣式表：GW-公司介紹區塊 ★
        ========================================= */
 
-    /* 1. 主容器 (ID 權重 100) */
+    /* 1. 主容器 */
     #GW-公司介紹區塊 {
-      display: flex;
-      flex-wrap: wrap; /* 允許換行 */
       width: 100%;
-      font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
-      background-color: #ffffff;
+      margin: 0 auto;
+    /* 修改這一行：上20px, 右20px, 下0px, 左20px */
+      padding: 20px 20px 0px 20px;
       box-sizing: border-box;
+      background-color: #fff;
+      font-family: 'Noto Sans TC', "Microsoft JhengHei", Arial, sans-serif;
+    }
+
+    /* 內容容器 */
+    #GW-公司介紹區塊 .gw-content-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 20px;
     }
 
     /* 2. 左側文字區 */
     #GW-公司介紹區塊 .gw-text-column {
       flex: 1;
       min-width: 300px;
-      /* 增加內距，讓文字不要貼邊，閱讀更舒適 */
-      padding: 40px 40px; 
-      box-sizing: border-box;
-      color: #333;
     }
 
-    /* 標題 */
     #GW-公司介紹區塊 .gw-title {
-      font-size: 32px !important; /* 強制鎖定大小 */
-      white-space: nowrap;        /* 不換行 */
-      line-height: 1.2;
-      margin-bottom: 30px;
-      font-weight: 700;
+      font-size: 32px !important;
+      font-weight: bold;
       color: #000 !important;
+      margin: 0 0 25px 0;
+      line-height: 1.2;
     }
 
-    /* 內文設定 */
-    #GW-公司介紹區塊 .gw-content p {
+    #GW-公司介紹區塊 .gw-article p {
       font-size: 16px !important;
       line-height: 1.8 !important;
-      text-align: justify; /* 左右對齊 */
-      margin: 0 0 15px 0;
-      color: #333;
+      text-align: justify;
+      color: #333 !important;
+      margin-bottom: 20px;
     }
 
-    /* 藍色強調字 */
     #GW-公司介紹區塊 .gw-highlight-blue {
       color: #2980b9 !important;
       font-weight: bold;
     }
 
-    /* 引言強調 */
     #GW-公司介紹區塊 .gw-quote {
-      color: #2980b9 !important;
-      margin-top: 15px;
+      border-left: 4px solid #2980b9;
       padding-left: 15px;
-      border-left: 4px solid #2980b9; /* 左側藍線裝飾 */
+      color: #2980b9 !important;
+      font-style: italic;
     }
 
-    /* 3. 右側圖片區 */
+    /* 3. 右側圖片區 (控制間距) */
     #GW-公司介紹區塊 .gw-image-column {
-      flex: 1;
+      flex: 0.8;
       min-width: 300px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 40px;
-      box-sizing: border-box;
-      background-color: #f5f7fa; /* 淺灰背景 */
+      
+      /* ★ 關鍵：將間距縮到極小 (4px) ★ */
+      gap: 4px !important; 
     }
 
-    #GW-公司介紹區塊 .gw-main-photo {
+    /* 圖片外框通用設定 */
+    #GW-公司介紹區塊 .gw-img-box {
       width: 100%;
-      height: auto;
-      object-fit: contain;
-      display: block;
-      border-radius: 8px; /* 圖片圓角 */
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    }
-
-    /* 4. 圖片下方附註區塊 */
-    #GW-公司介紹區塊 .gw-note-box {
-      display: flex;
-      align-items: center; /* 垂直置中 */
-      margin-top: 20px;
-      background: rgba(255, 255, 255, 0.8); /* 改為白色半透明，質感較好 */
-      border: 1px solid #ddd; /* 增加細邊框 */
-      padding: 15px 20px;
+      height: 0;
+      position: relative;
+      overflow: hidden;
       border-radius: 8px;
-      width: 100%;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      
+      /* ★ 強制移除外邊距，確保 gap 生效 ★ */
+      margin: 0 !important; 
+    }
+
+    /* ★ 上圖 (地圖)：設定較扁的高度 (40%) ★ */
+    #GW-公司介紹區塊 .gw-map-box {
+      padding-bottom: 25% !important; 
+    }
+
+    /* ★ 下圖 (外觀)：設定較高的高度 (60%) ★ */
+    #GW-公司介紹區塊 .gw-photo-box {
+      padding-bottom: 45% !important; 
+    }
+
+    /* 圖片本體 */
+    #GW-公司介紹區塊 .gw-photo {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    /* Hover 特效 */
+    #GW-公司介紹區塊 .gw-hover-effect { cursor: pointer; }
+    #GW-公司介紹區塊 .gw-hover-effect:hover .gw-photo { transform: scale(1.1); }
+
+/* 浮層遮罩 */
+    #GW-公司介紹區塊 .gw-hover-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      
+      /* ★ 修正點：強制文字顏色為白色 ★ */
+      color: #ffffff !important; 
+      
+      text-align: center;
+      padding: 20px;
       box-sizing: border-box;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      z-index: 10; /* 確保浮在最上層 */
     }
 
-    #GW-公司介紹區塊 .gw-note-icon {
-      width: 40px;
-      height: 40px;
-      margin-right: 15px;
-      flex-shrink: 0;
+    /* 強制所有子元素繼承白色 */
+    #GW-公司介紹區塊 .gw-hover-overlay * {
+      color: #ffffff !important;
     }
 
-    #GW-公司介紹區塊 .gw-note-text {
-      font-size: 14px !important;
-      color: #444 !important;
-      line-height: 1.5 !important;
+    #GW-公司介紹區塊 .gw-hover-effect:hover .gw-hover-overlay { opacity: 1; }
+
+    #GW-公司介紹區塊 .gw-hover-title {
+      font-size: 24px !important;
       font-weight: bold;
+      margin: 0 0 10px 0;
+      transform: translateY(20px);
+      transition: transform 0.3s ease;
+      color: #ffffff !important; /* 雙重保險 */
+    }
+    
+    #GW-公司介紹區塊 .gw-hover-text {
+      font-size: 16px !important;
+      margin: 0;
+      transform: translateY(20px);
+      transition: transform 0.3s ease 0.1s;
+      color: #ffffff !important; /* 雙重保險 */
+    }
+
+    #GW-公司介紹區塊 .gw-hover-effect:hover .gw-hover-title,
+    #GW-公司介紹區塊 .gw-hover-effect:hover .gw-hover-text {
+      transform: translateY(0);
+    }
+
+    /* 4. 底部橫幅標註 */
+    #GW-公司介紹區塊 .gw-footer-note-box {
+      width: 100%;
+      border: 1px solid #2980b9;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      background-color: #f0f8ff;
+      box-sizing: border-box;
+    }
+
+    #GW-公司介紹區塊 .gw-note-content {
+      font-size: 16px !important;
+      font-weight: bold;
+      color: #333 !important;
+      line-height: 1.6;
     }
 
     /* --------------------------------------
-       RWD 響應式佈局 (規範 2.5)
+       RWD 響應式佈局
        -------------------------------------- */
-
-    /* 平板與手機版 (寬度 < 1024px) - 提早切換為堆疊模式 */
+    
+    /* 平板/手機版 (寬度 < 1024px) */
     @media (max-width: 1024px) {
-      #GW-公司介紹區塊 {
-        flex-direction: column; /* 垂直堆疊 */
+      #GW-公司介紹區塊 .gw-content-container {
+        flex-direction: column;
       }
-
-      #GW-公司介紹區塊 .gw-text-column {
-        width: 100%;
-        padding: 40px 20px; /* 手機版左右縮小 padding */
-      }
-
-      #GW-公司介紹區塊 .gw-title {
-        font-size: 26px !important;
-        white-space: normal; /* 手機版允許換行 */
-      }
-
+      
+      #GW-公司介紹區塊 .gw-text-column,
       #GW-公司介紹區塊 .gw-image-column {
         width: 100%;
-        padding: 0 20px 40px 20px; /* 上方歸零，靠下 */
-        background-color: #fff; /* 手機版背景改回白色，與文字融合 */
+        min-width: auto;
+      }
+      
+      /* 手機版：地圖可以稍微高一點點，方便手指點擊 */
+      #GW-公司介紹區塊 .gw-map-box {
+        padding-bottom: 50% !important;
       }
     }
 </style>
