@@ -254,178 +254,219 @@
 </div>
 </div>
 </div>
-<!-- ★ 區塊名稱：金鍏技術四核心區塊（背景圖＋卡片展示）★ -->
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
-<style type="text/css">/* ========== 🌐 公司特點外層包裝區 ========== */
-.company-feature-wrapper {
-  position: relative;
-  overflow: hidden;
-  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
-  color: #333;
-  text-align: center;
-}
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet" />
 
-/* ✅ 背景圖層：直接設在 wrapper 上，延伸覆蓋整個內容 */
-.company-feature-wrapper::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/GW_OperationalStructure/bg_tree.png?v=y90wqr') no-repeat center center;
-  background-size: cover;
-  opacity: 0.5; /* ← ✅ 背景圖透明度調整 */
-  z-index: 0;
-}
+<div id="金鍏技術四核心區塊">
+  
+  <div class="gw-core-container">
+    
+    <div class="gw-core-header">
+      <h2 class="gw-core-title">金鍏技術四核心，照亮綠色競爭力</h2>
+      <p class="gw-core-subtitle">以技術為本、品質為核，金鍏電子引領企業邁向高效節能與綠色轉型</p>
+    </div>
 
-/* ✅ 卡片區塊內容，位於背景圖上層 */
-.company-feature {
-  position: relative;
-  z-index: 1;
-  padding: 20px 0;  /* ← ✅ 上下留白 */
-}
-.company-feature .inner {
-  max-width: 1400px;          /* ✅ 原本是1300，可以稍微放大一點來撐開四張卡片 */
-  padding: 0 10px !important;  /* ✅ 兩側再縮小留白，更貼齊畫面 */
-  margin: 0 auto;
-}
+    <div class="gw-core-cards-wrapper">
+      
+      <div class="gw-core-card">
+        <div class="gw-card-flag"></div> <h3 class="gw-card-title">轉型創新</h3>
+        <div class="gw-card-sub">不是最便宜，卻最省電費</div>
+        <img src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/GW_OperationalStructure/p1_v.png?v=93m8q4d" alt="高效節能" class="gw-card-img" />
+        <p class="gw-card-desc">
+          因應LED技術對傳統照明的衝擊，金鍏電子整合光學、散熱、電子與軟體等領域，打造高效、長壽、可控的<strong>LED光板式燈具</strong>。<strong>系統效率達160~180 lm/W，較傳統照明節能65%~80%</strong>，廣泛應用於商辦、工廠、醫院與倉儲空間，協助企業大幅降低用電成本。
+        </p>
+      </div>
 
-/* 📌 標題區 */
-.company-feature h2 {
-  font-size: 32px;
-  font-weight: bold;
-  margin-bottom: 16px;
-}
-.company-feature p.subtitle {
-  font-size: 16px;
-  color: #555;
-  margin-bottom: 50px;
-}
+      <div class="gw-core-card">
+        <div class="gw-card-flag"></div>
+        <h3 class="gw-card-title">節能環保</h3>
+        <div class="gw-card-sub">十年壽命，減碳更省錢</div>
+        <img src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/GW_OperationalStructure/p2_v.png?v=pmjyxx9" alt="五年保固" class="gw-card-img" />
+        <p class="gw-card-desc">
+          金鍏LED燈具<strong>每瓦光效達160 lm，壽命長達10年</strong>，具備卓越節能與穩定性。以五年使用期估算，減碳效益相當於每年種植38棵樹，<strong>帶來高於同業 50% 的減碳效益</strong>。節能不只是降低成本，更是金鍏對環境永續的實踐，積極推動綠色照明走入日常與企業應用。
+        </p>
+      </div>
 
-/* ========= 🧱 卡片排列設定 ========= */
-.feature-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between; /* ✅ 把原本 center 改掉 */
-  gap: 24px;                      /* ✅ gap 稍微縮一點比較好看 */
-  padding: 0;
-  max-width: 100%;                /* ✅ 明確加上 max-width 撐滿區塊 */
-}
+      <div class="gw-core-card">
+        <div class="gw-card-flag"></div>
+        <h3 class="gw-card-title">認證保固</h3>
+        <div class="gw-card-sub">業界最長 5~10 年保固</div>
+        <img src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/GW_OperationalStructure/p3_v.png?v=g17tsp" alt="研發製造" class="gw-card-img" />
+        <p class="gw-card-desc">
+          金鍏全系列燈具通過 <strong>BSMI 安全認證</strong>，符合 <strong>RoHS 無害標準</strong>，並有多款產品獲<strong>節能、環保及 MIT 微笑標章</strong>。針對特殊需求亦提供<strong>防塵防水</strong>或<strong>防爆</strong>型號，應用更彈性。全品項提供業界領先的 <strong>5~10 年超長保固</strong>，光束維持率超過 98%，兼具長期穩定與高投資效益。
+        </p>
+      </div>
 
-/* 📦 單一卡片樣式 */
-.feature-card {
-  background: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  width: calc(25% - 18px);        /* ✅ 重點：四張卡片+gap 剛好100%，避免中間被吃寬 */
-  border: 1px solid #000;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  text-align: left;
-  position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.feature-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-}
+      <div class="gw-core-card">
+        <div class="gw-card-flag"></div>
+        <h3 class="gw-card-title">智慧燈控</h3>
+        <div class="gw-card-sub">智慧連網，長效管理</div>
+        <img src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/GW_OperationalStructure/p4_v.png?v=k7q17yg" alt="ESG助攻" class="gw-card-img" />
+        <p class="gw-card-desc">
+          金鍏燈具全面支援 <strong>DC 0–10V 調光</strong>，並相容 <strong>PWM、DALI、BLE、ZigBee</strong> 等 IoT 協議。可搭配感應器、行動裝置與雲端平台，打造智慧照明與能源管理，協助企業提升效率並降低長期營運成本。
+        </p>
+      </div>
 
-/* 🎌 旗標造型 */
-.feature-card::before {
-  content: "";
-  position: absolute;
-  top: -20px;
-  left: 20px;
-  width: 30px;
-  height: 40px;
-  background: #333;
-  clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
-}
+    </div>
+  </div>
 
-/* 文字設定 */
-.feature-card h3 {
-  font-size: 20px;
-  font-weight: bold;
-  margin: 10px 0 5px;
-}
-.feature-card .sub {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 12px;
-}
-.feature-card img {
-  width: 100%;
-  border-radius: 6px;
-  margin-bottom: 12px;
-}
-.feature-card p {
-  font-size: 15px !important;
-  line-height: 1.8 !important;
-  color: #444;
-}
+  <style>
+    /* =========================================
+       ★ 區塊樣式表：金鍏技術四核心區塊 ★
+       ========================================= */
 
-/* 📱 中等螢幕（平板）→ 一排兩張 */
-@media (max-width: 1199px) {
-  .feature-card {
-    width: calc(50% - 30px); /* ← 兩張兩張排 */
-  }
-}
-/* 📱 小螢幕（手機）→ 一排一張 */
-@media (max-width: 767px) {
-  .feature-card {
-    width: 100%; /* ← 撐滿容器 */
-  }
-}
-</style>
-<!-- ✅ HTML 結構：只有一層 company-feature-wrapper，背景圖由 ::before 控制 -->
-<div class="_bd_row _bd_clearfix">
-<div class="_bd_column _bd_full">
-<hr /></div>
+    /* 1. 主容器 (背景設定) */
+    #金鍏技術四核心區塊 {
+      position: relative;
+      width: 100%;
+      /* 背景圖與半透明遮罩整合寫法 */
+      background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/GW_OperationalStructure/bg_tree.png?v=y90wqr');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      
+      font-family: 'Noto Sans TC', "Microsoft JhengHei", Arial, sans-serif;
+      padding: 60px 20px;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    #金鍏技術四核心區塊 .gw-core-container {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* 2. 標題區 */
+    #金鍏技術四核心區塊 .gw-core-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    #金鍏技術四核心區塊 .gw-core-title {
+      font-size: 32px;
+      font-weight: bold;
+      color: #333;
+      margin: 0 0 16px 0;
+    }
+
+    #金鍏技術四核心區塊 .gw-core-subtitle {
+      font-size: 16px;
+      color: #555;
+      margin: 0;
+    }
+
+    /* 3. 卡片容器 (Flexbox 排版) */
+    #金鍏技術四核心區塊 .gw-core-cards-wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap; /* 允許換行 */
+    }
+
+    /* 4. 單一卡片樣式 */
+    #金鍏技術四核心區塊 .gw-core-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      border: 1px solid #000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      text-align: left;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-sizing: border-box;
+      
+      /* ★ 桌機版：4個一排 (25%) ★ */
+      flex: 0 0 calc(25% - 24px); 
+      max-width: 350px;
+    }
+
+    #金鍏技術四核心區塊 .gw-core-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    /* 旗標造型 */
+    #金鍏技術四核心區塊 .gw-card-flag {
+      position: absolute;
+      top: -20px;
+      left: 20px;
+      width: 30px;
+      height: 40px;
+      background: #333;
+      clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
+    }
+
+    /* 卡片內容 */
+    #金鍏技術四核心區塊 .gw-card-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+      margin: 10px 0 5px;
+    }
+
+    #金鍏技術四核心區塊 .gw-card-sub {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 12px;
+    }
+
+    #金鍏技術四核心區塊 .gw-card-img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    #金鍏技術四核心區塊 .gw-card-desc {
+      font-size: 15px !important;
+      line-height: 1.8 !important;
+      color: #444 !important;
+      margin: 0;
+      text-align: justify;
+    }
+    
+    #金鍏技術四核心區塊 .gw-card-desc strong {
+      font-weight: bold;
+      color: #000;
+    }
+
+    /* --------------------------------------
+       RWD 響應式佈局 (規範 2.5)
+       -------------------------------------- */
+
+    /* 平板/窄螢幕 (768px ~ 1200px)：強制 2x2 排列 */
+    @media (max-width: 1200px) {
+      #金鍏技術四核心區塊 .gw-core-card {
+        flex: 0 0 calc(50% - 24px); /* 50% 扣掉 gap */
+        max-width: none; /* 解除最大寬度 */
+      }
+    }
+
+    /* 手機版 (< 768px)：垂直堆疊 */
+    @media (max-width: 768px) {
+      #金鍏技術四核心區塊 {
+        padding: 40px 15px;
+      }
+
+      #金鍏技術四核心區塊 .gw-core-cards-wrapper {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #金鍏技術四核心區塊 .gw-core-card {
+        flex: 0 0 100%;
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 10px;
+      }
+      
+      #金鍏技術四核心區塊 .gw-core-title {
+        font-size: 24px;
+      }
+    }
+  </style>
 </div>
-
-<section class="company-feature-wrapper">
-<section class="company-feature">
-<div class="inner">
-<h2>金鍏技術四核心，照亮綠色競爭力</h2>
-
-<p class="subtitle">以技術為本、品質為核，金鍏電子引領企業邁向高效節能與綠色轉型</p>
-
-<div class="feature-cards"><!-- 卡片一 -->
-<div class="feature-card">
-<h3>轉型創新</h3>
-
-<div class="sub">不是最便宜，卻最省電費</div>
-<img alt="高效節能" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/GW_OperationalStructure/p1_v.png?v=93m8q4d" />
-<p style="text-align: justify;">因應LED技術對傳統照明的衝擊，金鍏電子整合光學、散熱、電子與軟體等領域，打造高效、長壽、可控的<strong>LED光板式燈具</strong>。<strong>系統效率達160~180 lm/W，較傳統照明節能65%~80%</strong>，廣泛應用於商辦、工廠、醫院與倉儲空間，協助企業大幅降低用電成本。</p>
-</div>
-<!-- 卡片二 -->
-
-<div class="feature-card">
-<h3>節能環保</h3>
-
-<div class="sub">十年壽命，減碳更省錢</div>
-<img alt="五年保固" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/GW_OperationalStructure/p2_v.png?v=pmjyxx9" />
-<p style="text-align: justify;">金鍏LED燈具<strong>每瓦光效達160 lm，壽命長達10年</strong>，具備卓越節能與穩定性。以五年使用期估算，減碳效益相當於每年種植38棵樹，<strong data-end="202" data-start="182">帶來高於同業 50% 的減碳效益</strong>。節能不只是降低成本，更是金鍏對環境永續的實踐，積極推動綠色照明走入日常與企業應用。</p>
-</div>
-<!-- 卡片三 -->
-
-<div class="feature-card">
-<h3>認證保固</h3>
-
-<div class="sub">業界最長 5~10 年保固</div>
-<img alt="研發製造" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/GW_OperationalStructure/p3_v.png?v=g17tsp" />
-<p style="text-align: justify;">金鍏全系列燈具通過 <strong>BSMI 安全認證</strong>，符合 <strong>RoHS 無害標準</strong>，並有多款產品獲<strong>節能、環保及 MIT 微笑標章</strong>。針對特殊需求亦提供<strong>防塵防水</strong>或<strong>防爆</strong>型號，應用更彈性。全品項提供業界領先的 <strong>5~10 年超長保固</strong>，光束維持率超過 98%，兼具長期穩定與高投資效益。</p>
-</div>
-<!-- 卡片四 -->
-
-<div class="feature-card">
-<h3>智慧燈控</h3>
-
-<div class="sub">智慧連網，長效管理</div>
-<img alt="ESG助攻" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/GW_OperationalStructure/p4_v.png?v=k7q17yg" />
-<p style="text-align: justify;">金鍏燈具全面支援 <strong data-end="535" data-start="520">DC 0&ndash;10V 調光</strong>，並相容 <strong data-end="563" data-start="540">PWM、DALI、BLE、ZigBee</strong> 等 IoT 協議。可搭配感應器、行動裝置與雲端平台，打造智慧照明與能源管理，協助企業提升效率並降低長期營運成本。</p>
-</div>
-</div>
-</div>
-</section>
-</section>
 <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title></title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;family=Montserrat:wght@300;600&amp;display=swap" rel="stylesheet" />
