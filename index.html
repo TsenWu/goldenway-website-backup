@@ -3,34 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GOLDENWAY 官網內容管理系統</title>
+  <title>GOLDENWAY 官網備份平台</title>
 
-  <!-- 字體 -->
+  <!-- 字體：Inter -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <!-- 圖標庫：Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
   <style>
     :root {
-      --bg: #f5f5f7;
-      --accent: #0071e3;
-      --accentSoft: rgba(0, 113, 227, 0.1);
-      --border: #d0d0d4;
-      --textMain: #1d1d1f;
-      --textSub: #6e6e73;
-      --sidebarW: 270px;
-      --headerH: 60px;
+      /* 配色系統 */
+      /* 微調背景色，讓層次更明顯 */
+      --bg-app: #eef0f3;
+      --bg-sidebar: #ffffff;
+      --bg-header: rgba(255, 255, 255, 0.85);
+      
+      --primary: #0071e3;
+      --primary-light: #eff6ff; 
+      
+      --text-main: #1f2937;
+      --text-sub: #6b7280;
+      --border: #e5e7eb;
+      
+      --sidebar-w: 280px;
+      --header-h: 60px;
+      
+      --radius-lg: 16px; /* 圓角稍微加大一點 */
+      --radius-md: 8px;
+      
+      --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.1), 0 4px 10px -2px rgba(0, 0, 0, 0.05);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      background: var(--bg);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg-app);
       height: 100vh;
       overflow: hidden;
-      color: var(--textMain);
+      color: var(--text-main);
     }
 
     .app {
@@ -39,513 +51,732 @@
       height: 100vh;
     }
 
-    /* ───── Top Bar ───── */
+    /* ───── Top Bar (Header) ───── */
     .topbar {
-      height: var(--headerH);
+      height: var(--header-h);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 18px;
-      background: rgba(255, 255, 255, 0.83);
+      padding: 0 20px;
+      background: var(--bg-header);
       border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      position: sticky;
-      top: 0;
-      z-index: 10;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 20;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
 
     .brand-logo {
-      width: 30px;
-      height: 30px;
-      border-radius: 6px;
-      background: #000;
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-md);
+      background: #111; 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
       overflow: hidden;
-      flex-shrink: 0;
     }
+    
+    .brand-logo img { width: 100%; height: 100%; object-fit: cover; }
 
-    .brand-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
+    .brand-info h1 {
+      font-size: 14px;
+      font-weight: 600;
+      margin: 0;
+      letter-spacing: 0.5px;
+    }
+    
+    .brand-info span {
+      font-size: 11px;
+      color: var(--text-sub);
       display: block;
     }
 
-    .brand-title {
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 1px;
-    }
-
     /* ───── Search ───── */
-    .search-bar {
+    .search-container {
       position: relative;
-      width: 380px;
-      max-width: 100%;
+      width: 280px;
     }
 
-    .search-input {
-      width: 100%;
-      padding: 8px 34px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.9);
-      outline: none;
-      font-size: 14px;
-    }
-
-    .search-input:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px var(--accentSoft);
-      background: #fff;
+    .search-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
     }
 
     .search-icon {
       position: absolute;
       left: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #999;
-      font-size: 14px;
-      pointer-events: none;
+      color: var(--text-sub);
+      font-size: 16px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 7px 10px 7px 32px;
+      border-radius: 99px;
+      border: 1px solid var(--border);
+      background: #fff;
+      font-size: 13px;
+      color: var(--text-main);
+      transition: all 0.2s ease;
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.1);
     }
 
     .search-clear {
       position: absolute;
       right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
       cursor: pointer;
+      color: var(--text-sub);
+      font-size: 14px;
       display: none;
-      font-size: 16px;
-      color: #aaa;
+    }
+    .search-clear.visible { display: block; }
+
+    /* ───── Main Layout ───── */
+    .body-layout {
+      display: flex;
+      flex: 1;
+      height: calc(100vh - var(--header-h));
+    }
+
+    /* ───── Sidebar ───── */
+    .sidebar {
+      width: var(--sidebar-w);
+      background: var(--bg-sidebar);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      z-index: 10;
+    }
+
+    .sidebar-tools {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 6px;
+    }
+
+    .icon-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 5px 8px;
+      font-size: 12px;
+      color: var(--text-main);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.1s;
+    }
+    
+    .icon-btn:hover { background: #f9fafb; border-color: #d1d5db; }
+    .icon-btn:active { background: #f3f4f6; }
+
+    .icon-btn.primary {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+    }
+    .icon-btn.primary:hover { background: #0062c4; }
+
+    .tree-container {
+      flex: 1;
+      overflow-y: auto;
+      padding: 8px 0;
+    }
+
+    /* 樹狀選單樣式 */
+    ul { list-style: none; padding-left: 0; margin: 0; }
+    .tree-node { position: relative; }
+
+    .node-content {
+      display: flex;
+      align-items: center;
+      padding: 5px 14px;
+      cursor: pointer;
+      font-size: 13px;
+      color: var(--text-main);
+      border-left: 3px solid transparent;
+      gap: 8px;
       user-select: none;
     }
 
-    .search-clear.visible {
-      display: block;
-    }
+    .node-content:hover { background: #f3f4f6; }
 
-    /* ───── Layout ───── */
-    .body {
-      display: flex;
-      flex: 1;
-      min-height: 0;
+    .caret {
+      font-size: 10px; color: var(--text-sub); width: 12px;
+      display: flex; justify-content: center; transition: transform 0.2s;
     }
+    
+    .folder-icon { color: #fbbf24; font-size: 16px; }
+    .file-icon { color: var(--text-sub); font-size: 16px; }
 
-    .sidebar {
-      width: var(--sidebarW);
-      border-right: 1px solid var(--border);
-      background: #fafafa;
-      padding: 10px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
+    .folder.open > .node-content .caret { transform: rotate(90deg); }
+    
+    .sub-tree { display: none; padding-left: 20px; position: relative; }
+    /* 樹狀結構引導線 */
+    .sub-tree::before {
+      content: ""; position: absolute; top: 0; bottom: 0; left: 11px;
+      width: 1px; background: #e5e7eb;
     }
+    .folder.open > .sub-tree { display: block; }
 
-    .btn {
-      font-size: 12px;
-      padding: 4px 10px;
-      margin-right: 6px;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      background: white;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: white;
-    }
-
-    .tree-container {
-      margin-top: 6px;
-      flex: 1;
-      overflow-y: auto;
-    }
-
-    /* ───── Tree Style ───── */
-    ul {
-      list-style: none;
-      padding-left: 14px;
-      margin: 0;
-    }
-
-    /* 根層 ul 不縮起來，只有資料夾底下的 ul 會收合 */
-    #tree > ul {
-      padding-left: 0;
-    }
-
-    .folder {
-      cursor: pointer;
-      font-weight: 500;
-      margin: 3px 0;
-    }
-
-    .folder-title {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 2px 4px;
-      border-radius: 4px;
-    }
-
-    .folder-title:hover {
-      background: rgba(0, 0, 0, 0.05);
-    }
-
-    .arrow {
-      font-size: 10px;
-      transition: transform 0.18s;
-      color: #a1a1a6;
-    }
-
-    .folder.open > .folder-title .arrow {
-      transform: rotate(90deg);
-    }
-
-    /* 真正控制展開 / 收合的關鍵：預設關閉，open 時才顯示 */
-    .folder > ul {
-      display: none;
-    }
-
-    .folder.open > ul {
-      display: block;
-    }
-
-    .file {
-      cursor: pointer;
-      padding: 2px 4px;
-      border-radius: 4px;
-      color: var(--accent);
-      margin: 2px 0;
-    }
-
-    .file:hover {
-      background: rgba(0, 0, 0, 0.04);
-      text-decoration: underline;
-    }
-
-    /* ───── Search Result List ───── */
-    #searchResults {
-      display: none;
-      margin-top: 8px;
-    }
-
-    .search-item {
-      padding: 5px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .search-item:hover {
-      background: rgba(0, 0, 0, 0.05);
-    }
-
-    .search-name {
-      font-size: 13px;
-      color: var(--accent);
+    .file.active .node-content {
+      background: var(--primary-light);
+      color: var(--primary);
+      border-left-color: var(--primary);
       font-weight: 500;
     }
+    .file.active .file-icon { color: var(--primary); }
 
-    .search-path {
-      font-size: 11px;
-      color: var(--textSub);
-    }
-
-    /* ───── Preview / Home Hero ───── */
-    .preview {
+    /* ───── Main Content Area ───── */
+    .main-content {
       flex: 1;
       position: relative;
-      background: radial-gradient(circle at top left, #fff 0, #f5f5f7 40%, #e9ecf5 100%);
+      background: var(--bg-app);
+      display: flex;
+      flex-direction: column;
       overflow: hidden;
+      /* 調整：大幅增加內距，從 20px -> 48px，讓背景露出更多 */
+      padding: 48px; 
     }
+
+    /* ───── Preview Window Card ───── */
+    .preview-window {
+      background: white;
+      flex: 1;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      border: 1px solid #d1d5db;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 模擬視窗標題列 */
+    .window-header {
+      height: 40px;
+      background: #fafafa;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    .window-dots { display: flex; gap: 6px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot.red { background: #ff5f57; border: 1px solid #e0443e; }
+    .dot.yellow { background: #febc2e; border: 1px solid #d89e24; }
+    .dot.green { background: #28c840; border: 1px solid #1aab29; }
+
+    .window-title-bar {
+      flex: 1;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--text-sub);
+      max-width: 400px;
+      margin: 0 auto;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      padding: 0 8px;
+    }
+    
+    .window-actions { width: 40px; }
 
     iframe {
       width: 100%;
       height: 100%;
       border: none;
-      display: none;
       background: white;
+      display: block;
     }
 
+    /* ───── Hero (Empty State) ───── */
     .hero {
       position: absolute;
-      inset: 0;
+      /* 調整：這裡也要跟 padding 保持一致 */
+      inset: 48px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: 0.35s;
       text-align: center;
-      pointer-events: none;
+      background: white;
+      border-radius: var(--radius-lg);
+      border: 1px dashed #d1d5db;
+      background-image: radial-gradient(#f3f4f6 1px, transparent 1px);
+      background-size: 20px 20px;
+      transition: opacity 0.2s;
     }
 
-    .hero-visible {
-      opacity: 1;
-      transform: translateY(0);
+    .hero-icon {
+      font-size: 56px;
+      color: var(--primary);
+      margin-bottom: 16px;
+      background: var(--primary-light);
+      width: 90px;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 20px;
     }
 
-    .hero-title {
-      font-size: 26px;
+    .hero h2 {
+      font-size: 22px;
       font-weight: 600;
-      letter-spacing: 0.12em;
+      margin: 0 0 8px 0;
+      color: var(--text-main);
     }
 
-    .hero-sub {
-      font-size: 15px;
-      color: var(--textSub);
-      margin-top: 10px;
+    .hero p {
+      color: var(--text-sub);
+      font-size: 14px;
+      max-width: 380px;
+      line-height: 1.6;
     }
 
-    @media (max-width: 900px) {
-      .search-bar {
-        max-width: 240px;
-      }
-      .hero-title {
-        font-size: 20px;
-      }
-      .hero-sub {
-        font-size: 13px;
-        padding: 0 16px;
-      }
+    .hidden { display: none !important; }
+
+    /* ───── Search Results ───── */
+    #searchResults { padding: 10px; display: none; }
+    .search-result-item {
+      padding: 8px 12px;
+      border-radius: 6px;
+      margin-bottom: 4px;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+    .search-result-item:hover {
+      background: white;
+      border-color: var(--primary-light);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    .res-title { font-size: 13px; font-weight: 500; color: var(--primary); }
+    .res-path { font-size: 11px; color: var(--text-sub); margin-top: 1px; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      /* 手機板通常還是建議滿版，比較好閱讀 */
+      .main-content { padding: 10px; } 
+      .hero { inset: 10px; }
+      
+      .preview-window { border-radius: var(--radius-md); border: 1px solid var(--border); }
+      .window-header { display: none; }
+      .sidebar { position: absolute; height: 100%; transform: translateX(-100%); box-shadow: 5px 0 15px rgba(0,0,0,0.1); }
+      .sidebar.open { transform: translateX(0); }
+      .search-container { width: auto; flex: 1; }
+      .brand-info { display: none; }
     }
   </style>
 </head>
-
 <body>
-<div class="app">
 
-  <!-- Top Bar -->
+<div class="app">
+  <!-- Header -->
   <header class="topbar">
     <div class="brand">
       <div class="brand-logo">
-        <!-- 這裡可以換成你的實際 LOGO 檔案路徑 -->
-        <img src="logo.png" alt="LOGO" />
+        <i class="ph-bold ph-cube"></i>
       </div>
-      <div class="brand-title">GOLDENWAY</div>
+      <div class="brand-info">
+        <h1>GOLDENWAY</h1>
+        <span>Backup Platform</span>
+      </div>
     </div>
 
-    <div class="search-bar">
-      <span class="search-icon">🔍</span>
-      <input class="search-input" id="searchInput" placeholder="搜尋檔案..." />
-      <span id="searchClear" class="search-clear">×</span>
+    <div class="search-container">
+      <div class="search-wrapper">
+        <i class="ph ph-magnifying-glass search-icon"></i>
+        <input class="search-input" id="searchInput" type="text" placeholder="搜尋檔案..." />
+        <i class="ph-bold ph-x search-clear" id="searchClear"></i>
+      </div>
     </div>
   </header>
 
-  <div class="body">
-
+  <div class="body-layout">
     <!-- Sidebar -->
-    <aside class="sidebar">
-      <div>
-        <button id="homeBtn" class="btn btn-primary">回到首頁</button>
-        <button id="expandBtn" class="btn">展開全部</button>
-        <button id="collapseBtn" class="btn">收合全部</button>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-tools">
+        <button id="homeBtn" class="icon-btn primary">
+          <i class="ph-bold ph-house"></i> 首頁
+        </button>
+        <button id="expandBtn" class="icon-btn" title="展開">
+          <i class="ph-bold ph-list-dashes"></i>
+        </button>
+        <button id="collapseBtn" class="icon-btn" title="收合">
+          <i class="ph-bold ph-arrows-in-line-vertical"></i>
+        </button>
       </div>
 
       <div class="tree-container">
-        <div id="tree"></div>
+        <div id="treeRoot"></div>
         <div id="searchResults"></div>
       </div>
     </aside>
 
-    <!-- Preview / Home Hero -->
-    <section class="preview">
-      <div id="homeView" class="hero">
-        <div class="hero-title">GOLDENWAY 官網內容管理系統</div>
-        <div class="hero-sub">請從左側選擇任一 HTML 檔案進行預覽，或使用上方搜尋快速定位。</div>
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Empty State / Hero -->
+      <div id="hero" class="hero">
+        <div class="hero-icon">
+          <i class="ph-duotone ph-browser"></i>
+        </div>
+        <h2>GOLDENWAY 官網備份</h2>
+        <p>歡迎使用內部預覽系統。<br>已載入完整產品目錄，請從左側選擇檔案。</p>
       </div>
-      <iframe id="previewFrame"></iframe>
-    </section>
+
+      <!-- Preview Window (Card Style) -->
+      <div id="previewContainer" class="preview-window">
+        <!-- 模擬視窗標題列 -->
+        <div class="window-header">
+          <div class="window-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <div class="window-title-bar">
+            <i class="ph-fill ph-lock-key" style="font-size:10px; margin-right:4px;"></i>
+            <span id="previewTitleText">preview.html</span>
+          </div>
+          <div class="window-actions"></div>
+        </div>
+        
+        <iframe id="previewFrame" title="Preview"></iframe>
+      </div>
+    </main>
   </div>
 </div>
 
 <script>
+  /* * 1. 數據與清洗邏輯 */
   let treeData = [];
   let fileIndex = [];
+  let isDemoMode = false;
 
-  // 讀取 tree-data.json
-  fetch("tree-data.json")
-    .then(res => res.json())
-    .then(data => {
-      treeData = data;
-      buildFileIndex(data);
-      document.getElementById("tree").appendChild(renderTree(data));
-      showHome();
-    })
-    .catch(err => {
-      document.getElementById("tree").innerHTML =
-        "<span style='color:red;'>無法載入 tree-data.json</span><br>" + err;
-    });
+  // 標題清洗函式：更精確的顯示內容
+  function formatTitle(title) {
+    if (!title) return "";
+    return title
+      .replace(/\.html$/i, "") // 移除 .html
+      .replace(/【|】/g, "")    // 移除 【 】
+      .trim();
+  }
 
-  // 建立搜尋索引
-  function buildFileIndex(nodes, chain = []) {
+  // 備用資料 (Fallback Data)
+  // 當無法讀取 tree-data.json 時（例如在本地檔案預覽或此 Canvas 環境），會使用此資料。
+  // 注意：這只是為了在沒伺服器的環境下能看到目錄結構。
+  // 部署到 GitHub 後，程式會自動讀取您真實的 tree-data.json，此處資料不會生效。
+  const REAL_DATA_FALLBACK = [
+  {
+    "title": "about",
+    "children": [
+      { "title": "【溫室氣體盤查報告書】.html", "path": "about/【溫室氣體盤查報告書】.html" },
+      { "title": "光板燈介紹.html", "path": "about/光板燈介紹.html" },
+      { "title": "專利認證.html", "path": "about/專利認證.html" },
+      { "title": "營運架構.html", "path": "about/營運架構.html" },
+      { "title": "節能減碳最佳方案-LED光板型燈具.html", "path": "about/節能減碳最佳方案-LED光板型燈具.html" }
+    ]
+  },
+  {
+    "title": "installation",
+    "children": [
+      { "title": "施工安裝與售後服務", "children": [
+         { "title": "保固維修與退換貨.html", "path": "product/施工安裝與售後服務/保固維修與退換貨.html" },
+         { "title": "施工人員出車費.html", "path": "product/施工安裝與售後服務/施工人員出車費.html" }
+      ]}
+    ]
+  },
+  {
+    "title": "product",
+    "children": [
+      {
+        "title": "吸頂式燈具",
+        "children": [
+          { "title": "山型光板燈 BL-370", "children": [
+              { "title": "燈具介紹.html", "path": "product/吸頂式燈具/山型光板燈 BL-370/燈具介紹.html" },
+              { "title": "詳細規格.html", "path": "product/吸頂式燈具/山型光板燈 BL-370/詳細規格.html" }
+            ]
+          },
+          { "title": "山型光板燈 BL-380", "children": [
+              { "title": "燈具介紹.html", "path": "product/吸頂式燈具/山型光板燈 BL-380/燈具介紹.html" }
+            ]
+          },
+          { "title": "感應燈 CL-201", "children": [
+              { "title": "燈具介紹.html", "path": "product/吸頂式燈具/感應燈 CL-201/燈具介紹.html" }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "嵌入式燈具",
+        "children": [
+          { "title": "商辦用燈 OL-747", "children": [
+              { "title": "燈具介紹.html", "path": "product/嵌入式燈具/商辦用燈 OL-747/燈具介紹.html" }
+            ]
+          },
+          { "title": "小型嵌燈 DL-320", "children": [
+               { "title": "燈具介紹.html", "path": "product/嵌入式燈具/小型嵌燈 DL-320/燈具介紹.html" }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "投光燈燈具",
+        "children": [
+           { "title": "投光燈 FL-618", "children": [
+               { "title": "燈具介紹.html", "path": "product/投光燈燈具/投光燈 FL-618/燈具介紹.html" }
+             ] 
+           }
+        ]
+      },
+      {
+        "title": "高天井燈具",
+        "children": [
+           { "title": "高天井燈 HBL-606", "children": [
+               { "title": "燈具介紹.html", "path": "product/高天井燈具/高天井燈 HBL-606/燈具介紹.html" }
+             ] 
+           }
+        ]
+      },
+      {
+        "title": "特殊應用型",
+        "children": [
+           { "title": "路燈燈具 RL-406", "children": [
+               { "title": "燈具介紹.html", "path": "product/特殊應用型/路燈燈具 RL-406/燈具介紹.html" }
+             ] 
+           }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "shared",
+    "children": [
+      { "title": "視覺化圖表", "children": [
+         { "title": "平板燈5年總持有成本比較表.html", "path": "shared/視覺化圖表/平板燈5年總持有成本比較表.html" }
+      ]}
+    ]
+  }
+];
+
+  async function initApp() {
+    try {
+      // 1. 在 GitHub Pages 或一般 Server 環境下，這行會成功讀取真實檔案
+      const res = await fetch("tree-data.json");
+      
+      if (!res.ok) throw new Error("File not found");
+      const data = await res.json();
+      
+      // 2. 成功後，啟動「正式模式」 (isDemoMode = false)
+      startApp(data);
+    } catch (err) {
+      // 3. 如果讀取失敗（例如在 Canvas 預覽環境或直接開啟 html 檔），啟動「預覽模式」
+      console.warn("無法讀取 tree-data.json，切換至預覽模式 (Fallback Data)。部署至 Server 後將自動恢復正常。", err);
+      isDemoMode = true;
+      startApp(REAL_DATA_FALLBACK);
+    }
+  }
+
+  function startApp(data) {
+    treeData = data;
+    buildIndex(data); 
+    renderTree(data, document.getElementById("treeRoot"));
+  }
+
+  initApp();
+
+  /* * 2. 樹狀結構渲染 */
+  function renderTree(nodes, container) {
+    const ul = document.createElement("ul");
+    if(container.id !== "treeRoot") ul.className = "sub-tree";
+
     nodes.forEach(node => {
-      if (node.children && node.children.length) {
-        buildFileIndex(node.children, chain.concat(node.title));
+      const li = document.createElement("li");
+      const isFolder = node.children && node.children.length > 0;
+      
+      // 使用 formatTitle 清洗標題
+      const cleanName = formatTitle(node.title);
+
+      if (isFolder) {
+        li.className = "tree-node folder";
+        const content = document.createElement("div");
+        content.className = "node-content";
+        content.innerHTML = `
+          <i class="ph-bold ph-caret-right caret"></i>
+          <i class="ph-fill ph-folder folder-icon"></i>
+          <span>${cleanName}</span>
+        `;
+        content.onclick = (e) => {
+          e.stopPropagation();
+          li.classList.toggle("open");
+        };
+        li.appendChild(content);
+        renderTree(node.children, li);
+      } else if (node.path) {
+        li.className = "tree-node file";
+        const content = document.createElement("div");
+        content.className = "node-content";
+        content.innerHTML = `
+          <div style="width:12px"></div>
+          <i class="ph ph-file-html file-icon"></i>
+          <span>${cleanName}</span>
+        `;
+        content.onclick = (e) => {
+          e.stopPropagation();
+          loadPreview(node.path, cleanName, li);
+        };
+        li.appendChild(content);
+      }
+      ul.appendChild(li);
+    });
+    container.appendChild(ul);
+  }
+
+  /* * 3. 功能邏輯 */
+  const hero = document.getElementById("hero");
+  const previewContainer = document.getElementById("previewContainer"); 
+  const frame = document.getElementById("previewFrame");
+  const previewTitleText = document.getElementById("previewTitleText"); 
+  
+  const searchInput = document.getElementById("searchInput");
+  const searchResults = document.getElementById("searchResults");
+  const treeRoot = document.getElementById("treeRoot");
+  const searchClear = document.getElementById("searchClear");
+
+  function loadPreview(path, title, activeLi) {
+    hero.classList.add("hidden");
+    previewContainer.style.display = "flex"; 
+    
+    // 視窗標題顯示路徑，但也許可以只顯示乾淨的標題
+    previewTitleText.textContent = path;
+
+    document.querySelectorAll(".file.active").forEach(el => el.classList.remove("active"));
+    if (activeLi) activeLi.classList.add("active");
+
+    if (isDemoMode) {
+      // 預覽模式下的提示畫面 (僅在 Canvas 或無檔案時出現)
+      const doc = frame.contentWindow.document;
+      doc.open();
+      doc.write(`
+        <style>
+          body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;margin:0;color:#555;background:#fff;}
+          .msg{padding:20px;text-align:center;}
+          h2{color:#0071e3; margin-bottom: 8px;}
+          p { margin: 4px 0; }
+          .badge { display:inline-block; background:#f3f4f6; color:#666; padding:4px 8px; border-radius:4px; font-size:12px; margin-top:10px;}
+        </style>
+        <div class="msg">
+          <h2>${title}</h2>
+          <p>檔案路徑: ${path}</p>
+          <div class="badge">此為預覽環境模擬畫面，部署至 GitHub 後將直接顯示真實網頁內容</div>
+        </div>
+      `);
+      doc.close();
+    } else {
+      // 正式環境：直接載入真實檔案
+      frame.src = path;
+    }
+  }
+
+  document.getElementById("homeBtn").onclick = () => {
+    hero.classList.remove("hidden");
+    previewContainer.style.display = "none";
+    frame.src = "";
+    document.querySelectorAll(".file.active").forEach(el => el.classList.remove("active"));
+  };
+
+  document.getElementById("expandBtn").onclick = () => {
+    document.querySelectorAll(".folder").forEach(el => el.classList.add("open"));
+  };
+
+  document.getElementById("collapseBtn").onclick = () => {
+    document.querySelectorAll(".folder").forEach(el => el.classList.remove("open"));
+  };
+
+  /* * 搜尋邏輯 */
+  function buildIndex(nodes, pathStr = "") {
+    nodes.forEach(node => {
+      const cleanName = formatTitle(node.title);
+      if (node.children) {
+        buildIndex(node.children, pathStr + cleanName + " / ");
       } else if (node.path) {
         fileIndex.push({
-          title: node.title,
+          title: cleanName,
+          originalTitle: node.title,
           path: node.path,
-          full: [...chain, node.title].join(" / ")
+          fullPath: pathStr + cleanName
         });
       }
     });
   }
 
-  // 建立樹狀結構
-  function renderTree(nodes) {
-    const ul = document.createElement("ul");
-
-    nodes.forEach(node => {
-      const li = document.createElement("li");
-
-      if (node.children && node.children.length) {
-        li.classList.add("folder");
-
-        const title = document.createElement("div");
-        title.className = "folder-title";
-
-        const arrow = document.createElement("span");
-        arrow.className = "arrow";
-        arrow.textContent = "▸";
-
-        const text = document.createElement("span");
-        text.textContent = node.title;
-
-        title.appendChild(arrow);
-        title.appendChild(text);
-        li.appendChild(title);
-
-        const childUl = renderTree(node.children);
-        li.appendChild(childUl);
-
-        title.onclick = () => {
-          li.classList.toggle("open");
-        };
-      } else if (node.path) {
-        li.classList.add("file");
-        li.textContent = node.title;
-        li.onclick = () => loadPreview(node.path);
+  searchInput.addEventListener("input", (e) => {
+    const val = e.target.value.toLowerCase().trim();
+    if (val.length > 0) {
+      treeRoot.style.display = "none";
+      searchResults.style.display = "block";
+      searchClear.classList.add("visible");
+      
+      const hits = fileIndex.filter(f => 
+        f.title.toLowerCase().includes(val) || 
+        f.fullPath.toLowerCase().includes(val)
+      );
+      
+      if (hits.length === 0) {
+        searchResults.innerHTML = `<div style="text-align:center; color:#999; padding:20px; font-size:13px;">找不到符合的檔案</div>`;
+      } else {
+        searchResults.innerHTML = hits.map(hit => `
+          <div class="search-result-item" onclick="loadPreview('${hit.path}', '${hit.title}', null)">
+            <div class="res-title">${hit.title}</div>
+            <div class="res-path">${hit.fullPath}</div>
+          </div>
+        `).join("");
       }
-
-      ul.appendChild(li);
-    });
-
-    return ul;
-  }
-
-  /* ───── Home View ───── */
-  function showHome() {
-    const frame = document.getElementById("previewFrame");
-    const home = document.getElementById("homeView");
-    frame.style.display = "none";
-    home.style.display = "flex";
-    requestAnimationFrame(() => home.classList.add("hero-visible"));
-  }
-
-  function hideHome() {
-    const home = document.getElementById("homeView");
-    home.classList.remove("hero-visible");
-    setTimeout(() => {
-      home.style.display = "none";
-    }, 250);
-  }
-
-  /* ───── Preview ───── */
-  function loadPreview(path) {
-    hideHome();
-    const frame = document.getElementById("previewFrame");
-    frame.src = path;
-    frame.style.display = "block";
-  }
-
-  /* ───── Expand / Collapse ───── */
-  // 展開全部：只展開第一層資料夾，保留階層感
-  document.getElementById("expandBtn").onclick = () => {
-    const roots = document.querySelectorAll("#tree > ul > li.folder");
-    roots.forEach(el => el.classList.add("open"));
-  };
-
-  // 收合全部：關閉所有資料夾
-  document.getElementById("collapseBtn").onclick = () => {
-    const all = document.querySelectorAll(".folder");
-    all.forEach(el => el.classList.remove("open"));
-  };
-
-  /* ───── Search ───── */
-  const searchInput = document.getElementById("searchInput");
-  const searchClear = document.getElementById("searchClear");
-  const searchResults = document.getElementById("searchResults");
-  const treeEl = document.getElementById("tree");
-
-  searchInput.oninput = () => {
-    const q = searchInput.value.trim().toLowerCase();
-
-    if (!q) {
-      searchResults.style.display = "none";
-      treeEl.style.display = "block";
-      searchClear.classList.remove("visible");
-      return;
+    } else {
+      resetSearch();
     }
-
-    searchClear.classList.add("visible");
-    treeEl.style.display = "none";
-    searchResults.style.display = "block";
-    renderSearch(q);
-  };
+  });
 
   searchClear.onclick = () => {
     searchInput.value = "";
-    searchClear.classList.remove("visible");
-    searchResults.style.display = "none";
-    treeEl.style.display = "block";
-    searchInput.focus();
+    resetSearch();
   };
 
-  function renderSearch(q) {
-    searchResults.innerHTML = "";
-
-    const list = fileIndex.filter(f =>
-      f.title.toLowerCase().includes(q) || f.full.toLowerCase().includes(q)
-    );
-
-    if (!list.length) {
-      searchResults.innerHTML = "<div style='color:#999;'>找不到符合項目</div>";
-      return;
-    }
-
-    list.forEach(f => {
-      const row = document.createElement("div");
-      row.className = "search-item";
-
-      const name = document.createElement("div");
-      name.className = "search-name";
-      name.textContent = f.title;
-
-      const path = document.createElement("div");
-      path.className = "search-path";
-      path.textContent = f.full;
-
-      row.appendChild(name);
-      row.appendChild(path);
-      row.onclick = () => loadPreview(f.path);
-
-      searchResults.appendChild(row);
-    });
+  function resetSearch() {
+    treeRoot.style.display = "block";
+    searchResults.style.display = "none";
+    searchClear.classList.remove("visible");
   }
-
-  /* ───── Home Button ───── */
-  document.getElementById("homeBtn").onclick = showHome;
 </script>
 </body>
 </html>
