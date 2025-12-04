@@ -508,12 +508,11 @@
     ]
   },
   {
-    "title": "installation",
+    // 修改：這裡使用正確的中文資料夾名稱，並且確保在預覽模式下它是一個資料夾
+    "title": "施工安裝", 
     "children": [
-      { "title": "施工安裝與售後服務", "children": [
          { "title": "保固維修與退換貨.html", "path": "product/施工安裝與售後服務/保固維修與退換貨.html" },
          { "title": "施工人員出車費.html", "path": "product/施工安裝與售後服務/施工人員出車費.html" }
-      ]}
     ]
   },
   {
@@ -622,7 +621,10 @@
 
     nodes.forEach(node => {
       const li = document.createElement("li");
-      const isFolder = node.children && node.children.length > 0;
+      
+      // [修正] 判斷是否為資料夾：只要 children 是陣列（即使是空的 []），就一律視為資料夾
+      // 這樣可以避免空資料夾被誤判為檔案，導致點擊後出現 404
+      const isFolder = Array.isArray(node.children);
       
       // 使用 formatTitle 清洗標題
       const cleanName = formatTitle(node.title);
@@ -641,7 +643,10 @@
           li.classList.toggle("open");
         };
         li.appendChild(content);
+        
+        // 如果資料夾是空的，renderTree 傳回的 ul 裡面會是空的，這沒問題，使用者點開會看到無內容
         renderTree(node.children, li);
+        
       } else if (node.path) {
         li.className = "tree-node file";
         const content = document.createElement("div");
