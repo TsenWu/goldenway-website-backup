@@ -13,7 +13,6 @@
   <style>
     :root {
       /* 配色系統 */
-      /* 微調背景色，讓層次更明顯 */
       --bg-app: #eef0f3;
       --bg-sidebar: #ffffff;
       --bg-header: rgba(255, 255, 255, 0.85);
@@ -28,7 +27,7 @@
       --sidebar-w: 280px;
       --header-h: 60px;
       
-      --radius-lg: 16px; /* 圓角稍微加大一點 */
+      --radius-lg: 16px; 
       --radius-md: 8px;
       
       --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.1), 0 4px 10px -2px rgba(0, 0, 0, 0.05);
@@ -64,6 +63,25 @@
       -webkit-backdrop-filter: blur(12px);
       z-index: 20;
     }
+
+    .left-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* 漢堡選單按鈕 (預設隱藏，手機版顯示) */
+    .menu-btn {
+      display: none; 
+      background: transparent;
+      border: none;
+      color: var(--text-main);
+      font-size: 24px;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    .menu-btn:active { background: rgba(0,0,0,0.05); }
 
     .brand {
       display: flex;
@@ -149,6 +167,7 @@
       display: flex;
       flex: 1;
       height: calc(100vh - var(--header-h));
+      position: relative; /* For absolute positioning context */
     }
 
     /* ───── Sidebar ───── */
@@ -160,6 +179,7 @@
       flex-direction: column;
       flex-shrink: 0;
       z-index: 10;
+      transition: transform 0.3s ease;
     }
 
     .sidebar-tools {
@@ -243,6 +263,19 @@
     }
     .file.active .file-icon { color: var(--primary); }
 
+    /* ───── Mobile Overlay ───── */
+    .mobile-overlay {
+      display: none;
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 20; /* 在 Sidebar(30) 之下，但在 Content 之上 */
+      backdrop-filter: blur(2px);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .mobile-overlay.show { opacity: 1; }
+
     /* ───── Main Content Area ───── */
     .main-content {
       flex: 1;
@@ -251,7 +284,6 @@
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      /* 調整：大幅增加內距，從 20px -> 48px，讓背景露出更多 */
       padding: 48px; 
     }
 
@@ -273,7 +305,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* 模擬視窗標題列 */
     .window-header {
       height: 40px;
       background: #fafafa;
@@ -309,7 +340,6 @@
       text-overflow: ellipsis;
       padding: 0 8px;
     }
-    
     .window-actions { width: 40px; }
 
     iframe {
@@ -323,7 +353,6 @@
     /* ───── Hero (Empty State) ───── */
     .hero {
       position: absolute;
-      /* 調整：這裡也要跟 padding 保持一致 */
       inset: 48px;
       display: flex;
       flex-direction: column;
@@ -386,14 +415,25 @@
 
     /* Responsive */
     @media (max-width: 768px) {
-      /* 手機板通常還是建議滿版，比較好閱讀 */
+      .menu-btn { display: block; } /* 顯示選單按鈕 */
+      
       .main-content { padding: 10px; } 
       .hero { inset: 10px; }
       
       .preview-window { border-radius: var(--radius-md); border: 1px solid var(--border); }
       .window-header { display: none; }
-      .sidebar { position: absolute; height: 100%; transform: translateX(-100%); box-shadow: 5px 0 15px rgba(0,0,0,0.1); }
+
+      .sidebar { 
+        position: absolute; 
+        height: 100%; 
+        z-index: 30; /* 比 overlay 高 */
+        transform: translateX(-100%); 
+        box-shadow: 5px 0 15px rgba(0,0,0,0.15); 
+      }
       .sidebar.open { transform: translateX(0); }
+      
+      .mobile-overlay.show { display: block; } /* 顯示遮罩 */
+
       .search-container { width: auto; flex: 1; }
       .brand-info { display: none; }
     }
@@ -404,13 +444,20 @@
 <div class="app">
   <!-- Header -->
   <header class="topbar">
-    <div class="brand">
-      <div class="brand-logo">
-        <i class="ph-bold ph-cube"></i>
-      </div>
-      <div class="brand-info">
-        <h1>GOLDENWAY</h1>
-        <span>Backup Platform</span>
+    <div class="left-section">
+      <!-- 漢堡選單按鈕 (手機版專用) -->
+      <button id="menuToggleBtn" class="menu-btn">
+        <i class="ph-bold ph-list"></i>
+      </button>
+
+      <div class="brand">
+        <div class="brand-logo">
+          <i class="ph-bold ph-cube"></i>
+        </div>
+        <div class="brand-info">
+          <h1>GOLDENWAY</h1>
+          <span>Backup Platform</span>
+        </div>
       </div>
     </div>
 
@@ -424,6 +471,9 @@
   </header>
 
   <div class="body-layout">
+    <!-- 手機版遮罩 (Overlay) -->
+    <div id="mobileOverlay" class="mobile-overlay"></div>
+
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-tools">
@@ -478,24 +528,42 @@
 </div>
 
 <script>
-  /* * 1. 數據與清洗邏輯 */
+  /* * 1. 手機版選單邏輯 (New) */
+  const menuToggleBtn = document.getElementById("menuToggleBtn");
+  const sidebar = document.getElementById("sidebar");
+  const mobileOverlay = document.getElementById("mobileOverlay");
+
+  function toggleSidebar() {
+    const isOpen = sidebar.classList.contains("open");
+    if (isOpen) {
+      // 關閉
+      sidebar.classList.remove("open");
+      mobileOverlay.classList.remove("show");
+      setTimeout(() => mobileOverlay.style.display = 'none', 300); // 等待淡出動畫
+    } else {
+      // 開啟
+      sidebar.classList.add("open");
+      mobileOverlay.style.display = 'block';
+      // 強制重繪以觸發 transition
+      mobileOverlay.offsetHeight; 
+      mobileOverlay.classList.add("show");
+    }
+  }
+
+  // 綁定事件
+  menuToggleBtn.onclick = toggleSidebar;
+  mobileOverlay.onclick = toggleSidebar;
+
+  /* * 2. 數據與清洗邏輯 */
   let treeData = [];
   let fileIndex = [];
   let isDemoMode = false;
 
-  // 標題清洗函式：更精確的顯示內容
   function formatTitle(title) {
     if (!title) return "";
-    return title
-      .replace(/\.html$/i, "") // 移除 .html
-      .replace(/【|】/g, "")    // 移除 【 】
-      .trim();
+    return title.replace(/\.html$/i, "").replace(/【|】/g, "").trim();
   }
 
-  // 備用資料 (Fallback Data)
-  // 當無法讀取 tree-data.json 時（例如在本地檔案預覽或此 Canvas 環境），會使用此資料。
-  // 注意：這只是為了在沒伺服器的環境下能看到目錄結構。
-  // 部署到 GitHub 後，程式會自動讀取您真實的 tree-data.json，此處資料不會生效。
   const REAL_DATA_FALLBACK = [
   {
     "title": "about",
@@ -508,7 +576,6 @@
     ]
   },
   {
-    // 修改：這裡使用正確的中文資料夾名稱，並且確保在預覽模式下它是一個資料夾
     "title": "施工安裝", 
     "children": [
          { "title": "保固維修與退換貨.html", "path": "product/施工安裝與售後服務/保固維修與退換貨.html" },
@@ -590,17 +657,12 @@
 
   async function initApp() {
     try {
-      // 1. 在 GitHub Pages 或一般 Server 環境下，這行會成功讀取真實檔案
       const res = await fetch("tree-data.json");
-      
       if (!res.ok) throw new Error("File not found");
       const data = await res.json();
-      
-      // 2. 成功後，啟動「正式模式」 (isDemoMode = false)
       startApp(data);
     } catch (err) {
-      // 3. 如果讀取失敗（例如在 Canvas 預覽環境或直接開啟 html 檔），啟動「預覽模式」
-      console.warn("無法讀取 tree-data.json，切換至預覽模式 (Fallback Data)。部署至 Server 後將自動恢復正常。", err);
+      console.warn("切換至預覽模式", err);
       isDemoMode = true;
       startApp(REAL_DATA_FALLBACK);
     }
@@ -614,19 +676,14 @@
 
   initApp();
 
-  /* * 2. 樹狀結構渲染 */
+  /* * 3. 樹狀結構渲染 */
   function renderTree(nodes, container) {
     const ul = document.createElement("ul");
     if(container.id !== "treeRoot") ul.className = "sub-tree";
 
     nodes.forEach(node => {
       const li = document.createElement("li");
-      
-      // [修正] 判斷是否為資料夾：只要 children 是陣列（即使是空的 []），就一律視為資料夾
-      // 這樣可以避免空資料夾被誤判為檔案，導致點擊後出現 404
       const isFolder = Array.isArray(node.children);
-      
-      // 使用 formatTitle 清洗標題
       const cleanName = formatTitle(node.title);
 
       if (isFolder) {
@@ -643,10 +700,7 @@
           li.classList.toggle("open");
         };
         li.appendChild(content);
-        
-        // 如果資料夾是空的，renderTree 傳回的 ul 裡面會是空的，這沒問題，使用者點開會看到無內容
         renderTree(node.children, li);
-        
       } else if (node.path) {
         li.className = "tree-node file";
         const content = document.createElement("div");
@@ -659,6 +713,10 @@
         content.onclick = (e) => {
           e.stopPropagation();
           loadPreview(node.path, cleanName, li);
+          // 手機版優化：點擊檔案後自動收起側邊欄
+          if (window.innerWidth <= 768) {
+            toggleSidebar();
+          }
         };
         li.appendChild(content);
       }
@@ -667,7 +725,7 @@
     container.appendChild(ul);
   }
 
-  /* * 3. 功能邏輯 */
+  /* * 4. 功能邏輯 */
   const hero = document.getElementById("hero");
   const previewContainer = document.getElementById("previewContainer"); 
   const frame = document.getElementById("previewFrame");
@@ -682,14 +740,12 @@
     hero.classList.add("hidden");
     previewContainer.style.display = "flex"; 
     
-    // 視窗標題顯示路徑，但也許可以只顯示乾淨的標題
     previewTitleText.textContent = path;
 
     document.querySelectorAll(".file.active").forEach(el => el.classList.remove("active"));
     if (activeLi) activeLi.classList.add("active");
 
     if (isDemoMode) {
-      // 預覽模式下的提示畫面 (僅在 Canvas 或無檔案時出現)
       const doc = frame.contentWindow.document;
       doc.open();
       doc.write(`
@@ -708,7 +764,6 @@
       `);
       doc.close();
     } else {
-      // 正式環境：直接載入真實檔案
       frame.src = path;
     }
   }
@@ -718,6 +773,11 @@
     previewContainer.style.display = "none";
     frame.src = "";
     document.querySelectorAll(".file.active").forEach(el => el.classList.remove("active"));
+    
+    // 手機版：點擊首頁按鈕也應該收起側邊欄
+    if (window.innerWidth <= 768 && sidebar.classList.contains("open")) {
+        toggleSidebar();
+    }
   };
 
   document.getElementById("expandBtn").onclick = () => {
