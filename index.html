@@ -12,17 +12,23 @@
 
   <style>
     :root {
-      /* [調整] 玻璃質感變數 - 變得更透 */
-      --glass-bg: rgba(255, 255, 255, 0.3);      /* 從 0.65 降到 0.3，大幅增加通透感 */
-      --glass-border: rgba(255, 255, 255, 0.4);  /* 保持邊框亮度，增加立體感 */
-      --glass-blur: blur(25px);                  /*稍微增加模糊度，確保文字可讀性 */
-      --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+      /* [調整重點 1] 玻璃質感變數 - 讓質感更明顯 */
+      /* 稍微調高不透明度 (0.3 -> 0.75)，讓它看起來更像實體的「毛玻璃板」，而不只是透明塑膠 */
+      --glass-bg: rgba(255, 255, 255, 0.55);      
+      
+      /* 邊框調亮，增加邊緣反光感 */
+      --glass-border: rgba(255, 255, 255, 0.6);   
+      
+      /* 模糊度維持，確保背景圖片不會干擾文字 */
+      --glass-blur: blur(20px) saturate(180%);   /* 加入 saturate 增加鮮豔度 */
+      
+      --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
       
       --primary: #0071e3;
-      --primary-light: rgba(0, 113, 227, 0.15); /* 稍微加深一點點，避免在太透的背景看不清 */
+      --primary-light: rgba(0, 113, 227, 0.15); 
       
       --text-main: #1f2937;
-      --text-sub: #555555; /* 加深一點副標題顏色，因為背景變透了 */
+      --text-sub: #555555; 
       
       --sidebar-w: 280px;
       --header-h: 60px;
@@ -40,9 +46,15 @@
       overflow: hidden;
       color: var(--text-main);
       
-      /* [視覺核心] 漸層背景 - 維持您喜歡的色調 */
-      background: linear-gradient(135deg, #dbeafe 0%, #ede9fe 100%);
+      /* ───── [調整重點 2] 背景圖片設定 ───── */
+      /* 請將 url(...) 括號內的網址換成您喜歡的圖片連結 */
+      /* 這裡先放一張範例風景圖 */
+      background-image: url('https://cdn.jsdelivr.net/gh/TsenWu/goldenway-photos/pexels-markusspiske-1679772.jpg');
+      
+      /* 讓圖片填滿整個螢幕且不重複 */
       background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       background-attachment: fixed;
     }
 
@@ -66,7 +78,7 @@
       backdrop-filter: var(--glass-blur);
       -webkit-backdrop-filter: var(--glass-blur);
       border-bottom: 1px solid var(--glass-border);
-      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
     }
 
     .left-section {
@@ -97,16 +109,21 @@
       width: 32px;
       height: 32px;
       border-radius: var(--radius-md);
-      background: #111; 
+      /* background: #111;  <-- 如果您的 Logo 是透明背景，可以保留這個黑色底色，或是改成 transparent (透明) */
+      background: transparent; 
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
+      /* color: white; <-- 這是給 icon 用的，用圖片就不需要了 */
       overflow: hidden;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      /* box-shadow: 0 2px 5px rgba(0,0,0,0.1); */
     }
     
-    .brand-logo img { width: 100%; height: 100%; object-fit: cover; }
+    .brand-logo img { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: contain; /* 確保 logo 完整顯示，不被裁切 */
+    }
 
     .brand-info h1 {
       font-size: 14px;
@@ -144,9 +161,9 @@
       width: 100%;
       padding: 7px 10px 7px 32px;
       border-radius: 99px;
-      /* [調整] 搜尋框背景也調透一點，原本是 0.5 */
-      background: rgba(255, 255, 255, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      /* 搜尋框要在玻璃上清楚，需要更白一點 */
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.4);
       font-size: 13px;
       color: var(--text-main);
       transition: all 0.2s ease;
@@ -154,9 +171,9 @@
     }
 
     .search-input:focus {
-      background: rgba(255, 255, 255, 0.85); /* 聚焦時變不透明，方便輸入 */
+      background: rgba(255, 255, 255, 0.95);
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.15);
+      box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.2);
     }
 
     .search-clear {
@@ -202,9 +219,8 @@
     }
 
     .icon-btn {
-      /* [調整] 按鈕預設更透 */
-      background: rgba(255,255,255,0.3);
-      border: 1px solid rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.4);
+      border: 1px solid rgba(255,255,255,0.4);
       border-radius: 6px;
       padding: 5px 8px;
       font-size: 12px;
@@ -216,7 +232,7 @@
       transition: all 0.1s;
     }
     
-    .icon-btn:hover { background: rgba(255,255,255,0.6); }
+    .icon-btn:hover { background: rgba(255,255,255,0.8); }
 
     .icon-btn.primary {
       background: var(--primary);
@@ -249,7 +265,7 @@
     }
 
     .node-content:hover { 
-      background: rgba(255,255,255,0.3); /* Hover 更透 */
+      background: rgba(255,255,255,0.4);
     }
 
     .caret {
@@ -265,7 +281,7 @@
     .sub-tree { display: none; padding-left: 20px; position: relative; }
     .sub-tree::before {
       content: ""; position: absolute; top: 0; bottom: 0; left: 11px;
-      width: 1px; background: rgba(0,0,0,0.08); 
+      width: 1px; background: rgba(0,0,0,0.1); 
     }
     .folder.open > .sub-tree { display: block; }
 
@@ -282,9 +298,9 @@
       display: none;
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.2); 
+      background: rgba(0, 0, 0, 0.4); /* 背景圖片較雜時，遮罩可以稍微深一點 */
       z-index: 20; 
-      backdrop-filter: blur(3px); 
+      backdrop-filter: blur(4px); 
       opacity: 0;
       transition: opacity 0.3s;
     }
@@ -305,8 +321,9 @@
       flex: 1;
       border-radius: var(--radius-lg);
       
-      /* [調整] 預覽視窗外框更透 */
-      background: rgba(255, 255, 255, 0.25);  /* 從 0.4 降到 0.25 */
+      /* [調整重點 3] 預覽視窗外框 */
+      /* 這裡可以稍微透一點 (0.6)，讓裡面的白色 iframe 跟外部背景有層次 */
+      background: rgba(255, 255, 255, 0.6);  
       backdrop-filter: var(--glass-blur);
       border: 1px solid var(--glass-border);
       box-shadow: var(--glass-shadow);
@@ -314,7 +331,7 @@
       display: none;
       flex-direction: column;
       overflow: hidden;
-      animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     @keyframes fadeIn {
@@ -324,8 +341,7 @@
 
     .window-header {
       height: 40px;
-      /* [調整] Header 更透，幾乎與背景融合 */
-      background: rgba(255, 255, 255, 0.15); 
+      background: rgba(255, 255, 255, 0.3); 
       border-bottom: 1px solid var(--glass-border);
       display: flex;
       align-items: center;
@@ -342,8 +358,8 @@
 
     .window-title-bar {
       flex: 1;
-      background: rgba(255, 255, 255, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.4);
       border-radius: 6px;
       height: 24px;
       display: flex;
@@ -378,28 +394,71 @@
       align-items: center;
       text-align: center;
       
-      /* [調整] Hero 也更透 */
-      background: rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.6);
       backdrop-filter: var(--glass-blur);
       border: 1px solid var(--glass-border);
       
       border-radius: var(--radius-lg);
       box-shadow: var(--glass-shadow);
-      transition: opacity 0.2s;
+      
+      /* 修改：加入淡入動畫 */
+      /* 使用相同的 fadeIn 動畫，但稍微調慢一點 (0.6s) 讓它看起來更悠閒 */
+      animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
+    /* [重點調整] Hero Icon - 乾淨線框風格 */
     .hero-icon {
-      font-size: 56px;
-      color: var(--primary);
-      margin-bottom: 16px;
-      background: rgba(255, 255, 255, 0.4);
-      width: 90px;
-      height: 90px;
+      width: 100px;
+      height: 100px;
+      margin-bottom: 20px;
+      
+      /* 1. 移除所有背景色和模糊，只留純淨外框 */
+      background: transparent; 
+      backdrop-filter: none;
+      
+      /* 2. 白色線框 */
+      border: 2px solid rgba(65, 131, 193, 0.65); 
+      border-radius: 28px; 
+      
+      /* 3. 初始光暈：微弱的藍紫色 (Blue-Purple) */
+      box-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.2), /* 基礎白光 */
+        0 0 20px rgba(80, 80, 255, 0.4);   /* 藍紫光暈 */
+        
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 24px; 
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      overflow: hidden; 
+      padding: 15px;
+      
+      transition: box-shadow 0.6s ease, border-color 0.6s ease;
+      cursor: default; 
+    }
+    
+    /* [重點調整] 懸停效果 - 只有光暈變化，無位移 */
+    .hero-icon:hover {
+      /* 移除 transform，保持圖示靜止 */
+      transform: none; 
+      border-color: #4183c1;
+      
+      /* 懸停光暈：變為「藍粉色 (Blue-Pink)」且範圍變大 */
+      box-shadow: 
+        0 0 15px rgba(255, 255, 255, 0.3),  /* 增強內層白光 */
+        0 0 30px rgba(0, 190, 255, 0.7),    /* 中層：亮藍色 */
+        0 0 60px rgba(255, 100, 200, 0.6);  /* 外層：柔和粉色 */
+    }
+    
+    .hero-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      /* 移除圖片本身的縮放動畫 */
+      transition: none;
+    }
+    
+    .hero-icon:hover img {
+      /* 移除 hover 時的圖片放大 */
+      transform: none;
     }
 
     .hero h2 {
@@ -426,10 +485,10 @@
       margin-bottom: 4px;
       cursor: pointer;
       border: 1px solid transparent;
-      background: rgba(255,255,255,0.2); 
+      background: rgba(255,255,255,0.4); 
     }
     .search-result-item:hover {
-      background: rgba(255,255,255,0.6);
+      background: rgba(255,255,255,0.85);
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
     .res-title { font-size: 13px; font-weight: 500; color: var(--primary); }
@@ -450,8 +509,9 @@
         height: 100%; 
         z-index: 30; 
         transform: translateX(-100%); 
-        box-shadow: 10px 0 25px rgba(0,0,0,0.1); 
-        background: rgba(255, 255, 255, 0.8); /* 手機版還是維持稍微高一點的不透明度，避免內容太亂 */
+        box-shadow: 10px 0 25px rgba(0,0,0,0.2); 
+        /* 手機版不透明度要高一點，保證易讀性 */
+        background: rgba(255, 255, 255, 0.9); 
       }
       .sidebar.open { transform: translateX(0); }
       
@@ -475,11 +535,13 @@
 
       <div class="brand">
         <div class="brand-logo">
-          <i class="ph-bold ph-cube"></i>
+          <!-- [修改] 替換成 Logo 圖片，請將 src 換成您自己的圖片網址 -->
+          <!-- 這裡我先用一個暫位圖示範 -->
+          <img src="https://cdn.jsdelivr.net/gh/TsenWu/goldenway-photos/GW.png" alt="Logo" />
         </div>
         <div class="brand-info">
-          <h1>GOLDENWAY</h1>
-          <span>Backup Platform</span>
+          <h1>金鍏電子【GoldenWay】</h1>
+          <span>備份及預覽平台</span>
         </div>
       </div>
     </div>
@@ -522,10 +584,12 @@
       <!-- Empty State / Hero -->
       <div id="hero" class="hero">
         <div class="hero-icon">
-          <i class="ph-duotone ph-browser"></i>
+          <!-- [修改] 替換成 Logo 圖片，請將 src 換成您自己的圖片網址 -->
+          <!-- 建議這裡可以使用較高解析度的 Logo -->
+          <img src="https://cdn.jsdelivr.net/gh/TsenWu/goldenway-photos/GW.png" alt="Big Logo" />
         </div>
-        <h2>GOLDENWAY 官網備份</h2>
-        <p>歡迎使用內部預覽系統。<br>已載入完整產品目錄，請從左側選擇檔案。</p>
+        <h2>金鍏電子【GoldenWay】</h2>
+        <p>─ 歡迎使用備份預覽系統 ─<br>已載入完整目錄列表，請從列表選擇預覽</p>
       </div>
 
       <!-- Preview Window (Card Style) -->
