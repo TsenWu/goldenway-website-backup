@@ -12,25 +12,23 @@
 
   <style>
     :root {
-      /* 配色系統 */
-      --bg-app: #eef0f3;
-      --bg-sidebar: #ffffff;
-      --bg-header: rgba(255, 255, 255, 0.85);
+      /* [調整] 玻璃質感變數 - 變得更透 */
+      --glass-bg: rgba(255, 255, 255, 0.3);      /* 從 0.65 降到 0.3，大幅增加通透感 */
+      --glass-border: rgba(255, 255, 255, 0.4);  /* 保持邊框亮度，增加立體感 */
+      --glass-blur: blur(25px);                  /*稍微增加模糊度，確保文字可讀性 */
+      --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
       
       --primary: #0071e3;
-      --primary-light: #eff6ff; 
+      --primary-light: rgba(0, 113, 227, 0.15); /* 稍微加深一點點，避免在太透的背景看不清 */
       
       --text-main: #1f2937;
-      --text-sub: #6b7280;
-      --border: #e5e7eb;
+      --text-sub: #555555; /* 加深一點副標題顏色，因為背景變透了 */
       
       --sidebar-w: 280px;
       --header-h: 60px;
       
       --radius-lg: 16px; 
       --radius-md: 8px;
-      
-      --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.1), 0 4px 10px -2px rgba(0, 0, 0, 0.05);
     }
 
     * { box-sizing: border-box; }
@@ -38,10 +36,14 @@
     body {
       margin: 0;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg-app);
       height: 100vh;
       overflow: hidden;
       color: var(--text-main);
+      
+      /* [視覺核心] 漸層背景 - 維持您喜歡的色調 */
+      background: linear-gradient(135deg, #dbeafe 0%, #ede9fe 100%);
+      background-size: cover;
+      background-attachment: fixed;
     }
 
     .app {
@@ -50,18 +52,21 @@
       height: 100vh;
     }
 
-    /* ───── Top Bar (Header) ───── */
+    /* ───── Top Bar (Header - Glass) ───── */
     .topbar {
       height: var(--header-h);
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 20px;
-      background: var(--bg-header);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
       z-index: 20;
+      
+      /* 玻璃擬態樣式 */
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border-bottom: 1px solid var(--glass-border);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
     }
 
     .left-section {
@@ -70,7 +75,6 @@
       gap: 12px;
     }
 
-    /* 漢堡選單按鈕 (預設隱藏，手機版顯示) */
     .menu-btn {
       display: none; 
       background: transparent;
@@ -99,6 +103,7 @@
       justify-content: center;
       color: white;
       overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
     
     .brand-logo img { width: 100%; height: 100%; object-fit: cover; }
@@ -139,8 +144,9 @@
       width: 100%;
       padding: 7px 10px 7px 32px;
       border-radius: 99px;
-      border: 1px solid var(--border);
-      background: #fff;
+      /* [調整] 搜尋框背景也調透一點，原本是 0.5 */
+      background: rgba(255, 255, 255, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.3);
       font-size: 13px;
       color: var(--text-main);
       transition: all 0.2s ease;
@@ -148,8 +154,9 @@
     }
 
     .search-input:focus {
+      background: rgba(255, 255, 255, 0.85); /* 聚焦時變不透明，方便輸入 */
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.1);
+      box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.15);
     }
 
     .search-clear {
@@ -167,14 +174,19 @@
       display: flex;
       flex: 1;
       height: calc(100vh - var(--header-h));
-      position: relative; /* For absolute positioning context */
+      position: relative;
     }
 
-    /* ───── Sidebar ───── */
+    /* ───── Sidebar (Glass) ───── */
     .sidebar {
       width: var(--sidebar-w);
-      background: var(--bg-sidebar);
-      border-right: 1px solid var(--border);
+      
+      /* 玻璃擬態樣式 */
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border-right: 1px solid var(--glass-border);
+      
       display: flex;
       flex-direction: column;
       flex-shrink: 0;
@@ -184,14 +196,15 @@
 
     .sidebar-tools {
       padding: 10px 14px;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--glass-border); 
       display: flex;
       gap: 6px;
     }
 
     .icon-btn {
-      background: transparent;
-      border: 1px solid var(--border);
+      /* [調整] 按鈕預設更透 */
+      background: rgba(255,255,255,0.3);
+      border: 1px solid rgba(255,255,255,0.3);
       border-radius: 6px;
       padding: 5px 8px;
       font-size: 12px;
@@ -203,8 +216,7 @@
       transition: all 0.1s;
     }
     
-    .icon-btn:hover { background: #f9fafb; border-color: #d1d5db; }
-    .icon-btn:active { background: #f3f4f6; }
+    .icon-btn:hover { background: rgba(255,255,255,0.6); }
 
     .icon-btn.primary {
       background: var(--primary);
@@ -233,9 +245,12 @@
       border-left: 3px solid transparent;
       gap: 8px;
       user-select: none;
+      transition: background 0.2s;
     }
 
-    .node-content:hover { background: #f3f4f6; }
+    .node-content:hover { 
+      background: rgba(255,255,255,0.3); /* Hover 更透 */
+    }
 
     .caret {
       font-size: 10px; color: var(--text-sub); width: 12px;
@@ -248,10 +263,9 @@
     .folder.open > .node-content .caret { transform: rotate(90deg); }
     
     .sub-tree { display: none; padding-left: 20px; position: relative; }
-    /* 樹狀結構引導線 */
     .sub-tree::before {
       content: ""; position: absolute; top: 0; bottom: 0; left: 11px;
-      width: 1px; background: #e5e7eb;
+      width: 1px; background: rgba(0,0,0,0.08); 
     }
     .folder.open > .sub-tree { display: block; }
 
@@ -260,17 +274,17 @@
       color: var(--primary);
       border-left-color: var(--primary);
       font-weight: 500;
+      backdrop-filter: blur(5px); 
     }
     .file.active .file-icon { color: var(--primary); }
 
-    /* ───── Mobile Overlay ───── */
     .mobile-overlay {
       display: none;
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.4);
-      z-index: 20; /* 在 Sidebar(30) 之下，但在 Content 之上 */
-      backdrop-filter: blur(2px);
+      background: rgba(0, 0, 0, 0.2); 
+      z-index: 20; 
+      backdrop-filter: blur(3px); 
       opacity: 0;
       transition: opacity 0.3s;
     }
@@ -280,35 +294,39 @@
     .main-content {
       flex: 1;
       position: relative;
-      background: var(--bg-app);
       display: flex;
       flex-direction: column;
       overflow: hidden;
       padding: 48px; 
     }
 
-    /* ───── Preview Window Card ───── */
+    /* ───── Preview Window Card (Glass) ───── */
     .preview-window {
-      background: white;
       flex: 1;
       border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-card);
-      border: 1px solid #d1d5db;
+      
+      /* [調整] 預覽視窗外框更透 */
+      background: rgba(255, 255, 255, 0.25);  /* 從 0.4 降到 0.25 */
+      backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+      
       display: none;
       flex-direction: column;
       overflow: hidden;
-      animation: fadeIn 0.3s ease;
+      animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(20px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     .window-header {
       height: 40px;
-      background: #fafafa;
-      border-bottom: 1px solid var(--border);
+      /* [調整] Header 更透，幾乎與背景融合 */
+      background: rgba(255, 255, 255, 0.15); 
+      border-bottom: 1px solid var(--glass-border);
       display: flex;
       align-items: center;
       padding: 0 16px;
@@ -317,16 +335,16 @@
     }
 
     .window-dots { display: flex; gap: 6px; }
-    .dot { width: 10px; height: 10px; border-radius: 50%; }
-    .dot.red { background: #ff5f57; border: 1px solid #e0443e; }
-    .dot.yellow { background: #febc2e; border: 1px solid #d89e24; }
-    .dot.green { background: #28c840; border: 1px solid #1aab29; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+    .dot.red { background: #ff5f57; border: 1px solid rgba(0,0,0,0.05); }
+    .dot.yellow { background: #febc2e; border: 1px solid rgba(0,0,0,0.05); }
+    .dot.green { background: #28c840; border: 1px solid rgba(0,0,0,0.05); }
 
     .window-title-bar {
       flex: 1;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 6px;
       height: 24px;
       display: flex;
       align-items: center;
@@ -346,11 +364,11 @@
       width: 100%;
       height: 100%;
       border: none;
-      background: white;
+      background: white; 
       display: block;
     }
 
-    /* ───── Hero (Empty State) ───── */
+    /* ───── Hero (Glass) ───── */
     .hero {
       position: absolute;
       inset: 48px;
@@ -359,11 +377,14 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      background: white;
+      
+      /* [調整] Hero 也更透 */
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--glass-border);
+      
       border-radius: var(--radius-lg);
-      border: 1px dashed #d1d5db;
-      background-image: radial-gradient(#f3f4f6 1px, transparent 1px);
-      background-size: 20px 20px;
+      box-shadow: var(--glass-shadow);
       transition: opacity 0.2s;
     }
 
@@ -371,13 +392,14 @@
       font-size: 56px;
       color: var(--primary);
       margin-bottom: 16px;
-      background: var(--primary-light);
+      background: rgba(255, 255, 255, 0.4);
       width: 90px;
       height: 90px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 20px;
+      border-radius: 24px; 
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
 
     .hero h2 {
@@ -404,35 +426,36 @@
       margin-bottom: 4px;
       cursor: pointer;
       border: 1px solid transparent;
+      background: rgba(255,255,255,0.2); 
     }
     .search-result-item:hover {
-      background: white;
-      border-color: var(--primary-light);
-      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      background: rgba(255,255,255,0.6);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
     .res-title { font-size: 13px; font-weight: 500; color: var(--primary); }
     .res-path { font-size: 11px; color: var(--text-sub); margin-top: 1px; }
 
     /* Responsive */
     @media (max-width: 768px) {
-      .menu-btn { display: block; } /* 顯示選單按鈕 */
+      .menu-btn { display: block; }
       
-      .main-content { padding: 10px; } 
-      .hero { inset: 10px; }
+      .main-content { padding: 16px; } 
+      .hero { inset: 16px; }
       
-      .preview-window { border-radius: var(--radius-md); border: 1px solid var(--border); }
+      .preview-window { border-radius: var(--radius-md); border: 1px solid var(--glass-border); }
       .window-header { display: none; }
 
       .sidebar { 
         position: absolute; 
         height: 100%; 
-        z-index: 30; /* 比 overlay 高 */
+        z-index: 30; 
         transform: translateX(-100%); 
-        box-shadow: 5px 0 15px rgba(0,0,0,0.15); 
+        box-shadow: 10px 0 25px rgba(0,0,0,0.1); 
+        background: rgba(255, 255, 255, 0.8); /* 手機版還是維持稍微高一點的不透明度，避免內容太亂 */
       }
       .sidebar.open { transform: translateX(0); }
       
-      .mobile-overlay.show { display: block; } /* 顯示遮罩 */
+      .mobile-overlay.show { display: block; }
 
       .search-container { width: auto; flex: 1; }
       .brand-info { display: none; }
@@ -528,7 +551,7 @@
 </div>
 
 <script>
-  /* * 1. 手機版選單邏輯 (New) */
+  /* * 1. 手機版選單邏輯 */
   const menuToggleBtn = document.getElementById("menuToggleBtn");
   const sidebar = document.getElementById("sidebar");
   const mobileOverlay = document.getElementById("mobileOverlay");
@@ -536,21 +559,17 @@
   function toggleSidebar() {
     const isOpen = sidebar.classList.contains("open");
     if (isOpen) {
-      // 關閉
       sidebar.classList.remove("open");
       mobileOverlay.classList.remove("show");
-      setTimeout(() => mobileOverlay.style.display = 'none', 300); // 等待淡出動畫
+      setTimeout(() => mobileOverlay.style.display = 'none', 300); 
     } else {
-      // 開啟
       sidebar.classList.add("open");
       mobileOverlay.style.display = 'block';
-      // 強制重繪以觸發 transition
       mobileOverlay.offsetHeight; 
       mobileOverlay.classList.add("show");
     }
   }
 
-  // 綁定事件
   menuToggleBtn.onclick = toggleSidebar;
   mobileOverlay.onclick = toggleSidebar;
 
@@ -713,7 +732,6 @@
         content.onclick = (e) => {
           e.stopPropagation();
           loadPreview(node.path, cleanName, li);
-          // 手機版優化：點擊檔案後自動收起側邊欄
           if (window.innerWidth <= 768) {
             toggleSidebar();
           }
@@ -774,7 +792,6 @@
     frame.src = "";
     document.querySelectorAll(".file.active").forEach(el => el.classList.remove("active"));
     
-    // 手機版：點擊首頁按鈕也應該收起側邊欄
     if (window.innerWidth <= 768 && sidebar.classList.contains("open")) {
         toggleSidebar();
     }
