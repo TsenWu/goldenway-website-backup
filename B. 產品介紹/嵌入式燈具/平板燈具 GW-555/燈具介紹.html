@@ -563,180 +563,174 @@ Light sources compliant with U.S. specifications.</div>
 </div>
 
 <div style="height: 20px;">&nbsp;</div>
-<!-- ✅ GW-555 專屬色溫展示區塊（不影響全站） -->
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
-<style type="text/css">.color-temp-gw555 {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
-    position: relative;
-    max-width: 100%;
-    box-sizing: border-box;
-  }
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* =========================================
+       區塊：GW-555節標款-色溫模擬器區塊
+       規範：v2.5 (ID Strategy & Typography)
+       ========================================= */
 
-  .color-temp-gw555 .left-image {
-    flex-basis: 66.66%;
-    background: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/555/gw_555_bg1_colortem.jpg?v=khl19dyn') center center / cover no-repeat;
-    min-height: 500px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    padding: 40px 0;
-    box-sizing: border-box;
-    border-radius: 8px;
-    overflow: hidden;
-  }
-
-  .color-temp-gw555 .right-info {
-    flex-basis: 33.33%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 40px 30px;
-    box-sizing: border-box;
-    gap: 40px;
-  }
-
-  .color-temp-gw555 .info-box {
-    background: #F4F7FB;
-    color: #29406C;
-    padding: 10px 20px;
-    font-weight: 700;
-    font-size: 18px;
-    border-radius: 6px;
-    transition: transform 0.3s;
-  }
-
-  .color-temp-gw555 .info-box:hover {
-    transform: scale(1.05);
-  }
-
-  .color-temp-gw555 .info-text {
-    font-size: 16px;
-    color: #444C56;
-    line-height: 1.6;
-    margin-top: 10px;
-  }
-
-  .color-temp-gw555 .slider-wrap {
-    width: 60%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    box-sizing: border-box;
-  }
-
-  .color-temp-gw555 .slider-line {
-    width: 100%;
-    height: 12px;
-    background: linear-gradient(to right, #e67e22, #f4d03f, #58d68d, #5dade2);
-    border-radius: 8px;
-    position: relative;
-    margin: 0 auto;
-    box-sizing: border-box;
-  }
-
-  .color-temp-gw555 .temp-label {
-    position: absolute;
-    font-size: 16px;
-    font-weight: 700;
-    transition: transform 0.3s;
-    white-space: nowrap;
-    box-sizing: border-box;
-  }
-
-  .color-temp-gw555 .temp-label:hover {
-    transform: scale(1.1);
-  }
-
-  .color-temp-gw555 .left-label {
-    left: -5px;
-    top: -66px;
-    color: #e67e22;
-    border: 2px solid #e67e22;
-    padding: 2px 8px;
-    border-radius: 4px;
-    background: white;
-  }
-
-  .color-temp-gw555 .right-label {
-    right: -5px;
-    top: -66px;
-    color: #5dade2;
-    border: 2px solid #5dade2;
-    padding: 2px 8px;
-    border-radius: 4px;
-    background: white;
-  }
-
-  .color-temp-gw555 .dot {
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: white;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    border: 3px solid;
-  }
-
-  .color-temp-gw555 .dot.left {
-    left: 0;
-    border-color: #e67e22;
-  }
-
-  .color-temp-gw555 .dot.right {
-    right: 0;
-    border-color: #5dade2;
-  }
-
-  @media (max-width: 768px) {
-    .color-temp-gw555 {
-      flex-direction: column;
+    /* Level 1: ID 主容器鎖定 */
+    #GW-555節標款-色溫模擬器區塊 {
+        width: 100%;
+        max-width: 1300px;
+        margin: 0 auto;
+        font-family: 'Noto Sans TC', "Microsoft JhengHei", "Heiti TC", Arial, sans-serif;
+        box-sizing: border-box;
     }
-    .color-temp-gw555 .left-image,
-    .color-temp-gw555 .right-info {
-      flex: 1 1 100%;
-      padding: 20px;
+
+    #GW-555節標款-色溫模擬器區塊 *,
+    #GW-555節標款-色溫模擬器區塊 *::before,
+    #GW-555節標款-色溫模擬器區塊 *::after {
+        box-sizing: border-box;
     }
-    .color-temp-gw555 .slider-wrap {
-      width: 90%;
+
+    /* Flex 佈局容器 */
+    #GW-555節標款-色溫模擬器區塊 .color-temp-layout {
+        display: flex;
+        flex-direction: column; /* 手機版：垂直排列 */
+        gap: 20px;
+        align-items: center;
     }
-    .color-temp-gw555 .temp-label {
-      font-size: 20px;
+
+    /* --- 模擬器區塊 (左側) --- */
+    #GW-555節標款-色溫模擬器區塊 .color-temp-simulator {
+        width: 100%;
     }
-    .color-temp-gw555 .left-label,
-    .color-temp-gw555 .right-label {
-      top: -40px !important;
+
+    /* 安全網與 iframe 比例設定 */
+    #GW-555節標款-色溫模擬器區塊 .color-temp-safe-net {
+        position: relative;
+        width: 100%;
+        min-height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
     }
-  }
+
+    #GW-555節標款-色溫模擬器區塊 .color-temp-aspect-box {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 110%; /* 手機版比例 */
+    }
+
+    #GW-555節標款-色溫模擬器區塊 iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+
+    /* --- 資訊文字區塊 (右側) --- */
+    #GW-555節標款-色溫模擬器區塊 .color-temp-info {
+        width: 100%;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        /* ↓↓↓ 修改重點：確保預設就是水平垂直置中 ↓↓↓ */
+        justify-content: center; 
+        align-items: center;     
+        text-align: center;
+    }
+
+    /* 資訊外框樣式 (含 Hover 特效) */
+    #GW-555節標款-色溫模擬器區塊 .info-box {
+        border: 1px solid #333;
+        padding: 10px 20px;
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #333;
+        background-color: transparent;
+        display: inline-block;
+        border-radius: 4px;
+        /* ↓↓↓ 新增：過渡動畫 ↓↓↓ */
+        transition: all 0.3s ease; 
+        cursor: default; /* 或是 pointer */
+    }
+
+    /* ↓↓↓ 新增：滑鼠移入變色效果 ↓↓↓ */
+    #GW-555節標款-色溫模擬器區塊 .info-box:hover {
+        background-color: #333;
+        color: #fff;
+    }
+
+    #GW-555節標款-色溫模擬器區塊 .info-desc {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: #333;
+        font-weight: 500;
+    }
+
+    #GW-555節標款-色溫模擬器區塊 .info-desc p {
+        margin: 0 0 10px 0;
+        padding: 0;
+    }
+
+    /* =========================================
+       RWD 響應式斷點
+       ========================================= */
+
+    /* --- 平板/筆電區間 (768px ~ 1199px) --- */
+    @media (min-width: 768px) {
+        #GW-555節標款-色溫模擬器區塊 .color-temp-layout {
+            flex-direction: row; 
+            align-items: center; /* 左右區塊垂直置中對齊 */
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        #GW-555節標款-色溫模擬器區塊 .color-temp-simulator {
+            width: 60%;
+        }
+
+        #GW-555節標款-色溫模擬器區塊 .color-temp-info {
+            width: 40%;
+            /* ↓↓↓ 修改重點：移除原本的 flex-start，保持 center 以維持置中 ↓↓↓ */
+            /* align-items: flex-start;  <-- 已刪除 */
+            /* text-align: left;         <-- 已刪除 */
+            padding-left: 20px;
+        }
+
+        #GW-555節標款-色溫模擬器區塊 .color-temp-aspect-box {
+            padding-bottom: 95%;
+        }
+    }
+
+    /* --- 大螢幕電腦區間 (> 1200px) --- */
+    @media (min-width: 1200px) {
+        #GW-555節標款-色溫模擬器區塊 .color-temp-simulator {
+            width: 65%;
+        }
+
+        #GW-555節標款-色溫模擬器區塊 .color-temp-info {
+            width: 35%;
+        }
+
+        #GW-555節標款-色溫模擬器區塊 .color-temp-aspect-box {
+            padding-bottom: 86%;
+        }
+    }
 </style>
-<div class="color-temp-gw555">
-<div class="left-image">
-<div class="slider-wrap">
-<div class="slider-line">
-<div class="temp-label left-label">2700K</div>
-
-<div class="dot left">&nbsp;</div>
-
-<div class="temp-label right-label">6500K</div>
-
-<div class="dot right">&nbsp;</div>
-</div>
+<div id="GW-555節標款-色溫模擬器區塊">
+<div class="color-temp-layout">
+<div class="color-temp-simulator">
+<div class="color-temp-safe-net">
+<div class="color-temp-aspect-box"><iframe scrolling="no" src="https://tsenwu.github.io/goldenway-charts/(拉桿變色)智慧照明色溫模擬.html" title="色溫模擬器"></iframe></div>
 </div>
 </div>
 
-<div class="right-info">
-<div>
+<div class="color-temp-info">
 <div class="info-box">多種色溫可供選擇</div>
 
-<div class="info-text">5000K、5700K 為標準品</div>
+<div class="info-desc">
+<p>色溫可涵蓋 2700K~6500K</p>
+
+<p>(5000K、5700K 為標準品)</p>
+</div>
 </div>
 </div>
 </div>
@@ -1380,6 +1374,105 @@ Light sources compliant with U.S. specifications.</div>
 <div class="hero-text" style="text-align: justify;">模組化設計將驅動器與光源分離，顯著延長產品壽命。損壞時可獨立更換零件，降低維護成本。超越5萬小時使用壽命，有效減少維修費用與電子垃圾。</div>
 </div>
 </div>
+</div>
+
+<div id="GW555-節標款實績照片輪播區塊">
+<div class="gw555-container">
+<div class="gw555-header">
+<h3 class="gw555-main-title">各大機構與企業的信賴首選</h3>
+
+<p class="gw555-sub-desc" style="text-align: justify;">金鍏LED燈具涵蓋教育、金融、公部門與科技大廠。以超穩定的品質，體驗超光效、超耐用、超省電帶來的節能紅利，打造讓業主無後顧之憂的長效照明。</p>
+</div>
+
+<div class="gw555-slider-wrapper"><iframe scrolling="no" src="https://tsenwu.github.io/goldenway-charts/(照片輪播)一級驅動平板燈GW-555.html" title="金鍏平板燈實績案例輪播"></iframe></div>
+</div>
+<style type="text/css">/* =========================================
+       ★ 區塊樣式表：GW555-節標款實績照片輪播區塊 ★
+       ========================================= */
+
+    /* 1. 主容器 (ID 權重 100) */
+    #GW555-節標款實績照片輪播區塊 {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 20px;
+      box-sizing: border-box;
+      background-color: #fff;
+      font-family: 'Noto Sans TC', "Microsoft JhengHei", Arial, sans-serif;
+    }
+
+    #GW555-節標款實績照片輪播區塊 .gw555-container {
+      width: 100%;
+    }
+
+    /* 2. 標題區 */
+    #GW555-節標款實績照片輪播區塊 .gw555-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    #GW555-節標款實績照片輪播區塊 .gw555-main-title {
+      font-size: 32px;
+      font-weight: bold;
+      color: #333;
+      margin: 0 0 10px 0;
+    }
+
+    #GW555-節標款實績照片輪播區塊 .gw555-sub-desc {
+      font-size: 16px;
+      color: #666;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* 3. Iframe 容器 (分段式高度策略) */
+    #GW555-節標款實績照片輪播區塊 .gw555-slider-wrapper {
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* 增加陰影提升立體感 */
+      
+      /* 桌機版高度 */
+      height: 600px;
+    }
+
+    #GW555-節標款實績照片輪播區塊 iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+      background: #f5f5f5; /* 載入前的底色 */
+    }
+
+    /* --------------------------------------
+       RWD 響應式佈局 (規範 2.5)
+       -------------------------------------- */
+
+    /* 平板 (Tablet) */
+    @media (max-width: 1024px) {
+      #GW555-節標款實績照片輪播區塊 .gw555-slider-wrapper {
+        height: 450px; /* 高度縮減 */
+      }
+    }
+
+    /* 手機 (Mobile) */
+    @media (max-width: 768px) {
+      #GW555-節標款實績照片輪播區塊 {
+        padding: 40px 20px;
+      }
+
+      #GW555-節標款實績照片輪播區塊 .gw555-main-title {
+        font-size: 24px;
+      }
+
+      #GW555-節標款實績照片輪播區塊 .gw555-slider-wrapper {
+        /* 手機版高度，適合展示橫式照片 */
+        height: 230px; 
+      }
+    }
+</style>
 </div>
 <!-- ★ ESG形象及保固區塊：背景圖 + 左文 + 毛玻璃右浮框 ★ -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
