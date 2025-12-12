@@ -1,77 +1,272 @@
-<!-- ★ 區塊名稱：5年照明總成本分析區塊（優化間距版）★ -->
-<div class="cost-analysis-wrapper" style="max-width: 1200px; margin: 0 auto; padding: 10px 16px; font-family: 'Noto Sans TC', sans-serif; color: #333; box-sizing: border-box;"><!-- ✅ 區塊標題 -->
-<div style="text-align: center; margin-bottom: 18px;">
-<h2 style="font-size: 36px; font-weight: bold; margin-bottom: 12px;">換裝金鍏 保固5年省更多！</h2>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-<p style="font-size: 16px; color: #666;">與市售平板燈、燈管的<u>總持有成本</u>做比較，一目了然看見 <strong>金鍏平板燈</strong> 如何幫您 <span style="color:#c0392b;"><strong>賺錢</strong></span>！</p>
-</div>
-<!-- ✅ 主體：左圖右卡 -->
+<style type="text/css">
+    /* =========================================
+       區塊：GW-平板燈-五年成本分析區塊
+       規範：v2.5 (ID Strategy & Typography)
+       ========================================= */
 
-<div class="cost-analysis-main" style="display: flex; flex-wrap: wrap; gap: 16px; align-items: stretch;"><!-- ✅ 左側長條圖區塊（已加 margin-left、padding-bottom 調小） -->
-<div style="flex: 1 1 65%; min-width: 300px;">
-<div class="chart-frame-wrapper" style="margin-left: -16px;">
-<div style="width: 100%; background-color: #fafafa; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); padding: 24px 24px 8px 24px;"><iframe height="400" src="https://tsenwu.github.io/goldenway-charts/平板燈_5年比較_chart1.html" style="border: none;" width="100%"></iframe></div>
-</div>
-</div>
-<!-- ✅ 右側：獲利卡片 -->
+    /* Level 1: ID 主容器鎖定 */
+    #GW-平板燈-五年成本分析區塊 {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px 10px;
+        font-family: 'Noto Sans TC', "Microsoft JhengHei", Arial, sans-serif;
+        box-sizing: border-box;
+        color: #333;
+        line-height: 1.5;
+    }
 
-<div style="flex: 1 1 30%; min-width: 280px; display: flex; align-items: center;">
-<div style="background-color: #fde8e8; border: 2px solid #fca5a5; border-radius: 16px; padding: 24px; text-align: center; width: 100%; box-shadow: 0 6px 16px rgba(0,0,0,0.06);">
-<p style="font-size: 18px; font-weight: 500; color: #7f1d1d;">5年保固期內 金鍏幫您賺</p>
+    /* 全域防禦：確保所有子元素都使用 border-box */
+    #GW-平板燈-五年成本分析區塊 *,
+    #GW-平板燈-五年成本分析區塊 *::before,
+    #GW-平板燈-五年成本分析區塊 *::after {
+        box-sizing: border-box;
+    }
 
-<p style="font-size: 42px; font-weight: bold; color: #dc2626; margin: 16px 0;">NT$ 2,725</p>
+    /* --- 標題區域 --- */
+    #GW-平板燈-五年成本分析區塊 .cost-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
 
-<p style="font-size: 14px; line-height: 1.6; color: #555;">（總節省 &minus; 初始差價）<br />
-金鍏優質燈具 5年超長保固+超省電+零換修成本 幫您 <strong>實賺</strong> 回來的高額回報！</p>
-</div>
-</div>
-</div>
-<!-- ✅ 底部區塊：圖例與說明 -->
+    #GW-平板燈-五年成本分析區塊 .cost-header h2 {
+        font-size: 32px;
+        font-weight: 700;
+        margin: 0 0 12px 0;
+        color: #111;
+    }
 
-<div style="display: flex; flex-wrap: wrap; margin-top: 4px; gap: 24px; font-size: 14px; color: #444;"><!-- 成本組成圖例 -->
-<div style="flex: 1 1 65%; min-width: 300px; background: #fff; padding: 10px; border-radius: 12px; box-shadow: 0 0 8px rgba(0,0,0,0.05);">
-<h3 style="font-size: 16px; font-weight: 600; margin-bottom: 0px;">成本組成圖例：</h3>
+    #GW-平板燈-五年成本分析區塊 .cost-header p {
+        font-size: 16px;
+        color: #666;
+        margin: 0;
+    }
 
-<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: center;"><!-- 初始成本 -->
-<div style="display: flex; align-items: center;">
-<div style="width: 16px; height: 16px; background-color: #14532d; border-radius: 3px; margin-right: 8px;">&nbsp;</div>
-<span>初始成本（購置）</span></div>
-<!-- 電費 -->
+    #GW-平板燈-五年成本分析區塊 .highlight-red {
+        color: #c0392b;
+        font-weight: 700;
+    }
 
-<div style="display: flex; align-items: center;">
-<div style="width: 16px; height: 16px; background-color: #facc15; border-radius: 3px; margin-right: 8px;">&nbsp;</div>
-<span>電費（5 年）</span></div>
-<!-- 換修成本 -->
+    /* --- 主體佈局 (Flex) --- */
+    #GW-平板燈-五年成本分析區塊 .cost-body {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px; /* 控制左右間距，確保不沾黏 */
+        align-items: stretch;
+        margin-bottom: 24px;
+    }
 
-<div style="display: flex; align-items: center;">
-<div style="width: 16px; height: 16px; background-color: #f87171; border-radius: 3px; margin-right: 8px;">&nbsp;</div>
-<span>換修成本（5 年）</span></div>
-</div>
-<!-- 備註小字 -->
+    /* 左側：圖表容器 */
+    #GW-平板燈-五年成本分析區塊 .chart-container {
+        flex: 1 1 60%; /* 佔寬約 60% */
+        background-color: #fafafa;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        padding: 24px;
+        min-width: 300px;
+        /* 這裡不需要負 margin，Flex gap 會處理間距 */
+    }
 
-<p style="font-size: 12px; color: #888; margin-top: 12px;">註：採年使用時數 3,000 小時，每度電 5 元計算。</p>
-</div>
-<!-- 淨利說明 -->
+    #GW-平板燈-五年成本分析區塊 iframe {
+        width: 100%;
+        height: 400px;
+        border: none;
+        display: block;
+    }
 
-<div style="flex: 1 1 30%; min-width: 280px; display: flex; align-items: center;">
-<p style="font-size: 14px;"><strong>5 年淨獲利分析說明：</strong><br />
-以總持有成本最高的 T5 螢光燈管＜格柵燈＞為基準，計算您使用金鍏平板燈在5年保固期內所獲得的 <strong>實質淨回報</strong>。</p>
-</div>
-</div>
-</div>
-<!-- ✅ 響應式 CSS（手機版） -->
-<style type="text/css">@media (max-width: 768px) {
-  .cost-analysis-wrapper h2 {
-    font-size: 26px;
-  }
-  .cost-analysis-main {
-    flex-direction: column;
-  }
-  .cost-analysis-wrapper iframe {
-    height: 320px !important;
-  }
-  .cost-analysis-wrapper p {
-    font-size: 14px;
-  }
-}
+    /* 右側：獲利卡片 */
+    #GW-平板燈-五年成本分析區塊 .profit-card-wrapper {
+        flex: 1 1 35%; /* 佔寬約 35% */
+        display: flex;
+        align-items: center;
+        min-width: 280px;
+    }
+
+    #GW-平板燈-五年成本分析區塊 .profit-card {
+        background-color: #fde8e8;
+        border: 2px solid #fca5a5;
+        border-radius: 16px;
+        padding: 30px 24px;
+        text-align: center;
+        width: 100%;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+    }
+
+    #GW-平板燈-五年成本分析區塊 .profit-title {
+        font-size: 18px;
+        font-weight: 500;
+        color: #7f1d1d;
+        margin: 0;
+    }
+
+    #GW-平板燈-五年成本分析區塊 .profit-amount {
+        font-size: 42px;
+        font-weight: 700;
+        color: #dc2626;
+        margin: 16px 0;
+        line-height: 1.2;
+    }
+
+    #GW-平板燈-五年成本分析區塊 .profit-desc {
+        font-size: 14px;
+        line-height: 1.6;
+        color: #555;
+        margin: 0;
+    }
+
+    /* --- 底部區域：圖例與說明 --- */
+    #GW-平板燈-五年成本分析區塊 .cost-footer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        margin-top: 10px;
+    }
+
+    /* 圖例區 */
+    #GW-平板燈-五年成本分析區塊 .legend-box {
+        flex: 1 1 60%;
+        background: #fff;
+        padding: 16px;
+        border-radius: 12px;
+        box-shadow: 0 0 8px rgba(0,0,0,0.05);
+    }
+
+    #GW-平板燈-五年成本分析區塊 .legend-title {
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0 0 12px 0;
+        color: #333;
+    }
+
+    #GW-平板燈-五年成本分析區塊 .legend-items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: center;
+    }
+
+    #GW-平板燈-五年成本分析區塊 .legend-item {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        color: #444;
+    }
+
+    #GW-平板燈-五年成本分析區塊 .color-dot {
+        width: 16px;
+        height: 16px;
+        border-radius: 3px;
+        margin-right: 8px;
+    }
+
+    #GW-平板燈-五年成本分析區塊 .note-text {
+        font-size: 12px;
+        color: #888;
+        margin-top: 12px;
+        margin-bottom: 0;
+    }
+
+    /* 說明區 */
+    #GW-平板燈-五年成本分析區塊 .footer-desc {
+        flex: 1 1 30%;
+        font-size: 14px;
+        color: #444;
+        display: flex;
+        align-items: center;
+    }
+
+    /* =========================================
+       RWD 響應式佈局規範
+       ========================================= */
+
+    /* 平板/窄螢幕 (< 1024px)：強制堆疊，避免圖表被擠壓 */
+    @media (max-width: 1024px) {
+        #GW-平板燈-五年成本分析區塊 .cost-body,
+        #GW-平板燈-五年成本分析區塊 .cost-footer {
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        #GW-平板燈-五年成本分析區塊 .chart-container,
+        #GW-平板燈-五年成本分析區塊 .profit-card-wrapper,
+        #GW-平板燈-五年成本分析區塊 .legend-box,
+        #GW-平板燈-五年成本分析區塊 .footer-desc {
+            width: 100%;
+            flex: 1 1 auto;
+        }
+    }
+
+    /* 手機版 (< 768px)：微調字級與高度 */
+    @media (max-width: 768px) {
+        #GW-平板燈-五年成本分析區塊 .cost-header h2 {
+            font-size: 26px;
+        }
+
+        #GW-平板燈-五年成本分析區塊 iframe {
+            height: 320px; /* 手機版圖表高度 */
+        }
+
+        #GW-平板燈-五年成本分析區塊 .profit-amount {
+            font-size: 36px;
+        }
+    }
 </style>
+
+<div id="GW-平板燈-五年成本分析區塊">
+    
+    <div class="cost-header">
+        <h2>換裝金鍏 保固5年省更多！</h2>
+        <p>與市售平板燈、燈管的<u>總持有成本</u>做比較，一目了然看見 <strong>金鍏平板燈</strong> 如何幫您 <span class="highlight-red">賺錢</span>！</p>
+    </div>
+
+    <div class="cost-body">
+        
+        <div class="chart-container">
+            <iframe src="https://tsenwu.github.io/goldenway-charts/平板燈_5年比較_chart1.html" scrolling="no" title="5年照明成本比較圖表"></iframe>
+        </div>
+
+        <div class="profit-card-wrapper">
+            <div class="profit-card">
+                <p class="profit-title">5年保固期內 金鍏幫您賺</p>
+                <p class="profit-amount">NT$ 2,725</p>
+                <p class="profit-desc">
+                    （總節省 &minus; 初始差價）<br>
+                    金鍏優質燈具 5年超長保固+超省電+零換修成本 幫您 <strong>實賺</strong> 回來的高額回報！
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="cost-footer">
+        
+        <div class="legend-box">
+            <h3 class="legend-title">成本組成圖例：</h3>
+            <div class="legend-items">
+                <div class="legend-item">
+                    <div class="color-dot" style="background-color: #14532d;"></div>
+                    <span>初始成本（購置）</span>
+                </div>
+                <div class="legend-item">
+                    <div class="color-dot" style="background-color: #facc15;"></div>
+                    <span>電費（5 年）</span>
+                </div>
+                <div class="legend-item">
+                    <div class="color-dot" style="background-color: #f87171;"></div>
+                    <span>換修成本（5 年）</span>
+                </div>
+            </div>
+            <p class="note-text">註：採年使用時數 3,000 小時，每度電 5 元計算。</p>
+        </div>
+
+        <div class="footer-desc">
+            <p>
+                <strong>5 年淨獲利分析說明：</strong><br>
+                以總持有成本最高的 T5 螢光燈管＜格柵燈＞為基準，計算您使用金鍏平板燈在5年保固期內所獲得的 <strong>實質淨回報</strong>。
+            </p>
+        </div>
+
+    </div>
+</div>
