@@ -563,176 +563,245 @@ Light sources compliant with U.S. specifications.</div>
 </div>
 
 <div style="height: 20px;">&nbsp;</div>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&amp;display=swap" rel="stylesheet" />
+
+<div id="GW-555-平板燈左右滑動照片對比區塊">
 <style type="text/css">/* =========================================
-       區塊：GW-555節標款-色溫模擬器區塊
-       規範：v2.5 (ID Strategy & Typography)
-       ========================================= */
+           區塊專用樣式 (Scope: GW-555-平板燈左右滑動照片對比區塊)
+           ========================================= */
 
-    /* Level 1: ID 主容器鎖定 */
-    #GW-555節標款-色溫模擬器區塊 {
-        width: 100%;
-        max-width: 1300px;
-        margin: 0 auto;
-        font-family: 'Noto Sans TC', "Microsoft JhengHei", "Heiti TC", Arial, sans-serif;
-        box-sizing: border-box;
-    }
+        /* --- 1. 主容器設定 --- */
+        #GW-555-平板燈左右滑動照片對比區塊 {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            font-family: 'Noto Sans TC', "Microsoft JhengHei", Arial, sans-serif;
+            box-sizing: border-box;
+        }
 
-    #GW-555節標款-色溫模擬器區塊 *,
-    #GW-555節標款-色溫模擬器區塊 *::before,
-    #GW-555節標款-色溫模擬器區塊 *::after {
-        box-sizing: border-box;
-    }
+        /* --- 2. Iframe 容器 (維持您原本設定) --- */
+        #GW-555-平板燈左右滑動照片對比區塊 .iframe-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 比例 */
+            height: 0;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            margin-bottom: 30px; /* 增加下方距離，避免貼著文字 */
+        }
 
-    /* Flex 佈局容器 */
-    #GW-555節標款-色溫模擬器區塊 .color-temp-layout {
-        display: flex;
-        flex-direction: column; /* 手機版：垂直排列 */
-        gap: 20px;
-        align-items: center;
-    }
+        #GW-555-平板燈左右滑動照片對比區塊 iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
 
-    /* --- 模擬器區塊 (左側) --- */
-    #GW-555節標款-色溫模擬器區塊 .color-temp-simulator {
-        width: 100%;
-    }
-
-    /* 安全網與 iframe 比例設定 */
-    #GW-555節標款-色溫模擬器區塊 .color-temp-safe-net {
-        position: relative;
-        width: 100%;
-        min-height: 500px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-    }
-
-    #GW-555節標款-色溫模擬器區塊 .color-temp-aspect-box {
-        position: relative;
-        width: 100%;
-        height: 0;
-        padding-bottom: 110%; /* 手機版比例 */
-    }
-
-    #GW-555節標款-色溫模擬器區塊 iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: 0;
-    }
-
-    /* --- 資訊文字區塊 (右側) --- */
-    #GW-555節標款-色溫模擬器區塊 .color-temp-info {
-        width: 100%;
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-        /* ↓↓↓ 修改重點：確保預設就是水平垂直置中 ↓↓↓ */
-        justify-content: center; 
-        align-items: center;     
-        text-align: center;
-    }
-
-    /* 資訊外框樣式 (含 Hover 特效) */
-    #GW-555節標款-色溫模擬器區塊 .info-box {
-        border: 1px solid #333;
-        padding: 10px 20px;
-        margin-bottom: 20px;
-        font-size: 1.1rem;
-        font-weight: 700;
-        color: #333;
-        background-color: transparent;
-        display: inline-block;
-        border-radius: 4px;
-        /* ↓↓↓ 新增：過渡動畫 ↓↓↓ */
-        transition: all 0.3s ease; 
-        cursor: default; /* 或是 pointer */
-    }
-
-    /* ↓↓↓ 新增：滑鼠移入變色效果 ↓↓↓ */
-    #GW-555節標款-色溫模擬器區塊 .info-box:hover {
-        background-color: #333;
-        color: #fff;
-    }
-
-    #GW-555節標款-色溫模擬器區塊 .info-desc {
-        font-size: 1rem;
-        line-height: 1.8;
-        color: #333;
-        font-weight: 500;
-    }
-
-    #GW-555節標款-色溫模擬器區塊 .info-desc p {
-        margin: 0 0 10px 0;
-        padding: 0;
-    }
-
-    /* =========================================
-       RWD 響應式斷點
-       ========================================= */
-
-    /* --- 平板/筆電區間 (768px ~ 1199px) --- */
-    @media (min-width: 768px) {
-        #GW-555節標款-色溫模擬器區塊 .color-temp-layout {
-            flex-direction: row; 
-            align-items: center; /* 左右區塊垂直置中對齊 */
+        /* --- 3. 下方說明區塊容器 (Flex佈局) --- */
+        #GW-555-平板燈左右滑動照片對比區塊 .gw-desc-wrapper {
+            display: flex;
             justify-content: space-between;
-            gap: 30px;
+            gap: 20px; /* 左右區塊間距 */
+            align-items: stretch; /* 等高 */
         }
 
-        #GW-555節標款-色溫模擬器區塊 .color-temp-simulator {
-            width: 60%;
+        /* --- 4. 單個說明卡片樣式 --- */
+        #GW-555-平板燈左右滑動照片對比區塊 .gw-desc-card {
+            background-color: #f4f4f4; /* 圖片中的淺灰底色 */
+            padding: 25px;
+            border-radius: 8px;
+            flex: 1; /* 左右平分寬度 */
+            display: flex; /* 讓 Icon 和文字並排 */
+            align-items: flex-start;
+            transition: all 0.3s ease; /* Hover 動畫過渡 */
+            border: 1px solid transparent; /* 預留邊框位置 */
         }
 
-        #GW-555節標款-色溫模擬器區塊 .color-temp-info {
-            width: 40%;
-            /* ↓↓↓ 修改重點：移除原本的 flex-start，保持 center 以維持置中 ↓↓↓ */
-            /* align-items: flex-start;  <-- 已刪除 */
-            /* text-align: left;         <-- 已刪除 */
-            padding-left: 20px;
+        /* Hover 浮動效果 */
+        #GW-555-平板燈左右滑動照片對比區塊 .gw-desc-card:hover {
+            transform: translateY(-5px); /* 向上浮動 */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* 增加陰影 */
+            border-color: #ddd;
+            background-color: #fff; /* Hover 時變白，增加層次感 */
         }
 
-        #GW-555節標款-色溫模擬器區塊 .color-temp-aspect-box {
-            padding-bottom: 95%;
+        /* --- 5. Icon 區域設定 --- */
+        #GW-555-平板燈左右滑動照片對比區塊 .gw-icon-box {
+            flex: 0 0 50px; /* 固定寬度 50px */
+            height: 50px;
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #333; /* 圖片中的黑框 Icon */
+            border-radius: 4px; /* 微圓角 */
+            font-size: 12px;
+            font-weight: bold;
+            color: #333;
         }
-    }
+        
+        /* 也可以放入 SVG 圖片，這裡設定 SVG 樣式 */
+        #GW-555-平板燈左右滑動照片對比區塊 .gw-icon-box svg {
+            width: 24px;
+            height: 24px;
+            fill: #333;
+        }
 
-    /* --- 大螢幕電腦區間 (> 1200px) --- */
-    @media (min-width: 1200px) {
-        #GW-555節標款-色溫模擬器區塊 .color-temp-simulator {
-            width: 65%;
+        /* --- 6. 文字區域設定 --- */
+        #GW-555-平板燈左右滑動照片對比區塊 .gw-text-content h3 {
+            margin: 0 0 10px 0;
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
         }
 
-        #GW-555節標款-色溫模擬器區塊 .color-temp-info {
-            width: 35%;
+        #GW-555-平板燈左右滑動照片對比區塊 .gw-text-content p {
+            margin: 0;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #555;
+            text-align: justify; /* 左右對齊 */
         }
 
-        #GW-555節標款-色溫模擬器區塊 .color-temp-aspect-box {
-            padding-bottom: 86%;
+        /* --- 7. RWD 手機版設定 (<768px) --- */
+        @media (max-width: 768px) {
+            #GW-555-平板燈左右滑動照片對比區塊 .gw-desc-wrapper {
+                flex-direction: column; /* 改為上下堆疊 */
+            }
+            
+            #GW-555-平板燈左右滑動照片對比區塊 .gw-desc-card {
+                margin-bottom: 15px;
+            }
         }
-    }
+    </style>
+
+    <div class="iframe-container">
+        <iframe frameborder="0" loading="lazy" scrolling="no" src="https://tsenwu.github.io/goldenway-charts/(左右滑動對比)平板燈.html" title="GW-555 平板燈對比展示">
+        </iframe>
+    </div>
+
+    <div class="gw-desc-wrapper">
+        
+        <div class="gw-desc-card">
+            <div class="gw-icon-box">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path></svg>
+            </div>
+            <div class="gw-text-content">
+                <h3>市售一般平板燈</h3>
+                <p>肉眼難以察覺的高頻閃爍，是造成眼睛酸澀、疲勞的主因。加上光衰速度快，使用不久亮度即大幅下降，導致需頻繁汰換。長期下來，不僅累積了高昂的維護成本，更製造大量電子廢棄物，既傷眼又不環保。</p>
+            </div>
+        </div>
+
+        <div class="gw-desc-card">
+            <div class="gw-icon-box">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>
+            </div>
+            <div class="gw-text-content">
+                <h3>金鍏節標平板燈</h3>
+                <p>堅持無頻閃、低光衰的高規格設計。提供真正穩定、舒適的健康照明環境，有效減輕用眼負擔。超長效的光源壽命，確保亮度歷久彌新，一次投資，長久安心，才是真正省錢又環保的選擇。</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+    <div class="_bd_row _bd_clearfix">
+
+        <div class="_bd_column _bd_full">
+
+            <hr>
+
+        </div>
+
+    </div>
+
+
+
+<div id="GW-555-節標平板燈色溫控制區塊">
+<style type="text/css">/* =========================================
+           區塊專用樣式 (Scope: GW-555-節標平板燈色溫控制區塊)
+           ========================================= */
+        
+        /* 1. 主容器設定 */
+        #GW-555-節標平板燈色溫控制區塊 {
+            position: relative;
+            max-width: 800px; 
+            margin: 30px auto;
+            font-family: 'Noto Sans TC', "Microsoft JhengHei", Arial, sans-serif;
+            box-sizing: border-box;
+        }
+
+        /* 2. 標題按鈕樣式 */
+        #GW-555-節標平板燈色溫控制區塊 .gw-title-box {
+            border: 2px solid #333;
+            color: #333;
+            background-color: transparent;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px; /* 標題與描述的間距 */
+            transition: all 0.3s ease;
+            cursor: default;
+            display: table;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #GW-555-節標平板燈色溫控制區塊 .gw-title-box:hover {
+            border-color: #0056b3;
+            color: white;
+            background-color: #0056b3;
+        }
+
+        /* 3. 描述文字樣式 */
+        #GW-555-節標平板燈色溫控制區塊 .gw-desc-box {
+            text-align: center;
+            font-size: 15px;
+            color: #666666;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            font-weight: normal;
+        }
+
+        /* 4. Iframe RWD 完美比例容器 (The Perfect Ratio) */
+        #GW-555-節標平板燈色溫控制區塊 .iframe-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 4px;
+            
+            /* 手機版預設：115% 高度防切邊 */
+            padding-bottom: 115%; 
+        }
+
+        /* 桌機版/平板版 (螢幕 > 600px) */
+        @media (min-width: 600px) {
+            #GW-555-節標平板燈色溫控制區塊 .iframe-container {
+                padding-bottom: 80%; /* 桌機版改回較扁的比例 */
+            }
+        }
+
+        /* 5. Iframe 本體絕對定位 */
+        #GW-555-節標平板燈色溫控制區塊 .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
 </style>
-<div id="GW-555節標款-色溫模擬器區塊">
-<div class="color-temp-layout">
-<div class="color-temp-simulator">
-<div class="color-temp-safe-net">
-<div class="color-temp-aspect-box"><iframe scrolling="no" src="https://tsenwu.github.io/goldenway-charts/(拉桿變色)智慧照明色溫模擬.html" title="色溫模擬器"></iframe></div>
-</div>
-</div>
+<div class="gw-title-box">多種色溫可供選擇</div>
 
-<div class="color-temp-info">
-<div class="info-box">多種色溫可供選擇</div>
+<div class="gw-desc-box">色溫5000K 及 5700K 為標準品</div>
 
-<div class="info-desc">
-<p>色溫可涵蓋 2700K~6500K</p>
-
-<p>(5000K、5700K 為標準品)</p>
-</div>
-</div>
-</div>
+<div class="iframe-container"><iframe allowfullscreen="" scrolling="no" src="https://tsenwu.github.io/goldenway-charts/(拉桿變色)智慧照明色溫模擬.html" title="智慧照明色溫模擬"></iframe></div>
 </div>
 <!-- ★ 區塊五：演色性區塊（左右顛倒 + 次標 hover 動畫） -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
@@ -847,6 +916,11 @@ Light sources compliant with U.S. specifications.</div>
   }
 }
 </style>
+<div class="_bd_row _bd_clearfix">
+<div class="_bd_column _bd_full">
+<hr /></div>
+</div>
+
 <div class="演色性區塊"><!-- 左側文字區 -->
 <div class="col-left">
 <h3 class="headline">&nbsp;</h3>
