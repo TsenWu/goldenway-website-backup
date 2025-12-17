@@ -1,7 +1,160 @@
-<div style="text-align: center;"><iframe allow="fullscreen" allowfullscreen="" frameborder="1" height="450" scrolling="no" src="https://www.canva.com/design/DAFzoPTF8eg/watch?embed" width="50%"></iframe></div>
+<div id="GW-HBL-628-手風琴照片互動區塊">
+<style type="text/css">/* =========================================
+           區塊專用樣式 (Scope: GW-HBL-628-手風琴照片互動區塊)
+           ========================================= */
 
-<div style="text-align: center;">建議手機觀賞影片時，可點擊影片右下方 <i class="icon ion-arrow-resize"></i> 進入全螢幕模式或將螢幕調整為橫向模式，以獲得最佳觀賞體驗。</div>
+        /* --- 1. 主容器設定 --- */
+        #GW-HBL-628-手風琴照片互動區塊 {
+            width: 100%;
+            max-width: 1200px;
+            margin: 30px auto;
+            font-family: 'Noto Sans TC', "Microsoft JhengHei", Arial, sans-serif;
+            text-align: center;
+            box-sizing: border-box;
+        }
 
-<div class="_bd_row _bd_clearfix">
-<div class="_bd_column _bd_full">&nbsp;</div>
+        /* --- 2. 上方標題區 (保留您原本樣式) --- */
+        #GW-HBL-628-手風琴照片互動區塊 .gw-header-section {
+            margin-bottom: 30px;
+            padding: 0 15px;
+        }
+        
+        #GW-HBL-628-手風琴照片互動區塊 .gw-main-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        
+        #GW-HBL-628-手風琴照片互動區塊 .gw-sub-title {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* --- 3. Iframe 容器 (保留您原本的比例設定) --- */
+        #GW-HBL-628-手風琴照片互動區塊 .gw-responsive-frame {
+            position: relative;
+            width: 100%;
+            height: 0;
+            /* 手機版高度：180% (您原本的設定) */
+            padding-bottom: 180%; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 30px; /* 增加與下方說明框的距離 */
+        }
+
+        /* 電腦版高度：40% (您原本的設定) */
+        @media (min-width: 768px) {
+            #GW-HBL-628-手風琴照片互動區塊 .gw-responsive-frame {
+                padding-bottom: 40%;
+            }
+        }
+
+        #GW-HBL-628-手風琴照片互動區塊 .gw-responsive-frame iframe {
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            border: 0;
+        }
+
+        /* --- 4. [新增] 下方說明區塊 (Icon + 灰底框 + 懸浮) --- */
+        #GW-HBL-628-手風琴照片互動區塊 .gw-desc-card {
+            background-color: #f4f4f4; /* 灰底 */
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 1200px; /* 限制說明框寬度，避免太寬 */
+            margin: 0 auto;    /* 置中 */
+            display: flex;     /* 讓 Icon 與文字並排 */
+            align-items: flex-start;
+            text-align: left;  /* 框內文字靠左 */
+            transition: all 0.3s ease; /* Hover 動畫 */
+            border: 1px solid transparent;
+        }
+
+        /* 滑鼠懸浮特效 */
+        #GW-HBL-628-手風琴照片互動區塊 .gw-desc-card:hover {
+            transform: translateY(-5px); /* 上浮 */
+            background-color: #fff;      /* 變白亮眼 */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-color: #ddd;
+        }
+
+        /* Icon 區域 */
+        #GW-HBL-628-手風琴照片互動區塊 .gw-icon-box {
+            flex: 0 0 60px; /* Icon 區塊固定寬度 */
+            height: 60px;
+            margin-right: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #333;
+            border-radius: 4px;
+        }
+
+        #GW-HBL-628-手風琴照片互動區塊 .gw-icon-box svg {
+            width: 30px;
+            height: 30px;
+            fill: #333;
+        }
+
+        /* 文字區域 */
+        #GW-HBL-628-手風琴照片互動區塊 .gw-text-content {
+            flex: 1; /* 佔滿剩餘空間 */
+        }
+
+        #GW-HBL-628-手風琴照片互動區塊 .gw-footer-highlight {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #333;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        #GW-HBL-628-手風琴照片互動區塊 .gw-footer-text {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.8;
+            text-align: justify; /* 左右對齊 */
+        }
+
+        /* 手機版適配：Icon 改到上方 */
+        @media (max-width: 600px) {
+            #GW-HBL-628-手風琴照片互動區塊 .gw-desc-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 20px;
+            }
+            
+            #GW-HBL-628-手風琴照片互動區塊 .gw-icon-box {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+
+            #GW-HBL-628-手風琴照片互動區塊 .gw-footer-text {
+                text-align: left; /* 手機版文字靠左讀起來較順 */
+            }
+        }
+</style>
+<div class="gw-header-section">
+<div class="gw-main-title">HBL-628 安裝實績</div>
+
+<div class="gw-sub-title">無論是知名汽車大廠的精準作業要求、好市多賣場(Costco)的舒適購物體驗與動線，或是化工與精密工業的嚴苛環境標準...</div>
+</div>
+
+<div class="gw-responsive-frame"><iframe frameborder="0" scrolling="no" src="https://tsenwu.github.io/goldenway-charts/(手風琴式照片展示)高天井燈628.html" title="HBL-628 安裝實績手風琴展示"></iframe></div>
+
+<div class="gw-desc-card">
+<div class="gw-icon-box"><img alt="圖示" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/hbl628_blackicon.png?v=uxak1jj" style="width: 35px; height: auto; display: block;" /></div>
+
+<div class="gw-text-content"><span class="gw-footer-highlight">金鍏電子 高天井燈 HBL-628 皆能以卓越的光學實力完美勝任。 </span>
+
+<div class="gw-footer-text">透過實績見證，我們展現了適應不同極致場域的全方位性能。針對挑高場域「維修不易」的痛點，金鍏以<u>超高光效</u>以及<u>工業級散熱結構</u>確保<strong>長壽命</strong>、<strong>超耐用</strong>，並以<strong>國家級節能標準</strong>大幅降低營運成本。讓每一次的照明升級，都成為企業最安心、最划算的長期投資。</div>
+</div>
+</div>
 </div>

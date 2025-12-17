@@ -229,6 +229,7 @@ Light sources compliant with U.S. specifications.</div>
     var(--title-gradient-stops)
   );
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 
   /* 文字陰影，真正畫在字形後面 */
@@ -1413,7 +1414,7 @@ Light sources compliant with U.S. specifications.</div>
   width: 100%;
   height: auto;
   border-radius: 12px;               /* ✅ 加上圖片自身圓角，避免溢出 */
-  vertical-align: middle;
+
 }
 
 /* ✅ 毛玻璃遮罩層（不覆蓋 caption） */
@@ -1568,6 +1569,116 @@ Light sources compliant with U.S. specifications.</div>
 <div class="desc">結構堅固、專業散熱鰭片設計，高光效長壽命。多元安裝與專屬燈罩、防撞網選配，滿足各類空間需求。</div>
 </div>
 </div>
+
+<div class="_bd_row _bd_clearfix">
+<div class="_bd_column _bd_full">
+<hr /></div>
+</div>
+
+<div id="GW-HBL-628-產品影片介紹區塊">
+<style type="text/css">/* =========================================
+           區塊專用樣式 (Scope: GW-HBL-628-產品影片介紹區塊)
+           ========================================= */
+
+        /* 1. 主容器設定 */
+        #GW-HBL-628-產品影片介紹區塊 {
+            width: 100%;
+            max-width: 1000px; /* 影片區塊建議不要太寬，1000px 視覺最舒適 */
+            margin: 20px auto;
+            font-family: 'Noto Sans TC', "Microsoft JhengHei", Arial, sans-serif;
+            box-sizing: border-box;
+        }
+
+        /* 2. 標題樣式 (保持全站統一) */
+        #GW-HBL-628-產品影片介紹區塊 .gw-title-box {
+            border: 2px solid #333;
+            color: #333;
+            background-color: transparent;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: table;
+            margin-left: auto;
+            margin-right: auto;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        #GW-HBL-628-產品影片介紹區塊 .gw-title-box:hover {
+            border-color: #0056b3;
+            color: white;
+            background-color: #0056b3;
+        }
+
+        /* 3. YouTube RWD 容器 (16:9 黃金比例) */
+        #GW-HBL-628-產品影片介紹區塊 .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 關鍵數值，請勿更動 */
+            background-color: #000; /* 載入前顯示黑色背景 */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 8px; /* 影片圓角 */
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        #GW-HBL-628-產品影片介紹區塊 iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* 4. 下方說明區 (Icon + 灰底框) */
+        #GW-HBL-628-產品影片介紹區塊 .gw-video-desc {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center; /* 垂直置中 */
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+
+        #GW-HBL-628-產品影片介紹區塊 .gw-video-desc:hover {
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Icon 容器 */
+        #GW-HBL-628-產品影片介紹區塊 .gw-icon-box {
+            flex: 0 0 40px; /* 固定寬度 */
+            margin-right: 15px;
+        }
+
+        /* 文字容器 */
+        #GW-HBL-628-產品影片介紹區塊 .gw-text-content {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        /* 手機版適配 */
+        @media (max-width: 600px) {
+            #GW-HBL-628-產品影片介紹區塊 .gw-video-desc {
+                flex-direction: column;
+                text-align: center;
+            }
+            #GW-HBL-628-產品影片介紹區塊 .gw-icon-box {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+</style>
+<div class="gw-title-box">HBL-628 產品介紹影片</div>
+
+<div class="video-container"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="100%" src="https://www.youtube.com/embed/L0zbLAzEj18?rel=0" title="YouTube video player" width="100%"></iframe></div>
+</div>
 <!-- ★ ESG形象及保固區塊：背景圖 + 左文 + 毛玻璃右浮框 ★ -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
 <style type="text/css">/* ============================================
@@ -1701,6 +1812,11 @@ Light sources compliant with U.S. specifications.</div>
 }
 </style>
 <!-- ✅ HTML 區塊內容 -->
+<div class="_bd_row _bd_clearfix">
+<div class="_bd_column _bd_full">
+<hr /></div>
+</div>
+
 <div class="block-ESG形象及保固"><!-- 左側 ESG 宣告 -->
 <div class="left-text" style="text-align: center;">金鍏電子完成溫室氣體盤查<br />
 踐行 ESG 承諾，與國際標準接軌</div>
