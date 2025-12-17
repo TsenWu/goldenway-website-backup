@@ -1223,101 +1223,152 @@ Light sources compliant with U.S. specifications.</div>
 </div>
 </div>
 </div>
-<!-- ★ 發光角度區塊：左文字＋右圖(img版) ★ -->
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700&amp;display=swap" rel="stylesheet" />
 <style type="text/css">/* ====================================
-   發光角度區塊：block-發光角度區塊
-   ==================================== */
-.block-發光角度區塊 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
-  padding: 20px 40px;
-  background: #fff;
-  flex-wrap: wrap;
-  gap: 20px; /* ↑↑↑ 左右區塊間距（可調） */
-}
-
-/* 左側文字內容 */
-.block-發光角度區塊 .left-content {
-  flex: 1;
-  max-width: 560px;
-  z-index: 2;
-}
-.block-發光角度區塊 .left-content h3 {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #333;
-  text-align: center;
-}
-.block-發光角度區塊 .left-content .angle {
-  font-size: 48px;
-  font-weight: 700;
-  color: #E2B200;
-  margin-bottom: 20px; /* ↓↓↓ 數值與圖示距離 */
-  text-align: center;
-}
-.block-發光角度區塊 .left-content .icon-img {
-  width: 200px;          /* 圖片寬度 */
-  margin: 0 auto 24px;   /* 置中並與下方段落留白 */
-}
-.block-發光角度區塊 .left-content .desc {
-  font-size: 16px;
-  color: #333;
-  line-height: 1.8;
-  text-align: center;
-  margin-bottom: 12px;
-}
-.block-發光角度區塊 .left-content .note {
-  font-size: 14px;
-  color: #999;
-  text-align: center;
-}
-
-/* 右側圖片（用 <img> 顯示） */
-.block-發光角度區塊 .right-image {
-  flex: 1;
-  max-width: 800px;
-}
-.block-發光角度區塊 .right-image img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  display: block;
-}
-
-/* RWD 手機版 */
-@media (max-width: 768px) {
-  .block-發光角度區塊 {
-    flex-direction: column;
-    padding: 40px 20px;
-  }
-  .block-發光角度區塊 .left-content {
-    max-width: 100%;
-  }
-  .block-發光角度區塊 .right-image {
+     基底容器鎖定 (Level 1 Isolation)
+     所有樣式皆限定於 #GW-555-... 內部
+     ==================================== */
+  #GW-555-節標平板-發光角度區塊 {
+    font-family: 'Noto Sans TC', "Microsoft JhengHei", Arial, sans-serif;
+    box-sizing: border-box;
     width: 100%;
-    margin-top: 24px;
+    background: #fff;
+    padding: 60px 20px; /* 上下留白優化 */
+    margin: 0 auto;
+    overflow: hidden; /* 防止內容溢出 */
   }
-}
+
+  /* 通用 reset，防止被全站樣式污染 */
+  #GW-555-節標平板-發光角度區塊 * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+  }
+
+  /* Flex 佈局容器 */
+  #GW-555-節標平板-發光角度區塊 .gw-flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px; /* 內容最大寬度 */
+    margin: 0 auto;
+    gap: 60px; /* 左右區塊間距 */
+    flex-wrap: wrap; /* 允許 RWD 換行 */
+  }
+
+  /* --- 左側文字區 --- */
+  #GW-555-節標平板-發光角度區塊 .gw-text-col {
+    flex: 1;
+    min-width: 300px; /* 防止文字區被壓太扁 */
+    max-width: 500px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* 標題 */
+  #GW-555-節標平板-發光角度區塊 h3 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333333;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+
+  /* 120度 金色大字 */
+  #GW-555-節標平板-發光角度區塊 .gw-angle-num {
+    font-size: 60px;
+    font-weight: 700;
+    color: #E2B200; /* 指定金色 */
+    line-height: 1.2;
+    margin-bottom: 15px;
+    font-family: Arial, sans-serif; /* 數字用 Arial 更俐落 */
+  }
+
+  /* 中間 Icon 圖片 */
+  #GW-555-節標平板-發光角度區塊 .gw-icon-img {
+    width: 180px;
+    height: auto;
+    margin-bottom: 25px;
+    display: block;
+  }
+
+  /* 描述文字 */
+  #GW-555-節標平板-發光角度區塊 .gw-desc {
+    font-size: 16px;
+    color: #555555;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    text-align: justify; /* 讓文字左右切齊，更整齊 */
+    text-align-last: center; /* 最後一行置中 */
+  }
+
+  /* 註解小字 */
+  #GW-555-節標平板-發光角度區塊 .gw-note {
+    font-size: 13px;
+    color: #999999;
+    font-weight: 400;
+  }
+
+  /* --- 右側圖片區 --- */
+  #GW-555-節標平板-發光角度區塊 .gw-img-col {
+    flex: 1.2; /* 讓圖片佔比稍微大一點 */
+    min-width: 300px;
+    position: relative;
+  }
+
+  #GW-555-節標平板-發光角度區塊 .gw-main-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px; /* 圓角修飾 */
+    /* 選擇性：加上陰影增加層次感 */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+  }
+
+  /* --- RWD 手機版設定 (小於 768px) --- */
+  @media (max-width: 768px) {
+    #GW-555-節標平板-發光角度區塊 {
+      padding: 40px 20px;
+    }
+    
+    #GW-555-節標平板-發光角度區塊 .gw-flex-container {
+      flex-direction: column; /* 改為垂直排列 */
+      gap: 40px;
+    }
+
+    #GW-555-節標平板-發光角度區塊 .gw-text-col,
+    #GW-555-節標平板-發光角度區塊 .gw-img-col {
+      width: 100%; /* 手機版全寬 */
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    #GW-555-節標平板-發光角度區塊 h3 {
+      font-size: 24px;
+    }
+    
+    #GW-555-節標平板-發光角度區塊 .gw-angle-num {
+      font-size: 50px;
+    }
+  }
 </style>
-<!-- ✅ HTML 區塊內容 -->
-<div class="block-發光角度區塊">
-<div class="left-content">
+<div id="GW-555-節標平板-發光角度區塊">
+<div class="gw-flex-container">
+<div class="gw-text-col">
 <h3>燈具發光角度</h3>
 
-<div class="angle">120&deg;</div>
+<div class="gw-angle-num">120&deg;</div>
+<img alt="120度發光示意圖" class="gw-icon-img" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/555/gw_555_angle.png?v=jh6mnuk" />
+<div class="gw-desc">燈具發光角度120&deg;，帶來照明無死角，並提升環境光均勻度，能有效降低眩光，創造舒適的視覺空間。</div>
 
-<div class="icon-img"><img alt="發光角度圖示" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/555/gw_555_angle.png?v=jh6mnuk" /></div>
-
-<div class="desc">燈具發光角度120&deg;，帶來照明無死角，並提升環境光均勻度，能有效降低眩光。</div>
-
-<div class="note">(長期待在高眩光環境，會導致煩躁、不舒服或視力受損)</div>
+<div class="gw-note">(長期待在高眩光環境，會導致煩躁、不舒服或視力受損)</div>
 </div>
 
-<div class="right-image"><img alt="閱讀燈光情境圖" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/OL-747/dogreeding.png?v=q7gvk06" /></div>
+<div class="gw-img-col"><img alt="舒適閱讀情境-狗狗" class="gw-main-img" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/OL-747/dogreeding.png?v=q7gvk06" /></div>
+</div>
 </div>
 <!-- ★ 模組化區塊：手機版寬度與內距已優化 -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
