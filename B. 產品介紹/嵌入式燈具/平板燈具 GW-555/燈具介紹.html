@@ -1,397 +1,241 @@
-<!-- ★ 品質宣告區塊：主標芫荽體＋內文 Noto Sans TC ★ --><!-- ✅ 引入字型：芫荽體 + Noto Sans TC -->
-<link href="https://cdn.jsdelivr.net/gh/ButTaiwan/iancnfont@latest/Iansui-Regular.css" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
-<style type="text/css">/* ===============================================
-   ★ 品質宣告區塊 .block-品質宣告
-   =============================================== */
-.block-品質宣告 {
-  position: relative;  /* ← 加這行即可防止遮罩穿透 */
-  /* ✅ 區塊背景圖設定 */
-  background: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/4644232229e34b5f.png?v=4gw258i') center center / cover no-repeat;
-
-  /* ✅ 區塊整體上下左右內距（＝視覺上的高度）→ 想改背景區塊高就是改這裡！ */
-  padding: 100px 60px; /* ↑↑↑ 可改成 80px 40px 會變矮，或 140px 更高 */
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 60px;               /* ✅ 左右文字與浮層的間距 */
-  flex-wrap: wrap;
-  box-sizing: border-box;
-
-  /* ✅ 預設內文字型（headline 除外） */
-  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+<style type="text/css">/* --- 基礎設定 & 字體規範 --- */
+#GW-555-節標平板燈標題區塊 {
+    font-family: 'Noto Sans TC', "Microsoft JhengHei", Arial, sans-serif;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    line-height: 1.5;
 }
 
-/* ✅ 背景濾暗遮罩層 */
-.block-品質宣告::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.3); /* ↑↑↑ 調整透明度／改成 rgba(0,0,0,0.1) 比較亮 */
-  z-index: 1;
-}
-.block-品質宣告 > * {
-  position: relative;
-  z-index: 2;
+#GW-555-節標平板燈標題區塊 * {
+    box-sizing: border-box;
 }
 
-/* ===============================================
-   ★ 主標文字 .headline
-   =============================================== */
-.block-品質宣告 .headline {
-  flex: 2;
-  /* ✅ 主標使用芫荽體（fallback 備援字體照保留） */
-  font-family: 'Iansui', 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
-
-  font-size: 28px;         /* ✅ 主標字級大小 */
-  font-weight: normal;     /* ✅ 芫荽體不建議用 bold */
-  line-height: 1.4;        /* ✅ 行高（上下段距離），可調小如 1.2 更緊湊 */
-  text-align: center;
-  white-space: pre-wrap;   /* ✅ 保留 <br> 換行 */
-
-  color: #ffffff;
-
-  /* ✅ 浮入動畫（可移除以下 3 行就會變成靜態主標） */
-  opacity: 0;
-  transform: translateY(20px);
-  animation: headlineFadeUp 0.8s ease-out 0.2s forwards;
+/* --- 主容器設定 --- */
+#GW-555-節標平板燈標題區塊 .gw-container {
+    position: relative;
+    width: 100%;
+    height: 700px; 
+    overflow: hidden;
+    background-color: #f0f0f0;
 }
 
-/* ✅ 動畫設定：主標從底部浮上來 */
-@keyframes headlineFadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* --- 背景圖片層 --- */
+#GW-555-節標平板燈標題區塊 .gw-bg-image {
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
-/* ===============================================
-   ★ 毛玻璃群組 .glass-group
-   =============================================== */
-.block-品質宣告 .glass-group {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 24px; /* ✅ 每張浮層卡片之間的垂直間距 */
-}
-
-/* ===============================================
-   ★ 單張毛玻璃浮層 .glass-card
-   =============================================== */
-.block-品質宣告 .glass-card {
-  background: rgba(255, 255, 255, 0.2);      /* ✅ 浮層底色與透明度 */
-  backdrop-filter: blur(10px);               /* ✅ 毛玻璃核心效果 */
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 8px;                        /* ✅ 浮層圓角 */
-
-  padding: 20px;                             /* ✅ 浮層內距 */
-  color: #fff;
-  display: flex;
-  align-items: center;
-  gap: 16px;                                 /* ✅ icon 與文字的間距 */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);     /* ✅ 初始陰影 */
-
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.block-品質宣告 .glass-card:hover {
-  transform: translateY(-4px);              /* ✅ 滑入上浮距離 */
-  box-shadow: 0 10px 20px rgba(0,0,0,0.3);   /* ✅ 滑入陰影效果 */
-}
-
-/* ===============================================
-   ★ icon 圖示設定
-   =============================================== */
-.block-品質宣告 .glass-card .icon {
-  width: 48px;         /* ✅ icon 寬度（會等比例縮放） */
-  height: 48px;
-  flex-shrink: 0;
-}
-.block-品質宣告 .glass-card .icon img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* ===============================================
-   ★ 浮層文字區（內文字體繼承）
-   =============================================== */
-.block-品質宣告 .glass-card .text-group {
-  font-size: 14px;     /* ✅ 內文文字大小 */
-  line-height: 1.6;    /* ✅ 行距（中文建議介於1.4~1.8之間） */
-  opacity: 0.95;       /* ✅ 文字透明度，讓字體稍微柔和一點 */
-}
-
-/* ===============================================
-   ★ RWD：手機寬度下的排版調整
-   =============================================== */
-@media (max-width: 768px) {
-  .block-品質宣告 {
+/* --- 磨砂玻璃浮層 (左側黑底) --- */
+#GW-555-節標平板燈標題區塊 .gw-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 38%;
+    height: 100%;
+    
+    /* 透明度與磨砂設定 */
+    background: rgba(30, 25, 25, 0.35) !important; 
+    backdrop-filter: blur(4px) !important; 
+    -webkit-backdrop-filter: blur(4px) !important;
+    
+    color: #fff;
+    display: flex;
     flex-direction: column;
-    text-align: center;
-  }
-  .block-品質宣告 .glass-group {
-    width: 100%;
+    justify-content: center;
     align-items: center;
-  }
-  .block-品質宣告 .glass-card {
+    padding: 40px;
+    z-index: 10;
+    text-align: center;
+}
+
+/* --- 標題區 --- */
+#GW-555-節標平板燈標題區塊 .gw-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+    cursor: default;
+    color: #ffffff !important;
+}
+
+/* 標題互動效果 (桌機) */
+#GW-555-節標平板燈標題區塊 .gw-title:hover {
+    transform: translateY(-5px);
+    text-shadow: 0 5px 15px rgba(255,255,255,0.4);
+}
+
+/* --- 方塊排版容器 --- */
+#GW-555-節標平板燈標題區塊 .gw-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 25px;
     width: 100%;
-    max-width: 360px;
-  }
+    max-width: 400px;
+}
+
+/* --- 通用方塊樣式 --- */
+#GW-555-節標平板燈標題區塊 .gw-box {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 5px;
+    
+    /* ? 新增：平滑過渡動畫設定 (為了 Hover 鋪路) */
+    transition: transform 0.3s ease, background 0.3s ease;
+    cursor: default; /* 讓滑鼠移上去維持箭頭，或者改 pointer 變手手 */
+}
+
+/* --- 文字方塊內文字 --- */
+#GW-555-節標平板燈標題區塊 .gw-text-box-content {
+    font-size: 24px;
+    line-height: 1.3;
+    writing-mode: horizontal-tb;
+    width: 60px;
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+/* --- Icon 圖片 --- */
+#GW-555-節標平板燈標題區塊 .gw-icon-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 5px;
+}
+
+/* --- 底部規格文字 --- */
+#GW-555-節標平板燈標題區塊 .gw-specs {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 500 !important;
+    line-height: 1.8;
+    color: #eee;
+    letter-spacing: 1px;
+    
+    /* ? 新增：平滑過渡動畫設定 */
+    transition: transform 0.3s ease, color 0.3s ease;
+    cursor: default;
+}
+
+/* =========================================
+   ?️ 桌機版專屬 Hover 特效區 (寬度 > 993px)
+   ========================================= */
+@media screen and (min-width: 993px) {
+    /* 方塊 (文字框 + Icon框) 上浮效果 */
+    #GW-555-節標平板燈標題區塊 .gw-box:hover {
+        transform: translateY(-5px); /* 上浮 5px */
+        background: rgba(255, 255, 255, 0.1); /* 微微亮起背景，增加質感 */
+        border-color: #fff;
+    }
+
+    /* 底部規格文字 上浮效果 */
+    #GW-555-節標平板燈標題區塊 .gw-specs:hover {
+        transform: translateY(-3px); /* 文字稍微上浮一點點就好 */
+        color: #fff; /* 文字變亮全白 */
+    }
+}
+
+/* =========================================
+   ? 手機/平板斷點設定 (寬度 < 992px)
+   ========================================= */
+@media screen and (max-width: 992px) {
+    #GW-555-節標平板燈標題區塊 .gw-container {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #GW-555-節標平板燈標題區塊 .gw-bg-image {
+        height: 350px;
+        width: 100%;
+    }
+
+    #GW-555-節標平板燈標題區塊 .gw-overlay {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 30px 20px;
+        background: rgba(40, 35, 35, 1) !important;
+    }
+
+    #GW-555-節標平板燈標題區塊 .gw-title {
+        font-size: 24px;
+        margin-bottom: 30px;
+        /* 手機版取消標題 Hover，避免誤觸 */
+        pointer-events: none; 
+    }
+
+    #GW-555-節標平板燈標題區塊 .gw-box {
+        width: 70px;
+        height: 70px;
+        /* 手機版確保不會觸發 Hover */
+        transform: none !important; 
+        transition: none; 
+    }
+
+    #GW-555-節標平板燈標題區塊 .gw-text-box-content {
+        font-size: 18px;
+        width: 42px;
+    }
+
+    #GW-555-節標平板燈標題區塊 .gw-specs {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-top: 10px;
+        /* 手機版取消文字 Hover */
+        transform: none !important;
+    }
 }
 </style>
-<!-- ✅ HTML 內容區塊 -->
-<div class="block-品質宣告"><!-- 主標 -->
-<div class="headline">燈具卓越之作<br />
-品質與工藝共襄盛名</div>
-<!-- 毛玻璃浮層群組 -->
+<div id="GW-555-節標平板燈標題區塊">
+<div class="gw-container">
+<div class="gw-bg-image" style="background-image: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/555/f4a28d25df6ff428.jpg?v=od8xus');">&nbsp;</div>
 
-<div class="glass-group">
-<div class="glass-card">
-<div class="icon"><img alt="台灣製造" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/taiwan.png?v=ptelq5t" /></div>
+<div class="gw-overlay">
+<h2 class="gw-title">節標款 專業高效平板燈</h2>
 
-<div class="text-group">台灣研發 生產製造<br />
-Taiwan researches, develops, and manufactures.</div>
+<div class="gw-row">
+<div class="gw-box">
+<div class="gw-text-box-content">超高<br />
+光效</div>
 </div>
 
-<div class="glass-card">
-<div class="icon"><img alt="日本驅動器" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/japan.png?v=vt32z2" /></div>
-
-<div class="text-group">驅動器 日本規格<br />
-Drivers compliant with Japanese specifications.</div>
+<div class="gw-box">
+<div class="gw-text-box-content">超低<br />
+耗電</div>
 </div>
 
-<div class="glass-card">
-<div class="icon"><img alt="美國光源" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/statue.png?v=2yzlwij" /></div>
-
-<div class="text-group">光源 美國規格<br />
-Light sources compliant with U.S. specifications.</div>
+<div class="gw-box">
+<div class="gw-text-box-content">超長<br />
+保固</div>
 </div>
 </div>
+
+<div class="gw-row">
+<div class="gw-box"><img alt="節能標章" class="gw-icon-img" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/a.png?v=lqdx2y" /></div>
+
+<div class="gw-box"><img alt="環保綠能" class="gw-icon-img" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/b.png?v=taf1ag" /></div>
+
+<div class="gw-box"><img alt="台灣製造" class="gw-icon-img" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/c.png?v=eup23gd" /></div>
 </div>
-<!-- ★ CREE晶粒區塊一 block-CREE晶粒（文字偏底＋漸層＋文字陰影） ★ -->
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
-<style type="text/css">.block-CREE晶粒 {
-  --hero-height: 650px;
-  --hero-bg-opacity: 0.9;
-  --gradient-angle: 45deg;
-  --title-gradient-stops:
-    #000000,
-    #848484,
-    #000000;
-  font-family: 'Noto Sans TC','Microsoft JhengHei',sans-serif;
-}
 
-.block-CREE晶粒 .hero-section {
-  position: relative;
-  width: 100%;
-  height: var(--hero-height);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding-bottom: 40px;
-  align-items: center;
-  overflow: hidden;
-}
-.block-CREE晶粒 .hero-section::before {
-  content: "";
-  position: absolute; inset: 0;
-  background:
-    url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/555/gw_555_led.jpg?v=st4xsxc')
-    center/cover no-repeat;
-  opacity: var(--hero-bg-opacity);
-  z-index: -1;
-}
+<div class="gw-specs">
+<div>超高光效：可達 160 lm/W</div>
 
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0);    }
-}
-
-/* 副標 */
-.block-CREE晶粒 .hero-subtitle {
-  margin: 0;
-  font-size: 18px;
-  font-weight: 400;
-  color: rgba(0,0,0,0.6);
-  animation: fadeInUp 0.8s ease-out 0.2s both;
-}
-
-/* 主標：漸層＋文字陰影 */
-.block-CREE晶粒 .hero-title {
-  margin: 8px 0 0;
-  font-size: 28px;
-  font-weight: 700;
-  background: linear-gradient(
-    var(--gradient-angle),
-    var(--title-gradient-stops)
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  /* 文字陰影，真正畫在字形後面 */
-  text-shadow:
-    2px 2px 4px rgba(44,44,44,0.0),
-    -1px -1px 2px rgba(255,255,255,0.0);
-
-  animation: fadeInUp 0.8s ease-out 0.4s both;
-}
-
-/* 底線 */
-.block-CREE晶粒 .hero-underline {
-  margin-top: 16px;
-  width: 120px;
-  height: 4px;
-  background: rgba(0,0,0,0.6);
-  border-radius: 2px;
-  animation: fadeInUp 0.8s ease-out 0.6s both;
-}
-
-/* 手機微調 */
-@media (max-width: 768px) {
-  .block-CREE晶粒 .hero-section {
-    height: calc(var(--hero-height)*0.75);
-    padding-bottom: 20px;
-  }
-  .block-CREE晶粒 .hero-subtitle { font-size: 16px; animation-delay: 0.1s; }
-  .block-CREE晶粒 .hero-title    { font-size: 22px; animation-delay: 0.3s; }
-  .block-CREE晶粒 .hero-underline {
-    width: 80px; height: 3px; margin-top: 12px;
-    animation-delay: 0.5s;
-  }
-}
-</style>
-<div class="block-CREE晶粒">
-<div class="hero-section">
-<div class="hero-subtitle">─ 細節成就質感・光影定義空間 ─</div>
-
-<div class="hero-title">無藍光・無頻閃<br />
-專業照明新標竿</div>
-
-<div class="hero-underline">&nbsp;</div>
+<div style="margin-top: 5px;">消耗電量：≦ 25W</div>
 </div>
-</div>
-<!-- ★ 光效區塊 block-光效區塊：可調背景＋左上浮層＋置中標題＋Icon＋Hover動畫（Icon 垂直置中版） ★ -->
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
-<style type="text/css">/* ============================================
-   區塊L： block-光效區塊（全域變數區，想改哪裡就改哪裡）
-============================================ */
-.block-光效區塊 {
-  --hero-height: 700px;    /* 區塊整體高度 */
-  --hero-bg-url: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/555/f4a28d25df6ff428.jpg?v=q4l6b7h'); /* 背景圖 URL */
-  --hero-bg-opacity: 0.1;  /* 背景圖遮罩透明度 0~1 */
-
-  --overlay-bg: rgba(50,50,50,0.5); /* 左上浮層底色＋透明度 */
-  --overlay-radius: 6px;            /* 左上浮層圓角 */
-  --overlay-padding: 16px;          /* 左上浮層內距 */
-  --overlay-width: 350px;           /* 左上浮層最大寬 */
-  --overlay-color: #fff;            /* 左上浮層文字顏色 */
-
-  --title-color: #ffffff;           /* 標題文字顏色 */
-  --title-hover-color: #ffde00;     /* 標題滑過文字顏色 */
-  --title-fontsize: 36px;           /* 標題字級 */
-  --title-padding: 8px 16px;        /* 標題內距 */
-
-  --icon-size: 48px;                /* Icon 寬高 */
-  /* （Icon 不再用 margin-top，flex 會自動置中） */
-
-  font-family: 'Noto Sans TC','Microsoft JhengHei',sans-serif;
-}
-
-/* Hero 區塊 & 背景 */
-.block-光效區塊 .hero-section {
-  position: relative;
-  width: 100%;
-  height: var(--hero-height);
-  background: var(--hero-bg-url) center/cover no-repeat;
-  overflow: hidden;
-}
-.block-光效區塊 .hero-section::before {
-  content: "";
-  position: absolute; inset: 0;
-  background: rgba(0,0,0,var(--hero-bg-opacity));
-  z-index: 0;
-}
-
-/* 左上浮層 */
-.block-光效區塊 .hero-section .overlay {
-  position: absolute;
-  top: 20px; left: 30px;                         /* 浮層對頂與左的間距 */
-  max-width: var(--overlay-width);
-  padding: var(--overlay-padding);
-  background: var(--overlay-bg);
-  border-radius: var(--overlay-radius);
-  color: var(--overlay-color);
-  font-size: 14px;
-  line-height: 1.6;
-  z-index: 1;
-}
-
-/* 置中標題 + Icon 容器（flex 置中） */
-.block-光效區塊 .hero-section .center-content {
-  position: absolute;
-  top: 30%; left: 50%;                           /* 水平置中+上下偏移 */
-  transform: translate(-50%, -50%);
-  display: flex;                                  /* ← 新增：啟用 flex */
-  flex-direction: column;                         /* 直向排列 */
-  align-items: center;                            /* 垂直置中 */
-  text-align: center;
-  z-index: 1;
-}
-
-/* 標題文字 */
-.block-光效區塊 .center-content .title {
-  display: inline-block;
-  padding: var(--title-padding);
-  font-size: var(--title-fontsize);
-  font-weight: 700;
-  color: var(--title-color);
-  cursor: default;
-  transition: color .3s, transform .3s;
-  user-select: text;
-}
-/* hover 效果 */
-.block-光效區塊 .center-content .title:hover {
-  color: var(--title-hover-color);
-  transform: scale(1.05);
-}
-
-/* Icon：不需要 margin-top，flex 會自動置中 */
-.block-光效區塊 .center-content .icon {
-  width: var(--icon-size);
-  height: var(--icon-size);
-  display: inline-block;
-  background: center/contain no-repeat var(--icon-url);
-}
-
-/* 手機版微調 */
-@media (max-width: 768px) {
-  .block-光效區塊 {
-    --hero-height: 500px;
-    --overlay-width: 80%;
-    --title-fontsize: 26px;
-    --icon-size: 36px;
-  }
-  .block-光效區塊 .hero-section .center-content {
-    top: 95%;                                    /* 手機上下偏移可獨立調整 */
-    transform: translate(-50%, -95%);            /* 手機上下偏移調整百分比 */
-  }
-}
-</style>
-<!-- ===== HTML 結構 ===== -->
-<div class="block-光效區塊">
-<div class="hero-section"><!-- 左上浮層文字 -->
-<div class="overlay" style="text-align: justify;">發光效率越高代表其電能轉換成光的效率越高，即發出相同光通量所消耗的電能越少。目前世界各國均積極進行節能省碳的措施，並逐漸提高光源之發光效率相關規定，以降低照明應用所消耗的電力。<br />
-<br />
-<span style="color:#ffff00;">金鍏電子平板燈相較傳統燈具能省下60.9%耗電量。</span></div>
-<!-- 置中標題 + Icon -->
-
-<div class="center-content">
-<div class="title">超高光效<br />
-140 - 160 lm/W</div>
-
-<div class="icon" style="--icon-url:url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/led-strip__3_.png?v=j2lhnnw');">&nbsp;</div>
 </div>
 </div>
 </div>
@@ -401,7 +245,7 @@ Light sources compliant with U.S. specifications.</div>
 .block-品質認證 {
   font-family: 'Noto Sans TC', sans-serif;
   background: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/360%20370%20380/bl-360_parking-bsmi.jpg?v=7jmj3ww') center/cover no-repeat;
-  padding: 60px 10px 60px;  /* 上下左右間距 */
+  padding: 20px 10px 20px;  /* 上下左右間距 */
   box-sizing: border-box;
   min-height: 400px; /* ✅ 可自行調整整體高度 */
 }
@@ -411,7 +255,7 @@ Light sources compliant with U.S. specifications.</div>
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 40px;
+  gap: 20px;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -565,6 +409,202 @@ Light sources compliant with U.S. specifications.</div>
 
 <div style="height: 20px;">&nbsp;</div>
 
+<div id="GW-555-節標款-圖片滑動揭示熱點區塊">
+<style type="text/css">/* =========================================
+           區塊專用樣式 (Scope: GW-555-節標款-圖片滑動揭示熱點區塊)
+           ========================================= */
+
+        /* 1. 主容器設定 */
+        #GW-555-節標款-圖片滑動揭示熱點區塊 {
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px auto;
+            font-family: 'Noto Sans TC', "Microsoft JhengHei", Arial, sans-serif;
+            box-sizing: border-box;
+        }
+
+        /* 2. 標題樣式 */
+        #GW-555-節標款-圖片滑動揭示熱點區塊 .gw-title-box {
+            text-align: center; 
+            margin-bottom: 10px; /* ▼ [調整] 縮小距離，讓說明文字靠近標題 */
+            font-weight: bold; 
+            color: #333; 
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        /* 3. [新增] 標題下方的說明文字樣式 */
+        #GW-555-節標款-圖片滑動揭示熱點區塊 .gw-desc-text {
+            text-align: center;
+            font-size: 1.1rem;      /* 字體大小 */
+            color: #666;            /* 淺灰字體，區分層次 */
+            line-height: 1.6;       /* 行高舒適度 */
+            max-width: 1000px;       /* 限制寬度，避免電腦版一行字太長 */
+            margin: 0 auto 30px auto; /* 上0、左右置中、下30px (推開Iframe) */
+            padding: 0 15px;        /* 防止手機版文字貼邊 */
+        }
+
+        /* 4. RWD 響應式畫框 */
+        #GW-555-節標款-圖片滑動揭示熱點區塊 .gw-responsive-frame {
+            position: relative;
+            width: 100%;
+            height: 0;
+            overflow: hidden;
+
+            /* ▼ [修正] 手機版高度：從 300% 改回 160% (避免空白過大) */
+            padding-bottom: 300%; 
+            
+            box-shadow: none; 
+            background-color: transparent; 
+            border-radius: 0; 
+        }
+
+        /* 5. 平板/電腦版策略 (螢幕寬度 > 769px) */
+        @media (min-width: 769px) {
+            #GW-555-節標款-圖片滑動揭示熱點區塊 .gw-responsive-frame {
+                padding-bottom: 56.25%; /* 16:9 */
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+                border-radius: 12px;
+                background-color: #fff; 
+            }
+        }
+
+        /* 6. Iframe 本體設定 */
+        #GW-555-節標款-圖片滑動揭示熱點區塊 .gw-responsive-frame iframe {
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            border: 0;
+        }
+</style>
+<div class="gw-title-box">極致工藝，源於內在堅持</div>
+
+<div class="gw-desc-text">金鍏節標平板燈：從LED燈珠、專業透鏡到二級驅動及金屬散熱版 ─ 支撐「高光效、長壽命」的核心</div>
+
+<div class="gw-responsive-frame"><iframe frameborder="0" scrolling="no" src="https://tsenwu.github.io/goldenway-charts/(互動圖片滑動揭示熱點)平板燈節標款揭示熱點.html" title="GW-555節標款 構造透視解析"></iframe></div>
+</div>
+
+<div id="GW-555節標款-構造解析雙說明">
+<style type="text/css">/* =========================================
+           區塊專用樣式 (Scope: GW-555節標款-構造解析雙說明)
+           ========================================= */
+
+        /* 1. 主容器設定 */
+        #GW-555節標款-構造解析雙說明 {
+            width: 100%;
+            max-width: 1200px;
+            margin: 10 auto 0px auto; /* 上方 0 (緊接上個區塊)，下方 0px */
+            font-family: 'Noto Sans TC', "Microsoft JhengHei", Arial, sans-serif;
+            box-sizing: border-box;
+            padding: 0 15px; /* 防止手機版貼邊 */
+        }
+
+        /* 2. Flex 排版容器 (左右兩塊) */
+        #GW-555節標款-構造解析雙說明 .gw-desc-wrapper {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px; /* 兩塊之間的間距 */
+            align-items: stretch; /* 強制等高 */
+        }
+
+        /* 3. 單個說明卡片 */
+        #GW-555節標款-構造解析雙說明 .gw-desc-card {
+            flex: 1; /* 左右平分寬度 */
+            background-color: #f9f9f9; /* 預設淺灰底色 */
+            padding: 30px;
+            border-radius: 8px;
+            display: flex; /* 讓 Icon 與文字並排 */
+            align-items: flex-start; /* 靠上對齊 */
+            text-align: left;
+            transition: all 0.3s ease; /* 滑順動畫 */
+            border: 1px solid transparent; /* 預留邊框空間 */
+        }
+
+        /* Hover 懸浮特效 */
+        #GW-555節標款-構造解析雙說明 .gw-desc-card:hover {
+            transform: translateY(-5px); /* 上浮 */
+            background-color: #fff;      /* 變白 */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08); /* 柔和陰影 */
+            border-color: #eee;
+        }
+
+        /* 4. Icon 容器設定 */
+        #GW-555節標款-構造解析雙說明 .gw-icon-box {
+            /* 強制固定寬度，避免手機版被擠壓 */
+            width: 50px;
+            min-width: 50px;
+            margin-right: 20px;
+            padding-top: 5px; /* 微調讓 Icon 對齊標題 */
+        }
+
+        #GW-555節標款-構造解析雙說明 .gw-icon-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* 5. 文字內容區域 */
+        #GW-555節標款-構造解析雙說明 .gw-text-content {
+            flex: 1;
+        }
+
+        #GW-555節標款-構造解析雙說明 .gw-card-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #2c3e50; /* 深藍灰色標題 */
+            margin-bottom: 10px;
+            line-height: 1.4;
+            display: block;
+        }
+
+        #GW-555節標款-構造解析雙說明 .gw-card-desc {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+            margin: 0;
+            text-align: justify; /* 左右對齊 */
+        }
+
+        /* 6. RWD 手機版設定 (< 768px) */
+        @media (max-width: 768px) {
+            #GW-555節標款-構造解析雙說明 .gw-desc-wrapper {
+                flex-direction: column; /* 改為垂直堆疊 */
+            }
+
+            #GW-555節標款-構造解析雙說明 .gw-desc-card {
+                margin-bottom: 10px; /* 堆疊時的間距 */
+                padding: 20px; /* 手機版內距稍微縮小 */
+            }
+        }
+</style>
+<div class="gw-desc-wrapper">
+<div class="gw-desc-card">
+<div class="gw-icon-box"><img alt="光學透鏡圖示" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/filter_14232642.png?v=qiweyq" /></div>
+
+<div class="gw-text-content"><span class="gw-card-title">高階LED晶粒搭配透鏡光學 x 專業直下式設計</span>
+
+<p class="gw-card-desc">徹底解決傳統側發光導光板容易<s>老化泛黃</s>的通病。我們用光學透鏡精準引導每一束光，不僅亮度更均勻，更能長久維持純淨透亮的空間視覺。</p>
+</div>
+</div>
+
+<div class="gw-desc-card">
+<div class="gw-icon-box"><img alt="驅動散熱圖示" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/heat-wave_17798877.png?v=acq535k" /></div>
+
+<div class="gw-text-content"><span class="gw-card-title">二級迴路LED驅動器 x 高效散熱燈板</span>
+
+<p class="gw-card-desc">高規二級迴路驅動，實現<b data-index-in-node="15" data-path-to-node="12,1,0">無頻閃、低光衰</b>的優質光效。 獨家<b data-index-in-node="31" data-path-to-node="12,1,0">驅動分離設計</b>與金屬背板，大幅降低熱堆積。故障僅需<b data-index-in-node="55" data-path-to-node="12,1,0">更換驅動器</b>，無需整燈汰換，大幅降低長期維護成本。</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="_bd_row _bd_clearfix">
+<div class="_bd_column _bd_full">
+<hr /></div>
+</div>
+
 <div id="GW-555-平板燈左右滑動照片對比區塊">
 <style type="text/css">/* =========================================
            區塊專用樣式 (Scope: GW-555-平板燈左右滑動照片對比區塊)
@@ -579,7 +619,30 @@ Light sources compliant with U.S. specifications.</div>
             box-sizing: border-box;
         }
 
-        /* --- 2. Iframe 容器 (維持您原本設定) --- */
+        /* --- [新增] 上方標題說明區 --- */
+        #GW-555-平板燈左右滑動照片對比區塊 .gw-header-section {
+            text-align: center;
+            margin-bottom: 30px; /* 與 Iframe 的距離 */
+            padding: 0 15px;     /* 防止手機版貼邊 */
+        }
+
+        #GW-555-平板燈左右滑動照片對比區塊 .gw-main-title {
+            font-size: 1.8rem;   /* 主標題大小 */
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px; /* 標題與說明文的距離 */
+            line-height: 1.4;
+        }
+
+        #GW-555-平板燈左右滑動照片對比區塊 .gw-sub-title {
+            font-size: 1.1rem;   /* 說明文大小 */
+            color: #666;
+            line-height: 1.6;
+            max-width: 1000px;    /* 限制寬度，避免文字太長難閱讀 */
+            margin: 0 auto;      /* 置中對齊 */
+        }
+
+        /* --- 2. Iframe 容器 --- */
         #GW-555-平板燈左右滑動照片對比區塊 .iframe-container {
             position: relative;
             width: 100%;
@@ -588,7 +651,7 @@ Light sources compliant with U.S. specifications.</div>
             overflow: hidden;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             border-radius: 4px;
-            margin-bottom: 30px; /* 增加下方距離，避免貼著文字 */
+            margin-bottom: 30px;
         }
 
         #GW-555-平板燈左右滑動照片對比區塊 iframe {
@@ -601,50 +664,48 @@ Light sources compliant with U.S. specifications.</div>
             display: block;
         }
 
-        /* --- 3. 下方說明區塊容器 (Flex佈局) --- */
+        /* --- 3. 下方說明區塊容器 --- */
         #GW-555-平板燈左右滑動照片對比區塊 .gw-desc-wrapper {
             display: flex;
             justify-content: space-between;
-            gap: 20px; /* 左右區塊間距 */
-            align-items: stretch; /* 等高 */
+            gap: 20px;
+            align-items: stretch;
         }
 
         /* --- 4. 單個說明卡片樣式 --- */
         #GW-555-平板燈左右滑動照片對比區塊 .gw-desc-card {
-            background-color: #f4f4f4; /* 圖片中的淺灰底色 */
+            background-color: #f4f4f4;
             padding: 25px;
             border-radius: 8px;
-            flex: 1; /* 左右平分寬度 */
-            display: flex; /* 讓 Icon 和文字並排 */
+            flex: 1;
+            display: flex;
             align-items: flex-start;
-            transition: all 0.3s ease; /* Hover 動畫過渡 */
-            border: 1px solid transparent; /* 預留邊框位置 */
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
         }
 
-        /* Hover 浮動效果 */
         #GW-555-平板燈左右滑動照片對比區塊 .gw-desc-card:hover {
-            transform: translateY(-5px); /* 向上浮動 */
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* 增加陰影 */
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
             border-color: #ddd;
-            background-color: #fff; /* Hover 時變白，增加層次感 */
+            background-color: #fff;
         }
 
         /* --- 5. Icon 區域設定 --- */
         #GW-555-平板燈左右滑動照片對比區塊 .gw-icon-box {
-            flex: 0 0 50px; /* 固定寬度 50px */
+            flex: 0 0 50px;
             height: 50px;
             margin-right: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid #333; /* 圖片中的黑框 Icon */
-            border-radius: 4px; /* 微圓角 */
+            border: 1px solid #333;
+            border-radius: 4px;
             font-size: 12px;
             font-weight: bold;
             color: #333;
         }
-        
-        /* 也可以放入 SVG 圖片，這裡設定 SVG 樣式 */
+
         #GW-555-平板燈左右滑動照片對比區塊 .gw-icon-box svg {
             width: 24px;
             height: 24px;
@@ -664,62 +725,61 @@ Light sources compliant with U.S. specifications.</div>
             font-size: 15px;
             line-height: 1.6;
             color: #555;
-            text-align: justify; /* 左右對齊 */
+            text-align: justify;
         }
 
-        /* --- 7. RWD 手機版設定 (<768px) --- */
+        /* --- 7. RWD 手機版設定 --- */
         @media (max-width: 768px) {
             #GW-555-平板燈左右滑動照片對比區塊 .gw-desc-wrapper {
-                flex-direction: column; /* 改為上下堆疊 */
+                flex-direction: column;
             }
             
             #GW-555-平板燈左右滑動照片對比區塊 .gw-desc-card {
                 margin-bottom: 15px;
             }
+
+            /* 手機版標題稍微縮小 */
+            #GW-555-平板燈左右滑動照片對比區塊 .gw-main-title {
+                font-size: 1.5rem;
+            }
         }
-    </style>
+</style>
+<div class="gw-header-section">
+<div class="gw-main-title">看穿「廉價」與「專業」的差異</div>
 
-    <div class="iframe-container">
-        <iframe frameborder="0" loading="lazy" scrolling="no" src="https://tsenwu.github.io/goldenway-charts/(左右滑動對比)平板燈.html" title="GW-555 平板燈對比展示">
-        </iframe>
-    </div>
-
-    <div class="gw-desc-wrapper">
-        
-        <div class="gw-desc-card">
-            <div class="gw-icon-box">
-                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path></svg>
-            </div>
-            <div class="gw-text-content">
-                <h3>市售一般平板燈</h3>
-                <p>肉眼難以察覺的高頻閃爍，是造成眼睛酸澀、疲勞的主因。加上光衰速度快，使用不久亮度即大幅下降，導致需頻繁汰換。長期下來，不僅累積了高昂的維護成本，更製造大量電子廢棄物，既傷眼又不環保。</p>
-            </div>
-        </div>
-
-        <div class="gw-desc-card">
-            <div class="gw-icon-box">
-                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>
-            </div>
-            <div class="gw-text-content">
-                <h3>金鍏節標平板燈</h3>
-                <p>堅持無頻閃、低光衰的高規格設計。提供真正穩定、舒適的健康照明環境，有效減輕用眼負擔。超長效的光源壽命，確保亮度歷久彌新，一次投資，長久安心，才是真正省錢又環保的選擇。</p>
-            </div>
-        </div>
-
-    </div>
+<div class="gw-sub-title">市售廉價燈具的快速光衰與閃爍，往往是後續高額維護成本的開始。<br />
+透過實測對比，看見金鍏平板燈如何以「零頻閃、高亮度」的優異表現，為空間找回舒適明亮，並真正為企業守住長期預算、杜絕浪費。</div>
 </div>
 
-    <div class="_bd_row _bd_clearfix">
+<div class="iframe-container"><iframe frameborder="0" loading="lazy" scrolling="no" src="https://tsenwu.github.io/goldenway-charts/(左右滑動對比)平板燈.html" title="GW-555 平板燈對比展示"></iframe></div>
 
-        <div class="_bd_column _bd_full">
+<div class="gw-desc-wrapper">
+<div class="gw-desc-card">
+<div class="gw-icon-box"><svg viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path></svg></div>
 
-            <hr>
+<div class="gw-text-content">
+<h3>市售一般平板燈</h3>
 
-        </div>
+<p>肉眼難以察覺的高頻閃爍，是造成眼睛酸澀、疲勞的主因。加上光衰速度快，使用不久亮度即大幅下降，導致需頻繁汰換。長期下來，不僅累積了高昂的維護成本，更製造大量電子廢棄物，既傷眼又不環保。</p>
+</div>
+</div>
 
-    </div>
+<div class="gw-desc-card">
+<div class="gw-icon-box"><svg viewbox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg></div>
 
+<div class="gw-text-content">
+<h3><span style="color:#2980b9;">金鍏</span><span style="color:#16a085;">節標平板燈</span></h3>
 
+<p>堅持無頻閃、低光衰的高規格設計。提供真正穩定、舒適的健康照明環境，有效減輕用眼負擔。超長效的光源壽命，確保亮度歷久彌新，一次投資，長久安心，才是真正省錢又環保的選擇。</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="_bd_row _bd_clearfix">
+<div class="_bd_column _bd_full">
+<hr /></div>
+</div>
 
 <div id="GW-555-節標平板燈色溫控制區塊">
 <style type="text/css">/* =========================================
@@ -730,7 +790,7 @@ Light sources compliant with U.S. specifications.</div>
         #GW-555-節標平板燈色溫控制區塊 {
             position: relative;
             max-width: 800px; 
-            margin: 30px auto;
+            margin: 10px auto;
             font-family: 'Noto Sans TC', "Microsoft JhengHei", Arial, sans-serif;
             box-sizing: border-box;
         }
@@ -742,7 +802,7 @@ Light sources compliant with U.S. specifications.</div>
             background-color: transparent;
             padding: 10px 20px;
             text-align: center;
-            font-size: 18px;
+            font-size: 24px;
             font-weight: bold;
             margin-bottom: 10px; /* 標題與描述的間距 */
             transition: all 0.3s ease;
@@ -761,7 +821,7 @@ Light sources compliant with U.S. specifications.</div>
         /* 3. 描述文字樣式 */
         #GW-555-節標平板燈色溫控制區塊 .gw-desc-box {
             text-align: center;
-            font-size: 15px;
+            font-size: 18px;
             color: #666666;
             line-height: 1.5;
             margin-bottom: 20px;
@@ -798,9 +858,10 @@ Light sources compliant with U.S. specifications.</div>
             border: 0;
         }
 </style>
-<div class="gw-title-box">多種色溫可供選擇</div>
+<div class="gw-title-box">光的溫度，決定空間的氛圍</div>
 
-<div class="gw-desc-box">色溫5000K 及 5700K 為標準品</div>
+<div class="gw-desc-box">從溫馨舒適的暖白光到清晰明亮的冷白光，提供 <b data-index-in-node="30" data-path-to-node="6,1,0">2700K 至 6500K</b> 的全方位色溫。<br />
+<b data-index-in-node="65" data-path-to-node="6,1,0">5000K(自然光)</b>&nbsp;與 <b data-index-in-node="78" data-path-to-node="6,1,0">5700K(白光)</b>為一般辦公室與作業區之標準品，打造明亮均勻舒適的優質光環境。</div>
 
 <div class="iframe-container"><iframe allowfullscreen="" scrolling="no" src="https://tsenwu.github.io/goldenway-charts/(拉桿變色)智慧照明色溫模擬.html" title="智慧照明色溫模擬"></iframe></div>
 </div>
@@ -811,7 +872,7 @@ Light sources compliant with U.S. specifications.</div>
   flex-wrap: wrap;
   gap: 24px;
   align-items: stretch;        /* 左右等高 */
-  padding: 20px 20px;
+  padding: 10px 20px;
   box-sizing: border-box;
   font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
 }
@@ -897,7 +958,7 @@ Light sources compliant with U.S. specifications.</div>
     width: 100%;
   }
   .演色性區塊 .col-left {
-    margin-top: 24px;
+    margin-top: 10px;
   }
   .演色性區塊 .col-left .headline {
     font-size: 28px;
@@ -1234,7 +1295,7 @@ Light sources compliant with U.S. specifications.</div>
     box-sizing: border-box;
     width: 100%;
     background: #fff;
-    padding: 60px 20px; /* 上下留白優化 */
+    padding: 20px 20px; /* 上下留白優化 */
     margin: 0 auto;
     overflow: hidden; /* 防止內容溢出 */
   }
@@ -1371,135 +1432,10 @@ Light sources compliant with U.S. specifications.</div>
 <div class="gw-img-col"><img alt="舒適閱讀情境-狗狗" class="gw-main-img" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/OL-747/dogreeding.png?v=q7gvk06" /></div>
 </div>
 </div>
-<!-- ★ 模組化區塊：手機版寬度與內距已優化 -->
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
-<style type="text/css">.block-模組化區塊 {
-  --icon-width: 15%;
-  --hero-height: 800px;
-  --hero-bg-opacity: 1.0;
-  --overlay-max-width: 40%;
-  --overlay-padding: 20px;
-  --overlay-radius: 8px;
-  --subtitle-size: 32px;
-  --subtitle-color: rgba(78,110,133,1.0);
-  --text-size: 16px;
-  --text-color: rgba(46,68,81,1.0);
-  font-family: 'Noto Sans TC', sans-serif;
-}
 
-.block-模組化區塊 .hero-section {
-  position: relative;
-  width: 100%;
-  height: var(--hero-height);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-.block-模組化區塊 .hero-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/555/gw_555_bg7.jpg?v=rmburpuj') center/cover no-repeat;
-  opacity: var(--hero-bg-opacity);
-  z-index: -1;
-}
-
-/* === Overlay 浮層區塊 === */
-.block-模組化區塊 .overlay {
-  position: absolute;
-  bottom: 5%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(255,255,255,0.3);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  padding: var(--overlay-padding);
-  border-radius: var(--overlay-radius);
-  max-width: var(--overlay-max-width);
-  text-align: center;
-  z-index: 1;
-}
-
-/* === Icon === */
-.block-模組化區塊 .hero-icon img {
-  width: var(--icon-width);
-  animation: fadeInUp 0.6s ease-out 0.2s both;
-}
-
-/* === 標語字體 === */
-.block-模組化區塊 .hero-subtitle {
-  margin: 12px 0 0;
-  font-size: var(--subtitle-size);
-  font-weight: 700;
-  color: var(--subtitle-color);
-  animation: fadeInUp 0.6s ease-out 0.4s both;
-}
-
-/* === 說明文字 === */
-.block-模組化區塊 .hero-text {
-  margin: 16px 0 0;
-  font-size: var(--text-size);
-  line-height: 1.6;
-  color: var(--text-color);
-  animation: fadeInUp 0.6s ease-out 0.6s both;
-}
-
-/* === 動畫 === */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* === 手機版 RWD 調整 === */
-@media (max-width: 768px) {
-  .block-模組化區塊 {
-    --overlay-padding: 20px;
-  }
-
-  .block-模組化區塊 .overlay {
-    left: 10% !important;              /* ✅ 加：左邊距離 */
-    right: 10% !important;             /* ✅ 加：右邊距離 */
-    max-width: none !important;       /* ✅ 取消 max-width 限制 */
-    transform: none !important;       /* ✅ 取消水平置中 transform */
-    padding: var(--overlay-padding);  /* ✅ 確保內距保留 */
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-  }
-
-  .block-模組化區塊 .hero-section {
-    height: 600px;
-  }
-
-  .block-模組化區塊 .hero-subtitle {
-    font-size: 24px;
-    animation-delay: 0.3s;
-  }
-
-  .block-模組化區塊 .hero-text {
-    font-size: 14px;
-    animation-delay: 0.5s;
-  }
-
-  .block-模組化區塊 .hero-icon img {
-    width: 48px;
-    height: auto;
-    animation-delay: 0.1s;
-  }
-}
-</style>
-<!-- ✅ HTML 結構 -->
-<div class="block-模組化區塊">
-<div class="hero-section">
-<div class="overlay">
-<div class="hero-icon"><img src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/component.png?v=kb2169l" /></div>
-
-<div class="hero-subtitle">模組化設計 x 超長使用壽命</div>
-
-<div class="hero-text" style="text-align: justify;">模組化設計將驅動器與光源分離，顯著延長產品壽命。損壞時可獨立更換零件，降低維護成本。超越5萬小時使用壽命，有效減少維修費用與電子垃圾。</div>
-</div>
-</div>
+<div class="_bd_row _bd_clearfix">
+<div class="_bd_column _bd_full">
+<hr /></div>
 </div>
 
 <div id="GW555-節標款實績照片輪播區塊">
@@ -1507,7 +1443,7 @@ Light sources compliant with U.S. specifications.</div>
 <div class="gw555-header">
 <h3 class="gw555-main-title">各大機構與企業的信賴首選</h3>
 
-<p class="gw555-sub-desc" style="text-align: justify;">金鍏LED燈具涵蓋教育、金融、公部門與科技大廠。以超穩定的品質，體驗超光效、超耐用、超省電帶來的節能紅利，打造讓業主無後顧之憂的長效照明。</p>
+<p class="gw555-sub-desc" style="text-align: justify;">金鍏LED平板燈涵蓋教育、金融、公部門與科技大廠。以超穩定的品質，體驗超光效、超耐用、超省電帶來的節能紅利，打造讓業主無後顧之憂的長效照明。</p>
 </div>
 
 <div class="gw555-slider-wrapper"><iframe scrolling="no" src="https://tsenwu.github.io/goldenway-charts/(照片輪播)一級驅動平板燈GW-555.html" title="金鍏平板燈實績案例輪播"></iframe></div>
