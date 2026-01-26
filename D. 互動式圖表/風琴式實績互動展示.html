@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>金鍏電子 LED 節能實績 | 環境部、校園與企業 ESG 照明解決方案</title>
+    <meta name="description" content="檢視金鍏電子 LED 智慧照明實績：涵蓋環境部七年節能驗證、逢甲與中興大學校園改善，以及好市多、家樂福等企業升級案例。立即查看詳細 ESG 節能數據與 ROI 效益分析。">
+    <meta name="keywords" content="LED節能工程, 智慧照明系統, ESG解決方案, 學校照明汰換, 辦公室照明, 金鍏電子, 節能績效保證, ROI分析, 高天井燈">
+    <meta name="author" content="金鍏電子 GoldenWay Optoelectronics">
+    
+    <meta property="og:site_name" content="金鍏電子 GoldenWay" />
+    <meta property="og:title" content="金鍏電子 LED 節能實績 | 環境部與大學校園 ESG 解決方案" />
+    <meta property="og:description" content="【實測數據公開】查看環境部七年節能成效、逢甲/中興大學校園改善及好市多照明升級案例。點擊檢視詳細 ROI 分析與減碳成果。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/Com_Sch/523728a77af4ed30.png?v=ml2t7i6" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "金鍏電子 LED 節能效益實績展示",
+      "description": "金鍏電子 (GoldenWay) 為政府機關、教育機構與商業空間提供的 LED 照明升級 ESG 成效數據。",
+      "author": {
+        "@type": "Organization",
+        "name": "金鍏電子"
+      },
+      "provider": {
+        "@type": "Organization",
+        "name": "金鍏電子"
+      },
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "環境部七年節能效益 (Government ESG Solution)",
+          "description": "協助環境部換裝 3,715 盞 LED 光板燈，經七年長期追蹤零故障率，累積省下 1,164 萬電費。",
+          "url": "https://www.goldenwayled.com/article.php?lang=tw&tb=3#slide1"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "逢甲大學校園節能實測 (Feng Chia University)",
+          "description": "監測逢甲大學 13,020 盞燈具，經三年實測驗證節能率達 67% 且零故障，累計省下 1,300 萬電費。",
+          "url": "https://www.goldenwayled.com/article.php?lang=tw&tb=3#slide2"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "中興大學照明改善工程 (NCHU Solution)",
+          "description": "中興大學五年節能報告顯示總節能率達 72.29% 且零故障，累積減碳 2,619 噸。",
+          "url": "https://www.goldenwayled.com/article.php?lang=tw&tb=3#slide3"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "企業高天井燈實績合集 (Corporate High Bay Projects)",
+          "description": "金鍏電子協助好市多 (Costco)、家樂福、漢翔航空導入 LED 高天井燈，達成顯著節能成效。",
+          "url": "https://www.goldenwayled.com/article.php?lang=tw&tb=3#slide4"
+        }
+      ]
+    }
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+      /* =========================================
+         1. 基礎設定 
+         ========================================= */
+      * { margin: 0; padding: 0; box-sizing: border-box; font-family: "LINE Seed TW", "Noto Sans TC", sans-serif; }
+      body, html { width: 100%; height: 100%; overflow: hidden; background: #f8fafc; }
+
+      /* [SEO 4] 隱形文本層樣式 (sr-only)  */
+      .sr-only {
+        position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+        overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;
+      }
+
+      /* 風琴式容器 */
+      .slider-container { width: 100vw; height: 100vh; display: flex; box-shadow: 0 0 40px rgba(0,0,0,0.08); position: relative; }
+
+      /* Slide 樣式 */
+      .slide {
+        flex: 2.5; position: relative; will-change: flex, filter; 
+        transition: flex 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.5s ease; 
+        overflow: hidden; border-right: 1px solid rgba(255, 255, 255, 0.3);
+        cursor: pointer; background-color: #ffffff; background-size: cover;
+        background-position: center; background-repeat: no-repeat;
+        min-width: 0; filter: grayscale(100%);
+      }
+      .slide:last-child { border-right: none; }
+      .slide:hover { filter: grayscale(0%) brightness(1.1); z-index: 5; }
+
+      /* 遮罩層 */
+      .slide::after {
+        content: ""; position: absolute; inset: 0; background: rgba(15, 23, 42, 0.65);
+        transition: background 0.5s; pointer-events: none; backdrop-filter: blur(0px); 
+      }
+      .slide:hover::after { background: rgba(15, 23, 42, 0.3); }
+
+      /* 垂直標題 */
+      .vertical-label {
+        position: absolute; bottom: 80px; left: 50%; transform: translateX(-50%);
+        writing-mode: vertical-rl; text-orientation: upright; color: #ffffff;
+        font-size: 18px; font-weight: 400; letter-spacing: 6px; transition: opacity 0.3s;
+        pointer-events: none; white-space: nowrap; z-index: 10;
+        text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      }
+
+      /* Active (展開) 狀態 */
+      .slide.active { flex: 30; cursor: default; background-image: none !important; background-color: #ffffff !important; filter: none !important; }
+      .slide.active::after { opacity: 0; }
+      .slide.active .vertical-label { opacity: 0; }
+
+      /* IFRAME 容器 */
+      .iframe-wrapper {
+        position: absolute; inset: 0; opacity: 0; transition: opacity 0.6s ease 0.4s;
+        pointer-events: none; background: #ffffff; z-index: 20;
+      }
+      .slide.active .iframe-wrapper { opacity: 1; pointer-events: auto; }
+      iframe { width: 100%; height: 100%; border: none; display: block; background: #ffffff; }
+
+      /* UI 控制元件 */
+      .glass-btn {
+        z-index: 100; border-radius: 16px; background: rgba(241, 245, 249, 0.75); 
+        backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.1), 0 4px 8px -2px rgba(0, 0, 0, 0.05), inset 0 1px 1px rgba(255,255,255,0.8);
+        display: flex; align-items: center; justify-content: center;
+        cursor: pointer; color: #64748b; transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        pointer-events: auto;
+      }
+      .glass-btn:hover { background: rgba(255, 255, 255, 0.95); transform: scale(1.08); box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.15); color: #0f172a; }
+      .glass-btn:active { transform: scale(0.95); }
+
+      .reset-btn { position: absolute; bottom: 30px; right: 30px; width: 48px; height: 48px; opacity: 0; transform: translateY(20px) scale(0.9); pointer-events: none; }
+      .slide.active .reset-btn { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; transition-delay: 0.3s; }
+      .reset-btn:hover { transform: translateY(0) scale(1.08); }
+
+      .nav-btn {
+        position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px;
+        border-radius: 50%; opacity: 0; pointer-events: none;
+        transition: opacity 0.4s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .nav-btn.prev { left: 30px; }
+      .nav-btn.next { right: 30px; }
+      .nav-btn:hover { transform: translateY(-50%) scale(1.1); }
+      .slider-container.has-active .nav-btn { opacity: 1; pointer-events: auto; }
+      .nav-btn.hidden { opacity: 0 !important; pointer-events: none !important; }
+
+      .loader {
+        position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        width: 40px; height: 40px; border: 3px solid rgba(226, 232, 240, 0.5);
+        border-left-color: #005bb7; border-radius: 50%; animation: spin 1s linear infinite;
+        display: none; z-index: 15;
+      }
+      .slide.active .loader.loading { display: block; }
+      @keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+      @media (max-width: 768px) {
+        .slider-container { flex-direction: column; }
+        .slide { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); }
+        .vertical-label { 
+          writing-mode: horizontal-tb;      /* 橫向排版 */
+          transform: translate(-50%, -50%); /* 維持置中 */
+          bottom: auto; 
+          top: 50%; 
+          left: 50%; 
+          
+          /* === 修改重點開始 === */
+          white-space: normal;    /* 允許換行 */
+          width: 90%;             /* 寬度稍微拉寬一點，讓字有空間 */
+          text-align: center;     /* 文字居中 */
+          
+          font-size: 14px;        /* [修改] 字體縮小 (原電腦版是 18px) */
+          letter-spacing: 2px;    /* [修改] 字距縮小 (原電腦版是 6px，手機上太寬了) */
+          line-height: 1.6;       /* [修改] 行高設定 1.6 倍，閱讀比較舒適 */
+          font-weight: 500;       /* 微調粗細，讓小字也清晰 */
+          /* === 修改重點結束 === */
+        }
+        .slide.active { flex: 15; }
+        .reset-btn { bottom: 20px; right: 20px; width: 44px; height: 44px; }
+        .nav-btn { width: 44px; height: 44px; }
+        .nav-btn.prev { left: 10px; }
+        .nav-btn.next { right: 10px; }
+      }
+    </style>
+</head>
+<body>
+    <main class="slider-container">
+      <article class="slide" data-index="0" data-bg="https://images.unsplash.com/photo-1471469478635-911c1858d22e?q=80&w=1740&auto=format&fit=crop" onclick="activateSlide(0)">
+        <h2 class="vertical-label">環境部<br>換裝金鍏光板燈七年節能成效</h2>
+        <div class="sr-only">
+            <h3>台灣環境部 LED 節能改善工程 - 金鍏電子</h3>
+            <p>協助環境部全面換裝 3,715 盞 LED 光板燈，累積省下 1,164 萬電費。</p>
+        </div>
+        <div class="loader" id="loader-0"></div>
+        <div class="reset-btn glass-btn" onclick="resetView(event)" title="返回總覽"><i data-lucide="minimize-2" stroke-width="2" width="20"></i></div>
+        <div class="iframe-wrapper"><iframe id="frame-0" title="環境部 LED 照明節能效益展示 - 金鍏電子"></iframe></div>
+      </article>
+
+      <article class="slide" data-index="1" data-bg="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/Com_Sch/parkinglot3.jpg?v=s99zzqd" onclick="activateSlide(1)">
+        <h2 class="vertical-label">逢甲大學<br>金鍏節能燈具&智慧照明系統</h2>
+        <div class="sr-only">
+            <h3>逢甲大學校園智慧照明解決方案 - 金鍏電子</h3>
+            <p>監測逢甲大學 13,020 盞燈具，節能率達 67%，打造優質光環境。</p>
+        </div>
+        <div class="loader" id="loader-1"></div>
+        <div class="reset-btn glass-btn" onclick="resetView(event)" title="返回總覽"><i data-lucide="minimize-2" stroke-width="2" width="20"></i></div>
+        <div class="iframe-wrapper"><iframe id="frame-1" title="逢甲大學校園節能數據報告 - 金鍏電子"></iframe></div>
+      </article>
+
+      <article class="slide" data-index="2" data-bg="https://images.unsplash.com/photo-1639548538099-6f7f9aec3b92?q=80&w=776&auto=format&fit=crop" onclick="activateSlide(2)">
+        <h2 class="vertical-label">中興大學<br>金鍏節能燈具五年總節能成效</h2>
+        <div class="sr-only">
+            <h3>中興大學 LED 照明改善工程 - 金鍏電子</h3>
+            <p>中興大學採用金鍏電子解決方案，五年節能報告顯示總節能率達 72.29% 且零故障。</p>
+        </div>
+        <div class="loader" id="loader-2"></div>
+        <div class="reset-btn glass-btn" onclick="resetView(event)" title="返回總覽"><i data-lucide="minimize-2" stroke-width="2" width="20"></i></div>
+        <div class="iframe-wrapper"><iframe id="frame-2" title="中興大學五年節能效益分析 - 金鍏電子"></iframe></div>
+      </article>
+
+      <article class="slide" data-index="3" data-bg="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/Com_Sch/snipaste_2026-01-13_16-33-15.jpg?v=hnab2q" onclick="activateSlide(3)">
+        <h2 class="vertical-label">實績合集<br>各大連鎖賣場及企業安裝實績</h2>
+        <div class="sr-only">
+            <h3>企業高天井燈與商用照明實績 - 金鍏電子</h3>
+            <p>收錄好市多 (Costco)、家樂福、漢翔航空等商用照明升級案例。</p>
+        </div>
+        <div class="loader" id="loader-3"></div>
+        <div class="reset-btn glass-btn" onclick="resetView(event)" title="返回總覽"><i data-lucide="minimize-2" stroke-width="2" width="20"></i></div>
+        <div class="iframe-wrapper"><iframe id="frame-3" title="LED 高天井燈與商用照明實績合集 - 金鍏電子"></iframe></div>
+      </article>
+
+      <div class="nav-btn prev glass-btn" onclick="navigate(-1)" title="上一個案例"><i data-lucide="chevron-left" stroke-width="2.5" width="28"></i></div>
+      <div class="nav-btn next glass-btn" onclick="navigate(1)" title="下一個案例"><i data-lucide="chevron-right" stroke-width="2.5" width="28"></i></div>
+    </main>
+
+    <script>
+      lucide.createIcons();
+      // 請將此處的 GitHub Pages 連結替換為您真實上傳後的 URL
+      const slideUrls = [
+        "https://tsenwu.github.io/my-portfolio/demos/風琴式互動介面展示廳/展示01環境部.html",  
+        "https://tsenwu.github.io/my-portfolio/demos/風琴式互動介面展示廳/展示02逢甲大學.html",
+        "https://tsenwu.github.io/my-portfolio/demos/風琴式互動介面展示廳/展示03中興大學.html",
+        "https://tsenwu.github.io/my-portfolio/demos/風琴式互動介面展示廳/展示04實績合集.html"
+      ];
+
+      const slides = document.querySelectorAll('.slide');
+      const container = document.querySelector('.slider-container');
+      
+      window.onload = () => {
+        slides.forEach(slide => {
+            const bgUrl = slide.getAttribute('data-bg');
+            if(bgUrl) slide.style.backgroundImage = `url('${bgUrl}')`;
+        });
+        setTimeout(() => { activateSlide(0); }, 100);
+      };
+
+      function activateSlide(index) {
+        if (index < 0 || index >= slides.length) return;
+        const targetSlide = slides[index];
+        if (targetSlide.classList.contains('active') && targetSlide.style.backgroundImage === 'none') return;
+        
+        slides.forEach(s => {
+          if (s !== targetSlide) {
+            s.classList.remove('active');
+            const bgUrl = s.getAttribute('data-bg');
+            if (bgUrl) s.style.backgroundImage = `url('${bgUrl}')`;
+          }
+        });
+        
+        targetSlide.classList.add('active');
+        setTimeout(() => { targetSlide.style.backgroundImage = 'none'; }, 300); 
+        loadIframe(index);
+        container.classList.add('has-active');
+        updateNavButtons(index);
+      }
+
+      function loadIframe(index) {
+        const iframe = document.getElementById(`frame-${index}`);
+        const loader = document.getElementById(`loader-${index}`);
+        const url = slideUrls[index];
+        if (url.includes("your-username")) { console.warn(`Slide ${index + 1} 尚未設定 GitHub 連結`); return; }
+        if (!iframe.getAttribute('src')) {
+          loader.classList.add('loading');
+          iframe.src = url;
+          iframe.onload = () => { loader.classList.remove('loading'); };
+        }
+      }
+
+      function updateNavButtons(currentIndex) {
+        const prevBtn = document.querySelector('.nav-btn.prev');
+        const nextBtn = document.querySelector('.nav-btn.next');
+        if (currentIndex === 0) prevBtn.classList.add('hidden'); else prevBtn.classList.remove('hidden');
+        if (currentIndex === slides.length - 1) nextBtn.classList.add('hidden'); else nextBtn.classList.remove('hidden');
+      }
+
+      function navigate(direction) {
+        let currentIndex = -1;
+        slides.forEach((s, i) => { if (s.classList.contains('active')) currentIndex = i; });
+        if (currentIndex !== -1) activateSlide(currentIndex + direction);
+      }
+
+      function resetView(event) {
+        event.stopPropagation();
+        container.classList.remove('has-active');
+        slides.forEach(s => {
+          s.classList.remove('active');
+          const bgUrl = s.getAttribute('data-bg');
+          if (bgUrl) s.style.backgroundImage = `url('${bgUrl}')`;
+        });
+      }
+    </script>
+</body>
+</html>
