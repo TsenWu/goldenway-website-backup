@@ -42,12 +42,12 @@
 
         #GW-金鍏經濟型平板燈-換裝節能效益比較區塊 * { box-sizing: border-box; }
 
-        /* 2. 主佈局 (Flexbox Stretch) - 桌機版完美對齊的關鍵 */
+        /* 2. 主佈局 */
         #GW-金鍏經濟型平板燈-換裝節能效益比較區塊 .gw-main-layout {
             display: flex;
             flex-wrap: wrap; 
             gap: 40px;
-            align-items: stretch; /* 強制左右欄位高度一致 */
+            align-items: stretch; /* 桌機版左右等高 */
         }
 
         /* 左側欄位 */
@@ -83,7 +83,7 @@
         /* 4. 左側比較卡片區 */
         #GW-金鍏經濟型平板燈-換裝節能效益比較區塊 .gw-cards-wrapper {
             display: flex; gap: 20px; justify-content: center;
-            flex: 1; /* 佔滿左側剩餘高度 */
+            flex: 1; 
         }
 
         #GW-金鍏經濟型平板燈-換裝節能效益比較區塊 .gw-card {
@@ -94,7 +94,7 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             display: flex; flex-direction: column;
             overflow: hidden;
-            height: 100%; /* 卡片填滿容器 */
+            height: 100%;
         }
 
         /* 卡片配色 */
@@ -106,7 +106,7 @@
             color: #fff; border: none;
         }
 
-        /* 標籤 Tag */
+        /* 標籤與 Icon */
         #GW-金鍏經濟型平板燈-換裝節能效益比較區塊 .gw-tag {
             position: absolute; top: 0; right: 0;
             padding: 4px 12px; font-size: 13px; font-weight: bold;
@@ -115,7 +115,6 @@
         #GW-金鍏經濟型平板燈-換裝節能效益比較區塊 .tag-gray { background: #666; color: #fff; }
         #GW-金鍏經濟型平板燈-換裝節能效益比較區塊 .tag-gold { background: #F4C430; color: #000; }
 
-        /* Icon */
         #GW-金鍏經濟型平板燈-換裝節能效益比較區塊 .gw-icon-box {
             width: 60px; height: 60px; margin: 0 auto 15px auto;
             background: #fff; border-radius: 50%;
@@ -165,8 +164,8 @@
         /* 5. 右側 Iframe 盒子 */
         #GW-金鍏經濟型平板燈-換裝節能效益比較區塊 .gw-iframe-box {
             background: #fff; border-radius: 12px; overflow: hidden;
-            flex: 1; /* 桌機版：跟隨高度 */
-            min-height: 350px; /* 桌機版：基礎高度 */
+            flex: 1; 
+            min-height: 350px; 
             display: flex; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             border: 1px solid #eee;
@@ -188,15 +187,16 @@
             font-size: 12px; color: #999; text-align: center; margin-top: 15px;
         }
 
-        /* --- [關鍵修正] RWD 斷點設定 --- */
+        /* --- [RWD 修正] --- */
         @media (max-width: 1024px) {
             #GW-金鍏經濟型平板燈-換裝節能效益比較區塊 .gw-main-layout {
-                flex-direction: column; /* 上下堆疊 */
+                flex-direction: column; 
             }
             
-            /* [FIX] 強制設定手機版高度為 700px，寧可多白邊也不要被切掉 */
+            /* [FIX] 高度從 650px 下修為 500px，去除多餘空白 */
             #GW-金鍏經濟型平板燈-換裝節能效益比較區塊 .gw-iframe-box {
-                min-height: 700px !important; 
+                min-height: 0 !important; 
+                height: 500px !important; 
             }
         }
 
@@ -291,7 +291,7 @@
             <div class="gw-iframe-box">
                 <iframe 
                     style="width:100%; height:100%; border:0;"
-                    scrolling="auto" 
+                    scrolling="yes" 
                     src="https://goldenway-charts.vercel.app/(拉桿試算表-僅拉桿及結果)平板燈數量對應節電效益.html" 
                     title="效益試算"
                     loading="lazy">
@@ -316,7 +316,7 @@
 
     <script>
         (function() {
-            console.log("GW-Energy-Comparison V4.9 (Ultimate Height Fix) Loaded.");
+            console.log("GW-Energy-Comparison V5.1 (WhiteSpace Removed) Loaded.");
         })();
     </script>
 </div>
