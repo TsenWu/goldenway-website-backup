@@ -483,7 +483,7 @@
 
 <div class="gw-desc-text">金鍏節標平板燈：從LED燈珠、專業透鏡到二級驅動及金屬散熱版 ─ 支撐「高光效、長壽命」的核心</div>
 
-<div class="gw-responsive-frame"><iframe frameborder="0" scrolling="no" src="https://tsenwu.github.io/goldenway-charts/(互動圖片滑動揭示熱點)平板燈節標款揭示熱點.html" title="GW-555節標款 構造透視解析"></iframe></div>
+<div class="gw-responsive-frame"><iframe frameborder="0" scrolling="no" src="https://goldenway-charts.vercel.app/(互動圖片滑動揭示熱點)平板燈節標款揭示熱點.html" title="GW-555節標款 構造透視解析"></iframe></div>
 </div>
 
 <div id="GW-555節標款-構造解析雙說明">
@@ -751,7 +751,7 @@
 透過實測對比，看見金鍏平板燈如何以「零頻閃、高亮度」的優異表現，為空間找回舒適明亮，並真正為企業守住長期預算、杜絕浪費。</div>
 </div>
 
-<div class="iframe-container"><iframe frameborder="0" loading="lazy" scrolling="no" src="https://tsenwu.github.io/goldenway-charts/(左右滑動對比)平板燈.html" title="GW-555 平板燈對比展示"></iframe></div>
+<div class="iframe-container"><iframe frameborder="0" loading="lazy" scrolling="no" src="https://goldenway-charts.vercel.app/(左右滑動對比)平板燈.html" title="GW-555 平板燈對比展示"></iframe></div>
 
 <div class="gw-desc-wrapper">
 <div class="gw-desc-card">
@@ -781,89 +781,115 @@
 <hr /></div>
 </div>
 
-<div id="GW-555-節標平板燈色溫控制區塊">
-<style type="text/css">/* =========================================
-           區塊專用樣式 (Scope: GW-555-節標平板燈色溫控制區塊)
-           ========================================= */
-        
-        /* 1. 主容器設定 */
-        #GW-555-節標平板燈色溫控制區塊 {
-            position: relative;
-            max-width: 800px; 
-            margin: 10px auto;
-            font-family: 'Noto Sans TC', "Microsoft JhengHei", Arial, sans-serif;
+<div id="GW-555-節標平板燈色溫模擬器區塊">
+<style type="text/css">.gw-sr-only {
+            position: absolute !important;
+            width: 1px !important;
+            height: 1px !important;
+            padding: 0 !important;
+            margin: -1px !important;
+            overflow: hidden !important;
+            clip: rect(0, 0, 0, 0) !important;
+            white-space: nowrap !important;
+            border: 0 !important;
+        }
+</style>
+<div class="gw-sr-only">
+<h2>智慧照明色溫模擬 - 金鍏電子實績</h2>
+
+<p>模擬辦公室環境在不同色溫下的光影變化。</p>
+
+<ul>
+	<li>4000K: 暖白光</li>
+	<li>5000K: 自然光 (標準品)</li>
+	<li>5700K: 冷白光 (標準品)</li>
+</ul>
+</div>
+<style type="text/css">/* 1. 環境隔離與重建 (Scope Reset) */
+        #GW-555-節標平板燈色溫模擬器區塊 {
+            all: initial; /* 阻斷繼承 */
+            box-sizing: border-box; /* 重建盒模型 */
+            display: block;
+            width: 100%;
+            max-width: 800px; /* 限制最大寬度 */
+            margin: 30px auto;
+            font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            background-color: transparent !important; /* 確保背景透明 */
+        }
+
+        /* 強制子元素繼承盒模型 */
+        #GW-555-節標平板燈色溫模擬器區塊 * {
             box-sizing: border-box;
         }
 
-        /* 2. 標題按鈕樣式 */
-        #GW-555-節標平板燈色溫控制區塊 .gw-title-box {
+        /* 2. 標題與描述樣式 (若 iframe 內已包含標題，此處可視情況移除或保留作為 SEO 加強) */
+        #GW-555-節標平板燈色溫模擬器區塊 .gw-title-box {
             border: 2px solid #333;
             color: #333;
-            background-color: transparent;
-            padding: 10px 20px;
+            background-color: #ffffff;
+            padding: 12px 24px;
             text-align: center;
             font-size: 24px;
             font-weight: bold;
-            margin-bottom: 10px; /* 標題與描述的間距 */
-            transition: all 0.3s ease;
-            cursor: default;
+            margin: 0 auto 15px auto;
             display: table;
-            margin-left: auto;
-            margin-right: auto;
+            transition: all 0.3s ease;
         }
-
-        #GW-555-節標平板燈色溫控制區塊 .gw-title-box:hover {
+        
+        #GW-555-節標平板燈色溫模擬器區塊 .gw-title-box:hover {
             border-color: #0056b3;
-            color: white;
+            color: #ffffff;
             background-color: #0056b3;
         }
 
-        /* 3. 描述文字樣式 */
-        #GW-555-節標平板燈色溫控制區塊 .gw-desc-box {
+        #GW-555-節標平板燈色溫模擬器區塊 .gw-desc-box {
             text-align: center;
             font-size: 18px;
-            color: #666666;
-            line-height: 1.5;
-            margin-bottom: 20px;
-            font-weight: normal;
+            color: #666;
+            margin-bottom: 25px;
+            padding: 0 15px;
         }
 
-        /* 4. Iframe RWD 完美比例容器 (The Perfect Ratio) */
-        #GW-555-節標平板燈色溫控制區塊 .iframe-container {
+        /* 3. Iframe 完美比例容器 (RWD) */
+        #GW-555-節標平板燈色溫模擬器區塊 .iframe-ratio-box {
             position: relative;
             width: 100%;
             height: 0;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border-radius: 4px;
+            background: transparent !important; /* 去背 */
+            box-shadow: none !important; /* 去陰影 */
+            border: none !important;
             
-            /* 手機版預設：115% 高度防切邊 */
-            padding-bottom: 115%; 
+            /* 手機版比例：預留足夠高度給拉桿 */
+            padding-bottom: 125%; 
         }
 
-        /* 桌機版/平板版 (螢幕 > 600px) */
-        @media (min-width: 600px) {
-            #GW-555-節標平板燈色溫控制區塊 .iframe-container {
-                padding-bottom: 80%; /* 桌機版改回較扁的比例 */
+        @media (min-width: 768px) {
+            #GW-555-節標平板燈色溫模擬器區塊 .iframe-ratio-box {
+                /* 桌機版比例：依先前經驗設定為 90% 以確保不切邊 */
+                padding-bottom: 90%; 
             }
         }
 
-        /* 5. Iframe 本體絕對定位 */
-        #GW-555-節標平板燈色溫控制區塊 .iframe-container iframe {
+        #GW-555-節標平板燈色溫模擬器區塊 iframe {
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
+            width: 100% !important;
+            height: 100% !important;
+            border: 0 !important;
+            background: transparent !important;
         }
 </style>
 <div class="gw-title-box">光的溫度，決定空間的氛圍</div>
 
-<div class="gw-desc-box">從溫馨舒適的暖白光到清晰明亮的冷白光，提供 <b data-index-in-node="30" data-path-to-node="6,1,0">2700K 至 6500K</b> 的全方位色溫。<br />
-<b data-index-in-node="65" data-path-to-node="6,1,0">5000K(自然光)</b>&nbsp;與 <b data-index-in-node="78" data-path-to-node="6,1,0">5700K(白光)</b>為一般辦公室與作業區之標準品，打造明亮均勻舒適的優質光環境。</div>
+<div class="gw-desc-box">從溫馨舒適的暖白光到清晰明亮的冷白光，提供 <strong>2700K 至 6500K</strong> 的全方位色溫。<br />
+<strong>5000K(自然光)</strong> 與 <strong>5700K(白光)</strong> 為一般辦公室標準品。</div>
 
-<div class="iframe-container"><iframe allowfullscreen="" scrolling="no" src="https://tsenwu.github.io/goldenway-charts/(拉桿變色)智慧照明色溫模擬.html" title="智慧照明色溫模擬"></iframe></div>
+<div class="iframe-ratio-box"><iframe allowfullscreen="" frameborder="0" loading="lazy" scrolling="no" src="https://goldenway-charts.vercel.app/(拉桿變色)智慧照明色溫模擬.html" title="GW555節標平板燈智慧照明色溫模擬 - 金鍏電子"></iframe></div>
 </div>
 <!-- ★ 區塊五：演色性區塊（左右顛倒 + 次標 hover 動畫） -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
@@ -1264,7 +1290,7 @@
 <div class="平板燈配件區塊"><!-- 左側 -->
 <div class="left">
 <div class="overlay">
-<p><span style="color:#a33;">吸頂轉換框</span> 配件<br />
+<p><strong><span style="color:#a33;">吸頂轉換框</span></strong> 配件<br />
 嵌入式平板燈也能變成吸頂式</p>
 </div>
 </div>
@@ -1272,7 +1298,7 @@
 
 <div class="right"><!-- 右上 -->
 <div class="product"><img alt="懸吊/吊管配件" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/555/gw_555_pic2.png?v=sobncu5" />
-<div class="desc"><span style="color:#a33;">懸吊/吊管</span> 配件<br />
+<div class="desc"><strong><span style="color:#a33;">懸吊/吊管</span></strong> 配件<br />
 適用吊管孔徑&Phi;20mm</div>
 </div>
 <!-- 右下 -->
@@ -1446,7 +1472,7 @@
 <p class="gw555-sub-desc" style="text-align: justify;">金鍏LED平板燈涵蓋教育、金融、公部門與科技大廠。以超穩定的品質，體驗超光效、超耐用、超省電帶來的節能紅利，打造讓業主無後顧之憂的長效照明。</p>
 </div>
 
-<div class="gw555-slider-wrapper"><iframe scrolling="no" src="https://tsenwu.github.io/goldenway-charts/(照片輪播)一級驅動平板燈GW-555.html" title="金鍏平板燈實績案例輪播"></iframe></div>
+<div class="gw555-slider-wrapper"><iframe scrolling="no" src="https://goldenway-charts.vercel.app/(照片輪播)一級驅動平板燈GW-555.html" title="金鍏平板燈實績案例輪播"></iframe></div>
 </div>
 <style type="text/css">/* =========================================
        ★ 區塊樣式表：GW555-節標款實績照片輪播區塊 ★
