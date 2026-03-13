@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智慧照明控制模擬系統 - 金鍏電子 GoldenWay</title>
+    <meta name="description" content="金鍏電子 (GoldenWay) 專屬智慧照明控制模擬系統。提供高精度色溫(CCT)與光源輸出預覽，協助企業與專業設計師打造完美沉浸式照明體驗。">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "智慧照明控制模擬系統",
+      "author": {
+        "@type": "Organization",
+        "name": "金鍏電子 (GoldenWay)"
+      },
+      "description": "提供多樣化色溫選擇與調光控制器調整亮度強弱之智慧照明調控模擬。"
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Outfit:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        /* ==========================================
+           基礎建設與 Iframe 安全保險區
+           ========================================== */
+        html, body {
+            /* [強制] 建立捲軸雙重保險，防止 Iframe 內容被無情裁切 */
+            overflow-y: auto !important; 
+            /* [強制] 背景透明化，無痕融入宿主網頁 (如官網底色) */
+            background-color: transparent !important; 
+            margin: 0;
+            padding: 0;
+            font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+        }
+
+        /* 輔助螢幕閱讀器之隱形文本層 */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* ==========================================
+           動畫與視覺細節控制區
+           ========================================== */
+        .transition-lighting {
+            /* 調整過渡速度與曲線，控制燈光切換的滑順感 */
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* --- 字體粗細與顏色調整區 (按鈕啟動狀態) --- */
+        /* 修改這裡可以改變按鈕被點擊後的品牌主色調 */
+        .btn-active-cct {
+            background-color: #0f172a !important;
+            border-color: #0f172a !important;
+            color: white !important;
+            font-weight: bold; 
+            box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.2);
+        }
+        .btn-active-output {
+            background-color: #0f6499 !important; /* 金鍏品牌藍 */
+            border-color: #25b3eb !important;
+            color: white !important;
+            font-weight: bold; 
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.2);
+        }
+
+        /* 隱藏左側面板的捲軸以維持美觀，但保留滾動功能 */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* 滑鼠發光效果 */
+        .mouse-glow-container { position: relative; overflow: hidden; }
+        #aside-glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(14, 233, 211, 0.1) 0%, transparent 90%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        aside:hover #aside-glow { opacity: 1; }
+        aside > div, aside > h1, aside > p, aside > h2 { position: relative; z-index: 10; }
+    </style>
+</head>
+<body class="text-slate-900">
+
+    <div id="app-container" class="relative w-full h-auto lg:h-[750px] p-4 flex flex-col lg:flex-row mx-auto max-w-7xl">
+        
+        <aside class="w-full lg:w-[400px] h-auto lg:h-full p-6 lg:p-10 bg-white border border-slate-200 lg:border-r-0 rounded-t-2xl lg:rounded-t-none lg:rounded-l-2xl shadow-lg flex flex-col gap-6 z-20 overflow-y-auto no-scrollbar order-2 lg:order-1 mouse-glow-container">
+            <div id="aside-glow"></div>
+
+            <header class="space-y-3 relative">
+                <h1 class="text-2xl lg:text-2xl font-black tracking-tight text-slate-800 leading-tight">
+                    調光控制器 / 智慧調光系統<span class="inline-flex items-center justify-center bg-blue-50 text-cyan-800 text-[12px] px-2 h-5 rounded-md border border-blue-100 ml-2 font-bold uppercase tracking-tight whitespace-nowrap align-middle mb-1">額外加購</span>
+                </h1>
+                <p class="text-slate-500 text-sm leading-relaxed">
+                    金鍏電子節能LED燈具搭配「智慧調光系統與控制器」能將傳統照明升級為具備主動感知與能源管理的綠色資產。從<strong>新世代辦公空間、大型停車場到多元智慧照明場域</strong>，透過亮度、色溫調節與人因照明設計，全面優化空間光效；更無縫整合群組控制、自動排程與即時用電監測。這不僅是一套能大幅降低維護成本的調光設備，更是為企業產出量化 ESG 減碳數據、驅動綠色資產升級的關鍵樞紐。
+                </p>
+            </header>
+
+            <section class="space-y-8 flex-1 relative">
+                <div class="space-y-3">
+                    <h2 class="flex items-center gap-2 text-[14px] font-medium uppercase tracking-widest text-slate-400">
+                        <i data-lucide="thermometer" class="w-3 h-3"></i> 色溫選擇 (K)
+                    </h2>
+                    <div id="cct-container" class="grid grid-cols-3 lg:grid-cols-2 gap-2" role="group" aria-label="色溫選擇"></div>
+                </div>
+
+                <div class="space-y-3">
+                    <h2 class="flex items-center gap-2 text-[14px] font-medium uppercase tracking-widest text-slate-400">
+                        <i data-lucide="sun" class="w-3 h-3"></i> 光源輸出 (%)
+                    </h2>
+                    <div id="output-container" class="grid grid-cols-3 gap-2" role="group" aria-label="光源輸出選擇"></div>
+                </div>
+            </section>
+
+            <div class="mt-auto p-6 rounded-xl bg-slate-50 border border-slate-200 shadow-inner relative z-10">
+                <div class="flex justify-between items-center mb-4">
+                    <span id="scene-title" class="text-sm font-normal uppercase tracking-widest transition-colors duration-500">正在初始化系統...</span>
+                    <div id="scene-dot" class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse transition-colors duration-500"></div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4 mb-5">
+                    <div>
+                        <p class="text-[11px] text-slate-400 font-medium">當前色溫</p>
+                        <p class="text-3xl font-black transition-colors duration-500 flex items-baseline" id="cct-wrapper">
+                            <span id="display-cct">3000</span><span class="text-sm ml-1 text-slate-400 font-medium">K</span>
+                        </p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-[11px] text-slate-400 font-medium">光源輸出</p>
+                        <p class="text-3xl font-black text-slate-800 flex items-baseline justify-end">
+                            <span id="display-output">100</span><span class="text-sm ml-1 text-slate-400 font-medium">%</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t border-slate-200">
+                    <p id="scene-description" class="text-[13px] lg:text-sm text-slate-600 leading-relaxed">
+                        正在載入情境說明...
+                    </p>
+                </div>
+            </div>
+        </aside>
+
+        <main class="flex-none lg:flex-1 h-[40vh] lg:h-full relative bg-slate-900 rounded-b-2xl lg:rounded-b-none lg:rounded-r-2xl shadow-lg overflow-hidden order-1 lg:order-2">
+            <div class="absolute inset-0 w-full h-full">
+                <img id="scene-image" src="https://cdn.jsdelivr.net/gh/TsenWu/goldenway-photos/otherphoto/office_scene.png" alt="金鍏電子辦公室智慧照明模擬場景" class="w-full h-full object-cover transition-lighting block" />
+                <div id="color-overlay" class="absolute inset-0 transition-lighting pointer-events-none" style="mix-blend-mode: soft-light;"></div>
+                <div class="absolute top-0 inset-x-0 h-1/3 bg-gradient-to-b from-white/30 to-transparent opacity-60 pointer-events-none"></div>
+            </div>
+
+            <div class="absolute inset-0 z-10 flex flex-col justify-end items-center p-6 lg:p-12 pointer-events-none">
+                <div class="inline-flex bg-white/80 backdrop-blur-md px-4 py-2 lg:px-6 lg:py-3 rounded-full border border-white/50 shadow-xl">
+                    <h3 class="text-xs lg:text-sm font-bold flex items-center gap-2 text-slate-800">
+                        <i data-lucide="maximize" class="w-4 h-4 text-blue-600"></i>
+                        色溫 & 光源 場景模擬
+                    </h3>
+                </div>
+            </div>
+            
+            <div class="absolute top-6 right-6 w-12 h-12 border-t-2 border-r-2 border-white/50 rounded-tr-xl pointer-events-none hidden lg:block"></div>
+        </main>
+
+    </div>
+
+    <script>
+        // 初始化 Icons
+        lucide.createIcons();
+
+        // 狀態與資料定義
+        const state = { cct: 3000, output: 100 };
+        const cctOptions = [3000, 4000, 5000, 5700, 6500];
+        const outputOptions = [50, 60, 70, 80, 90, 100];
+
+        const sceneDatabase = {
+            3000: {
+                title: '沉浸式迎賓與舒緩', label: '暖黃光', rgb: '203 , 111, 10', textColor: 'text-stone-700', dotColor: 'bg-amber-600',
+                description: '[暖黃光] 模擬黃昏自然光，有效降低腎上腺素分泌。消除冰冷疏離感，適用於企業大廳、茶水間或休憩區，營造溫馨且具層次感的迎賓氛圍，讓訪客與員工卸下壓力，舒緩放鬆。'
+            },
+            4000: {
+                title: '日間平衡與協作', label: '暖白光', rgb: '226, 159, 59', textColor: 'text-stone-700', dotColor: 'bg-amber-400',
+                description: '[暖白光] 平衡了清晰度與溫潤感，降低視覺壓力。避免長時間會議導致的眼部疲勞，最適合創意討論區與多功能會議室，在維持高專注度的同時，保持思維活躍，激發團隊協作潛力。'
+            },
+            5000: {
+                title: '標準化的高效行政', label: '自然白光', rgb: '242, 242, 242', textColor: 'text-stone-700', dotColor: 'bg-sky-400',
+                description: '[自然白光] 符合多數辦公規範的標準色溫，提供清晰穩定的視覺基底，解決環境光不足造成的作業錯誤率。專為開放式辦公區、行政中心設計，是提升日常行政效率與正確性的黃金基準。'
+            },
+            5700: {
+                title: '專業思維與冷靜判斷', label: '日光色', rgb: '215, 237, 255', textColor: 'text-stone-700', dotColor: 'bg-blue-500',
+                description: '[日光色] 模擬清晨高亮度自然採光，抑制退黑激素，改善「午後倦怠」現象。可透過智慧排程在早晨或午後自動切換，啟動員工生理時鐘動能，讓室內環境與自然節律無縫接軌。'
+            },
+            6500: {
+                title: '極致精密的專業視界', label: '冷白光', rgb: '154, 205, 255', textColor: 'text-stone-700', dotColor: 'bg-blue-800',
+                description: '[冷白光] 具備極高演色對比力與細節辨識度，降低在精密校對、品管或製圖時的細微視覺誤差。應用於設計工作室、打樣間或精密作業區，確保每一項專業產出皆精準無誤，體現企業對品質的嚴苛追求。'
+            }
+        };
+
+        // DOM 元素獲取
+        const aside = document.querySelector('aside');
+        const glow = document.getElementById('aside-glow');
+        const cctContainer = document.getElementById('cct-container');
+        const outputContainer = document.getElementById('output-container');
+        const sceneImage = document.getElementById('scene-image');
+        const colorOverlay = document.getElementById('color-overlay');
+        const displayCct = document.getElementById('display-cct');
+        const displayOutput = document.getElementById('display-output');
+        const sceneTitle = document.getElementById('scene-title');
+        const sceneDot = document.getElementById('scene-dot');
+        const sceneDesc = document.getElementById('scene-description');
+        const cctWrapper = document.getElementById('cct-wrapper');
+
+        // 滑鼠發光追蹤特效
+        aside.addEventListener('mousemove', (e) => {
+            const rect = aside.getBoundingClientRect();
+            glow.style.left = `${e.clientX - rect.left}px`;
+            glow.style.top = `${e.clientY - rect.top}px`;
+        });
+
+        // 動態生成按鈕
+        cctOptions.forEach(val => {
+            const btn = document.createElement('button');
+            const isStandard = (val === 5000 || val === 5700);
+            
+            // [間距與排版控制] py-2 垂直內距，px-2 水平內距，rounded-lg 圓角設定
+            btn.className = `cct-btn py-2 lg:py-3 px-2 rounded-lg text-[14px] lg:text-sm transition-all border bg-white border-slate-200 text-slate-500 hover:border-slate-400 relative z-10 flex flex-col items-center justify-center leading-none focus:outline-none focus:ring-2 focus:ring-slate-300`;
+            btn.setAttribute('aria-pressed', state.cct === val);
+            
+            btn.innerHTML = `
+                <span class="font-medium tracking-wide">${val}K</span>
+                ${isStandard ? '<span class="text-[10px] mt-1 text-cyan-600 font-sans tracking-widest">▲標準品</span>' : ''}
+            `;
+            
+            btn.onclick = () => { state.cct = val; render(); };
+            btn.id = `cct-${val}`;
+            cctContainer.appendChild(btn);
+        });
+
+        outputOptions.forEach(val => {
+            const btn = document.createElement('button');
+            btn.innerHTML = `<span class="font-medium">${val}%</span>`;
+            
+            btn.className = `output-btn py-3 lg:py-4 px-2 rounded-lg text-[14px] lg:text-sm transition-all border bg-white border-slate-200 text-slate-500 hover:border-slate-400 relative z-10 focus:outline-none focus:ring-2 focus:ring-blue-300`; 
+            btn.setAttribute('aria-pressed', state.output === val);
+            
+            btn.onclick = () => { state.output = val; render(); };
+            btn.id = `output-${val}`;
+            outputContainer.appendChild(btn);
+        });
+
+        // 核心渲染邏輯
+        function render() {
+            const data = sceneDatabase[state.cct];
+            
+            // 更新按鈕視覺狀態與無障礙屬性
+            document.querySelectorAll('.cct-btn').forEach(btn => {
+                const isActive = btn.id === `cct-${state.cct}`;
+                btn.classList.toggle('btn-active-cct', isActive);
+                btn.setAttribute('aria-pressed', isActive);
+            });
+            document.querySelectorAll('.output-btn').forEach(btn => {
+                const isActive = btn.id === `output-${state.output}`;
+                btn.classList.toggle('btn-active-output', isActive);
+                btn.setAttribute('aria-pressed', isActive);
+            });
+
+            // 亮度計算邏輯
+            const brightness = 0.4 + (state.output / 100) * 0.6;
+            const opacity = (state.output / 100) * 0.85;
+
+            // 影像濾鏡與覆蓋層更新
+            sceneImage.style.filter = `brightness(${brightness}) contrast(1.1)`;
+            colorOverlay.style.backgroundColor = `rgb(${data.rgb})`;
+            colorOverlay.style.opacity = opacity;
+
+            // 文字與狀態更新
+            displayCct.textContent = state.cct;
+            displayOutput.textContent = state.output;
+            
+            sceneTitle.textContent = data.title;
+            sceneTitle.className = `text-sm font-bold uppercase tracking-widest transition-colors duration-500 ${data.textColor}`;
+            cctWrapper.className = `text-3xl font-black transition-colors duration-500 flex items-baseline ${data.textColor}`;
+            
+            sceneDot.className = `w-2 h-2 rounded-full animate-pulse transition-colors duration-500 ${data.dotColor}`;
+            sceneDesc.textContent = data.description;
+        }
+
+        render();
+
+        /* ==========================================
+           Iframe 通訊協定 (雙重保險機制)
+           ========================================== */
+        // 持續監聽容器高度，若高度因 RWD 改變，自動通知宿主網頁調整 Iframe
+        if ('ResizeObserver' in window) {
+            const container = document.getElementById('app-container');
+            const observer = new ResizeObserver(entries => {
+                for (let entry of entries) {
+                    const height = entry.target.scrollHeight;
+                    window.parent.postMessage({
+                        type: 'iframe-resize',
+                        height: height
+                    }, '*');
+                }
+            });
+            observer.observe(container);
+        }
+    </script>
+</body>
+</html>
