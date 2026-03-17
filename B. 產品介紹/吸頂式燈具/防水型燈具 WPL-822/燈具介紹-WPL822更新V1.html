@@ -1,326 +1,2563 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>智慧照明控制模擬系統 - 金鍏電子 GoldenWay</title>
-    <meta name="description" content="金鍏電子 (GoldenWay) 專屬智慧照明控制模擬系統。提供高精度色溫(CCT)與光源輸出預覽，協助企業與專業設計師打造完美沉浸式照明體驗。">
-    
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "智慧照明控制模擬系統",
-      "author": {
-        "@type": "Organization",
-        "name": "金鍏電子 (GoldenWay)"
-      },
-      "description": "提供多樣化色溫選擇與調光控制器調整亮度強弱之智慧照明調控模擬。"
+<link href="https://cdn.jsdelivr.net/gh/ButTaiwan/iancnfont@latest/Iansui-Regular.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;family=Outfit:wght@400;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* --- Scope Root & Reset --- */
+  #GW-金鍏電子台灣高規格LED燈具製造商-品質保證區塊-Root {
+    width: 100%;
+    display: block;
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+    font-family: 'Outfit', 'Noto Sans TC', "Microsoft JhengHei", sans-serif;
+    line-height: 1.5;
+    background-color: #000;
+  }
+
+  #GW-金鍏電子台灣高規格LED燈具製造商-品質保證區塊-Root *,
+  #GW-金鍏電子台灣高規格LED燈具製造商-品質保證區塊-Root *::before,
+  #GW-金鍏電子台灣高規格LED燈具製造商-品質保證區塊-Root *::after {
+    box-sizing: border-box;
+  }
+
+  /* --- Layout & Container --- */
+  #GW-金鍏電子台灣高規格LED燈具製造商-品質保證區塊-Root .gw-qa-block {
+    position: relative;
+    background: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/4644232229e34b5f.png?v=4gw258i') center center / cover no-repeat;
+    padding: 100px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    flex-wrap: wrap;
+    overflow: hidden;
+  }
+
+  #GW-金鍏電子台灣高規格LED燈具製造商-品質保證區塊-Root .gw-qa-block::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+  }
+
+  #GW-金鍏電子台灣高規格LED燈具製造商-品質保證區塊-Root .gw-qa-z {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* --- Headline (SEO Optimized: H2) --- */
+  /* 注意：這裡直接針對 h2 標籤設定樣式，移除預設 margin */
+  #GW-金鍏電子台灣高規格LED燈具製造商-品質保證區塊-Root h2.gw-qa-headline {
+    flex: 2;
+    font-family: 'Iansui', 'Noto Sans TC', serif;
+    font-size: 2.5rem;
+    line-height: 1.4;
+    text-align: center;
+    color: #ffffff;
+    margin: 0; /* Reset browser default */
+    font-weight: normal;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: gwFadeUp-QA 0.8s ease-out 0.2s forwards;
+  }
+
+  @keyframes gwFadeUp-QA {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* --- Card Group --- */
+  #GW-金鍏電子台灣高規格LED燈具製造商-品質保證區塊-Root .gw-qa-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-width: 300px;
+  }
+
+  /* --- Individual Card --- */
+  #GW-金鍏電子台灣高規格LED燈具製造商-品質保證區塊-Root .gw-qa-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: default;
+    text-decoration: none;
+  }
+
+  #GW-金鍏電子台灣高規格LED燈具製造商-品質保證區塊-Root .gw-qa-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.25);
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  /* --- Icon --- */
+  #GW-金鍏電子台灣高規格LED燈具製造商-品質保證區塊-Root .gw-qa-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    line-height: 0;
+  }
+
+  #GW-金鍏電子台灣高規格LED燈具製造商-品質保證區塊-Root .gw-qa-icon img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  #GW-金鍏電子台灣高規格LED燈具製造商-品質保證區塊-Root .gw-qa-card:hover .gw-qa-icon img {
+    transform: scale(1.15);
+  }
+
+  /* --- Text & SEO Headings (H3) --- */
+  #GW-金鍏電子台灣高規格LED燈具製造商-品質保證區塊-Root .gw-qa-text {
+    font-size: 15px;
+    line-height: 1.5;
+    opacity: 0.95;
+    text-align: left;
+    color: #fff;
+  }
+
+  /* 針對 H3 標籤進行樣式重置與設定 */
+  #GW-金鍏電子台灣高規格LED燈具製造商-品質保證區塊-Root .gw-qa-text h3 {
+    font-weight: 700;
+    font-size: 1rem; /* 保持與原文字大小一致 */
+    margin: 0 0 2px 0;
+    padding: 0;
+    color: #fff;
+    display: block;
+  }
+
+  #GW-金鍏電子台灣高規格LED燈具製造商-品質保證區塊-Root .gw-qa-en {
+    font-size: 13px;
+    opacity: 0.8;
+    margin-top: 2px;
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 0.5px;
+  }
+
+  /* --- RWD --- */
+  @media (max-width: 1200px) {
+    #GW-金鍏電子台灣高規格LED燈具製造商-品質保證區塊-Root .gw-qa-block {
+      padding: 80px 40px;
     }
-    </script>
+  }
 
-    <script src="https://cdn.tailwindcss.com"></script>
+  @media (max-width: 900px) {
+    #GW-金鍏電子台灣高規格LED燈具製造商-品質保證區塊-Root .gw-qa-block {
+      flex-direction: column;
+      text-align: center;
+      padding: 60px 20px;
+    }
     
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Outfit:wght@400;500;700;900&display=swap" rel="stylesheet">
+    #GW-金鍏電子台灣高規格LED燈具製造商-品質保證區塊-Root h2.gw-qa-headline {
+      margin-bottom: 30px;
+      font-size: 2rem;
+      width: 100%;
+    }
     
-    <script src="https://unpkg.com/lucide@latest"></script>
+    #GW-金鍏電子台灣高規格LED燈具製造商-品質保證區塊-Root .gw-qa-group {
+      width: 100%;
+      max-width: 500px;
+      min-width: auto;
+    }
     
-    <style>
-        /* ==========================================
-           基礎建設與 Iframe 安全保險區
-           ========================================== */
-        html, body {
-            /* [強制] 建立捲軸雙重保險，防止 Iframe 內容被無情裁切 */
-            overflow-y: auto !important; 
-            /* [強制] 背景透明化，無痕融入宿主網頁 (如官網底色) */
-            background-color: transparent !important; 
-            margin: 0;
-            padding: 0;
-            font-family: 'Outfit', 'Noto Sans TC', sans-serif;
-        }
+    #GW-金鍏電子台灣高規格LED燈具製造商-品質保證區塊-Root .gw-qa-card {
+      width: 100%;
+    }
+  }
 
-        /* 輔助螢幕閱讀器之隱形文本層 */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
-        }
+  @media (max-width: 480px) {
+    #GW-金鍏電子台灣高規格LED燈具製造商-品質保證區塊-Root h2.gw-qa-headline {
+      font-size: 1.8rem;
+    }
+    #GW-金鍏電子台灣高規格LED燈具製造商-品質保證區塊-Root .gw-qa-block {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+</style>
+<div id="GW-金鍏電子台灣高規格LED燈具製造商-品質保證區塊-Root">
+<div class="gw-qa-block">
+<h2 class="gw-qa-headline gw-qa-z">燈具卓越之作<br />
+品質與工藝共襄盛名</h2>
 
-        /* ==========================================
-           動畫與視覺細節控制區
-           ========================================== */
-        .transition-lighting {
-            /* 調整過渡速度與曲線，控制燈光切換的滑順感 */
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+<div class="gw-qa-group gw-qa-z">
+<div class="gw-qa-card">
+<div class="gw-qa-icon"><img alt="台灣製造標章 MIT Logo - 金鍏電子" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/taiwan.png?v=ptelq5t" /></div>
 
-        /* --- 字體粗細與顏色調整區 (按鈕啟動狀態) --- */
-        /* 修改這裡可以改變按鈕被點擊後的品牌主色調 */
-        .btn-active-cct {
-            background-color: #0f172a !important;
-            border-color: #0f172a !important;
-            color: white !important;
-            font-weight: bold; 
-            box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.2);
-        }
-        .btn-active-output {
-            background-color: #0f6499 !important; /* 金鍏品牌藍 */
-            border-color: #25b3eb !important;
-            color: white !important;
-            font-weight: bold; 
-            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.2);
-        }
+<div class="gw-qa-text">
+<h3>台灣研發 生產製造</h3>
 
-        /* 隱藏左側面板的捲軸以維持美觀，但保留滾動功能 */
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+<div class="gw-qa-en">Taiwan researches, develops, and manufactures.</div>
+</div>
+</div>
 
-        /* 滑鼠發光效果 */
-        .mouse-glow-container { position: relative; overflow: hidden; }
-        #aside-glow {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(14, 233, 211, 0.1) 0%, transparent 90%);
-            border-radius: 50%;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            z-index: 0;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        aside:hover #aside-glow { opacity: 1; }
-        aside > div, aside > h1, aside > p, aside > h2 { position: relative; z-index: 10; }
-    </style>
-</head>
-<body class="text-slate-900">
+<div class="gw-qa-card">
+<div class="gw-qa-icon"><img alt="日本規格驅動器示意圖 - 符合日規標準" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/japan.png?v=vt32z2" /></div>
 
-    <div id="app-container" class="relative w-full h-auto lg:h-[750px] p-4 flex flex-col lg:flex-row mx-auto max-w-7xl">
-        
-        <aside class="w-full lg:w-[400px] h-auto lg:h-full p-6 lg:p-10 bg-white border border-slate-200 lg:border-r-0 rounded-t-2xl lg:rounded-t-none lg:rounded-l-2xl shadow-lg flex flex-col gap-6 z-20 overflow-y-auto no-scrollbar order-2 lg:order-1 mouse-glow-container">
-            <div id="aside-glow"></div>
+<div class="gw-qa-text">
+<h3>驅動器 日本規格</h3>
 
-            <header class="space-y-3 relative">
-                <h1 class="text-2xl lg:text-2xl font-black tracking-tight text-slate-800 leading-tight">
-                    調光控制器 / 智慧調光系統<span class="inline-flex items-center justify-center bg-blue-50 text-cyan-800 text-[12px] px-2 h-5 rounded-md border border-blue-100 ml-2 font-bold uppercase tracking-tight whitespace-nowrap align-middle mb-1">額外加購</span>
-                </h1>
-                <p class="text-slate-500 text-sm leading-relaxed">
-                    金鍏電子節能LED燈具搭配「智慧調光系統與控制器」能將傳統照明升級為具備主動感知與能源管理的綠色資產。從<strong>新世代辦公空間、大型停車場到多元智慧照明場域</strong>，透過亮度、色溫調節與人因照明設計，全面優化空間光效；更無縫整合群組控制、自動排程與即時用電監測。這不僅是一套能大幅降低維護成本的調光設備，更是為企業產出量化 ESG 減碳數據、驅動綠色資產升級的關鍵樞紐。
-                </p>
-            </header>
+<div class="gw-qa-en">Drivers compliant with Japanese specifications.</div>
+</div>
+</div>
 
-            <section class="space-y-8 flex-1 relative">
-                <div class="space-y-3">
-                    <h2 class="flex items-center gap-2 text-[14px] font-medium uppercase tracking-widest text-slate-400">
-                        <i data-lucide="thermometer" class="w-3 h-3"></i> 色溫選擇 (K)
-                    </h2>
-                    <div id="cct-container" class="grid grid-cols-3 lg:grid-cols-2 gap-2" role="group" aria-label="色溫選擇"></div>
-                </div>
+<div class="gw-qa-card">
+<div class="gw-qa-icon"><img alt="美國規格LED光源 - 符合美規標準" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/statue.png?v=2yzlwij" /></div>
 
-                <div class="space-y-3">
-                    <h2 class="flex items-center gap-2 text-[14px] font-medium uppercase tracking-widest text-slate-400">
-                        <i data-lucide="sun" class="w-3 h-3"></i> 光源輸出 (%)
-                    </h2>
-                    <div id="output-container" class="grid grid-cols-3 gap-2" role="group" aria-label="光源輸出選擇"></div>
-                </div>
-            </section>
+<div class="gw-qa-text">
+<h3>光源 美國規格</h3>
 
-            <div class="mt-auto p-6 rounded-xl bg-slate-50 border border-slate-200 shadow-inner relative z-10">
-                <div class="flex justify-between items-center mb-4">
-                    <span id="scene-title" class="text-sm font-normal uppercase tracking-widest transition-colors duration-500">正在初始化系統...</span>
-                    <div id="scene-dot" class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse transition-colors duration-500"></div>
-                </div>
-                
-                <div class="grid grid-cols-2 gap-4 mb-5">
-                    <div>
-                        <p class="text-[11px] text-slate-400 font-medium">當前色溫</p>
-                        <p class="text-3xl font-black transition-colors duration-500 flex items-baseline" id="cct-wrapper">
-                            <span id="display-cct">3000</span><span class="text-sm ml-1 text-slate-400 font-medium">K</span>
-                        </p>
-                    </div>
-                    <div class="text-right">
-                        <p class="text-[11px] text-slate-400 font-medium">光源輸出</p>
-                        <p class="text-3xl font-black text-slate-800 flex items-baseline justify-end">
-                            <span id="display-output">100</span><span class="text-sm ml-1 text-slate-400 font-medium">%</span>
-                        </p>
-                    </div>
-                </div>
+<div class="gw-qa-en">Light sources compliant with U.S. specifications.</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;family=Outfit:wght@400;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* --- Scope Root & Reset --- */
+  #GW-美國CREE高規格LED晶粒區塊-Root {
+    width: 100%;
+    display: block;
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+    font-family: 'Outfit', 'Noto Sans TC', "Microsoft JhengHei", sans-serif;
+  }
 
-                <div class="pt-4 border-t border-slate-200">
-                    <p id="scene-description" class="text-[13px] lg:text-sm text-slate-600 leading-relaxed">
-                        正在載入情境說明...
-                    </p>
-                </div>
-            </div>
-        </aside>
+  /* 強制所有子元素使用 border-box，防止全域跑版 */
+  #GW-美國CREE高規格LED晶粒區塊-Root *,
+  #GW-美國CREE高規格LED晶粒區塊-Root *::before,
+  #GW-美國CREE高規格LED晶粒區塊-Root *::after {
+    box-sizing: border-box;
+  }
 
-        <main class="flex-none lg:flex-1 h-[40vh] lg:h-full relative bg-slate-900 rounded-b-2xl lg:rounded-b-none lg:rounded-r-2xl shadow-lg overflow-hidden order-1 lg:order-2">
-            <div class="absolute inset-0 w-full h-full">
-                <img id="scene-image" src="https://cdn.jsdelivr.net/gh/TsenWu/goldenway-photos/otherphoto/office_scene.png" alt="金鍏電子辦公室智慧照明模擬場景" class="w-full h-full object-cover transition-lighting block" />
-                <div id="color-overlay" class="absolute inset-0 transition-lighting pointer-events-none" style="mix-blend-mode: soft-light;"></div>
-                <div class="absolute top-0 inset-x-0 h-1/3 bg-gradient-to-b from-white/30 to-transparent opacity-60 pointer-events-none"></div>
-            </div>
+  /* --- 主容器與變數定義 --- */
+  #GW-美國CREE高規格LED晶粒區塊-Root .gw-cree-block {
+    --hero-height: 650px;
+    --hero-bg-opacity: 0.9;
+    --gradient-angle: 45deg;
+    --title-gradient-stops: #000000, #848484, #000000;
+    
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
 
-            <div class="absolute inset-0 z-10 flex flex-col justify-end items-center p-6 lg:p-12 pointer-events-none">
-                <div class="inline-flex bg-white/80 backdrop-blur-md px-4 py-2 lg:px-6 lg:py-3 rounded-full border border-white/50 shadow-xl">
-                    <h3 class="text-xs lg:text-sm font-bold flex items-center gap-2 text-slate-800">
-                        <i data-lucide="maximize" class="w-4 h-4 text-blue-600"></i>
-                        色溫 & 光源 場景模擬
-                    </h3>
-                </div>
-            </div>
-            
-            <div class="absolute top-6 right-6 w-12 h-12 border-t-2 border-r-2 border-white/50 rounded-tr-xl pointer-events-none hidden lg:block"></div>
-        </main>
+  /* --- Hero 區塊結構 --- */
+  #GW-美國CREE高規格LED晶粒區塊-Root .gw-cree-hero {
+    position: relative;
+    width: 100%;
+    height: var(--hero-height);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 40px;
+    align-items: center;
+    z-index: 2;
+  }
 
-    </div>
+  /* 背景圖處理 (獨立控制透明度) */
+  #GW-美國CREE高規格LED晶粒區塊-Root .gw-cree-hero::before {
+    content: "";
+    position: absolute; 
+    inset: 0;
+    background: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/cree_led_01.png?v=f0x9gg4') center/cover no-repeat;
+    opacity: var(--hero-bg-opacity);
+    z-index: -1;
+  }
 
-    <script>
-        // 初始化 Icons
-        lucide.createIcons();
+  /* --- 專屬進場動畫 --- */
+  @keyframes gwCreeFadeUp-Cree {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
 
-        // 狀態與資料定義
-        const state = { cct: 3000, output: 100 };
-        const cctOptions = [3000, 4000, 5000, 5700, 6500];
-        const outputOptions = [50, 60, 70, 80, 90, 100];
+  /* --- 副標 (SEO: <p> 標籤) --- */
+  #GW-美國CREE高規格LED晶粒區塊-Root p.gw-cree-subtitle {
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(0,0,0,0.6);
+    animation: gwCreeFadeUp-Cree 0.8s ease-out 0.2s both;
+    letter-spacing: 1px;
+  }
 
-        const sceneDatabase = {
-            3000: {
-                title: '沉浸式迎賓與舒緩', label: '暖黃光', rgb: '203 , 111, 10', textColor: 'text-stone-700', dotColor: 'bg-amber-600',
-                description: '[暖黃光] 模擬黃昏自然光，有效降低腎上腺素分泌。消除冰冷疏離感，適用於企業大廳、茶水間或休憩區，營造溫馨且具層次感的迎賓氛圍，讓訪客與員工卸下壓力，舒緩放鬆。'
-            },
-            4000: {
-                title: '日間平衡與協作', label: '暖白光', rgb: '226, 159, 59', textColor: 'text-stone-700', dotColor: 'bg-amber-400',
-                description: '[暖白光] 平衡了清晰度與溫潤感，降低視覺壓力。避免長時間會議導致的眼部疲勞，最適合創意討論區與多功能會議室，在維持高專注度的同時，保持思維活躍，激發團隊協作潛力。'
-            },
-            5000: {
-                title: '標準化的高效行政', label: '自然白光', rgb: '242, 242, 242', textColor: 'text-stone-700', dotColor: 'bg-sky-400',
-                description: '[自然白光] 符合多數辦公規範的標準色溫，提供清晰穩定的視覺基底，解決環境光不足造成的作業錯誤率。專為開放式辦公區、行政中心設計，是提升日常行政效率與正確性的黃金基準。'
-            },
-            5700: {
-                title: '專業思維與冷靜判斷', label: '日光色', rgb: '215, 237, 255', textColor: 'text-stone-700', dotColor: 'bg-blue-500',
-                description: '[日光色] 模擬清晨高亮度自然採光，抑制退黑激素，改善「午後倦怠」現象。可透過智慧排程在早晨或午後自動切換，啟動員工生理時鐘動能，讓室內環境與自然節律無縫接軌。'
-            },
-            6500: {
-                title: '極致精密的專業視界', label: '冷白光', rgb: '154, 205, 255', textColor: 'text-stone-700', dotColor: 'bg-blue-800',
-                description: '[冷白光] 具備極高演色對比力與細節辨識度，降低在精密校對、品管或製圖時的細微視覺誤差。應用於設計工作室、打樣間或精密作業區，確保每一項專業產出皆精準無誤，體現企業對品質的嚴苛追求。'
-            }
-        };
+  /* --- 主標 (SEO: <h2> 標籤) --- */
+  #GW-美國CREE高規格LED晶粒區塊-Root h2.gw-cree-title {
+    margin: 8px 0 0;
+    padding: 0;
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.4;
+    
+    /* 漸層文字效果 */
+    background: linear-gradient(
+      var(--gradient-angle),
+      var(--title-gradient-stops)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 
-        // DOM 元素獲取
-        const aside = document.querySelector('aside');
-        const glow = document.getElementById('aside-glow');
-        const cctContainer = document.getElementById('cct-container');
-        const outputContainer = document.getElementById('output-container');
-        const sceneImage = document.getElementById('scene-image');
-        const colorOverlay = document.getElementById('color-overlay');
-        const displayCct = document.getElementById('display-cct');
-        const displayOutput = document.getElementById('display-output');
-        const sceneTitle = document.getElementById('scene-title');
-        const sceneDot = document.getElementById('scene-dot');
-        const sceneDesc = document.getElementById('scene-description');
-        const cctWrapper = document.getElementById('cct-wrapper');
+    /* 文字陰影保留 */
+    text-shadow: 2px 2px 4px rgba(44,44,44,0.0), -1px -1px 2px rgba(255,255,255,0.0);
+    animation: gwCreeFadeUp-Cree 0.8s ease-out 0.4s both;
+  }
 
-        // 滑鼠發光追蹤特效
-        aside.addEventListener('mousemove', (e) => {
-            const rect = aside.getBoundingClientRect();
-            glow.style.left = `${e.clientX - rect.left}px`;
-            glow.style.top = `${e.clientY - rect.top}px`;
-        });
+  /* --- 裝飾底線 --- */
+  #GW-美國CREE高規格LED晶粒區塊-Root .gw-cree-line {
+    margin-top: 16px;
+    width: 120px;
+    height: 4px;
+    background: rgba(0,0,0,0.6);
+    border-radius: 2px;
+    animation: gwCreeFadeUp-Cree 0.8s ease-out 0.6s both;
+  }
 
-        // 動態生成按鈕
-        cctOptions.forEach(val => {
-            const btn = document.createElement('button');
-            const isStandard = (val === 5000 || val === 5700);
-            
-            // [間距與排版控制] py-2 垂直內距，px-2 水平內距，rounded-lg 圓角設定
-            btn.className = `cct-btn py-2 lg:py-3 px-2 rounded-lg text-[14px] lg:text-sm transition-all border bg-white border-slate-200 text-slate-500 hover:border-slate-400 relative z-10 flex flex-col items-center justify-center leading-none focus:outline-none focus:ring-2 focus:ring-slate-300`;
-            btn.setAttribute('aria-pressed', state.cct === val);
-            
-            btn.innerHTML = `
-                <span class="font-medium tracking-wide">${val}K</span>
-                ${isStandard ? '<span class="text-[10px] mt-1 text-cyan-600 font-sans tracking-widest">▲標準品</span>' : ''}
-            `;
-            
-            btn.onclick = () => { state.cct = val; render(); };
-            btn.id = `cct-${val}`;
-            cctContainer.appendChild(btn);
-        });
+  /* --- RWD: Mobile --- */
+  @media (max-width: 768px) {
+    #GW-美國CREE高規格LED晶粒區塊-Root .gw-cree-hero {
+      height: calc(var(--hero-height) * 0.75);
+      padding-bottom: 20px;
+    }
+    #GW-美國CREE高規格LED晶粒區塊-Root p.gw-cree-subtitle { 
+      font-size: 15px; 
+      animation-delay: 0.1s; 
+    }
+    #GW-美國CREE高規格LED晶粒區塊-Root h2.gw-cree-title { 
+      font-size: 22px; 
+      animation-delay: 0.3s; 
+    }
+    #GW-美國CREE高規格LED晶粒區塊-Root .gw-cree-line {
+      width: 80px; 
+      height: 3px; 
+      margin-top: 12px;
+      animation-delay: 0.5s;
+    }
+  }
+</style>
+<div id="GW-美國CREE高規格LED晶粒區塊-Root">
+<div class="gw-cree-block">
+<div class="gw-cree-hero">
+<p class="gw-cree-subtitle">─ 細節成就質感・光影定義空間 ─</p>
 
-        outputOptions.forEach(val => {
-            const btn = document.createElement('button');
-            btn.innerHTML = `<span class="font-medium">${val}%</span>`;
-            
-            btn.className = `output-btn py-3 lg:py-4 px-2 rounded-lg text-[14px] lg:text-sm transition-all border bg-white border-slate-200 text-slate-500 hover:border-slate-400 relative z-10 focus:outline-none focus:ring-2 focus:ring-blue-300`; 
-            btn.setAttribute('aria-pressed', state.output === val);
-            
-            btn.onclick = () => { state.output = val; render(); };
-            btn.id = `output-${val}`;
-            outputContainer.appendChild(btn);
-        });
+<h2 class="gw-cree-title">無藍光・無頻閃<br />
+專業照明新標竿</h2>
 
-        // 核心渲染邏輯
-        function render() {
-            const data = sceneDatabase[state.cct];
-            
-            // 更新按鈕視覺狀態與無障礙屬性
-            document.querySelectorAll('.cct-btn').forEach(btn => {
-                const isActive = btn.id === `cct-${state.cct}`;
-                btn.classList.toggle('btn-active-cct', isActive);
-                btn.setAttribute('aria-pressed', isActive);
-            });
-            document.querySelectorAll('.output-btn').forEach(btn => {
-                const isActive = btn.id === `output-${state.output}`;
-                btn.classList.toggle('btn-active-output', isActive);
-                btn.setAttribute('aria-pressed', isActive);
-            });
+<div aria-hidden="true" class="gw-cree-line">&nbsp;</div>
+</div>
+</div>
+</div>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&amp;family=Outfit:wght@400;500;700;900&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* --- Scope Root & Reset --- */
+  #GW-WPL822結構創新材料嚴選區塊-Root {
+    background: #f5f7fa;
+    padding: 40px 20px;
+    font-family: 'Outfit', 'Noto Sans TC', "Microsoft JhengHei", sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
 
-            // 亮度計算邏輯
-            const brightness = 0.4 + (state.output / 100) * 0.6;
-            const opacity = (state.output / 100) * 0.85;
+  /* 強制所有子元素使用 border-box，防止全域跑版 */
+  #GW-WPL822結構創新材料嚴選區塊-Root *,
+  #GW-WPL822結構創新材料嚴選區塊-Root *::before,
+  #GW-WPL822結構創新材料嚴選區塊-Root *::after {
+    box-sizing: border-box;
+  }
 
-            // 影像濾鏡與覆蓋層更新
-            sceneImage.style.filter = `brightness(${brightness}) contrast(1.1)`;
-            colorOverlay.style.backgroundColor = `rgb(${data.rgb})`;
-            colorOverlay.style.opacity = opacity;
+  /* --- 抗污染防禦 (Anti-Pollution) --- */
+  #GW-WPL822結構創新材料嚴選區塊-Root p {
+    color: #00687f !important;
+    line-height: 1.6 !important;
+  }
+  
+  #GW-WPL822結構創新材料嚴選區塊-Root h2 {
+    color: #002b5c !important;
+    line-height: 1.4 !important;
+  }
 
-            // 文字與狀態更新
-            displayCct.textContent = state.cct;
-            displayOutput.textContent = state.output;
-            
-            sceneTitle.textContent = data.title;
-            sceneTitle.className = `text-sm font-bold uppercase tracking-widest transition-colors duration-500 ${data.textColor}`;
-            cctWrapper.className = `text-3xl font-black transition-colors duration-500 flex items-baseline ${data.textColor}`;
-            
-            sceneDot.className = `w-2 h-2 rounded-full animate-pulse transition-colors duration-500 ${data.dotColor}`;
-            sceneDesc.textContent = data.description;
-        }
+  #GW-WPL822結構創新材料嚴選區塊-Root h3 {
+    color: inherit !important;
+    line-height: 1.4 !important;
+  }
 
-        render();
+  /* --- 隱形提領區塊 (SEO/GEO) --- */
+  #GW-WPL822結構創新材料嚴選區塊-Root .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
 
-        /* ==========================================
-           Iframe 通訊協定 (雙重保險機制)
-           ========================================== */
-        // 持續監聽容器高度，若高度因 RWD 改變，自動通知宿主網頁調整 Iframe
-        if ('ResizeObserver' in window) {
-            const container = document.getElementById('app-container');
-            const observer = new ResizeObserver(entries => {
-                for (let entry of entries) {
-                    const height = entry.target.scrollHeight;
-                    window.parent.postMessage({
-                        type: 'iframe-resize',
-                        height: height
-                    }, '*');
-                }
-            });
-            observer.observe(container);
-        }
-    </script>
-</body>
-</html>
+  /* --- 佈局與視覺設計 --- */
+  #GW-WPL822結構創新材料嚴選區塊-Root .section-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    margin-top: 0 !important;
+    margin-bottom: 40px !important;
+  }
+
+  #GW-WPL822結構創新材料嚴選區塊-Root .card-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); 
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  #GW-WPL822結構創新材料嚴選區塊-Root .material-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 32px 24px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    text-align: center;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+  }
+
+  #GW-WPL822結構創新材料嚴選區塊-Root .material-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 28px rgba(0,43,92,0.12);
+  }
+
+  /* ?️ 關鍵修正 1：圖片自適應保護 */
+  #GW-WPL822結構創新材料嚴選區塊-Root .material-card img {
+    width: 100%;          /* ? 新增這行：強制圖片在空間不夠時縮小 */
+    max-width: 180px;     /* ? 從 200px 微調至 180px，保留卡片呼吸空間 */
+    height: auto;
+    margin: 0 auto 20px auto;
+    display: block;
+  }
+
+  #GW-WPL822結構創新材料嚴選區塊-Root .material-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #002b5c !important;
+    background: #e3ecf6;
+    padding: 8px 16px;
+    border-radius: 8px;
+    display: inline-block;
+    transition: all 0.3s ease;
+    margin-top: 0 !important;
+    margin-bottom: 16px !important;
+  }
+
+  #GW-WPL822結構創新材料嚴選區塊-Root .material-card:hover h3 {
+    background: #002b5c;
+    color: #fff !important;
+  }
+
+  #GW-WPL822結構創新材料嚴選區塊-Root .material-card p {
+    font-size: 15px;
+    margin: 0 !important;
+  }
+
+  /* --- RWD 響應式對稱斷點 --- */
+  
+  /* 平板與小尺寸筆電 (1199px以下)：維持 2 欄 (2x2)，絕對不跑版 */
+  @media (min-width: 768px) {
+    #GW-WPL822結構創新材料嚴選區塊-Root {
+      padding: 40px 40px;
+    }
+    #GW-WPL822結構創新材料嚴選區塊-Root .card-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* ?️ 關鍵修正 2：延後 4 欄啟動時機 */
+  /* 寬螢幕桌機：空間真正夠大時，才強制 4 欄 (4x1) */
+  @media (min-width: 1200px) { /* ? 從 1024px 改為 1200px */
+    #GW-WPL822結構創新材料嚴選區塊-Root .card-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  /* 特殊微調：手機版縮小 padding */
+  @media (max-width: 767px) {
+    #GW-WPL822結構創新材料嚴選區塊-Root {
+      padding: 40px 16px;
+    }
+    #GW-WPL822結構創新材料嚴選區塊-Root .section-title {
+      font-size: 22px;
+    }
+  }
+</style>
+<div id="GW-WPL822結構創新材料嚴選區塊-Root">
+<div class="sr-only">
+<h2>金鍏電子 (GoldenWay) - 結構創新與嚴選材料，締造高效節能照明新標竿</h2>
+
+<p>身為台灣優質照明品牌，<strong>金鍏電子</strong>透過四大結構創新與材料嚴選，將 <strong>MIT 製造品質</strong> 與 <strong>節能照明技術</strong> 完美結合，提供壽命更長、光效更佳的專業照明方案：</p>
+
+<ul>
+	<li><strong>燈具發光角度120度</strong>：擴大照明覆蓋率無死角，提升環境光均勻度並有效降低眩光，是打造舒適節能照明空間的核心。</li>
+	<li><strong>良好的機構設計 (金屬板散熱)</strong>：採用優質金屬板結構，展現 MIT 台灣製造 的扎實工藝，大幅提升散熱效果與 LED 燈具使用壽命。</li>
+	<li><strong>金鍏高效LED驅動器</strong>：金鍏電子自主研發，配備 PFC 主動功因與二級迴路設計，電源轉換效率大於 90%，為企業帶來實質的高效節能效益。</li>
+	<li><strong>光學級工程塑膠燈罩</strong>：具備高透光、高霧化特性，嚴控眩光指數，直視不刺眼，兼顧高光效與人眼舒適度。</li>
+</ul>
+</div>
+
+<h2 class="section-title">結構創新 &times; 嚴選材料 &mdash; 締造高效節能照明新標竿</h2>
+
+<div class="card-grid">
+<div class="material-card"><img alt="WPL822金鍏防水燈120度大發光角度示意圖" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/822/wpl822_lightangle.png?v=6ovpkus" title="金鍏節能照明 - 120度均勻發光無死角" />
+<h3>燈具發光角度120度</h3>
+
+<p>照明無死角，提升環境光均勻度，有效降低眩光。</p>
+</div>
+
+<div class="material-card"><img alt="WPL822金鍏防水燈LED晶粒與金屬板散熱結構示意圖" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/_b_heat-dissipation.png?v=8gs5wy" title="MIT 扎實工藝 - 優質金屬板高效散熱設計" />
+<h3>良好的機構設計</h3>
+
+<p>優質金屬板結構散熱佳，有效提升燈具使用壽命。</p>
+</div>
+
+<div class="material-card"><img alt="金鍏電子自主研發之高效LED電源驅動器" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/_c_led_driver.png?v=6mgvxy8" title="金鍏電子核心技術 - 高轉換效率驅動器" />
+<h3>金鍏高效LED驅動器</h3>
+
+<p>PFC主動功因 + 二級迴路設計，電源轉換效率&gt;90%。</p>
+</div>
+
+<div class="material-card"><img alt="WPL822金鍏防水燈光學級工程塑膠燈罩材質外觀" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/822/wpl822_lightcover.png?v=mg3o83" title="優質節能燈具材料 - 高透光低眩光燈罩" />
+<h3>光學級工程塑膠燈罩</h3>
+
+<p>高透光、高霧化特性，眩光指數小，直視不刺眼。</p>
+</div>
+</div>
+</div>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&amp;family=Outfit:wght@400;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* ==========================================================================
+   GW-WPL822金鍏防水燈高光效區塊-Root 核心防禦與排版鎖定
+   ========================================================================== */
+#GW-WPL822金鍏防水燈高光效區塊-Root {
+  --min-height-desktop: 650px;
+  --min-height-mobile: 500px;
+  --bg-image: url('https://cdn.jsdelivr.net/gh/TsenWu/goldenway-photos/WPL822/wpl822_01.png');
+
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+  background: var(--bg-image) center center / cover no-repeat;
+  margin: 0px 0;
+  overflow: hidden; 
+}
+
+#GW-WPL822金鍏防水燈高光效區塊-Root *,
+#GW-WPL822金鍏防水燈高光效區塊-Root *::before,
+#GW-WPL822金鍏防水燈高光效區塊-Root *::after {
+  box-sizing: border-box;
+}
+
+#GW-WPL822金鍏防水燈高光效區塊-Root .sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;
+}
+
+/* ==========================================================================
+   漸層護罩 (平滑過渡修正版：去除死硬邊界，使用純 rgba 透明確保不發灰)
+   ========================================================================== */
+#GW-WPL822金鍏防水燈高光效區塊-Root::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  /* ? 桌機版：從 65% 黑緩步遞減至 0，將褪色點拉長至 80%，讓過渡如絲般滑順 */
+  background: linear-gradient(to right, rgba(20, 20, 20, 0.2) 0%, rgba(20, 20, 20, 0.1) 40%, rgba(20, 20, 20, 0) 80%);
+  z-index: 1;
+}
+
+/* ==========================================================================
+   排版容器與文字內容區
+   ========================================================================== */
+#GW-WPL822金鍏防水燈高光效區塊-Root .gw-container {
+  position: relative;
+  z-index: 2; 
+  padding: 80px 8%; 
+  min-height: var(--min-height-desktop);
+  display: flex;
+  align-items: center; 
+}
+
+#GW-WPL822金鍏防水燈高光效區塊-Root .gw-content {
+  max-width: 600px; 
+}
+
+#GW-WPL822金鍏防水燈高光效區塊-Root .gw-content h2 {
+  color: #ffffff !important; 
+  font-size: 36px !important;
+  font-weight: 700 !important;
+  letter-spacing: 2px !important;
+  margin: 0 0 24px 0 !important;
+  line-height: 1.3 !important;
+  /* 雙重陰影完美保留 */
+  text-shadow: 0 2px 12px rgba(0,0,0,0.8), 0 0 6px rgba(0,0,0,0.6) !important;
+}
+
+/* ==========================================================================
+   ? 高光效發光互動框 (Golden Glow Effect)
+   ========================================================================== */
+#GW-WPL822金鍏防水燈高光效區塊-Root .gw-highlight-box {
+  display: inline-block;
+  border: 1.5px solid #ffffff; 
+  padding: 12px 24px;
+  border-radius: 4px;
+  margin-bottom: 50px; 
+  font-size: 26px !important;
+  color: #ffffff !important;
+  font-weight: 500 !important;
+  letter-spacing: 1.5px !important;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: default;
+  background: rgba(0, 0, 0, 0.2); 
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.7) !important;
+}
+
+#GW-WPL822金鍏防水燈高光效區塊-Root .gw-highlight-box .gw-yellow {
+  color: #ffd700 !important; 
+  font-weight: 700 !important;
+  transition: text-shadow 0.4s ease;
+}
+
+#GW-WPL822金鍏防水燈高光效區塊-Root .gw-highlight-box:hover {
+  border-color: #ffd700; 
+  transform: translateY(-4px) scale(1.02); 
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.6), 
+              0 0 30px rgba(255, 215, 0, 0.3), 
+              inset 0 0 15px rgba(255, 215, 0, 0.2);
+  background: rgba(20, 20, 0, 0.4);
+}
+
+#GW-WPL822金鍏防水燈高光效區塊-Root .gw-highlight-box:hover .gw-yellow {
+  text-shadow: 0 0 12px rgba(255, 215, 0, 0.8) !important;
+}
+
+/* ==========================================================================
+   條列說明區域 
+   ========================================================================== */
+#GW-WPL822金鍏防水燈高光效區塊-Root .gw-feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px; 
+}
+
+#GW-WPL822金鍏防水燈高光效區塊-Root .gw-feature-item h3 {
+  color: #ffffff !important;
+  font-size: 18px !important;
+  font-weight: 700 !important; 
+  margin: 0 0 8px 0 !important;
+  letter-spacing: 1px !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.9), 0 0 4px rgba(0,0,0,0.7) !important;
+}
+
+#GW-WPL822金鍏防水燈高光效區塊-Root .gw-feature-item p {
+  position: relative;
+  padding-left: 14px !important; 
+  margin: 0 !important;
+  color: #ffffff !important; 
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  letter-spacing: 0.5px !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.9), 0 0 4px rgba(0,0,0,0.7) !important;
+}
+
+#GW-WPL822金鍏防水燈高光效區塊-Root .gw-feature-item p::before {
+  content: "•"; 
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #ffffff !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.9) !important; 
+}
+
+/* ==========================================================================
+   RWD 高度與斷點控制 (平板與手機版漸層平滑修正)
+   ========================================================================== */
+@media (max-width: 900px) {
+  #GW-WPL822金鍏防水燈高光效區塊-Root::before {
+    /* ? 平板版：平滑遞減，杜絕 80% 處的黑線斷層 */
+    background: linear-gradient(to right, rgba(20, 20, 20, 0.3) 0%, rgba(20, 20, 20, 0.2) 50%, rgba(20, 20, 20, 0) 100%);
+  }
+}
+
+@media (max-width: 768px) {
+  #GW-WPL822金鍏防水燈高光效區塊-Root::before {
+    /* ? 手機版：由上到下平滑過渡，最後以透明收尾 */
+    background: linear-gradient(to bottom, rgba(20, 20, 20, 0.6) 0%, rgba(20, 20, 20, 0.3) 50%, rgba(20, 20, 20, 0) 100%);
+  }
+  
+  #GW-WPL822金鍏防水燈高光效區塊-Root .gw-container {
+    padding: 50px 20px;
+    min-height: var(--min-height-mobile);
+    align-items: flex-start; 
+  }
+
+  #GW-WPL822金鍏防水燈高光效區塊-Root .gw-content h2 {
+    font-size: 28px !important;
+  }
+
+  #GW-WPL822金鍏防水燈高光效區塊-Root .gw-highlight-box {
+    font-size: 20px !important;
+    padding: 10px 16px;
+    margin-bottom: 40px;
+  }
+
+  #GW-WPL822金鍏防水燈高光效區塊-Root .gw-feature-item h3 {
+    font-size: 16px !important;
+  }
+  
+  #GW-WPL822金鍏防水燈高光效區塊-Root .gw-feature-item p {
+    font-size: 14px !important;
+  }
+}
+</style>
+<div id="GW-WPL822金鍏防水燈高光效區塊-Root">
+<div class="sr-only">
+<h2>金鍏 WPL-822 防水燈：極限防護與超高光效節能方案</h2>
+
+<h3>防水抗鹽霧 IP66 零死角防禦，發光效率可達 130 lm/W</h3>
+
+<p>針對嚴苛環境設計，金鍏電子 WPL-822 防水燈具備 IP66 一體成型無縫防禦，通過嚴格鹽霧測試徹底杜絕漏水短路。其超高光效可達 130 lm/W，替企業激省 60% 耗電量，精準對接 ESG 減碳指標。燈罩採用抗 UV 材質恆久不泛黃，並提供業界最長 5 年保固，實現免維護體驗，省下高昂維護及換修費用。</p>
+</div>
+
+<div class="gw-container">
+<div class="gw-content">
+<h2>極限防護 防水抗鹽霧</h2>
+
+<div class="gw-highlight-box">超高光效 可達 <span class="gw-yellow">130 lm/W</span></div>
+
+<div class="gw-feature-list">
+<div class="gw-feature-item">
+<h3>IP66 防塵防水無死角：</h3>
+
+<p>一體成型無縫設計，通過嚴苛鹽霧測試，徹底杜絕漏水短路。</p>
+</div>
+
+<div class="gw-feature-item">
+<h3>激省 60% 耗電量：</h3>
+
+<p>高光效真節能，降低營運電費，精準對接企業 ESG 減碳指標。</p>
+</div>
+
+<div class="gw-feature-item">
+<h3>抗 UV 恆久不泛黃：</h3>
+
+<p>嚴選高透光材質，無懼極端環境，長效維持最高照明品質。</p>
+</div>
+
+<div class="gw-feature-item">
+<h3>業界最長 5 年保固：</h3>
+
+<p>實現「安裝即忘記」的免維護體驗，省下高昂維護及換修費用。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700&amp;family=Outfit:wght@400;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* ==========================================
+     ↓↓↓ RWD 網格間距與佈局微調區 ↓↓↓ 
+     ========================================== */
+  /* 預設：電腦版 (4欄) */
+  #GW-WPL822金鍏防水燈四功能卡區塊-Root .gw-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4等分 */
+    gap: 24px; /* 卡片之間的上下左右間距 */
+  }
+
+  /* 斷點 1：平板與小筆電 (改為 2欄，田字佈局) */
+  @media (max-width: 1024px) {
+    #GW-WPL822金鍏防水燈四功能卡區塊-Root .gw-feature-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+  }
+
+  /* 斷點 2：手機版 (改為單欄，垂直堆疊) */
+  @media (max-width: 768px) {
+    #GW-WPL822金鍏防水燈四功能卡區塊-Root .gw-feature-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+  /* ==========================================
+     ↑↑↑ 微調區結束 ↑↑↑ 
+     ========================================== */
+
+  /* --- Scope Root & Reset --- */
+  #GW-WPL822金鍏防水燈四功能卡區塊-Root {
+    width: 100%;
+    display: block;
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+    font-family: 'Outfit', 'Noto Sans TC', "Microsoft JhengHei", sans-serif;
+    padding: 20px 0; /* 區塊外層預留一些呼吸空間 */
+  }
+
+  #GW-WPL822金鍏防水燈四功能卡區塊-Root *,
+  #GW-WPL822金鍏防水燈四功能卡區塊-Root *::before,
+  #GW-WPL822金鍏防水燈四功能卡區塊-Root *::after {
+    box-sizing: border-box;
+  }
+
+  /* --- SEO 隱形提領區 --- */
+  #GW-WPL822金鍏防水燈四功能卡區塊-Root .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;
+  }
+
+  /* --- 卡片主體 --- */
+  #GW-WPL822金鍏防水燈四功能卡區塊-Root .gw-card {
+    background: rgba(169, 188, 205, 0.05); /* 原本的橄欖綠底色 */
+    border: 1px solid #517f84;
+    border-radius: 12px;
+    padding: 32px 24px; /* 稍微加大內距讓畫面更透氣 */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  #GW-WPL822金鍏防水燈四功能卡區塊-Root .gw-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(122,132,81,0.15); /* 陰影加上一點主色調會更有質感 */
+    background: rgba(169, 188, 205, 0.1);
+  }
+
+  /* --- Icon 設定 --- */
+  #GW-WPL822金鍏防水燈四功能卡區塊-Root .gw-card img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    margin-bottom: 20px;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  
+  #GW-WPL822金鍏防水燈四功能卡區塊-Root .gw-card:hover img {
+    transform: scale(1.1); /* Hover時圖示微幅放大增加互動感 */
+  }
+
+  /* --- 標題 (SEO: H3) + 絕對防禦 --- */
+  #GW-WPL822金鍏防水燈四功能卡區塊-Root .gw-card h3 {
+    margin: 0 0 12px 0;
+    font-size: 19px;
+    font-weight: 700;
+    color: #000000 !important; /* 強制覆蓋 */
+    line-height: 1.4;
+  }
+
+  /* --- 內文 (SEO: P) + 絕對防禦 --- */
+  #GW-WPL822金鍏防水燈四功能卡區塊-Root .gw-card p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #555555 !important; /* 強制覆蓋，稍微加深一點點提升閱讀性 */
+    opacity: 1 !important;     /* 防止前台套用透明度 */
+  }
+</style>
+<div id="GW-WPL822金鍏防水燈四功能卡區塊-Root">
+<div class="sr-only">
+<h2>金鍏電子 WPL822 防水燈 四大核心優勢</h2>
+
+<p>我們致力於提供最優質的台灣製造照明設備，具備以下四大認證與特色：</p>
+
+<ul>
+	<li>節能省電：大幅省下電費，縮短成本回收期。</li>
+	<li>BSMI 認證：產品具備 10 萬小時超長耐用年限。</li>
+	<li>CNS 國家標準檢測：無藍光、無頻閃，保護使用者視力。</li>
+	<li>MIT 台灣製造：在地研發生產，品質保證。</li>
+</ul>
+</div>
+
+<div class="gw-feature-grid">
+<div class="gw-card"><img alt="超節能低電費 - 金鍏電子高效能照明" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/power-meter.png?v=7a6w0gj" />
+<h3>節能省電</h3>
+
+<p>省下電費達 50-60%<br />
+很快可回收燈具成本還省下更多電費</p>
+</div>
+
+<div class="gw-card"><img alt="BSMI 經濟部標準檢驗局認證 - 超長耐用年限" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/5acba6da902e8056.png?v=j7rn8xn" />
+<h3>BSMI 認證</h3>
+
+<p>產品耐用年限 60,000小時<br />
+一盞高品質燈具光源壽命可超過 10 年</p>
+</div>
+
+<div class="gw-card"><img alt="國家標準 CNS 檢測通過 - 無藍光無頻閃" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/b3c75efa65208e9e.png?v=91uc2t" />
+<h3>國家標準 CNS檢測</h3>
+
+<p>無藍光、無頻閃、低光衰<br />
+不造成眼睛危害、不易視覺疲勞</p>
+</div>
+
+<div class="gw-card"><img alt="MIT 台灣製造微笑標章 - 金鍏電子在地研發生產" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/ef6c8577ac6ae0da.png?v=rxb6y5" />
+<h3>MIT 台灣製造</h3>
+
+<p>台灣研發生產製造<br />
+超高品質保障使用安全</p>
+</div>
+</div>
+</div>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&amp;family=Outfit:wght@400;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* ==========================================================================
+   GW-WPL822防塵防水鹽水噴霧區塊-Root 核心防禦與排版鎖定
+   ========================================================================== */
+#GW-WPL822防塵防水鹽水噴霧區塊-Root {
+  /* ? 區塊的最小高度，可依據背景圖比例微調 */
+  --min-height-desktop: 700px;
+  --min-height-mobile: 500px;
+  /* ? 替換為您的水花四濺背景圖網址 */
+  --bg-image: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/822/wpl-822_bg02.jpg?v=3ltavib');
+
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+  background: #050505 var(--bg-image) center center / cover no-repeat;
+  margin: 0px 0px 20px 0px;
+  overflow: hidden; 
+}
+
+#GW-WPL822防塵防水鹽水噴霧區塊-Root *,
+#GW-WPL822防塵防水鹽水噴霧區塊-Root *::before,
+#GW-WPL822防塵防水鹽水噴霧區塊-Root *::after {
+  box-sizing: border-box;
+}
+
+/* 隱形提領區塊：強制植入高價值 SEO 關鍵字 */
+#GW-WPL822防塵防水鹽水噴霧區塊-Root .sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;
+}
+
+/* ==========================================================================
+   ?️ 純 SVG/CSS 微落塵視差特效 (免疫 CMS 變形)
+   ========================================================================== */
+#GW-WPL822防塵防水鹽水噴霧區塊-Root .gw-dust-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none; /* 滑鼠穿透 */
+  z-index: 1;
+  overflow: hidden;
+}
+
+#GW-WPL822防塵防水鹽水噴霧區塊-Root .gw-dust-layer {
+  position: absolute;
+  top: -100%; left: -50%; width: 200%; height: 300%;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* ?️ 灰塵層 1 (較大顆粒，移動較快，模擬近景) */
+#GW-WPL822防塵防水鹽水噴霧區塊-Root .gw-dust-layer-1 {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cpattern id='d1' width='250' height='250' patternUnits='userSpaceOnUse'%3E%3Ccircle cx='50' cy='50' r='1.5' fill='rgba(255,255,255,0.4)'/%3E%3Ccircle cx='180' cy='120' r='2' fill='rgba(255,255,255,0.25)'/%3E%3Ccircle cx='90' cy='200' r='1' fill='rgba(255,255,255,0.3)'/%3E%3C/pattern%3E%3Crect width='100%25' height='100%25' fill='url(%23d1)'/%3E%3C/svg%3E") !important;
+  background-size: 250px 250px !important;
+  animation: gw-dust-drift-1 15s linear infinite !important; /* ? 15s 控制近景灰塵落下速度 */
+}
+
+/* ?️ 灰塵層 2 (極小顆粒，移動極慢，模擬遠景與空氣感) */
+#GW-WPL822防塵防水鹽水噴霧區塊-Root .gw-dust-layer-2 {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cpattern id='d2' width='150' height='150' patternUnits='userSpaceOnUse'%3E%3Ccircle cx='30' cy='20' r='0.8' fill='rgba(255,255,255,0.15)'/%3E%3Ccircle cx='110' cy='80' r='0.5' fill='rgba(255,255,255,0.2)'/%3E%3Ccircle cx='70' cy='130' r='1' fill='rgba(255,255,255,0.1)'/%3E%3C/pattern%3E%3Crect width='100%25' height='100%25' fill='url(%23d2)'/%3E%3C/svg%3E") !important;
+  background-size: 150px 150px !important;
+  animation: gw-dust-drift-2 25s linear infinite !important; /* ? 25s 控制遠景灰塵落下速度 */
+}
+
+/* 飄落軌跡：稍微帶點斜角，模擬氣流 */
+@keyframes gw-dust-drift-1 {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(125px, 500px); } /* 確保與 background-size 成比例達成無縫 */
+}
+@keyframes gw-dust-drift-2 {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-75px, 450px); }
+}
+
+/* ==========================================================================
+   排版容器 (CSS Grid 分隔左側留白與右側資訊)
+   ========================================================================== */
+#GW-WPL822防塵防水鹽水噴霧區塊-Root .gw-container {
+  position: relative;
+  z-index: 2; /* 確保面板在灰塵之上 */
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* ? 桌機版：左側放空，右側放文字面板 */
+  align-items: center;
+  padding: 60px 8%; 
+  min-height: var(--min-height-desktop);
+}
+
+/* ==========================================================================
+   右側：雙核心數據面板 (Glassmorphism 科技面板)
+   ========================================================================== */
+#GW-WPL822防塵防水鹽水噴霧區塊-Root .gw-data-panel {
+  grid-column: 2 / 3; /* ? 強制放在右側欄位 */
+  background: rgba(15, 20, 25, 0.25); /* ? 面板底色，深灰帶微透 */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15); /* 微光邊框 */
+  border-radius: 16px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* ? 兩個數據區塊之間的距離 */
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease;
+}
+
+#GW-WPL822防塵防水鹽水噴霧區塊-Root .gw-data-panel:hover {
+  transform: translateY(-10px); /* 面板懸浮微動 */
+}
+
+/* 單個數據亮點框佈局 */
+#GW-WPL822防塵防水鹽水噴霧區塊-Root .gw-metric-box {
+  display: flex;
+  align-items: center;
+  gap: 24px; /* ? 數字與右側說明的距離 */
+}
+
+/* 數據框下方加入分隔線 */
+#GW-WPL822防塵防水鹽水噴霧區塊-Root .gw-metric-box:first-child {
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 左側巨大數據文字 (強調 IP66 與 360hrs) */
+#GW-WPL822防塵防水鹽水噴霧區塊-Root .gw-metric-value {
+  flex-shrink: 0; /* 防止數字被擠壓 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 120px; /* ? 數據方塊的固定寬度 */
+  height: 100px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: #4da6ff !important; /* ? 數據的科技藍色 */
+  font-size: 38px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  text-shadow: 0 0 15px rgba(77, 166, 255, 0.4) !important; /* 數據發光感 */
+}
+
+/* 單位小字 (hrs) */
+#GW-WPL822防塵防水鹽水噴霧區塊-Root .gw-metric-value span.gw-unit {
+  font-size: 16px !important;
+  color: #a0c8e0 !important;
+  font-weight: 400 !important;
+  margin-top: 6px !important;
+  letter-spacing: 1px !important;
+  text-shadow: none !important;
+}
+
+/* 右側詳細說明文字 */
+#GW-WPL822防塵防水鹽水噴霧區塊-Root .gw-metric-desc {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#GW-WPL822防塵防水鹽水噴霧區塊-Root .gw-metric-desc h3 {
+  color: #ffffff !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  margin: 0 !important;
+  letter-spacing: 1px !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8) !important; /* 雙重文字防護陰影 */
+}
+
+#GW-WPL822防塵防水鹽水噴霧區塊-Root .gw-metric-desc p {
+  color: #d1d5db !important; /* ? 說明文字使用淺灰銀色 */
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  margin: 0 !important;
+  letter-spacing: 0.5px !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8) !important; 
+}
+
+/* ==========================================================================
+   RWD 高度與斷點控制 (平板與手機版)
+   ========================================================================== */
+@media (max-width: 900px) {
+  #GW-WPL822防塵防水鹽水噴霧區塊-Root .gw-container {
+    grid-template-columns: 1fr; /* 平板改為單欄 */
+    justify-items: end; /* 面板靠右 */
+  }
+  #GW-WPL822防塵防水鹽水噴霧區塊-Root .gw-data-panel {
+    grid-column: 1 / -1;
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  #GW-WPL822防塵防水鹽水噴霧區塊-Root .gw-container {
+    padding: 40px 20px;
+    align-items: flex-end; /* 手機版面板靠下對齊 */
+    min-height: var(--min-height-mobile);
+  }
+  
+  #GW-WPL822防塵防水鹽水噴霧區塊-Root .gw-data-panel {
+    max-width: 100%;
+    padding: 30px 20px;
+    background: rgba(10, 15, 20, 0.75); /* 手機版底色稍微加深確保對比 */
+  }
+
+  /* 手機版縮小數據方塊 */
+  #GW-WPL822防塵防水鹽水噴霧區塊-Root .gw-metric-box {
+    gap: 16px;
+  }
+  
+  #GW-WPL822防塵防水鹽水噴霧區塊-Root .gw-metric-value {
+    width: 90px;
+    height: 80px;
+    font-size: 28px !important;
+  }
+
+  #GW-WPL822防塵防水鹽水噴霧區塊-Root .gw-metric-desc h3 {
+    font-size: 18px !important;
+  }
+  
+  #GW-WPL822防塵防水鹽水噴霧區塊-Root .gw-metric-desc p {
+    font-size: 14px !important;
+  }
+}
+</style>
+<div id="GW-WPL822防塵防水鹽水噴霧區塊-Root">
+<div class="sr-only">
+<h2>金鍏電子 WPL-822 防水燈：IP66 極致防塵防水與 CNS 8886 抗鹽霧測試</h2>
+
+<h3>雙重極限驗證，航海與惡劣工業環境的照明首選</h3>
+
+<p>金鍏電子 WPL-822 防水燈具備 IP66 等級的零死角防禦，能完全防止灰塵侵入，無懼高壓水柱的狂暴噴射。更重要的是，本產品通過嚴苛的 CNS 8886 鹽水噴霧試驗法長達 360 小時，具備卓越的抗鹽抗腐蝕能力，是海港、觀光渡輪及重工業酸鹼廠房最可靠的長效照明方案。</p>
+</div>
+
+<div class="gw-dust-overlay">
+<div class="gw-dust-layer gw-dust-layer-1">&nbsp;</div>
+
+<div class="gw-dust-layer gw-dust-layer-2">&nbsp;</div>
+</div>
+
+<div class="gw-container">
+<div class="gw-data-panel">
+<div class="gw-metric-box">
+<div class="gw-metric-value">IP66</div>
+
+<div class="gw-metric-desc">
+<h3>極致防塵防水</h3>
+
+<p>完全防止灰塵侵入，無懼高壓水柱狂暴噴射，守護核心組件。</p>
+</div>
+</div>
+
+<div class="gw-metric-box">
+<div class="gw-metric-value">360<span class="gw-unit">hrs</span></div>
+
+<div class="gw-metric-desc">
+<h3>CNS 8886 鹽水噴霧</h3>
+
+<p>通過嚴苛鹽霧試驗，抗鹽抗腐蝕，航海與高腐蝕性工業首選。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;family=Outfit:wght@400;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* ==========================================================================
+   GW-WPL822防水燈本體燈罩一體成形區塊 - 核心防禦與排版鎖定
+   ========================================================================== */
+#GW-WPL822防水燈本體燈罩一體成形區塊-Root {
+  --min-height-desktop: 700px;
+  --min-height-mobile: 600px;
+  --bg-image: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/822/wpl-822_bg03.jpg?v=i53go49');
+
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+  background: var(--bg-image) center center / cover no-repeat;
+  overflow: hidden; 
+}
+
+#GW-WPL822防水燈本體燈罩一體成形區塊-Root *,
+#GW-WPL822防水燈本體燈罩一體成形區塊-Root *::before,
+#GW-WPL822防水燈本體燈罩一體成形區塊-Root *::after {
+  box-sizing: border-box;
+}
+
+#GW-WPL822防水燈本體燈罩一體成形區塊-Root .sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;
+}
+
+/* ==========================================================================
+   ?️ 終極防護：純 SVG 向量矩陣雨絲 (免疫 CMS 任何拉伸污染)
+   ========================================================================== */
+#GW-WPL822防水燈本體燈罩一體成形區塊-Root .gw-weather-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  overflow: hidden;
+  pointer-events: none; 
+  z-index: 1;
+}
+
+#GW-WPL822防水燈本體燈罩一體成形區塊-Root .gw-rain-layer {
+  position: absolute;
+  top: -100%; left: -50%; width: 200%; height: 300%;
+  pointer-events: none;
+  will-change: transform; 
+}
+
+#GW-WPL822防水燈本體燈罩一體成形區塊-Root .gw-rain-layer-1 {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cpattern id='r1' width='200' height='250' patternUnits='userSpaceOnUse'%3E%3Crect x='40' y='0' width='1.5' height='80' fill='rgba(255,255,255,0.25)'/%3E%3Crect x='140' y='100' width='1' height='60' fill='rgba(255,255,255,0.15)'/%3E%3C/pattern%3E%3Crect width='100%25' height='100%25' fill='url(%23r1)'/%3E%3C/svg%3E") !important;
+  background-size: 100% 100% !important;
+  animation: gw-rain-fall-1 0.3s linear infinite !important; 
+}
+
+#GW-WPL822防水燈本體燈罩一體成形區塊-Root .gw-rain-layer-2 {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cpattern id='r2' width='300' height='350' patternUnits='userSpaceOnUse'%3E%3Crect x='80' y='50' width='1' height='100' fill='rgba(255,255,255,0.1)'/%3E%3Crect x='220' y='180' width='1' height='80' fill='rgba(255,255,255,0.05)'/%3E%3C/pattern%3E%3Crect width='100%25' height='100%25' fill='url(%23r2)'/%3E%3C/svg%3E") !important;
+  background-size: 100% 100% !important;
+  animation: gw-rain-fall-2 1.2s linear infinite !important;
+}
+
+@keyframes gw-rain-fall-1 {
+  0% { transform: rotate(15deg) translateY(0); }
+  100% { transform: rotate(15deg) translateY(250px); } 
+}
+
+@keyframes gw-rain-fall-2 {
+  0% { transform: rotate(15deg) translateY(0); }
+  100% { transform: rotate(15deg) translateY(350px); } 
+}
+
+/* ==========================================================================
+   主容器佈局
+   ========================================================================== */
+#GW-WPL822防水燈本體燈罩一體成形區塊-Root .gw-container {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr; 
+  gap: 40px; 
+  align-items: center;
+  padding: 60px 8%; 
+  min-height: var(--min-height-desktop);
+  position: relative;
+  z-index: 2; 
+}
+
+/* ==========================================================================
+   左側圖片與水滴特效區塊
+   ========================================================================== */
+#GW-WPL822防水燈本體燈罩一體成形區塊-Root .gw-image-area {
+  position: relative;
+  width: 100%;
+  max-width: 650px; 
+  margin: 0 auto;
+}
+
+#GW-WPL822防水燈本體燈罩一體成形區塊-Root .gw-image-area img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+#GW-WPL822防水燈本體燈罩一體成形區塊-Root .gw-water-drop {
+  position: absolute;
+  top: 90%;  
+  left: 15%; 
+  width: 130px;  
+  height: 130px; 
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(220, 240, 255, 0.85) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: inset 10px 10px 20px rgba(255,255,255,0.8), 
+              0 15px 25px rgba(0, 80, 150, 0.15); 
+  z-index: 3;
+  will-change: border-radius, transform; 
+  animation: gw-water-morph 6s ease-in-out infinite, gw-float 4s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+
+#GW-WPL822防水燈本體燈罩一體成形區塊-Root .gw-water-drop:hover {
+  transform: translate(-50%, -50%) scale(1.08) !important; 
+  animation-play-state: paused;
+  cursor: default;
+}
+
+#GW-WPL822防水燈本體燈罩一體成形區塊-Root .gw-water-drop span {
+  font-size: 16px !important; 
+  font-weight: 700 !important;
+  color: #004d80 !important;  
+  line-height: 1.4 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* ==========================================================================
+   右側毛玻璃資訊卡 
+   ========================================================================== */
+#GW-WPL822防水燈本體燈罩一體成形區塊-Root .gw-info-card {
+  background: rgba(255, 255, 255, 0.55); 
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5); 
+  border-radius: 20px; 
+  padding: 50px 40px;  
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#GW-WPL822防水燈本體燈罩一體成形區塊-Root .gw-info-card:hover {
+  transform: translateY(-8px); 
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.15);
+}
+
+#GW-WPL822防水燈本體燈罩一體成形區塊-Root .gw-info-card h3 {
+  background: #1a1a1a; 
+  color: #ffffff !important; 
+  font-size: 26px !important; 
+  font-weight: 700 !important;
+  padding: 10px 20px !important;
+  border-radius: 8px !important;
+  display: inline-block !important;
+  margin: 0 0 24px 0 !important;
+  line-height: 1.3 !important;
+  letter-spacing: 1px !important;
+}
+
+#GW-WPL822防水燈本體燈罩一體成形區塊-Root .gw-info-card ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+#GW-WPL822防水燈本體燈罩一體成形區塊-Root .gw-info-card li {
+  position: relative;
+  padding-left: 28px !important; /* ? 增加一點左側留白給 SVG 圖示 */
+  margin-bottom: 16px !important;
+}
+
+/* ? 核心修正：改用純 SVG 向量水滴，徹底免疫編碼遺失與跨平台差異 ? */
+#GW-WPL822防水燈本體燈罩一體成形區塊-Root .gw-info-card li::before {
+  content: "" !important; /* 清除原本的 Emoji */
+  position: absolute;
+  left: 0;
+  top: 4px; /* 對齊文字高度 */
+  width: 18px !important;
+  height: 18px !important;
+  /* V4.0 極致優化版 SVG Data URI */
+  background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3ClinearGradient id='g1'%3E%3Cstop offset='0' stop-color='%2399e6fc'/%3E%3Cstop offset='.1325' stop-color='%238ee1fb'/%3E%3Cstop offset='.3627' stop-color='%2371d5f9'/%3E%3Cstop offset='.6631' stop-color='%2343c2f5'/%3E%3Cstop offset='1' stop-color='%2308a9f1'/%3E%3C/linearGradient%3E%3ClinearGradient id='g2' gradientTransform='matrix(1 0 0 -1 0 514)' gradientUnits='userSpaceOnUse' x1='23.448' x2='80.778' xlink:href='%23g1' y1='382.869' y2='325.539'/%3E%3ClinearGradient id='g3'%3E%3Cstop offset='0' stop-color='%230593fc' stop-opacity='0'/%3E%3Cstop offset='.1006' stop-color='%230492fc' stop-opacity='.021'/%3E%3Cstop offset='.2252' stop-color='%230491fc' stop-opacity='.082'/%3E%3Cstop offset='.3626' stop-color='%23048ffc' stop-opacity='.182'/%3E%3Cstop offset='.5092' stop-color='%23038dfc' stop-opacity='.322'/%3E%3Cstop offset='.6631' stop-color='%23028afc' stop-opacity='.501'/%3E%3Cstop offset='.8232' stop-color='%230286fc' stop-opacity='.721'/%3E%3Cstop offset='.9854' stop-color='%230182fc' stop-opacity='.976'/%3E%3Cstop offset='1' stop-color='%230182fc'/%3E%3C/linearGradient%3E%3ClinearGradient id='g4' gradientTransform='matrix(1 0 0 -1 0 514)' gradientUnits='userSpaceOnUse' x1='51.091' x2='51.091' xlink:href='%23g3' y1='346.992' y2='303.694'/%3E%3ClinearGradient id='g5' gradientTransform='matrix(1 0 0 -1 0 514)' gradientUnits='userSpaceOnUse' x1='59.143' x2='102.501' xlink:href='%23g3' y1='355.226' y2='355.226'/%3E%3ClinearGradient id='g6'%3E%3Cstop offset='0' stop-color='%2399e6fc' stop-opacity='0'/%3E%3Cstop offset='.165' stop-color='%2399e6fc' stop-opacity='.013'/%3E%3Cstop offset='.2963' stop-color='%2399e6fc' stop-opacity='.052'/%3E%3Cstop offset='.416' stop-color='%2399e6fc' stop-opacity='.119'/%3E%3Cstop offset='.5289' stop-color='%2399e6fc' stop-opacity='.213'/%3E%3Cstop offset='.637' stop-color='%2399e6fc' stop-opacity='.334'/%3E%3Cstop offset='.7415' stop-color='%2399e6fc' stop-opacity='.484'/%3E%3Cstop offset='.843' stop-color='%2399e6fc' stop-opacity='.661'/%3E%3Cstop offset='.9398' stop-color='%2399e6fc' stop-opacity='.86'/%3E%3Cstop offset='1' stop-color='%2399e6fc'/%3E%3C/linearGradient%3E%3ClinearGradient id='g7' gradientTransform='matrix(1 0 0 -1 0 514)' gradientUnits='userSpaceOnUse' x1='70.606' x2='91.287' xlink:href='%23g6' y1='335.711' y2='315.031'/%3E%3ClinearGradient id='g8' gradientTransform='matrix(1 0 0 -1 0 514)' gradientUnits='userSpaceOnUse' x1='466.949' x2='499.753' xlink:href='%23g1' y1='389.808' y2='357.004'/%3E%3ClinearGradient id='g9' gradientTransform='matrix(1 0 0 -1 0 514)' gradientUnits='userSpaceOnUse' x1='482.766' x2='482.766' xlink:href='%23g3' y1='369.28' y2='344.504'/%3E%3ClinearGradient id='g10' gradientTransform='matrix(1 0 0 -1 0 514)' gradientUnits='userSpaceOnUse' x1='487.373' x2='512.182' xlink:href='%23g3' y1='373.991' y2='373.991'/%3E%3ClinearGradient id='g11' gradientTransform='matrix(1 0 0 -1 0 514)' gradientUnits='userSpaceOnUse' x1='493.932' x2='505.766' xlink:href='%23g6' y1='362.825' y2='350.992'/%3E%3ClinearGradient id='g12' gradientTransform='matrix(.836 -.549 -.549 -.836 310.35 605.225)' gradientUnits='userSpaceOnUse' x1='224.926' x2='241.577' xlink:href='%23g1' y1='299.521' y2='185.899'/%3E%3ClinearGradient id='g13' gradientTransform='matrix(-.836 .549 -.549 -.836 752.065 315.208)' gradientUnits='userSpaceOnUse' x1='292.66' x2='286.783' xlink:href='%23g3' y1='226.516' y2='176.562'/%3E%3ClinearGradient id='g14' gradientTransform='matrix(.836 -.549 -.549 -.836 310.35 605.225)' gradientUnits='userSpaceOnUse' x1='280.287' x2='327.302' xlink:href='%23g3' y1='252.085' y2='200.171'/%3E%3ClinearGradient id='g15' gradientTransform='matrix(1 0 0 -1 0 514)' gradientUnits='userSpaceOnUse' x1='435.455' x2='475.019' xlink:href='%23g6' y1='263.473' y2='249.572'/%3E%3ClinearGradient id='g16' gradientTransform='matrix(.95 .314 .314 -.95 -117.349 445.051)' gradientUnits='userSpaceOnUse' x1='244.686' x2='250.789' xlink:href='%23g1' y1='288.678' y2='145.873'/%3E%3ClinearGradient id='g17' gradientTransform='matrix(.95 .314 .314 -.95 -117.349 445.051)' gradientUnits='userSpaceOnUse' x1='250.777' x2='243.454' xlink:href='%23g3' y1='179.953' y2='117.704'/%3E%3ClinearGradient id='g18' gradientTransform='matrix(.95 .314 .314 -.95 -117.349 445.051)' gradientUnits='userSpaceOnUse' x1='335.669' x2='377.168' xlink:href='%23g3' y1='209.926' y2='216.029'/%3E%3ClinearGradient id='g19' gradientTransform='matrix(.912 -.411 -.411 -.912 244.543 594.687)' gradientUnits='userSpaceOnUse' x1='292.355' x2='302.91' xlink:href='%23g1' y1='432.89' y2='360.864'/%3E%3ClinearGradient id='g20' gradientTransform='matrix(-.912 .411 -.411 -.912 726.36 377.722)' gradientUnits='userSpaceOnUse' x1='229.195' x2='225.47' xlink:href='%23g3' y1='386.612' y2='354.945'/%3E%3ClinearGradient id='g21' gradientTransform='matrix(.912 -.411 -.411 -.912 244.543 594.687)' gradientUnits='userSpaceOnUse' x1='327.449' x2='357.253' xlink:href='%23g3' y1='402.82' y2='369.911'/%3E%3Cg%3E%3Cg%3E%3Ccircle cx='51.091' cy='158.774' fill='url(%23g2)' r='51.091'/%3E%3Cpath d='m0 158.774c0 28.217 22.874 51.091 51.091 51.091s51.091-22.874 51.091-51.091c0-1.413-.06-2.811-.172-4.195h-101.838c-.112 1.384-.172 2.782-.172 4.195z' fill='url(%23g4)'/%3E%3Cpath d='m51.091 107.682c-3.291 0-6.509.315-9.627.91v100.363c3.118.595 6.336.91 9.627.91 28.217 0 51.091-22.874 51.091-51.091s-22.874-51.092-51.091-51.092z' fill='url(%23g5)'/%3E%3Cpath d='m87.003 122.436-72.249 72.249c9.262 9.371 22.12 15.18 36.337 15.18 28.217 0 51.091-22.874 51.091-51.091 0-14.217-5.808-27.076-15.179-36.338z' fill='url(%23g7)'/%3E%3C/g%3E%3Cg%3E%3Ccircle cx='482.766' cy='140.009' fill='url(%23g8)' r='29.234'/%3E%3Cpath d='m453.532 140.009c0 16.146 13.089 29.234 29.234 29.234s29.234-13.089 29.234-29.234c0-.808-.034-1.608-.099-2.4h-58.271c-.064.791-.098 1.591-.098 2.4z' fill='url(%23g9)'/%3E%3Cpath d='m482.766 110.775c-1.883 0-3.724.18-5.508.521v57.427c1.784.34 3.625.521 5.508.521 16.146 0 29.234-13.089 29.234-29.234 0-16.147-13.089-29.235-29.234-29.235z' fill='url(%23g10)'/%3E%3Cpath d='m503.314 119.217-41.34 41.34c5.3 5.362 12.657 8.686 20.792 8.686 16.146 0 29.234-13.089 29.234-29.234 0-8.135-3.324-15.493-8.686-20.792z' fill='url(%23g11)'/%3E%3C/g%3E%3Cg%3E%3Cpath d='m337.79 392c19.726-39.673 52.831-72.078 94.268-90.548 30.326-13.517 48.128-45.383 43.594-78.275-8.576-62.221-85.502-86.519-128.365-40.608-4.513 4.834-8.822 9.946-12.903 15.332-43.614 57.559-50.018 131.687-23.208 193.533 4.965 11.456 21.055 11.746 26.614.566z' fill='url(%23g12)'/%3E%3Cpath d='m475.652 223.177c4.534 32.892-13.268 64.758-43.594 78.275-41.438 18.47-74.543 50.875-94.268 90.548-5.559 11.18-21.649 10.89-26.615-.566-16.501-38.066-20.398-80.781-10.802-121.425l146.466-96.165c14.889 11.115 25.872 27.993 28.813 49.333z' fill='url(%23g13)'/%3E%3Cpath d='m347.286 182.569c-4.513 4.834-8.822 9.946-12.904 15.332-3.324 4.387-6.406 8.882-9.3 13.449l72.315 110.141c10.728-7.795 22.321-14.539 34.66-20.038 30.326-13.517 48.128-45.383 43.594-78.275-8.575-62.222-85.501-86.52-128.365-40.609z' fill='url(%23g14)'/%3E%3Cpath d='m347.286 182.569c-4.513 4.834-8.822 9.946-12.904 15.332-3.324 4.387-6.406 8.882-9.3 13.449l72.315 110.141c10.728-7.795 22.321-14.539 34.66-20.038 30.326-13.517 48.128-45.383 43.594-78.275-8.575-62.222-85.501-86.52-128.365-40.609z' fill='url(%23g15)'/%3E%3C/g%3E%3Cg%3E%3Cpath d='m265.807 465.15c-36.551-41.379-86.858-69.69-142.694-78.539-40.864-6.476-72.578-39.08-77.742-80.131-9.769-77.655 74.969-131.738 141.381-90.323 6.993 4.361 13.83 9.122 20.48 14.286 71.077 55.192 102.721 142.34 90.424 225.432-2.278 15.391-21.549 20.936-31.849 9.275z' fill='url(%23g16)'/%3E%3Cpath d='m45.37 306.48c5.164 41.05 36.879 73.655 77.742 80.131 55.836 8.849 106.143 37.16 142.694 78.539 10.301 11.661 29.572 6.116 31.85-9.276 7.569-51.142-1.535-103.81-26.207-149.629l-207.33-68.445c-14.331 18.186-22.099 42.046-18.749 68.68z' fill='url(%23g17)'/%3E%3Cpath d='m207.232 230.443c-5.193-4.032-10.502-7.81-15.907-11.352l-56.051 169.785c50.959 10.81 96.656 37.923 130.532 76.274 10.301 11.661 29.572 6.116 31.85-9.276 12.297-83.091-19.347-170.24-90.424-225.431z' fill='url(%23g18)'/%3E%3C/g%3E%3Cg%3E%3Cpath d='m319.752 180.852c16.303-22.87 40.257-39.858 68.039-47.291 20.332-5.44 34.652-23.615 35.092-44.658.832-39.807-44.904-62.685-76.313-38.215-3.307 2.577-6.514 5.347-9.606 8.312-33.04 31.687-44.437 77.455-33.817 118.844 1.967 7.668 12.011 9.453 16.605 3.008z' fill='url(%23g19)'/%3E%3Cpath d='m422.883 88.903c-.44 21.043-14.76 39.218-35.092 44.658-27.782 7.433-51.736 24.42-68.039 47.291-4.594 6.445-14.638 4.66-16.605-3.007-6.537-25.475-4.719-52.604 5.339-77.092l101.276-45.605c8.213 8.442 13.407 20.103 13.121 33.755z' fill='url(%23g20)'/%3E%3Cpath d='m346.57 50.688c-3.307 2.577-6.514 5.347-9.606 8.312-2.518 2.415-4.896 4.922-7.162 7.492l34.295 76.159c7.493-3.811 15.422-6.877 23.695-9.09 20.332-5.44 34.652-23.615 35.092-44.658.832-39.807-44.905-62.684-76.314-38.215z' fill='url(%23g21)'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+}
+
+#GW-WPL822防水燈本體燈罩一體成形區塊-Root .gw-info-card p {
+  font-size: 18px !important; 
+  font-weight: 700 !important;
+  color: #333333 !important;  
+  line-height: 1.6 !important;
+  margin: 0 !important;
+}
+
+/* ==========================================================================
+   底部說明文字區塊 
+   ========================================================================== */
+#GW-WPL822防水燈本體燈罩一體成形區塊-Root .gw-bottom-description {
+  grid-column: 1 / -1; 
+  text-align: justify;
+  margin-top: 20px; 
+  padding: 0 8%; 
+}
+
+#GW-WPL822防水燈本體燈罩一體成形區塊-Root .gw-bottom-description p {
+  color: #ffffff !important; 
+  font-size: 16px !important; 
+  line-height: 1.8 !important; 
+  letter-spacing: 1px !important; 
+  margin: 0 !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85); 
+}
+
+/* ==========================================================================
+   動畫 Keyframes
+   ========================================================================= */
+@keyframes gw-water-morph {
+  0%   { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  50%  { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+}
+
+@keyframes gw-float {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50%      { transform: translate(-50%, -50%) translateY(-12px); } 
+}
+
+/* ==========================================================================
+   RWD 高度與斷點控制 
+   ========================================================================== */
+@media (max-width: 900px) {
+  #GW-WPL822防水燈本體燈罩一體成形區塊-Root .gw-container {
+    grid-template-columns: 1fr; 
+    padding: 50px 5%;
+    min-height: var(--min-height-mobile);
+  }
+  
+  #GW-WPL822防水燈本體燈罩一體成形區塊-Root .gw-image-area {
+    max-width: 90%;
+    margin-bottom: 70px !important; 
+  }
+  
+  #GW-WPL822防水燈本體燈罩一體成形區塊-Root .gw-water-drop {
+    top: 98%;  
+    left: 50%; 
+    width: 110px;  
+    height: 110px; 
+  }
+
+  #GW-WPL822防水燈本體燈罩一體成形區塊-Root .gw-bottom-description {
+    padding: 0 2%;
+  }
+}
+
+@media (max-width: 768px) {
+  #GW-WPL822防水燈本體燈罩一體成形區塊-Root .gw-container {
+    padding: 40px 20px;
+  }
+  #GW-WPL822防水燈本體燈罩一體成形區塊-Root .gw-image-area {
+    max-width: 100%;
+  }
+  #GW-WPL822防水燈本體燈罩一體成形區塊-Root .gw-water-drop span {
+    font-size: 15px !important; 
+  }
+  #GW-WPL822防水燈本體燈罩一體成形區塊-Root .gw-info-card {
+    padding: 30px 24px;
+  }
+  #GW-WPL822防水燈本體燈罩一體成形區塊-Root .gw-info-card h3 {
+    font-size: 22px !important;
+  }
+  #GW-WPL822防水燈本體燈罩一體成形區塊-Root .gw-info-card p {
+    font-size: 16px !important;
+  }
+  
+  #GW-WPL822防水燈本體燈罩一體成形區塊-Root .gw-bottom-description p {
+    font-size: 15px !important;
+  }
+}
+</style>
+<div id="GW-WPL822防水燈本體燈罩一體成形區塊-Root">
+<div class="gw-weather-overlay">
+<div class="gw-rain-layer gw-rain-layer-1">&nbsp;</div>
+
+<div class="gw-rain-layer gw-rain-layer-2">&nbsp;</div>
+</div>
+
+<div class="sr-only">
+<h2>金鍏電子 WPL-822 防水燈：極致防塵防水設計與MIT製造工藝</h2>
+
+<h3>優質光學等級 PC 材質，本體燈罩一體成形解決方案</h3>
+
+<p>金鍏電子自主研發的 WPL-822 節能照明防水燈，具備卓越的機構設計。為了實現防塵防水無死角的最高標準，燈具本體與燈罩皆採用光學等級 PC 材質一體成形打造。這不僅展現了 MIT 台灣製造的扎實工藝，更確保產品耐用年限高達 60,000 小時，完美對應高濕度與惡劣環境的嚴格挑戰。</p>
+</div>
+
+<div class="gw-container">
+<div class="gw-image-area"><img alt="WPL-822防水燈 - 金鍏電子MIT台灣製造，本體與燈罩一體成形設計確保極致防塵防水" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/822/wpl-822-2.png?v=rj63ezt" title="台灣研發優質工藝 - 光學等級PC防水燈罩設計" />
+<div class="gw-water-drop"><span>本體/燈罩<br />
+一體成形</span></div>
+</div>
+
+<div class="gw-info-card">
+<h3>防塵防水無死角</h3>
+
+<ul>
+	<li>
+	<p>燈具本體PC材質</p>
+	</li>
+	<li>
+	<p>燈罩採用光學等級PC</p>
+	</li>
+	<li>
+	<p>產品耐用年限達60,000小時</p>
+	</li>
+</ul>
+</div>
+
+<div class="gw-bottom-description">
+<p>金鍏電子防塵防水一體型 LED 燈具，專為嚴苛、潮濕的工業環境與半戶外場域打造。全機採用高強度 PC 材質搭配光學級 PC 燈罩，徹底阻絕水氣與粉塵入侵，並解決傳統燈罩泛黃光衰的問題。高達 60,000 小時的超長耐用年限，能替企業大幅省下高空作業的維護人力與停線成本，是地下停車場、廠房與高濕度空間實現 ESG 減廢與高效照明的最佳投資。</p>
+</div>
+</div>
+</div>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;family=Outfit:wght@400;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* ==========================================================================
+   GW-WPL822金鍏防水燈觀光渡輪實績-Root 核心防禦與排版鎖定
+   ========================================================================== */
+#GW-WPL822金鍏防水燈觀光渡輪實績-Root {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+  margin: 20px 0; /* ? 整個區塊上下的外部留白 */
+}
+
+#GW-WPL822金鍏防水燈觀光渡輪實績-Root *,
+#GW-WPL822金鍏防水燈觀光渡輪實績-Root *::before,
+#GW-WPL822金鍏防水燈觀光渡輪實績-Root *::after {
+  box-sizing: border-box;
+}
+
+/* 隱形提領區塊：專供 SEO 爬蟲讀取 */
+#GW-WPL822金鍏防水燈觀光渡輪實績-Root .sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;
+}
+
+/* ==========================================================================
+   上半部：圖片雙欄網格區塊 (CSS Grid)
+   ========================================================================== */
+#GW-WPL822金鍏防水燈觀光渡輪實績-Root .gw-image-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* ? 桌機版設定為左右均分 2 欄 */
+  gap: 20px; /* ? 兩張圖片之間的間距 */
+  margin-bottom: 20px; /* ? 圖片區塊與下方文字區塊的距離 */
+}
+
+#GW-WPL822金鍏防水燈觀光渡輪實績-Root .gw-image-card {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 4px; /* ? 圖片圓角大小，可依需求調整為 0px 或更大 */
+}
+
+#GW-WPL822金鍏防水燈觀光渡輪實績-Root .gw-image-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+#GW-WPL822金鍏防水燈觀光渡輪實績-Root .gw-image-card:hover img {
+  transform: scale(1.05); /* ? 滑鼠移入圖片時微放大的特效 */
+}
+
+/* 圖片底部的半透明標題條 */
+#GW-WPL822金鍏防水燈觀光渡輪實績-Root .gw-image-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(0, 60, 110, 0.75) 0%, rgba(0, 60, 110, 0) 100%); /* ? 標題背景的漸層透明度 */
+  padding: 30px 20px 15px 20px;
+  text-align: center;
+  pointer-events: none; /* 避免擋住圖片點擊 */
+}
+
+#GW-WPL822金鍏防水燈觀光渡輪實績-Root .gw-image-caption span {
+  color: #ffffff !important; /* ? 標題強制為白色 */
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  letter-spacing: 1px !important;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* 提升文字辨識度 */
+}
+
+/* ==========================================================================
+   下半部：文字說明區塊與藍色波紋特效
+   ========================================================================== */
+#GW-WPL822金鍏防水燈觀光渡輪實績-Root .gw-text-section {
+  position: relative;
+  background: #ffffff; /* ? 說明區塊的底色 */
+  border: 1px solid #cce5ff; /* ? 說明區塊的邊框顏色 (淡藍色) */
+  padding: 20px 50px 20px 40px; /* ? 說明區塊的內距 (上 右 下 左) */
+  overflow: hidden; /* 確保波紋特效不會超出外框 */
+  z-index: 1;
+}
+
+/* ? 藍色波紋擴散特效 (純 CSS) */
+#GW-WPL822金鍏防水燈觀光渡輪實績-Root .gw-text-section::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  padding-top: 150%;
+  background: radial-gradient(circle, rgba(102, 179, 255, 0.15) 0%, rgba(102, 179, 255, 0) 60%);
+  transform: translate(-50%, -50%) scale(0); /* 初始狀態縮小為 0 */
+  transition: transform 0.8s cubic-bezier(0.1, 0.8, 0.2, 1), opacity 0.5s ease;
+  z-index: -1; /* 確保波紋在文字之下 */
+  opacity: 0;
+  pointer-events: none;
+}
+
+#GW-WPL822金鍏防水燈觀光渡輪實績-Root .gw-text-section:hover::before {
+  transform: translate(-50%, -50%) scale(1); /* ? 滑鼠移入時波紋展開 */
+  opacity: 1;
+}
+
+/* 內文主標題 */
+#GW-WPL822金鍏防水燈觀光渡輪實績-Root .gw-text-section h3 {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #333333 !important;
+  margin: 0 0 30px 0 !important;
+  line-height: 1.5 !important;
+}
+
+/* 列表與說明文字 */
+#GW-WPL822金鍏防水燈觀光渡輪實績-Root .gw-text-section ul {
+  list-style: none !important; /* 清除預設黑點 */
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+#GW-WPL822金鍏防水燈觀光渡輪實績-Root .gw-text-section li {
+  position: relative;
+  padding-left: 15px !important;
+  margin-bottom: 24px !important; /* ? 每個特點項目之間的距離 */
+}
+
+/* 自訂藍色小點 */
+#GW-WPL822金鍏防水燈觀光渡輪實績-Root .gw-text-section li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0px;
+  color: #6688a8; /* ? 自訂藍點的顏色 */
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+#GW-WPL822金鍏防水燈觀光渡輪實績-Root .gw-text-section li p {
+  font-size: 15px !important;
+  color: #4a4a4a !important; /* ? 內文顏色 */
+  line-height: 1.8 !important; /* ? 內文行高 */
+  margin: 0 !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* 括號強調字 */
+#GW-WPL822金鍏防水燈觀光渡輪實績-Root .gw-text-section li strong {
+  color: #6688a8 !important; /* ? 【重點標題】的藍色 */
+  font-weight: 700 !important;
+}
+
+#GW-WPL822金鍏防水燈觀光渡輪實績-Root .gw-text-section li span.gw-desc {
+  color: #1a1a1a !important;
+  font-weight: 700 !important;
+}
+
+#GW-WPL822金鍏防水燈觀光渡輪實績-Root .gw-text-section li span.gw-sub {
+  display: block; /* 讓次要說明換行 */
+  padding-left: 5px; /* ? 次要說明往右微調 */
+  color: #4a4a4a !important;
+}
+
+/* ==========================================================================
+   右上角 SVG 向量圖示 (防拉伸)
+   ========================================================================== */
+#GW-WPL822金鍏防水燈觀光渡輪實績-Root .gw-icon-water {
+  position: absolute;
+  top: 30px;    /* ? 圖示距離頂部的距離 */
+  right: 40px;  /* ? 圖示距離右側的距離 */
+  width: 60px;  /* ? 圖示大小 */
+  height: auto;
+  opacity: 0.85;
+  transition: transform 0.4s ease;
+}
+
+#GW-WPL822金鍏防水燈觀光渡輪實績-Root .gw-text-section:hover .gw-icon-water {
+  transform: translateY(-4px) scale(1.05); /* ? 滑鼠移入整個區塊時，圖示微浮動 */
+}
+
+/* ==========================================================================
+   RWD 高度與斷點控制 (平板與手機版)
+   ========================================================================== */
+@media (max-width: 900px) {
+  #GW-WPL822金鍏防水燈觀光渡輪實績-Root .gw-text-section {
+    padding: 30px;
+  }
+  #GW-WPL822金鍏防水燈觀光渡輪實績-Root .gw-icon-water {
+    width: 50px;
+    top: 25px;
+    right: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  #GW-WPL822金鍏防水燈觀光渡輪實績-Root .gw-image-grid {
+    grid-template-columns: 1fr; /* ? 手機版降級為單欄佈局 (上下兩張圖) */
+    gap: 15px;
+  }
+  #GW-WPL822金鍏防水燈觀光渡輪實績-Root .gw-text-section {
+    padding: 30px 20px;
+  }
+  
+  /* ? 手機版 SVG 圖示排版修正 ? */
+  #GW-WPL822金鍏防水燈觀光渡輪實績-Root .gw-icon-water {
+    position: relative; /* ? 解除絕對定位，讓它回到文字流中 */
+    top: 0;
+    right: 0;
+    display: block; /* 讓圖示獨立成塊 */
+    margin-bottom: 16px; /* ? 與下方的標題保留呼吸空間 */
+    width: 48px; /* ? 窄螢幕下微調圖示大小 */
+  }
+
+  #GW-WPL822金鍏防水燈觀光渡輪實績-Root .gw-text-section h3 {
+    font-size: 16px !important;
+  }
+  #GW-WPL822金鍏防水燈觀光渡輪實績-Root .gw-text-section li p {
+    font-size: 14px !important;
+  }
+}
+</style>
+<div id="GW-WPL822金鍏防水燈觀光渡輪實績-Root">
+<div class="sr-only">
+<h2>金鍏電子 WPL-822 防水燈：高雄旗福2號觀光渡輪實際應用案例</h2>
+
+<p>我們將材料科學與高品質燈具的堅持，轉化為企業的綠色防禦資產。金鍏WPL-822具備高品質燈具本體，解決受潮生鏽與ABS塑膠脆化問題，適用高濕度與酸鹼廠房。光學等級PC燈罩杜絕泛黃，維持最高照明標準。高達60,000小時的超長耐用年限，專為冷鏈物流與觀光渡輪等不易維護空間設計，從源頭減少電子廢棄物，完美呼應ESG減廢指標。</p>
+</div>
+
+<div class="gw-image-grid">
+<div class="gw-image-card"><img alt="高雄旗福2號渡輪採用金鍏WPL-822防水燈，打造航運新美學" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/news/23b42ac81793b7e6.jpg?v=1xvhz8c" title="MIT台灣製造防水照明實績 - 觀光渡輪應用" />
+<div class="gw-image-caption"><span>高雄「旗福2號」打造航運新美學！使用金鍏LED防水型燈具WPL-822</span></div>
+</div>
+
+<div class="gw-image-card"><img alt="金鍏WPL-822防水燈完美融入高雄旗福2號，維持高標準作業照明" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/news/b6a334f093f2ed1f.jpg?v=5n12e5o" title="光學等級PC燈罩抗UV設計 - 長效高透光" />
+<div class="gw-image-caption"><span>高雄「旗福2號」打造航運新美學！使用金鍏LED防水型燈具WPL-822</span></div>
+</div>
+</div>
+
+<div class="gw-text-section"><svg class="gw-icon-water" height="48" viewbox="0 0 128 128" width="48" xmlns="http://www.w3.org/2000/svg"> <g> <path d="M126,92H112.5957L127.647,70.13617a2.0004,2.0004,0,1,0-3.29395-2.27075L110.57227,87.88416,96.84113,73.94733a1.99851,1.99851,0,0,0,.29364-3.8952l-6.56348-1.95807A2.00064,2.00064,0,0,0,88.127,70.71265L90.478,77.00226a1.99225,1.99225,0,0,0,3.74231-.01367S106.58911,89.5423,109.01062,92h-40.415L83.64691,70.13617A2.0004,2.0004,0,1,0,80.353,67.86542L66.5722,87.88416,52.84106,73.94733a1.99851,1.99851,0,0,0,.29364-3.8952l-6.56348-1.95807a2.00064,2.00064,0,0,0-2.44434,2.61859L46.478,77.00226a1.99225,1.99225,0,0,0,3.74231-.01367S62.58905,89.5423,65.01056,92H24.5957L39.647,70.13617A2.0004,2.0004,0,1,0,36.353,67.86542L22.57227,87.88416,8.84113,73.94733a1.99851,1.99851,0,0,0,.29364-3.8952L2.57129,68.09406A2.00064,2.00064,0,0,0,.127,70.71265L2.478,77.00226a1.99225,1.99225,0,0,0,3.74231-.01367S18.58911,89.5423,21.01062,92H2a2,2,0,0,0,0,4H9.17188l-6.58594,7.58594a1.99979,1.99979,0,1,0,2.82813,2.82813L14.82813,96H25.17188l-6.58594,7.58594a1.99979,1.99979,0,1,0,2.82813,2.82813L30.82813,96H41.17188l-6.58594,7.58594a1.99979,1.99979,0,1,0,2.82813,2.82813L46.82813,96H57.17188l-6.58594,7.58594a1.99979,1.99979,0,1,0,2.82813,2.82813L62.82813,96h8.34375l-6.58594,7.58594a1.99979,1.99979,0,1,0,2.82813,2.82813L76.82813,96H87.17188l-6.58594,7.58594a1.99979,1.99979,0,1,0,2.82813,2.82813L92.82813,96h10.34375l-6.58594,7.58594a1.99979,1.99979,0,1,0,2.82813,2.82813L108.82813,96h10.34375l-6.58594,7.58594a1.99979,1.99979,0,1,0,2.82813,2.82813L124.82813,96H126a2,2,0,0,0,0-4Z" fill="#2d4356"></path> <path d="M21.52,21.67a2.06441,2.06441,0,0,0-3.04,0C17,23.4,4,38.84,4,47.75,4,57.26,11.18,65,20,65s16-7.74,16-17.25C36,38.84,23,23.4,21.52,21.67ZM20,61C13.38,61,8,55.05,8,47.75c0-5.57,7.63-16.22,12-21.64,4.37,5.42,12,16.06,12,21.64C32,55.05,26.62,61,20,61Z" fill="#2d4356"></path> <path d="M32,47.75C32,55.05,26.62,61,20,61S8,55.05,8,47.75c0-5.57,7.63-16.22,12-21.64C24.37,31.53,32,42.17,32,47.75Z" fill="#81d9e3"></path> <path d="M15.99951,55.9933a2.00149,2.00149,0,0,0,1.335-3.49185c-1.86963-1.67605-1.4292-4.05477-.731-5.75428a2.00016,2.00016,0,1,0-3.69922-1.52262c-1.65674,4.03034-1.01465,7.76945,1.76123,10.25763A1.9881,1.9881,0,0,0,15.99951,55.9933Z" fill="#2d4356"></path> <path d="M109.52,21.67a2.06441,2.06441,0,0,0-3.04,0C105,23.4,92,38.84,92,47.75,92,57.26,99.18,65,108,65s16-7.74,16-17.25C124,38.84,111,23.4,109.52,21.67ZM108,61c-6.62,0-12-5.95-12-13.25,0-5.57,7.63-16.22,12-21.64,4.37,5.42,12,16.06,12,21.64C120,55.05,114.62,61,108,61Z" fill="#2d4356"></path> <path d="M120,47.75c0,7.3-5.38,13.25-12,13.25S96,55.05,96,47.75c0-5.57,7.63-16.22,12-21.64C112.37,31.53,120,42.17,120,47.75Z" fill="#81d9e3"></path> <path d="M103.999,55.9933a2.00149,2.00149,0,0,0,1.335-3.49185c-1.86914-1.677-1.42969-4.05477-.73047-5.75428a2.00016,2.00016,0,1,0-3.69922-1.52262c-1.65723,4.03034-1.01465,7.76945,1.76172,10.25763A1.98569,1.98569,0,0,0,103.999,55.9933Z" fill="#2d4356"></path> <path d="M65.52,21.67a2.06441,2.06441,0,0,0-3.04,0C61,23.4,48,38.84,48,47.75,48,57.26,55.18,65,64,65s16-7.74,16-17.25C80,38.84,67,23.4,65.52,21.67ZM64,61c-6.62,0-12-5.95-12-13.25,0-5.57,7.63-16.22,12-21.64,4.37,5.42,12,16.06,12,21.64C76,55.05,70.62,61,64,61Z" fill="#2d4356"></path> <path d="M76,47.75C76,55.05,70.62,61,64,61S52,55.05,52,47.75c0-5.57,7.63-16.22,12-21.64C68.37,31.53,76,42.17,76,47.75Z" fill="#81d9e3"></path> <path d="M59.99951,55.9933a2.00149,2.00149,0,0,0,1.335-3.49185c-1.86963-1.67605-1.4292-4.05477-.731-5.75428a2.00016,2.00016,0,1,0-3.69922-1.52262c-1.65674,4.03034-1.01465,7.76945,1.76123,10.25763A1.9881,1.9881,0,0,0,59.99951,55.9933Z" fill="#2d4356"></path> <path d="M32,47.75c0,.41-.02.81-.05,1.21C31.32,43.22,24.17,33.29,20,28.11,15.83,33.29,8.68,43.23,8.05,48.96c-.03-.4-.05-.8-.05-1.21,0-5.57,7.63-16.22,12-21.64C24.37,31.53,32,42.17,32,47.75Z" fill="#e8fbfc" fill-opacity="0.3"></path> <path d="M32,47.75C32,55.05,26.62,61,20,61S8,55.05,8,47.75a7.45546,7.45546,0,0,1,.05-.79C8.61,53.7,13.75,59,20,59s11.39-5.3,11.95-12.04A7.45546,7.45546,0,0,1,32,47.75Z" fill="#0f423c" fill-opacity="0.25"></path> <path d="M120,47.75c0,.41-.02.81-.05,1.21-.63-5.74-7.78-15.67-11.95-20.85-4.17,5.18-11.32,15.12-11.95,20.85-.03-.4-.05-.8-.05-1.21,0-5.57,7.63-16.22,12-21.64C112.37,31.53,120,42.17,120,47.75Z" fill="#e8fbfc" fill-opacity="0.3"></path> <path d="M120,47.75c0,7.3-5.38,13.25-12,13.25S96,55.05,96,47.75a7.45546,7.45546,0,0,1,.05-.79C96.61,53.7,101.75,59,108,59s11.39-5.3,11.95-12.04A7.45545,7.45545,0,0,1,120,47.75Z" fill="#0f423c" fill-opacity="0.25"></path> <path d="M76,47.75c0,.41-.02.81-.05,1.21C75.32,43.22,68.17,33.29,64,28.11c-4.17,5.18-11.32,15.12-11.95,20.85-.03-.4-.05-.8-.05-1.21,0-5.57,7.63-16.22,12-21.64C68.37,31.53,76,42.17,76,47.75Z" fill="#e8fbfc" fill-opacity="0.3"></path> <path d="M76,47.75C76,55.05,70.62,61,64,61S52,55.05,52,47.75a7.45546,7.45546,0,0,1,.05-.79C52.61,53.7,57.75,59,64,59s11.39-5.3,11.95-12.04A7.45546,7.45546,0,0,1,76,47.75Z" fill="#0f423c" fill-opacity="0.25"></path> </g> </svg>
+
+<h3>我們將材料科學與高品質燈具的堅持，轉化為企業的綠色防禦資產：</h3>
+
+<ul>
+	<li>
+	<p><strong>【高品質燈具本體】</strong> <span class="gw-desc">解決普通市售燈具易受潮生鏽、一般 ABS 塑膠易老化脆化的問題</span> <span class="gw-sub">&rarr;適用於地下停車場與高濕度/酸鹼廠房，確保燈具在劇烈溫差與潮濕環境中維持結構強度，延長設備資產生命週期。</span></p>
+	</li>
+	<li>
+	<p><strong>【光學等級 PC 燈罩】</strong> <span class="gw-desc">杜絕紫外線長期照射導致的燈罩泛黃與透光率下降</span> <span class="gw-sub">&rarr;適用於半露天穿廊、戶外裝卸貨區。確保長時間使用後依然保持清澈高透光，維持最高標準的作業照明品質與空間安全性。</span></p>
+	</li>
+	<li>
+	<p><strong>【60,000 小時超長耐用年限】</strong> <span class="gw-desc">根絕頻繁更換燈管所帶來的人力耗損與作業中斷</span> <span class="gw-sub">&rarr;專為冷鏈物流中心、挑高無塵室、觀光渡輪等維護不易的空間設計。實現「安裝即忘記」的免維護體驗，並從源頭減少電子廢棄物(E-waste)，呼應企業 ESG 減廢指標。</span></p>
+	</li>
+</ul>
+</div>
+</div>
+
+<div style="height: 20px;">&nbsp;</div>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&amp;family=Outfit:wght@400;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* ==========================================================================
+   GW-WPL822金鍏防水燈色溫演色性區塊-Root 核心防禦與排版鎖定
+   ========================================================================== */
+#GW-WPL822金鍏防水燈色溫演色性區塊-Root {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+  background-color: #ffffff; /* ? 整個區塊的底色 */
+  margin: 10px 0; /* ? 區塊上下的外部留白 */
+  overflow: hidden;
+}
+
+#GW-WPL822金鍏防水燈色溫演色性區塊-Root *,
+#GW-WPL822金鍏防水燈色溫演色性區塊-Root *::before,
+#GW-WPL822金鍏防水燈色溫演色性區塊-Root *::after {
+  box-sizing: border-box;
+}
+
+/* 隱形提領區塊：專供 SEO 爬蟲讀取，完美融入品牌與技術關鍵字 */
+#GW-WPL822金鍏防水燈色溫演色性區塊-Root .sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;
+}
+
+/* ==========================================================================
+   整體 CSS Grid 雙欄佈局
+   ========================================================================== */
+#GW-WPL822金鍏防水燈色溫演色性區塊-Root .gw-container {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr; /* ? 桌機版佈局比例：左邊圖區稍寬，右邊文字稍窄 */
+  background: #ffffff;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.05); /* ? 整個區塊的輕微陰影 */
+  border-radius: 4px; /* ? 外框圓角 */
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   左側：動態水滴流動與毛玻璃色溫區
+   ========================================================================== */
+#GW-WPL822金鍏防水燈色溫演色性區塊-Root .gw-left-area {
+  position: relative;
+  /* ? 替換為您的原始背景底圖 */
+  background: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/822/wpl-822_bg04.jpg?v=t2viy2') center center / cover no-repeat;
+  min-height: 550px; /* ? 左側區塊的最小高度 */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* ? 將色溫切分為 3 個等寬直條 */
+  gap: 15px; /* ? 三個色溫方塊之間的距離 */
+  padding: 30px; /* ? 左側區塊的內側留白 */
+  overflow: hidden;
+}
+
+/* ? 動態滑落水滴特效層 (純 SVG/CSS 免疫拉伸) */
+#GW-WPL822金鍏防水燈色溫演色性區塊-Root .gw-water-flow-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+#GW-WPL822金鍏防水燈色溫演色性區塊-Root .gw-flow-layer {
+  position: absolute;
+  top: -100%; left: 0; width: 100%; height: 300%;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* 產生兩層不同速度與大小的水滴，營造視差滑落感 */
+#GW-WPL822金鍏防水燈色溫演色性區塊-Root .gw-flow-layer-1 {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cpattern id='w1' width='150' height='200' patternUnits='userSpaceOnUse'%3E%3Cpath d='M30,50 Q35,70 30,80 Q25,70 30,50' fill='rgba(255,255,255,0.4)'/%3E%3Cpath d='M100,120 Q103,135 100,140 Q97,135 100,120' fill='rgba(255,255,255,0.3)'/%3E%3C/pattern%3E%3Crect width='100%25' height='100%25' fill='url(%23w1)'/%3E%3C/svg%3E") !important;
+  background-size: 150px 200px !important;
+  animation: gw-water-slide 5s linear infinite !important; /* ? 調整 5s 可改變大水滴滑落速度 */
+}
+
+#GW-WPL822金鍏防水燈色溫演色性區塊-Root .gw-flow-layer-2 {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cpattern id='w2' width='100' height='150' patternUnits='userSpaceOnUse'%3E%3Cpath d='M50,20 Q53,35 50,40 Q47,35 50,20' fill='rgba(255,255,255,0.2)'/%3E%3Cpath d='M80,90 Q82,100 80,105 Q78,100 80,90' fill='rgba(255,255,255,0.25)'/%3E%3C/pattern%3E%3Crect width='100%25' height='100%25' fill='url(%23w2)'/%3E%3C/svg%3E") !important;
+  background-size: 100px 150px !important;
+  animation: gw-water-slide 8s linear infinite !important; /* ? 調整 8s 可改變小水滴滑落速度 */
+}
+
+@keyframes gw-water-slide {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(300px); }
+}
+
+/* ? 毛玻璃色溫透視方塊 */
+#GW-WPL822金鍏防水燈色溫演色性區塊-Root .gw-cct-panel {
+  position: relative;
+  z-index: 2;
+  border-radius: 12px; /* ? 色溫方塊的圓角 */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 40px; /* ? 文字距離頂部的空間 */
+  backdrop-filter: blur(6px); /* ? 毛玻璃模糊程度 */
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.2); /* ? 玻璃邊框反光效果 */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease, backdrop-filter 0.4s ease;
+}
+
+#GW-WPL822金鍏防水燈色溫演色性區塊-Root .gw-cct-panel:hover {
+  transform: translateY(-8px); /* ? 滑鼠移入時往上浮動 */
+  backdrop-filter: blur(2px);  /* ? 滑鼠移入時變得更清晰透明 */
+  -webkit-backdrop-filter: blur(2px);
+}
+
+#GW-WPL822金鍏防水燈色溫演色性區塊-Root .gw-cct-panel span {
+  color: #ffffff !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1px !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6); /* 確保文字在淺色背景也清晰 */
+}
+
+/* ==========================================================================
+   右側：文字與說明區塊 (現代化輕量排版)
+   ========================================================================== */
+#GW-WPL822金鍏防水燈色溫演色性區塊-Root .gw-right-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 50px; /* ? 右側文字區塊的內距 */
+  gap: 50px; /* ? 兩個說明段落之間的間距 */
+  background: #ffffff;
+}
+
+#GW-WPL822金鍏防水燈色溫演色性區塊-Root .gw-info-block {
+  position: relative;
+}
+
+/* 捨棄黑底方塊，改用現代化左側飾線與藍色字體 */
+#GW-WPL822金鍏防水燈色溫演色性區塊-Root .gw-info-block h3 {
+  position: relative;
+  color: #004d80 !important; /* ? 標題顏色 (深水藍) */
+  font-size: 26px !important; /* ? 標題字級 */
+  font-weight: 700 !important;
+  margin: 0 0 16px 0 !important;
+  padding-left: 16px !important; /* 讓出左側飾線空間 */
+  line-height: 1.2 !important;
+}
+
+/* 標題左側的裝飾色條 */
+#GW-WPL822金鍏防水燈色溫演色性區塊-Root .gw-info-block h3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  bottom: 2px;
+  width: 5px; /* ? 飾線厚度 */
+  background: linear-gradient(to bottom, #4da6ff, #004d80); /* ? 飾線漸層色 */
+  border-radius: 4px;
+}
+
+#GW-WPL822金鍏防水燈色溫演色性區塊-Root .gw-info-block p {
+  color: #4a4a4a !important; /* ? 內文顏色 (深灰，確保易讀性) */
+  font-size: 16px !important; /* ? 內文字級 */
+  line-height: 1.8 !important; /* ? 內文行高 */
+  margin: 0 !important;
+  text-align: justify !important;
+}
+
+#GW-WPL822金鍏防水燈色溫演色性區塊-Root .gw-info-block strong {
+  color: #004d80 !important;
+  font-weight: 700 !important;
+}
+
+/* ==========================================================================
+   RWD 高度與斷點控制 (平板與手機版)
+   ========================================================================== */
+@media (max-width: 900px) {
+  #GW-WPL822金鍏防水燈色溫演色性區塊-Root .gw-container {
+    grid-template-columns: 1fr; /* ? 平板尺寸降級為單欄 (上下排列) */
+  }
+  #GW-WPL822金鍏防水燈色溫演色性區塊-Root .gw-left-area {
+    min-height: 450px;
+  }
+  #GW-WPL822金鍏防水燈色溫演色性區塊-Root .gw-right-area {
+    padding: 40px 30px;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  #GW-WPL822金鍏防水燈色溫演色性區塊-Root .gw-left-area {
+    padding: 20px;
+    gap: 10px;
+    min-height: 400px;
+  }
+  #GW-WPL822金鍏防水燈色溫演色性區塊-Root .gw-cct-panel {
+    padding-top: 20px;
+  }
+  #GW-WPL822金鍏防水燈色溫演色性區塊-Root .gw-cct-panel span {
+    font-size: 15px !important; /* ? 手機版色溫文字縮小 */
+    writing-mode: vertical-rl; /* ? 手機版改為直書，適應狹長方塊 */
+    text-orientation: mixed;
+    letter-spacing: 3px !important;
+  }
+  #GW-WPL822金鍏防水燈色溫演色性區塊-Root .gw-info-block h3 {
+    font-size: 22px !important;
+  }
+  #GW-WPL822金鍏防水燈色溫演色性區塊-Root .gw-info-block p {
+    font-size: 15px !important;
+  }
+}
+</style>
+<div id="GW-WPL822金鍏防水燈色溫演色性區塊-Root">
+<div class="sr-only">
+<h2>金鍏 WPL-822 防水燈：多重色溫選擇與 Ra≧80 高演色性照明</h2>
+
+<h3>支援 3000K, 4000K, 5700K 彈性色溫配置</h3>
+
+<p>為了滿足不同工業廠房與商業空間的光效需求，金鍏電子 WPL-822 防水燈提供從 3000K 暖光到 5700K 晝白光等多種色溫選擇。同時，全系列燈具具備 Ra≧80 的高演色性指數 (CRI)，能極致還原環境與物體的真實色彩，降低視覺疲勞並提升高精度作業的安全性。</p>
+</div>
+
+<div class="gw-container">
+<div class="gw-left-area">
+<div class="gw-water-flow-overlay">
+<div class="gw-flow-layer gw-flow-layer-1">&nbsp;</div>
+
+<div class="gw-flow-layer gw-flow-layer-2">&nbsp;</div>
+</div>
+
+<div class="gw-cct-panel" style="background: rgba(199, 115, 64, 0.25);"><span>色溫 3000K</span></div>
+
+<div class="gw-cct-panel" style="background: rgba(218, 201, 106, 0.25);"><span>色溫 4000K</span></div>
+
+<div class="gw-cct-panel" style="background: rgba(180, 210, 211, 0.25);"><span>色溫 5700K</span></div>
+</div>
+
+<div class="gw-right-area">
+<div class="gw-info-block">
+<h3>滿足多元場域的光效需求</h3>
+
+<p>提供 <strong>3000K 暖黃光</strong>、<strong>4000K 黃白光</strong>至 <strong>5700K 晝白光</strong>等多種色溫選擇（標準品配置為 5000K / 5700K），無論是需要溫馨氛圍的觀光渡輪，或是要求高度明亮專注的廠房倉儲，皆能精準對應各種工業與商業空間的照明規範。</p>
+</div>
+
+<div class="gw-info-block">
+<h3>Ra≧80 絕佳色彩還原力</h3>
+
+<p>演色性指數 (CRI) 是評估光源真實還原物體顏色能力的重要指標。本系列燈具具備 <strong>Ra≧80 的優異演色性</strong>，能呈現宛如自然光照射下的真實本色。不僅有效提升廠房作業區的視覺清晰度，更能大幅降低長時間工作帶來的視覺疲勞，確保最高標準的作業安全與品質檢驗精準度。</p>
+</div>
+</div>
+</div>
+</div>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&amp;family=Outfit:wght@400;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* --- Scope Root & Reset --- */
+  #GW-WPL822防水燈發光角度區塊-Root {
+    width: 100%;
+    display: block;
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+    background: #ffffff;
+    padding: 20px 20px; /* 電腦版上下留白 120px */
+    font-family: 'Outfit', 'Noto Sans TC', "Microsoft JhengHei", sans-serif;
+  }
+
+  #GW-WPL822防水燈發光角度區塊-Root *,
+  #GW-WPL822防水燈發光角度區塊-Root *::before,
+  #GW-WPL822防水燈發光角度區塊-Root *::after {
+    box-sizing: border-box;
+  }
+
+  /* --- SEO 隱形提領區 --- */
+  #GW-WPL822防水燈發光角度區塊-Root .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;
+  }
+
+  /* --- 彈性佈局容器 --- */
+  #GW-WPL822防水燈發光角度區塊-Root .gw-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px; 
+  }
+
+  /* --- 左側內容區 --- */
+  #GW-WPL822防水燈發光角度區塊-Root .gw-left-content {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #GW-WPL822防水燈發光角度區塊-Root h2.gw-title {
+    font-size: 28px !important;
+    font-weight: 700 !important;
+    color: #333333 !important;
+    margin: 0 0 16px 0;
+    line-height: 1.4;
+  }
+
+  #GW-WPL822防水燈發光角度區塊-Root .gw-angle {
+    font-size: 64px; 
+    font-weight: 700;
+    color: #E2B200;
+    margin-bottom: 24px;
+    line-height: 1;
+    font-family: 'Outfit', sans-serif;
+    text-shadow: 0 2px 10px rgba(226, 178, 0, 0.2); 
+  }
+
+  #GW-WPL822防水燈發光角度區塊-Root .gw-icon-img {
+    margin: 0 auto 24px auto;
+    width: 180px;
+    max-width: 100%;
+  }
+  
+  #GW-WPL822防水燈發光角度區塊-Root .gw-icon-img img {
+    width: 100%; height: auto; display: block; transition: transform 0.3s ease;
+  }
+
+  #GW-WPL822防水燈發光角度區塊-Root .gw-left-content:hover .gw-icon-img img {
+    transform: scale(1.05); 
+  }
+
+  #GW-WPL822防水燈發光角度區塊-Root p.gw-desc {
+    font-size: 17px !important; color: #4b5563 !important; opacity: 1 !important;
+    line-height: 1.8; margin: 0 0 16px 0; max-width: 400px; 
+  }
+
+  #GW-WPL822防水燈發光角度區塊-Root small.gw-note {
+    font-size: 14px !important; color: #9ca3af !important; opacity: 1 !important;
+    font-weight: 400; display: block; line-height: 1.5;
+  }
+
+  /* --- 右側圖片區 (準備接收特效) --- */
+  #GW-WPL822防水燈發光角度區塊-Root .gw-right-image {
+    flex: 1.2; 
+    min-width: 300px;
+    position: relative; /* 定位基準 */
+    border-radius: 12px;
+    overflow: hidden; /* 隱藏掃過界的光芒 */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1); 
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s ease;
+  }
+
+  #GW-WPL822防水燈發光角度區塊-Root .gw-right-image img {
+    width: 100%; height: auto; display: block; 
+    transition: transform 0.6s ease;
+  }
+
+  /* 隱藏的光芒元素 (::after 偽元素) */
+  #GW-WPL822防水燈發光角度區塊-Root .gw-right-image::after {
+    content: "";
+    position: absolute;
+    top: 0; left: -100%; /* 初始位置在畫面外最左邊 */
+    width: 50%; height: 100%;
+    /* 半透明白色的光束漸層 */
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-25deg); /* 傾斜角度讓光束更有動感 */
+    transition: left 0.7s ease;
+    z-index: 2;
+    pointer-events: none; /* 防止干擾滑鼠點擊 */
+  }
+
+  /* ==================================================
+     ★★★ 電腦版專屬 Hover 特效區 (使用精準媒體查詢) ★★★
+     ================================================== */
+  /* (hover: hover) and (pointer: fine) 代表：裝置支援 Hover 且有精準指標(滑鼠) */
+  @media (hover: hover) and (pointer: fine) {
+    
+    /* 1. 外框浮現 + 金色環境光暈 */
+    #GW-WPL822防水燈發光角度區塊-Root .gw-right-image:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 50px rgba(213, 246, 255, 0.25); /* #E2B200 的金色光暈 */
+    }
+    
+    /* 2. 內部圖片微幅放大 */
+    #GW-WPL822防水燈發光角度區塊-Root .gw-right-image:hover img {
+      transform: scale(1.03); 
+    }
+    
+    /* 3. 觸發光芒掃掠 */
+    #GW-WPL822防水燈發光角度區塊-Root .gw-right-image:hover::after {
+      left: 200%; /* 從左邊外側一路掃到右邊外側 */
+    }
+  }
+
+  /* --- RWD 斷點設定 --- */
+  @media (max-width: 992px) {
+    #GW-WPL822防水燈發光角度區塊-Root { padding: 40px 20px; } /* 手機平板留白 40px */
+    #GW-WPL822防水燈發光角度區塊-Root .gw-container { flex-direction: column; gap: 40px; }
+    #GW-WPL822防水燈發光角度區塊-Root .gw-right-image { order: 1; width: 100%; }
+    #GW-WPL822防水燈發光角度區塊-Root .gw-left-content { order: 2; width: 100%; }
+  }
+
+  @media (max-width: 768px) {
+    #GW-WPL822防水燈發光角度區塊-Root h2.gw-title { font-size: 24px !important; }
+    #GW-WPL822防水燈發光角度區塊-Root .gw-angle { font-size: 52px; }
+    #GW-WPL822防水燈發光角度區塊-Root p.gw-desc { font-size: 16px !important; text-align: justify; }
+  }
+</style>
+<div id="GW-WPL822防水燈發光角度區塊-Root">
+<div class="sr-only">
+<h2>金鍏電子 WPL822 防水燈 - 120度超廣角無眩光照明</h2>
+
+<p>台灣優質照明首選。WPL822 具備 120度 發光角度，能提供無死角的均勻光線，有效降低環境眩光，保護您的視力健康，是辦公與閱讀空間的最佳選擇。</p>
+</div>
+
+<div class="gw-container">
+<div class="gw-left-content">
+<h2 class="gw-title">超廣角發光&nbsp;&nbsp;拒絕刺眼眩光</h2>
+
+<div aria-hidden="true" class="gw-angle">120&deg;</div>
+
+<div class="gw-icon-img"><img alt="金鍏電子 WPL822 防水燈 120度發光角度示意圖 - 廣角均勻照明" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/822/wpl822_lightangle.png?v=6ovpkus" /></div>
+
+<p class="gw-desc">採用最佳化 120&deg; 發光角度設計，讓光線均勻散佈於每一個角落。不僅消除照明死角，更能有效降低刺眼眩光，帶來最柔和舒適的視覺體驗。</p>
+<small class="gw-note">(溫馨提醒：長期待在高眩光環境，易導致視覺疲勞、煩躁甚至視力受損)</small></div>
+
+<div class="gw-right-image"><img alt="台灣金鍏電子 WPL822 實際應用情境：閱讀區無眩光舒適照明" loading="lazy" src="https://cdn.jsdelivr.net/gh/TsenWu/goldenway-photos/WPL822/wpl822_02.jpg" /></div>
+</div>
+</div>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&amp;family=Outfit:wght@400;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* --- Scope Root & Reset --- */
+  #GW-WPL822防水燈金鍏電子ESG及保固區塊-Root {
+    width: 100%; display: block; position: relative; z-index: 1; box-sizing: border-box;
+    font-family: 'Outfit', 'Noto Sans TC', "Microsoft JhengHei", sans-serif;
+  }
+
+  #GW-WPL822防水燈金鍏電子ESG及保固區塊-Root *,
+  #GW-WPL822防水燈金鍏電子ESG及保固區塊-Root *::before,
+  #GW-WPL822防水燈金鍏電子ESG及保固區塊-Root *::after {
+    box-sizing: border-box;
+  }
+
+  /* --- SEO 隱形提領區 --- */
+  #GW-WPL822防水燈金鍏電子ESG及保固區塊-Root .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;
+  }
+
+  /* --- 滿版背景主容器 --- */
+  #GW-WPL822防水燈金鍏電子ESG及保固區塊-Root .gw-esg-hero {
+    position: relative;
+    width: 100%;
+    min-height: 600px;
+    background: url('https://cdn.jsdelivr.net/gh/TsenWu/goldenway-photos/otherphoto/Polar_bear.webp') center center / cover no-repeat;
+    background-color: #f0f4f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 5%;
+    overflow: hidden;
+  }
+
+  /* 半透明遮罩層 */
+  #GW-WPL822防水燈金鍏電子ESG及保固區塊-Root .gw-esg-hero::before {
+    content: ""; position: absolute; inset: 0;
+    background: rgba(255, 255, 255, 0.6); 
+    z-index: 1;
+  }
+
+  /* --- 純 CSS 3D 視差降雪特效 --- */
+  #GW-WPL822防水燈金鍏電子ESG及保固區塊-Root .gw-snow-layer {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 2; 
+    background-image: 
+      radial-gradient(rgba(255,255,255,0.9) 2px, transparent 3px),
+      radial-gradient(rgba(255,255,255,0.7) 1px, transparent 2px),
+      radial-gradient(rgba(255,255,255,0.5) 2px, transparent 3px);
+    background-size: 550px 550px, 350px 350px, 250px 250px;
+    background-position: 0 0, 40px 60px, 130px 270px;
+    animation: gwSnowFall 15s linear infinite;
+  }
+
+  @keyframes gwSnowFall {
+    0% { background-position: 0px 0px, 40px 60px, 130px 270px; }
+    100% { background-position: 550px 1100px, 400px 760px, -120px 770px; } 
+  }
+
+  /* --- 內容容器 --- */
+  #GW-WPL822防水燈金鍏電子ESG及保固區塊-Root .gw-container {
+    position: relative; z-index: 3; 
+    width: 100%; max-width: 1200px;
+    display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 40px;
+  }
+
+  /* =================================================
+     ★★★ 左側：ESG 宣告文字 (修復對齊與字體渲染) ★★★
+     ================================================= */
+  #GW-WPL822防水燈金鍏電子ESG及保固區塊-Root .gw-left-text {
+    flex: 2; 
+    min-width: 300px; 
+    text-align: center; /* ★ 修正為強制置中，符合您的期待 */
+  }
+
+  #GW-WPL822防水燈金鍏電子ESG及保固區塊-Root h2.gw-esg-title {
+    font-family: 'Noto Sans TC', "Microsoft JhengHei", sans-serif !important; /* 強制保底字體 */
+    color: #555d32 !important; 
+    font-size: 32px !important; /* ★ 稍微縮小，視覺更精緻 */
+    line-height: 1.6;
+    font-weight: 700 !important; /* ★ 改為標準粗體 700，徹底解決邊緣鋸齒問題 */
+    margin: 0;
+    letter-spacing: 1px; /* ★ 縮減字距，讓句子更有凝聚力 */
+    text-shadow: 0 0 20px rgba(255,255,255,1), 0 0 10px rgba(255,255,255,0.8); /* ★ 加強白色背光，讓文字在雪景中浮現出來 */
+  }
+
+  /* =================================================
+     ★★★ 右側：毛玻璃保固卡片 ★★★
+     ================================================= */
+  #GW-WPL822防水燈金鍏電子ESG及保固區塊-Root .gw-floating-box {
+    flex: 1; min-width: 300px; max-width: 420px;
+    background: rgba(255, 255, 255, 0.25); 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 16px;
+    padding: 40px 32px;
+    text-align: center;
+    display: flex; flex-direction: column; align-items: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    margin: 0 auto; /* 確保在手機版時卡片置中 */
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    #GW-WPL822防水燈金鍏電子ESG及保固區塊-Root .gw-floating-box:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+      background: rgba(255, 255, 255, 0.35);
+    }
+  }
+
+  #GW-WPL822防水燈金鍏電子ESG及保固區塊-Root .gw-icon {
+    width: 65px; height: auto; margin-bottom: 24px;
+  }
+  #GW-WPL822防水燈金鍏電子ESG及保固區塊-Root .gw-icon img {
+    width: 100%; height: auto; display: block;
+  }
+
+  #GW-WPL822防水燈金鍏電子ESG及保固區塊-Root h3.gw-box-title {
+    font-size: 24px !important; font-weight: 700 !important;
+    margin: 0 0 16px 0; color: #555d32 !important; line-height: 1.4;
+  }
+
+  #GW-WPL822防水燈金鍏電子ESG及保固區塊-Root hr.gw-divider {
+    width: 60%; border: none; border-top: 1px solid #555d32;
+    margin: 0 0 20px 0; opacity: 0.5;
+  }
+
+  #GW-WPL822防水燈金鍏電子ESG及保固區塊-Root p.gw-box-desc {
+    font-size: 16.5px !important; margin: 4px 0;
+    color: #555d32 !important; opacity: 1 !important;
+    line-height: 1.8; font-weight: 500;
+  }
+
+  /* =================================================
+     ? 手機與平板版 RWD
+     ================================================= */
+  @media (max-width: 992px) {
+    #GW-WPL822防水燈金鍏電子ESG及保固區塊-Root .gw-container { flex-direction: column; text-align: center; }
+    #GW-WPL822防水燈金鍏電子ESG及保固區塊-Root .gw-left-text { padding: 0; }
+  }
+
+  @media (max-width: 768px) {
+    #GW-WPL822防水燈金鍏電子ESG及保固區塊-Root .gw-esg-hero { padding: 60px 20px; min-height: 480px; }
+    #GW-WPL822防水燈金鍏電子ESG及保固區塊-Root h2.gw-esg-title { font-size: 26px !important; }
+    #GW-WPL822防水燈金鍏電子ESG及保固區塊-Root h3.gw-box-title { font-size: 22px !important; }
+    #GW-WPL822防水燈金鍏電子ESG及保固區塊-Root p.gw-box-desc { font-size: 16px !important; }
+  }
+</style>
+<div id="GW-WPL822防水燈金鍏電子ESG及保固區塊-Root">
+<div class="sr-only">
+<h2>台灣金鍏電子 - 落實 ESG 永續發展與溫室氣體盤查</h2>
+
+<p>金鍏電子致力於環境保護，已完成溫室氣體盤查，踐行 ESG 承諾，與國際減碳標準接軌。我們為 WPL822 防水燈提供業界最長保固：</p>
+
+<ul>
+	<li>LED 光板保固：10 年或 50,000 小時。</li>
+	<li>驅動器保固：5 年或 20,000 小時。</li>
+</ul>
+
+<p>選擇金鍏電子，不僅是投資高效照明，更是支持永續地球。</p>
+</div>
+
+<div class="gw-esg-hero">
+<div aria-hidden="true" class="gw-snow-layer">&nbsp;</div>
+
+<div class="gw-container">
+<div class="gw-left-text">
+<h2 class="gw-esg-title">金鍏電子完成溫室氣體盤查<br />
+踐行 ESG 承諾，與國際標準接軌</h2>
+</div>
+
+<div class="gw-floating-box">
+<div class="gw-icon"><img alt="金鍏電子 ESG 永續企業圖示" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/company-icon2.png?v=sxcfwnu" /></div>
+
+<h3 class="gw-box-title">業界最長保固<br />
+使用超越十年</h3>
+
+<hr class="gw-divider" />
+<p class="gw-box-desc">光板：10年 / 50,000小時</p>
+
+<p class="gw-box-desc">驅動器：5年 / 20,000小時</p>
+</div>
+</div>
+</div>
+</div>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&amp;family=Outfit:wght@400;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* ==========================================
+     ★★★ 沉浸式動態背景 (打破單調純白) ★★★
+     ========================================== */
+  #GW-WPL822防水燈四大特色結尾-Root {
+    width: 100%; display: block; position: relative; z-index: 1; box-sizing: border-box;
+    font-family: 'Outfit', 'Noto Sans TC', "Microsoft JhengHei", sans-serif;
+    padding: 40px 20px; /* 加大上下留白，展現結尾氣勢 */
+    
+    /* 動態漸層：微弱的 冰藍 -> 珍珠白 -> 暖灰 循環 */
+    background: linear-gradient(-45deg, #ffffff, #f0f4f8, #fdfbf7, #ffffff);
+    background-size: 400% 400%;
+    animation: gwBgBreathe 15s ease infinite;
+    overflow: hidden;
+  }
+
+  /* 背景呼吸動畫 */
+  @keyframes gwBgBreathe {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  #GW-WPL822防水燈四大特色結尾-Root *,
+  #GW-WPL822防水燈四大特色結尾-Root *::before,
+  #GW-WPL822防水燈四大特色結尾-Root *::after {
+    box-sizing: border-box;
+  }
+
+  /* --- SEO 隱形提領區 --- */
+  #GW-WPL822防水燈四大特色結尾-Root .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;
+  }
+
+  /* --- 網格佈局 --- */
+  #GW-WPL822防水燈四大特色結尾-Root .gw-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 28px; 
+    width: 100%; max-width: 1200px; margin: 0 auto;
+    position: relative; z-index: 2;
+  }
+
+  /* ==========================================
+     ★★★ 卡片毛玻璃與光暈特效區 ★★★
+     ========================================== */
+  #GW-WPL822防水燈四大特色結尾-Root .gw-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.6); /* 半透明白底 */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-bottom: 2px solid rgba(0, 226, 79, 0.1); /* 底部埋一點金綠色暗示 */
+    border-radius: 20px;
+    padding: 40px 24px;
+    text-align: center;
+    display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    overflow: hidden; /* 重要：把內部光暈關在卡片裡 */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Q彈的動畫曲線 */
+  }
+
+  /* 【內部隱形聚光燈】 */
+  #GW-WPL822防水燈四大特色結尾-Root .gw-card::before {
+    content: "";
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    /* 放射狀的綠色光暈，預設縮小且透明 */
+    background: radial-gradient(circle at 50% 50%, rgba(0, 226, 188, 0.12) 0%, transparent 60%);
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.5s ease, transform 0.6s ease-out;
+    z-index: -1; pointer-events: none;
+  }
+
+  /* 電腦版 Hover 觸發特效 */
+  @media (hover: hover) and (pointer: fine) {
+    #GW-WPL822防水燈四大特色結尾-Root .gw-card:hover {
+      transform: translateY(-10px);
+      /* 外部透出綠色陰影 */
+      box-shadow: 0 20px 40px rgba(0, 226, 158, 0.15), 0 5px 15px rgba(0,0,0,0.05);
+      border-color: rgba(0, 226, 41, 0.5); /* 邊框亮起 */
+      background: rgba(255, 255, 255, 0.85);
+    }
+    
+    /* 內部光暈綻放 */
+    #GW-WPL822防水燈四大特色結尾-Root .gw-card:hover::before {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Icon 輕微跳動 */
+    #GW-WPL822防水燈四大特色結尾-Root .gw-card:hover img {
+      transform: scale(1.15) rotate(-3deg);
+    }
+  }
+
+  /* --- Icon --- */
+  #GW-WPL822防水燈四大特色結尾-Root .gw-card img {
+    width: 72px; height: 72px; object-fit: contain; margin-bottom: 24px;
+    display: block; transition: all 0.4s ease;
+  }
+
+  /* --- 標題 (SEO: H3) + 絕對防禦 --- */
+  #GW-WPL822防水燈四大特色結尾-Root .gw-card h3 {
+    margin: 0 0 12px 0;
+    font-size: 20px !important; font-weight: 700 !important;
+    color: #111827 !important; line-height: 1.4;
+  }
+
+  /* --- 內文 (SEO: P) + 絕對防禦 --- */
+  #GW-WPL822防水燈四大特色結尾-Root .gw-card p {
+    margin: 0; font-size: 15px !important; line-height: 1.7;
+    color: #4b5563 !important; opacity: 1 !important; font-weight: 500;
+  }
+
+  /* --- RWD 斷點 --- */
+  @media (max-width: 1024px) {
+    #GW-WPL822防水燈四大特色結尾-Root .gw-feature-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  }
+
+  @media (max-width: 768px) {
+    #GW-WPL822防水燈四大特色結尾-Root { padding: 60px 20px; }
+    #GW-WPL822防水燈四大特色結尾-Root .gw-feature-grid { grid-template-columns: 1fr; gap: 20px; }
+    #GW-WPL822防水燈四大特色結尾-Root .gw-card { padding: 32px 20px; }
+    #GW-WPL822防水燈四大特色結尾-Root .gw-card img { width: 64px; height: 64px; }
+  }
+</style>
+<div id="GW-WPL822防水燈四大特色結尾-Root">
+<div class="sr-only">
+<h2>金鍏電子 WPL822 防水燈 - 照明升級首選</h2>
+
+<p>統整 WPL822 防水燈的四大核心價值，為您的企業帶來最高效益：</p>
+
+<ul>
+	<li>節能照明技術：有效降低碳排，邁向 ESG 永續。</li>
+	<li>專業認證把關：通過多項國家標準，品質安心有保障。</li>
+	<li>低光衰極穩定：長效維持明亮光效，亮度不打折。</li>
+	<li>長壽命省成本：超長保固期限，大幅降低維修替換費用。</li>
+</ul>
+</div>
+
+<div class="gw-feature-grid">
+<div class="gw-card"><img alt="金鍏電子 - 節能照明技術 邁向ESG" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/biosphere.png?v=wyw1h7n" />
+<h3>節能照明技術</h3>
+
+<p>有效減少能源浪費並降低碳排<br />
+助力企業輕鬆邁向 ESG</p>
+</div>
+
+<div class="gw-card"><img alt="金鍏電子 - 防塵防水等級IP66" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/dust.png?v=1tavfbg" />
+<h3>IP66 防塵防水等級</h3>
+
+<p>本體、燈罩一體成形<br />
+安全防護更全面</p>
+</div>
+
+<div class="gw-card"><img alt="金鍏電子 - 通過鹽水噴霧試驗使用更安心" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/watering-plants-v.png?v=kpmhkjcl" />
+<h3>通過鹽水噴霧試驗</h3>
+
+<p>通過 CNS8886 鹽水噴霧試驗360小時<br />
+適合安裝各類特殊場域</p>
+</div>
+
+<div class="gw-card"><img alt="金鍏電子 - 超長壽命 大幅節省維護成本" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/reduction.png?v=m2ralzi" />
+<h3>長壽命、超省電</h3>
+
+<p>超過6萬小時使用壽命<br />
+大幅降低更換與維修成本</p>
+</div>
+</div>
+</div>
+
+<div class="_bd_row _bd_clearfix">
+<div class="_bd_column _bd_full">
+<hr /></div>
+</div>
+
+<div class="_bd_row _bd_clearfix">
+<div class="_bd_column _bd_full">
+<h1 class="size-48 _bd_is-title1-48 _bd_is-title-bold _bd_is-upper" style="text-align: center;">適用安裝場域</h1>
+
+<p class="size-21" style="text-align: center;">半戶外空間 / 廠房 / 中央廚房 / 洗車中心 / 騎樓</p>
+</div>
+</div>
+
+<div class="_bd_row _bd_clearfix">
+<div class="_bd_column _bd_full">
+<hr /></div>
+</div>
