@@ -1,0 +1,394 @@
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;family=Outfit:wght@400;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* ==========================================================================
+   GW-led燈管特色首圖區塊 - 核心防禦與排版鎖定
+   ========================================================================== */
+#GW-led燈管特色首圖區塊-Root {
+  /* 修改此數值可調整寬螢幕下的最小高度 */
+  --min-height-desktop: 700px;
+  /* 修改此數值可調整手機版螢幕下的最小高度 */
+  --min-height-mobile: 600px;
+  /* 更換此網址可修改區塊底圖 */
+  --bg-image: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/tube/01fd584040961310.jpg?v=flv8p7hy');
+
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+  background: var(--bg-image) center center / cover no-repeat;
+  overflow: hidden; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: var(--min-height-desktop);
+  /* 修改此數值可調整區塊四周的內留白 (上 右 下 左) */
+  padding: 60px 5%;
+}
+
+#GW-led燈管特色首圖區塊-Root *,
+#GW-led燈管特色首圖區塊-Root *::before,
+#GW-led燈管特色首圖區塊-Root *::after {
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   SEO 隱形提領區塊：專供爬蟲抓取
+   ========================================================================== */
+#GW-led燈管特色首圖區塊-Root .sr-only {
+  position: absolute; 
+  width: 1px; 
+  height: 1px; 
+  padding: 0; 
+  margin: -1px; 
+  overflow: hidden; 
+  clip: rect(0, 0, 0, 0); 
+  border: 0;
+}
+
+/* ==========================================================================
+   左上角文案區塊樣式
+   ========================================================================== */
+#GW-led燈管特色首圖區塊-Root .gw-hero-text {
+  position: relative;
+  z-index: 2;
+  /* 修改此數值可控制左上角文案的最大寬度 */
+  max-width: 650px;
+}
+
+#GW-led燈管特色首圖區塊-Root h2 {
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  /* 修改此數值可調整文字行距 */
+  line-height: 1.0 !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+  letter-spacing: 2px !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8) !important;
+}
+
+#GW-led燈管特色首圖區塊-Root h2 strong {
+  /* 修改此數值可變更重點粗體字的顏色 */
+  color: #FFD700 !important;
+  font-weight: 700 !important;
+}
+
+/* ==========================================================================
+   右下角 4 卡片網格排版 (對稱式陣列)
+   ========================================================================== */
+#GW-led燈管特色首圖區塊-Root .gw-features-grid {
+  display: grid;
+  /* 寬螢幕強制 4 欄並排 */
+  grid-template-columns: repeat(4, 1fr);
+  /* 修改此數值可調整方框之間的間距 */
+  gap: 15px;
+  /* 靠右下角對齊 */
+  align-self: flex-end;
+  /* 設定適當的最大寬度並取消滿版，防止桌機版無限制拉伸 */
+  max-width: 850px;
+  width: auto;
+  position: relative;
+  z-index: 2;
+}
+
+#GW-led燈管特色首圖區塊-Root .gw-feature-card {
+  /* 修改 rgba 的最後一個數值可調整背景透明度 */
+  background: rgba(0, 0, 0, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  border-radius: 8px !important;
+  /* 修改此數值可調整方框內部的 上下 左右 留白空間 */
+  padding: 16px 20px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  transition: transform 0.3s ease, background 0.3s ease !important;
+}
+
+#GW-led燈管特色首圖區塊-Root .gw-feature-card:hover {
+  transform: translateY(-5px) !important;
+  background: rgba(0, 0, 0, 0.8) !important;
+}
+
+/* ==========================================================================
+   卡片內部圖文樣式
+   ========================================================================== */
+#GW-led燈管特色首圖區塊-Root .gw-icon-wrapper {
+  flex-shrink: 0;
+  /* 修改此數值可調整左側 Icon 的寬度與高度 */
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#GW-led燈管特色首圖區塊-Root .gw-icon-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block !important;
+}
+
+#GW-led燈管特色首圖區塊-Root h3 {
+  /* 修改此數值可調整上方說明小字的尺寸 */
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  color: #cccccc !important;
+  margin: 0 0 4px 0 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.5px !important;
+}
+
+#GW-led燈管特色首圖區塊-Root .gw-value {
+  font-family: 'Outfit', sans-serif !important;
+  /* 修改此數值可調整下方重點數據的尺寸 */
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+  line-height: 1 !important;
+}
+
+/* ==========================================================================
+   RWD 高度與斷點控制 (2x2 排列優化)
+   ========================================================================== */
+@media (max-width: 1100px) {
+  #GW-led燈管特色首圖區塊-Root .gw-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  #GW-led燈管特色首圖區塊-Root {
+    min-height: var(--min-height-mobile);
+    padding: 40px 20px;
+  }
+  #GW-led燈管特色首圖區塊-Root .gw-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    width: auto;
+    max-width: 100%;
+    gap: 12px;
+  }
+  #GW-led燈管特色首圖區塊-Root .gw-feature-card {
+    padding: 10px 12px !important;
+    gap: 10px !important;
+  }
+  #GW-led燈管特色首圖區塊-Root .gw-icon-wrapper {
+    width: 32px;
+    height: 32px;
+  }
+  #GW-led燈管特色首圖區塊-Root .gw-value {
+    font-size: 22px !important;
+  }
+  #GW-led燈管特色首圖區塊-Root h3 {
+    font-size: 14px !important;
+  }
+}
+</style>
+<div id="GW-led燈管特色首圖區塊-Root">
+<div class="sr-only">
+<h2>金鍏電子高效節標LED燈管：專為工業等級設計的高性能T8替換方案</h2>
+
+<p>這款燈管在僅12.5W的功率下提供2000流明的極致亮度，榮獲節能標章認證，並展現MIT台灣製造的穩定品質。樹立了照明技術性與可靠性的最高標準。</p>
+</div>
+
+<div class="gw-hero-text">
+<h2>專為最大效率、極致耐用設計的高性能 T8 替換燈管<br />
+<br />
+在僅 12.5W 的功率下提供 2000 lm (流明)的亮度<br />
+<br />
+此款工業等級<strong>高效節標LED燈管</strong>樹立了技術性與可靠性的標準</h2>
+</div>
+
+<div class="gw-features-grid">
+<div class="gw-feature-card">
+<div class="gw-icon-wrapper"><img alt="12.5W功率" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/electric-meter.png?v=armz359" /></div>
+
+<div>
+<h3>功率</h3>
+
+<p class="gw-value">12.5W</p>
+</div>
+</div>
+
+<div class="gw-feature-card">
+<div class="gw-icon-wrapper"><img alt="2000lm光通量" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/sun.png?v=uyzbo5" /></div>
+
+<div>
+<h3>光通量</h3>
+
+<p class="gw-value">2000lm</p>
+</div>
+</div>
+
+<div class="gw-feature-card">
+<div class="gw-icon-wrapper"><img alt="節能標章認證" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/a.png?v=4ulkm0r" /></div>
+
+<div>
+<h3>認證</h3>
+
+<p class="gw-value" style="font-size: 16px !important;">節能標章</p>
+</div>
+</div>
+
+<div class="gw-feature-card">
+<div class="gw-icon-wrapper"><img alt="台灣製造MIT" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/c.png?v=su4lsjn" /></div>
+
+<div>
+<h3>MIT</h3>
+
+<p class="gw-value" style="font-size: 16px !important;">台灣製造</p>
+</div>
+</div>
+</div>
+</div>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&amp;family=Outfit:wght@400;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">#GW-led燈管四特色說明區塊-Root {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+  padding: 20px 0px 20px 0px;
+  background-color: #ffffff;
+}
+#GW-led燈管四特色說明區塊-Root *,
+#GW-led燈管四特色說明區塊-Root *::before,
+#GW-led燈管四特色說明區塊-Root *::after {
+  box-sizing: border-box;
+}
+#GW-led燈管四特色說明區塊-Root .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+#GW-led燈管四特色說明區塊-Root .gw-features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+#GW-led燈管四特色說明區塊-Root .gw-feature-card {
+  background-color: #f4f4f4 !important;
+  border-radius: 0 !important;
+  padding: 20px 24px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  transition: box-shadow 0.3s ease !important;
+}
+#GW-led燈管四特色說明區塊-Root .gw-feature-card:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08) !important;
+}
+#GW-led燈管四特色說明區塊-Root .gw-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+#GW-led燈管四特色說明區塊-Root .gw-feature-card:hover .gw-icon-wrapper {
+  transform: scale(1.2) !important;
+}
+#GW-led燈管四特色說明區塊-Root .gw-icon-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block !important;
+}
+#GW-led燈管四特色說明區塊-Root h3 {
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  color: #111111 !important;
+  margin: 0 0 16px 0 !important;
+  line-height: 1.4 !important;
+  letter-spacing: 0.5px !important;
+}
+#GW-led燈管四特色說明區塊-Root p {
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  color: #333333 !important;
+  margin: 0 !important;
+  line-height: 1.6 !important;
+  letter-spacing: 0.5px !important;
+}
+@media (max-width: 1024px) {
+  #GW-led燈管四特色說明區塊-Root .gw-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  #GW-led燈管四特色說明區塊-Root {
+    padding: 50px 4%;
+  }
+}
+@media (max-width: 767px) {
+  #GW-led燈管四特色說明區塊-Root .gw-features-grid {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 15px;
+  }
+  #GW-led燈管四特色說明區塊-Root {
+    padding: 40px 20px;
+  }
+  #GW-led燈管四特色說明區塊-Root .gw-feature-card {
+    padding: 30px 20px !important;
+  }
+  #GW-led燈管四特色說明區塊-Root h3 {
+    font-size: 20px !important;
+  }
+  #GW-led燈管四特色說明區塊-Root p {
+    font-size: 15px !important;
+  }
+}
+</style>
+<div id="GW-led燈管四特色說明區塊-Root">
+<div class="sr-only">
+<h2>金鍏電子 MIT 台灣製造 LED 燈管：四大核心技術優勢</h2>
+
+<p>金鍏電子自主研發的節能照明解決方案具備四大特點：第一，頂尖光效大於 160lm/W，實測達 174.5 lm/W，極大化能源轉換；第二，健康護眼零頻閃，輸出光源穩定流暢；第三，精準顯色 Ra大於80，高演色還原技術提升視覺品質；第四，長效耐用維持率達 99.7%，減少頻繁更換的隱形維護成本。</p>
+</div>
+
+<div class="gw-features-grid">
+<div class="gw-feature-card">
+<div class="gw-icon-wrapper"><img alt="頂尖光效大於160lm/W" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/sustainability_4815467.png?v=4js8ets" title="金鍏電子高轉換效率 - 節能照明新基準" /></div>
+
+<h3>頂尖光效<br />
+&gt;160lm/W</h3>
+
+<p>實測達 174.5 lm/W，定義節能照明新基準，極大化能源轉換</p>
+</div>
+
+<div class="gw-feature-card">
+<div class="gw-icon-wrapper"><img alt="健康護眼零頻閃設計" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/eye-protection.png?v=dl4o06t" title="極低閃爍係數 - 穩定流暢光源" /></div>
+
+<h3>健康護眼<br />
+0頻閃</h3>
+
+<p>趨近於零的極低閃爍係數，確保輸出光源穩定流暢用眼不疲勞</p>
+</div>
+
+<div class="gw-feature-card">
+<div class="gw-icon-wrapper"><img alt="精準顯色高演色還原技術" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/color__2_.png?v=6maut9n" title="Ra大於80 - 提升視覺辨識品質" /></div>
+
+<h3>精準顯色<br />
+Ra &gt; 80</h3>
+
+<p>高演色還原技術，消弭偏色誤判並提升視覺辨識品質</p>
+</div>
+
+<div class="gw-feature-card">
+<div class="gw-icon-wrapper"><img alt="長效耐用高光通維持率" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/circular-clock.png?v=ymxzdy" title="MIT 扎實工藝 - 萬小時長效使用壽命" /></div>
+
+<h3>長效耐用<br />
+99.7%維持率</h3>
+
+<p>萬小時長效使用壽命，減少頻繁更換的隱形成本與維修勞務</p>
+</div>
+</div>
+</div>
