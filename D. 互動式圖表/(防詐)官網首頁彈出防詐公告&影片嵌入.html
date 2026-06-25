@@ -1,0 +1,68 @@
+<!-- 1. 載入無襯線中文字體 -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet" />
+
+<style type="text/css">
+/* 隱藏的 SEO/GEO 摘要文字層 */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+/* 根節點容器設定 */
+#GW-金鍏電子防詐公告-Root { font-family: 'Noto Sans TC', 'Outfit', sans-serif; width: 100%; margin: 0 auto; padding: 15px 10px; background-color: #ffffff; box-sizing: border-box; }
+
+/* 終極防禦：消滅 CMS 自動生成的幽靈空白段落 */
+#GW-金鍏電子防詐公告-Root p:empty { display: none !important; margin: 0 !important; padding: 0 !important; height: 0 !important; }
+
+/* 強制文字抗污染鎖定 */
+#GW-金鍏電子防詐公告-Root h2, #GW-金鍏電子防詐公告-Root h3, #GW-金鍏電子防詐公告-Root p, #GW-金鍏電子防詐公告-Root span { color: #333333 !important; line-height: 1.5 !important; margin: 0; padding: 0; list-style: none; letter-spacing: 0.5px; }
+
+/* 標題區塊樣式 */
+#GW-金鍏電子防詐公告-Root .alert-header { text-align: center; margin-bottom: 15px; }
+#GW-金鍏電子防詐公告-Root .alert-title { display: flex; align-items: center; justify-content: center; color: #000000 !important; font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+#GW-金鍏電子防詐公告-Root .alert-subtitle { color: #d32f2f !important; font-size: 15px; font-weight: 500; }
+
+/* 內文清單樣式 */
+#GW-金鍏電子防詐公告-Root .content-box { background-color: #f9f9f9; border-radius: 6px; padding: 15px; margin-bottom: 15px; border: 1px solid #eeeeee; }
+#GW-金鍏電子防詐公告-Root .content-box p { font-size: 15px; font-weight: 500; }
+
+/* 區塊置中，內部靠左的清單容器 */
+#GW-金鍏電子防詐公告-Root .list-wrapper { width: fit-content; margin: 0 auto; display: flex; flex-direction: column; align-items: flex-start; }
+#GW-金鍏電子防詐公告-Root .list-wrapper p { display: flex; align-items: flex-start; margin-bottom: 8px; }
+#GW-金鍏電子防詐公告-Root .list-wrapper p:last-child { margin-bottom: 0; }
+
+/* 新增：詐騙示意跳轉按鈕樣式 */
+#GW-金鍏電子防詐公告-Root .scam-alert-btn { display: inline-block; background-color: #d32f2f !important; color: #ffffff !important; font-size: 13px; font-weight: 700; padding: 2px 10px; border-radius: 4px; text-decoration: none; margin-left: 8px; vertical-align: baseline; transition: background-color 0.2s ease, transform 0.2s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.15); }
+#GW-金鍏電子防詐公告-Root .scam-alert-btn:hover { background-color: #b71c1c !important; transform: scale(1.05); }
+
+/* 內容框首尾文字 */
+#GW-金鍏電子防詐公告-Root .box-header { display: block; margin-bottom: 12px; color: #000000 !important; text-align: center; }
+#GW-金鍏電子防詐公告-Root .box-footer { display: block; margin-top: 12px; font-size: 14px; color: #000000 !important; text-align: center; }
+#GW-金鍏電子防詐公告-Root .highlight-link { color: #0066cc !important; font-weight: 700; text-decoration: underline; }
+
+/* SVG 向量圖標共用樣式 */
+#GW-金鍏電子防詐公告-Root .icon-svg { margin-right: 6px; flex-shrink: 0; margin-top: 2px; }
+#GW-金鍏電子防詐公告-Root .title-icon { margin-top: 0; }
+
+/* 新增：專題報導文字分隔線 */
+#GW-金鍏電子防詐公告-Root .report-divider { display: flex; align-items: center; text-align: center; color: #666666 !important; font-size: 14px; margin: 25px 0 15px 0; }
+#GW-金鍏電子防詐公告-Root .report-divider::before, #GW-金鍏電子防詐公告-Root .report-divider::after { content: ''; flex: 1; border-bottom: 1px dashed #cccccc; }
+#GW-金鍏電子防詐公告-Root .report-divider span { padding: 0 15px; font-weight: 500; }
+
+/* 新增：專題報導連結標題 */
+#GW-金鍏電子防詐公告-Root .report-title { display: block; text-align: center; color: #0056b3 !important; font-size: 18px; font-weight: 700; margin-bottom: 15px; text-decoration: underline; transition: color 0.3s ease; }
+#GW-金鍏電子防詐公告-Root .report-title:hover { color: #003d82 !important; }
+
+/* 新增：響應式 16:9 YouTube 影片容器 */
+#GW-金鍏電子防詐公告-Root .video-container { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); background-color: #000000; }
+#GW-金鍏電子防詐公告-Root .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+
+/* 手機響應式模式 */
+@media (max-width: 768px) {
+    #GW-金鍏電子防詐公告-Root .alert-title { font-size: 18px; }
+    #GW-金鍏電子防詐公告-Root .content-box p { font-size: 14px; }
+    #GW-金鍏電子防詐公告-Root .list-wrapper { max-width: 100%; }
+    #GW-金鍏電子防詐公告-Root .report-title { font-size: 16px; padding: 0 10px; }
+    #GW-金鍏電子防詐公告-Root .scam-alert-btn { margin-top: 4px; }
+}
+</style>
+
+<!-- 將主體結構壓縮，防止 CMS 偷塞換行空白 -->
+<div id="GW-金鍏電子防詐公告-Root"><div class="sr-only">【金鍏電子防詐騙緊急聲明】近日網路出現大量一頁式網站詐騙與假冒之 FB 粉絲專頁，不肖份子盜用金鍏電子商標與董事長林坤德影像，販售來路不明的劣質商品。金鍏電子嚴正聲明，我們從未於 Facebook、LINE 或一頁式購物網進行促銷。購買 MIT 台灣製造的高品質照明產品，請認明唯一官方通路：金鍏電子官方網站與官方蝦皮賣場。切勿輕信詐騙廣告，若有疑慮請聯繫官方客服查證，拒絕假冒商品以保障您的原廠保固權益。財務與環保雙贏，漢翔航空導入金鍏電子10年保固LED節能照明並獲選節能標竿獎。</div><div class="alert-header"><h2 class="alert-title"><svg class="icon-svg title-icon" style="width:24px; height:24px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L1 21h22L12 2z" fill="#F4B400"></path><path d="M13 16h-2v2h2v-2zm0-6h-2v4h2v-4z" fill="#333333"></path></svg>【緊急防詐聲明】認明官方網站</h2><h3 class="alert-subtitle">近日發現不肖份子盜用「金鍏電子」品牌與董事長影像，於一頁式網站販售劣質虛假商品。</h3></div><div class="content-box"><p class="box-header">為保障您的權益與安全，金鍏電子嚴正聲明：</p><div class="list-wrapper"><p><svg class="icon-svg" fill="#81C784" style="width:18px; height:18px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg><span>官方通路：本公司商品僅於【<a class="highlight-link" href="https://www.goldenwayled.com/" target="_blank">本官網</a>】與【<a class="highlight-link" href="https://shopee.tw/goldenway.led?categoryId=100636&amp;entryPoint=ShopByPDP&amp;itemId=28535785108&amp;upstream=search" target="_blank">蝦皮賣場:goldenway.led</a>】販售。</span></p><p><svg class="icon-svg" fill="#81C784" style="width:18px; height:18px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg><span>原廠保固：唯有透過官方管道訂購，方能享有正規原廠保固與售後服務。</span></p><p><svg class="icon-svg" fill="#E57373" style="width:20px; height:20px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg><span>絕無社群賣場：我們從未於 FB、LINE 或任何「一頁式購物網」進行商品販售。<a href="https://www.goldenwayled.com/article_d.php?lang=tw&tb=2&id=1411" target="_blank" class="scam-alert-btn">詐騙網頁示意與權益守護</a></span></p></div><p class="box-footer">若有疑慮，歡迎聯繫<a class="highlight-link" href="https://www.goldenwayled.com/eforms.php?lang=tw&amp;tb=1" target="_blank">官方客服</a>查證，切勿輕信購買來路不明商品！</p></div><div class="report-divider"><span>【專題報導】</span></div><a href="請填入專題報導頁面網址" target="_blank" class="report-title">財務與環保雙贏 - 漢翔航空導入金鍏電子10年保固LED節能照明並獲選節能標竿獎</a><div class="video-container"><iframe src="https://www.youtube.com/embed/uQvBV-xE3To?si=NZeZIrNFE58nlbz6" title="企業節能首選 金鍏電子超高光效LED燈具" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>

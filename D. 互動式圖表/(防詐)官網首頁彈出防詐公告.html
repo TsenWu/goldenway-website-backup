@@ -1,0 +1,387 @@
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&amp;family=Outfit:wght@400;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* 隱藏的 SEO/GEO 摘要文字層 */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* 根節點容器設定 */
+#GW-金鍏電子防詐公告-Root {
+    font-family: 'Noto Sans TC', 'Outfit', sans-serif;
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px 10px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+}
+
+/* 強制文字抗污染鎖定 */
+#GW-金鍏電子防詐公告-Root h2,
+#GW-金鍏電子防詐公告-Root h3,
+#GW-金鍏電子防詐公告-Root p,
+#GW-金鍏電子防詐公告-Root span {
+    color: #333333 !important;
+    line-height: 1.5 !important;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    letter-spacing: 0.5px;
+}
+
+/* 標題區塊樣式 */
+#GW-金鍏電子防詐公告-Root .alert-header {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#GW-金鍏電子防詐公告-Root .alert-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000 !important;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+#GW-金鍏電子防詐公告-Root .alert-subtitle {
+    color: #d32f2f !important;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* 內文清單樣式 */
+#GW-金鍏電子防詐公告-Root .content-box {
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #eeeeee;
+}
+
+#GW-金鍏電子防詐公告-Root .content-box p {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* 區塊置中，內部靠左的清單容器 */
+#GW-金鍏電子防詐公告-Root .list-wrapper {
+    width: fit-content;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#GW-金鍏電子防詐公告-Root .list-wrapper p {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+#GW-金鍏電子防詐公告-Root .list-wrapper p:last-child {
+    margin-bottom: 0;
+}
+
+/* 內容框首尾文字 */
+#GW-金鍏電子防詐公告-Root .box-header {
+    display: block;
+    margin-bottom: 12px;
+    color: #000000 !important;
+    text-align: center;
+}
+
+#GW-金鍏電子防詐公告-Root .box-footer {
+    display: block;
+    margin-top: 12px;
+    font-size: 14px;
+    color: #000000 !important;
+    text-align: center;
+}
+
+#GW-金鍏電子防詐公告-Root .highlight-link {
+    color: #0066cc !important;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+/* =========================================
+   新增 1：受害者退款教學專區 (醒目設計)
+   ========================================= */
+#GW-金鍏電子防詐公告-Root .help-banner-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+#GW-金鍏電子防詐公告-Root .help-banner {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f7ff; 
+    border: 2px solid #0066cc;
+    color: #0066cc !important;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 102, 204, 0.15);
+    animation: bannerPulse 2s infinite;
+    transition: all 0.3s ease;
+    max-width: 95%;
+    box-sizing: border-box;
+}
+
+/* 修正：強制解除 span 的文字鎖定，讓按鈕文字能變色 */
+#GW-金鍏電子防詐公告-Root .help-banner span {
+    color: #0066cc !important;
+    transition: color 0.3s ease;
+}
+
+/* 滑鼠移入時的互動效果與文字變白 */
+#GW-金鍏電子防詐公告-Root .help-banner:hover {
+    background-color: #0066cc;
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 102, 204, 0.3);
+    animation: none; 
+}
+
+#GW-金鍏電子防詐公告-Root .help-banner:hover span {
+    color: #ffffff !important;
+}
+
+#GW-金鍏電子防詐公告-Root .help-banner .icon-svg {
+    fill: currentColor;
+    margin-right: 8px;
+    width: 22px;
+    height: 22px;
+}
+
+/* 箭頭微動效 */
+#GW-金鍏電子防詐公告-Root .arrow-move {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    margin-left: 6px;
+}
+#GW-金鍏電子防詐公告-Root .help-banner:hover .arrow-move {
+    transform: translateX(5px);
+}
+
+/* 藍色脈衝動畫關鍵影格 */
+@keyframes bannerPulse {
+    0% { box-shadow: 0 0 0 0 rgba(0, 102, 204, 0.4); }
+    70% { box-shadow: 0 0 0 12px rgba(0, 102, 204, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 102, 204, 0); }
+}
+
+/* =========================================
+   新增：虛線分隔線設計
+   ========================================= */
+#GW-金鍏電子防詐公告-Root .dashed-divider {
+    border-top: 2px dashed #cccccc;
+    width: 100%;
+    margin: 15px 0;
+}
+
+/* =========================================
+   修改 2：警告標語區域
+   ========================================= */
+#GW-金鍏電子防詐公告-Root .warning-area {
+    display: flex;
+    flex-direction: row; 
+    justify-content: center;
+    align-items: center; 
+    margin: 10px 0 10px 0;
+}
+
+#GW-金鍏電子防詐公告-Root .warning-text {
+    color: #d32f2f !important;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: left;
+    margin-top: 0 !important; 
+    margin-left: 12px; 
+}
+
+/* SVG 向量圖標共用樣式 */
+#GW-金鍏電子防詐公告-Root .icon-svg {
+    margin-right: 6px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+#GW-金鍏電子防詐公告-Root .title-icon {
+    margin-top: 0;
+}
+
+/* --- 三圖同高切齊的 CSS Grid 佈局 --- */
+#GW-金鍏電子防詐公告-Root .image-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 10px;
+    align-items: stretch;
+}
+
+/* 圖片外層容器 (防禦絕對定位溢出) */
+#GW-金鍏電子防詐公告-Root .grid-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    border: 1px solid #dddddd;
+    box-sizing: border-box;
+}
+
+#GW-金鍏電子防詐公告-Root .grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+}
+
+/* 強制鎖定橫式與直式圖片防呆比例 */
+#GW-金鍏電子防詐公告-Root .grid-item-horizontal img { aspect-ratio: 4 / 3; }
+#GW-金鍏電子防詐公告-Root .grid-item-vertical img { aspect-ratio: 2 / 3; }
+
+/* --- 防詐文字浮現與動態特效圖層 --- */
+#GW-金鍏電子防詐公告-Root .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.25s ease;
+}
+
+#GW-金鍏電子防詐公告-Root .grid-item:hover .image-overlay {
+    background-color: rgba(0, 0, 0, 0.35);
+}
+
+#GW-金鍏電子防詐公告-Root .overlay-text {
+    background-color: #d32f2f !important;
+    color: #ffffff !important;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: 1.5px solid #ffffff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    text-align: center;
+    white-space: nowrap;
+    max-width: 90%;
+    box-sizing: border-box;
+    transition: transform 0.2s ease;
+    transform: scale(1);
+    display: inline-block;
+}
+
+#GW-金鍏電子防詐公告-Root .grid-item:hover .overlay-text {
+    animation: gw-vibrate 0.25s infinite linear;
+}
+
+@keyframes gw-vibrate {
+    0% { transform: scale(1.15) translate(0, 0); }
+    20% { transform: scale(1.15) translate(-1.5px, 1px); }
+    40% { transform: scale(1.15) translate(1px, -1px); }
+    60% { transform: scale(1.15) translate(-1px, -1px); }
+    80% { transform: scale(1.15) translate(1.5px, 1px); }
+    100% { transform: scale(1.15) translate(0, 0); }
+}
+
+/* --- 手機響應式防範模式 --- */
+@media (max-width: 768px) {
+    #GW-金鍏電子防詐公告-Root .alert-title { font-size: 18px; }
+    #GW-金鍏電子防詐公告-Root .warning-text { font-size: 16px; }
+    #GW-金鍏電子防詐公告-Root .content-box p { font-size: 14px; }
+    #GW-金鍏電子防詐公告-Root .list-wrapper { max-width: 100%; }
+    
+    #GW-金鍏電子防詐公告-Root .help-banner {
+        font-size: 14px;
+        padding: 10px 16px;
+        flex-wrap: wrap; 
+        text-align: center;
+        border-radius: 8px; 
+    }
+    #GW-金鍏電子防詐公告-Root .warning-area {
+        flex-direction: column; 
+        text-align: center;
+    }
+    #GW-金鍏電子防詐公告-Root .warning-text {
+        margin-left: 0;
+        margin-top: 10px !important;
+        text-align: center;
+    }
+
+    #GW-金鍏電子防詐公告-Root .image-grid { grid-template-columns: 1fr 1fr; }
+    #GW-金鍏電子防詐公告-Root .grid-item-horizontal { grid-column: 1 / -1; }
+    
+    #GW-金鍏電子防詐公告-Root .grid-item:hover .overlay-text {
+        animation: none !important;
+        transform: scale(1) !important;
+    }
+    #GW-金鍏電子防詐公告-Root .grid-item:hover .image-overlay {
+        background-color: rgba(0, 0, 0, 0.15) !important;
+    }
+    
+    #GW-金鍏電子防詐公告-Root .overlay-text {
+        font-size: 11px !important;
+        padding: 4px 6px !important;
+        border-width: 1px !important;
+    }
+}
+</style>
+<div id="GW-金鍏電子防詐公告-Root">
+<div class="sr-only">【金鍏電子防詐騙緊急聲明】近日網路出現大量一頁式網站詐騙與假冒之 FB 粉絲專頁，不肖份子盜用金鍏電子商標與董事長林坤德影像，販售來路不明的劣質商品。金鍏電子嚴正聲明，我們從未於 Facebook、LINE 或一頁式購物網進行促銷。購買 MIT 台灣製造的高品質照明產品，請認明唯一官方通路：金鍏電子官方網站與官方蝦皮賣場。切勿輕信詐騙廣告，若有疑慮請聯繫官方客服查證，拒絕假冒商品以保障您的原廠保固權益。</div>
+
+<div class="alert-header">
+<h2 class="alert-title"><svg class="icon-svg title-icon" style="width:24px; height:24px;" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <path d="M12 2L1 21h22L12 2z" fill="#F4B400"></path> <path d="M13 16h-2v2h2v-2zm0-6h-2v4h2v-4z" fill="#333333"></path> </svg> 【緊急防詐聲明】認明官方網站</h2>
+
+<h3 class="alert-subtitle">近日發現不肖份子盜用「金鍏電子」品牌與董事長影像，於一頁式網站販售劣質虛假商品。</h3>
+</div>
+
+<div class="content-box">
+<p class="box-header">為保障您的權益與安全，金鍏電子嚴正聲明：</p>
+
+<div class="list-wrapper">
+<p><svg class="icon-svg" fill="#81C784" style="width:18px; height:18px;" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path> </svg> <span>官方通路：本公司商品僅於【<a class="highlight-link" href="https://www.goldenwayled.com/">本官網</a>】與【<a class="highlight-link" href="https://shopee.tw/goldenway.led?categoryId=100636&amp;entryPoint=ShopByPDP&amp;itemId=28535785108&amp;upstream=search">蝦皮賣場:goldenway.led</a>】販售。</span></p>
+
+<p><svg class="icon-svg" fill="#81C784" style="width:18px; height:18px;" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path> </svg> <span>原廠保固：唯有透過官方管道訂購，方能享有正規原廠保固與售後服務。</span></p>
+
+<p><svg class="icon-svg" fill="#E57373" style="width:20px; height:20px;" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path> </svg> <span>絕無社群賣場：我們從未於 FB、LINE 或任何「一頁式購物網」進行商品販售。</span></p>
+</div>
+
+<p class="box-footer">若有疑慮，歡迎聯繫<a class="highlight-link" href="https://www.goldenwayled.com/eforms.php?lang=tw&amp;tb=1">官方客服</a>查證，切勿輕信購買來路不明商品！</p>
+</div>
+
+<div class="help-banner-wrapper"><a class="help-banner" href="https://www.goldenwayled.com/article_d.php?lang=tw&amp;tb=2&amp;id=1411" target="_blank"><svg class="icon-svg" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 14l-4-4 1.41-1.41L10 12.17l6.59-6.59L18 7l-8 8z"></path> </svg> <span>付款後收到詐騙包裹先別慌！消保官教你成功退款 <span class="arrow-move">&rarr;</span></span> </a></div>
+
+<div class="warning-area"><svg style="width:36px; height:36px;" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <path d="M12 2L1 21h22L12 2z" fill="#D32F2F"></path> <path d="M13 16h-2v2h2v-2zm0-6h-2v4h2v-4z" fill="#FFFFFF"></path> </svg>
+
+<p class="warning-text">以下皆為詐騙一頁式網頁及假粉專！歡迎直接檢舉並拒絕購買避免財務損失！</p>
+</div>
+
+<div class="image-grid">
+<div class="grid-item grid-item-horizontal"><img alt="金鍏電子防詐騙聲明：盜用董事長林坤德影像之一頁式網站詐騙範例" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/fake_01.png?v=whzz1cb" title="金鍏電子提醒您：此為一頁式詐騙網站，請勿購買以防受騙" />
+<div class="image-overlay"><span class="overlay-text">詐騙！請勿受騙上當！</span></div>
+</div>
+
+<div class="grid-item grid-item-vertical"><img alt="金鍏電子防詐騙聲明：假冒財經新聞名氣主播播報產業資訊取信消費者" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/fake_03.png?v=hamfc4" title="金鍏電子提醒您：此為一頁式詐騙網站，請勿購買以防受騙" />
+<div class="image-overlay"><span class="overlay-text">詐騙！請勿受騙上當！</span></div>
+</div>
+
+<div class="grid-item grid-item-vertical"><img alt="金鍏電子防詐騙聲明：假冒金鍏電子之 Facebook 粉絲專頁詐騙範例" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/fake_02.png?v=si6u66f" title="金鍏電子提醒您：我們無經營此 FB 促銷粉專，此為盜用商標之假冒專頁" />
+<div class="image-overlay"><span class="overlay-text">詐騙！請勿受騙上當！</span></div>
+</div>
+</div>
+</div>

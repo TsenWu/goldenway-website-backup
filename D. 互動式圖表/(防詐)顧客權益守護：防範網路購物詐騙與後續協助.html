@@ -1,0 +1,440 @@
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet" />
+<style type="text/css">
+/* 確保樣式隔離，所有選擇器皆以 #GW-FraudPrevention-Root 開頭 */
+#GW-FraudPrevention-Root {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+}
+
+#GW-FraudPrevention-Root .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* =========================================
+   移植區塊：頂部警告標語與示意圖片 CSS
+   ========================================= */
+#GW-FraudPrevention-Root .warning-area {
+    display: flex;
+    flex-direction: row; 
+    justify-content: center;
+    align-items: center; 
+    margin: 0 0 20px 0;
+}
+
+#GW-FraudPrevention-Root .warning-text {
+    color: #d32f2f !important;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: left;
+    margin: 0 0 0 12px !important; 
+}
+
+#GW-FraudPrevention-Root .image-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 15px;
+    align-items: stretch;
+    margin-bottom: 40px;
+}
+
+#GW-FraudPrevention-Root .grid-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+    border: 1px solid #dddddd;
+    box-sizing: border-box;
+}
+
+#GW-FraudPrevention-Root .grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+}
+
+#GW-FraudPrevention-Root .grid-item-horizontal img { aspect-ratio: 4 / 3; }
+#GW-FraudPrevention-Root .grid-item-vertical img { aspect-ratio: 2 / 3; }
+
+#GW-FraudPrevention-Root .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.25s ease;
+}
+
+#GW-FraudPrevention-Root .grid-item:hover .image-overlay {
+    background-color: rgba(0, 0, 0, 0.35);
+}
+
+#GW-FraudPrevention-Root .overlay-text {
+    background-color: #d32f2f !important;
+    color: #ffffff !important;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1.5px solid #ffffff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    text-align: center;
+    white-space: nowrap;
+    max-width: 90%;
+    box-sizing: border-box;
+    transition: transform 0.2s ease;
+    transform: scale(1);
+    display: inline-block;
+}
+
+#GW-FraudPrevention-Root .grid-item:hover .overlay-text {
+    animation: gw-vibrate 0.25s infinite linear;
+}
+
+@keyframes gw-vibrate {
+    0% { transform: scale(1.15) translate(0, 0); }
+    20% { transform: scale(1.15) translate(-1.5px, 1px); }
+    40% { transform: scale(1.15) translate(1px, -1px); }
+    60% { transform: scale(1.15) translate(-1px, -1px); }
+    80% { transform: scale(1.15) translate(1.5px, 1px); }
+    100% { transform: scale(1.15) translate(0, 0); }
+}
+
+#GW-FraudPrevention-Root .header-divider {
+    border: none;
+    border-top: 2px dashed #cccccc;
+    margin: 0 0 40px 0;
+}
+
+/* =========================================
+   原有區塊：文章與超商退款教學 CSS
+   ========================================= */
+#GW-FraudPrevention-Root .hero-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+    align-items: center;
+}
+
+#GW-FraudPrevention-Root .text-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#GW-FraudPrevention-Root h2.main-title {
+    color: #222222 !important;
+    font-size: 32px !important;
+    line-height: 1.4 !important;
+    font-weight: 700 !important;
+    margin: 0 0 10px 0;
+}
+
+#GW-FraudPrevention-Root h3.sub-title {
+    color: #222222 !important;
+    font-size: 26px !important; 
+    text-align: center;
+    margin-bottom: 24px;
+    font-weight: 700 !important;
+}
+
+#GW-FraudPrevention-Root p.article-text {
+    color: #444444 !important;
+    font-size: 16px !important;
+    line-height: 1.8 !important;
+    margin: 0;
+    text-align: justify;
+}
+
+#GW-FraudPrevention-Root .highlight-red {
+    color: #d32f2f !important;
+    font-weight: 500 !important;
+}
+
+#GW-FraudPrevention-Root .highlight-blue {
+    color: #1976d2 !important;
+    font-weight: 500 !important;
+}
+
+#GW-FraudPrevention-Root .image-content {
+    width: 100%;
+    text-align: center;
+}
+
+#GW-FraudPrevention-Root .image-content img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+/* 四大超商對稱式陣列 */
+#GW-FraudPrevention-Root .store-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    align-items: start;
+}
+
+#GW-FraudPrevention-Root .store-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 確保超連結不會有奇怪的底線或外框 */
+#GW-FraudPrevention-Root .store-item a {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+}
+
+#GW-FraudPrevention-Root .store-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #eaeaea;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#GW-FraudPrevention-Root .store-item img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+#GW-FraudPrevention-Root .store-caption {
+    color: #333333 !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    margin: 12px 0 0 0 !important;
+    line-height: 1.4 !important;
+}
+
+#GW-FraudPrevention-Root .footer-divider {
+    border: none;
+    border-top: 2px dashed #cccccc;
+    margin: 50px 0 40px 0;
+}
+
+#GW-FraudPrevention-Root .video-link-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f1f3f5;
+    border-radius: 12px;
+    padding: 20px 30px;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+#GW-FraudPrevention-Root .video-link-card:hover {
+    background-color: #e2e6ea;
+}
+
+#GW-FraudPrevention-Root .youtube-icon {
+    width: 50px;
+    min-width: 50px;
+    height: auto;
+    margin-right: 20px;
+}
+
+#GW-FraudPrevention-Root .video-text-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#GW-FraudPrevention-Root .video-title {
+    color: #1976d2 !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    margin: 0 0 5px 0 !important;
+}
+
+#GW-FraudPrevention-Root .video-desc {
+    color: #444444 !important;
+    font-size: 15px !important;
+    margin: 0 !important;
+    line-height: 1.5 !important;
+}
+
+#GW-FraudPrevention-Root .source-info {
+    text-align: center;
+    font-size: 16px !important;
+    color: #333333 !important;
+    font-weight: 500 !important;
+}
+
+#GW-FraudPrevention-Root .source-info a {
+    color: #1976d2 !important;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+#GW-FraudPrevention-Root .source-info a:hover {
+    color: #0d47a1 !important;
+}
+
+/* 響應式斷點設定 */
+@media (max-width: 1024px) {
+    #GW-FraudPrevention-Root .store-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    #GW-FraudPrevention-Root .hero-section {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    #GW-FraudPrevention-Root .image-content { order: -1; }
+    #GW-FraudPrevention-Root h2.main-title { font-size: 26px !important; }
+    #GW-FraudPrevention-Root .store-grid { grid-template-columns: repeat(1, 1fr); }
+    #GW-FraudPrevention-Root .video-link-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+    #GW-FraudPrevention-Root .youtube-icon { margin-right: 0; margin-bottom: 15px; }
+    
+    /* 移植區塊的手機版優化 */
+    #GW-FraudPrevention-Root .warning-area {
+        flex-direction: column; 
+        text-align: center;
+    }
+    #GW-FraudPrevention-Root .warning-text {
+        margin-left: 0 !important;
+        margin-top: 10px !important;
+        text-align: center;
+        font-size: 16px;
+    }
+    #GW-FraudPrevention-Root .image-grid { grid-template-columns: 1fr 1fr; }
+    #GW-FraudPrevention-Root .grid-item-horizontal { grid-column: 1 / -1; }
+    #GW-FraudPrevention-Root .grid-item:hover .overlay-text {
+        animation: none !important;
+        transform: scale(1) !important;
+    }
+    #GW-FraudPrevention-Root .grid-item:hover .image-overlay {
+        background-color: rgba(0, 0, 0, 0.15) !important;
+    }
+    #GW-FraudPrevention-Root .overlay-text {
+        font-size: 11px !important;
+        padding: 4px 6px !important;
+        border-width: 1px !important;
+    }
+}
+</style>
+
+<div id="GW-FraudPrevention-Root">
+    <div class="sr-only">金鍏電子官方防詐騙聲明。收到未訂貨的幽靈包裹怎麼辦？一頁式廣告詐騙橫行，為保障您的權益，請拒收來路不明的包裹。若已付款，請透過全台四大超商客服或線上申訴平台辦理退款。金鍏電子與北市消保官共同宣導，防範網路購物詐騙。</div>
+
+    <div class="warning-area">
+        <svg style="width:36px; height:36px;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> 
+            <path d="M12 2L1 21h22L12 2z" fill="#D32F2F"></path> 
+            <path d="M13 16h-2v2h2v-2zm0-6h-2v4h2v-4z" fill="#FFFFFF"></path> 
+        </svg>
+        <p class="warning-text">以下皆為詐騙一頁式網頁及假粉專！歡迎直接檢舉並拒絕購買避免財務損失！</p>
+    </div>
+
+    <div class="image-grid">
+        <div class="grid-item grid-item-horizontal">
+            <img alt="金鍏電子防詐騙聲明：盜用董事長林坤德影像之一頁式網站詐騙範例" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/fake_01.png?v=whzz1cb" title="金鍏電子提醒您：此為一頁式詐騙網站，請勿購買以防受騙" />
+            <div class="image-overlay"><span class="overlay-text">詐騙！請勿受騙上當！</span></div>
+        </div>
+
+        <div class="grid-item grid-item-vertical">
+            <img alt="金鍏電子防詐騙聲明：假冒財經新聞名氣主播播報產業資訊取信消費者" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/fake_03.png?v=hamfc4" title="金鍏電子提醒您：此為一頁式詐騙網站，請勿購買以防受騙" />
+            <div class="image-overlay"><span class="overlay-text">詐騙！請勿受騙上當！</span></div>
+        </div>
+
+        <div class="grid-item grid-item-vertical">
+            <img alt="金鍏電子防詐騙聲明：假冒金鍏電子之 Facebook 粉絲專頁詐騙範例" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/fake_02.png?v=si6u66f" title="金鍏電子提醒您：我們無經營此 FB 促銷粉專，此為盜用商標之假冒專頁" />
+            <div class="image-overlay"><span class="overlay-text">詐騙！請勿受騙上當！</span></div>
+        </div>
+    </div>
+    
+    <hr class="header-divider" />
+
+    <div class="hero-section">
+        <div class="text-content">
+            <h2 class="main-title">收到詐騙包裹的後續處理方式</h2>
+
+            <p class="article-text"><span class="highlight-red">一頁式廣告詐騙橫行，業者利用貨到付款方式收取價金，不少消費者取貨付款後才發現是詐騙包裹</span>，因賣家多屬境外業者，為保障消費者權益，消保官建議可透過代收貨款的物流業或超商協助聯繫廠商處理，消保官並已協調四大超商業者協助處理退款，民眾只要透過超商線上申訴平台或客服中心立案，便能有效讓損失降到最低。</p>
+
+            <p class="article-text"><span class="highlight-red">一頁式廣告詐騙賣家經常在臉書、IG、LINE等社交軟體購買贊助廣告，內容多為擷取正版業者圖片製作成山寨版網頁，以吸睛的促銷價格、不滿意包退及7天鑑賞期等文字誘騙消費者下單，再提供超商貨到付款方式降低消費者戒心，實際上則寄出不符圖文的劣質商品</span>，消費者收到商品後常花費時間向賣家反映，落入詐騙賣家拖延戰術陷阱，消保官提醒消費者勿上當，<span class="highlight-blue">正確方式是儘速透過超商、物流或集運商申請退款，才有機會拿回款項</span>。</p>
+
+            <p class="article-text">消保官也提醒，最近有不少消費者收到「幽靈包裹」，實為不肖賣家在消費者並未訂購商品的情況下主動寄出商品，並發送到貨通知簡訊，誘使消費者前往取貨付款，建議民眾收到這類簡訊，應先核對自己的購物清單、訂單進度、包裹寄件人、貨運編號及費用，不隨便取貨，如是協助家人代收，請先向家人查證有無網購，以免詐騙包裹魚目混珠。</p>
+
+            <p class="article-text">消保官說明，因一頁式廣告詐騙常於頁面上秀出便利商店Logo，以獲取消費者信任，並且透過全台綿密之超商網絡及24小時都可取貨付款之便利性，使消費者便於取貨而下單購買，此類貨到付款服務成為吸引消費之誘因，惟超商究非出賣人，北市消保官為避免消費者後續難以向境外業者請求退貨退款之風險，爰請四大超商協助，<span class="highlight-blue">由超商建置單一窗口，提供友善受理程序，且追蹤廠商之退款進度，於確認後10個工作日內完成退款，消費者也可隨時上網查詢退款進度或利用電話查詢</span>，另外超商除於各官網揭露處理流程外，亦將持續強化門市人員教育訓練，並對合作廠商進行篩選 (超商取貨收到詐騙包裹有解! 北市消保官協調四大超商提供退款方式、北市府聯合超商業者阻絕詐騙包裹 蔣萬安:公私攜手力挺消費者)。</p>
+
+            <p class="article-text">另外也<span class="highlight-blue">提醒取貨後，都先儘量完整保留商品外箱寄件資料</span>，以釐清寄件者資料，便於提供超商、貨運業或集運商進一步處理。</p>
+        </div>
+
+        <div class="image-content">
+            <img alt="金鍏電子防詐騙包裹退款宣導圖" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/otherpics/notice.jpg?v=un91up" title="金鍏電子提醒您小心一頁式詐騙" />
+        </div>
+    </div>
+
+    <h3 class="sub-title">四大超商疑似詐騙包裹退款處理流程</h3>
+
+    <div class="store-grid">
+        <div class="store-item">
+            <a href="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/otherpics/711_help1.jpg?v=7gbzsxg" target="_blank" title="點擊另開新分頁放大圖片">
+                <img alt="統一超商疑似詐騙處理流程" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/otherpics/711_help1.jpg?v=7gbzsxg" /> 
+            </a>
+            <p class="store-caption">統一超商處理流程<br />(點擊另開大圖)</p>
+        </div>
+
+        <div class="store-item">
+            <a href="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/otherpics/family_help1.jpg?v=tcljpsf" target="_blank" title="點擊另開新分頁放大圖片">
+                <img alt="全家便利商店疑似詐騙處理流程" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/otherpics/family_help1.jpg?v=tcljpsf" /> 
+            </a>
+            <p class="store-caption">全家便利商店處理流程<br />(點擊另開大圖)</p>
+        </div>
+
+        <div class="store-item">
+            <a href="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/otherpics/hilife_help1.jpg?v=2kgtol9" target="_blank" title="點擊另開新分頁放大圖片">
+                <img alt="萊爾富疑似詐騙處理流程" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/otherpics/hilife_help1.jpg?v=2kgtol9" /> 
+            </a>
+            <p class="store-caption">萊爾富處理流程<br />(點擊另開大圖)</p>
+        </div>
+
+        <div class="store-item">
+            <a href="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/otherpics/ok_help1.jpg?v=gjtgjvg" target="_blank" title="點擊另開新分頁放大圖片">
+                <img alt="OK便利商店疑似詐騙處理流程" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/otherpics/ok_help1.jpg?v=gjtgjvg" /> 
+            </a>
+            <p class="store-caption">OK便利商店處理流程<br />(點擊另開大圖)</p>
+        </div>
+    </div>
+
+    <hr class="footer-divider" />
+    
+    <a class="video-link-card" href="https://youtu.be/t7T0TYA3Igs?si=cy0jjCMiTU2Px2fN" target="_blank" title="觀看臺北市法務局宣導影片">
+        <svg class="youtube-icon" fill="#e52d27" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> 
+            <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path> 
+        </svg>
+        <div class="video-text-container">
+            <h4 class="video-title">臺北市法務局消保官宣導影片</h4>
+            <p class="video-desc">教導民眾如何辨識一頁式廣告詐騙，公開詐騙集團話術及告知消費者正確的退款管道</p>
+        </div>
+    </a>
+
+    <div class="source-info">文章來源：<a href="https://dlacp.gov.taipei/" target="_blank" title="前往台北市政府法務局消保網">台北市政府法務局消保網</a></div>
+</div>
