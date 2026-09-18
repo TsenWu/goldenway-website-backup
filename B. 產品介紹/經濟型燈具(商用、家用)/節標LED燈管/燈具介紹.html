@@ -1,49 +1,93 @@
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;family=Outfit:wght@400;700&amp;display=swap" rel="stylesheet" />
-<style type="text/css">/* ==========================================================================
+<div aria-labelledby="GW-led燈管特色首圖-Title" id="GW-led燈管特色首圖區塊-Root"><!-- 1. 樣式封裝（模式 A 標準：置於 div 內部頂端，首行以 CSS @import 宣告字型） -->
+<style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
+
+/* ==========================================================================
    GW-led燈管特色首圖區塊 - 核心防禦與排版鎖定
    ========================================================================== */
 #GW-led燈管特色首圖區塊-Root {
   --min-height-desktop: 700px;
   --min-height-mobile: 600px;
-  --bg-image: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/tube/01fd584040961310.jpg?v=flv8p7hy');
+  --bg-image: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/tube/led_lighting_v2.jpg?v=sp5szr');
+  /* ★ 磨砂模糊可調參數：強度與覆蓋範圍 ★ */
+  --gw-blur-intensity: 4px;
+  --gw-blur-coverage: 45%;
 
-  position: relative;
-  width: 100%;
-  box-sizing: border-box;
-  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
-  background: var(--bg-image) center center / cover no-repeat;
-  overflow: hidden; 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: var(--min-height-desktop);
-  padding: 60px 5%;
+  position: relative !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif !important;
+  background: var(--bg-image) center center / cover no-repeat !important;
+  overflow: hidden !important; 
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  min-height: var(--min-height-desktop) !important;
+  padding: 60px 5% !important;
+  margin: 0 !important;
 }
 
 #GW-led燈管特色首圖區塊-Root *,
 #GW-led燈管特色首圖區塊-Root *::before,
 #GW-led燈管特色首圖區塊-Root *::after {
-  box-sizing: border-box;
+  box-sizing: border-box !important;
 }
 
-#GW-led燈管特色首圖區塊-Root .sr-only {
-  position: absolute; 
-  width: 1px; 
-  height: 1px; 
-  padding: 0; 
-  margin: -1px; 
-  overflow: hidden; 
-  clip: rect(0, 0, 0, 0); 
-  border: 0;
+/* ==========================================================================
+   ★ 局部磨砂模糊質感層（左下角 & 右上角，中間保持清晰透澈） ★
+   ========================================================================== */
+/* 左下角磨砂霧面層 */
+#GW-led燈管特色首圖區塊-Root::before {
+  content: "" !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: var(--gw-blur-coverage, 65%) !important;
+  height: var(--gw-blur-coverage, 65%) !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  -webkit-backdrop-filter: blur(var(--gw-blur-intensity, 14px)) !important;
+  backdrop-filter: blur(var(--gw-blur-intensity, 14px)) !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  -webkit-mask-image: radial-gradient(ellipse at 0% 100%, black 0%, black 25%, transparent 75%) !important;
+  mask-image: radial-gradient(ellipse at 0% 100%, black 0%, black 25%, transparent 75%) !important;
+}
+
+/* 右上角磨砂霧面層 */
+#GW-led燈管特色首圖區塊-Root::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  right: 0 !important;
+  width: var(--gw-blur-coverage, 65%) !important;
+  height: var(--gw-blur-coverage, 65%) !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  -webkit-backdrop-filter: blur(var(--gw-blur-intensity, 14px)) !important;
+  backdrop-filter: blur(var(--gw-blur-intensity, 14px)) !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  -webkit-mask-image: radial-gradient(ellipse at 100% 0%, black 0%, black 25%, transparent 75%) !important;
+  mask-image: radial-gradient(ellipse at 100% 0%, black 0%, black 25%, transparent 75%) !important;
+}
+
+#GW-led燈管特色首圖區塊-Root .sr-only,
+#GW-led燈管特色首圖區塊-Root .gw-sr-only {
+  position: absolute !important; 
+  width: 1px !important; 
+  height: 1px !important; 
+  padding: 0 !important; 
+  margin: -1px !important; 
+  overflow: hidden !important; 
+  clip: rect(0, 0, 0, 0) !important; 
+  border: 0 !important;
 }
 
 /* ==========================================================================
    左上角文案區塊樣式
    ========================================================================== */
 #GW-led燈管特色首圖區塊-Root .gw-hero-text {
-  position: relative;
-  z-index: 2;
-  max-width: 650px;
+  position: relative !important;
+  z-index: 2 !important;
+  max-width: 650px !important;
 }
 
 #GW-led燈管特色首圖區塊-Root .gw-hero-title {
@@ -56,12 +100,31 @@
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8) !important;
 }
 
+#GW-led燈管特色首圖區塊-Root .gw-highlight-green {
+  position: relative !important;
+  display: inline-block !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  padding: 0 2px !important;
+}
+
+#GW-led燈管特色首圖區塊-Root .gw-highlight-green::after {
+  content: "" !important;
+  position: absolute !important;
+  bottom: -2px !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 4px !important;
+  background: #10b981 !important;
+  border-radius: 2px !important;
+  box-shadow: 0 1px 8px rgba(16, 185, 129, 0.7) !important;
+}
+
 #GW-led燈管特色首圖區塊-Root .gw-hero-desc {
   font-size: 18px !important;
   font-weight: 400 !important;
   color: #ffffff !important;
   margin: 0 !important;
-  /* [行距微調] 已從 1.8 縮小為 1.6，讓上下兩句話距更緊湊 */
   line-height: 1.6 !important;
   letter-spacing: 1.5px !important;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8) !important;
@@ -76,14 +139,14 @@
    右下角 4 卡片網格排版
    ========================================================================== */
 #GW-led燈管特色首圖區塊-Root .gw-features-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
-  align-self: flex-end;
-  max-width: 850px;
-  width: auto;
-  position: relative;
-  z-index: 2;
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 15px !important;
+  align-self: flex-end !important;
+  max-width: 850px !important;
+  width: auto !important;
+  position: relative !important;
+  z-index: 2 !important;
 }
 
 #GW-led燈管特色首圖區塊-Root .gw-feature-card {
@@ -103,17 +166,17 @@
 }
 
 #GW-led燈管特色首圖區塊-Root .gw-icon-wrapper {
-  flex-shrink: 0;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-shrink: 0 !important;
+  width: 50px !important;
+  height: 50px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
 }
 
 #GW-led燈管特色首圖區塊-Root .gw-icon-wrapper img {
-  width: 100%;
-  height: auto;
+  width: 100% !important;
+  height: auto !important;
   display: block !important;
 }
 
@@ -140,15 +203,15 @@
    ========================================================================== */
 @media (max-width: 1100px) {
   #GW-led燈管特色首圖區塊-Root .gw-features-grid {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 500px;
+    grid-template-columns: repeat(2, 1fr) !important;
+    max-width: 500px !important;
   }
 }
 
 @media (max-width: 768px) {
   #GW-led燈管特色首圖區塊-Root {
-    min-height: var(--min-height-mobile);
-    padding: 40px 20px;
+    min-height: var(--min-height-mobile) !important;
+    padding: 40px 20px !important;
   }
   
   #GW-led燈管特色首圖區塊-Root .gw-hero-title {
@@ -160,18 +223,18 @@
   }
 
   #GW-led燈管特色首圖區塊-Root .gw-features-grid {
-    grid-template-columns: repeat(2, 1fr);
-    width: auto;
-    max-width: 100%;
-    gap: 12px;
+    grid-template-columns: repeat(2, 1fr) !important;
+    width: auto !important;
+    max-width: 100% !important;
+    gap: 12px !important;
   }
   #GW-led燈管特色首圖區塊-Root .gw-feature-card {
     padding: 10px 12px !important;
     gap: 10px !important;
   }
   #GW-led燈管特色首圖區塊-Root .gw-icon-wrapper {
-    width: 32px;
-    height: 32px;
+    width: 32px !important;
+    height: 32px !important;
   }
   #GW-led燈管特色首圖區塊-Root .gw-value {
     font-size: 22px !important;
@@ -181,15 +244,16 @@
   }
 }
 </style>
-<div id="GW-led燈管特色首圖區塊-Root">
-<div class="sr-only">
+<!-- 2. 隱藏 GEO 語意摘要 -->
+<div class="gw-sr-only">
 <h2>金鍏電子高效節標LED燈管：專為工業等級設計的高性能T8替換方案</h2>
 
 <p>這款燈管在僅12.5W的功率下提供2000流明的極致亮度，榮獲節能標章認證，並展現MIT台灣製造的穩定品質。樹立了照明技術性與可靠性的最高標準。</p>
 </div>
+<!-- 3. 區塊可見 HTML 結構 -->
 
 <div class="gw-hero-text">
-<h2 class="gw-hero-title">國家級節能標章認證｜低耗能與穩定光源的完美契合</h2>
+<h2 class="gw-hero-title" id="GW-led燈管特色首圖-Title">國家級<span class="gw-highlight-green">節能標章</span>認證｜低耗能與穩定光源的完美契合</h2>
 
 <p class="gw-hero-desc">在僅 12.5W 的功率下提供 2000 lm (流明)的亮度<br />
 此款工業等級<strong>高效節標LED燈管</strong>樹立了技術性與可靠性的標準</p>
@@ -237,68 +301,93 @@
 </div>
 </div>
 </div>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&amp;family=Outfit:wght@400;700&amp;display=swap" rel="stylesheet" />
-<style type="text/css">#GW-led燈管四特色說明區塊-Root {
-  position: relative;
-  width: 100%;
-  box-sizing: border-box;
-  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
-  padding: 20px 0px 20px 0px;
-  background-color: #ffffff;
+
+<div aria-labelledby="GW-led燈管四特色說明-Title" id="GW-led燈管四特色說明區塊-Root"><!-- 1. 樣式封裝（模式 A 標準：置於 div 內部頂端，首行以 CSS @import 宣告字型） -->
+<style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
+
+/* ==========================================================================
+   GW-led燈管四特色說明區塊 - 核心防禦與排版鎖定
+   ========================================================================== */
+#GW-led燈管四特色說明區塊-Root {
+  /* ★ 卡片外觀與間距可調參數 ★ */
+  --gw-card-border: #dcdfe4;
+  --gw-card-border-hover: #cbd5e1;
+  --gw-card-gap: 25px; /* ★ 四格之間的間距（可直接在此修改數值，例如 16px、24px、30px） ★ */
+
+  position: relative !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif !important;
+  padding: 40px 3% !important;
+  background-color: #ffffff !important;
+  margin: 0 !important;
 }
+
 #GW-led燈管四特色說明區塊-Root *,
 #GW-led燈管四特色說明區塊-Root *::before,
 #GW-led燈管四特色說明區塊-Root *::after {
-  box-sizing: border-box;
+  box-sizing: border-box !important;
 }
-#GW-led燈管四特色說明區塊-Root .sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
+
+#GW-led燈管四特色說明區塊-Root .sr-only,
+#GW-led燈管四特色說明區塊-Root .gw-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  border: 0 !important;
 }
+
 #GW-led燈管四特色說明區塊-Root .gw-features-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: var(--gw-card-gap, 20px) !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
 }
+
 #GW-led燈管四特色說明區塊-Root .gw-feature-card {
   background-color: #f4f4f4 !important;
-  border-radius: 0 !important;
+  border: 1px solid var(--gw-card-border, #dcdfe4) !important;
+  border-radius: 4px !important;
   padding: 20px 24px !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
   text-align: center !important;
-  transition: box-shadow 0.3s ease !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02) !important;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease !important;
 }
+
 #GW-led燈管四特色說明區塊-Root .gw-feature-card:hover {
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08) !important;
+  border-color: var(--gw-card-border-hover, #cbd5e1) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06) !important;
 }
+
 #GW-led燈管四特色說明區塊-Root .gw-icon-wrapper {
-  width: 64px;
-  height: 64px;
-  margin-bottom: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 64px !important;
+  height: 64px !important;
+  margin-bottom: 24px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
 }
+
 #GW-led燈管四特色說明區塊-Root .gw-feature-card:hover .gw-icon-wrapper {
   transform: scale(1.2) !important;
 }
+
 #GW-led燈管四特色說明區塊-Root .gw-icon-wrapper img {
-  width: 100%;
-  height: auto;
+  width: 100% !important;
+  height: auto !important;
   display: block !important;
 }
+
 #GW-led燈管四特色說明區塊-Root h3 {
   font-family: 'Outfit', 'Noto Sans TC', sans-serif !important;
   font-size: 22px !important;
@@ -308,6 +397,7 @@
   line-height: 1.4 !important;
   letter-spacing: 0.5px !important;
 }
+
 #GW-led燈管四特色說明區塊-Root p {
   font-size: 15px !important;
   font-weight: 400 !important;
@@ -316,22 +406,27 @@
   line-height: 1.6 !important;
   letter-spacing: 0.5px !important;
 }
+
+/* ==========================================================================
+   RWD 斷點設定
+   ========================================================================== */
 @media (max-width: 1024px) {
   #GW-led燈管四特色說明區塊-Root .gw-features-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 15px !important;
   }
   #GW-led燈管四特色說明區塊-Root {
-    padding: 50px 4%;
+    padding: 32px 4% !important;
   }
 }
+
 @media (max-width: 767px) {
   #GW-led燈管四特色說明區塊-Root .gw-features-grid {
-    grid-template-columns: repeat(1, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(1, 1fr) !important;
+    gap: 15px !important;
   }
   #GW-led燈管四特色說明區塊-Root {
-    padding: 40px 20px;
+    padding: 24px 16px !important;
   }
   #GW-led燈管四特色說明區塊-Root .gw-feature-card {
     padding: 30px 20px !important;
@@ -344,12 +439,13 @@
   }
 }
 </style>
-<div id="GW-led燈管四特色說明區塊-Root">
-<div class="sr-only">
-<h2>金鍏電子 MIT 台灣製造 LED 燈管：四大核心技術優勢</h2>
+<!-- 2. 隱藏 GEO 語意摘要 -->
+<div class="gw-sr-only">
+<h2 id="GW-led燈管四特色說明-Title">金鍏電子 MIT 台灣製造 LED 燈管：四大核心技術優勢</h2>
 
 <p>金鍏電子自主研發的節能照明解決方案具備四大特點：第一，頂尖光效大於 160lm/W，實測達 174.5 lm/W，極大化能源轉換；第二，健康護眼零頻閃，輸出光源穩定流暢；第三，精準顯色 Ra大於80，高演色還原技術提升視覺品質；第四，長效耐用維持率達 99.7%，減少頻繁更換的隱形維護成本。</p>
 </div>
+<!-- 3. 區塊可見 HTML 結構 -->
 
 <div class="gw-features-grid">
 <div class="gw-feature-card">
@@ -389,89 +485,98 @@ Ra &gt; 80</h3>
 </div>
 </div>
 </div>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&amp;family=Outfit:wght@400;700&amp;display=swap" rel="stylesheet" />
-<style type="text/css">/* ==========================================================================
+
+<div aria-labelledby="GW-led燈管動態發光-Title" id="GW-led燈管動態發光區塊-Root"><!-- 1. 樣式封裝（模式 A 標準：置於 div 內部頂端，首行以 CSS @import 宣告字型） -->
+<style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
+
+/* ==========================================================================
    GW-led燈管動態發光區塊 - 核心排版與防禦鎖定
    ========================================================================== */
 #GW-led燈管動態發光區塊-Root {
-  /* [背景圖] 保留您上傳的 webP 檔網址 */
-  --gw-bg-image: url('https://cdn.jsdelivr.net/gh/TsenWu/goldenway-photos/LED燈管/ledtube_02.webp');
-  /* [高度] 修改此數值可調整桌機版區塊的最小高度 */
+  /* [背景圖] 保留原 webP 檔網址 */
+  --gw-bg-image: url('https://cdn.jsdelivr.net/gh/TsenWu/goldenway-photos/LED燈管/ledtube_03.webp');
+  /* [高度] 控制桌機版區塊的最小高度 */
   --gw-min-height-desktop: 700px;
   
-  position: relative;
-  width: 100%;
-  box-sizing: border-box;
-  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
-  background-image: var(--gw-bg-image);
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  min-height: var(--gw-min-height-desktop);
-  overflow: hidden;
+  position: relative !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif !important;
+  background-image: var(--gw-bg-image) !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  min-height: var(--gw-min-height-desktop) !important;
+  overflow: hidden !important;
+  margin: 0 !important;
 }
 
 #GW-led燈管動態發光區塊-Root *,
 #GW-led燈管動態發光區塊-Root *::before,
 #GW-led燈管動態發光區塊-Root *::after {
-  box-sizing: border-box;
+  box-sizing: border-box !important;
 }
 
 /* ==========================================================================
-   SEO 隱形提領區塊：專供爬蟲抓取
+   SEO 隱形摘要
    ========================================================================== */
-#GW-led燈管動態發光區塊-Root .sr-only {
-  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;
+#GW-led燈管動態發光區塊-Root .sr-only,
+#GW-led燈管動態發光區塊-Root .gw-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  border: 0 !important;
 }
 
 /* ==========================================================================
    文字節點定位容器 (桌機版絕對定位設計)
    ========================================================================== */
 #GW-led燈管動態發光區塊-Root .gw-nodes-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  max-width: 1400px;
-  /* 讓內容在超大螢幕下保持置中 */
-  left: 50%;
-  transform: translateX(-50%);
+  position: absolute !important;
+  top: 0 !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 1400px !important;
 }
 
 #GW-led燈管動態發光區塊-Root .gw-text-node {
-  position: absolute;
-  max-width: 280px;
-  z-index: 2;
+  position: absolute !important;
+  max-width: 280px !important;
+  z-index: 2 !important;
 }
 
 /* [位置] 節點 1：專業二級驅動 (右上) */
 #GW-led燈管動態發光區塊-Root .gw-node-1 {
-  top: 15%;
-  right: 35%;
+  top: 8% !important;
+  right: 35% !important;
 }
 
 /* [位置] 節點 2：高效LED燈珠 (中左) */
 #GW-led燈管動態發光區塊-Root .gw-node-2 {
-  top: 29%;
-  left: 24%;
+  top: 25% !important;
+  left: 24% !important;
 }
 
 /* [位置] 節點 3：4呎燈管 (左下) */
 #GW-led燈管動態發光區塊-Root .gw-node-3 {
-  bottom: 40%;
-  left: 3%;
+  bottom: 38% !important;
+  left: 3% !important;
 }
 
 /* ==========================================================================
-   文字排版與鎖定 (無動畫純淨版)
+   文字排版與鎖定
    ========================================================================== */
 #GW-led燈管動態發光區塊-Root h3 {
   display: block !important;
   font-size: 22px !important;
   font-weight: 700 !important;
   color: #ffffff !important;
-  /* 調整大標題與下方說明的間距 */
   margin: 0 0 12px 0 !important;
   line-height: 1.3 !important;
   letter-spacing: 1px !important;
@@ -486,14 +591,11 @@ Ra &gt; 80</h3>
   line-height: 1.6 !important;
   letter-spacing: 0.5px !important;
   text-shadow: 0 1px 5px rgba(0,0,0,0.8) !important;
-  
-  /* 終極防禦：利用左邊框產生垂直槓線段，保證不會消失 */
   border-left: 3px solid #FFD700 !important;
   padding-left: 14px !important;
 }
 
 #GW-led燈管動態發光區塊-Root .gw-highlight {
-  /* [顏色] 修改此數值可變更重點字體的顏色 */
   color: #FFD700 !important;
   font-weight: 700 !important;
 }
@@ -503,38 +605,38 @@ Ra &gt; 80</h3>
    ========================================================================== */
 @media (max-width: 900px) {
   #GW-led燈管動態發光區塊-Root {
-    min-height: auto;
-    padding: 60px 5%;
-    /* 手機版為了讓文字清楚，可加入半透明漸層遮罩 */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.3)), var(--gw-bg-image);
+    min-height: auto !important;
+    padding: 60px 5% !important;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.3)), var(--gw-bg-image) !important;
   }
   
   #GW-led燈管動態發光區塊-Root .gw-nodes-container {
-    position: relative;
-    left: 0;
-    transform: none;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    height: auto;
+    position: relative !important;
+    left: 0 !important;
+    transform: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 40px !important;
+    height: auto !important;
   }
 
   #GW-led燈管動態發光區塊-Root .gw-text-node {
-    position: relative;
+    position: relative !important;
     top: auto !important;
     left: auto !important;
     right: auto !important;
     bottom: auto !important;
-    max-width: 100%;
+    max-width: 100% !important;
   }
 }
 </style>
-<div id="GW-led燈管動態發光區塊-Root">
-<div class="sr-only">
-<h2>金鍏電子 MIT 台灣製造 LED 燈管：核心硬體規格與優勢</h2>
+<!-- 2. 隱藏 GEO 語意摘要 -->
+<div class="gw-sr-only">
+<h2 id="GW-led燈管動態發光-Title">金鍏電子 MIT 台灣製造 LED 燈管：核心硬體規格與優勢</h2>
 
 <p>本款工業級 LED 燈管採用專業二級驅動設計，完美支援 110V-220V 寬電壓環境，確保輸出絕對穩定。燈管內部搭載 180 顆高效 LED 燈珠晶片，能提供 2000lm 的強大光通量。標準 4 呎燈管長度 (1198mm)，能完美相容企業既有照明設備，是節能照明升級的最佳首選。</p>
 </div>
+<!-- 3. 區塊可見 HTML 結構 -->
 
 <div class="gw-nodes-container">
 <div class="gw-text-node gw-node-1">
@@ -561,53 +663,73 @@ Ra &gt; 80</h3>
 </div>
 </div>
 </div>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&amp;family=Outfit:wght@400;700&amp;display=swap" rel="stylesheet" />
-<style type="text/css">/* ==========================================================================
+
+<div aria-labelledby="GW-led節標燈管驅動器剖面-Title" id="GW-led節標燈管驅動器剖面-Root"><!-- 1. 樣式封裝（模式 A 標準：置於 div 內部頂端，首行以 CSS @import 宣告字型） -->
+<style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
+
+/* ==========================================================================
    GW-led節標燈管驅動器剖面 - 核心防禦與排版鎖定
    ========================================================================== */
 #GW-led節標燈管驅動器剖面-Root {
-  position: relative;
-  width: 100%;
-  box-sizing: border-box;
-  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
-  background-color: #ffffff00 !important;
-  padding: 40px 0px 20px 0px !important;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 50vh;
+  /* ★ 區塊結尾底線顏色可調參數 ★ */
+  --gw-bottom-line-color: #4b5563;
+  /* ★ 底部提示標籤外觀顏色可調參數（清楚顯眼高對比） ★ */
+  --gw-badge-bg: #f0f7ff;
+  --gw-badge-border: #036eb8;
+  --gw-badge-text: #0f2744;
+  --gw-badge-tag-bg: #036eb8;
+  --gw-badge-highlight: #036eb8;
+  --gw-badge-red: #c53030;
+
+  position: relative !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif !important;
+  background: transparent !important;
+  padding: 40px 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 50vh !important;
+  margin: 0 !important;
 }
 
 #GW-led節標燈管驅動器剖面-Root *,
 #GW-led節標燈管驅動器剖面-Root *::before,
 #GW-led節標燈管驅動器剖面-Root *::after {
-  box-sizing: border-box;
+  box-sizing: border-box !important;
 }
 
-#GW-led節標燈管驅動器剖面-Root .sr-only {
-  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;
+#GW-led節標燈管驅動器剖面-Root .sr-only,
+#GW-led節標燈管驅動器剖面-Root .gw-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  border: 0 !important;
 }
 
 /* ==========================================================================
-   內部排版容器
+   內部排版容器（全面展開滿版，與前後區塊平齊，不內縮）
    ========================================================================== */
 #GW-led節標燈管驅動器剖面-Root .gw-max-w-3xl {
-  /* [寬度] 使照片區塊在寬螢幕下滿版 */
-  max-width: 1200px;
-  width: 100%;
-  /* [間距] 主體元素間的垂直預設間距 */
-  gap: 16px;
-  display: flex;
-  flex-direction: column;
+  max-width: 100% !important;
+  width: 100% !important;
+  gap: 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
 }
 
 /* ==========================================================================
-   標題與引言區塊 (改用 CMS 安全的 div 與 h2)
+   標題與引言區塊
    ========================================================================== */
 #GW-led節標燈管驅動器剖面-Root .gw-title-wrapper {
-  text-align: center;
-  /* [間距] 控制標題與下方圖片的距離 */
+  text-align: center !important;
   margin-bottom: 12px !important;
   display: block !important;
 }
@@ -642,34 +764,33 @@ Ra &gt; 80</h3>
    圖片疊加與 Hover 透視容器
    ========================================================================== */
 #GW-led節標燈管驅動器剖面-Root .gw-comparison-container {
-  position: relative;
-  width: 100%;
-  /* [寬度] 同步將圖片容器的最大寬度放大 */
-  max-width: 1200px;
-  margin: 0 auto;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
+  position: relative !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  aspect-ratio: 16 / 9 !important;
+  overflow: hidden !important;
   border-radius: 12px !important;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
   background-color: #f3f4f6 !important;
-  user-select: none;
+  user-select: none !important;
 }
 
 /* 左上角規格標籤群組 */
 #GW-led節標燈管驅動器剖面-Root .gw-tags-wrapper {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  pointer-events: auto;
+  position: absolute !important;
+  top: 16px !important;
+  left: 16px !important;
+  z-index: 10 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  pointer-events: auto !important;
 }
 
 #GW-led節標燈管驅動器剖面-Root .gw-spec-tag {
-  display: inline-flex;
-  align-items: center;
+  display: inline-flex !important;
+  align-items: center !important;
   padding: 6px 12px !important;
   border-radius: 6px !important;
   font-size: 12px !important;
@@ -687,53 +808,105 @@ Ra &gt; 80</h3>
 
 /* 雙圖層共用設定 */
 #GW-led節標燈管驅動器剖面-Root .gw-image-layer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
-}
-
-#GW-led節標燈管驅動器剖面-Root #topImage {
-  opacity: 0.9;
-  transition: opacity 0.4s ease-in-out !important;
-  will-change: opacity;
-}
-
-#GW-led節標燈管驅動器剖面-Root .gw-comparison-container:hover #topImage {
-  opacity: 0;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  pointer-events: none !important;
 }
 
 /* ==========================================================================
-   底部說明文字
+   底部說明文字與提示標籤（清楚顯眼高對比風格）
    ========================================================================== */
 #GW-led節標燈管驅動器剖面-Root .gw-footer-text {
-  text-align: center;
-  /* [間距] 控制底部文字與圖片的距離 */
-  margin-top: 12px !important;
+  text-align: center !important;
+  margin-top: 16px !important;
+  width: 100% !important;
 }
 
 #GW-led節標燈管驅動器剖面-Root .gw-footer-badge {
-  display: inline-block;
-  padding: 6px 14px !important;
-  background-color: #ffffff !important;
-  border: 1px solid #e5e7eb !important;
-  border-radius: 9999px !important;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
-  font-size: 13px !important;
-  color: #6b7280 !important;
-  margin: 0 !important;
-  line-height: 1.5 !important;
+  display: inline-flex !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  padding: 10px 16px !important;
+  background-color: var(--gw-badge-bg, #f0f7ff) !important;
+  border: 1.5px solid var(--gw-badge-border, #036eb8) !important;
+  border-radius: 6px !important;
+  box-shadow: 0 4px 14px rgba(3, 110, 184, 0.1) !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: var(--gw-badge-text, #0f2744) !important;
+  margin: 0 auto !important;
+  line-height: 1.6 !important;
+  text-align: left !important;
+  max-width: 100% !important;
+}
+
+#GW-led節標燈管驅動器剖面-Root .gw-footer-badge .gw-badge-tag {
+  background-color: var(--gw-badge-tag-bg, #036eb8) !important;
+  color: #ffffff !important;
+  padding: 3px 8px !important;
+  border-radius: 4px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  display: inline-block !important;
+  flex-shrink: 0 !important;
+  line-height: 1.2 !important;
+  margin-top: 2px !important;
+}
+
+#GW-led節標燈管驅動器剖面-Root .gw-footer-badge .gw-badge-desc {
+  flex: 1 !important;
+  min-width: 0 !important;
+  text-align: left !important;
+}
+
+#GW-led節標燈管驅動器剖面-Root .gw-footer-badge strong {
+  color: var(--gw-badge-highlight, #036eb8) !important;
+  font-weight: 700 !important;
+}
+
+#GW-led節標燈管驅動器剖面-Root .gw-footer-badge .gw-badge-blue {
+  color: var(--gw-badge-highlight, #036eb8) !important;
+  font-weight: 600 !important;
+}
+
+#GW-led節標燈管驅動器剖面-Root .gw-footer-badge .gw-badge-red,
+#GW-led節標燈管驅動器剖面-Root .gw-footer-badge .gw-badge-red strong {
+  color: var(--gw-badge-red, #c53030) !important;
+}
+
+#GW-led節標燈管驅動器剖面-Root .gw-footer-badge .gw-badge-red {
+  font-weight: 500 !important;
+}
+
+#GW-led節標燈管驅動器剖面-Root .gw-footer-badge .gw-badge-red strong {
+  font-weight: 700 !important;
 }
 
 /* ==========================================================================
    RWD 響應式斷點設定
    ========================================================================== */
+@media (max-width: 1100px) {
+  #GW-led節標燈管驅動器剖面-Root .gw-footer-badge {
+    border-radius: 6px !important;
+    align-items: flex-start !important;
+    padding: 10px 16px !important;
+    gap: 12px !important;
+    max-width: 100% !important;
+  }
+  
+  #GW-led節標燈管驅動器剖面-Root .gw-footer-badge .gw-badge-tag {
+    margin-top: 2px !important;
+  }
+}
+
 @media (max-width: 768px) {
-  #GW-led節標燈管驅動器剖面-Root #topImage {
-    display: none !important;
+  #GW-led節標燈管驅動器剖面-Root {
+    padding: 32px 0 20px 0 !important;
   }
   
   #GW-led節標燈管驅動器剖面-Root h2 {
@@ -745,59 +918,94 @@ Ra &gt; 80</h3>
   }
   
   #GW-led節標燈管驅動器剖面-Root .gw-footer-badge {
-    font-size: 12px !important;
-    text-align: left;
-    padding: 10px 16px !important;
-    border-radius: 12px !important;
+    font-size: 13px !important;
+    padding: 10px 14px !important;
+    border-radius: 6px !important;
+    gap: 10px !important;
+  }
+
+  #GW-led節標燈管驅動器剖面-Root .gw-footer-badge .gw-badge-tag {
+    font-size: 11px !important;
+    padding: 2px 6px !important;
+    margin-top: 1px !important;
   }
 }
+
+/* ==========================================================================
+   4. 區塊結尾深灰色底線（精緻細線，高質感分隔）
+   ========================================================================== */
+#GW-led節標燈管驅動器剖面-Root .gw-section-bottom-line {
+  width: 100% !important;
+  height: 1px !important;
+  background-color: var(--gw-bottom-line-color, #4b5563) !important;
+  margin-top: 36px !important;
+  margin-bottom: 0 !important;
+  opacity: 0.7 !important;
+}
 </style>
-<div id="GW-led節標燈管驅動器剖面-Root">
-<div class="sr-only">
+<!-- 2. 隱藏 GEO 語意摘要 -->
+<div class="gw-sr-only">
 <h2>金鍏電子專業級二級迴路驅動器結構剖析</h2>
 
-<p>嚴格抑制電流漣波，達成真正無頻閃標準。高效率電能轉換，同步兼顧護眼品質與能源效率。具備閃爍指數不大於 0.020 與閃爍百分比不大於 2.0% 之高規格表現。為容納高規格驅動電路，燈管單側配置有驅動元件區。</p>
+<p>嚴格抑制電流漣波，達成真正無頻閃標準。高效率電能轉換，同步兼顧護眼品質與能源效率。具備閃爍指數不大於 0.020 與閃爍百分比不大於 2.0% 之高規格表現。為容納高規格二級驅動電路，燈管單側配置有驅動元件區並貼有標示貼紙（使用時無需撕除），點燈時該側有些許暗位屬內部電路配置之正常現象。</p>
 </div>
+<!-- 3. 區塊可見 HTML 結構 -->
 
-<div class="gw-max-w-3xl"><!-- 改為 CMS 安全的 div 與 h2 -->
+<div class="gw-max-w-3xl">
 <div class="gw-title-wrapper">
-<h2>專業級<span>二級迴路驅動器</span></h2>
+<h2 id="GW-led節標燈管驅動器剖面-Title">專業級<span>二級迴路驅動器</span></h2>
 
 <p class="gw-header-desc">嚴格抑制電流漣波，達成<strong>真正無頻閃</strong>標準。高效率電能轉換，同步兼顧護眼品質與能源效率。</p>
 </div>
 
 <div class="gw-comparison-container">
 <div class="gw-tags-wrapper"><span class="gw-spec-tag">閃爍指數 ≦ 0.020</span> <span class="gw-spec-tag">閃爍百分比 ≦ 2.0%</span></div>
-<img alt="實體led燈管內部電路板結構剖面圖" class="gw-image-layer" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/tube/test2.png?v=iqfxe2u" title="高轉換效率二級迴路驅動電路實拍" /> <img alt="led燈管元件與散熱機構線稿" class="gw-image-layer" id="topImage" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/tube/test4.png?v=un8x53b" title="金鍏電子專利散熱與元件配置結構" /></div>
+<img alt="實體led燈管內部電路板結構剖面圖" class="gw-image-layer" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/tube/8e8f6cf1a2de4340.jpg?v=2z8tndi" title="高轉換效率二級迴路驅動電路實拍" /></div>
 
-<div class="gw-footer-text"><span class="gw-footer-badge">為了容納較大體積的高規格驅動電路，燈管單側配置有驅動元件區，開燈時產生之些許暗位屬正常現象。</span></div>
+<div class="gw-footer-text">
+<div class="gw-footer-badge"><span class="gw-badge-tag">貼心提醒</span> <span class="gw-badge-desc">為容納高規格二級驅動電路，<span class="gw-badge-red">燈管單側配置有驅動元件區並貼有標示貼紙（<strong>使用時無需撕除</strong>）</span>；<span class="gw-badge-blue">點燈時<strong>貼紙該側不發光</strong></span>，屬內部電路配置之<strong class="gw-badge-blue">正常現象</strong>。</span></div>
+</div>
+<!-- 區塊結尾深灰色底線 -->
+
+<div class="gw-section-bottom-line">&nbsp;</div>
 </div>
 </div>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&amp;family=Outfit:wght@400;700&amp;display=swap" rel="stylesheet" />
-<style type="text/css">/* ==========================================================================
-   GW-led節標燈管實測光效區塊 - 核心防禦與排版鎖定
+
+<div aria-labelledby="GW-led節標燈管實測光效-Title" id="GW-led節標燈管實測光效區塊-Root"><!-- 1. 樣式封裝（模式 A 標準：置於 div 內部頂端，首行以 CSS @import 宣告字型） -->
+<style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Outfit:wght@400;700;800&display=swap');
+
+/* ==========================================================================
+   GW-led節標燈管實測光效區塊 - 全新頂級圖表重構版 (終極防色偏隔離)
    ========================================================================== */
 #GW-led節標燈管實測光效區塊-Root {
-  position: relative;
-  width: 100%;
-  box-sizing: border-box;
-  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
-  background-color: #ffffff !important;
-  padding: 20px 0px 20px 0px !important;
-  display: flex;
-  flex-direction: column;
-  max-width: 1200px;
-  margin: 0 auto;
+  position: relative !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif !important;
+  background-color: transparent !important;
+  padding: 40px 5% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
 }
 
 #GW-led節標燈管實測光效區塊-Root *,
 #GW-led節標燈管實測光效區塊-Root *::before,
 #GW-led節標燈管實測光效區塊-Root *::after {
-  box-sizing: border-box;
+  box-sizing: border-box !important;
 }
 
-#GW-led節標燈管實測光效區塊-Root .sr-only {
-  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;
+#GW-led節標燈管實測光效區塊-Root .sr-only,
+#GW-led節標燈管實測光效區塊-Root .gw-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  border: 0 !important;
 }
 
 /* ==========================================================================
@@ -805,12 +1013,13 @@ Ra &gt; 80</h3>
    ========================================================================== */
 #GW-led節標燈管實測光效區塊-Root .gw-title-wrapper {
   margin-bottom: 30px !important;
+  padding: 0 !important;
 }
 
 #GW-led節標燈管實測光效區塊-Root h2 {
   font-size: 32px !important;
   font-weight: 700 !important;
-  color: #000000 !important;
+  color: #111111 !important;
   margin: 0 0 16px 0 !important;
   line-height: 1.4 !important;
   letter-spacing: 1px !important;
@@ -820,7 +1029,7 @@ Ra &gt; 80</h3>
 #GW-led節標燈管實測光效區塊-Root .gw-subtitle {
   font-size: 22px !important;
   font-weight: 400 !important;
-  color: #000000 !important;
+  color: #333333 !important;
   margin: 0 0 24px 0 !important;
   line-height: 1.5 !important;
 }
@@ -828,143 +1037,214 @@ Ra &gt; 80</h3>
 #GW-led節標燈管實測光效區塊-Root .gw-green-text {
   font-size: 18px !important;
   font-weight: 500 !important;
-  color: #2e7d32 !important;
+  color: #036eb8 !important;
   margin: 0 0 12px 0 !important;
   line-height: 1.8 !important;
   letter-spacing: 0.5px !important;
 }
 
 /* ==========================================================================
-   實測數據卡片網格佈局 (對稱式陣列)
+   全新高質感展示卡片與圖表區
    ========================================================================== */
-#GW-led節標燈管實測光效區塊-Root .gw-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  width: 100%;
-  margin-bottom: 24px !important;
-}
-
-#GW-led節標燈管實測光效區塊-Root .gw-data-card {
-  background-color: #fcfcfc !important;
-  border: 1px solid #1e3a8a !important;
-  border-radius: 8px !important;
-  padding: 24px !important;
-  display: flex;
-  flex-direction: column;
-}
-
-#GW-led節標燈管實測光效區塊-Root .gw-card-title {
-  text-align: center !important;
-  font-size: 22px !important;
-  font-weight: 400 !important;
-  color: #000000 !important;
-  margin: 0 0 16px 0 !important;
-}
-
-#GW-led節標燈管實測光效區塊-Root .gw-card-marker-text {
-  text-align: center !important;
-  font-size: 16px !important;
-  font-weight: 400 !important;
-  color: #000000 !important;
-  margin: 0 0 8px 0 !important;
-}
-
-/* ==========================================================================
-   CSS 數據進度條設計
-   ========================================================================== */
-#GW-led節標燈管實測光效區塊-Root .gw-bar-container {
-  position: relative;
-  width: 100%;
-  height: 48px;
-  border: 1px solid #1e3a8a !important;
-  margin: 30px 0 16px 0 !important;
+#GW-led節標燈管實測光效區塊-Root .gw-new-chart-card {
+  width: 100% !important;
   background-color: #ffffff !important;
+  border-radius: 16px !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid #f1f5f9 !important;
+  padding: 48px 32px !important;
+  margin-top: 10px !important;
+  position: relative !important;
+  overflow: hidden !important;
 }
 
-#GW-led節標燈管實測光效區塊-Root .gw-bar-fill {
-  height: 100%;
-  background: linear-gradient(to right, #2e5c2b, #689f38) !important;
+/* 垂直網格 (僅保留輔助線，移除數字以維持畫面純淨) */
+#GW-led節標燈管實測光效區塊-Root .gw-grid-lines {
+  position: absolute !important;
+  top: 48px !important;
+  bottom: 80px !important;
+  left: 32px !important;
+  right: 32px !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+  border-left: 1px solid #e2e8f0 !important;
+  border-right: 1px solid #e2e8f0 !important;
 }
 
-#GW-led節標燈管實測光效區塊-Root .gw-bar-line {
-  position: absolute;
-  left: 50%;
-  top: -24px;
-  bottom: -24px;
-  border-left: 2px solid #1e3a8a !important;
-  z-index: 2;
+#GW-led節標燈管實測光效區塊-Root .gw-grid-line {
+  position: absolute !important;
+  top: 0 !important;
+  bottom: 0 !important;
 }
+
+#GW-led節標燈管實測光效區塊-Root .gw-grid-line-25 { left: 25% !important; border-left: 1px dashed #f1f5f9 !important; }
+#GW-led節標燈管實測光效區塊-Root .gw-grid-line-50 { left: 50% !important; border-left: 1px solid #e2e8f0 !important; }
+#GW-led節標燈管實測光效區塊-Root .gw-grid-line-75 { left: 75% !important; border-left: 1px dashed #f1f5f9 !important; }
 
 /* ==========================================================================
-   進度條下方的大數字與自訂上傳圖標排版
+   圖表資料列與動畫設定 (全面更換 Class 名稱，徹底隔離舊版綠色設定)
    ========================================================================== */
-#GW-led節標燈管實測光效區塊-Root .gw-bar-value {
+@keyframes gw-expandWidth {
+  from { width: 0%; opacity: 0; }
+}
+
+@keyframes gw-fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes gw-elegant-bounce {
+  0%, 100% { transform: translateY(calc(-50% - 4px)); }
+  50% { transform: translateY(calc(-50% + 4px)); }
+}
+
+#GW-led節標燈管實測光效區塊-Root .gw-chart-rows {
+  position: relative !important;
+  z-index: 10 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 40px !important;
+  padding-bottom: 16px !important;
+  padding-top: 16px !important;
+}
+
+#GW-led節標燈管實測光效區塊-Root .gw-row {
+  opacity: 0;
+  animation: gw-fadeInUp 0.8s ease-out forwards;
+}
+
+#GW-led節標燈管實測光效區塊-Root .gw-delay-100 { animation-delay: 100ms; }
+#GW-led節標燈管實測光效區塊-Root .gw-delay-200 { animation-delay: 200ms; }
+#GW-led節標燈管實測光效區塊-Root .gw-delay-300 { animation-delay: 300ms; }
+
+#GW-led節標燈管實測光效區塊-Root .gw-row-title {
+  font-size: 16px !important;
+  font-weight: 300 !important;
+  color: #64748b !important;
+  margin-bottom: 8px !important;
+  padding-left: 16px !important;
+  letter-spacing: 0.5px !important;
+}
+
+#GW-led節標燈管實測光效區塊-Root .gw-row-title.gw-brand {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #036eb8 !important;
+}
+
+/* 隔離重命名：軌道與漸層 */
+#GW-led節標燈管實測光效區塊-Root .gw-chart2-track {
+  position: relative !important;
+  width: 100% !important;
   display: flex !important;
   align-items: center !important;
-  justify-content: flex-end !important;
-  gap: 8px !important;
-  font-size: 32px !important;
-  font-weight: 700 !important;
-  color: #2e7d32 !important;
-  margin: 0 !important;
-  font-family: 'Outfit', sans-serif !important;
 }
 
-/* 鎖定自訂上傳圖片的尺寸，防止破版 */
-#GW-led節標燈管實測光效區塊-Root .gw-bar-value img {
-  width: 28px !important;
-  height: 28px !important;
-  flex-shrink: 0 !important;
-  object-fit: contain !important;
-  display: block !important;
+#GW-led節標燈管實測光效區塊-Root .gw-chart2-fill {
+  border-radius: 0 9999px 9999px 0 !important;
+  flex-shrink: 0;
+  animation: gw-expandWidth 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+#GW-led節標燈管實測光效區塊-Root .gw-chart2-gray {
+  height: 20px !important;
+  background-color: #cbd5e1 !important;
+  background-image: linear-gradient(to right, #94a3b8, #e2e8f0) !important;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.06) !important;
+}
+
+#GW-led節標燈管實測光效區塊-Root .gw-chart2-brand {
+  position: relative !important;
+  height: 32px !important;
+  background-color: #036eb8 !important;
+  background-image: linear-gradient(to right, #024a7c, #048cfc) !important;
+  box-shadow: 0 4px 15px rgba(3, 110, 184, 0.4) !important;
+}
+
+/* 灰底字數值 */
+#GW-led節標燈管實測光效區塊-Root .gw-chart2-val {
+  margin-left: 12px !important;
+  font-size: 15px !important; 
+  font-weight: 400 !important;
+  color: #94a3b8 !important;
+  white-space: nowrap !important;
 }
 
 /* ==========================================================================
-   底部詳細數據小方框
+   金鍏專屬：高級浮動資料卡片 
    ========================================================================== */
-#GW-led節標燈管實測光效區塊-Root .gw-stats-row {
-  display: flex;
-  gap: 12px;
-  width: 100%;
+#GW-led節標燈管實測光效區塊-Root .gw-floating-card {
+  position: absolute !important;
+  right: 24px !important;
+  top: 50% !important;
+  animation: gw-elegant-bounce 3s ease-in-out infinite !important;
+  z-index: 20 !important;
+  
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+  border: 1px solid #eff6ff !important;
+  border-radius: 12px !important;
+  box-shadow: 0 15px 35px -5px rgba(3, 110, 184, 0.3) !important;
+  padding: 12px 24px !important;
+  
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
 }
 
-#GW-led節標燈管實測光效區塊-Root .gw-stat-box {
-  flex: 1;
-  border: 1px solid #1e3a8a !important;
-  border-radius: 4px !important;
-  padding: 10px 8px !important;
-  text-align: center !important;
-  background-color: #fcfcfc !important;
-}
-
-#GW-led節標燈管實測光效區塊-Root .gw-stat-box p {
-  margin: 0 !important;
+#GW-led節標燈管實測光效區塊-Root .gw-floating-text {
+  display: flex !important;
+  flex-direction: column !important;
   font-size: 15px !important;
-  font-weight: 400 !important;
-  color: #000000 !important;
+  font-weight: 700 !important;
+  color: #036eb8 !important;
+  line-height: 1.6 !important;
+  white-space: nowrap !important;
+}
+
+#GW-led節標燈管實測光效區塊-Root .gw-floating-icon {
+  background-color: #eff6ff !important;
+  color: #036eb8 !important;
+  padding: 8px !important;
+  border-radius: 9999px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+#GW-led節標燈管實測光效區塊-Root .gw-floating-icon svg {
+  width: 28px !important;
+  height: 28px !important;
+}
+
+#GW-led節標燈管實測光效區塊-Root .gw-x-axis-text {
+  text-align: center !important;
+  color: #94a3b8 !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  margin-top: 24px !important;
+  letter-spacing: 2px !important;
 }
 
 /* ==========================================================================
    底部紅色警告文案區塊
    ========================================================================== */
 #GW-led節標燈管實測光效區塊-Root .gw-warning-section {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin-top: 5px !important;
-  padding: 16px 0 !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 20px !important;
+  margin-top: 30px !important;
+  padding: 10px 0 !important;
 }
 
 #GW-led節標燈管實測光效區塊-Root .gw-warning-icon {
-  flex-shrink: 0;
-  /* 控制警告圖標的寬度 */
-  width: 60px;
-  height: auto;
+  flex-shrink: 0 !important;
+  width: 48px !important;
+  height: auto !important;
 }
 
-/* 鎖定警告自訂圖片尺寸 */
-#GW-led節標燈管實測光效區塊-Root .gw-warning-icon img {
+#GW-led節標燈管實測光效區塊-Root .gw-warning-icon svg {
   width: 100% !important;
   height: auto !important;
   display: block !important;
@@ -973,7 +1253,7 @@ Ra &gt; 80</h3>
 #GW-led節標燈管實測光效區塊-Root .gw-warning-text {
   font-size: 16px !important;
   font-weight: 400 !important;
-  color: #b71c1c !important;
+  color: #646464 !important;
   margin: 0 !important;
   line-height: 1.8 !important;
 }
@@ -984,709 +1264,1201 @@ Ra &gt; 80</h3>
 }
 
 /* ==========================================================================
-   RWD 響應式斷點設定
+   RWD 窄螢幕防破版機制
    ========================================================================== */
 @media (max-width: 900px) {
-  #GW-led節標燈管實測光效區塊-Root h2 {
-    font-size: 24px !important;
+  #GW-led節標燈管實測光效區塊-Root {
+    padding: 32px 4% !important;
   }
-  #GW-led節標燈管實測光效區塊-Root .gw-subtitle {
-    font-size: 18px !important;
+  #GW-led節標燈管實測光效區塊-Root h2 { font-size: 24px !important; }
+  #GW-led節標燈管實測光效區塊-Root .gw-subtitle { font-size: 18px !important; }
+  
+  #GW-led節標燈管實測光效區塊-Root .gw-new-chart-card {
+    padding: 32px 20px !important;
+    border-radius: 16px !important;
   }
-  #GW-led節標燈管實測光效區塊-Root .gw-cards-grid {
-    grid-template-columns: 1fr;
+  
+  #GW-led節標燈管實測光效區塊-Root .gw-grid-lines { display: none !important; }
+  
+  #GW-led節標燈管實測光效區塊-Root .gw-floating-card {
+    right: 12px !important;
+    padding: 10px 16px !important;
+    gap: 12px !important;
   }
-  #GW-led節標燈管實測光效區塊-Root .gw-stats-row {
-    flex-direction: column;
+  
+  #GW-led節標燈管實測光效區塊-Root .gw-floating-text {
+    font-size: 14px !important;
   }
+  
+  #GW-led節標燈管實測光效區塊-Root .gw-floating-icon {
+    display: none !important; 
+  }
+
   #GW-led節標燈管實測光效區塊-Root .gw-warning-section {
-    flex-direction: column;
-    align-items: center;
-    text-align: justify;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: justify !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #GW-led節標燈管實測光效區塊-Root {
+    padding: 24px 16px !important;
+  }
+  #GW-led節標燈管實測光效區塊-Root .gw-floating-card {
+    right: 0px !important;
+    padding: 8px 12px !important;
   }
 }
 </style>
-<div class="_bd_row _bd_clearfix">
-<div class="_bd_column _bd_full">
-<hr /></div>
-</div>
-
-<div id="GW-led節標燈管實測光效區塊-Root">
-<div class="sr-only">
+<!-- 2. 隱藏 GEO 語意摘要 -->
+<div class="gw-sr-only">
 <h2>金鍏電子 LED 燈管：超越極限光效，比大牌更省電，比低價更耐用</h2>
 
 <p>拒絕虛假標示，宣告光效 160 lm/W，但寬電壓實測值均超越 170 lm/W 以上。110V 實測高達 174.5 lm/W (2251 lm)，220V 實測高達 179.4 lm/W (2243 lm)，遠超法規低標 150 lm/W。透過高品質二級迴路系統，穩定維持 2000 流明以上。市售燈管常犧牲長期穩定性導致嚴重光衰，我們為您省下隱形成本。</p>
 </div>
+<!-- 3. 區塊可見 HTML 結構 -->
 
 <div class="gw-title-wrapper">
-<h2>比大牌更省電&emsp;比低價更耐用</h2>
+<h2 id="GW-led節標燈管實測光效-Title">比大牌<span style="color:#036eb8;">更省電</span>&emsp;比低價<span style="color:#036eb8;">更耐用</span></h2>
 
 <p class="gw-subtitle">超越 160lm/W 的極限光效 (110V~220V寬電壓)</p>
 
-<p class="gw-green-text">我們<strong>宣告光效 160 lm/W</strong>，但寬電壓實測值均<strong>超越 170 lm/W以上</strong>。透過高品質二級迴路系統，確保<strong>光通量穩定維持在 2000 流明以上</strong>，為您省下不必要的維修開支，更換取健康的用眼環境。</p>
+<p class="gw-green-text"><span style="color:#036eb8;">我們<strong>宣告光效 160 lm/W</strong>，但寬電壓實測值均<strong>超越 170 lm/W以上</strong>。透過高品質二級迴路系統，確保<strong>光通量穩定維持在 2000 流明以上</strong>，為您省下不必要的維修開支，更換取健康的用眼環境。</span></p>
 </div>
 
-<div class="gw-cards-grid">
-<div>
-<div class="gw-data-card">
-<h3 class="gw-card-title">110V 實測</h3>
+<div class="gw-new-chart-card">
+<div class="gw-grid-lines">
+<div class="gw-grid-line gw-grid-line-25">&nbsp;</div>
 
-<p class="gw-card-marker-text">法規低標 (150 lm/W)</p>
+<div class="gw-grid-line gw-grid-line-50">&nbsp;</div>
 
-<div class="gw-bar-container">
-<div class="gw-bar-fill" style="width: 87.25%;">&nbsp;</div>
-
-<div class="gw-bar-line">&nbsp;</div>
+<div class="gw-grid-line gw-grid-line-75">&nbsp;</div>
 </div>
 
-<p class="gw-bar-value"><img alt="實測光效圖標" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/gw.png?v=2a8ru2s" /> 174.5 lm/W</p>
-</div>
+<div class="gw-chart-rows">
+<div class="gw-row gw-delay-100">
+<div class="gw-row-title">市售一般LED燈管(無節標)</div>
 
-<div class="gw-stats-row" style="margin-top: 12px;">
-<div class="gw-stat-box">
-<p>實測光通量：2251 lm</p>
-</div>
+<div class="gw-chart2-track">
+<div class="gw-chart2-fill gw-chart2-gray" style="width: 60%;">&nbsp;</div>
 
-<div class="gw-stat-box">
-<p>實測功率：12.9 W</p>
-</div>
+<div class="gw-chart2-val"><span class="gw-counter" data-decimals="0" data-target="120">120</span> lm/W</div>
 </div>
 </div>
 
-<div>
-<div class="gw-data-card">
-<h3 class="gw-card-title">220V 實測</h3>
+<div class="gw-row gw-delay-200">
+<div class="gw-row-title">他牌節能標章LED燈管</div>
 
-<p class="gw-card-marker-text">法規低標 (150 lm/W)</p>
+<div class="gw-chart2-track">
+<div class="gw-chart2-fill gw-chart2-gray" style="width: 80%;">&nbsp;</div>
 
-<div class="gw-bar-container">
-<div class="gw-bar-fill" style="width: 89.7%;">&nbsp;</div>
-
-<div class="gw-bar-line">&nbsp;</div>
+<div class="gw-chart2-val"><span class="gw-counter" data-decimals="0" data-target="160">160</span> lm/W</div>
+</div>
 </div>
 
-<p class="gw-bar-value"><img alt="實測光效圖標" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/gw.png?v=2a8ru2s" /> 179.4 lm/W</p>
-</div>
+<div class="gw-row gw-delay-300">
+<div class="gw-row-title gw-brand">金鍏節能標章LED燈管</div>
 
-<div class="gw-stats-row" style="margin-top: 12px;">
-<div class="gw-stat-box">
-<p>實測光通量：2243 lm</p>
-</div>
+<div class="gw-chart2-track">
+<div class="gw-chart2-fill gw-chart2-brand" style="width: 89.7%;">
+<div class="gw-floating-card">
+<div class="gw-floating-text"><span>110V 實測達 <span class="gw-counter" data-decimals="1" data-target="174.5">174.5</span> lm/W</span> <span>220V 實測達 <span class="gw-counter" data-decimals="1" data-target="179.4">179.4</span> lm/W</span></div>
 
-<div class="gw-stat-box">
-<p>實測功率：12.5 W</p>
+<div class="gw-floating-icon"><svg height="24" viewbox="0 0 148.2 162.5" width="24" xmlns="http://www.w3.org/2000/svg"> <g> <!-- 底部半透明色塊層 (視覺底層) --> <path d="M110.7,97.9l26.6,46-32.3,18.6-24.8-43" fill="#036eb8" fill-opacity="0.3"></path> <path d="M26.6,97.9L0,143.9l32.2,18.6,24.9-43" fill="#036eb8" fill-opacity="0.3"></path> <circle cx="68.6" cy="70.8" fill="#036eb8" fill-opacity="0.3" r="50"></circle> <path d="M68.6,41.8l8.7,17.5,19.3,2.8-14,13.7,3.3,19.2-17.3-9.1-17.3,9.1,3.3-19.2-14-13.7,19.4-2.8,8.6-17.5Z" fill="#036eb8" fill-opacity="0.3"></path> <!-- 深藍色輪廓細節層 (視覺頂層) --> <path d="M29.6,12c-1.7-1.7-3.4-3.4-5.1-5.1-1.1-1.1-3.1-1.1-4.2,0s-1.1,3.1,0,4.2c1.7,1.7,3.4,3.4,5.1,5.1s3.1,1.1,4.2,0,1.1-3,0-4.2Z" fill="#3670b5"></path> <path d="M23.3,21.1h-7.1c-3.9,0-3.9,6,0,6h7.1c3.9,0,3.9-6,0-6Z" fill="#3670b5"></path> <path d="M40.5,10V2.9c0-3.9-6-3.9-6,0v7.1c0,3.8,6,3.9,6,0Z" fill="#3670b5"></path> <path d="M120.5,45.9c.8,2.2,1.5,4.4,2,6.7.9,3.8,6.6,2.2,5.8-1.6-.5-2.3-1.2-4.5-2-6.7-.6-1.5-2-2.6-3.7-2.1-1.4.4-2.6,2.2-2.1,3.7Z" fill="#3670b5"></path> <path d="M123.6,62.8c-.2,17.4-9.7,33.5-25.2,41.6-15.3,8.1-34.5,6.8-48.7-3.1-14.2-9.8-21.8-27-19.9-44.1,2-17,13.6-32.1,29.6-38.3,20.4-7.9,43.6-.4,56,17.4,2.2,3.1,7.4.2,5.2-3-12.2-17.7-33.7-26.8-55-22.3-19,4-34.8,18.8-40,37.5-5.3,18.9.6,39.8,15,53.1,14.4,13.3,35.7,17.8,54.2,11,20.9-7.7,34.6-27.6,34.9-49.8,0-3.8-6-3.9-6.1,0h0Z" fill="#3670b5"></path> <path d="M105.4,51.3c-3.2-.5-6.4-.9-9.7-1.4-2.1-.3-4.2-.6-6.3-.9-.3,0-1.3-.2-2.1-.3-.2-.6-.8-1.4-1-1.9-.9-1.9-1.9-3.8-2.8-5.7-1.4-2.9-2.9-5.8-4.3-8.8-.6-1.2-1.6-1.6-2.6-1.5-1-.1-2,.3-2.6,1.5-1.4,2.9-2.9,5.8-4.3,8.8-.9,1.9-1.9,3.8-2.8,5.7-.3.5-.8,1.2-1,1.9-.8,0-1.9.3-2.1.3-2.1.3-4.2.6-6.3.9-3.2.5-6.4.9-9.7,1.4-2.3.3-2.8,3.6-1.3,5l12.9,12.6c-1,5.8-2,11.6-3,17.4-.4,2.6,2,5,4.4,3.7,5.3-2.8,10.5-5.3,15.8-8,5.3,2.7,10.5,5.2,15.8,8,2.5,1.3,4.8-1,4.4-3.6-1-5.8-2-11.7-3-17.5,4.3-4.2,8.6-8.4,12.9-12.6,1.5-1.4,1-4.7-1.3-5ZM87.6,49.4c.5.3.2.4,0,0ZM65.6,49.4c-.2.4-.5.3,0,0ZM87.7,67c-.8,2.8,1,7.5,1.5,10.3.2,1.4.5,2.9.7,4.3-1.3-.7-2.7-1.4-4-2.1-2.4-1.3-6.4-4.5-9.3-4.5s-6.9,3.2-9.3,4.5c-1.3.7-2.7,1.4-4,2.1.2-1.4.5-2.9.7-4.3.5-2.7,2.3-7.5,1.5-10.3s-5.1-5.6-7.1-7.5c-1.1-1.1-2.3-2.2-3.4-3.3,1.7-.2,3.3-.5,5-.7,2.7-.4,7.5,0,9.7-1.8,2.3-1.7,3.5-6.3,4.7-8.7.7-1.5,1.4-2.9,2.2-4.4.7,1.5,1.4,2.9,2.2,4.4,1.2,2.4,2.4,7,4.7,8.7s7.1,1.4,9.7,1.8c1.7.2,3.3.5,5,.7-1.1,1.1-2.3,2.2-3.4,3.3-2,1.9-6.3,4.7-7.1,7.5h0Z" fill="#3670b5"></path> <path d="M147.9,134.4c-8.9-15.3-17.7-30.7-26.6-46-1.9-3.3-7.1-.3-5.2,3,8.4,14.5,16.7,28.9,25.1,43.4-9,5.2-18,10.4-27,15.6-7.8-13.5-15.6-27-23.4-40.5-1.9-3.3-7.1-.3-5.2,3,8.3,14.3,16.6,28.7,24.9,43,.8,1.4,2.7,1.9,4.1,1.1,10.7-6.2,21.5-12.4,32.2-18.6,1.4-.7,1.9-2.6,1.1-4h0Z" fill="#3670b5"></path> <path d="M54.8,135.3c4.3-7.4,8.6-14.9,12.9-22.3,1.9-3.4-3.2-6.4-5.2-3-4.3,7.4-8.6,14.9-12.9,22.3-1.9,3.3,3.3,6.4,5.2,3Z" fill="#3670b5"></path> <path d="M47.4,148.2c1.1-1.9,2.1-3.7,3.2-5.6,1.9-3.4-3.2-6.4-5.2-3-1.1,1.9-2.1,3.7-3.2,5.6-1.9,3.3,3.3,6.3,5.2,3Z" fill="#3670b5"></path> <path d="M41.5,152.4c-9.9-5.7-19.8-11.4-29.7-17.1,8.5-14.6,16.9-29.3,25.4-43.9,1.9-3.4-3.2-6.4-5.2-3-9,15.5-17.9,31-26.9,46.5-.8,1.4-.3,3.3,1.1,4.1,10.7,6.2,21.5,12.4,32.2,18.6,3.4,1.9,6.4-3.2,3.1-5.2h0Z" fill="#3670b5"></path> </g> </svg></div>
 </div>
 </div>
 </div>
+</div>
+</div>
+
+<div class="gw-x-axis-text">發光效率</div>
 </div>
 
 <div class="gw-warning-section">
 <div class="gw-warning-icon"><svg height="100%" viewbox="0 0 64 64" width="100%" xmlns="http://www.w3.org/2000/svg"> <path d="M8,16 C8,11.58 11.58,8 16,8 L48,8 C52.42,8 56,11.58 56,16 L56,40 C56,44.42 52.42,48 48,48 L36,48 L32,56 L28,48 L16,48 C11.58,48 8,44.42 8,40 L8,16 Z" fill="#d32f2f"></path> <circle cx="32" cy="38" fill="#ffffff" r="3"></circle> <rect fill="#ffffff" height="16" rx="3" width="6" x="29" y="16"></rect> </svg></div>
 
-<p class="gw-warning-text">市售燈管常以簡化驅動器換取暫時的高光效，卻犧牲了長期的穩定性。雖然初期購入成本低廉，但因驅動設計過於簡陋，往往會產生<strong>嚴重光衰</strong>與不穩定的電流波形，反而在無形中<strong>付出更高的電力耗損與頻繁汰換的隱形成本。</strong></p>
+<p class="gw-warning-text">市售燈管常以簡化驅動器換取暫時的高光效，卻犧牲了長期的穩定性。雖然初期購入成本低廉，但因驅動設計過於簡陋，往往會產生<strong>嚴重光衰</strong>與不穩定的電流波形，長期下來反而<strong>付出更高的電力耗損與頻繁汰換的隱形成本。</strong></p>
 </div>
 </div>
 
-<div class="_bd_row _bd_clearfix">
-<div class="_bd_column _bd_full">
-<hr /></div>
-</div>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&amp;family=Outfit:wght@400;700&amp;display=swap" rel="stylesheet" />
-<style type="text/css">/* ==========================================================================
-   GW-led節標燈管演色性區塊 - 核心排版與防禦鎖定
-   ========================================================================== */
-#GW-led節標燈管演色性區塊-Root {
-  /* [底圖] 請在此替換為您的 LED 燈管背景圖網址 */
-  --gw-bg-image: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/tube/c489ca44fb44921e.jpg?v=y9snu4');
-  /* [高度] 控制桌機版的最小高度 */
-  --gw-min-height: 700px;
-  
-  position: relative;
-  width: 100%;
-  box-sizing: border-box;
-  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
-  background-color: #000000 !important;
-  background-image: var(--gw-bg-image);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: 60px 5% 40px 5% !important;
-  min-height: var(--gw-min-height);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
+<div aria-labelledby="GW-led節標燈管無光生物危害-Title" id="GW-led節標燈管無光生物危害區塊-Root"><!-- 1. 樣式封裝（模式 A 標準：置於 div 內部最頂端，首行以 CSS @import 宣告字型） -->
+<style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Outfit:wght@400;700;800&display=swap');
 
-#GW-led節標燈管演色性區塊-Root *,
-#GW-led節標燈管演色性區塊-Root *::before,
-#GW-led節標燈管演色性區塊-Root *::after {
-  box-sizing: border-box;
-}
+    /* ==========================================================================
+       GW-led節標燈管無光生物危害區塊 - 極簡素雅 (B-2 RG0 呼吸光環定稿版)
+       ========================================================================== */
+    #GW-led節標燈管無光生物危害區塊-Root {
+      /* ★ 底圖網址 ★ */
+      --gw-bg-image: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/tube/fb9f5abd1dd3975d.jpg?v=qjkt1c7');
 
-/* SEO 隱形提領區塊 */
-#GW-led節標燈管演色性區塊-Root .sr-only {
-  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;
-}
+      position: relative !important;
+      width: 100% !important;
+      min-height: 650px !important;
+      box-sizing: border-box !important;
+      font-family: 'Outfit', 'Noto Sans TC', sans-serif !important;
+      background-image: var(--gw-bg-image) !important;
+      background-size: cover !important;
+      background-position: center center !important;
+      background-repeat: no-repeat !important;
+      background-color: #f7f9fa !important;
+      
+      /* 排版控制：靠上對齊，以 padding 控制文字高度 */
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      padding: 80px 5% 60px 5% !important;
+      text-align: center !important;
+      margin: 0 !important;
+      overflow: hidden !important;
+    }
 
-/* ==========================================================================
-   左上角文案區塊
-   ========================================================================== */
-#GW-led節標燈管演色性區塊-Root .gw-text-content {
-  align-self: flex-start;
-  max-width: 650px;
-  width: 100%;
-  position: relative;
-  z-index: 2;
-}
+    #GW-led節標燈管無光生物危害區塊-Root *,
+    #GW-led節標燈管無光生物危害區塊-Root *::before,
+    #GW-led節標燈管無光生物危害區塊-Root *::after {
+      box-sizing: border-box !important;
+    }
 
-#GW-led節標燈管演色性區塊-Root h2 {
-  display: flex !important;
-  align-items: center !important;
-  flex-wrap: wrap !important;
-  font-size: 32px !important;
-  font-weight: 400 !important;
-  color: #ffffff !important;
-  margin: 0 0 20px 0 !important;
-  line-height: 1.4 !important;
-  letter-spacing: 1.5px !important;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.8) !important;
-}
+    /* 漸層遮罩：依規範第 8.2 條使用 ::before 實作，防止 CMS 過濾多重背景語法 */
+    #GW-led節標燈管無光生物危害區塊-Root::before {
+      content: "" !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.25) 100%) !important;
+      z-index: 1 !important;
+      pointer-events: none !important;
+    }
 
-#GW-led節標燈管演色性區塊-Root h2 strong {
-  font-family: 'Outfit', sans-serif !important;
-  font-weight: 400 !important;
-  margin: 0 8px !important;
-}
+    /* SEO / GEO 隱形摘要 */
+    #GW-led節標燈管無光生物危害區塊-Root .sr-only,
+    #GW-led節標燈管無光生物危害區塊-Root .gw-sr-only {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      border: 0 !important;
+    }
 
-#GW-led節標燈管演色性區塊-Root .gw-divider {
-  display: inline-block !important;
-  margin: 0 16px !important;
-  color: #aaaaaa !important;
-  font-weight: 300 !important;
-}
+    /* ==========================================================================
+       置中文案區塊
+       ========================================================================== */
+    #GW-led節標燈管無光生物危害區塊-Root .gw-text-box {
+      max-width: 700px !important;
+      width: 100% !important;
+      position: relative !important;
+      z-index: 2 !important;
+    }
 
-#GW-led節標燈管演色性區塊-Root p {
-  font-size: 16px !important;
-  font-weight: 400 !important;
-  color: #eeeeee !important;
-  margin: 0 !important;
-  line-height: 1.8 !important;
-  letter-spacing: 1px !important;
-  text-shadow: 0 1px 6px rgba(0,0,0,0.8) !important;
-  text-align: justify !important;
-}
+    #GW-led節標燈管無光生物危害區塊-Root h2 {
+      font-size: 26px !important;
+      font-weight: 700 !important;
+      color: #222222 !important;
+      margin: 0 0 8px 0 !important;
+      line-height: 1.4 !important;
+      letter-spacing: 2px !important;
+    }
 
-/* ==========================================================================
-   右下角自訂圖示區塊 (加入懸停效果)
-   ========================================================================== */
-#GW-led節標燈管演色性區塊-Root .gw-badge-container {
-  margin-top: auto !important;
-  align-self: flex-end;
-  max-width: 230px;
-  width: 100%;
-  position: relative;
-  z-index: 2;
-  padding-top: 60px !important;
-  /* [動態] 設定浮動動畫的過渡時間與曲線 */
-  transition: transform 0.4s ease !important;
-}
+    /* ==========================================================================
+       核心標籤：Risk Group 0 自然健康呼吸光環
+       ========================================================================== */
+    #GW-led節標燈管無光生物危害區塊-Root h3 {
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 42px !important;
+      font-weight: 800 !important;
+      color: #222222 !important;
+      margin: 0 0 24px 0 !important;
+      line-height: 1.2 !important;
+      letter-spacing: 1px !important;
+      display: inline-block !important;
+      animation: gw-rg0-aura-breathe 4.5s ease-in-out infinite;
+    }
 
-/* 僅針對電腦版執行浮動效果 */
-@media (min-width: 769px) {
-  #GW-led節標燈管演色性區塊-Root .gw-badge-container:hover {
-    /* [動態] 向上位移 10px 並略微放大 */
-    transform: translateY(-10px) scale(1.02) !important;
-  }
-}
+    @keyframes gw-rg0-aura-breathe {
+      0%, 100% {
+        text-shadow: 
+          0 0 10px rgba(255, 255, 255, 0.9),
+          0 0 22px rgba(255, 240, 215, 0.35),
+          0 2px 4px rgba(0, 0, 0, 0.05);
+        transform: scale(1);
+      }
+      50% {
+        text-shadow: 
+          0 0 16px rgba(255, 255, 255, 1),
+          0 0 35px rgba(255, 225, 175, 0.75),
+          0 0 55px rgba(255, 245, 225, 0.45),
+          0 2px 6px rgba(0, 0, 0, 0.08);
+        transform: scale(1.025);
+      }
+    }
 
-#GW-led節標燈管演色性區塊-Root .gw-badge-container img {
-  width: 100% !important;
-  height: auto !important;
-  display: block !important;
-  object-fit: contain !important;
-}
+    #GW-led節標燈管無光生物危害區塊-Root p {
+      font-size: 18px !important;
+      font-weight: 400 !important;
+      color: #222222 !important;
+      line-height: 1.8 !important;
+      margin: 0 !important;
+      letter-spacing: 0.5px !important;
+    }
 
-/* ==========================================================================
-   RWD 響應式斷點設定
-   ========================================================================== */
-@media (max-width: 768px) {
-  #GW-led節標燈管演色性區塊-Root {
-    padding: 50px 5% 40px 5% !important;
-    min-height: 500px !important;
-    background-position: 20% center !important;
-  }
-  
-  #GW-led節標燈管演色性區塊-Root h2 {
-    font-size: 24px !important;
-  }
-  
-  #GW-led節標燈管演色性區塊-Root .gw-divider {
-    margin: 0 10px !important;
-  }
-  
-  #GW-led節標燈管演色性區塊-Root p {
-    font-size: 15px !important;
-  }
+    /* 桌機版強迫斷行機制 */
+    #GW-led節標燈管無光生物危害區塊-Root .gw-desktop-br {
+      display: block !important;
+    }
 
-  #GW-led節標燈管演色性區塊-Root .gw-badge-container {
-    max-width: 150px;
-    padding-top: 40px !important;
-    /* 手機版不執行懸停變形 */
-    transform: none !important;
-  }
-}
+    /* ==========================================================================
+       RWD 手機窄螢幕微調 & 無障礙動態防護
+       ========================================================================== */
+    @media (max-width: 768px) {
+      #GW-led節標燈管無光生物危害區塊-Root {
+        min-height: 400px !important;
+        padding: 40px 5% 60px 5% !important;
+      }
+      
+      #GW-led節標燈管無光生物危害區塊-Root h2 {
+        font-size: 20px !important;
+      }
+      
+      #GW-led節標燈管無光生物危害區塊-Root h3 {
+        font-size: 32px !important;
+        margin: 0 0 16px 0 !important;
+      }
+      
+      #GW-led節標燈管無光生物危害區塊-Root p {
+        font-size: 15px !important;
+        text-align: center !important; 
+      }
+      
+      /* 手機版取消強迫斷行，讓系統自動排版 */
+      #GW-led節標燈管無光生物危害區塊-Root .gw-desktop-br {
+        display: none !important;
+      }
+    }
 
-@media (max-width: 480px) {
-  #GW-led節標燈管演色性區塊-Root .gw-divider {
-    display: none !important;
-  }
-  #GW-led節標燈管演色性區塊-Root h2 {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 8px !important;
-  }
-  #GW-led節標燈管演色性區塊-Root h2 strong {
-    margin: 0 !important;
-  }
-}
+    @media (prefers-reduced-motion: reduce) {
+      #GW-led節標燈管無光生物危害區塊-Root h3 {
+        animation: none !important;
+      }
+    }
 </style>
-<div id="GW-led節標燈管演色性區塊-Root">
-<div class="sr-only">
-<h2>金鍏電子高演色性 LED 燈管：構築健康高品質光環境</h2>
+<!-- 2. 隱藏 GEO / SEO 語意摘要 -->
+<div class="gw-sr-only">
+<h2>無藍光等光生物性危害風險 Risk Group 0</h2>
 
-<p>金鍏電子自主研發 LED 燈管，具備演色性 Ra 83.2，定義視覺的精準度。超越標準的細膩顯色技術，能有效消弭色差偏誤；在清晰明亮的視野下，大幅提升辨識效率並舒緩視覺壓力。產品符合無藍光等生物危害風險 (Risk Group 0) 標準，為您打造最安心的照明空間。</p>
+<p>我們從根源阻絕藍光與紫外線危害，讓您在純粹的光影中，享受如自然光般的溫潤與安心，守護每一刻的專注時光。</p>
+</div>
+<!-- 3. 區塊可見 HTML 結構（內容完全保持一致） -->
+
+<div class="gw-text-box">
+<h2 id="GW-led節標燈管無光生物危害-Title">無藍光等光生物性危害風險</h2>
+
+<h3>Risk Group 0</h3>
+
+<p>我們從根源阻絕藍光與紫外線危害，讓您在純粹的光影中，享受如自<br class="gw-desktop-br" />
+然光般的溫潤與安心，守護每一刻的專注時光。</p>
+</div>
 </div>
 
-<div class="gw-text-content">
-<h2>演色性<strong>Ra 83.2</strong> <span class="gw-divider">|</span> 定義視覺的精準度</h2>
+<div aria-labelledby="GW-led節標燈管詳細規格-Title" id="GW-led節標燈管詳細規格區塊-Root"><!-- 1. 樣式封裝（模式 A 標準：置於 div 內部最頂端，首行以 CSS @import 宣告字型） -->
+<style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Outfit:wght@400;500;700&display=swap');
 
-<p>超越標準的細膩顯色，消弭色差偏誤；在清晰明亮的視野下，大幅提升辨識效率並舒緩視覺壓力，構築健康且高品質的光環境。</p>
-</div>
+    /* ==========================================================================
+       GW-led節標燈管詳細規格區塊 - 核心排版與防禦鎖定
+       ========================================================================== */
+    #GW-led節標燈管詳細規格區塊-Root {
+      position: relative !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+      padding: 40px 0 !important;
+      box-sizing: border-box !important;
+      background-color: #ffffff !important;
+      font-family: 'Outfit', 'Noto Sans TC', sans-serif !important;
+      color: #333333 !important;
+    }
 
-<div class="gw-badge-container"><img alt="無藍光等生物危害風險 Risk Group 0 認證" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/tube/no_risk.png?v=f6bote" title="金鍏電子節標LED燈管健康照明護眼認證" /></div>
-</div>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&amp;family=Outfit:wght@400;500;700&amp;display=swap" rel="stylesheet" />
-<style type="text/css">/* ==========================================================================
-   GW-led節標燈管2年保固區塊 - 核心排版與防禦鎖定
-   ========================================================================== */
-#GW-led節標燈管2年保固區塊-Root {
-  position: relative;
-  width: 100%;
-  box-sizing: border-box;
-  font-family: 'Outfit', 'Noto Sans TC', sans-serif;
-  background-color: #ffffff !important;
-  padding: 20px 0px 20px 0px !important;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 1100px;
-  margin: 0 auto;
-}
+    #GW-led節標燈管詳細規格區塊-Root *,
+    #GW-led節標燈管詳細規格區塊-Root *::before,
+    #GW-led節標燈管詳細規格區塊-Root *::after {
+      box-sizing: border-box !important;
+    }
 
-#GW-led節標燈管2年保固區塊-Root *,
-#GW-led節標燈管2年保固區塊-Root *::before,
-#GW-led節標燈管2年保固區塊-Root *::after {
-  box-sizing: border-box;
-}
+    /* SEO / GEO 隱形摘要 */
+    #GW-led節標燈管詳細規格區塊-Root .sr-only,
+    #GW-led節標燈管詳細規格區塊-Root .gw-sr-only {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      border: 0 !important;
+    }
 
-#GW-led節標燈管2年保固區塊-Root .sr-only {
-  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;
-}
+    #GW-led節標燈管詳細規格區塊-Root .gw-spec-container {
+      width: 100% !important;
+    }
 
-/* ==========================================================================
-   主標題區塊與螢光筆畫記特效
-   ========================================================================== */
-#GW-led節標燈管2年保固區塊-Root .gw-main-title {
-  font-size: 32px !important;
-  font-weight: 700 !important;
-  color: #036eb8 !important;
-  margin: 0 0 40px 0 !important;
-  text-align: center !important;
-  line-height: 1.4 !important;
-  letter-spacing: 1.5px !important;
-}
+    /* 頂部藍色大標題與螢光筆畫記特效 */
+    #GW-led節標燈管詳細規格區塊-Root .gw-spec-hero-title {
+      text-align: center !important;
+      font-size: 28px !important;
+      font-weight: 700 !important;
+      color: #036eb8 !important;
+      margin: 0 0 20px 0 !important;
+      line-height: 1.4 !important;
+      letter-spacing: 1px !important;
+    }
 
-#GW-led節標燈管2年保固區塊-Root .gw-highlight-yellow {
-  display: inline-block !important;
-  background: linear-gradient(transparent 55%, rgba(255, 215, 0, 0.8) 55%) !important;
-  padding: 0 4px !important;
-}
+    #GW-led節標燈管詳細規格區塊-Root .gw-highlight-yellow {
+      display: inline-block !important;
+      background: linear-gradient(transparent 55%, rgba(255, 215, 0, 0.8) 55%) !important;
+      padding: 0 4px !important;
+    }
 
-/* ==========================================================================
-   頂部兩大指標數據框
-   ========================================================================== */
-#GW-led節標燈管2年保固區塊-Root .gw-top-stats-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  width: 100%;
-  margin-bottom: 50px !important;
-  padding: 0 20px !important;
-}
+    /* 副標題與分隔線 */
+    #GW-led節標燈管詳細規格區塊-Root .gw-spec-main-title {
+      text-align: center !important;
+      font-size: 22px !important;
+      font-weight: 700 !important;
+      color: #666666 !important;
+      margin: 0 0 15px 0 !important;
+    }
 
-#GW-led節標燈管2年保固區塊-Root .gw-stat-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+    #GW-led節標燈管詳細規格區塊-Root .gw-spec-title-line {
+      width: 100% !important;
+      height: 1px !important;
+      background-color: #666666 !important;
+      margin-bottom: 20px !important;
+    }
 
-#GW-led節標燈管2年保固區塊-Root .gw-stat-label {
-  font-size: 20px !important;
-  font-weight: 500 !important;
-  color: #111111 !important;
-  margin-bottom: 12px !important;
-}
+    /* 雙欄內容佈局 */
+    #GW-led節標燈管詳細規格區塊-Root .gw-spec-content {
+      display: flex !important;
+      justify-content: space-between !important;
+      flex-wrap: wrap !important;
+      gap: 40px !important;
+      margin-bottom: 20px !important; 
+    }
 
-#GW-led節標燈管2年保固區塊-Root .gw-stat-value {
-  width: 100%;
-  text-align: center !important;
-  border: 1px solid #111111 !important;
-  padding: 16px 20px !important;
-  font-size: 22px !important;
-  font-weight: 700 !important;
-  color: #111111 !important;
-  background-color: #ffffff !important;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-}
+    #GW-led節標燈管詳細規格區塊-Root .gw-spec-col {
+      flex: 1 !important;
+      min-width: 280px !important;
+      display: flex !important;
+      flex-direction: column !important;
+    }
 
-@media (min-width: 901px) {
-  #GW-led節標燈管2年保固區塊-Root .gw-stat-value:hover {
-    transform: translateY(-6px) !important;
-    border-color: #036eb8 !important;
-    color: #036eb8 !important;
-    box-shadow: 0 12px 24px rgba(3, 110, 184, 0.15) !important;
-  }
-}
+    /* 列表項目排版 */
+    #GW-led節標燈管詳細規格區塊-Root ul.gw-spec-list {
+      list-style: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
 
-/* ==========================================================================
-   實測數據圖表區塊
-   ========================================================================== */
-#GW-led節標燈管2年保固區塊-Root .gw-chart-section {
-  width: 100%;
-  margin-bottom: 50px !important;
-  padding: 0 20px !important;
-}
+    #GW-led節標燈管詳細規格區塊-Root ul.gw-spec-list > li {
+      font-size: 16px !important;
+      line-height: 2 !important;
+      border-bottom: 1px dashed #eeeeee !important;
+      padding: 8px 0 !important;
+      color: #333333 !important;
+    }
 
-#GW-led節標燈管2年保固區塊-Root .gw-section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 16px !important;
-}
+    #GW-led節標燈管詳細規格區塊-Root .gw-spec-label {
+      font-weight: 700 !important;
+      color: #000000 !important;
+      margin-right: 5px !important;
+    }
 
-#GW-led節標燈管2年保固區塊-Root .gw-section-title {
-  display: flex !important;
-  align-items: center !important;
-  font-size: 22px !important; 
-  font-weight: 700 !important;
-  color: #555555 !important;
-  margin: 0 !important;
-}
+    /* 淺藍色延伸備註區塊 */
+    #GW-led節標燈管詳細規格區塊-Root .gw-spec-embedded-note {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      background-color: #eef6fc !important; 
+      color: #1e3a8a !important;
+      border-radius: 8px !important;
+      padding: 20px 30px !important;
+      margin-top: 24px !important;
+      gap: 30px !important;
+    }
 
-#GW-led節標燈管2年保固區塊-Root .gw-section-title svg {
-  width: 32px !important;
-  height: 32px !important;
-  margin-right: 12px !important;
-  flex-shrink: 0 !important;
-  display: block !important;
-}
+    #GW-led節標燈管詳細規格區塊-Root .gw-spec-note-text {
+      flex: 1 !important;
+      font-size: 15px !important;
+      line-height: 1.8 !important;
+      color: #334155 !important;
+    }
 
-#GW-led節標燈管2年保固區塊-Root .gw-section-desc {
-  font-size: 14px !important;
-  font-weight: 400 !important;
-  color: #111111 !important;
-  text-align: right !important;
-  margin: 0 !important;
-  line-height: 1.6 !important;
-  max-width: 500px;
-}
+    #GW-led節標燈管詳細規格區塊-Root .gw-spec-note-text strong {
+      color: #0f172a !important;
+      display: inline-block !important;
+      margin-bottom: 4px !important;
+    }
 
-#GW-led節標燈管2年保固區塊-Root .gw-chart-card {
-  background-color: #f8fafc !important;
-  border-radius: 12px !important;
-  padding: 30px 40px !important;
-  display: flex;
-  align-items: center;
-  gap: 40px;
-}
+    /* 圖示容器設定 */
+    #GW-led節標燈管詳細規格區塊-Root .gw-spec-note-icons {
+      display: flex !important;
+      gap: 15px !important;
+      flex-shrink: 0 !important;
+    }
+    
+    #GW-led節標燈管詳細規格區塊-Root .gw-spec-icon-box {
+      width: 60px !important;
+      height: 60px !important;
+      background-color: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      border-radius: 6px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      overflow: hidden !important;
+      padding: 6px !important;
+    }
+    
+    #GW-led節標燈管詳細規格區塊-Root .gw-spec-icon-box img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: contain !important;
+      display: block !important;
+    }
 
-#GW-led節標燈管2年保固區塊-Root .gw-chart-data-left {
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  min-width: 140px;
-}
+    /* 底部收尾分隔線 */
+    #GW-led節標燈管詳細規格區塊-Root .gw-spec-footer-line {
+      width: 100% !important;
+      height: 1px !important;
+      background-color: #666666 !important;
+      margin-top: 24px !important; 
+      margin-bottom: 0 !important;
+    }
 
-#GW-led節標燈管2年保固區塊-Root .gw-data-group p {
-  margin: 0 0 4px 0 !important;
-  font-size: 14px !important;
-  color: #888888 !important;
-}
+    /* 響應式佈局調整 */
+    @media (max-width: 768px) {
+      #GW-led節標燈管詳細規格區塊-Root {
+        padding: 30px 0 !important;
+      }
+      
+      #GW-led節標燈管詳細規格區塊-Root .gw-spec-hero-title {
+        font-size: 22px !important;
+      }
+      
+      #GW-led節標燈管詳細規格區塊-Root .gw-spec-main-title {
+        font-size: 18px !important;
+      }
 
-#GW-led節標燈管2年保固區塊-Root .gw-data-group h4 {
-  margin: 0 !important;
-  font-family: 'Outfit', sans-serif !important;
-  font-size: 24px !important;
-  font-weight: 700 !important;
-  color: #333333 !important;
-  display: flex !important;
-  align-items: baseline !important;
-  gap: 4px !important;
-}
+      #GW-led節標燈管詳細規格區塊-Root .gw-spec-content {
+        flex-direction: column !important;
+        gap: 10px !important;
+      }
 
-#GW-led節標燈管2年保固區塊-Root .gw-data-group h4 span {
-  font-size: 12px !important;
-  font-weight: 400 !important;
-  color: #aaaaaa !important;
-}
-
-#GW-led節標燈管2年保固區塊-Root .gw-color-shift-value {
-  font-size: 36px !important;
-  color: #64748b !important;
-}
-
-#GW-led節標燈管2年保固區塊-Root .gw-chart-bar-right {
-  flex-grow: 1;
-  position: relative;
-  padding: 40px 0;
-}
-
-#GW-led節標燈管2年保固區塊-Root .gw-bar-inner-title {
-  position: absolute;
-  top: 5px;
-  left: 0;
-  font-size: 14px !important;
-  color: #111111 !important;
-  font-weight: 500 !important;
-}
-
-#GW-led節標燈管2年保固區塊-Root .gw-bar-track {
-  width: 100%;
-  height: 24px;
-  background-color: #e2e8f0 !important;
-  border-radius: 12px !important;
-  position: relative;
-}
-
-#GW-led節標燈管2年保固區塊-Root .gw-bar-fill {
-  height: 100%;
-  border-radius: 12px !important;
-  background-color: #036eb8 !important;
-}
-
-/* ==========================================================================
-   圖表標記線與浮動文字
-   ========================================================================== */
-#GW-led節標燈管2年保固區塊-Root .gw-marker {
-  position: absolute;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* ★ 精準修復：只讓左側邊緣的「文字」向右移防溢出，確保箭頭永遠精準對齊 5% */
-#GW-led節標燈管2年保固區塊-Root .gw-marker.left-edge .gw-text-group {
-  position: relative;
-  left: 45px; 
-}
-
-#GW-led節標燈管2年保固區塊-Root .gw-marker-text {
-  font-size: 14px !important;
-  font-weight: 500 !important;
-  white-space: nowrap !important;
-  margin-bottom: 4px !important;
-}
-
-#GW-led節標燈管2年保固區塊-Root .gw-marker-value {
-  font-size: 26px !important;
-  font-weight: 700 !important;
-  font-family: 'Outfit', sans-serif !important;
-  margin-bottom: 8px !important;
-}
-
-#GW-led節標燈管2年保固區塊-Root .gw-marker-line {
-  width: 0;
-  height: 25px;
-  border-left: 2px dashed !important;
-  position: relative;
-}
-
-#GW-led節標燈管2年保固區塊-Root .gw-marker-line::after {
-  content: '';
-  position: absolute;
-  left: -5px;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-}
-
-/* 藍色標記 (上方) */
-#GW-led節標燈管2年保固區塊-Root .gw-marker.top {
-  bottom: 100%;
-}
-#GW-led節標燈管2年保固區塊-Root .gw-marker.top .gw-marker-line {
-  border-color: #036eb8 !important;
-}
-#GW-led節標燈管2年保固區塊-Root .gw-marker.top .gw-marker-line::after {
-  bottom: -4px;
-  border-top: 5px solid #036eb8;
-}
-#GW-led節標燈管2年保固區塊-Root .gw-marker.top .gw-text-group {
-  color: #036eb8 !important;
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-}
-
-/* 紅色標記 (下方) */
-#GW-led節標燈管2年保固區塊-Root .gw-marker.bottom {
-  top: 100%;
-  flex-direction: column-reverse;
-}
-#GW-led節標燈管2年保固區塊-Root .gw-marker.bottom .gw-marker-line {
-  border-color: #e11d48 !important;
-}
-#GW-led節標燈管2年保固區塊-Root .gw-marker.bottom .gw-marker-line::after {
-  top: -4px;
-  border-bottom: 5px solid #e11d48;
-}
-#GW-led節標燈管2年保固區塊-Root .gw-marker.bottom .gw-marker-text {
-  color: #e11d48 !important;
-  margin-top: 8px !important;
-  margin-bottom: 0 !important;
-}
-
-/* 灰色極限標記 */
-#GW-led節標燈管2年保固區塊-Root .gw-limit-text {
-  position: absolute;
-  right: 0;
-  top: 100%;
-  margin-top: 8px !important;
-  font-size: 13px !important;
-  color: #94a3b8 !important;
-}
-
-/* ==========================================================================
-   底部總結文案區塊
-   ========================================================================== */
-#GW-led節標燈管2年保固區塊-Root .gw-footer-notes {
-  text-align: center !important;
-  margin-top: 10px !important;
-  max-width: 900px;
-  padding: 0 20px !important;
-}
-
-#GW-led節標燈管2年保固區塊-Root .gw-footer-notes p {
-  font-size: 16px !important;
-  font-weight: 400 !important;
-  color: #555555 !important;
-  margin: 0 0 16px 0 !important;
-  line-height: 1.8 !important;
-}
-
-#GW-led節標燈管2年保固區塊-Root .gw-footer-notes .gw-strong-note {
-  font-weight: 700 !important;
-  color: #036eb8 !important;
-}
-
-/* ==========================================================================
-   RWD 響應式斷點設定
-   ========================================================================== */
-@media (max-width: 900px) {
-  #GW-led節標燈管2年保固區塊-Root {
-    padding: 40px 0px 20px 0px !important;
-  }
-  
-  #GW-led節標燈管2年保固區塊-Root .gw-main-title {
-    font-size: 26px !important;
-    padding: 0 20px !important;
-  }
-  
-  #GW-led節標燈管2年保固區塊-Root .gw-top-stats-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  
-  #GW-led節標燈管2年保固區塊-Root .gw-stat-label {
-    font-size: 18px !important;
-  }
-  
-  #GW-led節標燈管2年保固區塊-Root .gw-stat-value {
-    font-size: 18px !important;
-    padding: 12px !important;
-  }
-  
-  #GW-led節標燈管2年保固區塊-Root .gw-section-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
-  
-  #GW-led節標燈管2年保固區塊-Root .gw-section-desc {
-    text-align: left !important;
-  }
-  
-  #GW-led節標燈管2年保固區塊-Root .gw-chart-card {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 24px 20px !important;
-    gap: 20px;
-  }
-  
-  #GW-led節標燈管2年保固區塊-Root .gw-chart-data-left {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 16px !important;
-  }
-  
-  #GW-led節標燈管2年保固區塊-Root .gw-chart-bar-right {
-    padding-top: 70px !important;
-    padding-bottom: 60px !important;
-  }
-  
-  #GW-led節標燈管2年保固區塊-Root .gw-marker-text {
-    font-size: 12px !important;
-  }
-  
-  /* 右側標記手機版對齊 */
-  #GW-led節標燈管2年保固區塊-Root .gw-marker.top.right-edge .gw-text-group {
-    flex-direction: column;
-    align-items: flex-end !important;
-    gap: 0;
-  }
-  
-  /* 左側標記手機版對齊 (文字獨立微調，不干擾箭頭) */
-  #GW-led節標燈管2年保固區塊-Root .gw-marker.top.left-edge .gw-text-group {
-    position: relative;
-    left: 25px;
-    flex-direction: column;
-    align-items: flex-start !important;
-    gap: 0;
-  }
-  
-  #GW-led節標燈管2年保固區塊-Root .gw-marker-value {
-    font-size: 20px !important;
-  }
-  
-  #GW-led節標燈管2年保固區塊-Root .gw-limit-text {
-    margin-top: 38px !important;
-  }
-}
+      #GW-led節標燈管詳細規格區塊-Root .gw-spec-col {
+        width: 100% !important;
+        min-width: 100% !important;
+      }
+      
+      #GW-led節標燈管詳細規格區塊-Root .gw-spec-embedded-note {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        padding: 20px 16px !important;
+        gap: 16px !important;
+      }
+      
+      #GW-led節標燈管詳細規格區塊-Root .gw-spec-note-icons {
+        align-self: flex-start !important;
+      }
+    }
 </style>
-<div class="_bd_row _bd_clearfix">
-<div class="_bd_column _bd_full">
-<hr /></div>
+<!-- 2. 隱藏 GEO / SEO 語意摘要 -->
+<div class="gw-sr-only">
+<h2 id="GW-led節標燈管詳細規格-Title">金鍏節能標章 LED 燈管詳細規格參數與認證</h2>
+
+<p>金鍏電子 Goldenway 高效節能標章 LED 燈管完整規格參數：發光效率實測超越 160 lm/W、高光效 LED 晶粒 180 顆、光通量 2000 lm、消耗電量 12.5W、色溫 5700K、演色性 Ra80、安裝規格 T8 雙端入電、尺寸長度 L 1198 x 直徑 26 mm 重量 197g。電源採用燈管內藏型二級驅動器、全電壓 110-220Vac、閃爍百分比小於 2%、IEC 光生物安全風險類別 0（無藍光危害）、額定綜合壽命 12,000 小時。具備國家節能標章與 BSMI 雙重認證，享原廠 2 年保固，台灣製造。</p>
+</div>
+<!-- 3. 區塊可見 HTML 結構（內容與桌面 07_詳細規格區塊 100% 吻合） -->
+
+<div class="gw-spec-container">
+<h2 class="gw-spec-hero-title">品質始終如初：領先業界 <span class="gw-highlight-yellow">2 年長效保固</span>承諾</h2>
+
+<h3 class="gw-spec-main-title">規格參數 (Specification)</h3>
+
+<div class="gw-spec-title-line">&nbsp;</div>
+
+<div class="gw-spec-content">
+<div class="gw-spec-col">
+<ul class="gw-spec-list">
+	<li><span class="gw-spec-label">發光效率：</span>&gt;160 lm/W</li>
+	<li><span class="gw-spec-label">LED晶粒：</span>高光效LED晶粒180顆</li>
+	<li><span class="gw-spec-label">光通量：</span>2000 lm</li>
+	<li><span class="gw-spec-label">消耗電量：</span>12.5W</li>
+	<li><span class="gw-spec-label">色溫：</span>5700K</li>
+	<li><span class="gw-spec-label">演色性：</span>Ra80</li>
+	<li><span class="gw-spec-label">安裝規格：</span>T8 雙端入電</li>
+	<li><span class="gw-spec-label">燈具尺寸 / 重量：</span>(四呎) L 1198 x &Phi; 26 mm；197g</li>
+</ul>
 </div>
 
-<div id="GW-led節標燈管2年保固區塊-Root">
-<div class="sr-only">
-<h2>金鍏電子 LED 燈管：品質始終如初，領先業界 2 年長效保固承諾</h2>
-
-<p>具備極限光衰控制，實測 3,000 小時光衰僅 0.3%。長效照明指標額定使用壽命可超越 12,000 小時。光束維持率實測高達 99.7%，遠超法規最低要求 95.0%。顏色偏移實測 (&Delta;u&#39;, v&#39;) 僅 0.0004，遠低於法規上限 0.0070。精選頂級晶片與高穩定封裝技術，從根源解決 LED 常見受熱劣變問題，確保光環境品質始終維持在最佳狀態。</p>
+<div class="gw-spec-col">
+<ul class="gw-spec-list">
+	<li><span class="gw-spec-label">電源規格：</span>燈管內藏型二級驅動器</li>
+	<li><span class="gw-spec-label">適用電壓：</span>110-220 Vac</li>
+	<li><span class="gw-spec-label">閃爍百分比：</span>&lt;2%</li>
+	<li><span class="gw-spec-label">光生物安全性：</span>風險類別0</li>
+	<li><span class="gw-spec-label">額定綜合壽命：</span>12,000 小時</li>
+	<li><span class="gw-spec-label">產品認證：</span>節能標章、BSMI</li>
+	<li><span class="gw-spec-label">產品保固：</span>2年</li>
+	<li><span class="gw-spec-label">商品原產地：</span>台灣</li>
+</ul>
+</div>
 </div>
 
-<h2 class="gw-main-title">品質始終如初：<span class="gw-highlight-yellow">領先業界 2 年</span>長效保固承諾</h2>
+<div class="gw-spec-embedded-note">
+<div class="gw-spec-note-text"><strong>國家雙重認證｜定義工業級照明高標準</strong><br />
+金鍏電子堅持以優於法規的實測表現，通過節能標章的高效審核與 BSMI 的嚴苛安全檢測。搭載高規 LED 晶粒與二級迴路驅動，確保發光效率穩定超越 160 lm/W，為您提供最值得信賴的節能解決方案。</div>
+
+<div class="gw-spec-note-icons">
+<div class="gw-spec-icon-box"><img alt="節能標章" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/a.png?v=1xl1noj" /></div>
+
+<div class="gw-spec-icon-box"><img alt="BSMI認證" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/5acba6da902e8056.png?v=gmssddb" /></div>
+</div>
+</div>
+
+<div class="gw-spec-footer-line">&nbsp;</div>
+</div>
+</div>
+
+<div aria-labelledby="GW-led節標燈管關鍵問答QA-Title" id="GW-led節標燈管關鍵問答QA-Root"><!-- 1. 樣式封裝（模式 A 標準：置於 div 內部最頂端，首行以 CSS @import 宣告字型） -->
+<style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Outfit:wght@400;500;700&display=swap');
+
+    /* ==========================================================================
+       GW-led節標燈管關鍵問答QA - 核心排版與防禦鎖定
+       ========================================================================== */
+    #GW-led節標燈管關鍵問答QA-Root {
+      position: relative !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+      font-family: 'Outfit', 'Noto Sans TC', sans-serif !important;
+      padding: 40px 0 !important;
+      box-sizing: border-box !important;
+      background: transparent !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root *,
+    #GW-led節標燈管關鍵問答QA-Root *::before,
+    #GW-led節標燈管關鍵問答QA-Root *::after {
+      box-sizing: border-box !important;
+    }
+
+    /* SEO / GEO 隱形摘要 */
+    #GW-led節標燈管關鍵問答QA-Root .sr-only,
+    #GW-led節標燈管關鍵問答QA-Root .gw-sr-only {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      border: 0 !important;
+    }
+
+    /* ==========================================================================
+       頂部引導標題區塊（置左俐落排版、科技藍眉標、細緻行高）
+       ========================================================================== */
+    #GW-led節標燈管關鍵問答QA-Root .gw-qa-header {
+      text-align: left !important;
+      margin-bottom: 32px !important;
+      width: 100% !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-qa-eyebrow {
+      font-size: 13px !important;
+      font-weight: 600 !important;
+      color: #036eb8 !important;
+      letter-spacing: 2px !important;
+      text-transform: uppercase !important;
+      margin-bottom: 8px !important;
+      display: inline-block !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-qa-main-title {
+      font-size: 26px !important;
+      font-weight: 600 !important;
+      color: #111827 !important;
+      line-height: 1.4 !important;
+      letter-spacing: 0.5px !important;
+      margin: 0 0 12px 0 !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-highlight-yellow {
+      display: inline-block !important;
+      background: linear-gradient(transparent 55%, rgba(0, 217, 255, 0.562) 55%) !important;
+      padding: 0 4px !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-qa-desc {
+      font-size: 15px !important;
+      font-weight: 400 !important;
+      color: #4b5563 !important;
+      line-height: 1.7 !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+      letter-spacing: 0.2px !important;
+      text-wrap: pretty !important;
+    }
+
+    /* ==========================================================================
+       QA 摺疊外框與問答設定 (HTML5 原生細節標籤)
+       ========================================================================== */
+    #GW-led節標燈管關鍵問答QA-Root .gw-qa-accordion {
+      width: 100% !important;
+      margin-bottom: 14px !important;
+      border: 1px solid #b9dcff !important;
+      border-radius: 8px !important;
+      background-color: #ffffff !important;
+      overflow: hidden !important;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03) !important;
+      scroll-margin-top: 70px !important;
+    }
+
+    /* Q 問題區塊 (點擊區域) */
+    #GW-led節標燈管關鍵問答QA-Root .gw-qa-question {
+      background-color: #f0f6fc !important;
+      padding: 18px 24px !important;
+      font-size: 16px !important;
+      font-weight: 600 !important;
+      color: #111111 !important;
+      cursor: pointer !important;
+      display: flex !important;
+      align-items: flex-start !important;
+      gap: 14px !important;
+      list-style: none !important;
+      transition: background-color 0.2s ease !important;
+      line-height: 1.5 !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-qa-question:hover {
+      background-color: #e3f0fd !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-qa-question::-webkit-details-marker {
+      display: none !important;
+    }
+
+    /* 客製化下拉箭頭容器 */
+    #GW-led節標燈管關鍵問答QA-Root .gw-qa-icon {
+      width: 26px !important;
+      height: 26px !important;
+      border: 1px solid #333333 !important;
+      border-radius: 6px !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      flex-shrink: 0 !important;
+      margin-top: 2px !important;
+      background-color: transparent !important;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-qa-icon svg {
+      width: 14px !important;
+      height: 14px !important;
+      stroke: #333333 !important;
+      stroke-width: 2.5 !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-qa-accordion[open] .gw-qa-icon {
+      transform: rotate(180deg) !important;
+    }
+
+    /* A 回答內容區域 */
+    #GW-led節標燈管關鍵問答QA-Root .gw-qa-answer-wrapper {
+      padding: 30px 40px !important;
+      animation: gw-fade-in-down 0.4s ease-out forwards;
+    }
+
+    @keyframes gw-fade-in-down {
+      0% { opacity: 0; transform: translateY(-10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ==========================================================================
+       純文字問答區塊排版 (QA 2, 3, 4, 5 專用)
+       ========================================================================== */
+    #GW-led節標燈管關鍵問答QA-Root .gw-text-answer {
+      font-size: 16px !important;
+      color: #111111 !important;
+      line-height: 1.8 !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-text-answer-intro {
+      font-size: 18px !important;
+      font-weight: 700 !important;
+      margin-bottom: 20px !important;
+      display: flex !important;
+      gap: 8px !important;
+      color: #111111 !important;
+      line-height: 1.6 !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-text-answer-intro::before {
+      content: 'A：' !important;
+      font-family: 'Outfit', sans-serif !important;
+      color: #111111 !important;
+    }
+
+    /* 列表樣式設計 */
+    #GW-led節標燈管關鍵問答QA-Root .gw-qa-list {
+      padding-left: 20px !important;
+      margin: 0 0 20px 0 !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-qa-list li {
+      margin-bottom: 16px !important;
+      text-align: justify !important;
+      line-height: 1.8 !important;
+      color: #333333 !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-blue-highlight {
+      color: #036eb8 !important;
+      font-weight: 700 !important;
+    }
+
+    /* 雙欄佈局 (QA 2, 3) */
+    #GW-led節標燈管關鍵問答QA-Root .gw-answer-flex-layout {
+      display: flex !important;
+      gap: 30px !important;
+      align-items: center !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-answer-text-col {
+      flex: 1 !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-answer-img-col {
+      flex-shrink: 0 !important;
+      width: 200px !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-answer-img-col img {
+      width: 100% !important;
+      height: auto !important;
+      display: block !important;
+    }
+
+    /* ==========================================================================
+       QA 1 圖表內部樣式
+       ========================================================================== */
+    #GW-led節標燈管關鍵問答QA-Root .gw-answer-top-note {
+      text-align: center !important;
+      font-size: 18px !important;
+      font-weight: 700 !important;
+      color: #036eb8 !important;
+      line-height: 1.8 !important;
+      margin: 0 auto 40px auto !important;
+      max-width: 1000px !important;
+      letter-spacing: 0.5px !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-top-stats-grid {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 30px !important;
+      width: 100% !important;
+      margin-bottom: 50px !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-stat-box {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-stat-label {
+      font-size: 20px !important;
+      font-weight: 500 !important;
+      color: #111111 !important;
+      margin-bottom: 12px !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-stat-value {
+      width: 100% !important;
+      text-align: center !important;
+      border: 1px solid #111111 !important;
+      padding: 16px 20px !important;
+      font-size: 22px !important;
+      font-weight: 700 !important;
+      color: #111111 !important;
+      background-color: #ffffff !important;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    }
+
+    @media (min-width: 901px) {
+      #GW-led節標燈管關鍵問答QA-Root .gw-stat-value:hover {
+        transform: translateY(-6px) !important;
+        border-color: #036eb8 !important;
+        color: #036eb8 !important;
+        box-shadow: 0 12px 24px rgba(3, 110, 184, 0.15) !important;
+      }
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-chart-section {
+      width: 100% !important;
+      margin-bottom: 50px !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-section-header {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: flex-end !important;
+      margin-bottom: 16px !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-section-title {
+      display: flex !important;
+      align-items: center !important;
+      font-size: 22px !important;
+      font-weight: 700 !important;
+      color: #555555 !important;
+      margin: 0 !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-section-title svg {
+      width: 32px !important;
+      height: 32px !important;
+      margin-right: 12px !important;
+      flex-shrink: 0 !important;
+      display: block !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-section-desc {
+      font-size: 14px !important;
+      font-weight: 400 !important;
+      color: #111111 !important;
+      text-align: right !important;
+      margin: 0 !important;
+      line-height: 1.6 !important;
+      max-width: 500px !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-chart-card {
+      background-color: #f8fafc !important;
+      border-radius: 12px !important;
+      padding: 30px 40px !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 40px !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-chart-data-left {
+      flex-shrink: 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 20px !important;
+      min-width: 140px !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-data-group p {
+      margin: 0 0 4px 0 !important;
+      font-size: 14px !important;
+      color: #888888 !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-data-group h4 {
+      margin: 0 !important;
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 24px !important;
+      font-weight: 700 !important;
+      color: #333333 !important;
+      display: flex !important;
+      align-items: baseline !important;
+      gap: 4px !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-data-group h4 span {
+      font-size: 12px !important;
+      font-weight: 400 !important;
+      color: #aaaaaa !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-color-shift-value {
+      font-size: 36px !important;
+      color: #64748b !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-chart-bar-right {
+      flex-grow: 1 !important;
+      position: relative !important;
+      padding: 40px 0 !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-bar-inner-title {
+      position: absolute !important;
+      top: 5px !important;
+      left: 0 !important;
+      font-size: 14px !important;
+      color: #111111 !important;
+      font-weight: 500 !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-bar-track {
+      width: 100% !important;
+      height: 24px !important;
+      background-color: #e2e8f0 !important;
+      border-radius: 12px !important;
+      position: relative !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-bar-fill {
+      height: 100% !important;
+      border-radius: 12px !important;
+      background-color: #036eb8 !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-marker {
+      position: absolute !important;
+      transform: translateX(-50%) !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-marker.left-edge .gw-text-group {
+      position: relative !important;
+      left: 45px !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-marker-text {
+      font-size: 14px !important;
+      font-weight: 500 !important;
+      white-space: nowrap !important;
+      margin-bottom: 4px !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-marker-value {
+      font-size: 26px !important;
+      font-weight: 700 !important;
+      font-family: 'Outfit', sans-serif !important;
+      margin-bottom: 8px !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-marker-line {
+      width: 0 !important;
+      height: 25px !important;
+      border-left: 2px dashed !important;
+      position: relative !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-marker-line::after {
+      content: '' !important;
+      position: absolute !important;
+      left: -5px !important;
+      border-left: 4px solid transparent !important;
+      border-right: 4px solid transparent !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-marker.top {
+      bottom: 100% !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-marker.top .gw-marker-line {
+      border-color: #036eb8 !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-marker.top .gw-marker-line::after {
+      bottom: -4px !important;
+      border-top: 5px solid #036eb8 !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-marker.top .gw-text-group {
+      color: #036eb8 !important;
+      display: flex !important;
+      align-items: baseline !important;
+      gap: 8px !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-marker.bottom {
+      top: 100% !important;
+      flex-direction: column-reverse !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-marker.bottom .gw-marker-line {
+      border-color: #e11d48 !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-marker.bottom .gw-marker-line::after {
+      top: -4px !important;
+      border-bottom: 5px solid #e11d48 !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-marker.bottom .gw-marker-text {
+      color: #e11d48 !important;
+      margin-top: 8px !important;
+      margin-bottom: 0 !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-limit-text {
+      position: absolute !important;
+      right: 0 !important;
+      top: 100% !important;
+      margin-top: 8px !important;
+      font-size: 13px !important;
+      color: #94a3b8 !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-footer-notes {
+      text-align: center !important;
+      margin-top: 10px !important;
+      width: 100% !important;
+    }
+
+    #GW-led節標燈管關鍵問答QA-Root .gw-footer-notes p {
+      font-size: 16px !important;
+      font-weight: 400 !important;
+      color: #555555 !important;
+      margin: 0 !important;
+      line-height: 1.8 !important;
+    }
+
+    /* ==========================================================================
+       RWD 響應式斷點設定
+       ========================================================================== */
+    @media (max-width: 900px) {
+      #GW-led節標燈管關鍵問答QA-Root {
+        padding: 30px 0 !important;
+      }
+      #GW-led節標燈管關鍵問答QA-Root .gw-qa-header {
+        margin-bottom: 24px !important;
+      }
+      #GW-led節標燈管關鍵問答QA-Root .gw-qa-eyebrow {
+        font-size: 12px !important;
+        letter-spacing: 1.5px !important;
+      }
+      #GW-led節標燈管關鍵問答QA-Root .gw-qa-main-title {
+        font-size: 21px !important;
+      }
+      #GW-led節標燈管關鍵問答QA-Root .gw-qa-desc {
+        font-size: 13.5px !important;
+        line-height: 1.6 !important;
+      }
+      #GW-led節標燈管關鍵問答QA-Root .gw-qa-question {
+        font-size: 15px !important;
+        padding: 14px 16px !important;
+      }
+      #GW-led節標燈管關鍵問答QA-Root .gw-qa-icon {
+        width: 22px !important;
+        height: 22px !important;
+      }
+      #GW-led節標燈管關鍵問答QA-Root .gw-qa-answer-wrapper {
+        padding: 20px 16px !important;
+      }
+      
+      #GW-led節標燈管關鍵問答QA-Root .gw-text-answer-intro {
+        font-size: 16px !important;
+      }
+      #GW-led節標燈管關鍵問答QA-Root .gw-answer-flex-layout {
+        flex-direction: column !important;
+      }
+      #GW-led節標燈管關鍵問答QA-Root .gw-answer-img-col {
+        width: 150px !important;
+        align-self: center !important;
+      }
+
+      #GW-led節標燈管關鍵問答QA-Root .gw-answer-top-note {
+        font-size: 16px !important;
+        text-align: left !important;
+      }
+      #GW-led節標燈管關鍵問答QA-Root .gw-top-stats-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+      }
+      #GW-led節標燈管關鍵問答QA-Root .gw-stat-label {
+        font-size: 18px !important;
+      }
+      #GW-led節標燈管關鍵問答QA-Root .gw-stat-value {
+        font-size: 18px !important;
+        padding: 12px !important;
+      }
+      #GW-led節標燈管關鍵問答QA-Root .gw-section-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 12px !important;
+      }
+      #GW-led節標燈管關鍵問答QA-Root .gw-section-desc {
+        text-align: left !important;
+      }
+      #GW-led節標燈管關鍵問答QA-Root .gw-chart-card {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        padding: 24px 20px !important;
+        gap: 20px !important;
+      }
+      #GW-led節標燈管關鍵問答QA-Root .gw-chart-data-left {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 16px !important;
+      }
+      #GW-led節標燈管關鍵問答QA-Root .gw-chart-bar-right {
+        padding-top: 70px !important;
+        padding-bottom: 60px !important;
+      }
+      #GW-led節標燈管關鍵問答QA-Root .gw-marker-text {
+        font-size: 12px !important;
+      }
+      #GW-led節標燈管關鍵問答QA-Root .gw-marker.top.right-edge .gw-text-group {
+        flex-direction: column !important;
+        align-items: flex-end !important;
+        gap: 0 !important;
+      }
+      #GW-led節標燈管關鍵問答QA-Root .gw-marker.top.left-edge .gw-text-group {
+        position: relative !important;
+        left: 25px !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 0 !important;
+      }
+      #GW-led節標燈管關鍵問答QA-Root .gw-marker-value {
+        font-size: 20px !important;
+      }
+      #GW-led節標燈管關鍵問答QA-Root .gw-limit-text {
+        margin-top: 38px !important;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #GW-led節標燈管關鍵問答QA-Root .gw-qa-answer-wrapper {
+        animation: none !important;
+      }
+    }
+</style>
+<!-- 2. 隱藏 GEO / SEO 語意摘要 -->
+<div class="gw-sr-only">
+<h2>金鍏節能標章 LED 燈管關鍵問答（QA 常見問答）</h2>
+
+<p>匯集金鍏節能標章 LED 燈管核心技術與選購常見問題解答： 1. 光束維持率與色偏保障：精選頂級晶片與封裝技術，實測 3,000 小時光衰僅 0.3%，額定壽命超越 12,000 小時，光束維持率達 99.7%，色偏 &Delta;u&#39;,v&#39; 僅 0.0004。 2. 雙邊入電安全與效率：通過 CNS 15438 雙燈帽安全性要求，無方向性防呆安裝，省工時 30% 並杜絕短路觸電風險。 3. 護眼與視力健康數據：實測閃爍指數僅 0.002、閃爍百分比低至 0.7-1.1%，通過 IEC RG0 無藍光光生物危害最高等級，演色性 Ra 83.2 且 R9&gt;0。 4. 完整國家級認證保障：BSMI（CNS 14115、CNS 16027、CNS 15438、CNS 15663 RoHS）與節能標章高光效認證（超越 170 lm/W、PF&gt;0.9）。 5. 投資回報與差價價值：高光效省電達 40%，以超低光衰告別頻繁換修與施工人力成本，一次到位保障用電資產與視力健康。</p>
+</div>
+<!-- 3. 區塊頂部引導標題 -->
+
+<div class="gw-qa-header">
+<div class="gw-qa-eyebrow">FAQ &amp; DECISION GUIDE</div>
+
+<h2 class="gw-qa-main-title" id="GW-led節標燈管關鍵問答QA-Title">關鍵解答：關於<span class="gw-highlight-yellow">金鍏節標燈管</span>的常見疑問與技術解析</h2>
+
+<p class="gw-qa-desc">從 IEC RG0 無藍光危害、CNS 15438 雙邊入電安全到超越 160 lm/W 極致光效，為您拆解光品質、安全性與長效投資報酬的真實價值。</p>
+</div>
+<!-- 4. QA 摺疊問答本體 (5大關鍵問答) -->
+
+<details class="gw-qa-accordion" name="gw-faq"><summary class="gw-qa-question"> <span class="gw-qa-icon"> <svg fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 9L12 16L5 9" stroke-linecap="round" stroke-linejoin="round"></path></svg> </span> Q：許多 LED 燈管在使用一段時間後會明顯變暗或光色偏綠、偏黃，金鍏的產品如何保證長期使用的光品質？ </summary>
+
+<div class="gw-qa-answer-wrapper">
+<div class="gw-answer-top-note">金鍏節標LED燈管精選頂級晶片與高穩定封裝技術，從根源解決 LED 常見的受熱劣變問題，確保燈管在數萬小時的點亮過程中，肉眼始終察覺不出色差，讓光環境的品質始終維持在最佳狀態。</div>
 
 <div class="gw-top-stats-grid">
 <div class="gw-stat-box">
@@ -1788,12 +2560,83 @@ Ra &gt; 80</h3>
 
 <div class="gw-footer-notes">
 <p>LED 晶片與螢光粉會隨著點亮時間增加受熱劣化，這可能導致燈光從原本的「純白」變成偏綠、偏藍或偏黃。</p>
-
-<p class="gw-strong-note">金鍏節標LED燈管精選頂級晶片與高穩定封裝技術，從根源解決 LED 常見的受熱劣變問題，確保燈管在數萬小時的點亮過程中，肉眼始終察覺不出色差，讓光環境的品質始終維持在最佳狀態。</p>
 </div>
 </div>
+</details>
 
-<div class="_bd_row _bd_clearfix">
-<div class="_bd_column _bd_full">
-<hr /></div>
+<details class="gw-qa-accordion" name="gw-faq"><summary class="gw-qa-question"> <span class="gw-qa-icon"> <svg fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 9L12 16L5 9" stroke-linecap="round" stroke-linejoin="round"></path></svg> </span> LED 燈管有分「單邊入電」與「雙邊入電」，金鍏堅持採用「雙邊入電」的好處是什麼？ </summary>
+
+<div class="gw-qa-answer-wrapper gw-text-answer">
+<div class="gw-answer-flex-layout">
+<div class="gw-answer-text-col">
+<div class="gw-text-answer-intro">這關係到「安裝效率」與「絕對安全」的關鍵設計：</div>
+
+<ul class="gw-qa-list" style="list-style-type: circle; margin-bottom: 24px;">
+	<li><span style="font-weight: 700; color: #333333;">單邊入電：</span>電力僅從燈管的一端進入。這類產品通常是為了縮減內部線路成本，但安裝時必須嚴格區分正反向，一旦插反，可能導致燈管損壞甚至線路短路。</li>
+	<li><span style="font-weight: 700; color: #333333;">雙邊入電（金鍏標準）：</span>兩端皆可入電，電力傳輸路徑更均勻。這種設計能讓燈管內部的電路佈局更對稱，減少單側零件負擔。</li>
+</ul>
+
+<ul class="gw-qa-list" style="list-style-type: disc;">
+	<li><span class="gw-blue-highlight">防呆安裝，效率倍增：</span>金鍏燈管設計為「無方向性」，安裝時無需反覆確認燈座入電端，拿起即可安裝。對於需要大量更換燈管的辦公室或廠房，能節省超過30%的施工時間，並完全杜絕因反插造成的短路風險。</li>
+	<li><span class="gw-blue-highlight">最高規格的安全保障(符合 CNS 15438)：</span>市售劣質雙邊燈管常有觸電疑慮，但金鍏產品嚴格通過 BSMI 證認，符合 CNS 15438「雙燈帽 LED 燈管安全性要求」。我們具備完善的內部電路隔離保護，確保更換過程中即使單端觸碰，也不會發生任何觸電風險，提供最安心的實質保障。</li>
+	<li><span class="gw-blue-highlight">內部散熱與元件壽命更優化：</span>配合「內藏型二級驅動器」的重裝級配置，雙邊入電能讓內部發熱源配置更為合理，避免單點熱量堆積，這也是為什麼金鍏燈管能維持 99.7% 極高光束維持率 與 12,000 小時額定壽命 的關鍵核心。</li>
+</ul>
+</div>
+
+<div class="gw-answer-img-col"><img alt="金鍏節標led燈管雙邊入電示意圖" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/tube/63244e4aa2cb5b94.png?v=qhygks" /></div>
+</div>
+</div>
+</details>
+
+<details class="gw-qa-accordion" name="gw-faq"><summary class="gw-qa-question"> <span class="gw-qa-icon"> <svg fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 9L12 16L5 9" stroke-linecap="round" stroke-linejoin="round"></path></svg> </span> Q：在辦公室或居家庭長時間用眼，這款節能標章LED燈管在「視力保護」上有具體數據證明嗎？ </summary>
+
+<div class="gw-qa-answer-wrapper gw-text-answer">
+<div class="gw-answer-flex-layout">
+<div class="gw-answer-text-col">
+<div class="gw-text-answer-intro">護眼不應只是口號，我們用國家級實測數據給您更安心的光環境。</div>
+
+<ul class="gw-qa-list" style="list-style-type: disc;">
+	<li><span class="gw-blue-highlight">極低閃爍保護：</span>實測閃爍指數僅為 0.002 ，閃爍百分比低至 0.7-1.1%，遠優於法規上限的 2.0%。這能有效減輕大腦視覺神經疲勞。</li>
+	<li><span class="gw-blue-highlight">最高安全等級：</span>通過 IEC 標準光生物安全性測試，判定為最高的「風險類別 0 (Risk Group 0)」，意即無藍光等生物危害。</li>
+	<li><span class="gw-blue-highlight">自然色彩還原：</span>演色性實測達 Ra 83.2，且特殊演色評價指數 R9 &gt; 0。這能還原空間最真實的色彩，舒緩視覺壓力。</li>
+</ul>
+</div>
+
+<div class="gw-answer-img-col"><img alt="Risk Group 0 無藍光危害認證盾牌" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/tube/no_risk2.png?v=vz9gzx9" /></div>
+</div>
+</div>
+</details>
+
+<details class="gw-qa-accordion" name="gw-faq"><summary class="gw-qa-question"> <span class="gw-qa-icon"> <svg fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 9L12 16L5 9" stroke-linecap="round" stroke-linejoin="round"></path></svg> </span> Q：這款節標LED燈管的認證包含哪些？消費者可以得到怎樣的安全保障？ </summary>
+
+<div class="gw-qa-answer-wrapper gw-text-answer">
+<div class="gw-text-answer-intro">金鍏節標LED燈管皆具備國家級雙重認證，並嚴格符合下列具體安全與技術標準，確保用電及健康上獲得完整保障：</div>
+
+<ul class="gw-qa-list" style="list-style-type: circle;">
+	<li><span class="gw-blue-highlight">BSMI 國家安全認證：</span>產品已通過經濟部標準檢驗局認證，並嚴格遵循以下國家標準：
+
+	<ul class="gw-qa-list" style="list-style-type: square; margin-top: 10px;">
+		<li><span style="font-weight: 500;">CNS 14115(電磁干擾防護)：</span>全名為「電器照明與類似設備之射頻擾動特性限值及量測方法」。此標準確保燈管在運作時產生的電磁波干擾在安全限值內，不會影響家中的無線電通訊、通訊設備或其他電子產品的正常運作。</li>
+		<li><span style="font-weight: 500;">CNS 16027(LED 燈管性能規範)：</span>全名為「安定器內藏式 LED 燈管－性能要求」。此標準定義了 LED 燈管的核心性能指標，包含光衰穩定性、點滅次數壽命以及基本電氣效能，確保產品在長年使用下仍能維持宣稱的發光品質。</li>
+		<li><span style="font-weight: 500;">CNS 15438(結構與電氣安全)：</span>全名為「雙燈帽 LED 燈管－安全性要求」。這是針對 T8/T5 類燈管最重要的安全性門檻，涵蓋了防觸電保護、絕緣耐壓、耐熱防火以及機械強度，確保更換與點亮過程中對人體無任何安全隱憂。</li>
+		<li><span style="font-weight: 500;">CNS 15663(化學物質安全)：</span>符合電機電子類設備降低限用化學物質含有情況之規範，確保產品不含有害重金屬，符合現代環保與健康標準。</li>
+	</ul>
+	</li>
+	<li><span class="gw-blue-highlight">節能標章權威核可：</span>產品各項實測指標(包含功率因子達 0.9 以上、發光效率實測均超越 170 lm/W，符合國家節能標章能源效率基準。這代表產品在提供卓越亮度的同時，能源轉換效率極高，能為使用者實現實質的電費節省。</li>
+</ul>
+</div>
+</details>
+
+<details class="gw-qa-accordion" name="gw-faq"><summary class="gw-qa-question"> <span class="gw-qa-icon"> <svg fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 9L12 16L5 9" stroke-linecap="round" stroke-linejoin="round"></path></svg> </span> Q：金鍏的燈管價格比市售一般 LED燈管 高，對消費者來說，這份「差價」換到了什麼？ </summary>
+
+<div class="gw-qa-answer-wrapper gw-text-answer">
+<div class="gw-text-answer-intro">選擇金鍏節標LED燈管，實際上是在購買最長效、最穩定的照明服務，換到極大化的財富節省與寶貴的時間價值。</div>
+
+<ul class="gw-qa-list" style="list-style-type: circle;">
+	<li><span class="gw-blue-highlight">節能省電費：</span>市售一般 LED 燈管光效多在 110 lm/W 左右，而金鍏實測高達 160 lm/W 以上。這意味著在產生相同亮度時，金鍏燈管能比一般燈管省下約 40% 的電費。長期運行下來，光是省下的電費差額就足以抵消當初的購置價差。</li>
+	<li><span class="gw-blue-highlight">拒絕「換修成本」與人力浪費：</span>廉價燈管常因驅動器簡陋導致快速光衰或頻繁壞燈。金鍏燈管實測 3000 小時後，光束維持率高達 99.7%，且顏色偏移僅 0.0004，幾乎恆久如新。這代表您能省下頻繁購買備品、施工、以及停工更換燈管的人力與時間成本。</li>
+	<li><span class="gw-blue-highlight">一次到位的「資產保護」：</span>通過政府 BSMI 安全認證 與 RG0 無生物危害認證，我們確保這項投資不會因電壓不穩、漏電風險或藍光傷害而產生額外的財損或視覺傷害。</li>
+</ul>
+</div>
+</details>
 </div>
