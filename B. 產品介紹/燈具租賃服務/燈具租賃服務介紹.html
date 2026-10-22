@@ -1,0 +1,3165 @@
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Noto+Sans+TC:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* 核心動畫定義：獨立命名防止全域污染 */
+    /* 浮動特效：使標籤產生平滑的上下漂浮視覺感 */
+    @keyframes gw-badge-float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-6px); }
+        100% { transform: translateY(0px); }
+    }
+    
+    /* 光影流光特效：利用背景定位偏移產生流光橫掃效果 */
+    @keyframes gw-badge-shimmer {
+        0% { background-position: -100% 0; }
+        100% { background-position: 200% 0; }
+    }
+
+    /* 區塊根節點設定 */
+    #GW-金鍏燈具以租代買開頭區塊-Root {
+        position: relative;
+        font-family: 'Hanken Grotesk', 'Noto Sans TC', sans-serif !important;
+        /* 背景圖片設定，可替換為 CMS 系統內的路徑 */
+        background-image: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/rent_esg/3c5e6bab54402a5d.png?v=0m2z09');
+        background-size: cover;
+        background-position: center;
+        /* 區塊預設內邊距：上下 120px，左右 80px */
+        padding: 120px 80px;
+        overflow: hidden;
+        min-height: 600px;
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+    /* 手機版響應式斷點 */
+    @media (max-width: 768px) {
+        #GW-金鍏燈具以租代買開頭區塊-Root {
+            /* 手機版內邊距與高度微調 */
+            padding: 96px 20px;
+            min-height: 400px;
+        }
+    }
+
+    /* 漸層背景遮罩設定：由深色單色改為雙色科技感漸層 */
+    #GW-金鍏燈具以租代買開頭區塊-Root .gw-background-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* 從極深藍(左上#021830)漸變到洗鍊科技藍(右下#1e3a5f)，保持 85% 到 75% 的安全透明度以突顯文字 */
+        background: linear-gradient(90deg, rgba(2, 24, 48, 0.7) 0%, rgba(30, 58, 95, 0.25) 100%) !important;
+        backdrop-filter: blur(2px);
+        z-index: 1;
+    }
+
+    /* 內容容器 */
+    #GW-金鍏燈具以租代買開頭區塊-Root .gw-content-container {
+        position: relative;
+        z-index: 2;
+        max-width: 1280px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    /* ESG 標籤樣式：整合浮動與流光光影特效 */
+    #GW-金鍏燈具以租代買開頭區塊-Root .gw-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        /* 標籤內邊距與圓角 */
+        padding: 6px 16px;
+        border-radius: 9999px;
+        /* 利用線性漸層配置反光點，達成橫向流光基底 */
+        background: linear-gradient(120deg, rgba(255,255,255,0.15) 30%, rgba(255,255,255,0.45) 40%, rgba(255,255,255,0.15) 50%) !important;
+        background-size: 200% 100% !important;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        color: #ffffff !important;
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        margin-bottom: 24px;
+        backdrop-filter: blur(4px);
+        /* 同時宣告雙起動畫：4秒平滑上下浮動、6秒線性流光循環 */
+        animation: gw-badge-float 4s ease-in-out infinite, gw-badge-shimmer 6s linear infinite;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* 主標題樣式鎖定 */
+    #GW-金鍏燈具以租代買開頭區塊-Root .gw-main-title {
+        font-size: 40px !important;
+        line-height: 1.2 !important;
+        font-weight: 600 !important;
+        color: #ffffff !important;
+        margin-bottom: 24px;
+        margin-top: 0;
+        letter-spacing: -0.02em;
+    }
+
+    @media (max-width: 768px) {
+        #GW-金鍏燈具以租代買開頭區塊-Root .gw-main-title {
+            font-size: 28px !important;
+        }
+    }
+
+    /* 漸層文字高亮效果 */
+    #GW-金鍏燈具以租代買開頭區塊-Root .gw-highlight-text {
+        background: linear-gradient(to right, #ffffff, #d5e3ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent !important;
+    }
+
+    /* 段落描述樣式鎖定 */
+    #GW-金鍏燈具以租代買開頭區塊-Root .gw-description {
+        font-size: 18px !important;
+        line-height: 1.6 !important;
+        color: #d5e3ff !important;
+        max-width: 600px;
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+
+    @media (max-width: 768px) {
+        #GW-金鍏燈具以租代買開頭區塊-Root .gw-description {
+            font-size: 16px !important;
+        }
+    }
+
+    /* 隱形摘要：SEO權重強化與無障礙讀取 */
+    #GW-金鍏燈具以租代買開頭區塊-Root .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+</style>
+<div id="GW-金鍏燈具以租代買開頭區塊-Root">
+<div class="sr-only">金鍏電子 (GoldenWay) 提供專業級企業照明方案與 MIT 台灣製造高品質設備。選擇 ESG 永續節能方案，透過燈具以租代買模式，企業可免除一次性大筆支出，達到節能減碳與互利共贏。符合節能標章認證，協助您降低營運成本同時達成 ESG 永續目標。</div>
+
+<div class="gw-background-overlay">&nbsp;</div>
+
+<div class="gw-content-container">
+<div class="gw-badge"><span class="material-symbols-outlined" style="font-size: 16px;">eco</span> ESG Corporate Solutions</div>
+
+<h1 class="gw-main-title">選擇 ESG 永續節能方案<br />
+<span class="gw-highlight-text">燈具以租代買</span></h1>
+
+<p class="gw-description">免一次性大筆支出，實現互利共贏。<br />
+金鍏電子提供專業級企業照明租賃服務，協助您降低營運成本同時達成 ESG 永續目標。</p>
+</div>
+</div>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Noto+Sans+TC:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* 區塊根節點設定 */
+    #GW-金鍏燈具以租代買核心價值區塊-Root {
+        position: relative;
+        font-family: 'Hanken Grotesk', 'Noto Sans TC', sans-serif !important;
+        background-image: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/rent_esg/pexels-janakukebal-6586258.jpg?v=328ftgi');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        padding: 60px 20px;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+
+    /* 半透明背景遮罩 */
+    #GW-金鍏燈具以租代買核心價值區塊-Root .gw-background-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(247, 250, 252, 0.85) !important;
+        backdrop-filter: blur(4px);
+        z-index: 1;
+    }
+
+    /* 內容主容器 */
+    #GW-金鍏燈具以租代買核心價值區塊-Root .gw-content-container {
+        position: relative;
+        z-index: 2;
+        max-width: 1280px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    /* 區塊主標題樣式鎖定 */
+    #GW-金鍏燈具以租代買核心價值區塊-Root .gw-section-title {
+        text-align: center;
+        font-size: 36px !important;
+        line-height: 1.3 !important;
+        font-weight: 700 !important;
+        color: #1e3a5f !important;
+        margin-top: 0;
+        margin-bottom: 16px;
+    }
+
+    /* 區塊副標題樣式鎖定 */
+    #GW-金鍏燈具以租代買核心價值區塊-Root .gw-section-subtitle {
+        text-align: center;
+        font-size: 18px !important;
+        line-height: 1.6 !important;
+        color: #43474e !important;
+        margin-top: 0;
+        margin-bottom: 64px;
+    }
+
+    /* 對稱式陣列佈局：預設寬螢幕 4 欄並排 */
+    #GW-金鍏燈具以租代買核心價值區塊-Root .gw-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+    }
+
+    /* 平板斷點：改為 2 欄並排 */
+    @media (max-width: 1024px) {
+        #GW-金鍏燈具以租代買核心價值區塊-Root .gw-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    /* 手機斷點：改為 1 欄排列 */
+    @media (max-width: 640px) {
+        #GW-金鍏燈具以租代買核心價值區塊-Root .gw-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* 卡片基礎樣式 */
+    #GW-金鍏燈具以租代買核心價值區塊-Root .gw-card {
+        background-color: rgba(255, 255, 255, 0.9) !important;
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(30, 58, 95, 0.1);
+        border-radius: 12px;
+        padding: 32px 24px;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* 卡片互動特效：浮動升起 */
+    #GW-金鍏燈具以租代買核心價值區塊-Root .gw-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 16px 32px rgba(30, 58, 95, 0.15);
+        border-color: rgba(30, 58, 95, 0.3);
+    }
+
+    /* --- [加回光芒感] 卡片閃爍光影特效 (Shimmer) --- */
+    #GW-金鍏燈具以租代買核心價值區塊-Root .gw-card::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(to right, transparent, rgba(255,255,255,0.8), transparent);
+        transform: skewX(-20deg);
+        transition: all 0.6s ease;
+        pointer-events: none;
+        z-index: 10;
+    }
+
+    /* 滑鼠懸停時觸發光影橫向掃過 */
+    #GW-金鍏燈具以租代買核心價值區塊-Root .gw-card:hover::after {
+        left: 200%;
+    }
+
+    /* Icon 圓形底圖設定 */
+    #GW-金鍏燈具以租代買核心價值區塊-Root .gw-icon-wrapper {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+        transition: all 0.4s ease;
+        /* 統一預設底色與文字顏色 */
+        background-color: #e6f0fa !important;
+        color: #1e3a5f !important;
+        position: relative;
+        z-index: 20;
+    }
+
+    /* Hover 時 Icon 旋轉放大 */
+    #GW-金鍏燈具以租代買核心價值區塊-Root .gw-card:hover .gw-icon-wrapper {
+        transform: scale(1.15) rotate(5deg);
+    }
+    
+    /* --- 針對各別卡片設定 Hover 時的專屬變色與「同色系光暈輻射」 --- */
+    /* 1. 買照明：科技亮藍 + 藍色光暈 */
+    #GW-金鍏燈具以租代買核心價值區塊-Root .gw-card:hover .hover-color-blue {
+        background-color: #1e3a5f !important;
+        color: #ffffff !important;
+        box-shadow: 0 8px 20px rgba(30, 58, 95, 0.35);
+    }
+    
+    /* 2. 不買燈：警示微紅 + 紅色光暈 */
+    #GW-金鍏燈具以租代買核心價值區塊-Root .gw-card:hover .hover-color-red {
+        background-color: #ffdad6 !important;
+        color: #ba1a1a !important;
+        box-shadow: 0 8px 20px rgba(186, 26, 26, 0.25);
+    }
+    
+    /* 3. 共享節能：生機翠綠 + 綠色光暈 */
+    #GW-金鍏燈具以租代買核心價值區塊-Root .gw-card:hover .hover-color-green {
+        background-color: #05bb62 !important;
+        color: #ffffff !important;
+        box-shadow: 0 8px 20px rgba(5, 187, 98, 0.35);
+    }
+    
+    /* 4. 公平互利：雙贏金色 + 金色光暈 */
+    #GW-金鍏燈具以租代買核心價值區塊-Root .gw-card:hover .hover-color-gold {
+        background-color: #fceea7 !important;
+        color: #d48806 !important;
+        box-shadow: 0 8px 20px rgba(212, 136, 6, 0.35);
+    }
+    /* ------------------- */
+
+    /* 卡片標題文字鎖定 */
+    #GW-金鍏燈具以租代買核心價值區塊-Root .gw-card-title {
+        font-size: 24px !important;
+        line-height: 1.4 !important;
+        font-weight: 600 !important;
+        color: #1e3a5f !important;
+        margin-top: 0;
+        margin-bottom: 12px;
+    }
+
+    /* 卡片內文文字鎖定 */
+    #GW-金鍏燈具以租代買核心價值區塊-Root .gw-card-desc {
+        font-size: 16px !important;
+        line-height: 1.6 !important;
+        color: #43474e !important;
+        margin: 0;
+    }
+
+    /* 隱形摘要：SEO 優化 */
+    #GW-金鍏燈具以租代買核心價值區塊-Root .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+</style>
+<div id="GW-金鍏燈具以租代買核心價值區塊-Root">
+<div class="sr-only">金鍏電子 (GoldenWay) 專為企業設計的現代化照明解決方案與核心價值主張。包含：買照明（優質的照明服務與光環境）、不買燈（免除硬體設備折舊與維護煩惱）、共享節能（採用高效率 LED 技術，共同降低碳排放）、公平互利（省下的電費即可支付租金，創造雙贏）。</div>
+
+<div class="gw-background-overlay">&nbsp;</div>
+
+<div class="gw-content-container">
+<h2 class="gw-section-title">核心價值主張</h2>
+
+<p class="gw-section-subtitle">兼顧財務效益與永續發展的企業照明新標準</p>
+
+<div class="gw-grid">
+<div class="gw-card">
+<div class="gw-icon-wrapper hover-color-blue"><svg height="40" viewbox="0 0 100 100" width="40" xmlns="http://www.w3.org/2000/svg"> <defs> <lineargradient gradientunits="userSpaceOnUse" id="g1" x1="-16.86" x2="75.157" y1="10.487" y2="111.327"> <stop offset="0" stop-color="#97e0ff"></stop> <stop offset="1" stop-color="#1075ff"></stop> </lineargradient> <lineargradient gradientunits="userSpaceOnUse" id="g2" x1="8.778" x2="100.795" y1="-12.908" y2="87.933"> <stop offset="0" stop-color="#97e0ff"></stop> <stop offset="1" stop-color="#1075ff"></stop> </lineargradient> <lineargradient gradientunits="userSpaceOnUse" id="g3" x1="16.525" x2="108.542" y1="-19.976" y2="80.864"> <stop offset="0" stop-color="#97e0ff"></stop> <stop offset="1" stop-color="#1075ff"></stop> </lineargradient> </defs> <g> <path d="m27.3863468 86.9205399c2.5489044-7.0904617 9.1064396-19.84655 24.886343-27.9451523-15.7799034-8.0986023-22.3373833-20.8543892-24.886343-27.945158-2.5489101 7.0904713-9.1064472 19.8465557-24.8863487 27.945158 15.7799015 8.0986023 22.3373833 20.8543853 24.8863487 27.9451523z" fill="url(#g1)"></path> <path d="m83.8517456 84.496254c1.8074036-4.2982865 5.700325-10.6822663 13.6482544-15.1312332-7.9826355-4.4142685-11.829216-10.8210793-13.6482544-15.1312408-1.8073959 4.2982941-5.700325 10.6822739-13.6482544 15.1312408 7.9826355 4.4142684 11.829216 10.8210754 13.6482544 15.1312332z" fill="url(#g2)"></path> <path d="m46.9864578 31.0302296c9.9284592 5.237112 14.2588043 13.1947613 16.08181 17.9507732 1.8043442-4.7652512 6.16259-12.741375 16.0818176-17.9507732-9.9284592-5.2093964-14.258812-13.1947575-16.0818176-17.9507713-1.8043327 4.7652511-6.16259 12.7413749-16.08181 17.9507713z" fill="url(#g3)"></path> </g> </svg></div>
+
+<h3 class="gw-card-title">買照明服務</h3>
+
+<p class="gw-card-desc">企業投資的是高效能照明光環境與全期維護服務，而非傳統繁瑣且具折舊風險的硬體設備，讓核心資源專注於本業營運。</p>
+</div>
+
+<div class="gw-card">
+<div class="gw-icon-wrapper hover-color-red"><svg height="40" viewbox="0 0 96 96" width="40" xmlns="http://www.w3.org/2000/svg"> <g> <path d="m79.51 79.41c-5.209 0-11.348-4.305-13.685-9.596-1.149-2.662-1.13-5.214.048-7.012 1.06-1.607 2.965-2.492 5.367-2.492 5.192 0 11.325 4.253 13.672 9.48 1.157 2.723 1.134 5.317-.055 7.137-1.065 1.603-2.962 2.483-5.347 2.483z" fill="currentColor" fill-opacity="0.6"></path> <path d="m16.49 79.41c-2.385 0-4.282-.88-5.343-2.477-1.193-1.825-1.22-4.412-.077-7.104 2.372-5.258 8.509-9.52 13.69-9.52 2.402 0 4.307.884 5.365 2.49 1.181 1.802 1.2 4.352.052 6.998-2.336 5.304-8.475 9.613-13.687 9.613z" fill="currentColor" fill-opacity="0.6"></path> <path d="m47.95 57.24c-7.207 0-13.07-5.908-13.07-13.17 0-7.084 5.985-13.07 13.07-13.07 7.262 0 13.17 5.863 13.17 13.07 0 7.262-5.908 13.17-13.17 13.17z" fill="currentColor" fill-opacity="0.6"></path> <path d="m48.95 52.647v-1.66c.563-.08 1.114-.238 1.617-.475 1.103-.518 1.827-1.354 2.039-2.356.749-3.545-2.367-4.337-4.429-4.86-1.216-.309-2.473-.628-2.845-1.278-.184-.322-.183-.81-.008-1.414.097-.292.485-.731 1.133-1.056.938-.47 2.149-.47 3.061-.014.651.351 1.408 1 1.316 2.1-.046.55.363 1.034.913 1.08.548.047 1.034-.363 1.08-.913.14-1.675-.72-3.144-2.387-4.041-.469-.235-.973-.397-1.491-.485v-1.788c0-.552-.448-1-1-1s-1 .448-1 1v1.806c-.481.092-.95.247-1.388.467-1.067.534-1.846 1.341-2.146 2.25-.344 1.181-.283 2.19.181 3.001.793 1.387 2.468 1.813 4.089 2.224 2.609.663 3.272 1.05 2.964 2.509-.106.503-.629.817-.931.958-.99.465-2.353.463-3.29-.028-.863-.397-1.334-1.172-1.259-2.072.046-.55-.363-1.034-.914-1.08-.553-.048-1.034.363-1.08.914-.146 1.748.78 3.302 2.368 4.031.427.225.905.385 1.407.48v1.701c0 .552.448 1 1 1s1-.448 1-1.001z" fill="currentColor"></path> <path d="m62.12 44.07c0-7.76-6.35-14.07-14.17-14.07-7.76 0-14.07 6.31-14.07 14.07 0 7.81 6.31 14.17 14.07 14.17 7.82 0 14.17-6.36 14.17-14.17zm-26.24 0c0-6.55 5.53-12.07 12.07-12.07 6.71 0 12.17 5.41 12.17 12.07 0 6.71-5.46 12.17-12.17 12.17-6.66 0-12.07-5.46-12.07-12.17z" fill="currentColor"></path> <path d="m17.715 51.69c.187.267.493.425.818.425s.631-.159.818-.425l7.457-10.622c.214-.306.241-.705.069-1.036s-.514-.539-.887-.539h-2.882v-12.38c0-.552-.448-1-1-1h-7.149c-.552 0-1 .448-1 1v12.38h-2.882c-.373 0-.715.208-.887.539s-.146.73.069 1.036zm-2.757-10.197c.552 0 1-.448 1-1v-12.38h5.149v12.38c0 .552.448 1 1 1h1.958l-5.533 7.881-5.532-7.881z" fill="currentColor"></path> <path d="m74.606 51.69c.187.267.493.425.818.425s.631-.159.818-.425l7.457-10.622c.214-.306.241-.705.069-1.036s-.514-.539-.887-.539h-2.882v-12.38c0-.552-.448-1-1-1h-7.149c-.552 0-1 .448-1 1v12.38h-2.882c-.373 0-.715.208-.887.539s-.146.73.069 1.036zm-2.756-10.197c.552 0 1-.448 1-1v-12.38h5.149v12.38c0 .552.448 1 1 1h1.958l-5.533 7.881-5.533-7.881z" fill="currentColor"></path> <path d="m16.111 73.874-.499.614c-.349.429-.283 1.059.145 1.407.186.151.409.224.63.224.291 0 .579-.126.776-.369l.914-1.125c.157.021.318.036.483.044 1.334.065 2.61-.332 3.403-1.058.832-.757 1.198-1.493 1.12-2.25-.118-1.139-1.156-1.748-2.071-2.285-.374-.219-1-.587-1.082-.719 0-.002.055-.241.656-.732.299-.24.79-.41 1.48-.509.339-.057.665-.064.955-.027.175.106.378.152.569.142.164.067.3.152.403.253.206.248.025.631-.245.901-.391.39-.391 1.023-.001 1.414.391.391 1.023.391 1.414.001 1.063-1.062 1.219-2.573.307-3.664-.104-.104-.214-.2-.331-.289l.503-.62c.348-.429.283-1.058-.146-1.407-.427-.347-1.057-.283-1.407.146l-.915 1.126c-.45-.05-.926-.035-1.414.046-1.041.149-1.833.452-2.431.93-.367.3-1.485 1.212-1.392 2.414.089 1.159 1.137 1.774 2.063 2.317.354.208 1.014.595 1.094.742 0 .002-.039.191-.478.591-.398.364-1.167.574-1.959.537-.152-.007-.294-.023-.426-.045-.167-.1-.352-.151-.542-.142-.208-.079-.356-.17-.43-.252-.206-.248-.025-.632.246-.902.39-.391.389-1.024-.001-1.415-.392-.391-1.025-.39-1.415.001-1.06 1.063-1.215 2.574-.341 3.624.109.122.231.233.365.336z" fill="currentColor"></path> <path d="m70.609 67.312c-.049.449-.035.923.046 1.41.148 1.04.451 1.833.93 2.432.298.365 1.205 1.475 2.406 1.383 1.163-.092 1.778-1.15 2.321-2.084.207-.355.591-1.017.726-1.099.001 0 .196.044.612.516.365.398.576 1.167.537 1.96-.007.151-.023.293-.045.425-.101.167-.147.356-.142.542-.079.208-.17.354-.252.429-.247.205-.632.025-.903-.246-.392-.39-1.025-.389-1.415.002s-.389 1.024.002 1.415c.6.598 1.342.907 2.063.907.558 0 1.104-.185 1.561-.566.119-.107.23-.229.333-.363l.614.499c.43.348 1.059.282 1.407-.146.348-.429.283-1.059-.146-1.407l-1.124-.912c.021-.157.036-.318.043-.482.065-1.338-.331-2.612-1.047-3.394-.761-.862-1.504-1.243-2.266-1.168-1.143.113-1.751 1.16-2.288 2.083-.221.379-.589 1.013-.721 1.096-.002 0-.238-.055-.721-.647-.165-.207-.387-.627-.509-1.48-.057-.341-.063-.667-.022-.96.097-.165.142-.348.138-.53.068-.167.157-.315.265-.438.163-.101.447-.194.891.249.391.389 1.024.388 1.415-.002.39-.391.389-1.024-.002-1.415-1.057-1.054-2.411-1.212-3.535-.413-.045.033-.088.069-.128.108-.104.104-.201.215-.29.332l-.618-.502c-.428-.348-1.057-.284-1.407.145-.349.428-.284 1.058.145 1.407z" fill="currentColor"></path> <path d="m16.49 80.41c4.96 0 10.7-3.64 13.65-8.42.23.92.75 1.71 1.46 2.3-.97.78-1.6 1.95-1.6 3.28 0 2.35 1.96 4.27 4.36 4.27h27.28c2.4 0 4.37-1.92 4.37-4.27 0-1.33-.64-2.5-1.61-3.28.7-.58 1.23-1.38 1.46-2.29 2.95 4.83 8.6 8.41 13.65 8.41 2.73 0 4.92-1.04 6.17-2.93 1.39-2.09 1.45-5.03.15-8.08-2.5-5.57-9.05-10.09-14.59-10.09-2.61 0-4.72.95-6 2.68-.78-1.12-2.11-1.86-3.6-1.86h-5.478c5.834-2.996 9.843-9.063 9.843-16.062 0-4.813-1.924-9.18-5.036-12.407.009-.053.032-.101.032-.156v-10.726c0-.552-.448-1-1-1s-1 .448-1 1v9.122c-2.81-2.173-6.276-3.53-10.052-3.737v-11.002c0-.552-.448-1-1-1s-1 .448-1 1v11.002c-3.736.207-7.165 1.554-9.951 3.708v-9.093c0-.552-.448-1-1-1s-1 .448-1 1v10.726c0 .047.021.087.027.132-3.107 3.229-5.03 7.607-5.03 12.432 0 6.998 3.986 13.065 9.788 16.062h-5.423c-1.49 0-2.82.74-3.6 1.86-1.28-1.73-3.38-2.68-6-2.68-5.54 0-12.08 4.52-14.6 10.11-1.29 3.03-1.23 5.97.16 8.06 1.25 1.889 3.44 2.929 6.17 2.929zm50.22-17.06c.87-1.32 2.48-2.04 4.53-2.04 4.83 0 10.56 3.99 12.76 8.89 1.02 2.4 1.02 4.65.02 6.18-.87 1.31-2.47 2.03-4.51 2.03-4.85 0-10.58-4.04-12.77-9-1.01-2.34-1.02-4.55-.03-6.06zm-34.714-19.282c0-8.798 7.157-15.955 15.954-15.955 8.853 0 16.056 7.157 16.056 15.955 0 8.854-7.203 16.058-16.056 16.058-8.797 0-15.954-7.204-15.954-16.058zm2.364 18.062h27.28c1.3 0 2.37 1.01 2.37 2.26s-1.07 2.27-2.37 2.27h-27.28c-1.3 0-2.36-1.02-2.36-2.27s1.06-2.26 2.36-2.26zm0 6.53h27.28c1.26 0 2.37 1.06 2.37 2.27 0 1.28-1.09 2.37-2.37 2.37h-27.28c-1.28 0-2.36-1.09-2.36-2.37 0-1.21 1.1-2.27 2.36-2.27zm0 6.64h27.28c1.3 0 2.37 1.02 2.37 2.27s-1.07 2.27-2.37 2.27h-27.28c-1.3 0-2.36-1.02-2.36-2.27s1.06-2.27 2.36-2.27zm-22.37-5.08c2.22-4.92 7.95-8.91 12.77-8.91 2.05 0 3.66.72 4.53 2.04.99 1.51.98 3.72-.03 6.05-2.19 4.97-7.92 9.01-12.77 9.01-2.04 0-3.64-.72-4.51-2.03-1-1.53-1-3.78.01-6.16z" fill="currentColor"></path> </g> </svg></div>
+
+<h3 class="gw-card-title">免資產折舊</h3>
+
+<p class="gw-card-desc">徹底免除燈具固有的資產折舊、維護人力與汰換處置煩惱；透過「以租代買」實現輕資產營運，大幅優化企業財務報表。</p>
+</div>
+
+<div class="gw-card">
+<div class="gw-icon-wrapper hover-color-green"><span class="material-symbols-outlined" style="font-size: 28px;">eco</span></div>
+
+<h3 class="gw-card-title">綠色循環節能</h3>
+
+<p class="gw-card-desc">導入金鍏高效率 LED 照明技術，直接降低企業用電量與碳排放，將省電效益轉化為符合國際標準的綠色減碳實績。</p>
+</div>
+
+<div class="gw-card">
+<div class="gw-icon-wrapper hover-color-gold"><svg height="40" viewbox="0 0 512 512" width="40" xmlns="http://www.w3.org/2000/svg"> <g> <path d="m503.249 173.612-115.568-111.172c-5.494-5.277-12.742-8.08-20.376-7.935-7.632.159-14.729 3.268-19.982 8.75l-38.198 39.807c-5.093 5.36-4.896 13.854.409 18.908l3.112 2.994-15.678 12.523c-.391-.021-.834-.041-1.341-.058-24.483-.761-42.661 3.295-54.027 12.074l-1.803 1.395-43.073-21.22 5.712-5.495c2.592-2.468 4.062-5.803 4.141-9.392.078-3.592-1.249-6.994-3.729-9.57l-38.168-39.778c-5.255-5.486-12.352-8.594-19.984-8.754-7.672-.185-14.884 2.657-20.382 7.939l-115.56 111.165c-11.345 10.896-11.712 29.013-.813 40.391l38.178 39.786c2.616 2.72 6.124 4.091 9.645 4.091 3.335 0 6.681-1.231 9.287-3.713l4.528-4.356c3.202 20.378 8.706 40.952 21.678 55.462l-1.608 1.742c-13.708 14.88-9.444 34.733 1.529 45.859 6.048 6.134 13.401 9.331 20.809 9.562-.99 9.504 3.365 19.014 10.349 25.636 6.128 5.811 14.323 9.536 22.658 9.535 2.072 0 4.153-.239 6.214-.725 1.172 6.743 4.69 13.155 9.474 17.952 5.746 5.762 13.833 9.778 22.445 9.778.881 0 1.768-.044 2.658-.13.115 1.655.372 3.338.791 5.041 2.924 11.888 12.556 21.884 23.968 24.873 1.906.499 4.363.925 7.199.925 6.629 0 15.328-2.325 23.901-11.463l8.402-8.944 12.288 9.447c8.041 6.183 16.016 8.706 23.176 8.706 8.992 0 16.7-3.979 21.636-9.685 4.692-5.423 7.484-13.12 6.449-21.35 9.444.481 18.352-3.16 24.105-9.227 4.257-4.489 7.035-10.603 6.985-17.305 9.786 1.03 18.329-3.147 23.613-9.414 6.086-7.218 8.806-17.974 5.349-28.182 9.031-1.949 17.309-7.664 22.591-16.258 5.929-9.647 8.114-24.027-.955-38.233 13.579-7.486 31.37-22.429 51.037-52.033l.656.629c2.589 2.465 5.92 3.69 9.248 3.69 3.523 0 7.04-1.374 9.663-4.101l38.177-39.784c10.893-11.375 10.526-29.492-.815-40.383zm-401.311 170.83c-6.029-6.114-8.967-16.546-1.178-25l13.125-14.219c5.369-5.827 11.242-8.211 16.993-6.896 6.03 1.38 11.403 6.661 13.369 13.142.948 3.123 1.798 9.148-3.158 14.4-.006.006-.01.013-.016.019l-18.404 19.539c-7.746 6.918-15.786 4.028-20.731-.985zm52.497 35.821c-7.749 8.126-17.286 3.209-21.7-.978-1.146-1.087-10.947-10.887-2.217-20.145.001-.001.002-.002.003-.003l33.328-35.385c4.141-4.399 8.399-5.668 11.934-5.668 1.313 0 2.527.176 3.596.43 5.946 1.416 11.06 6.149 12.726 11.779 1.551 5.243-.068 10.572-4.681 15.41l-7.032 7.368c-.358.358-.709.735-1.06 1.11zm39.287 26.45c-.064.055-.132.103-.195.16-.131.119-.249.246-.377.367-10.364 9.511-19.939.937-21.768-.897-4.298-4.31-8.518-13.002-2.527-19.278.067-.07.123-.145.187-.216l20.359-21.331c.116-.115.233-.227.343-.351.071-.081.144-.154.216-.234l1.316-1.379c5.066-5.014 10.599-6.994 16.112-5.71 6.072 1.412 11.298 6.573 13.004 12.844 1.055 3.879 1.125 9.632-4.538 15.013l-2.485 2.359c-.062.055-.125.104-.187.159-.161.144-.31.297-.456.452zm47.674 17.514-10.773 11.467c-5.258 5.603-10.731 7.705-16.251 6.262-6.015-1.576-11.533-7.405-13.122-13.862-.696-2.827-.852-6.775 2.177-9.772.139-.128.279-.248.418-.38l19.6-18.608c5.903-5.092 14.192-2.618 19.051 2.36 2.4 2.456 9.41 11.338-1.1 22.533zm141.964-88.315c-3.83 6.231-11.848 11.22-20.217 9.408l-28.825-26.831c-3.056-2.844-7.837-2.672-10.681.383-2.843 3.055-2.672 7.837.383 10.681l30.209 28.119c.029.027.06.049.089.075.013.012.022.026.035.037 7.453 6.637 6.844 15.458 2.389 20.741-5.056 5.997-12.966 5.695-21.187-.782l-29.972-27.9c-3.056-2.845-7.837-2.672-10.681.383-2.843 3.055-2.672 7.837.383 10.681l29.991 27.918c5.208 5.661 5.731 11.254 1.455 15.763-5.084 5.36-15.22 7.089-23.99-.269-.11-.092-.226-.172-.34-.257l-13.769-12.796c-3.057-2.841-7.839-2.666-10.68.392-2.841 3.057-2.666 7.839.391 10.68l14.902 13.849c7.497 7.768 6.082 15.312 2.468 19.49-4.519 5.221-13.743 6.901-24.17-1.113l-12.424-9.552c6.223-12.785 2.279-25.593-5.81-33.876-4.727-4.838-11.214-8.368-18.111-9.442 1.198-4.798 1.163-9.88-.223-14.971-3.173-11.659-12.658-20.922-24.164-23.597-1.427-.332-2.858-.553-4.288-.669 1.619-5.367 1.692-10.984.074-16.45-3.2-10.815-12.511-19.525-23.719-22.193-8.36-1.987-16.735-.392-23.873 4.362-.097-.364-.185-.727-.295-1.091-3.544-11.678-13.146-20.897-24.461-23.486-11.177-2.556-22.354 1.486-31.474 11.382l-1.213 1.314c-10.641-12.657-15.34-32.256-18.535-57.235l31.871-30.659c3.008-2.893 3.101-7.677.207-10.685-2.892-3.008-7.676-3.101-10.685-.207l-34.202 32.901c-.265.222-.512.461-.744.716l-13.651 13.132-36.973-38.529c-5.137-5.363-4.969-13.9.377-19.035l115.56-111.169c2.581-2.478 5.997-3.804 9.594-3.726 3.592.075 6.925 1.531 9.39 4.103l36.984 38.542-62.417 60.047c-3.008 2.894-3.101 7.678-.207 10.685 2.893 3.008 7.677 3.1 10.685.207l46.324-44.565 41.348 20.37-29.211 22.59c-35.023 27.099-24.47 51.489-20.401 58.318 6.941 11.653 19.841 18.38 33 18.38 5.13 0 10.3-1.023 15.171-3.175.29-.128.572-.274.844-.438l30.675-18.472 41.721-9.528 79.756 79.253c12.396 12.724 7.85 23.675 5.317 27.796zm109.793-132.378-36.979 38.536-5.669-5.431c-.213-.232-.442-.451-.687-.658l-52.084-49.894c-3.017-2.89-7.798-2.783-10.686.228-2.887 3.014-2.784 7.798.229 10.685l47.937 45.923c-21.069 32.378-39.117 45.565-50.1 50.914l-79.126-78.628c-.021-.021-.043-.037-.064-.058-.114-.111-.233-.215-.354-.318-.073-.063-.145-.127-.22-.187-.11-.087-.225-.167-.339-.248-.091-.064-.181-.131-.274-.191-.104-.067-.213-.126-.32-.188-.106-.061-.211-.125-.32-.18-.112-.057-.227-.106-.342-.157-.106-.048-.21-.099-.318-.141-.14-.055-.283-.101-.427-.148-.084-.027-.167-.059-.252-.084-.175-.051-.353-.09-.532-.128-.056-.012-.111-.027-.166-.038-.188-.036-.38-.06-.571-.081-.05-.005-.099-.014-.149-.019-.174-.016-.35-.02-.527-.023-.072-.001-.144-.006-.216-.006-.145.001-.291.012-.437.022-.108.007-.215.012-.323.024-.114.013-.228.032-.342.05-.142.022-.283.044-.423.075-.031.007-.062.009-.093.016l-46.957 10.725c-.782.179-1.53.48-2.216.893l-31.27 18.83c-10.098 4.198-23.135.012-28.676-9.289-6.57-11.029-.34-25.471 16.665-38.628l38.815-30.017c.068-.053.138-.102.204-.158l5.3-4.099c8.274-6.393 24.02-9.562 44.309-8.925.662.021 1.189.052 1.622.076 4.414.263 6.18-.551 9.577-3.276l17.282-13.803 38.782 37.311c3.008 2.894 7.792 2.8 10.686-.206 2.894-3.008 2.801-7.792-.206-10.686l-51.649-49.691 36.988-38.546c2.461-2.569 5.794-4.024 9.387-4.099.097-.002.193-.003.291-.003 3.498 0 6.791 1.317 9.297 3.724l115.568 111.173c5.34 5.132 5.508 13.669.375 19.027z" fill="currentColor"></path> </g> </svg></div>
+
+<h3 class="gw-card-title">財務雙贏互利</h3>
+
+<p class="gw-card-desc">租賃費用可全額合法抵稅，直接以「省下的電費」輕鬆支付服務租金，在零資本支出（Zero CAPEX）下創造長遠的經濟效益。</p>
+</div>
+</div>
+</div>
+</div>
+<!-- 1. 字體與 Icon 資源引用 -->
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Noto+Sans+TC:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* 區塊根節點設定 */
+    #GW-金鍏燈具以租代買優勢對比區塊-Root {
+        position: relative;
+        font-family: 'Hanken Grotesk', 'Noto Sans TC', sans-serif !important;
+        background-image: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/rent_esg/df280bd66ec0a0fa.jpg?v=5osdtxf');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        padding: 80px 20px;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+
+    /* 漸層背景遮罩 */
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-background-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(240, 245, 250, 1) 100%) !important;
+        backdrop-filter: blur(4px);
+        z-index: 1;
+    }
+
+    /* 內容主容器 */
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-content-container {
+        position: relative;
+        z-index: 2;
+        max-width: 1280px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    /* [排版修復] 區塊主標題樣式鎖定 */
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-section-title {
+        text-align: center !important; /* 強制置中 */
+        font-size: 36px !important;
+        line-height: 1.3 !important;
+        font-weight: 700 !important;
+        color: #1e3a5f !important;
+        margin-top: 0;
+        margin-bottom: 16px;
+    }
+
+    /* [排版修復] 區塊副標題樣式鎖定：末行齊中 */
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-section-subtitle {
+        font-size: 18px !important;
+        line-height: 1.6 !important;
+        color: #43474e !important;
+        /* 使用 margin: 0 auto 讓具有 max-width 的區塊整體置中 */
+        margin: 0 auto 64px auto !important;
+        max-width: 900px;
+        /* 達成「末行齊中」效果的專業排版語法 */
+        text-align: justify !important;
+        text-align-last: center !important;
+        -moz-text-align-last: center !important;
+    }
+
+    /* [修復重點]：絕對拉伸佈局 */
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-main-layout {
+        display: grid !important;
+        grid-template-columns: 1.45fr 1fr !important;
+        gap: 32px !important;
+        /* 強制子元素填滿高度，且加入 !important 防止 CMS 覆蓋 */
+        align-items: stretch !important; 
+    }
+
+    @media (max-width: 1024px) {
+        #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-main-layout {
+            grid-template-columns: 1fr !important;
+            gap: 40px !important;
+        }
+    }
+
+    /* ==================== 左側：強對比表格區塊 ==================== */
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-table-wrapper {
+        background-color: #ffffff !important;
+        border: 1px solid rgba(30, 58, 95, 0.1) !important;
+        border-radius: 12px !important;
+        box-shadow: 0 8px 24px rgba(30, 58, 95, 0.05) !important;
+        transition: transform 0.4s ease !important;
+        position: relative;
+        z-index: 10;
+        /* 移除 height: 100% 避免計算錯誤，改用 flex 延展 */
+        height: auto !important; 
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-table-header-bar {
+        background-color: #f8fafc !important;
+        padding: 24px 32px !important;
+        border-bottom: 1px solid rgba(30, 58, 95, 0.1) !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        border-radius: 12px 12px 0 0 !important;
+    }
+
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-table-header-title {
+        font-size: 22px !important;
+        font-weight: 700 !important;
+        color: #1e3a5f !important;
+        margin: 0 !important;
+    }
+
+    /* 表格本體設定 */
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-table {
+        width: 100% !important;
+        /* 強制表格撐滿剩下的空白區域 */
+        flex-grow: 1 !important; 
+        border-collapse: separate !important;
+        border-spacing: 0 !important;
+        text-align: left !important;
+    }
+
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-table th {
+        background-color: #1e3a5f !important;
+        color: #ffffff !important;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        padding: 18px 14px !important;
+        letter-spacing: 0.05em !important;
+        border-bottom: 1px solid rgba(30, 58, 95, 0.08) !important;
+    }
+
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-table td {
+        /* 增加上下內邊距，讓表格行高自然適應右側高度 */
+        padding: 22px 12px !important;
+        border-bottom: 1px solid rgba(30, 58, 95, 0.08) !important;
+        font-size: 16px !important;
+        color: #636b74 !important;
+        font-weight: 500 !important;
+        vertical-align: middle !important;
+    }
+
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-table tr:last-child td {
+        border-bottom: none !important;
+    }
+
+    /* --- 3D 高光聚焦設定 (GoldenWay 列) --- */
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-table .gw-highlight-col {
+        position: relative;
+        z-index: 10;
+        background-color: #ffffff !important;
+        border-left: 2px solid #0a9e9c !important;
+        border-right: 2px solid #0a9e9c !important;
+        box-shadow: 0 4px 16px rgba(30, 58, 95, 0.08) !important;
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        color: #0a9e9c !important;
+    }
+
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-table th.gw-highlight-col {
+        background: linear-gradient(135deg, #1e3a5f 0%, #2a5286 100%) !important;
+        border-top: 4px solid #0a9e9c !important;
+        border-radius: 8px 8px 0 0 !important;
+        box-shadow: inset 0 2px 4px rgba(255,255,255,0.15), 0 4px 16px rgba(30, 58, 95, 0.08) !important;
+        color: #ffde59 !important;
+    }
+
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-highlight-header-content {
+        display: flex;
+        align-items: center;
+        justify-content: center; /* [精準微調] 新增此行讓 Logo 與文字水平置中 */
+        gap: 8px;
+    }
+
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-highlight-logo {
+        height: 24px;
+        width: auto;
+        object-fit: contain;
+        max-width: 80px;
+    }
+
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-table tr:last-child td.gw-highlight-col {
+        border-bottom: 4px solid #0a9e9c !important;
+        border-radius: 0 0 8px 8px !important;
+    }
+
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-highlight-icon {
+        color: #0a9e9c !important;
+        vertical-align: middle;
+        margin-right: 8px;
+        font-size: 20px !important;
+    }
+
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-table-wrapper:hover .gw-highlight-col {
+        background-color: #fafffc !important; 
+        box-shadow: -16px 0 32px -8px rgba(5, 187, 98, 0.2), 16px 0 32px -8px rgba(5, 187, 98, 0.2) !important;
+    }
+
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-table-wrapper:hover th.gw-highlight-col {
+        box-shadow: inset 0 2px 4px rgba(255,255,255,0.25), 0 -12px 32px -8px rgba(5, 187, 98, 0.3), -16px 0 32px -8px rgba(5, 187, 98, 0.2), 16px 0 32px -8px rgba(5, 187, 98, 0.2) !important;
+    }
+
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-table-wrapper:hover tr:last-child td.gw-highlight-col {
+        box-shadow: 0 12px 32px -8px rgba(5, 187, 98, 0.3), -16px 0 32px -8px rgba(5, 187, 98, 0.2), 16px 0 32px -8px rgba(5, 187, 98, 0.2) !important;
+    }
+
+    /* --- 基礎對比設定 (傳統買斷列) --- */
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-table th.gw-muted-col {
+        background-color: #2d3e50 !important;
+        color: rgba(255, 255, 255, 0.8) !important;
+    }
+
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-table td.gw-muted-col {
+        background-color: #fafbfc !important;
+        color: #650505 !important;
+        font-weight: 400 !important;
+    }
+
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-muted-icon {
+        color: #ba1a1a !important;
+        opacity: 0.6 !important;
+        vertical-align: middle;
+        margin-right: 8px;
+        font-size: 20px !important;
+    }
+
+    /* ==================== 右側：優勢卡片陣列 ==================== */
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-cards-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        /* [修復重點]：移除強制等高列 (1fr 1fr)，改為自動高度，防止過度膨脹 */
+        grid-template-rows: auto auto !important; 
+        gap: 20px !important;
+        position: relative;
+        z-index: 10;
+        height: auto !important;
+        align-content: stretch !important; /* 讓卡片均勻佔滿可用空間 */
+    }
+
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-feature-card {
+        background-color: #ffffff !important;
+        border: 1px solid rgba(30, 58, 95, 0.1) !important;
+        border-radius: 12px !important;
+        padding: 24px !important;
+        transition: all 0.3s ease !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+    }
+
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-card-wide {
+        grid-column: span 2 !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 20px !important;
+        background: linear-gradient(135deg, #f8fafd 0%, #edf2f8 100%) !important;
+    }
+
+    @media (max-width: 640px) {
+        #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-cards-grid {
+            grid-template-columns: 1fr !important;
+        }
+        #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-card-wide {
+            grid-column: span 1 !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+        }
+    }
+
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-feature-card:hover {
+        transform: translateY(-4px) !important;
+        box-shadow: 0 12px 24px rgba(30, 58, 95, 0.08) !important;
+        border-color: rgba(30, 58, 95, 0.2) !important;
+    }
+
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-card-icon-wrapper {
+        width: 48px;
+        height: 48px;
+        border-radius: 8px;
+        background-color: #eef4fa !important;
+        color: #1e3a5f !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 16px;
+    }
+
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-card-wide .gw-card-icon-wrapper {
+        background-color: #1e3a5f !important;
+        color: #ffffff !important;
+        margin-bottom: 0;
+        flex-shrink: 0;
+        width: 64px;
+        height: 64px;
+        border-radius: 12px;
+        box-shadow: 0 8px 16px rgba(30, 58, 95, 0.2) !important;
+    }
+
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-card-title {
+        font-size: 18px !important;
+        line-height: 1.4 !important;
+        font-weight: 700 !important;
+        color: #1e3a5f !important;
+        margin-top: 0;
+        margin-bottom: 8px;
+    }
+
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-card-desc {
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+        color: #636b74 !important;
+        margin: 0;
+    }
+
+    /* ==================== 右下角大型互動裝飾 Icon ==================== */
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-decorative-icon {
+        position: absolute;
+        top: 0px;
+        right: 2%;
+        width: 220px;
+        height: 220px;
+        color: rgba(30, 58, 95, 0.04) !important; 
+        z-index: 5;
+        transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        cursor: default;
+    }
+
+    @media (max-width: 768px) {
+        #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-decorative-icon {
+            display: none !important;
+        }
+    }
+
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-decorative-icon:hover {
+        transform: rotate(-12deg) scale(1.05);
+        color: rgba(5, 187, 98, 0.15) !important;
+        filter: drop-shadow(0 0 12px rgba(5, 187, 98, 0.2));
+    }
+
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .gw-decorative-icon svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+    /* 隱形摘要 */
+    #GW-金鍏燈具以租代買優勢對比區塊-Root .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+</style>
+<div id="GW-金鍏燈具以租代買優勢對比區塊-Root">
+<div class="sr-only">金鍏電子 (GoldenWay) 企業照明設備租賃服務與傳統買斷優勢對比。金鍏電子租賃服務免列大筆預算、專人維護零故障風險、租金費用化全額抵稅、風險轉嫁落實輕資產營運。同時提供零初期成本、完整售後服務以及稅務與經濟優勢，讓資產管理化繁為簡。</div>
+
+<div class="gw-background-overlay">&nbsp;</div>
+
+<div class="gw-content-container">
+<h2 class="gw-section-title">為什麼企業照明選擇租賃服務？</h2>
+
+<p class="gw-section-subtitle">企業照明使用傳統買斷模式不僅需承擔高昂的初始資本支出（CAPEX），更隱藏著設備折舊、技術淘汰與長期的維護人力風險。透過金鍏電子創新照明租賃方案，協助企業將硬體負擔轉化為具備高稅務效益的營運費用（OPEX），讓資產管理化繁為簡。</p>
+
+<div class="gw-main-layout">
+<div class="gw-table-wrapper">
+<div class="gw-table-header-bar">
+<h3 class="gw-table-header-title">企業照明設備 以租代買優勢對比</h3>
+<span class="material-symbols-outlined" style="color:#1e3a5f; font-size:24px;">compare_arrows</span></div>
+
+<table class="gw-table">
+	<thead>
+		<tr>
+			<th style="width: 14%; text-align: center;">評估項目</th>
+			<th class="gw-highlight-col" style="width: 43%;">
+			<div class="gw-highlight-header-content"><img alt="金鍏電子企業商標" class="gw-highlight-logo" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/gw.png?v=dqp2bf" title="金鍏電子 MIT 台灣製造" /> <span>租賃服務 (金鍏電子)</span></div>
+			</th>
+			<th class="gw-muted-col" style="width: 43%; text-align: center;">傳統買斷</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>預算編列</td>
+			<td class="gw-highlight-col"><span class="material-symbols-outlined gw-highlight-icon">check_circle</span>免列大筆預算</td>
+			<td class="gw-muted-col"><span class="material-symbols-outlined gw-muted-icon">close</span>需編列高額採購預算</td>
+		</tr>
+		<tr>
+			<td>使用管理</td>
+			<td class="gw-highlight-col"><span class="material-symbols-outlined gw-highlight-icon">check_circle</span>專人維護、零故障風險</td>
+			<td class="gw-muted-col"><span class="material-symbols-outlined gw-muted-icon">close</span>自行維護、虛耗管理人力</td>
+		</tr>
+		<tr>
+			<td>節省費用</td>
+			<td class="gw-highlight-col"><span class="material-symbols-outlined gw-highlight-icon">check_circle</span>租金費用化、全額抵稅</td>
+			<td class="gw-muted-col"><span class="material-symbols-outlined gw-muted-icon">close</span>固定資產折舊與攤提負擔</td>
+		</tr>
+		<tr>
+			<td>風險評估</td>
+			<td class="gw-highlight-col"><span class="material-symbols-outlined gw-highlight-icon">check_circle</span>風險轉嫁、落實輕資產營運</td>
+			<td class="gw-muted-col"><span class="material-symbols-outlined gw-muted-icon">close</span>獨自承擔設備失效率</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<div class="gw-cards-grid">
+<div class="gw-feature-card">
+<div class="gw-card-icon-wrapper"><svg height="32" viewbox="0 0 512 512" width="32" xmlns="http://www.w3.org/2000/svg"> <g> <path d="M162.813,241.119v-63.306c0-8.284-6.716-15-15-15H22.502c-8.284,0-15,6.716-15,15v280.623c0,8.284,6.716,15,15,15h466.996c8.284,0,15-6.716,15-15v-94.249c0-8.284-6.716-15-15-15H271c-8.284,0-15-6.716-15-15l0-63.068c0-8.284-6.716-15-15-15h-63.187C169.529,256.119,162.813,249.403,162.813,241.119z" fill="#D3D3D3"></path> <path d="M489.498,349.187h-30c8.284,0,15,6.716,15,15v94.249c0,8.284-6.716,15-15,15h30c8.284,0,15-6.716,15-15v-94.249C504.498,355.902,497.782,349.187,489.498,349.187z" fill="#BCBCBC"></path> <path d="M226,271.119v63.068c0,8.284,6.716,15,15,15h30c-8.284,0-15-6.716-15-15v-63.068c0-8.284-6.716-15-15-15h-30C219.284,256.119,226,262.834,226,271.119z" fill="#BCBCBC"></path> <path d="M132.813,177.813v63.306c0,8.284,6.716,15,15,15h30c-8.284,0-15-6.716-15-15v-63.306c0-8.284-6.716-15-15-15h-30C126.097,162.813,132.813,169.529,132.813,177.813z" fill="#BCBCBC"></path> <circle cx="116.22" cy="209.407" fill="#BCBCBC" r="15.531"></circle> <circle cx="54.095" cy="302.593" fill="#BCBCBC" r="15.531"></circle> <circle cx="147.282" cy="395.78" fill="#BCBCBC" r="15.531"></circle> <circle cx="302.593" cy="426.842" fill="#BCBCBC" r="15.531"></circle> <circle cx="426.842" cy="395.78" fill="#BCBCBC" r="15.531"></circle> <path d="M131.751,162.813h-31.062V54.095c0-8.578,6.954-15.531,15.531-15.531h0c8.578,0,15.531,6.954,15.531,15.531V162.813z" fill="#6E83B7"></path> <path d="M318.125,349.187h-31.062V54.095c0-8.578,6.954-15.531,15.531-15.531h0c8.578,0,15.531,6.954,15.531,15.531V349.187z" fill="#6E83B7"></path> <path d="M457.905,318.125H256v-31.062h201.905c8.578,0,15.531,6.954,15.531,15.531v0C473.436,311.171,466.482,318.125,457.905,318.125z" fill="#466089"></path> <path d="M457.905,131.751H54.095c-8.578,0-15.531-6.954-15.531-15.531v0c0-8.578,6.954-15.531,15.531-15.531h403.809c8.578,0,15.531,6.954,15.531,15.531v0C473.436,124.797,466.482,131.751,457.905,131.751z" fill="#466089"></path> <path d="M411.311,349.187h-31.062V54.095c0-8.578,6.954-15.531,15.531-15.531h0c8.578,0,15.531,6.954,15.531,15.531V349.187z" fill="#6E83B7"></path> <path d="M224.938,256h-31.062V54.095c0-8.578,6.954-15.531,15.531-15.531h0c8.578,0,15.531,6.954,15.531,15.531V256z" fill="#6E83B7"></path> <path d="M131.75,131.75 131.75,162.81 100.69,162.81 100.69,131.75 M100.69,100.69V54.1c0-8.58,6.95-15.54,15.53-15.54c4.29,0,8.17,1.74,10.98,4.55c2.81,2.81,4.55,6.7,4.55,10.99v46.59 M318.12,318.12 318.12,349.19 287.06,349.19 287.06,318.12 M287.06,287.06 x2=287.06 y2=224.94 M318.12,287.06 x2=318.12 y2=224.94 M287.06,193.88 x2=287.06 y2=131.75 M318.12,193.88 x2=318.12 y2=131.75 M287.06,100.69V54.1c0-8.58,6.96-15.54,15.53-15.54c4.29,0,8.17,1.74,10.98,4.55c2.81,2.81,4.55,6.7,4.55,10.99v46.59 M7.5,396.71v61.73c0,8.28,6.72,15,15,15h341.41 M7.5,364.03V177.81c0-8.28,6.72-15,15-15h125.31c8.29,0,15,6.72,15,15v63.31c0,8.28,6.72,15,15,15v63.07c0,8.28,6.72,15,15,15h218.5c8.28,0,15,6.71,15,15v94.25c0,8.28-6.72,15-15,15h-92.91 M411.31,287.06h46.59c8.58,0,15.54,6.96,15.54,15.53c0,4.29-1.74,8.17-4.55,10.98c-2.81,2.81-6.7,4.55-10.99,4.55h-46.59 M380.25,318.12 256,318.12 256,287.06 380.25,287.06 M411.31,100.69h46.59c8.58,0,15.54,6.95,15.54,15.53c0,4.29-1.74,8.17-4.55,10.98c-2.81,2.81-6.7,4.55-10.99,4.55h-46.59 M380.25,100.69 224.94,100.69 M380.25,131.75 224.94,131.75 M193.88,131.75h-62.13h-31.06H54.1c-8.58,0-15.54-6.95-15.54-15.53c0-4.29,1.74-8.17,4.55-10.98c2.81-2.81,6.7-4.55,10.99-4.55h46.59h31.06h62.13 M116.22,209.407 r=15.531 M54.095,302.593 r=15.531 M147.282,395.78 r=15.531 M302.593,426.842 r=15.531 M426.842,395.78 r=15.531 M69.626,193.875 x2=69.626 y2=193.875 M100.689,287.062 x2=100.689 y2=287.062 M193.875,380.249 x2=193.875 y2=380.249 M256,411.315 x2=256 y2=411.315 M380.249,411.315 x2=380.249 y2=411.315 M473.436,442.136 x2=473.436 y2=442.136 M193.875,287.062 x2=193.875 y2=287.062 M224.938,318.363 x2=224.938 y2=318.363 M69.626,349.187 x2=69.626 y2=349.187 M162.813,442.136 x2=162.813 y2=442.136 M473.436,380.249 x2=473.436 y2=380.249 M380.25,224.94 224.94,224.94 M380.25,193.88 224.94,193.88 M411.31,193.88h46.59c8.58,0,15.54,6.95,15.54,15.53c0,4.29-1.74,8.17-4.55,10.98c-2.81,2.81-6.7,4.55-10.99,4.55h-46.59 M193.88,224.94 162.81,224.94 162.81,193.88 193.88,193.88 M411.31,177.86v171.33h-31.06V54.1c0-8.58,6.95-15.54,15.53-15.54c4.29,0,8.17,1.74,10.98,4.55c2.81,2.81,4.55,6.7,4.55,10.99v91.08 M224.938,256h-31.062V54.095c0-8.578,6.954-15.531,15.531-15.531h0c8.578,0,15.531,6.954,15.531,15.531V256z" fill="#000000"></path> </g> </svg></div>
+
+<h4 class="gw-card-title">零初期成本</h4>
+
+<p class="gw-card-desc">徹底免除一次性大額採購負擔，無縫實現企業「零資本支出（Zero CAPEX）」升級。活化現金流彈性，同時美化財務報表，讓資金調配更具效益。</p>
+</div>
+
+<div class="gw-feature-card">
+<div class="gw-card-icon-wrapper"><svg height="28" viewbox="0 0 512 512" width="28" xmlns="http://www.w3.org/2000/svg"> <g> <path d="m500.501 292.537c2.125-.98 3.485-3.107 3.485-5.447v-62.2c0-2.34-1.36-4.467-3.485-5.447l-46.409-21.426-17.011-41.123 17.647-47.938c.808-2.195.267-4.66-1.387-6.314l-43.977-44.005c-1.655-1.656-4.122-2.198-6.319-1.389l-47.964 17.674-41.121-17.038-21.397-46.407c-.98-2.126-3.107-3.488-5.449-3.488h-62.229c-2.34 0-4.467 1.36-5.447 3.485l-21.427 46.41-41.094 17.037-47.964-17.674c-2.195-.808-4.662-.268-6.317 1.387l-44.005 44.005c-1.655 1.655-2.197 4.122-1.387 6.318l17.673 47.935-17.038 41.123-46.381 21.426c-2.124.981-3.484 3.107-3.484 5.447v62.2c0 2.339 1.36 4.466 3.484 5.447l46.381 21.426 17.039 41.123-10.837 29.41-42.969 42.978c-8.446 8.429-13.097 19.688-13.097 31.703s4.649 23.277 13.093 31.721c8.743 8.742 20.226 13.113 31.709 13.113 11.484 0 22.968-4.372 31.71-13.114l43.018-43.027 29.371-10.812 41.095 17.038 21.427 46.41 5.447 3.485h62.229c2.341 0 4.468-1.362 5.449-3.488l21.396-46.406 33.692-13.941c7.052 36.322 39.085 63.835 77.437 63.835 43.504 0 78.896-35.393 78.896-78.896 0-38.353-27.513-70.386-63.835-77.437l13.942-33.693 46.409-21.426zm-244.501 80.911c-15.955 0-31.175-3.203-45.057-8.992l19.969-19.973c8.157 2.312 16.573 3.483 25.073 3.483 50.716 0 91.976-41.26 91.976-91.976 0-9.802-1.528-19.438-4.542-28.637-.649-1.981-2.279-3.483-4.307-3.968-2.029-.486-4.161.118-5.636 1.591l-40.344 40.318-46.449-46.449 40.341-40.315c1.475-1.474 2.079-3.608 1.595-5.637-.484-2.028-1.987-3.66-3.968-4.309-9.26-3.033-18.905-4.57-28.667-4.57-50.716 0-91.976 41.26-91.976 91.976 0 8.5 1.17 16.917 3.483 25.075l-19.964 19.968c-5.784-13.879-8.986-29.093-8.986-45.043 0-64.767 52.691-117.458 117.458-117.458s117.458 52.691 117.458 117.458-52.691 117.458-117.458 117.458z" fill="#ffc250"></path> <path d="m343.419 227.353c-.649-1.981-2.279-3.483-4.307-3.968-2.029-.486-4.161.118-5.636 1.591l-40.344 40.318-46.449-46.449 40.341-40.315c1.475-1.474 2.079-3.608 1.595-5.637-.484-2.028-1.987-3.66-3.968-4.309-9.26-3.033-18.905-4.57-28.667-4.57-50.716 0-91.976 41.26-91.976 91.976 0 8.5 1.17 16.917 3.483 25.075l-146.379 146.409c-8.446 8.429-13.097 19.688-13.097 31.703s4.649 23.277 13.093 31.721c8.743 8.742 20.226 13.113 31.709 13.113 11.484 0 22.968-4.372 31.71-13.114l146.385-146.414c8.157 2.312 16.573 3.483 25.073 3.483 50.716 0 91.976-41.26 91.976-91.976 0-9.802-1.528-19.438-4.542-28.637z" fill="#4a80aa"></path> <path d="m343.419 227.353c-.649-1.981-2.279-3.483-4.307-3.968-.927-.222-1.873-.206-2.771.006 1.079 5.674 1.636 11.461 1.636 17.311 0 50.716-41.26 91.976-91.976 91.976-8.5 0-16.917-1.17-25.073-3.483l-146.385 146.414c-8.743 8.742-20.227 13.113-31.71 13.114-11.483 0-22.967-4.371-31.709-13.113-.013-.013-.025-.027-.038-.04 2.218 5.685 5.592 10.897 10.022 15.328 8.743 8.742 20.226 13.113 31.709 13.113 11.484 0 22.968-4.372 31.71-13.114l146.385-146.414c8.157 2.312 16.573 3.483 25.073 3.483 50.716 0 91.976-41.26 91.976-91.976 0-9.802-1.528-19.438-4.542-28.637z" fill="#407093"></path> <path d="m234.089 206.252 12.637 12.637 40.299-40.358c1.475-1.474 2.079-3.608 1.595-5.637-.484-2.028-1.987-3.66-3.968-4.309-3.368-1.103-6.789-2.003-10.246-2.708l-40.317 40.376z" fill="#407093"></path> <path d="m255.985 114.532c-78 0-141.458 63.458-141.458 141.458 0 21.927 5.132 43.667 14.87 63.177l18.103-18.106c-5.891-14.21-8.973-29.581-8.973-45.071 0-64.767 52.691-117.458 117.458-117.458s117.487 52.691 117.487 117.458-52.705 117.458-117.487 117.458c-15.49 0-30.862-3.079-45.071-8.964l-18.104 18.108c19.508 9.729 41.247 14.856 63.175 14.856 78.016 0 141.487-63.458 141.487-141.458s-63.471-141.458-141.487-141.458z" fill="#f2b149"></path> <circle cx="425.089" cy="425.093" fill="#80b4fb" r="78.896"></circle> <path d="m425.089 346.197c-2.191 0-4.354.113-6.5.289 40.472 3.319 72.396 37.294 72.396 78.607s-31.925 75.288-72.396 78.607c2.146.176 4.309.289 6.5.289 43.504 0 78.896-35.393 78.896-78.896s-35.393-78.896-78.896-78.896z" fill="#61a2f9"></path> <path d="m413.608 459.096c-3.074 0-6.145-1.174-8.486-3.515l-22.933-22.933c-4.686-4.687-4.686-12.284 0-16.971 4.687-4.687 12.284-4.687 16.971 0l14.621 14.621 37.413-35.896c4.783-4.587 12.378-4.4431 16.967.351 4.588 4.782 4.431 12.379-.351 16.967l-45.895 44.034c-2.324 2.229-5.317 3.341-8.308 3.341z" fill="#e4f6ff"></path> <path d="m270.563 11.478 21.397 46.407 51.476 21.328 11.644-4.291-41.121-17.038-21.397-46.407c-.98-2.126-3.107-3.488-5.449-3.488h-22c2.341 0 4.468 1.362 5.449 3.488z" fill="#f2b149"></path> <path d="m500.501 219.442-46.409-21.426-17.011-41.123 17.647-47.938c.808-2.195.267-4.66-1.387-6.314l-43.977-44.005c-1.655-1.656-4.122-2.198-6.319-1.389l-12.475 4.597 40.771 40.797c1.653 1.654 2.194 4.119 1.387 6.314l-17.647 47.938 17.011 41.123 46.409 21.426c2.125.98 3.485 3.107 3.485 5.447v62.2c0 2.34-1.36 4.467-3.485 5.447l-46.409 21.426-13.457 32.52c2.131-.173 4.279-.286 6.453-.286 5.151 0 10.183.512 15.061 1.459l13.942-33.693 46.409-21.426c2.125-.98 3.485-3.107 3.485-5.447v-62.2c0-2.34-1.36-4.467-3.485-5.447z" fill="#f2b149"></path> <path d="m339.737 434.326-47.777 19.77-21.396 46.406c-.98 2.126-3.107 3.488-5.449 3.488h22c2.341 0 4.468-1.362 5.449-3.488l21.396-46.406 33.692-13.941c-.29-1.491-.532-2.999-.734-4.519l-7.181-1.309z" fill="#f2b149"></path> </g> </svg></div>
+
+<h4 class="gw-card-title">完整售後服務</h4>
+
+<p class="gw-card-desc">租賃期間內由金鍏專業團隊提供全期維護，免除耗材、燈具故障與修繕人力成本。透過定期照明勘驗與績效追蹤，確保廠區與辦公空間始終維持高標準光環境。</p>
+</div>
+
+<div class="gw-feature-card gw-card-wide">
+<div class="gw-card-icon-wrapper"><svg height="32" viewbox="0 0 512 512" width="32" xmlns="http://www.w3.org/2000/svg"> <defs> <lineargradient gradientunits="userSpaceOnUse" id="grad1" x1="184.686" x2="327.314" y1="127.314" y2="-15.313"> <stop offset="0" stop-color="#fc8450"></stop> <stop offset="1" stop-color="#f0d160"></stop> </lineargradient> <lineargradient gradientunits="userSpaceOnUse" id="grad2" x1="82.321" x2="429.679" y1="514.825" y2="167.466"> <stop offset="0" stop-color="#fc8450"></stop> <stop offset="1" stop-color="#f0d160"></stop> </lineargradient> </defs> <g> <path d="m256 88h208v32h-208z" fill="#7ed7de"></path> <path d="m348.773 6.365a16 16 0 0 0 -12.773-6.365h-160a16 16 0 0 0 -15.384 20.4l32 112a16 16 0 0 0 15.384 11.6h96a16 16 0 0 0 15.384-11.6l32-112a16 16 0 0 0 -2.611-14.035z" fill="url(#grad1)"></path> <path d="m488.381 407.684-11.734-134.93a176 176 0 0 0 -175.338-160.754h-90.618a176 176 0 0 0 -175.338 160.754l-11.734 134.93a96 96 0 0 0 95.639 104.316h273.484a96 96 0 0 0 95.639-104.316z" fill="url(#grad2)"></path> <path d="m344 120h-184v-32h179.471l100.143-61.627 16.772 27.254-104 64a16 16 0 0 1 -8.386 2.373z" fill="#595d84"></path> <g fill="#f5ef9d"> <path d="m192.767 272h-96v32h32v80h32v-80h32z"></path> <path d="m273.588 389.06 30.358-10.12-32-96a16 16 0 0 0 -15.179-10.94h-16a16 16 0 0 0 -15.179 10.94l-32 96 30.358 10.12 7.02-21.06h35.6zm-31.955-53.06 7.134-21.4 7.133 21.4z"></path> <path d="m421.059 290.243-24.583-20.486-27.709 33.25-27.708-33.25-24.583 20.486 31.464 37.757-31.464 37.757 24.583 20.486 27.708-33.25 27.709 33.25 24.583-20.486-31.464-37.757z"></path> </g> </g> </svg></div>
+
+<div>
+<h4 class="gw-card-title">稅務與經濟優勢</h4>
+
+<p class="gw-card-desc">租賃費用可 100% 認列為營運費用，合法<strong>抵扣營業稅與營所稅</strong>。更可直接<strong>以「高光效LED燈具節省下來的電費」支付服務租金</strong>，在不增加額外支出的前提下創造實質獲利。</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="gw-decorative-icon"><svg height="100%" viewbox="0 0 496 496" width="100%" xmlns="http://www.w3.org/2000/svg"> <g fill="currentColor"> <path d="m128 80c4.414062 0 8 3.585938 8 8h16c0-10.414062-6.710938-19.214844-16-22.527344v-9.472656h-16v9.472656c-9.289062 3.3125-16 12.113282-16 22.527344 0 13.230469 10.769531 24 24 24 4.414062 0 8 3.585938 8 8s-3.585938 8-8 8-8-3.585938-8-8h-16c0 10.414062 6.710938 19.214844 16 22.527344v9.472656h16v-9.472656c9.289062-3.3125 16-12.113282 16-22.527344 0-13.230469-10.769531-24-24-24-4.414062 0-8-3.585938-8-8s3.585938-8 8-8zm0 0"></path> <path d="m128 48c30.871094 0 56 25.128906 56 56 0 12.496094-4.078125 24.359375-11.808594 34.296875l12.640625 9.816406c9.929688-12.769531 15.167969-28.015625 15.167969-44.113281 0-39.703125-32.296875-72-72-72-16.097656 0-31.34375 5.238281-44.113281 15.167969l9.816406 12.640625c9.9375-7.730469 21.800781-11.808594 34.296875-11.808594zm0 0"></path> <path d="m128 176c16.097656 0 31.34375-5.238281 44.113281-15.167969l-9.816406-12.640625c-9.9375 7.730469-21.800781 11.808594-34.296875 11.808594-30.871094 0-56-25.128906-56-56 0-12.496094 4.078125-24.359375 11.808594-34.296875l-12.640625-9.816406c-9.929688 12.769531-15.167969 28.015625-15.167969 44.113281 0 39.703125 32.296875 72 72 72zm0 0"></path> <path d="m188 320c-15.441406 0-28 12.558594-28 28v40c0 15.441406 12.558594 28 28 28s28-12.558594 28-28v-40c0-15.441406-12.558594-28-28-28zm12 68c0 6.617188-5.382812 12-12 12s-12-5.382812-12-12v-40c0-6.617188 5.382812-12 12-12s12 5.382812 12 12zm0 0"></path> <path d="m48 280h16v16h-16zm0 0"></path> <path d="m88 280h16v16h-16zm0 0"></path> <path d="m128 280h16v16h-16zm0 0"></path> <path d="m168 280h16v16h-16zm0 0"></path> <path d="m48 320h16v16h-16zm0 0"></path> <path d="m88 320h16v16h-16zm0 0"></path> <path d="m128 320h16v16h-16zm0 0"></path> <path d="m48 360h16v16h-16zm0 0"></path> <path d="m88 360h16v16h-16zm0 0"></path> <path d="m128 360h16v16h-16zm0 0"></path> <path d="m48 400h16v16h-16zm0 0"></path> <path d="m88 400h16v16h-16zm0 0"></path> <path d="m128 400h16v16h-16zm0 0"></path> <path d="m368.460938 156.269531 55.046874-103.996093 14.140626 7.484374-55.046876 103.996094zm0 0"></path> <path d="m424 128h16v16h-16zm0 0"></path> <path d="m368 72h16v16h-16zm0 0"></path> <path d="m496 240h-248v-56c0-13.230469-10.769531-24-24-24h-8.503906c10.398437-16.183594 16.503906-35.375 16.503906-56 0-8.273438-1.070312-16.28125-2.902344-24h45.140625l28.089844 84.265625 78.496094-148.265625h83.175781v-16h-92.824219l-65.496093 123.734375-19.910157-59.734375h-61.792969c-15.703124-37.542969-52.800781-64-95.976562-64-57.34375 0-104 46.65625-104 104 0 20.625 6.113281 39.816406 16.503906 56h-16.503906c-13.230469 0-24 10.769531-24 24v288c0 13.230469 10.769531 24 24 24h200c13.230469 0 24-10.769531 24-24v-8h248zm-248 56.640625c27.089844 3.902344 48 27.207031 48 55.359375s-20.910156 51.457031-48 55.359375zm-120-280.640625c48.519531 0 88 39.480469 88 88s-39.480469 88-88 88-88-39.480469-88-88 39.480469-88 88-88zm-75.054688 464 8-16h126.109376l8 16zm179.054688-8c0 4.414062-3.585938 8-8 8h-11.054688l-16-32h-145.890624l-16 32h-11.054688c-4.414062 0-8-3.585938-8-8v-288c0-4.414062 3.585938-8 8-8h29.128906c5.878906 6.113281 12.496094 11.464844 19.703125 16h-40.832031v64h184v-64h-32.832031c7.207031-4.535156 13.824219-9.886719 19.703125-16h21.128906c4.414062 0 8 3.585938 8 8zm-32-264v32h-152v-32zm280 240h-232v-24.472656c35.945312-3.992188 64-34.527344 64-71.527344s-28.054688-67.535156-64-71.527344v-24.472656h232zm0 0"></path> <path d="m448 312h16v-40h-40v16h24zm0 0"></path> <path d="m464 392h-16v24h-24v16h40zm0 0"></path> </g> </svg></div>
+</div>
+</div>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Noto+Sans+TC:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* 區塊根節點設定與隔離 */
+    #GW-金鍏燈具以租代買色溫對比區塊-Root {
+        position: relative;
+        font-family: 'Hanken Grotesk', 'Noto Sans TC', sans-serif !important;
+        background-color: #ffffff !important;
+        padding: 40px 20px !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+    }
+
+    /* 內容主容器：限制最大寬度並居中 */
+    #GW-金鍏燈具以租代買色溫對比區塊-Root .gw-container {
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+        width: 100% !important;
+    }
+
+    /* ==================== 標題區塊樣式 ==================== */
+    #GW-金鍏燈具以租代買色溫對比區塊-Root .gw-title-wrapper {
+        text-align: center !important;
+        margin-bottom: 48px !important;
+    }
+
+    #GW-金鍏燈具以租代買色溫對比區塊-Root .gw-main-title {
+        font-size: 32px !important;
+        line-height: 1.4 !important;
+        font-weight: 700 !important;
+        color: #1e3a5f !important;
+        margin-top: 0 !important;
+        margin-bottom: 20px !important;
+        letter-spacing: 0.05em !important;
+    }
+
+    #GW-金鍏燈具以租代買色溫對比區塊-Root .gw-description {
+        font-size: 16px !important;
+        line-height: 1.8 !important;
+        color: #43474e !important;
+        max-width: 900px !important;
+        margin: 0 auto !important;
+        text-align: justify !important;
+        text-align-last: center !important;
+        -moz-text-align-last: center !important;
+        font-weight: 500 !important;
+    }
+
+    /* ==================== 互動色溫比對 Iframe 區塊 (桌機版專屬) ==================== */
+    #GW-金鍏燈具以租代買色溫對比區塊-Root .gw-iframe-wrapper {
+        position: relative !important;
+        width: 100% !important;
+        aspect-ratio: 16 / 9 !important;
+        min-height: 300px !important;
+        border-radius: 8px !important;
+        overflow: hidden !important;
+        box-shadow: 0 12px 32px rgba(30, 58, 95, 0.15) !important;
+        margin-bottom: 48px !important;
+        background-color: #f7fafc !important;
+    }
+
+    #GW-金鍏燈具以租代買色溫對比區塊-Root .gw-iframe-wrapper iframe {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        border: none !important;
+    }
+
+    /* ==================== 靜態圖片區塊 (手機版專屬) ==================== */
+    /* 預設在桌機與平板環境下隱藏手機版專屬圖片 */
+    #GW-金鍏燈具以租代買色溫對比區塊-Root .gw-mobile-static-img {
+        display: none !important;
+    }
+
+    /* ==================== 對稱式陣列：說明文字區塊 ==================== */
+    #GW-金鍏燈具以租代買色溫對比區塊-Root .gw-text-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 40px !important;
+        align-items: start !important;
+    }
+
+    /* 共用文字與標題樣式 */
+    #GW-金鍏燈具以租代買色溫對比區塊-Root .gw-col-header {
+        display: flex !important;
+        align-items: center !important;
+        gap: 16px !important;
+        margin-bottom: 24px !important;
+    }
+
+    #GW-金鍏燈具以租代買色溫對比區塊-Root .gw-col-title {
+        font-size: 20px !important;
+        font-weight: 700 !important;
+        margin: 0 !important;
+        white-space: nowrap !important;
+    }
+
+    /* 標籤外框基礎樣式，加入動畫轉場 */
+    #GW-金鍏燈具以租代買色溫對比區塊-Root .gw-col-badge {
+        font-size: 14px !important;
+        font-weight: 400 !important;
+        padding: 6px 14px !important;
+        border-radius: 4px !important;
+        border-width: 1px !important;
+        border-style: solid !important;
+        background-color: #ffffff !important;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        cursor: default !important;
+    }
+
+    /* 4000K 暖白光專屬顏色設定 */
+    #GW-金鍏燈具以租代買色溫對比區塊-Root .gw-color-warm .gw-col-title { color: #d97706 !important; }
+    #GW-金鍏燈具以租代買色溫對比區塊-Root .gw-color-warm .gw-col-badge { color: #d97706 !important; border-color: #d97706 !important; }
+    #GW-金鍏燈具以租代買色溫對比區塊-Root .gw-color-warm .gw-col-badge:hover {
+        transform: translateY(-4px) !important;
+        box-shadow: 0 6px 16px rgba(217, 119, 6, 0.25) !important;
+        background-color: #fffbeb !important;
+    }
+    #GW-金鍏燈具以租代買色溫對比區塊-Root .gw-color-warm .gw-col-list li { color: #d97706 !important; }
+    #GW-金鍏燈具以租代買色溫對比區塊-Root .gw-color-warm .gw-col-list li::before { color: #d97706 !important; }
+
+    /* 5700K 自然白光專屬顏色設定 */
+    #GW-金鍏燈具以租代買色溫對比區塊-Root .gw-color-cool .gw-col-title { color: #0284c7 !important; }
+    #GW-金鍏燈具以租代買色溫對比區塊-Root .gw-color-cool .gw-col-badge { color: #0284c7 !important; border-color: #0284c7 !important; }
+    #GW-金鍏燈具以租代買色溫對比區塊-Root .gw-color-cool .gw-col-badge:hover {
+        transform: translateY(-4px) !important;
+        box-shadow: 0 6px 16px rgba(2, 132, 199, 0.25) !important;
+        background-color: #f0f9ff !important;
+    }
+    #GW-金鍏燈具以租代買色溫對比區塊-Root .gw-color-cool .gw-col-list li { color: #0284c7 !important; }
+    #GW-金鍏燈具以租代買色溫對比區塊-Root .gw-color-cool .gw-col-list li::before { color: #0284c7 !important; }
+
+    #GW-金鍏燈具以租代買色溫對比區塊-Root .gw-col-paragraph {
+        font-size: 15px !important;
+        line-height: 1.8 !important;
+        color: #636b74 !important;
+        margin-top: 0 !important;
+        margin-bottom: 16px !important;
+        font-weight: 400 !important;
+        text-align: justify !important;
+    }
+
+    #GW-金鍏燈具以租代買色溫對比區塊-Root .gw-col-list {
+        padding-left: 0 !important;
+        margin: 0 !important;
+        list-style: none !important;
+    }
+
+    #GW-金鍏燈具以租代買色溫對比區塊-Root .gw-col-list li {
+        font-size: 15px !important;
+        line-height: 1.6 !important;
+        margin-bottom: 8px !important;
+        position: relative !important;
+        padding-left: 16px !important;
+    }
+
+    #GW-金鍏燈具以租代買色溫對比區塊-Root .gw-col-list li::before {
+        content: "•" !important;
+        position: absolute !important;
+        left: 0 !important;
+        font-weight: 700 !important;
+    }
+
+    /* 隱形摘要 */
+    #GW-金鍏燈具以租代買色溫對比區塊-Root .sr-only {
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        padding: 0 !important;
+        margin: -1px !important;
+        overflow: hidden !important;
+        clip: rect(0, 0, 0, 0) !important;
+        white-space: nowrap !important;
+        border-width: 0 !important;
+    }
+
+    /* ==================== 手機版 RWD 雙軌切換邏輯 ==================== */
+    @media (max-width: 1024px) {
+        #GW-金鍏燈具以租代買色溫對比區塊-Root .gw-col-header {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 12px !important;
+        }
+    }
+
+    @media (max-width: 768px) {
+        /* 手機版：標題排版調整 */
+        #GW-金鍏燈具以租代買色溫對比區塊-Root .gw-main-title {
+            font-size: 24px !important;
+        }
+        #GW-金鍏燈具以租代買色溫對比區塊-Root .gw-description {
+            text-align-last: left !important;
+            -moz-text-align-last: left !important;
+        }
+        
+        /* 手機版：隱藏 Iframe 滑桿 */
+        #GW-金鍏燈具以租代買色溫對比區塊-Root .gw-iframe-wrapper {
+            display: none !important;
+        }
+
+        /* 手機版：將文字網格改為單欄垂直推疊 */
+        #GW-金鍏燈具以租代買色溫對比區塊-Root .gw-text-grid {
+            grid-template-columns: 1fr !important;
+            gap: 48px !important;
+        }
+
+        /* 手機版：顯示手機版專屬靜態照片 */
+        #GW-金鍏燈具以租代買色溫對比區塊-Root .gw-mobile-static-img {
+            display: block !important;
+            width: 100% !important;
+            height: auto !important;
+            margin-top: 24px !important;
+            border-radius: 8px !important;
+            box-shadow: 0 8px 24px rgba(30, 58, 95, 0.15) !important;
+            border: 1px solid rgba(30, 58, 95, 0.05) !important;
+        }
+    }
+</style>
+<div id="GW-金鍏燈具以租代買色溫對比區塊-Root">
+<div class="sr-only">金鍏電子 (GoldenWay) 提供專業空間照明體驗與企業專屬的色溫定制方案。提供 4000K(專注暖白光) 與 5700K(高效自然白光) 兩大主流商務色溫燈具租賃方案。4000K 暖白光適合經理人辦公室，營造高效專注與舒壓平衡。5700K 自然白光適合研發實驗室與品管區，啟動高精準度與充沛活力的明亮場域。</div>
+
+<div class="gw-container">
+<div class="gw-title-wrapper">
+<h2 class="gw-main-title">專業空間照明體驗：企業專屬的色溫定制方案</h2>
+
+<p class="gw-description">燈光不只是照明，更是驅動企業生產力與形塑品牌形象的隱形關鍵。金鍏電子突破傳統單一照明的局限，針對企業不同場域的機能需求，提供 4000K(專注暖白光) 與 5700K(高效自然白光) 兩大主流商務色溫燈具供您擇一客製化配置。透過精準的色溫規劃，徹底解決員工視覺疲勞與空間沉悶的隱性痛點，完美兼顧辦公福祉與現代化企業的高效氛圍。</p>
+</div>
+
+<div class="gw-iframe-wrapper">
+<div class="sr-only">互動式照明色溫對比工具，可左右滑動查看 4000K 與 5700K 照明差異。</div>
+<iframe frameborder="0" scrolling="auto" src="https://goldenway-charts.vercel.app/(左右滑動對比)燈具以租代買色溫對比.html" title="金鍏電子辦公室色溫照明模擬比對器"></iframe></div>
+
+<div class="gw-text-grid">
+<div class="gw-color-warm">
+<div class="gw-col-header">
+<h3 class="gw-col-title">4000K 暖白光</h3>
+
+<div class="gw-col-badge">營造高效專注與舒壓平衡的黃金比例</div>
+</div>
+
+<p class="gw-col-paragraph">專為長時間專注且需緩解視覺疲勞的商務空間所設計。金鍏電子 4000K 暖白光租賃方案，打破傳統辦公室單調冰冷的照明盲點，提供最接近自然陽光的柔和光環境。此色溫能有效抑制螢幕眩光帶來的隱性視覺壓力，極致活化大腦的專注力與思考敏銳度，是企業提升員工福祉、優化每日整體生產力的綠色首選。</p>
+
+<ul class="gw-col-list">
+	<li>指標應用場景：經理人辦公室、開放式員工工作區、中大型會議室。</li>
+	<li>企業氛圍塑造：沉穩、專業、兼具人文關懷與高度信任感。</li>
+</ul>
+<img alt="金鍏電子 4000K 暖白光辦公室應用場景" class="gw-mobile-static-img" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/rent_esg/bl-360-gw-555_4000k-v2.jpg?v=vsw9mi" /></div>
+
+<div class="gw-color-cool">
+<div class="gw-col-header">
+<h3 class="gw-col-title">5700K 自然白光</h3>
+
+<div class="gw-col-badge">啟動高精準度與充沛活力的明亮場域</div>
+</div>
+
+<p class="gw-col-paragraph">針對追求極致視效清晰與高效率能動性的作業環境。金鍏電子 5700K 自然白光租賃方案，全面解決傳統照明亮度不足、色差偏大的營運痛點，以明亮清透的高標準光環境，顯著提振團隊工作精神並降低操作失誤率。此色溫具備極佳色彩還原度，完美展現案場俐落感，是落實高標準職安與精準作業的關鍵基礎設施。</p>
+
+<ul class="gw-col-list">
+	<li>指標應用場景：研發實驗室、高精密品管檢驗區、科技感接待大廳。</li>
+	<li>企業氛圍塑造：明快、高科技感、充滿現代化效率與創新活力。</li>
+</ul>
+<img alt="金鍏電子 5700K 自然白光辦公室應用場景" class="gw-mobile-static-img" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/rent_esg/bl-360-gw-555_5700k-v2.jpg?v=7db02bd" /></div>
+</div>
+</div>
+</div>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Noto+Sans+TC:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* ==================== 區塊根節點與光暈背景設定 ==================== */
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root {
+        position: relative;
+        font-family: 'Hanken Grotesk', 'Noto Sans TC', sans-serif !important;
+        background-color: #fafbfc !important;
+        padding: 40px 20px 40px 20px !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+    }
+
+    /* 動態光暈動畫定義 */
+    @keyframes gw-float-glow {
+        0% { transform: translate(0px, 0px) scale(1); opacity: 0.5; }
+        50% { transform: translate(30px, -30px) scale(1.1); opacity: 0.7; }
+        100% { transform: translate(-20px, 20px) scale(0.95); opacity: 0.5; }
+    }
+
+    /* 左上角：淺綠色科技光暈 */
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root::before {
+        content: '';
+        position: absolute;
+        top: -150px;
+        left: -100px;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(82, 180, 78, 0.25) 0%, rgba(255,255,255,0) 70%) !important;
+        border-radius: 50%;
+        animation: gw-float-glow 12s ease-in-out infinite alternate;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    /* 右下角：淺藍色質感光暈 */
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root::after {
+        content: '';
+        position: absolute;
+        bottom: -150px;
+        right: -100px;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(75, 161, 163, 0.35) 0%, rgba(255,255,255,0) 70%) !important;
+        border-radius: 50%;
+        animation: gw-float-glow 15s ease-in-out infinite alternate-reverse;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    /* 內容主容器 */
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-container {
+        position: relative;
+        z-index: 2;
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+        width: 100% !important;
+    }
+
+    /* ==================== 頂部標題區塊 ==================== */
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-header {
+        text-align: center !important;
+        margin-bottom: 64px !important;
+    }
+
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-main-title {
+        font-size: 32px !important;
+        line-height: 1.4 !important;
+        font-weight: 700 !important;
+        color: #181c1e !important;
+        margin-top: 0 !important;
+        margin-bottom: 16px !important;
+    }
+
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-highlight-green {
+        color: #4ba1a3 !important; 
+    }
+
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-subtitle {
+        font-size: 16px !important;
+        line-height: 1.8 !important;
+        color: #43474e !important;
+        max-width: 960px !important;
+        margin: 0 auto !important;
+        text-align: justify !important;
+        text-align-last: center !important;
+        -moz-text-align-last: center !important;
+    }
+
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-highlight-red {
+        color: #ba1a1a !important;
+        font-weight: 600 !important;
+    }
+
+    @media (max-width: 768px) {
+        #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-main-title { font-size: 24px !important; }
+        #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-subtitle { text-align-last: left !important; -moz-text-align-last: left !important; font-size: 15px !important; }
+    }
+
+    /* ==================== 四大特色網格佈局 ==================== */
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-features-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 24px !important;
+        margin-bottom: 64px !important;
+        position: relative !important;
+        z-index: 2 !important;
+    }
+
+    @media (max-width: 1024px) {
+        #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-features-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+        }
+    }
+
+    @media (max-width: 640px) {
+        #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-features-grid {
+            grid-template-columns: 1fr !important;
+            gap: 20px !important;
+        }
+    }
+
+    /* ==================== 特色卡片設計 ==================== */
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-feature-card {
+        background-color: #ffffff !important;
+        border: 1px solid rgba(226, 232, 240, 0.8) !important;
+        border-radius: 16px !important;
+        padding: 32px 24px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        position: relative !important;
+        overflow: hidden !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02) !important;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        height: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 背景微光感 */
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-feature-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(82, 180, 78, 0.04) 0%, rgba(75, 161, 163, 0.04) 100%) !important;
+        opacity: 0;
+        transition: opacity 0.4s ease !important;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    /* 頂部裝飾條 */
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-feature-card::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, #6f999a 0%, #4ba1a3 100%) !important;
+        opacity: 0;
+        transition: opacity 0.4s ease !important;
+        z-index: 2;
+    }
+
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-feature-card:hover {
+        transform: translateY(-8px) !important;
+        border-color: rgba(75, 161, 163, 0.3) !important;
+        box-shadow: 0 20px 40px rgba(75, 161, 163, 0.1) !important;
+    }
+
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-feature-card:hover::before,
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-feature-card:hover::after {
+        opacity: 1 !important;
+    }
+
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-feature-card > * {
+        position: relative;
+        z-index: 3;
+    }
+
+    /* ==================== 圖示容器與基礎樣式 ==================== */
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-icon-wrapper {
+        width: 80px !important;
+        height: 80px !important;
+        border-radius: 50% !important;
+        background-color: #f8fafc !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin-bottom: 24px !important;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        border: 1px solid #f1f5f9 !important;
+    }
+
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-feature-card:hover .gw-icon-wrapper {
+        background-color: #ffffff !important;
+        transform: scale(1.05) !important;
+        box-shadow: 0 8px 24px rgba(75, 161, 163, 0.08) !important;
+    }
+
+    /* ==================== 卡片內文字樣式 ==================== */
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-feature-title {
+        font-size: 20px !important;
+        font-weight: 700 !important;
+        color: #181c1e !important;
+        margin: 0 0 12px 0 !important;
+        transition: color 0.3s ease !important;
+    }
+
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-feature-card:hover .gw-feature-title {
+        color: #4ba1a3 !important;
+    }
+
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-feature-desc {
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+        color: #64748b !important;
+        margin: 0 !important;
+        text-align: justify !important;
+        margin-bottom: 20px !important;
+    }
+
+    /* ==================== 動態特效細節 ==================== */
+    
+    /* 1. Ra 顯色卡片 */
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-color-strip {
+        display: flex !important;
+        gap: 6px !important;
+        margin-top: auto !important;
+        justify-content: center !important;
+    }
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-dot {
+        width: 8px !important;
+        height: 8px !important;
+        border-radius: 50% !important;
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    }
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-feature-card:hover .gw-dot {
+        transform: scale(1.4) !important;
+    }
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-feature-card:hover .gw-dot:nth-child(1) { transition-delay: 0.05s !important; }
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-feature-card:hover .gw-dot:nth-child(2) { transition-delay: 0.1s !important; }
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-feature-card:hover .gw-dot:nth-child(3) { transition-delay: 0.15s !important; }
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-feature-card:hover .gw-dot:nth-child(4) { transition-delay: 0.2s !important; }
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-feature-card:hover .gw-dot:nth-child(5) { transition-delay: 0.25s !important; }
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-feature-card:hover .gw-dot:nth-child(6) { transition-delay: 0.3s !important; }
+
+    @keyframes gw-spin {
+        from { transform: rotate(0deg); transform-origin: 32px 32px; }
+        to { transform: rotate(360deg); transform-origin: 32px 32px; }
+    }
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-feature-card:hover .color-spectrum circle {
+        animation: gw-spin 8s linear infinite !important;
+    }
+
+    /* 2. 無藍光卡片 */
+    @keyframes wave-bounce {
+        0%, 100% { transform: translateX(0px); opacity: 0.4; }
+        50% { transform: translateX(5px); opacity: 1; }
+    }
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-feature-card:hover .blue-free .blue-wave {
+        animation: wave-bounce 1.2s infinite ease-in-out !important;
+    }
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-feature-card:hover .blue-free .blue-wave-2 {
+        animation: wave-bounce 1.2s infinite ease-in-out !important;
+        animation-delay: 0.3s !important;
+    }
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-feature-card:hover .blue-free .shield-bg {
+        fill: rgba(82, 180, 78, 0.15) !important;
+        stroke-width: 3px !important;
+        transition: all 0.4s ease !important;
+    }
+
+    /* 3. 無頻閃卡片 */
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-feature-card:hover .wave-flicker {
+        stroke: #52b44e !important;
+        opacity: 0.2 !important;
+        transform: scaleY(0.05) translate(0, 300px);
+        transform-origin: 32px 32px;
+        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-feature-card:hover .wave-stable {
+        stroke-width: 3px !important;
+        filter: drop-shadow(0 0 3px rgba(82, 180, 78, 0.4)) !important;
+        transition: all 0.3s ease !important;
+    }
+
+    /* 4. 低眩光卡片 */
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-feature-card:hover .low-glare .glare-ray {
+        opacity: 0 !important;
+        transform: scale(0.4) !important;
+        transform-origin: 32px 20px !important;
+        transition: all 0.4s ease !important;
+    }
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-feature-card:hover .low-glare .light-cone {
+        opacity: 0.35 !important;
+        transition: all 0.4s ease !important;
+    }
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-feature-card:hover .low-glare .light-cone-border {
+        stroke: #52b44e !important;
+        stroke-dasharray: none !important;
+        stroke-width: 2px !important;
+        transition: all 0.4s ease !important;
+    }
+
+    /* 膠囊徽章 */
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-badge-pill {
+        font-size: 12px !important;
+        font-weight: 600 !important;
+        padding: 4px 12px !important;
+        border-radius: 12px !important;
+        margin-top: auto !important;
+        white-space: nowrap !important;
+    }
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .safe-badge {
+        background-color: rgba(82, 180, 78, 0.08) !important;
+        color: #52b44e !important;
+        border: 1px solid rgba(82, 180, 78, 0.2) !important;
+    }
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .flicker-badge {
+        background-color: rgba(75, 161, 163, 0.08) !important;
+        color: #4ba1a3 !important;
+        border: 1px solid rgba(75, 161, 163, 0.2) !important;
+    }
+
+    /* ==================== [核心更新] 底部總結區塊 (左文右圖) ==================== */
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-footer-wrapper {
+        max-width: 1200px !important; /* 寬度拉滿與主視覺對齊 */
+        margin: 0 auto !important;
+        padding-top: 48px !important;
+        border-top: 1px dashed rgba(30, 58, 95, 0.15) !important;
+    }
+
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-footer-grid {
+        display: grid !important;
+        grid-template-columns: 1.1fr 1fr !important; /* 文字稍寬一點 */
+        gap: 48px !important;
+        align-items: stretch !important; /* 絕對拉伸，保證兩側等高 */
+    }
+
+    /* 左側文字容器 */
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-footer-text-col {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important; /* 垂直居中對齊 */
+    }
+
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-footer-title {
+        font-size: 24px !important;
+        font-weight: 700 !important;
+        color: #181c1e !important;
+        margin-top: 0 !important;
+        margin-bottom: 24px !important;
+        line-height: 1.4 !important;
+        text-align: left !important;
+    }
+
+    /* 放大強調副標，並自動換行 */
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-footer-title .gw-highlight-green {
+        display: block !important;
+        font-size: 28px !important; 
+        margin-top: 8px !important;
+    }
+
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-footer-desc {
+        font-size: 15px !important;
+        line-height: 1.8 !important;
+        color: #43474e !important;
+        margin: 0 !important;
+        text-align: justify !important;
+    }
+
+    /* 右側影像容器：利用絕對定位+cover達成拉伸滿版 */
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-footer-img-col {
+        position: relative !important;
+        width: 100% !important;
+        border-radius: 8px !important;
+        overflow: hidden !important;
+        box-shadow: 0 12px 32px rgba(30, 58, 95, 0.1) !important;
+        min-height: 320px !important; /* 給予安全最小高度 */
+        background-color: #f1f5f9 !important;
+    }
+
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-footer-img-col img {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important; /* 保證圖片不變形且填滿框框 */
+        display: block !important;
+    }
+
+    /* 手機版適應：改回垂直推疊 */
+    @media (max-width: 900px) {
+        #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-footer-grid {
+            grid-template-columns: 1fr !important;
+            gap: 32px !important;
+        }
+        #GW-金鍏燈具以租代買DIALux照度模擬-Root .gw-footer-img-col {
+            min-height: auto !important;
+            aspect-ratio: 16 / 9 !important; /* 手機上維持好看的長寬比 */
+        }
+    }
+
+    /* 隱形摘要 */
+    #GW-金鍏燈具以租代買DIALux照度模擬-Root .sr-only {
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        padding: 0 !important;
+        margin: -1px !important;
+        overflow: hidden !important;
+        clip: rect(0, 0, 0, 0) !important;
+        white-space: nowrap !important;
+        border-width: 0 !important;
+    }
+</style>
+<div id="GW-金鍏燈具以租代買DIALux照度模擬-Root">
+<div class="sr-only">金鍏電子 (GoldenWay) 「燈具以租代買」ESG 永續照明方案。免除企業初期購置支出，轉列營運費用（OPEX），由金鍏團隊全壽命期維護以減少電子廢棄物。導入符合 ISO 14064 碳盤查與 ISO 50001 的高效照明系統，優化範疇二的碳足跡申報。以曾協助漢翔航空汰換節能燈具並榮獲經濟部節能標竿獎的技術為後盾，是您在零財務壓力下同時落實 ESG、降低碳稅風險並推動穩健轉型的專業綠色夥伴。</div>
+
+<div class="gw-container">
+<div class="gw-header">
+<h2 class="gw-main-title">綠色照明新思維：<span class="gw-highlight-green">金鍏「燈具以租代買」深度實踐 ESG 精神</span></h2>
+
+<p class="gw-subtitle">實踐 ESG 永續目標與財務優化，可以從改變照明模式開始。金鍏電子的「燈具以租代買」綠色服務，將傳統「買斷」的折舊與折損負擔，轉化為「只租服務、不買設備」的循環經濟模式。透過此租賃方案，企業可免除初期大額設備購置支出，同時導入高效照明系統，優化範疇二的碳足跡申報。<strong class="gw-highlight-green">以曾協助漢翔航空汰換節能燈具、創造 60.2% 高效節電並榮獲經濟部「節能標竿獎」的產品技術為後盾，金鍏是您在零財務壓力下同時落實 ESG、降低碳稅風險並推動穩健轉型的專業綠色夥伴。</strong></p>
+</div>
+
+<div class="gw-features-grid"><!-- Card 1: Ra 高顯色 -->
+<div class="gw-feature-card">
+<div class="gw-icon-wrapper color-spectrum"><svg fill="none" height="64" viewbox="0 0 64 64" width="64" xmlns="http://www.w3.org/2000/svg"> <!-- Outer spectrum circle --> <circle cx="32" cy="32" r="26" stroke="url(#spectrum-grad)" stroke-linecap="round" stroke-width="4.5"></circle> <!-- Central light bulb shape --> <path d="M32 17C26.5 17 22 21.5 22 27C22 30.5 23.8 33.5 26.5 35.3C28 36.3 29 38 29 39.8V42C29 43.1 29.9 44 31 44H33C34.1 44 35 43.1 35 42V39.8C35 38 36 36.3 37.5 35.3C40.2 33.5 42 30.5 42 27C42 21.5 37.5 17 32 17Z" stroke="#4ba1a3" stroke-linejoin="round" stroke-width="2.5"></path> <path d="M29.5 48H34.5" stroke="#4ba1a3" stroke-linecap="round" stroke-width="2"></path> <!-- Rays --> <line stroke="#52b44e" stroke-linecap="round" stroke-width="2" x1="32" x2="32" y1="23" y2="25"></line> <line stroke="#52b44e" stroke-linecap="round" stroke-width="2" x1="28" x2="26" y1="27" y2="27"></line> <line stroke="#52b44e" stroke-linecap="round" stroke-width="2" x1="38" x2="36" y1="27" y2="27"></line> <defs> <lineargradient id="spectrum-grad" x1="0%" x2="100%" y1="0%" y2="100%"> <stop offset="0%" stop-color="#ff4b4b"></stop> <stop offset="20%" stop-color="#ffa04b"></stop> <stop offset="40%" stop-color="#ffff4b"></stop> <stop offset="60%" stop-color="#4bff4b"></stop> <stop offset="80%" stop-color="#4b92ff"></stop> <stop offset="100%" stop-color="#a04bff"></stop> </lineargradient> </defs> </svg></div>
+
+<h3 class="gw-feature-title">演色性 Ra≧80</h3>
+
+<p class="gw-feature-desc">劣質光源易造成空間色彩扭曲與視覺沉悶。金鍏燈具提供極致接近自然光線的精準光學表現，能大幅提升辦公場域的整體質感，展現高階商務空間應有的專業形象，在無形中為企業形塑高信賴感的品牌氣場。</p>
+
+<div class="gw-color-strip">&nbsp;</div>
+</div>
+<!-- Card 2: 無藍光 -->
+
+<div class="gw-feature-card">
+<div class="gw-icon-wrapper blue-free"><svg fill="none" height="64" viewbox="0 0 64 64" width="64" xmlns="http://www.w3.org/2000/svg"> <path class="shield-bg" d="M32 11L47 16.5V29C47 38.5 40.5 47.5 32 50C23.5 47.5 17 38.5 17 29V16.5L32 11Z" fill="rgba(82,180,78,0.04)" stroke="#52b44e" stroke-linejoin="round" stroke-width="2"></path> <path d="M32 20C25 20 20 25 20 25C20 25 25 30 32 30C39 30 44 25 44 25C44 25 39 20 32 20Z" stroke="#4ba1a3" stroke-linejoin="round" stroke-width="2.2"></path> <circle cx="32" cy="25" fill="#4ba1a3" r="3"></circle> <path class="blue-wave" d="M9 25C11 23 13 23 15 25" stroke="#4b92ff" stroke-linecap="round" stroke-width="2.5"></path> <path class="blue-wave-2" d="M5 25C8 21 11 21 14 25" stroke="#4b92ff" stroke-dasharray="2 2" stroke-linecap="round" stroke-width="1.5"></path> </svg></div>
+
+<h3 class="gw-feature-title">CNS15592 無藍光</h3>
+
+<p class="gw-feature-desc">長時間處於不合格的光源下，是導致員工眼睛病變與慢性疲勞的隱形職安殺手。金鍏燈具經國家級光生物安全檢測把關，從源頭阻絕有害光波，提供最高規格的視力防護，實質提升員工福祉並維持全天候的專注力。</p>
+
+<div class="gw-badge-pill safe-badge">CNS15592 認證</div>
+</div>
+<!-- Card 3: 無頻閃 -->
+
+<div class="gw-feature-card">
+<div class="gw-icon-wrapper flicker-free"><svg fill="none" height="64" viewbox="0 0 64 64" width="64" xmlns="http://www.w3.org/2000/svg"> <path d="M10 20H54M10 32H54M10 44H54" stroke="#f1f5f9" stroke-dasharray="2 2" stroke-width="1"></path> <path class="wave-flicker" d="M12 32L17 18L22 46L27 18L32 32" stroke="#ba1a1a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path> <path class="wave-stable" d="M32 32C37 20 42 20 47 32C52 44 57 44 62 32" stroke="#52b44e" stroke-linecap="round" stroke-width="2.5"></path> <line stroke="#94a3b8" stroke-dasharray="3 3" stroke-width="1.5" x1="32" x2="32" y1="12" y2="52"></line> </svg></div>
+
+<h3 class="gw-feature-title">二級迴路無頻閃</h3>
+
+<p class="gw-feature-desc">肉眼難以察覺的微幅光線閃爍，長時間仍會增加眼睛負擔並影響視覺舒適度。我們採高品質驅動電路，有效將輸出電流漣波控制於極低水準，提供穩定且低頻閃的照明品質，減輕長時間用眼壓力，打造更舒適、專注的工作環境。</p>
+
+<div class="gw-badge-pill flicker-badge">輸出電流漣波 &lt; 3%</div>
+</div>
+<!-- Card 4: 低眩光 -->
+
+<div class="gw-feature-card">
+<div class="gw-icon-wrapper low-glare"><svg fill="none" height="64" viewbox="0 0 64 64" width="64" xmlns="http://www.w3.org/2000/svg"> <path d="M22 14H42V18C42 22 38 24 32 24C26 24 22 22 22 18V14Z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2"></path> <line class="glare-ray" stroke="#ba1a1a" stroke-linecap="round" stroke-width="2" x1="20" x2="6" y1="20" y2="35"></line> <line class="glare-ray" stroke="#ba1a1a" stroke-linecap="round" stroke-width="2" x1="44" x2="58" y1="20" y2="35"></line> <path class="light-cone" d="M24 24L14 52H50L40 24C40 24 36 26 32 26C28 26 24 24 24 24Z" fill="url(#light-cone-grad)" opacity="0.15"></path> <path class="light-cone-border" d="M24 24L14 52" stroke="#52b44e" stroke-dasharray="3 3" stroke-width="1.5"></path> <path class="light-cone-border" d="M40 24L50 52" stroke="#52b44e" stroke-dasharray="3 3" stroke-width="1.5"></path> <defs> <lineargradient id="light-cone-grad" x1="32" x2="32" y1="24" y2="52"> <stop offset="0%" stop-color="#52b44e" stop-opacity="0.8"></stop> <stop offset="100%" stop-color="#52b44e" stop-opacity="0"></stop> </lineargradient> </defs> </svg></div>
+
+<h3 class="gw-feature-title">光學級 PC 防眩光</h3>
+
+<p class="gw-feature-desc">刺眼眩光的照明往往會嚴重干擾螢幕瀏覽並降低團隊的工作效率。光學級 PC 燈罩結合大角度出光技術，能將光線細緻霧化並均勻擴散，徹底瓦解光污染，為企業量身定做柔和舒適、零視覺死角的頂級工作場域。</p>
+
+<div class="gw-badge-pill safe-badge">120&deg; 廣角出光</div>
+</div>
+</div>
+
+<div class="gw-footer-wrapper">
+<div class="gw-footer-grid">
+<div class="gw-footer-text-col">
+<h3 class="gw-footer-title">拒絕光污染與預算浪費 <span class="gw-highlight-green" style="color:#4ba1a3 !important;">DIALux 專業照度模擬</span></h3>
+
+<p class="gw-footer-desc">多數企業在規劃辦公室照明時，常陷入「高瓦數才夠亮」的採購誤區，因缺乏專業依據而盲目配置過多燈具，不僅<span class="gw-highlight-red">平白浪費購置經費與電費，更忽略了低光效燈具正在默默壓垮企業的碳排與電費指標</span>；同時，過度刺眼且分佈不均的眩光，更會造成員工慢性視覺疲勞與生產力下降。<span class="gw-highlight-green" style="color:#4ba1a3 !important;">金鍏團隊擁有專業人才並導入專業照度模擬軟體，針對企業案場的格局、反射率與工作面高度進行精密的科學化光場計算；</span>我們替企業找出「最均勻、舒適且<span class="gw-highlight-green" style="color:#4ba1a3 !important;">完全符合 CNS 國家標準的黃金照度分佈</span>」。透過專業模擬，我們協助您在動工前就精確掌握光環境效益，用最低的資本配置，換取高專注力、維護員工福祉的永續綠色職場。</p>
+</div>
+
+<div class="gw-footer-img-col"><img alt="DIALux 專業照度模擬軟體操作介面" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/rent_esg/snipaste_2026-06-17_16-11-05.png?v=fvy7yqa" title="科學化光環境規劃" /></div>
+</div>
+</div>
+</div>
+</div>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Noto+Sans+TC:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* ==================== 區塊根節點與基礎設定 ==================== */
+    #GW-金鍏燈具以租代買專案經理-Root {
+        position: relative;
+        font-family: 'Hanken Grotesk', 'Noto Sans TC', sans-serif !important;
+        background-color: #ffffff !important;
+        padding: 40px 20px !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-container {
+        position: relative;
+        z-index: 2;
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+        width: 100% !important;
+    }
+
+    /* ==================== 頂部標題與社論引導 ==================== */
+    #GW-金鍏燈具以租代買專案經理-Root .gw-header-section {
+        margin-bottom: 48px !important;
+    }
+
+    /* 雜誌風引導線標籤 */
+    #GW-金鍏燈具以租代買專案經理-Root .gw-case-label {
+        display: flex !important;
+        align-items: center !important;
+        gap: 16px !important;
+        font-size: 13px !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.1em !important;
+        color: #1e3a5f !important;
+        margin-bottom: 24px !important;
+    }
+    
+    #GW-金鍏燈具以租代買專案經理-Root .gw-case-label::before {
+        content: "" !important;
+        display: block !important;
+        width: 48px !important;
+        height: 2px !important;
+        background-color: #1e3a5f !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-main-title {
+        font-size: 24px !important;
+        line-height: 1.3 !important;
+        font-weight: 700 !important;
+        color: #181c1e !important;
+        margin-top: 0 !important;
+        margin-bottom: 20px !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-description {
+        font-size: 16px !important;
+        line-height: 1.8 !important;
+        color: #43474e !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        text-align: justify !important;
+    }
+
+    @media (max-width: 768px) {
+        #GW-金鍏燈具以租代買專案經理-Root .gw-main-title { font-size: 26px !important; }
+        #GW-金鍏燈具以租代買專案經理-Root .gw-description { font-size: 15px !important; }
+    }
+
+    /* ==================== 上半部主視覺與數據網格 ==================== */
+    #GW-金鍏燈具以租代買專案經理-Root .gw-case-grid {
+        display: grid !important;
+        grid-template-columns: 1.35fr 1fr !important;
+        gap: 32px !important;
+        margin-bottom: 48px !important;
+        align-items: stretch !important;
+    }
+
+    @media (max-width: 900px) {
+        #GW-金鍏燈具以租代買專案經理-Root .gw-case-grid {
+            grid-template-columns: 1fr !important;
+            gap: 32px !important;
+        }
+    }
+
+    /* 1. 左側：主視覺影像與報導按鈕 */
+    #GW-金鍏燈具以租代買專案經理-Root .gw-main-visual {
+        position: relative !important;
+        border-radius: 16px !important;
+        overflow: hidden !important;
+        box-shadow: 0 12px 32px rgba(30, 58, 95, 0.1) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        background-color: #f1f5f9 !important;
+        min-height: 380px !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-main-visual img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        display: block !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        z-index: 1 !important;
+        transition: transform 0.6s ease !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-main-visual:hover img {
+        transform: scale(1.03) !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-visual-overlay {
+        position: absolute !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.8) 60%, transparent 100%) !important;
+        z-index: 2 !important;
+        padding: 40px 32px 24px 32px !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: flex-end !important;
+        box-sizing: border-box !important;
+    }
+
+    @media (max-width: 640px) {
+        #GW-金鍏燈具以租代買專案經理-Root .gw-visual-overlay {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 16px !important;
+            padding: 32px 20px 20px 20px !important;
+        }
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-visual-text h3 {
+        color: #ffffff !important;
+        font-size: 22px !important;
+        font-weight: 700 !important;
+        margin: 0 0 8px 0 !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-visual-text p {
+        color: #94a3b8 !important;
+        font-size: 14px !important;
+        margin: 0 !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-btn-read {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        background-color: rgba(255, 255, 255, 0.15) !important;
+        color: #ffffff !important;
+        padding: 10px 20px !important;
+        border-radius: 99px !important;
+        font-size: 14px !important;
+        font-weight: 500 !important;
+        text-decoration: none !important;
+        backdrop-filter: blur(8px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        transition: all 0.3s ease !important;
+        white-space: nowrap !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-btn-read:hover {
+        background-color: #ffffff !important;
+        color: #0f172a !important;
+        transform: translateY(-2px) !important;
+    }
+
+    /* ==================== 右側：數據統計與特效 ==================== */
+    #GW-金鍏燈具以租代買專案經理-Root .gw-stats-sidebar {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 24px !important;
+    }
+
+    /* 曜石海軍藍數據方塊 */
+    #GW-金鍏燈具以租代買專案經理-Root .gw-stat-box {
+        background: linear-gradient(135deg, #162645 0%, #0d1629 100%) !important;
+        border-radius: 16px !important;
+        padding: 32px !important;
+        color: #ffffff !important;
+        box-shadow: 0 12px 24px rgba(13, 22, 41, 0.15) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 32px !important;
+        position: relative !important;
+        overflow: hidden !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-stat-box::after {
+        content: "" !important;
+        position: absolute !important;
+        top: 0 !important;
+        right: 0 !important;
+        width: 150px !important;
+        height: 150px !important;
+        background: radial-gradient(circle, rgba(255, 222, 89, 0.1) 0%, transparent 70%) !important;
+        pointer-events: none !important;
+    }
+
+    /* 單一數據項目設定 */
+    #GW-金鍏燈具以租代買專案經理-Root .gw-stat-item {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 8px !important;
+        position: relative !important;
+        padding-right: 100px !important; 
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-stat-label {
+        font-size: 16px !important;
+        color: #aaff00 !important;
+        font-weight: 500 !important;
+        transition: color 0.3s ease !important;
+    }
+
+    /* 核心數字設定 */
+    #GW-金鍏燈具以租代買專案經理-Root .gw-stat-number {
+        font-size: 48px !important;
+        font-weight: 700 !important;
+        color: #ffde59 !important; /* 晨金色 */
+        line-height: 1 !important;
+        display: flex !important;
+        align-items: baseline !important;
+        gap: 8px !important;
+        transition: text-shadow 0.4s ease !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-stat-number span {
+        font-size: 16px !important;
+        font-weight: 500 !important;
+        color: #ffffff !important;
+        letter-spacing: 0.05em !important;
+        text-shadow: none !important; /* 強制阻斷光暈繼承，確保只有數字發光 */
+    }
+
+    /* 數據Hover光暈特效 (只會套用到數字上) */
+    #GW-金鍏燈具以租代買專案經理-Root .gw-stat-item:hover .gw-stat-number {
+        text-shadow: 0 0 24px rgba(255, 222, 89, 0.8) !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-stat-sub {
+        font-size: 13px !important;
+        color: #cbd5e1 !important;
+        line-height: 1.5 !important;
+    }
+
+    /* 醒目圖標排版與特效 */
+    #GW-金鍏燈具以租代買專案經理-Root .gw-stat-item svg {
+        position: absolute !important;
+        right: 10px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        width: 80px !important;
+        height: 80px !important;
+        transition: filter 0.4s ease !important;
+        pointer-events: none !important;
+    }
+
+    @keyframes gw-icon-float {
+        0% { transform: translateY(-50%); }
+        50% { transform: translateY(-65%); }
+        100% { transform: translateY(-50%); }
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-stat-item:hover svg {
+        animation: gw-icon-float 1.2s ease-in-out infinite !important;
+        filter: drop-shadow(0 10px 15px rgba(255, 222, 89, 0.4)) !important;
+    }
+
+    @media (max-width: 640px) {
+        #GW-金鍏燈具以租代買專案經理-Root .gw-stat-item {
+            padding-right: 70px !important; 
+        }
+        #GW-金鍏燈具以租代買專案經理-Root .gw-stat-item svg {
+            width: 60px !important;
+            height: 60px !important;
+            right: 0px !important;
+        }
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-stat-divider {
+        height: 1px !important;
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        width: 100% !important;
+    }
+
+    /* 白色承諾卡片 */
+    #GW-金鍏燈具以租代買專案經理-Root .gw-promise-card {
+        background-color: #ffffff !important;
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 16px !important;
+        padding: 32px !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03) !important;
+        flex-grow: 1 !important; 
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-promise-card h3 {
+        font-size: 24px !important;
+        font-weight: 700 !important;
+        color: #181c1e !important;
+        margin: 0 0 8px 0 !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-promise-card h4 {
+        font-size: 15px !important;
+        font-weight: 400 !important;
+        color: #63a0a2 !important;
+        margin: 0 0 16px 0 !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-promise-card p {
+        font-size: 15px !important;
+        line-height: 1.8 !important;
+        color: #43474e !important;
+        margin: 0 !important;
+        text-align: justify !important;
+    }
+
+    /* ==================== 下半部特色與名片網格 ==================== */
+    #GW-金鍏燈具以租代買專案經理-Root .gw-bottom-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 24px !important;
+        align-items: stretch !important;
+    }
+
+    @media (max-width: 900px) {
+        #GW-金鍏燈具以租代買專案經理-Root .gw-bottom-grid {
+            grid-template-columns: 1fr !important;
+            gap: 32px !important;
+        }
+    }
+
+    /* 特色解說卡片 */
+    #GW-金鍏燈具以租代買專案經理-Root .gw-feature-card {
+        background-color: #ffffff !important;
+        border-radius: 12px !important;
+        overflow: hidden !important;
+        border: 1px solid #f1f5f9 !important;
+        box-shadow: 0 4px 12px rgba(30, 58, 95, 0.03) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-feature-card:hover {
+        transform: translateY(-4px) !important;
+        box-shadow: 0 12px 24px rgba(30, 58, 95, 0.08) !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-feature-img {
+        width: 100% !important;
+        height: 200px !important;
+        object-fit: cover !important;
+        background-color: #e2e8f0 !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-feature-text {
+        padding: 24px !important;
+        flex-grow: 1 !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-feature-title {
+        font-size: 16px !important;
+        font-weight: 700 !important;
+        color: #181c1e !important;
+        margin: 0 0 12px 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-feature-icon {
+        color: #05bb62 !important;
+        font-size: 20px !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-feature-desc {
+        font-size: 14px !important;
+        line-height: 1.7 !important;
+        color: #636b74 !important;
+        margin: 0 !important;
+        text-align: justify !important;
+    }
+
+    /* 專案經理聯繫名片卡 */
+    #GW-金鍏燈具以租代買專案經理-Root .gw-contact-card {
+        background: linear-gradient(145deg, #f8fafc 0%, #f1f5f9 100%) !important;
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 12px !important;
+        padding: 20px 12px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        height: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-contact-desc {
+        font-size: 14px !important;
+        line-height: 1.5 !important;
+        font-weight: 600 !important;
+        color: #1e3a5f !important;
+        margin: 0 0 10px 0 !important;
+        text-align: left !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-contact-info-block {
+        color: #1e3a5f !important;
+        font-size: 14px !important;
+        line-height: 1.5 !important;
+        margin-bottom: 16px !important;
+        text-align: left !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-contact-info-block p {
+        margin: 0 0 6px 0 !important;
+        font-weight: 600 !important;
+        text-align: left !important;
+        color: #1e3a5f !important;
+        font-size: 14px !important;
+        line-height: 1.5 !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-contact-info-block ul {
+        list-style: none !important;
+        padding-left: 0 !important;
+        margin: 0 0 6px 0 !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-contact-info-block li {
+        margin-bottom: 3px !important;
+        display: flex !important;
+        align-items: flex-start !important;
+        gap: 8px !important;
+        font-weight: 600 !important;
+        text-align: left !important;
+        color: #1e3a5f !important;
+        font-size: 14px !important;
+        line-height: 1.5 !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-contact-info-block li span {
+        color: #1e3a5f !important;
+        font-size: 14px !important;
+        flex-shrink: 0 !important;
+        line-height: 1.5 !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-contact-info-block li span:first-child {
+        font-size: 15px !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-profile-box {
+        display: flex !important;
+        align-items: center !important;
+        gap: 12px !important;
+        background-color: #ffffff !important;
+        padding: 10px 12px !important;
+        border-radius: 12px !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.03) !important;
+    }
+
+    /* 經理頭像預留位與特效 */
+    #GW-金鍏燈具以租代買專案經理-Root .gw-avatar {
+        width: 44px !important;
+        height: 44px !important;
+        border-radius: 50% !important;
+        object-fit: cover !important;
+        border: 2px solid #e2e8f0 !important;
+        background-color: #e2e8f0 !important;
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.27), border-color 0.3s ease !important;
+    }
+
+    /* 頭像 Hover：微放大 + 旋轉特效 */
+    #GW-金鍏燈具以租代買專案經理-Root .gw-avatar:hover {
+        transform: scale(1.15) rotate(-8deg) !important;
+        border-color: #05bb62 !important; 
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-profile-info {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2px !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-profile-job {
+        font-size: 11px !important;
+        color: #64748b !important;
+        margin: 0 !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-profile-name {
+        font-size: 14px !important;
+        font-weight: 700 !important;
+        color: #0f172a !important;
+        margin: 0 !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-profile-contact {
+        font-size: 12px !important;
+        color: #475569 !important;
+        margin: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 4px !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-contact-link {
+        color: #1d4ed8 !important;
+        text-decoration: underline !important;
+        font-weight: 700 !important;
+        transition: color 0.2s ease !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-contact-link:hover {
+        color: #05bb62 !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-form-button-container {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 6px !important;
+        margin-top: 14px !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-form-button-container .material-symbols-outlined {
+        color: #0087a2 !important;
+        font-size: 18px !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-form-button-link {
+        color: #0087a2 !important;
+        font-size: 15px !important;
+        font-weight: 700 !important;
+        text-decoration: none !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 3px !important;
+        transition: color 0.3s ease !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-form-button-link:hover {
+        color: #a20000 !important;
+        text-decoration: underline !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-form-button-link .gw-button-arrow {
+        display: inline-block !important;
+        transition: transform 0.3s ease !important;
+    }
+
+    #GW-金鍏燈具以租代買專案經理-Root .gw-form-button-link:hover .gw-button-arrow {
+        transform: translateX(4px) !important;
+    }
+
+    /* 隱形摘要 */
+    #GW-金鍏燈具以租代買專案經理-Root .sr-only {
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        padding: 0 !important;
+        margin: -1px !important;
+        overflow: hidden !important;
+        clip: rect(0, 0, 0, 0) !important;
+        white-space: nowrap !important;
+        border-width: 0 !important;
+    }
+</style>
+<div id="GW-金鍏燈具以租代買專案經理-Root">
+<div class="sr-only">國營事業循環經濟先鋒：台糖開創以租代買綠色照明綠皮書。台糖指標年省用電133萬度電，10年長效營運省下700萬元電費。金鍏電子為企業客戶量身打造最高規格LED租賃解決方案，在不增加大筆資本開支基礎下，協助企業創造高規格光環境，達成ESG雙贏承諾。金鍏電子專案經理謝經理 0912-345678。</div>
+
+<div class="gw-container">
+<div class="gw-header-section"><span class="gw-case-label">CASE STUDY</span>
+
+<h2 class="gw-main-title">國營事業循環經濟先鋒：台糖開創「以租代買」綠色照明綠皮書</h2>
+
+<p class="gw-description">多數企業常陷入「燈具壞了再換、年年編列零星修繕預算」的滾動式耗損盲點，卻忽略了傳統舊型燈具正在默默壓垮企業的碳排指標與隱性電費。台灣糖業公司 (台糖) 主動打破傳統一次性買斷限制，開創國營事業全國首例，將旗下 13 個單位的照明設備全面改採 LED 租賃模式。此一指標性減碳實績充分證實：將沉重的固定資產採購轉化為營運費用 (OPEX)，不僅能在初期實現零資本支出 (Zero CAPEX)，更能協助企業建構循環經濟架構。金鍏電子身為綠色照明資產的專業推手，也正以同樣的前瞻商模與更高規格的極效節能燈具技術，協助現代化企業全面複製此一成功的永續財務轉型模式。</p>
+</div>
+
+<div class="gw-case-grid">
+<div class="gw-main-visual"><img alt="國營事業循環經濟先鋒台糖專案" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/rent_esg/c63562ea38475ab2.jpg?v=z6pzi7l" title="台糖以租代買實績" />
+<div class="gw-visual-overlay">
+<div class="gw-visual-text">
+<h3>國營事業循環經濟先鋒</h3>
+
+<p>照片來源：自由時報</p>
+</div>
+<a class="gw-btn-read" href="https://ec.ltn.com.tw/article/paper/1264308" rel="noopener noreferrer" target="_blank">閱讀完整新聞報導 <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span> </a></div>
+</div>
+
+<div class="gw-stats-sidebar">
+<div class="gw-stat-box">
+<div class="gw-stat-item">
+<div class="gw-stat-label">台糖指標：年省用電</div>
+
+<div class="gw-stat-number">133 <span>萬度電</span> <svg height="48" style="flex-shrink: 0;" viewbox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg"> <g transform="translate(.903)"> <g> <path d="m26.16676 10.195852c-.0748-.002-.15024.0015-.22461.01172-.14939.01995-.29453.06415-.42969.13086-.13448.06696-.25718.155353-.36328.261719l-12.92968 12.929687c-.16436.16495-.29972.356439-.40039.566406-.10143.209558-.1668.434721-.19336.666016-.0261.23167-.0129.466086.0391.693359.0519.226953.1417.443532.26562.640625.12407.197346.28057.372332.46289.517578.18228.144662.38763.257572.60743.333984.21961.07721.45072.116828.68355.117188h8.75l-2.53711 10.148437c-.049.194939-.055.398214-.0176.595704.0379.197959.11856.385262.23633.548828.11677.162497.26736.297763.44141.396484.17507.09934.36969.15933.57031.175781.20009.01638.40136-.01095.58984-.08008.18857-.06911.35984-.17841.50196-.320312l12.92968-12.929688c.10444-.104369.19742-.219608.27735-.34375.0804-.124645.1472-.25757.19922-.396484.0517-.138902.0884-.282958.10937-.429688.0209-.146157.0262-.294135.0156-.441406-.0111-.147626-.0379-.293644-.0801-.435547-.0412-.142333-.0975-.27984-.16797-.410156-.0714-.129827-.15652-.251619-.25391-.363281-.097-.111545-.20572-.212381-.32422-.300782-.11786-.0888-.24489-.164757-.3789-.226562-.13517-.06188-.27661-.109027-.42188-.140625-.14432-.03125-.29164-.04697-.43938-.04687h-8.75l2.53711-10.148438c.0366-.146078.0491-.297151.0371-.447265-.0119-.150055-.0482-.297168-.10742-.435547-.0596-.138652-.14136-.266642-.24219-.378906-.10004-.111268-.21745-.20559-.34766-.279297-.13117-.07473-.27367-.127508-.42187-.15625-.0737-.01406-.14787-.02148-.22266-.02344z" fill="#f2c311"></path> <g stroke-linecap="round" stroke-linejoin="round"> <path d="m34.54492 22.251953c-.026.06946-.0546.138902-.0879.205078-.0332.06618-.0711.129084-.11133.191406-.04.06207-.0826.122314-.1289.179688-.0463.05737-.0962.111878-.14844.164062l-12.92969 12.929688c-.0711.07095-.14827.133799-.23242.1875-.0842.0537-.17525.09826-.26953.132812-.0942.03457-.19018.05884-.28906.07227-.0751.0102-.15248.0081-.22852.0059l-.22266.892579c-.0245.09747-.0381.197002-.041.296875-.003.09987.005.200083.0234.298828.0189.09898.0502.195093.0898.287109.0396.09202.0876.179936.14648.261719.0584.08125.12522.156187.19922.222656.074.06647.15517.124468.24219.173828.0875.04967.17978.08967.27539.119141.0956.02947.19461.04841.29492.05664.10005.0082.2019.0056.30078-.0078.0989-.01343.19483-.0377.28907-.07227.0943-.03455.18537-.07911.26953-.132812.0841-.0537.16136-.116549.23242-.1875l12.92969-12.929688c.0522-.05218.10214-.106689.14843-.164062.0463-.05737.089-.117617.12891-.179688.0402-.06232.0781-.12523.11133-.191406.0333-.06618.0619-.135621.0879-.205078.0258-.06945.0482-.13922.0664-.210938.0182-.07172.0325-.145385.043-.21875.0104-.07308.0169-.14703.0195-.220703.003-.07367.001-.147067-.004-.220703-.006-.07381-.014-.146054-.0273-.21875-.0134-.07269-.0316-.145845-.0527-.216797-.0206-.07117-.0442-.140526-.0723-.208984-.028-.06846-.0605-.136014-.0957-.201172-.0357-.06491-.0748-.126866-.11718-.1875-.0424-.06063-.088-.11995-.13672-.175781-.0485-.05577-.10018-.108001-.1543-.158203-.0541-.0502-.11067-.09838-.16992-.142578-.0589-.0444-.12035-.08523-.1836-.123047-.0589-.0444-.12035-.08523-.1836-.123047-.0632-.03781-.1283-.07261-.19531-.103516z" fill="#f39c11" stroke-width="2"></path> <path d="m26.193359 9.1953125c-.123899-.00331-.252489.00304-.386718.021484-.255929.034588-.504715.1102934-.736329.2246094a1.0001 1.0001 0 0 0 -.0039.00195c-.231555.1152953-.442292.2680059-.625.4511719l-1.935547 1.9335942a1 1 0 0 0 0 1.414063 1 1 0 0 0 1.414063 0l1.935547-1.935547a1.0001 1.0001 0 0 0 .002 0c.02949-.02957.06416-.05364.101562-.07227.03661-.01762.07495-.02978.115235-.03516a1.0001 1.0001 0 0 0 .0039 0c.01452-.002.03682-.0046.0625-.0039.02518.000659.04286.0029.05859.0059.0412.008.08072.02219.117187.04297a1.0001 1.0001 0 0 0 .002.002c.0362.02049.06985.04719.09766.07813.02711.03061.05003.06541.06641.103515.01651.03859.026.07946.0293.121094.0034.042.000376.08452-.0098.125l-2.537109 10.148438a1.0001 1.0001 0 0 0 .96875 1.242187h8.75a1.0001 1.0001 0 0 0 .002 0c.07635-.000052.152018.0092.226562.02539.07513.01634.146891.04026.216797.07227.0684.03176.133138.06986.19336.115235a1.0001 1.0001 0 0 0 .0039.0039c.06134.04576.117937.09676.167969.154297a1.0001 1.0001 0 0 0 0 .002c.04881.05596.09268.116784.128906.181641.03647.06744.06651.139041.08789.21289a1.0001 1.0001 0 0 0 .002.0059c.02175.07313.03524.14978.04102.226562.0051.07436.0029.14993-.0078.224609-.01082.07571-.02982.150595-.05664.222657-.02681.07123-.06221.139088-.103516.203125-.04133.06419-.09052.123759-.144531.177734l-12.929858 12.929514c-.03931.03892-.08678.07083-.138672.08984-.0524.01922-.108474.02604-.164063.02148-.05577-.0046-.109509-.0212-.158203-.04883-.04839-.02745-.09057-.06613-.123047-.111329-.03241-.04501-.05573-.09603-.06641-.15039v-.002c-.01002-.05441-.0076-.110441.0059-.164063a1.0001 1.0001 0 0 0 0-.002l2.53711-10.148437a1.0001 1.0001 0 0 0 -.970703-1.242188h-8.748047-.002c-.119759-.000402-.238681-.02086-.351563-.06055a1.0001 1.0001 0 0 0 -.002 0c-.113672-.03952-.220167-.099-.314453-.173828-.09381-.07494-.174379-.163982-.238281-.265625-.06409-.101927-.10988-.214669-.136719-.332031-.02686-.117405-.03498-.237598-.02148-.357422.01387-.118961.04743-.23594.09961-.34375a1.0001 1.0001 0 0 0 .002-.002c.05206-.108588.122039-.207671.207031-.292969a1 1 0 0 0 -.002-1.414062 1 1 0 0 0 -1.414062.002c-.242704.243575-.442717.526128-.591797.835937-.000274.000567.000274.0014 0 .002-.000396.000824-.0016.0011-.002.002-.149332.309635-.245937.642836-.285156.984375a1.0001 1.0001 0 0 0 0 .002c-.0387.343515-.0205.690203.05664 1.027343.07696.336544.210777.658913.394531.951172.183977.292634.415207.55221.685547.767578a1.0001 1.0001 0 0 0 .002 0c.269576.213942.573462.380848.898438.494141.325729.114519.668427.173294 1.013672.173828h7.470703l-2.226563 8.90625c-.08392.335035-.09551.686076-.03125 1.025391a1.0001 1.0001 0 0 0 .002.002c.06527.340901.20347.661725.40625.943359.201061.279796.460054.513597.759766.683594.301446.171049.636949.274405.982422.302734.344591.02821.691066-.01963 1.015625-.138672.324736-.119014.618586-.306461.863281-.550781a1.0001 1.0001 0 0 0 0-.002l12.929693-12.92972c.154509-.154405.293763-.324206.412109-.507813v-.002c.118755-.184338.217981-.380474.294922-.585938a1.0001 1.0001 0 0 0 0-.002c.07658-.205742.13099-.41897.162109-.636718.03094-.216338.03919-.435377.02344-.654297a1.0001 1.0001 0 0 0 0-.0039c-.01623-.215798-.05586-.430429-.117188-.638671v-.002c-.06098-.210197-.143863-.412808-.248047-.605468a1.0001 1.0001 0 0 0 -.0039-.0059c-.105862-.192489-.232523-.373466-.376953-.539062-.142809-.164067-.30259-.313206-.476562-.44336l-.0039-.002c-.173795-.130556-.359245-.242946-.55664-.333984a1.0001 1.0001 0 0 0 -.0039 0c-.200433-.09176-.409586-.162129-.625-.208984-.214094-.04636-.433218-.07046-.652343-.07031h-7.46875l2.226562-8.904297v-.002c.06253-.250454.08478-.510645.06445-.767578-.0205-.258472-.08362-.511827-.185547-.75a1.0001 1.0001 0 0 0 0-.002c-.102479-.238051-.244252-.458596-.417987-.6520329-.171927-.1912229-.372014-.3536565-.595703-.4804687h-.002c-.225434-.128203-.47001-.218201-.724609-.2675781a1.0001 1.0001 0 0 0 -.0039-.00195c-.131396-.025067-.259259-.037778-.382813-.041016z" fill="#2d3e52"></path> </g> </g> <g> <path d="m556 27v5l-2.44922.748047 5.44922 5.251953 5.45312-5.25-2.45312-.75v-5" fill="#e84c3d" transform="matrix(1.056 0 0 1.056 -574.366 -18.394)"></path> <g stroke-linecap="round" stroke-linejoin="round"> <path d="m19.82922 15.54314-5.0332 4.845703 1.40039 1.349609 5.76172-5.544922z" fill="#c23a2c" stroke-width="1.893"></path> <path d="m557 25.052734c-1.06392 0-1.94727.883342-1.94727 1.947266v4.298828l-1.77929.542969 5.44922 5.251954 5.45312-5.25-1.7832-.544922v-4.298828c0-1.063924-.88335-1.947266-1.94727-1.947266zm0 1.894532h4c.0406 0 .0527.01209.0527.05273v5l.91406.279297-3.63672 3.5-3.63281-3.501953.91015-.277344v-5c0-.04065.0121-.05273.0527-.05273z" fill="#2d3e52" transform="matrix(1.056 0 0 1.056 -574.366 -18.394)"></path> </g> </g> </g> </svg></div>
+
+<div class="gw-stat-sub">產業實績證言：全面切斷舊型螢光燈的電力虛耗</div>
+</div>
+
+<div class="gw-stat-divider">&nbsp;</div>
+
+<div class="gw-stat-item">
+<div class="gw-stat-label">台糖指標：10年長效營運</div>
+
+<div class="gw-stat-number">700 <span>萬元電費</span> <svg height="48" style="flex-shrink: 0;" viewbox="0 0 512 512" width="48" xmlns="http://www.w3.org/2000/svg"> <g fill-rule="evenodd"> <path d="m112.715 415.385v-44.769h236.56v44.769c0 31.724-52.956 57.442-118.28 57.442s-118.28-25.718-118.28-57.442z" fill="#f19a00"></path> <path d="m143.09 370.616h206.185v44.769c0 31.724-52.956 57.442-118.28 57.442-30.222 0-57.792-5.508-78.7-14.565-5.927-6.844-9.205-14.362-9.205-22.252z" fill="#f9ac00"></path> <path d="m112.715 370.616v-44.77h236.56v44.77c0 31.724-52.956 57.442-118.28 57.442s-118.28-25.718-118.28-57.442z" fill="#fdc72e"></path> <path d="m143.09 325.846h206.185v44.77c0 31.724-52.956 57.442-118.28 57.442-34.894 0-66.255-7.34-87.905-19.012z" fill="#fcdb35"></path> <path d="m112.715 325.846v-44.769h236.56v44.769c0 31.725-52.956 57.442-118.28 57.442s-118.28-25.718-118.28-57.442z" fill="#f19a00"></path> <path d="m143.09 281.077h206.185v44.769c0 31.725-52.956 57.442-118.28 57.442-34.894 0-66.255-7.34-87.905-19.012v-83.2z" fill="#f9ac00"></path> <path d="m112.715 281.077v-44.769h236.56v44.769c0 31.725-52.956 57.442-118.28 57.442s-118.28-25.718-118.28-57.442z" fill="#fdc72e"></path> <path d="m143.09 236.308h206.185v44.769c0 31.725-52.956 57.442-118.28 57.442-34.894 0-66.255-7.34-87.905-19.012v-83.2z" fill="#fcdb35"></path> <path d="m112.715 236.308v-44.769h236.56v44.769c0 31.725-52.956 57.442-118.28 57.442s-118.28-25.718-118.28-57.442z" fill="#f19a00"></path> <path d="m143.09 191.539h206.185v44.769c0 31.725-52.956 57.442-118.28 57.442-34.894 0-66.255-7.34-87.905-19.012v-83.2z" fill="#f9ac00"></path> <ellipse cx="230.995" cy="191.539" fill="#fcdb35" rx="118.28" ry="57.442"></ellipse> <ellipse cx="230.995" cy="191.539" fill="#f19a00" rx="104.28" ry="43.443"></ellipse> <g> <path d="m235.495 148.139c55.504.982 99.78 20.036 99.78 43.4s-44.276 42.417-99.78 43.4c-55.504-.982-99.78-20.036-99.78-43.4s44.276-42.417 99.78-43.4z" fill="#f9ac00"></path> <path d="m82.076 171.806v-62.734c0-2.51-2.047-4.558-4.558-4.558h-27.323c-2.51 0-4.557 2.047-4.557 4.557v62.735h-13.462c-1.639 0-3.04.91-3.707 2.406-.667 1.497-.406 3.147.69 4.365l31.682 35.211c.798.886 1.824 1.344 3.016 1.344s2.219-.457 3.016-1.344l31.682-35.211c1.096-1.218 1.357-2.868.69-4.365s-2.068-2.406-3.706-2.406z" fill="#ed1717"></path> <path d="m82.076 171.806v-62.734c0-2.51-2.047-4.558-4.558-4.558h-18.886c-2.51 0-4.557 2.047-4.557 4.557v62.735h-11.962c-1.639 0-3.04.91-3.707 2.406-.667 1.497-.406 3.147.69 4.365l29.729 33.041 29.729-33.041c1.096-1.218 1.357-2.868.69-4.365s-2.068-2.406-3.706-2.406h-13.463z" fill="#ff3838"></path> <path d="m249.214 78.296v-62.734c0-2.51-2.047-4.558-4.558-4.558h-27.323c-2.51 0-4.558 2.047-4.558 4.557v62.735h-13.462c-1.639 0-3.04.91-3.707 2.406-.667 1.497-.406 3.147.69 4.365l31.682 35.211c.798.886 1.824 1.344 3.016 1.344s2.219-.457 3.016-1.344l31.682-35.211c1.096-1.218 1.357-2.868.69-4.365s-2.068-2.406-3.706-2.406h-13.463z" fill="#ed1717"></path> <path d="m249.214 78.296v-62.734c0-2.51-2.047-4.558-4.558-4.558h-18.886c-2.51 0-4.557 2.047-4.557 4.557v62.735h-11.962c-1.639 0-3.04.91-3.707 2.406-.667 1.497-.406 3.147.69 4.365l29.729 33.041 29.729-33.041c1.096-1.218 1.357-2.868.69-4.365s-2.068-2.406-3.706-2.406h-13.463z" fill="#ff3838"></path> <path d="m416.352 171.806v-62.734c0-2.51-2.047-4.558-4.558-4.558h-27.323c-2.51 0-4.557 2.047-4.557 4.557v62.735h-13.462c-1.639 0-3.04.91-3.707 2.406-.667 1.497-.406 3.147.69 4.365l31.682 35.211c.798.886 1.824 1.344 3.016 1.344s2.219-.457 3.016-1.344l31.682-35.211c1.096-1.218 1.357-2.868.69-4.365s-2.068-2.406-3.706-2.406z" fill="#ed1717"></path> <path d="m416.352 171.806v-62.734c0-2.51-2.047-4.558-4.558-4.558h-18.886c-2.51 0-4.558 2.047-4.558 4.557v62.735h-11.962c-1.638 0-3.04.91-3.707 2.406-.667 1.497-.406 3.147.69 4.365l29.729 33.041 29.729-33.041c1.096-1.218 1.357-2.868.69-4.365s-2.068-2.406-3.706-2.406h-13.463z" fill="#ff3838"></path> </g> <path d="m247.329 443.562v-44.769h236.56v44.769c0 31.725-52.956 57.442-118.28 57.442s-118.28-25.718-118.28-57.442z" fill="#fdc72e"></path> <path d="m277.705 398.793h206.185v44.769c0 31.725-52.956 57.442-118.28 57.442-34.894 0-66.255-7.34-87.905-19.012v-83.2z" fill="#fcdb35"></path> <path d="m247.329 398.793v-44.769h236.56v44.769c0 31.725-52.956 57.442-118.28 57.442s-118.28-25.718-118.28-57.442z" fill="#f19a00"></path> <path d="m277.705 354.024h206.185v44.769c0 31.725-52.956 57.442-118.28 57.442-34.894 0-66.255-7.34-87.905-19.012v-83.2z" fill="#f9ac00"></path> <ellipse cx="365.609" cy="354.024" fill="#fcdb35" rx="118.28" ry="57.442"></ellipse> <ellipse cx="365.609" cy="354.024" fill="#f19a00" rx="104.28" ry="43.443"></ellipse> <path d="m370.109 310.624c55.504.982 99.78 20.036 99.78 43.4s-44.276 42.417-99.78 43.4c-55.504-.982-99.78-20.036-99.78-43.4s44.276-42.417 99.78-43.4z" fill="#f9ac00"></path> <path d="m351.615 344.689c-2.28-1.555-3.61-3.419-3.742-5.248-.108-1.638.721-3.36 2.349-4.856 2.251-2.06 6.062-3.453 10.393-4.061v17.607c-3.541-.873-6.773-1.918-9-3.443z" fill="#2d3e52"></path> <path d="m382.287 367.603c.422.77.819 1.918.132 3.987-.888 2.688-6.052 5.415-13.419 6.101v-17.102c6.969 1.775 11.81 4.321 13.287 7.013z" fill="#2d3e52"></path> <path d="m345.051 368.623c-.711-2.668-3.443-4.262-6.111-3.551-2.673.701-4.262 3.443-3.561 6.111 2.688 10.143 13.238 14.93 23.621 16.268v6.293c0 2.761 2.237 5.003 4.998 5.003s5.003-2.241 5.003-5.003v-6.023c9.687-.711 20.04-4.346 22.909-12.978 1.407-4.242 1.108-8.377-.858-11.957-3.002-5.454-9.495-9.363-19.844-11.957-.721-.176-1.457-.348-2.207-.515v-19.819c1.658.221 3.281.549 4.831 1.011 4.968 1.471 8.249 3.958 8.985 6.827.692 2.668 3.414 4.282 6.092 3.59 2.668-.692 4.282-3.419 3.59-6.092-1.658-6.44-7.279-11.383-15.827-13.914-2.354-.697-4.954-1.187-7.671-1.467v-6.16c0-2.756-2.241-4.998-5.003-4.998s-4.998 2.241-4.998 4.998v6.165c-6.543.697-12.84 2.81-17.151 6.763-3.929 3.6-5.9 8.191-5.562 12.933.353 4.939 3.222 9.481 8.073 12.796 4.09 2.791 9.309 4.262 14.64 5.449v18.927c-6.518-1.108-12.703-3.963-13.949-8.701z" fill="#2d3e52"></path> </g> </svg></div>
+
+<div class="gw-stat-sub">相較傳統買斷，商模實質省下的固定資產與維護預算</div>
+</div>
+</div>
+
+<div class="gw-promise-card">
+<h3>永續承諾履行</h3>
+
+<h4>借鏡指標實績，啟動企業綠色減碳</h4>
+
+<p><strong>台糖透過租賃商模取代舊型 T8 與 T5 螢光燈，每年為企業實質減碳約 70 萬公斤 (700 公噸)</strong>，此案例完美體現了國際綠色採購趨勢。當企業將照明設備「服務化」後，合約全期內皆可透過專業團隊承擔全責維護，徹底免除耗材更換、燈具折舊與汰換處置的雙重管理成本。</p>
+</div>
+</div>
+</div>
+
+<div class="gw-bottom-grid">
+<div class="gw-feature-card"><img alt="台灣研發製造" class="gw-feature-img" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/rent_esg/5bc08cfa9654bc66.jpg?v=h3msz5r" />
+<div class="gw-feature-text">
+<h4 class="gw-feature-title"><svg clip-rule="evenodd" fill-rule="evenodd" height="48" stroke-linejoin="round" stroke-miterlimit="2" style="flex-shrink: 0;" viewbox="0 0 512 512" width="48" xmlns="http://www.w3.org/2000/svg"> <g transform="translate(-562 -1124)"> <g transform="matrix(.964 0 0 .964 25.102 67.66)"> <path d="m789.658 1606.58c-5.182-10.94-3.769-20.27-3.583-28.93.158-7.29-.447-14.17-4.809-21.07-2.879-4.56-7.045-7.13-11.595-9.16-3.648-1.64-7.563-2.88-10.864-5.16-1.849-1.27-3.165-3.06-4.556-4.78-1.921-2.37-3.938-4.64-6.672-6.22-2.498-1.44-5.314-2.41-8.045-3.5-2.094-.84-4.147-1.73-5.769-3.28-.79-.76-1.315-2.05-1.842-3.62-1.091-3.27-1.837-7.6-2.527-12.36-1.896-13.09-3.463-29.12-8.569-37.41-2.843-4.61-7.262-8.29-10.966-12.26-2.835-3.05-5.267-6.27-5.116-10.83.412-12.44 6.166-26.27 8.262-38.85 2.529-15.17 1.779-29.73 5.193-45.04 1.61-7.22 7.376-16.1 14.243-25.37 10.958-14.79 24.795-30.38 31.377-41.71 9.642-16.59 13.839-36.49 23.807-53.38 1.603-2.71 4.014-7.18 6.769-10.87 1.504-2.02 3.052-3.84 4.68-4.68 5.376-2.8 9.722-3.61 13.412-9.56 6.262-10.1 16.164-31.34 24.967-38.65 3.677-3.05 8.258-4.36 12.888-5.52 5.489-1.38 11.067-2.52 15.842-4.98 4.442-2.28 8.27-7.67 12.293-12.62 2.884-3.55 5.754-7.07 9.914-7.08 2.548 0 4.765 1.62 6.876 3.41 2.846 2.42 5.423 5.34 7.78 7.34 5.01 4.24 11.314 6.99 17.59 9.63 5.538 2.34 11.058 4.56 15.279 8.11 3.206 2.7 4.861 4.8 5.027 6.87.095 1.19-.442 2.26-1.191 3.32-1.147 1.62-2.808 3.16-4.625 4.75-3.61 3.15-7.786 6.41-10.848 10.2-3.617 4.48-5.777 9.66-4.666 16.03.737 4.23 2.999 8.02 5.127 11.81 1.561 2.78 3.104 5.54 2.988 8.77-.294 8.23-4.491 18.31-9.738 28.86-8.377 16.84-19.505 34.72-24.027 48.33-1.516 4.56-1.117 9.14-.464 13.72.506 3.54 1.213 7.07.477 10.59-7.222 34.58-15.65 72.72-29.337 105.18-6.521 15.46-18.046 34.11-28.651 47-2.488 3.03-5.945 5.56-9.205 8.23-3.879 3.18-7.487 6.54-9.632 10.66-5.939 11.38-13.759 28.44-14.925 41.11-.869 9.44 1.696 23.34.858 35.03-.422 5.91-1.646 11.23-5.381 14.58-1.955 1.76-4.586 2.9-8.045 3.36z" fill="#71e4bf"></path> </g> <g transform="matrix(.933 0 0 .933 54.66 107.951)"> <path d="m912.285 1274.69c-7.915 15.01-16.865 30.21-20.848 42.19-1.566 4.72-1.154 9.44-.479 14.17.522 3.66 1.251 7.31.492 10.94-7.458 35.71-16.161 75.09-30.293 108.61-6.734 15.97-18.635 35.22-29.586 48.53-2.569 3.13-6.139 5.74-9.505 8.5-4.005 3.28-7.731 6.76-9.946 11-6.132 11.76-14.207 29.38-15.412 42.46-.897 9.75 1.752 24.1.887 36.17-.437 6.1-1.7 11.59-5.557 15.06-2.018 1.81-4.736 2.99-8.308 3.47-5.352-11.3-3.892-20.94-3.7-29.88.163-7.53-.462-14.63-4.966-21.76-2.973-4.71-7.275-7.35-11.972-9.46-3.767-1.69-7.811-2.97-11.219-5.32-1.91-1.31-3.268-3.16-4.705-4.94-1.984-2.44-4.066-4.79-6.889-6.42-2.58-1.49-5.488-2.49-8.308-3.62-2.161-.86-4.281-1.78-5.957-3.38-.815-.79-1.357-2.12-1.901-3.74-1.127-3.37-1.897-7.84-2.61-12.76-1.958-13.52-3.576-30.08-8.849-38.63-2.935-4.76-7.498-8.56-11.323-12.67-2.928-3.14-5.439-6.46-5.283-11.17.177-5.35 1.311-10.95 2.73-16.6 10.667 2.17 14.427 11.11 28.525 23.76 6.267 5.62 14.714 6.99 21.308 12.09 4.474 3.45 18.631 27.26 26.509 20.67 8.412-7.04 9.725-18.76 16.209-27.28 8.736-11.48 25.265-13.84 32.232-26.94 7.952-14.95 4.51-30.79 7.483-46.57 1.664-8.83 15.02-19.56 18.657-28.57 6.524-16.14 12.702-33.53 17.928-50.15 1.964-6.25 1.785-14.96 5.225-20.56 4.554-7.42 23.362-14.89 39.431-17.2z" fill="#14d597"></path> </g> <g transform="matrix(1.09 0 0 1.09 421.094 829.696)"> <path d="m423.181 287.977c12.059 0 21.849 9.79 21.849 21.849s-21.849 46.164-21.849 46.164-21.849-34.105-21.849-46.164 9.79-21.849 21.849-21.849z" fill="#f05475"></path> </g> <g transform="matrix(.918 0 0 .918 596.833 1014.19)"> <path d="m318.012 209.848c-2.019 3.445-7.138 11.731-7.138 11.731s-25.936-40.484-25.936-54.799c0-14.314 11.622-25.935 25.936-25.935l-.161.288c-23.703 12.795-16.469 42.757 7.299 68.715z" fill="#f62e59"></path> </g> <g transform="matrix(.403 0 0 .403 711.713 1042.47)"> <circle cx="423.181" cy="309.826" fill="#ffffff" r="21.849"></circle> </g> <g transform="matrix(.933 0 0 .933 54.66 107.951)"> <path d="m864.819 1157.76c-1.251 1.26-2.531 2.33-3.898 3.03-4.668 2.4-10.135 3.47-15.5 4.81-5.366 1.34-10.629 2.97-14.891 6.51-9.333 7.75-19.986 30.16-26.626 40.87-3.34 5.39-7.428 5.9-12.295 8.43-2.119 1.11-4.235 3.37-6.193 5.99-2.937 3.94-5.52 8.7-7.229 11.59-10.297 17.45-14.635 38-24.597 55.14-6.74 11.6-20.932 27.55-32.155 42.7-7.482 10.1-13.643 19.85-15.397 27.71-3.542 15.88-2.781 30.99-5.404 46.72-2.192 13.16-8.153 27.63-8.584 40.64-.194 5.88 2.706 10.12 6.354 14.04 3.649 3.92 8.046 7.5 10.845 12.04 5.059 8.2 6.417 24.14 8.296 37.1.751 5.19 1.586 9.9 2.774 13.46.793 2.36 1.742 4.22 2.929 5.35 2.047 1.96 4.597 3.16 7.239 4.22 2.641 1.05 5.375 1.97 7.792 3.36 2.387 1.38 4.104 3.41 5.781 5.48 1.678 2.07 3.316 4.18 5.545 5.72 3.607 2.48 7.865 3.89 11.852 5.67 3.986 1.79 7.702 3.95 10.225 7.95 4.04 6.39 4.495 12.78 4.349 19.54-.204 9.47-1.592 19.68 4.077 31.66.208.44.494.84.841 1.17h-.002.002c.722.7 1.704 1.13 2.781 1.13l.267-.01c.089-.01.178-.02.266-.03 4.506-.6 7.901-2.17 10.447-4.46 4.574-4.1 6.357-10.51 6.875-17.74.863-12.05-1.789-26.37-.894-36.1 1.164-12.63 9.053-29.61 14.976-40.97 1.976-3.79 5.361-6.83 8.933-9.76 3.573-2.92 7.334-5.73 10.06-9.04 11.173-13.59 23.312-33.24 30.183-49.53 14.229-33.74 23.013-73.39 30.523-109.34.855-4.09.139-8.21-.448-12.32-.588-4.12-1.049-8.24.315-12.34 4.621-13.91 16.033-32.17 24.595-49.38 5.709-11.48 10.151-22.49 10.472-31.44.147-4.09-1.62-7.65-3.595-11.17-1.975-3.51-4.157-6.99-4.842-10.91-.927-5.33.97-9.62 3.99-13.36 3.019-3.74 7.16-6.93 10.72-10.03 2.136-1.87 4.063-3.71 5.413-5.62 1.349-1.91 2.122-3.89 1.949-6.05-.23-2.88-2.14-6.08-6.603-9.83-4.651-3.91-10.698-6.43-16.8-9-3.774-1.59-7.564-3.21-11.064-5.18.248-.54.493-1.07.732-1.6 3.464-7.71 5.8-14.85 5.8-19.4 0-16.13-13.095-29.23-29.226-29.23-16.13 0-29.226 13.1-29.226 29.23 0 4.55 2.336 11.69 5.801 19.4.472 1.05.964 2.11 1.47 3.18zm41.138 5.62c-7.221 14.16-15.803 27.73-15.803 27.73-.733 1.16-2.009 1.86-3.38 1.86s-2.647-.7-3.38-1.86c0 0-7.862-12.43-14.866-25.91-1.282 1.09-2.595 2.01-3.945 2.7-5.194 2.68-11.246 3.96-17.217 5.46-4.197 1.05-8.393 2.14-11.727 4.91-8.846 7.34-18.642 28.78-24.936 38.93-4.281 6.9-9.165 8.07-15.403 11.31-1.244.65-2.323 2.13-3.471 3.67-2.752 3.69-5.151 8.17-6.752 10.88-10.288 17.43-14.617 37.97-24.57 55.09-6.852 11.79-21.235 28.04-32.644 43.45-6.7 9.04-12.446 17.64-14.017 24.68-3.509 15.73-2.722 30.71-5.321 46.3-2.137 12.82-8.059 26.91-8.479 39.59-.118 3.55 2.003 5.95 4.211 8.32 4.003 4.29 8.731 8.31 11.802 13.29 5.488 8.9 7.365 26.09 9.403 40.16.673 4.64 1.379 8.87 2.444 12.06.298.89.429 1.69.874 2.12 1.304 1.24 2.994 1.89 4.676 2.56 2.998 1.2 6.08 2.28 8.823 3.87 3.259 1.88 5.707 4.54 7.997 7.37 1.196 1.47 2.275 3.06 3.864 4.16 3.21 2.21 7.039 3.37 10.586 4.96 5.409 2.42 10.297 5.55 13.72 10.98 4.969 7.86 5.762 15.67 5.583 23.98-.164 7.62-1.439 15.79 2.083 25.17 1.286-.43 2.367-1.03 3.253-1.83 3.141-2.82 3.885-7.4 4.24-12.36.867-12.1-1.779-26.49-.88-36.26 1.246-13.53 9.506-31.77 15.848-43.94 2.455-4.7 6.52-8.61 10.959-12.24 3.159-2.59 6.539-5.01 8.95-7.95 10.728-13.04 22.392-31.9 28.989-47.55 14.036-33.28 22.656-72.4 30.064-107.87.663-3.17-.081-6.36-.537-9.55-.762-5.34-1.125-10.68.643-16 4.716-14.19 16.288-32.85 25.025-50.42 5.127-10.31 9.351-20.12 9.639-28.16.093-2.59-1.326-4.73-2.576-6.96-2.42-4.31-4.908-8.65-5.747-13.46-1.367-7.84 1.195-14.24 5.646-19.75 3.305-4.1 7.788-7.64 11.684-11.04 1.616-1.41 3.119-2.76 4.14-4.2.201-.29.534-.48.508-.8-.032-.42-.304-.79-.637-1.23-.713-.96-1.77-1.97-3.14-3.12-4.067-3.42-9.419-5.5-14.756-7.75-3.907-1.64-7.819-3.34-11.47-5.35zm-19.183-49.43c11.715 0 21.226 9.51 21.226 21.23 0 3.8-2.204 9.68-5.097 16.12-4.897 10.89-11.981 23.12-16.129 30.02-4.148-6.9-11.232-19.13-16.129-30.02-2.892-6.44-5.097-12.32-5.097-16.12 0-11.72 9.511-21.23 21.226-21.23zm0 7.8c-7.413 0-13.431 6.01-13.431 13.43 0 7.41 6.018 13.43 13.431 13.43s13.432-6.02 13.432-13.43c0-7.42-6.019-13.43-13.432-13.43zm0 8c2.998 0 5.432 2.43 5.432 5.43 0 2.99-2.434 5.43-5.432 5.43s-5.431-2.44-5.431-5.43c0-3 2.433-5.43 5.431-5.43z" fill="#000000"></path> </g> </g> </svg> <span>台灣研發製造</span></h4>
+
+<p class="gw-feature-desc">重塑企業綠色照明的品質核心。拒絕劣質貼牌燈具的早衰與色偏風險，金鍏電子堅持台灣研發生產製造，以頂級工藝構築超越 10 年壽命的高穩定綠色資產。</p>
+</div>
+</div>
+
+<div class="gw-feature-card"><img alt="科學化照度規劃" class="gw-feature-img" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/rent_esg/snipaste_2026-06-17_16-11-05.png?v=leqihpf" />
+<div class="gw-feature-text">
+<h4 class="gw-feature-title"><svg class="gw-feature-icon" height="48" style="margin-right: 0.5rem; vertical-align: middle; flex-shrink: 0;" viewbox="0 0 682.66669 682.66669" width="48" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"> <g transform="matrix(1.3333333,0,0,-1.3333333,0,682.66667)"> <g> <g transform="translate(7.5,163.167)"> <path d="m 0,0 v 333.332 c 0,4.419 3.582,8 8,8 h 66.833 c 4.418,0 8,-3.581 8,-8 V 0 Z" fill="#FBD477" fill-opacity="1"></path> </g> <g transform="translate(82.3335,504.499)"> <path d="m 0,0 h -22.991 c 4.419,0 8,-3.581 8,-8 V -341.332 H 8 V -8 C 8,-3.581 4.418,0 0,0" fill="#FBBE6F" fill-opacity="1"></path> </g> <g transform="translate(496.4995,7.5)"> <path d="M 0,0 H -333.333 V 82.833 H 0 c 4.418,0 8,-3.581 8,-8 V 8 C 8,3.582 4.418,0 0,0" fill="#FBD477" fill-opacity="1"></path> </g> <g transform="translate(496.4995,90.334)"> <path d="m 0,0 h -23 c 4.418,0 8,-3.582 8,-8 v -66.834 c 0,-4.418 -3.582,-8 -8,-8 H 0 c 4.418,0 8,3.582 8,8 V -8 C 8,-3.582 4.418,0 0,0" fill="#FBBE6F" fill-opacity="1"></path> </g> <g transform="translate(322.2661,156.5996)"> <path d="m 0,0 h 107.967 c 4.418,0 8,3.582 8,8 V 184.233 H 0 Z" fill="#96CEFE" fill-opacity="1"></path> </g> <g transform="translate(415.2334,340.834)"> <path d="m 0,0 v -176.233 c 0,-4.419 -3.582,-8 -8,-8 h 23 c 4.418,0 8,3.581 8,8 V 0 Z" fill="#73BFFC" fill-opacity="1"></path> </g> <g transform="translate(322.2661,471.3672)"> <path d="m 0,0 141.237,-125.544 c 2.749,-2.443 1.021,-6.99 -2.657,-6.99 H 0 Z" fill="#415E72" fill-opacity="1"></path> </g> <g transform="translate(463.5034,345.8232)"> <path d="M 0,0 -141.237,125.544 V 105.1 L -23,0 c 2.749,-2.443 1.021,-6.989 -2.658,-6.989 h 23 C 1.021,-6.989 2.749,-2.443 0,0" fill="#324858" fill-opacity="1"></path> </g> <g transform="translate(24.0669,7.5)"> <path d="m 0,0 h 141.1 c 4.419,0 8,3.582 8,8 v 74.834 c 0,45.747 -37.085,82.833 -82.833,82.833 H -8.567 c -4.418,0 -8,-3.581 -8,-8 V 16.566 C -16.567,7.417 -9.15,0 0,0" fill="#415E72" fill-opacity="1"></path> </g> <g transform="translate(90.3335,173.167)"> <path d="m 0,0 h -23 c 45.747,0 82.833,-37.086 82.833,-82.833 v -74.834 c 0,-4.418 -3.582,-8 -8,-8 h 23 c 4.419,0 8,3.582 8,8 v 74.834 C 82.833,-37.086 45.748,0 0,0" fill="#324858" fill-opacity="1"></path> </g> <g transform="translate(140.0332,90.334)"> <path d="m 0,0 c 0,-27.449 -22.251,-49.7 -49.7,-49.7 -27.448,0 -49.699,22.251 -49.699,49.7 0,27.448 22.251,49.699 49.699,49.699 C -22.251,49.699 0,27.448 0,0" fill="#FBF7F6" fill-opacity="1"></path> </g> <g transform="translate(106.8999,90.334)"> <path d="m 0,0 c 0,-9.149 -7.417,-16.566 -16.566,-16.566 -9.15,0 -16.567,7.417 -16.567,16.566 0,9.149 7.417,16.566 16.567,16.566 C -7.417,16.566 0,9.149 0,0" fill="#415E72" fill-opacity="1"></path> </g> <g transform="translate(90.3335,140.0332)"> <path d="m 0,0 c -3.96,0 -7.807,-0.477 -11.5,-1.352 21.9,-5.191 38.199,-24.86 38.199,-48.347 0,-23.489 -16.299,-43.157 -38.199,-48.348 3.693,-0.876 7.54,-1.352 11.5,-1.352 27.449,0 49.7,22.252 49.7,49.7 C 49.7,-22.251 27.449,0 0,0" fill="#F5EBE9" fill-opacity="1"></path> </g> <g transform="translate(24.0669,7.5)"> <path d="m 0,0 h 149.1 v 82.834 c 0,45.747 -37.085,82.833 -82.833,82.833 H -16.567 V 16.566 C -16.567,7.417 -9.15,0 0,0 Z" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(74.0254,305.707)"> <path d="M 0,0 H 16.049" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(57.2002,338.8389)"> <path d="M 0,0 H 32.875" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(57.2002,272.5693)"> <path d="M 0,0 H 32.875" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(74.0254,239.4385)"> <path d="M 0,0 H 16.049" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(57.2002,206.3018)"> <path d="M 0,0 H 32.875" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(74.0254,371.9697)"> <path d="M 0,0 H 16.049" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(57.2002,405.1016)"> <path d="M 0,0 H 32.875" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(74.0254,438.2334)"> <path d="M 0,0 H 16.049" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(57.2002,471.3652)"> <path d="M 0,0 H 32.875" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(7.5,420.1035)"> <path d="m 0,0 v 76.396 c 0,4.418 3.582,8 8,8 h 66.833 c 4.418,0 8,-3.582 8,-8 V -246.937 H 0 v 216.938" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(371.96,74.0254)"> <path d="M 0,0 V 16.049" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(338.8281,57.2002)"> <path d="M 0,0 V 32.875" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(405.0977,57.2002)"> <path d="M 0,0 V 32.875" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(438.228,74.0254)"> <path d="M 0,0 V 16.049" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(471.3652,57.2002)"> <path d="M 0,0 V 32.875" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(305.6968,74.0254)"> <path d="M 0,0 V 16.049" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(272.5645,57.2002)"> <path d="M 0,0 V 32.875" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(239.4336,74.0254)"> <path d="M 0,0 V 16.049" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(206.3013,57.2002)"> <path d="M 0,0 V 32.875" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(496.4995,7.5)"> <path d="M 0,0 H -323.333 V 82.833 H 0 c 4.418,0 8,-3.581 8,-8 V 8 C 8,3.582 4.418,0 0,0 Z" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(106.8999,90.334)"> <path d="m 0,0 c 0,-9.149 -7.417,-16.566 -16.566,-16.566 -9.15,0 -16.567,7.417 -16.567,16.566 0,9.149 7.417,16.566 16.567,16.566 C -7.417,16.566 0,9.149 0,0 Z" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(140.0332,90.334)"> <path d="m 0,0 c 0,-27.449 -22.251,-49.7 -49.7,-49.7 -27.448,0 -49.699,22.251 -49.699,49.7 0,27.448 22.251,49.699 49.699,49.699 C -22.251,49.699 0,27.448 0,0 Z" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(305.6997,504.5)"> <path d="M 0,0 H 33.133" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(338.8335,123.4668)"> <path d="M 0,0 H -33.133" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(322.2666,504.5)"> <path d="M 0,0 V -381.033" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(365.25,156.5996)"> <path d="M 0,0 H -42.984" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(322.2661,338.833)"> <path d="M 0,0 H 115.967 V -182.233 H 72.984" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(322.2661,471.3672)"> <path d="M 0,0 149.101,-132.534 H 0" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(322.2661,471.3672)"> <path d="M 0,0 -13.156,-11.694" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(282.9854,436.4502)"> <path d="M 0,0 -83.6,-74.312" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(186.3228,350.5273)"> <path d="M 0,0 -13.156,-11.694 H 4.446" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(230.7324,338.833)"> <path d="M 0,0 H 53.951" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(304.6646,338.833)"> <path d="M 0,0 H 17.602" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(322.2661,156.5996)"> <path d="M 0,0 H -21.744" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(275.3125,156.5996)"> <path d="M 0,0 H -34.664" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(228.0439,156.5996)"> <path d="M 0,0 H -21.744 V 21.744" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(206.2998,217.96)"> <path d="M 0,0 V 54.472" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-opacity="1" stroke-width="15"></path> </g> <g transform="translate(206.2998,292.2393)"> <path d="M 0,0 V 21.744" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="4" stroke-opacity="1" stroke-width="15"></path> </g> </g> </g> </svg> <span>科學化照度規劃</span></h4>
+
+<p class="gw-feature-desc">以專業客製舒適光環境。告別盲目依憑感覺的電源浪費與光環境眩光；我們運用專業模擬軟體，精準計算極效光輸出，主動為您找出最佳燈具配置。</p>
+</div>
+</div>
+
+<div class="gw-contact-card">
+<p class="gw-contact-desc">金鍏電子依循永續淨零趨勢，為企業客戶量身打造最高規格的專屬 LED 租賃解決方案。</p>
+
+<div class="gw-contact-info-block">
+<p>歡迎<a class="gw-contact-link" href="https://www.goldenwayled.com/eforms.php?lang=tw&amp;tb=1&amp;id=11"> 填寫表單 </a>並請提供以下資訊：</p>
+
+<ul>
+	<li><span>❶</span> <span>貴單位的公司行號名稱</span></li>
+	<li><span>❷</span> <span>聯絡人與電話</span></li>
+	<li><span>❸</span> <span>預計規劃的辦公室或廠房坪數等基礎案場資訊</span></li>
+</ul>
+
+<p>金鍏電子專業團隊將依據此核心數據為您進行初步的方案評估，並主動與您取得聯繫。</p>
+</div>
+
+<div class="gw-profile-box"><img alt="金鍏電子企業燈具租賃專案經理" class="gw-avatar" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/rent_esg/man.png?v=g0ab67s" />
+<div class="gw-profile-info">
+<p class="gw-profile-job">金鍏電子 - 企業燈具以租代買 專案服務</p>
+
+<p class="gw-profile-name">謝經理</p>
+</div>
+</div>
+
+<div class="gw-form-button-container"><span class="material-symbols-outlined">description</span> <a class="gw-form-button-link" href="https://www.goldenwayled.com/eforms.php?lang=tw&amp;tb=1&amp;id=11" target="_blank">填寫燈具租賃專案表單<span class="gw-button-arrow">&rarr;</span></a></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="_bd_row _bd_clearfix">
+<div class="_bd_column _bd_full">
+<hr /></div>
+</div>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&amp;family=Outfit:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* ==========================================================================
+   GW-企業燈具以租代買關鍵問答QA - 核心排版與防禦鎖定
+   ========================================================================== */
+#GW-企業燈具以租代買關鍵問答QA-Root {
+  width: 100%; /* 強制容器寬度自適應百分之百 */
+  max-width: 100%; /* 限制最大寬度為百分之百 */
+  margin: 0 auto 20px auto; /* 區塊上下外距與左右水平置中 */
+  font-family: 'Outfit', 'Noto Sans TC', sans-serif; /* 設定英中文預設字型家族 */
+  padding: 0 20px; /* 區塊左右內邊距以防貼邊 */
+  box-sizing: border-box; /* 採用邊框盒模型計算寬高 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root *,
+#GW-企業燈具以租代買關鍵問答QA-Root *::before,
+#GW-企業燈具以租代買關鍵問答QA-Root *::after {
+  box-sizing: border-box; /* 強制所有子元素套用邊框盒模型 */
+}
+
+/* ==========================================================================
+   QA 摺疊外框與問答設定 (HTML5 原生細節標籤)
+   ========================================================================== */
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-qa-accordion {
+  width: 100%; /* 摺疊外框寬度百分之百 */
+  margin-bottom: 15px; /* 每個QA區塊下方的邊距間隔 */
+  border: 1px solid #b9dcff; /* 淺藍色邊框 */
+  border-radius: 8px; /* 邊框圓角半徑 */
+  background-color: #ffffff; /* 純白背景色 */
+  overflow: hidden; /* 隱藏溢出內容以防邊角溢出 */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03); /* 微弱陰影增添質感 */
+}
+
+/* Q 問題區塊 (點擊區域) */
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-qa-question {
+  background-color: #f0f6fc; /* 未展開時的淺藍底色 */
+  padding: 18px 24px; /* 點擊區內邊距 */
+  font-size: 17px; /* 問題文字大小 */
+  font-weight: 700; /* 強制加粗文字 */
+  color: #111111 !important; /* 鎖定文字顏色為深黑色 */
+  cursor: pointer; /* 滑鼠移入時顯示手勢 */
+  display: flex; /* 彈性佈局以對齊圖示與文字 */
+  align-items: flex-start; /* 上對齊圖示與文字 */
+  gap: 14px; /* 圖示與問題文字的間距 */
+  list-style: none; /* 隱藏 Safari 瀏覽器預設三角形 */
+  transition: background-color 0.2s ease; /* 背景色切換平滑過渡 */
+  line-height: 1.5 !important; /* 鎖定行高 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-qa-question:hover {
+  background-color: #e3f0fd; /* 滑鼠懸停時的亮藍底色 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-qa-question::-webkit-details-marker {
+  display: none; /* 隱藏 Chrome/Safari 預設展開標記 */
+}
+
+/* 客製化下拉箭頭容器 */
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-qa-icon {
+  width: 26px; /* 箭頭圓圈的寬度 */
+  height: 26px; /* 箭頭圓圈的高度 */
+  border: 1px solid #036eb8; /* 品牌藍色圓圈邊框 */
+  border-radius: 6px; /* 圓角半徑 */
+  display: flex; /* 居中佈局 */
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+  flex-shrink: 0; /* 防止圖示被壓縮 */
+  margin-top: 2px; /* 頂部微調以對齊第一行文字 */
+  background-color: transparent; /* 預設背景透明 */
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* 箭頭旋轉動畫 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-qa-icon svg {
+  width: 14px; /* 向量箭頭圖示寬度 */
+  height: 14px; /* 向量箭頭圖示高度 */
+  stroke: #036eb8; /* 向量箭頭顏色 */
+  stroke-width: 2.5; /* 向量箭頭粗細 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-qa-accordion[open] .gw-qa-icon {
+  transform: rotate(180deg); /* 展開時旋轉180度 */
+  background-color: #036eb8; /* 展開時背景填滿品牌藍色 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-qa-accordion[open] .gw-qa-icon svg {
+  stroke: #ffffff; /* 展開時箭頭變為白色 */
+}
+
+/* A 回答內容區域 */
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-qa-answer-wrapper {
+  padding: 30px 40px; /* 回答區內邊距 */
+  animation: gw-fade-in-down 0.4s ease-out forwards; /* 回答展開時的下滑淡入特效 */
+}
+
+@keyframes gw-fade-in-down {
+  0% { opacity: 0; transform: translateY(-10px); } /* 起始透明且微調偏上 */
+  100% { opacity: 1; transform: translateY(0); } /* 結束完全顯示且復位 */
+}
+
+/* ==========================================================================
+   抗污染防禦文字樣式鎖定
+   ========================================================================== */
+#GW-企業燈具以租代買關鍵問答QA-Root p,
+#GW-企業燈具以租代買關鍵問答QA-Root span,
+#GW-企業燈具以租代買關鍵問答QA-Root h3,
+#GW-企業燈具以租代買關鍵問答QA-Root h4,
+#GW-企業燈具以租代買關鍵問答QA-Root li,
+#GW-企業燈具以租代買關鍵問答QA-Root td,
+#GW-企業燈具以租代買關鍵問答QA-Root th {
+  color: #111111 !important; /* 強制重置所有一般文字為深黑色，防止官網樣式污染 */
+  line-height: 1.7 !important; /* 強制重置行高為 1.7 倍 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-intro-lead {
+  font-size: 15px; /* 前導字文字大小 */
+  line-height: 1.7 !important; /* 鎖定行高 */
+  color: #333333 !important; /* 鎖定灰黑色 */
+  margin-bottom: 15px; /* 前導字下方間距 */
+  text-align: justify; /* 文字兩端對齊 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-intro-lead strong {
+  color: #036eb8 !important; /* 鎖定重點文字為品牌藍色 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-blue-highlight {
+  color: #036eb8 !important; /* 鎖定重點高亮字為品牌藍色 */
+  font-weight: 700; /* 重點高亮字加粗 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-qa-list {
+  padding-left: 20px; /* 列表左側縮排 */
+  margin: 0 0 20px 0; /* 列表上下外距 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-qa-list li {
+  margin-bottom: 10px; /* 列表項下方間距 */
+  line-height: 1.7 !important; /* 鎖定行高 */
+  color: #333333 !important; /* 鎖定文字顏色 */
+  font-size: 15px; /* 列表字型大小 */
+  text-align: justify; /* 兩端對齊 */
+}
+
+/* ==========================================================================
+   圖示化、言簡意賅之以租代買元件樣式
+   ========================================================================== */
+
+/* 1. 核心價值與適用場域卡片網格 (Q1 & Q3) */
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-card-grid {
+  display: grid; /* 啟用 CSS Grid 佈局 */
+  grid-template-columns: repeat(2, 1fr); /* 寬螢幕下對稱兩欄並排 */
+  gap: 20px; /* 卡片間距 */
+  margin-top: 10px; /* 網格頂部間距 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-card {
+  background-color: #f8fafc; /* 卡片背景底色 */
+  border: 1px solid #e2e8f0; /* 卡片邊框線 */
+  border-radius: 8px; /* 卡片圓角半徑 */
+  padding: 20px; /* 卡片內邊距 */
+  display: flex; /* 卡片內部彈性排版 */
+  flex-direction: column; /* 垂直排列 */
+  gap: 8px; /* 卡片內部元素間距 */
+  transition: all 0.3s ease; /* 懸停動畫過渡時間 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-card:hover {
+  transform: translateY(-3px); /* 懸停時微幅上移 */
+  border-color: #036eb8; /* 邊框變為品牌藍色 */
+  box-shadow: 0 8px 20px rgba(3, 110, 184, 0.08); /* 加深陰影 */
+  background-color: #ffffff; /* 變為純白底色 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-card-header {
+  display: flex; /* 彈性佈局 */
+  align-items: center; /* 垂直居中對齊圖示與文字 */
+  gap: 10px; /* 圖示與標題間距 */
+  font-weight: 700; /* 標題加粗 */
+  font-size: 16px; /* 標題文字大小 */
+  color: #036eb8 !important; /* 鎖定品牌藍色 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-card-header svg {
+  width: 24px; /* SVG 圖示寬度 */
+  height: 24px; /* SVG 圖示高度 */
+  fill: #036eb8; /* SVG 填滿品牌藍色 */
+  flex-shrink: 0; /* 防止圖示壓縮 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-card-desc {
+  font-size: 14px; /* 描述文字大小 */
+  color: #444444 !important; /* 鎖定描述字顏色 */
+  line-height: 1.7 !important; /* 鎖定描述字行高 */
+  text-align: justify; /* 兩端對齊 */
+}
+
+/* 2. 租買表格對比 (Q2) */
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-comparison-table-wrapper {
+  overflow-x: auto; /* 寬度不足時啟用橫向滾動 */
+  margin-top: 10px; /* 表格頂部間距 */
+  border: 1px solid #e2e8f0; /* 外邊框 */
+  border-radius: 8px; /* 圓角半徑 */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.02); /* 微陰影 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-comparison-table {
+  width: 100%; /* 表格寬度百分之百 */
+  border-collapse: collapse; /* 合併邊框 */
+  text-align: left; /* 文字左對齊 */
+  font-size: 15px; /* 表格文字大小 */
+  min-width: 500px; /* 保障行動裝置下最少寬度以防擠壓 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-comparison-table th,
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-comparison-table td {
+  padding: 16px 20px; /* 單元格內邊距 */
+  border-bottom: 1px solid #e2e8f0; /* 底部分割線 */
+  line-height: 1.5 !important; /* 鎖定單元格行高 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-comparison-table th {
+  background-color: #f1f5f9; /* 表頭背景色 */
+  font-weight: 700; /* 表頭文字加粗 */
+  color: #1e293b !important; /* 鎖定表頭文字顏色 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-comparison-table tr:last-child td {
+  border-bottom: none; /* 移除最後一行底部分割線 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-comparison-table td.gw-col-rent {
+  background-color: #f0f6fc; /* 租賃欄位特別標示背景色 */
+  font-weight: 700; /* 租賃文字加粗 */
+  color: #036eb8 !important; /* 鎖定租賃文字顏色 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-comparison-table td.gw-col-buy {
+  color: #475569 !important; /* 鎖定買斷文字顏色 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-icon-check {
+  color: #059669 !important; /* 鎖定打勾圖示為綠色 */
+  font-weight: 700; /* 字體加粗 */
+  display: flex; /* 對齊圖示與文字 */
+  align-items: center; /* 垂直置中 */
+  gap: 6px; /* 圖示與文字間距 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-icon-close {
+  color: #dc2626 !important; /* 鎖定叉號圖示為紅色 */
+  font-weight: 700; /* 字體加粗 */
+  display: flex; /* 對齊圖示與文字 */
+  align-items: center; /* 垂直置中 */
+  gap: 6px; /* 圖示與文字間距 */
+}
+
+/* 3. 規劃流程三欄網格 (Q4) */
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-process-grid {
+  display: grid; /* 啟用 CSS Grid 佈局 */
+  grid-template-columns: repeat(3, 1fr); /* 寬螢幕下對稱三欄並排 */
+  gap: 20px; /* 欄位間距 */
+  margin: 15px 0; /* 網格上下外距 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-process-card {
+  background-color: #f8fafc; /* 卡片背景底色 */
+  border: 1px solid #e2e8f0; /* 卡片細邊框 */
+  border-radius: 8px; /* 圓角半徑 */
+  padding: 20px; /* 卡片內邊距 */
+  display: flex; /* 垂直彈性排版 */
+  flex-direction: column; /* 垂直軸排列 */
+  gap: 12px; /* 卡片內項目間距 */
+  transition: all 0.3s ease; /* 懸停過渡時間 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-process-card:hover {
+  transform: translateY(-3px); /* 懸停上移 */
+  border-color: #036eb8; /* 邊框色變更 */
+  box-shadow: 0 8px 20px rgba(3, 110, 184, 0.08); /* 投影陰影 */
+  background-color: #ffffff; /* 變更為純白底色 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-process-header {
+  background-color: #e3f0fd; /* 標題淺藍底色 */
+  color: #036eb8 !important; /* 鎖定品牌藍色 */
+  font-weight: 700; /* 強制標題加粗 */
+  padding: 8px 12px; /* 標題內邊距 */
+  border-radius: 6px; /* 標題小圓角 */
+  font-size: 14px; /* 標題字型大小 */
+  text-align: center; /* 標題文字置中 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-process-list {
+  margin: 0; /* 移除外距 */
+  padding-left: 15px; /* 左側縮排以對齊項目符號 */
+  font-size: 14px; /* 項目清單字型大小 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-process-list li {
+  margin-bottom: 10px; /* 清單項目下方間距 */
+  color: #444444 !important; /* 鎖定深灰色 */
+  line-height: 1.6 !important; /* 鎖定行高 */
+  text-align: justify; /* 兩端對齊 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-process-list li strong {
+  color: #111111 !important; /* 鎖定清單重點粗體字 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-decision-flow {
+  background-color: #ffffff; /* 純白背景底色 */
+  border: 1px dashed #b9dcff; /* 淺藍色虛線框 */
+  border-radius: 6px; /* 圓角半徑 */
+  padding: 10px; /* 內邊距 */
+  margin-top: 5px; /* 與上方留出間距 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-decision-item {
+  display: flex; /* 對齊箭頭與文字 */
+  align-items: center; /* 垂直居中對齊 */
+  gap: 8px; /* 箭頭與內文間距 */
+  font-size: 12px; /* 縮小文字 */
+  margin-bottom: 6px; /* 項目底外距 */
+  color: #555555 !important; /* 鎖定文字顏色 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-decision-item:last-child {
+  margin-bottom: 0; /* 移除最後一項下外距 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-decision-arrow {
+  color: #036eb8 !important; /* 鎖定指標藍色 */
+  font-weight: 700; /* 加粗 */
+  font-size: 11px; /* 縮小字型 */
+}
+
+/* 核心建議警示框 (Q4) */
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-advice-box {
+  background-color: #fffbeb; /* 鵝黃色背景底色 */
+  border-left: 4px solid #d97706; /* 左側金黃色裝飾條 */
+  border-radius: 0 8px 8px 0; /* 僅右側圓角 */
+  padding: 18px 24px; /* 內邊距 */
+  margin-top: 20px; /* 上外距 */
+  display: flex; /* 彈性排版 */
+  align-items: flex-start; /* 頂部對齊 */
+  gap: 15px; /* 圖示與文字間距 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-advice-icon {
+  width: 24px; /* SVG 寬度 */
+  height: 24px; /* SVG 高度 */
+  fill: #d97706; /* SVG 填滿深黃色 */
+  flex-shrink: 0; /* 防止壓縮 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-advice-content {
+  flex-grow: 1; /* 填滿剩餘寬度 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-advice-title {
+  font-weight: 700; /* 強制標題加粗 */
+  color: #d97706 !important; /* 鎖定深黃色 */
+  margin: 0 0 6px 0; /* 下外距 */
+  font-size: 15px; /* 標題字型大小 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-advice-desc {
+  font-size: 13.5px; /* 描述文字大小 */
+  color: #78350f !important; /* 鎖定深咖啡色 */
+  line-height: 1.7 !important; /* 鎖定行高 */
+  margin: 0; /* 移除外距 */
+  text-align: justify; /* 兩端對齊 */
+}
+
+/* 4. 售後流程卡片 (Q5) */
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-step-flow {
+  display: flex; /* 啟用 flex 佈局 */
+  flex-direction: column; /* 垂直排列步驟 */
+  gap: 12px; /* 步驟卡片間距 */
+  margin-top: 15px; /* 流程頂部外距 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-step-card {
+  display: flex; /* 彈性佈局 */
+  align-items: flex-start; /* 頂部對齊 */
+  gap: 15px; /* 序號與內文間距 */
+  background-color: #f8fafc; /* 步驟背景色 */
+  border-left: 4px solid #036eb8; /* 邊框裝飾為品牌藍色 */
+  border-radius: 0 8px 8px 0; /* 僅右側圓角 */
+  padding: 15px 20px; /* 步驟內邊距 */
+  transition: background-color 0.2s ease; /* 懸停過渡動畫 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-step-card:hover {
+  background-color: #f1f7fd; /* 懸停亮藍底色 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-step-num {
+  font-family: 'Outfit', sans-serif; /* 英文專用字型 */
+  font-size: 16px; /* 數字大小 */
+  font-weight: 700; /* 數字加粗 */
+  color: #036eb8 !important; /* 鎖定數字藍色 */
+  background-color: #e3f0fd; /* 數字圓圈背景色 */
+  width: 28px; /* 圓圈寬度 */
+  height: 28px; /* 圓圈高度 */
+  border-radius: 50%; /* 強制圓圈 */
+  display: flex; /* 居中佈局 */
+  justify-content: center; /* 水平置中 */
+  align-items: center; /* 垂直置中 */
+  flex-shrink: 0; /* 防止圓圈壓縮 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-step-content {
+  flex-grow: 1; /* 佔滿剩餘寬度 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-step-title {
+  font-weight: 700; /* 標題加粗 */
+  font-size: 15px; /* 標題文字大小 */
+  color: #111111 !important; /* 鎖定深黑色 */
+  margin: 0 0 4px 0; /* 標題下外距 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-step-desc {
+  font-size: 13px; /* 描述文字大小 */
+  color: #555555 !important; /* 鎖定深灰色 */
+  line-height: 1.5 !important; /* 鎖定行高 */
+  margin: 0; /* 移除外距 */
+}
+
+/* 5. 色溫客製卡片 (Q6) */
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-temp-grid {
+  display: grid; /* 啟用 CSS Grid 佈局 */
+  grid-template-columns: 1fr 1fr; /* 對稱兩欄並排 */
+  gap: 20px; /* 兩欄間距 */
+  margin-top: 15px; /* 網格頂部間距 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-temp-card {
+  border: 1px solid #e2e8f0; /* 邊框線 */
+  border-radius: 8px; /* 圓角半徑 */
+  background-color: #f8fafc; /* 卡片背景底色 */
+  padding: 20px; /* 卡片內邊距 */
+  transition: all 0.3s ease; /* 懸停過渡時間 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-temp-card:hover {
+  transform: translateY(-3px); /* 懸停上移 */
+  border-color: #036eb8; /* 變更邊框顏色 */
+  box-shadow: 0 8px 20px rgba(3, 110, 184, 0.08); /* 投影陰影 */
+  background-color: #ffffff; /* 卡片背景變純白 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-temp-title {
+  font-weight: 700; /* 標題加粗 */
+  font-size: 16px; /* 標題大小 */
+  color: #111111 !important; /* 鎖定深黑色 */
+  margin: 0 0 12px 0; /* 標題底外距 */
+  display: flex; /* 對稱佈局 */
+  justify-content: space-between; /* 左右分散對齊 */
+  align-items: center; /* 垂直居中 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-temp-badge {
+  font-size: 11px; /* 標籤文字大小 */
+  padding: 2px 8px; /* 標籤內邊距 */
+  border-radius: 12px; /* 標籤圓角 */
+  font-weight: 500; /* 標籤字體中粗 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-temp-badge.warm {
+  background-color: #fef3c7; /* 暖白標籤背景色 */
+  color: #d97706 !important; /* 鎖定暗金黃色 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-temp-badge.nature {
+  background-color: #e0f2fe; /* 自然白標籤背景色 */
+  color: #0284c7 !important; /* 鎖定天空藍色 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-temp-desc {
+  font-size: 14px; /* 描述文字大小 */
+  color: #444444 !important; /* 鎖定描述文字 */
+  line-height: 1.7 !important; /* 鎖定描述行高 */
+  margin: 0; /* 移除外邊距 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-temp-desc strong {
+  color: #036eb8 !important; /* 鎖定強打文字顏色 */
+}
+
+/* 6. ESG 指標 Dashboard (Q7) */
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-metrics-grid {
+  display: grid; /* 啟用 CSS Grid 佈局 */
+  grid-template-columns: repeat(3, 1fr); /* 寬螢幕下對稱三欄並排 */
+  gap: 15px; /* 指標卡片間距 */
+  margin: 15px 0; /* 指標網格上下外距 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-metric-box {
+  background-color: #f0f6fc; /* 指標背景底色 */
+  border: 1px solid #b9dcff; /* 指標外邊框 */
+  border-radius: 8px; /* 圓角半徑 */
+  padding: 16px 12px; /* 指標內邊距 */
+  text-align: center; /* 文字居中對齊 */
+  transition: transform 0.3s ease; /* 懸停過渡時間 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-metric-box:hover {
+  transform: translateY(-3px); /* 懸停上移 */
+  box-shadow: 0 6px 15px rgba(3, 110, 184, 0.1); /* 加深投影 */
+  background-color: #ffffff; /* 變為純白背景 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-metric-title {
+  font-size: 13px; /* 指標標題字型大小 */
+  color: #555555 !important; /* 鎖定灰黑色 */
+  margin-bottom: 6px; /* 標題下外距 */
+  font-weight: 500; /* 字體中粗 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-metric-number {
+  font-family: 'Outfit', sans-serif; /* 英文專用字型家族 */
+  font-size: 28px; /* 數據大字大小 */
+  font-weight: 700; /* 數據大字加粗 */
+  color: #036eb8 !important; /* 鎖定數據藍色 */
+  line-height: 1.2 !important; /* 鎖定數據行高 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-metric-unit {
+  font-size: 13px; /* 單位文字大小 */
+  color: #64748b !important; /* 鎖定單位顏色 */
+  font-weight: 400; /* 單位不加粗 */
+  margin-left: 2px; /* 與數字微幅留白 */
+}
+
+/* ==========================================================================
+   聯絡專案客服跳轉區塊樣式
+   ========================================================================== */
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-contact-link-block {
+  display: flex; /* 彈性排版 */
+  align-items: center; /* 垂直居中對齊圖示與文字 */
+  gap: 14px; /* 圖示與文字的間距 */
+  width: 100%; /* 寬度百分之百 */
+  margin-top: 15px; /* 與上方區塊的外距 */
+  border: 1px solid #a7f3d0; /* 淺綠色邊框 */
+  border-radius: 8px; /* 邊框圓角半徑 */
+  background-color: #f0fdf4; /* 鵝毛淺綠底色，區別於問答藍色 */
+  padding: 18px 24px; /* 內邊距與QA問題區一致 */
+  font-size: 17px; /* 文字大小與問題區一致 */
+  font-weight: 700; /* 強制加粗文字 */
+  color: #111111 !important; /* 鎖定文字顏色為深黑色 */
+  text-decoration: none !important; /* 強制移除底線 */
+  transition: all 0.2s ease; /* 樣式變更平滑過渡 */
+  box-shadow: 0 4px 15px rgba(5, 150, 105, 0.03); /* 微弱綠色陰影增添質感 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-contact-link-block:hover {
+  background-color: #dcfce7; /* 滑鼠懸停時的亮綠底色 */
+  border-color: #059669; /* 懸停時邊框變深為品牌綠 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-contact-icon {
+  width: 26px; /* 圖示圓圈的寬度 */
+  height: 26px; /* 圖示圓圈的高度 */
+  border: 1px solid #059669; /* 品牌綠色圓圈邊框 */
+  border-radius: 6px; /* 圓角半徑 */
+  display: flex; /* 居中佈局 */
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+  flex-shrink: 0; /* 防止圖示被壓縮 */
+  background-color: transparent; /* 預設背景透明 */
+  transition: all 0.2s ease; /* 樣式平滑過渡 */
+}
+
+#GW-企業燈具以租代買關鍵問答QA-Root .gw-contact-icon svg {
+  width: 16px; /* 向量人頭圖示寬度 */
+  height: 16px; /* 向量人頭圖示高度 */
+  fill: #059669; /* 人頭填滿品牌綠色 */
+}
+
+/* ==========================================================================
+   RWD 響應式斷點設定
+   ========================================================================== */
+@media (max-width: 900px) {
+  #GW-企業燈具以租代買關鍵問答QA-Root {
+    padding: 0 10px; /* 行動裝置縮小左右邊距 */
+  }
+  #GW-企業燈具以租代買關鍵問答QA-Root .gw-qa-question {
+    font-size: 15px; /* 行動裝置縮小字型 */
+    padding: 15px 18px; /* 行動裝置縮小點擊區內距 */
+    gap: 10px; /* 圖示與問題文字縮短間距 */
+  }
+  #GW-企業燈具以租代買關鍵問答QA-Root .gw-qa-icon {
+    width: 22px; /* 縮小圓圈寬度 */
+    height: 22px; /* 縮小圓圈高度 */
+  }
+  #GW-企業燈具以租代買關鍵問答QA-Root .gw-qa-answer-wrapper {
+    padding: 20px; /* 行動裝置縮小回答區內距 */
+  }
+  #GW-企業燈具以租代買關鍵問答QA-Root .gw-card-grid {
+    grid-template-columns: 1fr; /* Q1 & Q3 卡片轉為單列垂直堆疊 */
+    gap: 12px; /* 卡片間距縮小 */
+  }
+  #GW-企業燈具以租代買關鍵問答QA-Root .gw-process-grid {
+    grid-template-columns: 1fr; /* Q4 流程網格轉為單列垂直堆疊 */
+    gap: 12px; /* 卡片間距縮小 */
+  }
+  #GW-企業燈具以租代買關鍵問答QA-Root .gw-temp-grid {
+    grid-template-columns: 1fr; /* Q6 色溫卡片轉為單列垂直堆疊 */
+    gap: 12px; /* 卡片間距縮小 */
+  }
+  #GW-企業燈具以租代買關鍵問答QA-Root .gw-metrics-grid {
+    grid-template-columns: 1fr; /* Q7 指標箱轉為單列垂直堆疊 */
+    gap: 10px; /* 卡片間距縮小 */
+  }
+  #GW-企業燈具以租代買關鍵問答QA-Root .gw-comparison-table th, 
+  #GW-企業燈具以租代買關鍵問答QA-Root .gw-comparison-table td {
+    padding: 12px; /* 行動裝置縮小單元格邊距 */
+    font-size: 14px; /* 單元格字型微調 */
+  }
+  #GW-企業燈具以租代買關鍵問答QA-Root .gw-contact-link-block {
+    font-size: 15px; /* 行動裝置縮小字型 */
+    padding: 15px 18px; /* 行動裝置縮小內距 */
+    gap: 10px; /* 圖示與文字縮短間距 */
+  }
+  #GW-企業燈具以租代買關鍵問答QA-Root .gw-contact-icon {
+    width: 22px; /* 縮小圓圈寬度 */
+    height: 22px; /* 縮小圓圈高度 */
+  }
+}
+</style>
+<div id="GW-企業燈具以租代買關鍵問答QA-Root"><!-- QA 1 -->
+<details class="gw-qa-accordion" name="gw-faq"><summary class="gw-qa-question"> <span class="gw-qa-icon"> <svg fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 9L12 16L5 9" stroke-linecap="round" stroke-linejoin="round"></path></svg> </span> Q：什麼是企業「燈具以租代買」服務？核心價值與好處是什麼？ </summary>
+<div class="gw-qa-answer-wrapper">
+<div class="gw-intro-lead"><strong>「燈具以租代買」</strong>是金鍏電子專為企業設計的現代化綠能照明方案。企業不再需要採購燈具硬體，而是向金鍏訂閱高品質的照明服務，將照明開銷轉化為極具效益的營運開支。</div>
+
+<div class="gw-card-grid">
+<div class="gw-card">
+<div class="gw-card-header"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.87-3.13-7-7-7zm2.85 11.1c-.37.25-.59.67-.59 1.12V16h-4.52v-1.78c0-.45-.22-.87-.59-1.12C8.04 12.35 7.26 10.97 7.26 9c0-2.62 2.13-4.74 4.74-4.74s4.74 2.13 4.74 4.74c0 1.97-.78 3.35-1.89 4.1zM9 20h6v1c0 .55-.45 1-1 1h-4c-.55 0-1-.45-1-1v-1z"></path></svg> 買照明服務</div>
+
+<div class="gw-card-desc">投資的是高效能的照明光環境與全期專業維護，而非傳統繁瑣且具折舊風險的硬體設備，讓資源專注於本業。</div>
+</div>
+
+<div class="gw-card">
+<div class="gw-card-header"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z"></path></svg> 免資產折舊</div>
+
+<div class="gw-card-desc">徹底免除燈具固有的折舊、備品倉儲以及報廢回收煩惱；以租賃模式落實「輕資產營運」，有效美化財務報表。</div>
+</div>
+
+<div class="gw-card">
+<div class="gw-card-header"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"></path></svg> 綠色循環節能</div>
+
+<div class="gw-card-desc">引進金鍏高效率 LED 照明技術，直接降低企業用電量與碳排放，將省電效益轉化為國際標準的綠色減碳實績。</div>
+</div>
+
+<div class="gw-card">
+<div class="gw-card-header"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"></path></svg> 財務雙贏互利</div>
+
+<div class="gw-card-desc">租賃費用可 100% 認列為營運費用，合法抵稅；且能直接以「省下的電費」輕鬆付租金，創造長遠的經濟效益。</div>
+</div>
+</div>
+</div>
+</details>
+<!-- QA 2 -->
+
+<details class="gw-qa-accordion" name="gw-faq"><summary class="gw-qa-question"> <span class="gw-qa-icon"> <svg fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 9L12 16L5 9" stroke-linecap="round" stroke-linejoin="round"></path></svg> </span> Q：企業照明採用「租賃服務」與「傳統買斷」相比，在財務與營運上有何具體差異？ </summary>
+
+<div class="gw-qa-answer-wrapper">
+<div class="gw-intro-lead">傳統買斷需承擔高昂初始預算與後續折舊故障風險。改採租賃可將硬體負擔轉化為具高稅務效益的費用，讓資產管理化繁為簡：</div>
+
+<div class="gw-comparison-table-wrapper">
+<table class="gw-comparison-table">
+	<thead>
+		<tr>
+			<th>評估項目</th>
+			<th>金鍏租賃服務 (以租代買)</th>
+			<th>傳統買斷模式</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><strong>預算編列</strong></td>
+			<td class="gw-col-rent"><span class="gw-icon-check"><svg fill="currentColor" height="18" viewbox="0 0 20 20" width="18"><path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" fill-rule="evenodd"></path></svg> 免大筆預算 (零 CAPEX) </span></td>
+			<td class="gw-col-buy"><span class="gw-icon-close"><svg fill="currentColor" height="18" viewbox="0 0 20 20" width="18"><path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" fill-rule="evenodd"></path></svg> 需編列高額採購資本支出 </span></td>
+		</tr>
+		<tr>
+			<td><strong>使用與維護</strong></td>
+			<td class="gw-col-rent"><span class="gw-icon-check"><svg fill="currentColor" height="18" viewbox="0 0 20 20" width="18"><path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" fill-rule="evenodd"></path></svg> 專人全期維護、零故障風險 </span></td>
+			<td class="gw-col-buy"><span class="gw-icon-close"><svg fill="currentColor" height="18" viewbox="0 0 20 20" width="18"><path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" fill-rule="evenodd"></path></svg> 需自行叫修、耗費管理人力 </span></td>
+		</tr>
+		<tr>
+			<td><strong>稅務折抵</strong></td>
+			<td class="gw-col-rent"><span class="gw-icon-check"><svg fill="currentColor" height="18" viewbox="0 0 20 20" width="18"><path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" fill-rule="evenodd"></path></svg> 租金全額費用化、100%抵稅 </span></td>
+			<td class="gw-col-buy"><span class="gw-icon-close"><svg fill="currentColor" height="18" viewbox="0 0 20 20" width="18"><path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" fill-rule="evenodd"></path></svg> 資產折舊與繁瑣的年限攤提 </span></td>
+		</tr>
+		<tr>
+			<td><strong>資產與風險</strong></td>
+			<td class="gw-col-rent"><span class="gw-icon-check"><svg fill="currentColor" height="18" viewbox="0 0 20 20" width="18"><path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" fill-rule="evenodd"></path></svg> 風險完全轉嫁、輕資產營運 </span></td>
+			<td class="gw-col-buy"><span class="gw-icon-close"><svg fill="currentColor" height="18" viewbox="0 0 20 20" width="18"><path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" fill-rule="evenodd"></path></svg> 需獨自承擔設備失效率與淘汰 </span></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+</div>
+</details>
+<!-- QA 3 -->
+
+<details class="gw-qa-accordion" name="gw-faq"><summary class="gw-qa-question"> <span class="gw-qa-icon"> <svg fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 9L12 16L5 9" stroke-linecap="round" stroke-linejoin="round"></path></svg> </span> Q：哪些場域適用租賃方案？只有商辦大樓可以申請嗎？ </summary>
+
+<div class="gw-qa-answer-wrapper gw-text-answer">
+<div class="gw-intro-lead">金鍏電子的照明租賃服務<strong>不僅限於商業辦公空間</strong>。凡屬於商業、公共或工業用途之場域，皆符合本公司的租賃服務範圍。我們提供以下各大場域的專業照明規劃：</div>
+
+<div class="gw-card-grid">
+<div class="gw-card">
+<div class="gw-card-header"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"></path></svg> 商辦大樓與連鎖企業</div>
+
+<div class="gw-card-desc">包含商業辦公工作區、中大型會議室、商務接待大廳、連鎖門市與營業店面。提升光環境整體質感，營造專注高效的辦公福祉與高信賴感的品牌形象。</div>
+</div>
+
+<div class="gw-card">
+<div class="gw-card-header"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 21H2V3h2v16h2v-9l4 4v-5l4 4v-4l4 4V7l4 4v10z"></path></svg> 工業廠房與製造工廠</div>
+
+<div class="gw-card-desc">包含一般組裝生產線、電子無塵室、研發實驗室與高精密品管檢驗區。提供高照度與極佳演色性的平穩光源，顯著提振團隊效率、產能並大幅降低操作失誤。</div>
+</div>
+
+<div class="gw-card">
+<div class="gw-card-header"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z"></path></svg> 倉儲物流與大型賣場</div>
+
+<div class="gw-card-desc">包含高天井貨架倉儲、出貨包裝區、大型物流中心、量販賣場與展示大廳。提供大角度廣角均勻出光與高效率防眩光照明，全面保障全天候進出貨作業安全。</div>
+</div>
+
+<div class="gw-card">
+<div class="gw-card-header"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42.99L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.27-3.82c.14-.4.52-.68.95-.68h9.56c.43 0 .81.27.95.68L19 11H5z"></path></svg> 地下停車場與公共通道</div>
+
+<div class="gw-card-desc">包含辦公/大樓地下停車場、走廊通道、樓梯間與安全出口。可搭配雷達感應或調光節能控制，在杜絕照明死角的同時，實現最高達 70% 的驚人電費減免。</div>
+</div>
+</div>
+</div>
+</details>
+<!-- QA 4 -->
+
+<details class="gw-qa-accordion" name="gw-faq"><summary class="gw-qa-question"> <span class="gw-qa-icon"> <svg fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 9L12 16L5 9" stroke-linecap="round" stroke-linejoin="round"></path></svg> </span> Q：企業在評估與規劃「燈具以租代買」時，具體流程為何？有哪些核心考量？ </summary>
+
+<div class="gw-qa-answer-wrapper gw-text-answer">
+<div class="gw-intro-lead">金鍏提供標準化的一條龍租賃規劃服務，核心目標為<strong>優化企業現金流並降本增效</strong>。以下為三大關鍵規劃階段：</div>
+
+<div class="gw-process-grid">
+<div class="gw-process-card">
+<div class="gw-process-header">階段一：需求與財務評估（評估期）</div>
+
+<ul class="gw-process-list">
+	<li><strong>科學燈具配置</strong>：業主提供案場平面圖，由金鍏專業團隊利用軟體進行燈具配置最佳方案設計。</li>
+	<li><strong>汰換速度評估</strong>：評估既有設備壞損率。市售一般燈具通常 1~2 年即產生故障，極適合導入租賃方案以轉嫁風險。</li>
+</ul>
+</div>
+
+<div class="gw-process-card">
+<div class="gw-process-header">階段二：租約方案與條款確認（簽約期）</div>
+
+<ul class="gw-process-list">
+	<li><strong>租期彈性確認</strong>：依據企業是屬於長期穩定使用或短期特定專案需求，提供客製化租期年限方案。</li>
+	<li><strong>關鍵條款審查</strong>：仔細確認合約年限、月租金、押金，以及提前解約時的違約金計算方式。</li>
+	<li><strong>合約到期決策</strong>：
+	<div class="gw-decision-flow">
+	<div class="gw-decision-item"><span class="gw-decision-arrow">續約 -&gt;</span> 繼續支付租金使用或升級新燈具。</div>
+
+	<div class="gw-decision-item"><span class="gw-decision-arrow">退租 -&gt;</span> 歸還租賃燈具設備並終止合約。</div>
+	</div>
+	</li>
+</ul>
+</div>
+
+<div class="gw-process-card">
+<div class="gw-process-header">階段三：工程汰換與點交驗收（執行期）</div>
+
+<ul class="gw-process-list">
+	<li><strong>按圖施工安排</strong>：完全依據 DIALux 專業照度模擬圖進行現場配線與舊燈汰換施工。</li>
+	<li><strong>數量與品質點交</strong>：竣工後依合約清點安裝數量，並實測照度進行點交驗收，存檔留底。</li>
+</ul>
+</div>
+</div>
+
+<div class="gw-advice-box"><svg class="gw-advice-icon" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-6h2v6zm0-8h-2V7h2v2z"></path></svg>
+
+<div class="gw-advice-content">
+<h4 class="gw-advice-title">專家核心建議</h4>
+
+<p class="gw-advice-desc">規劃「以租代買」時，切忌只看「每月單價好便宜」而忽略了合約的總體持有成本與退租條款。唯有將專業的維護管理（省下的大量自聘維護人力與更換時間成本）作為選擇租賃的最大誘因，才是最精明且符合長遠財務效益的綠色規劃。</p>
+</div>
+</div>
+</div>
+</details>
+<!-- QA 5 -->
+
+<details class="gw-qa-accordion" name="gw-faq"><summary class="gw-qa-question"> <span class="gw-qa-icon"> <svg fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 9L12 16L5 9" stroke-linecap="round" stroke-linejoin="round"></path></svg> </span> Q：租賃期間若有燈具損壞或變暗，企業需要付費嗎？服務流程為何？ </summary>
+
+<div class="gw-qa-answer-wrapper gw-text-answer">
+<div class="gw-intro-lead">租賃期間，企業享有<strong>「全期維護零成本」</strong>保障。所有非人為故障、損壞與自然光衰，皆由金鍏專業團隊負責，流程極簡化：</div>
+
+<div class="gw-step-flow">
+<div class="gw-step-card"><span class="gw-step-num">1</span>
+
+<div class="gw-step-content">
+<h4 class="gw-step-title">一通電話或 Line 即時報修</h4>
+
+<p class="gw-step-desc">發現異常立刻聯絡專屬客服，免除企業自行採購備品與尋找修繕工人的繁瑣時間。</p>
+</div>
+</div>
+
+<div class="gw-step-card"><span class="gw-step-num">2</span>
+
+<div class="gw-step-content">
+<h4 class="gw-step-title">專人到府，全期 0 元免費更換</h4>
+
+<p class="gw-step-desc">金鍏團隊將以最快速度攜帶新品到府更換，免材料費、免工資、免運費，實現維修預算歸零。</p>
+</div>
+</div>
+
+<div class="gw-step-card"><span class="gw-step-num">3</span>
+
+<div class="gw-step-content">
+<h4 class="gw-step-title">主動定期巡檢與照度量測</h4>
+
+<p class="gw-step-desc">我們定期進行案場照度追蹤，確認光品質符合 CNS 國家照度標準，確保工作環境明亮安全。</p>
+</div>
+</div>
+</div>
+</div>
+</details>
+<!-- QA 6 -->
+
+<details class="gw-qa-accordion" name="gw-faq"><summary class="gw-qa-question"> <span class="gw-qa-icon"> <svg fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 9L12 16L5 9" stroke-linecap="round" stroke-linejoin="round"></path></svg> </span> Q：如何確保安裝的租賃燈具最適合我們的案場？色溫可以選擇嗎？ </summary>
+
+<div class="gw-qa-answer-wrapper gw-text-answer">
+<div class="gw-intro-lead">金鍏提供<strong>科學化的照明規劃與雙色溫配置</strong>，徹底告別盲目配置燈具的電力浪費，並依據場域機能提供主流色溫選擇：</div>
+
+<ul class="gw-qa-list" style="list-style-type: disc;">
+	<li><span class="gw-blue-highlight">DIALux 專業照度模擬：</span>動工前由專業團隊輸入空間格局與反射率，精準計算出符合 CNS 國家標準且最精簡的燈具配置，防範多裝浪費.</li>
+	<li><span class="gw-blue-highlight">頂級健康護眼保障：</span>全系列燈具通過 CNS 認證，判定為 RG0 無藍光危害等級，且二級驅動無頻閃（漣波控制 &lt; 3%），搭配 PC 防眩光燈罩保護視力.</li>
+</ul>
+
+<div class="gw-temp-grid">
+<div class="gw-temp-card">
+<div class="gw-temp-title"><span>4000K 專注暖白光</span> <span class="gw-temp-badge warm">舒壓專注</span></div>
+
+<p class="gw-temp-desc"><strong>【作用】</strong>最接近柔和晨光的色溫，光線溫和不刺眼，能有效抑制螢幕眩光、緩解長時間工作帶來的用眼壓力與視覺疲勞。<br />
+<strong>【適合場域】</strong>商務辦公室、會議室、經理室、圖書館及開放式員工工作區。</p>
+</div>
+
+<div class="gw-temp-card">
+<div class="gw-temp-title"><span>5700K 自然白光</span> <span class="gw-temp-badge nature">高精準度</span></div>
+
+<p class="gw-temp-desc"><strong>【作用】</strong>明亮清透的清爽白光，演色性高（Ra≧80）可還原真實色彩，能有效振奮團隊精神、提振工作能動性並降低操作失誤率。<br />
+<strong>【適合場域】</strong>研發實驗室、高精密品管檢驗區、工廠廠房及倉儲包裝區。</p>
+</div>
+</div>
+</div>
+</details>
+<!-- QA 7 -->
+
+<details class="gw-qa-accordion" name="gw-faq"><summary class="gw-qa-question"> <span class="gw-qa-icon"> <svg fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 9L12 16L5 9" stroke-linecap="round" stroke-linejoin="round"></path></svg> </span> Q：以租代買方案對企業實踐 ESG 有何具體效益？是否有成功案例？ </summary>
+
+<div class="gw-qa-answer-wrapper gw-text-answer">
+<div class="gw-intro-lead">採用金鍏<strong>「燈具以租代買」</strong>，不僅節省可觀開銷，還能將省電效率直接轉化為符合國際趨勢的永續綠色實績。以國營事業<strong>「台糖公司」</strong>指標案例為證：</div>
+
+<div class="gw-metrics-grid">
+<div class="gw-metric-box">
+<div class="gw-metric-title">台糖 13 單位每年省電</div>
+
+<div class="gw-metric-number">133<span class="gw-metric-unit">萬度</span></div>
+</div>
+
+<div class="gw-metric-box">
+<div class="gw-metric-title">10 年長效營運省下</div>
+
+<div class="gw-metric-number">700<span class="gw-metric-unit">萬元</span></div>
+</div>
+
+<div class="gw-metric-box">
+<div class="gw-metric-title">台糖每年實質減碳</div>
+
+<div class="gw-metric-number">700<span class="gw-metric-unit">公噸</span></div>
+</div>
+</div>
+
+<ul class="gw-qa-list" style="list-style-type: disc;">
+	<li><span class="gw-blue-highlight">徹底落實循環經濟：</span>將產品使用權（照明服務）與所有權（硬體設備）分離，符合國際綠色採購方針。</li>
+	<li><span class="gw-blue-highlight">零廢棄處置負擔：</span>租約到期後設備由金鍏全權負責綠色回收與再生，免除企業後續處理廢棄燈具的碳排責任與環保法規風險。</li>
+	<li><span class="gw-blue-highlight">「低瓦數、高光效」技術：</span>配備發光效率達 140-160 lm/W 的高效能節能標章燈具，每年為企業省下 60% 以上照明耗電，直接美化企業 ESG 年度碳盤查報告書。</li>
+</ul>
+</div>
+</details>
+<!-- 聯絡專案客服跳轉區塊 (點擊跳轉至官網聯絡表單) --><a class="gw-contact-link-block" href="https://www.goldenwayled.com/eforms.php?lang=tw&amp;tb=1&amp;id=11" target="_blank"><span class="gw-contact-icon"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path> </svg> </span> 聯繫燈具租賃專案客服獲得更多資訊 </a></div>

@@ -1,0 +1,358 @@
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Noto+Sans+TC:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* ==================== 區塊根節點與基礎設定 ==================== */
+    #GW-金鍏燈具以租代買上方說明區塊-Root {
+        width: 100% !important;
+        font-family: 'Hanken Grotesk', 'Noto Sans TC', sans-serif !important;
+        border: 0px solid #ffffff00 !important;
+        border-radius: 0px !important;
+        padding: 40px !important;
+        box-shadow: 0 10px 30px rgba(30, 58, 95, 0.03) !important;
+        box-sizing: border-box !important;
+        margin-bottom: 30px !important;
+        position: relative !important;
+        overflow: hidden !important;
+
+        /* ==================== 自定義背景圖片區域 ==================== */
+        /* 您可以隨時將 url 中的網址更換為您自己上傳的背景圖網址 */
+        background-image: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/rent_esg/forest_bg2.jpg?v=z1k5338') !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+    }
+
+    /* 磨砂白色淡化遮罩層 (Layer 1) */
+    #GW-金鍏燈具以租代買上方說明區塊-Root .gw-bg-frosted-overlay {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        /* 白色淡化：調整透明度 (0.75 - 0.85) 可適配不同的背景圖深淺 */
+        background: rgba(255, 255, 255, 0.78) !important;
+        /* 磨砂玻璃模糊濾鏡 */
+        backdrop-filter: blur(8px) saturate(100%) !important;
+        -webkit-backdrop-filter: blur(8px) saturate(100%) !important;
+        z-index: 1 !important;
+        pointer-events: none !important;
+    }
+
+    /* 隨著滑鼠移動的微光暈層 (Layer 2) */
+    #GW-金鍏燈具以租代買上方說明區塊-Root .gw-mouse-glow-overlay {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background: radial-gradient(
+            600px circle at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
+            rgba(30, 58, 95, 0.05) 0%,
+            rgba(22, 163, 74, 0.02) 50%,
+            transparent 100%
+        ) !important;
+        z-index: 2 !important;
+        pointer-events: none !important;
+    }
+
+    /* 確保所有內容浮在遮罩與光暈之上 (Layer 3) */
+    #GW-金鍏燈具以租代買上方說明區塊-Root .gw-content-wrapper {
+        position: relative !important;
+        z-index: 3 !important;
+    }
+
+    /* 頂部綠色 ESG 標籤 */
+    #GW-金鍏燈具以租代買上方說明區塊-Root .gw-top-badge {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        background: rgba(240, 253, 244, 0.85) !important;
+        border: 1px solid rgba(187, 247, 208, 0.9) !important;
+        color: #16a34a !important;
+        padding: 6px 14px !important;
+        border-radius: 99px !important;
+        font-size: 13px !important;
+        font-weight: 700 !important;
+        margin-bottom: 20px !important;
+        letter-spacing: 0.05em !important;
+        backdrop-filter: blur(8px) !important;
+        -webkit-backdrop-filter: blur(8px) !important;
+    }
+
+    /* 主標題 */
+    #GW-金鍏燈具以租代買上方說明區塊-Root .gw-top-title {
+        font-size: 28px !important;
+        font-weight: 700 !important;
+        color: #0f172a !important;
+        margin: 0 0 16px 0 !important;
+        line-height: 1.4 !important;
+    }
+
+    #GW-金鍏燈具以租代買上方說明區塊-Root .gw-top-title span {
+        color: #1e3a5f !important;
+    }
+
+    /* 主述文案 */
+    #GW-金鍏燈具以租代買上方說明區塊-Root .gw-top-desc {
+        font-size: 15px !important;
+        line-height: 1.8 !important;
+        color: #334155 !important;
+        margin: 0 0 36px 0 !important;
+        text-align: justify !important;
+        text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5) !important;
+    }
+
+    /* 核心優勢網格 */
+    #GW-金鍏燈具以租代買上方說明區塊-Root .gw-benefits-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 20px !important;
+        margin-bottom: 36px !important;
+    }
+
+    /* 雙層磨砂玻璃質感卡片 (強制設為垂直 Flex 佈局防止 CMS 衝突跑版) */
+    #GW-金鍏燈具以租代買上方說明區塊-Root .gw-benefit-card {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+        text-align: left !important;
+        background: rgba(255, 255, 255, 0.72) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.6) !important;
+        border-radius: 14px !important;
+        padding: 24px !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01) !important;
+        box-sizing: border-box !important;
+        position: relative !important;
+    }
+
+    /* 滑鼠懸停邊框炫彩流光效果 */
+    #GW-金鍏燈具以租代買上方說明區塊-Root .gw-benefit-card:hover {
+        transform: translateY(-5px) !important;
+        box-shadow: 0 12px 24px -8px rgba(30, 58, 95, 0.08) !important;
+        border-color: transparent !important;
+        background: linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)) padding-box,
+                    radial-gradient(120px circle at var(--card-x, 50%) var(--card-y, 50%), var(--glow-color, rgba(30, 58, 95, 0.35)) 0%, transparent 100%) border-box !important;
+    }
+
+    /* 優勢圖標容器及微動畫 */
+    #GW-金鍏燈具以租代買上方說明區塊-Root .gw-benefit-icon-wrapper {
+        width: 42px !important;
+        height: 42px !important;
+        border-radius: 10px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin-bottom: 16px !important;
+        transition: transform 0.3s ease !important;
+        flex-shrink: 0 !important;
+    }
+
+    #GW-金鍏燈具以租代買上方說明區塊-Root .gw-benefit-card:hover .gw-benefit-icon-wrapper {
+        transform: scale(1.1) rotate(5deg) !important;
+    }
+
+    /* 圖標配色 */
+    #GW-金鍏燈具以租代買上方說明區塊-Root .icon-blue {
+        background: rgba(239, 246, 255, 0.85) !important;
+        color: #1d4ed8 !important;
+    }
+    #GW-金鍏燈具以租代買上方說明區塊-Root .icon-green {
+        background: rgba(236, 253, 245, 0.85) !important;
+        color: #047857 !important;
+    }
+    #GW-金鍏燈具以租代買上方說明區塊-Root .icon-amber {
+        background: rgba(254, 243, 199, 0.85) !important;
+        color: #b45309 !important;
+    }
+    #GW-金鍏燈具以租代買上方說明區塊-Root .icon-purple {
+        background: rgba(245, 243, 255, 0.85) !important;
+        color: #6d28d9 !important;
+    }
+
+    #GW-金鍏燈具以租代買上方說明區塊-Root .gw-benefit-icon-wrapper span.material-symbols-outlined {
+        font-size: 24px !important;
+    }
+
+    /* 優勢名稱 */
+    #GW-金鍏燈具以租代買上方說明區塊-Root .gw-benefit-name {
+        display: block !important;
+        width: 100% !important;
+        font-size: 16px !important;
+        font-weight: 700 !important;
+        color: #1e293b !important;
+        margin: 0 0 6px 0 !important;
+        text-align: left !important;
+    }
+
+    /* 優勢細節 */
+    #GW-金鍏燈具以租代買上方說明區塊-Root .gw-benefit-detail {
+        display: block !important;
+        width: 100% !important;
+        font-size: 13px !important;
+        color: #475569 !important;
+        line-height: 1.6 !important;
+        margin: 0 !important;
+        text-align: justify !important;
+    }
+
+    /* 水平分隔線 */
+    #GW-金鍏燈具以租代買上方說明區塊-Root .gw-explainer-divider {
+        border: 0 !important;
+        border-top: 1px solid rgba(226, 232, 240, 0.8) !important;
+        margin: 0 0 28px 0 !important;
+    }
+
+    /* 聯絡引導 Banner 區塊 (採垂直置中排版，更加平衡大氣) */
+    #GW-金鍏燈具以租代買上方說明區塊-Root .gw-contact-banner {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        gap: 18px !important;
+        box-sizing: border-box !important;
+        width: 100% !important;
+    }
+
+    /* 聯絡文案置中 */
+    #GW-金鍏燈具以租代買上方說明區塊-Root .gw-contact-text-group {
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    #GW-金鍏燈具以租代買上方說明區塊-Root .gw-contact-title {
+        font-size: 18px !important;
+        font-weight: 700 !important;
+        color: #1e293b !important;
+        margin: 0 0 6px 0 !important;
+        text-align: center !important;
+    }
+
+    #GW-金鍏燈具以租代買上方說明區塊-Root .gw-contact-desc {
+        font-size: 14px !important;
+        color: #475569 !important;
+        margin: 0 !important;
+        line-height: 1.6 !important;
+        text-align: center !important;
+    }
+
+    /* 聯絡專案專員資訊框 (非連結，僅做資訊展示，引導填寫表單) */
+    #GW-金鍏燈具以租代買上方說明區塊-Root .gw-contact-btn {
+        flex-shrink: 0 !important;
+        background: linear-gradient(135deg, #fbd477 0%, #fbbe6f 100%) !important;
+        color: #1e3a5f !important;
+        border: none !important;
+        border-radius: 8px !important;
+        padding: 12px 32px !important;
+        font-size: 15px !important;
+        font-weight: 700 !important;
+        text-decoration: none !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        box-shadow: 0 4px 12px rgba(251, 212, 119, 0.15) !important;
+        cursor: default !important;
+        user-select: none !important;
+    }
+
+    #GW-金鍏燈具以租代買上方說明區塊-Root .gw-contact-btn span.material-symbols-outlined {
+        font-size: 18px !important;
+        vertical-align: middle !important;
+    }
+
+    /* 響應式佈局 */
+    @media (max-width: 992px) {
+        #GW-金鍏燈具以租代買上方說明區塊-Root .gw-benefits-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 16px !important;
+        }
+    }
+
+    @media (max-width: 768px) {
+        #GW-金鍏燈具以租代買上方說明區塊-Root {
+            padding: 24px !important;
+        }
+        #GW-金鍏燈具以租代買上方說明區塊-Root .gw-top-title {
+            font-size: 22px !important;
+        }
+        #GW-金鍏燈具以租代買上方說明區塊-Root .gw-benefits-grid {
+            grid-template-columns: 1fr !important;
+            gap: 12px !important;
+        }
+        #GW-金鍏燈具以租代買上方說明區塊-Root .gw-contact-btn {
+            width: 100% !important;
+            justify-content: center !important;
+            box-sizing: border-box !important;
+        }
+    }
+</style>
+<div id="GW-金鍏燈具以租代買上方說明區塊-Root"><!-- 磨砂白色淡化遮罩層 (Layer 1) -->
+<div class="gw-bg-frosted-overlay">&nbsp;</div>
+<!-- 滑鼠追蹤微光層 (Layer 2) -->
+
+<div class="gw-mouse-glow-overlay">&nbsp;</div>
+<!-- 內容包裹層 (Layer 3) -->
+
+<div class="gw-content-wrapper"><!-- 頂部綠色標籤 -->
+<div class="gw-top-badge"><span class="material-symbols-outlined" style="font-size: 16px;">energy_savings_leaf</span> <span>ESG 綠色循環經濟</span></div>
+<!-- 主標題 -->
+
+<h2 class="gw-top-title">金鍏電子 <span>企業綠色照明以租代買專案</span></h2>
+<!-- 專案簡介說明 -->
+
+<p class="gw-top-desc">為協助企業快速達成永續淨零碳排指標，金鍏電子推出全新 LED 綠色照明租賃方案。企業<b>無須編列初期資本支出 (Zero CAPEX)</b>，即可全面將老舊螢光燈具汰換為國家級節能認證之 LED 專利燈具。租賃合約全期享有<b>專業團隊全責保固維修</b>，以營運費用 (OPEX) 彈性支付，省下高達 60% 照明電費與繁瑣的維護成本，在落實循環經濟的同時實現最佳永續效益。</p>
+<!-- 4 大核心優勢網格 (強制設為垂直 Flex 佈局防止 CMS 衝突跑版) -->
+
+<div class="gw-benefits-grid"><!-- 優勢 1 -->
+<div class="gw-benefit-card" style="--glow-color: rgba(29, 78, 216, 0.45);">
+<div class="gw-benefit-icon-wrapper icon-blue"><span class="material-symbols-outlined">monetization_on</span></div>
+
+<h3 class="gw-benefit-name">0 元建置費用</h3>
+
+<p class="gw-benefit-detail">零初期投資，將固定資產採購轉化為彈性營運費用，優化財務結構。</p>
+</div>
+<!-- 優勢 2 -->
+
+<div class="gw-benefit-card" style="--glow-color: rgba(4, 120, 87, 0.45);">
+<div class="gw-benefit-icon-wrapper icon-green"><span class="material-symbols-outlined">build_circle</span></div>
+
+<h3 class="gw-benefit-name">全期合約保固</h3>
+
+<p class="gw-benefit-detail">合約期間故障全權由金鍏負責檢修與耗材更換，免除企業維護人力。</p>
+</div>
+<!-- 優勢 3 -->
+
+<div class="gw-benefit-card" style="--glow-color: rgba(180, 83, 9, 0.45);">
+<div class="gw-benefit-icon-wrapper icon-amber"><span class="material-symbols-outlined">bolt</span></div>
+
+<h3 class="gw-benefit-name">搭配高品質燈具</h3>
+
+<p class="gw-benefit-detail"><span grotesk="" hanken="" style="color: rgb(71, 85, 105); font-family: ">嚴選專利優質照明，打造無頻閃、無藍光、防眩光之舒適健康光環境。</span></p>
+</div>
+<!-- 優勢 4 -->
+
+<div class="gw-benefit-card" style="--glow-color: rgba(109, 40, 217, 0.45);">
+<div class="gw-benefit-icon-wrapper icon-purple"><span class="material-symbols-outlined">co2</span></div>
+
+<h3 class="gw-benefit-name">對接 ESG 指標</h3>
+
+<p class="gw-benefit-detail"><span grotesk="" hanken="" style="color: rgb(71, 85, 105); font-family: ">提供可量化減碳數據對接永續指標，落實循環經濟，讓永續不只是口號。</span></p>
+</div>
+</div>
+<!-- 水平分隔線 -->
+
+<hr class="gw-explainer-divider" /><!-- 聯絡與引導填寫表單 Banner (已改為垂直置中佈局) -->
+<div class="gw-contact-banner">
+<div class="gw-contact-text-group">
+<h4 class="gw-contact-title">想規劃最划算的企業節能減碳方案？</h4>
+
+<p class="gw-contact-desc">歡迎填寫下方表單以提供您的案場資訊，我們的專案規劃團隊將依照您提供的資料盡快與您聯繫！</p>
+</div>
+
+<div class="gw-contact-btn"><span class="material-symbols-outlined">person</span> <span>專案經理：謝經理</span></div>
+</div>
+</div>
+</div>

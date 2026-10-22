@@ -1,0 +1,338 @@
+<div aria-labelledby="GW-01-日本PSE電源與型錄線上翻閱-Title" id="GW-01-日本PSE電源與型錄線上翻閱-Root" role="region">
+<style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
+
+    /* =========================================================================
+   GW-01-日本PSE電源與型錄線上翻閱 - 核心防禦與排版鎖定 (金鍏官網小幫手 V1.8 PSE旗艦版)
+   ========================================================================= */
+    #GW-01-日本PSE電源與型錄線上翻閱-Root {
+      --iframe-min-desktop: 800px;
+      --iframe-min-tablet: 750px;
+      --iframe-min-mobile: 600px;
+      --gw-blue: #0284c7;
+      --gw-blue-dark: #0369a1;
+      --gw-blue-hover: #0ea5e9;
+      --gw-text-dark: #0f172a;
+      --gw-text-body: #334155;
+      --gw-text-muted: #64748b;
+      --gw-bg-card: #ffffff;
+      --gw-border: #e2e8f0;
+
+      position: relative !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 auto !important;
+      padding: 30px 15px !important;
+      box-sizing: border-box !important;
+      font-family: 'Outfit', 'Noto Sans JP', 'Noto Sans TC', -apple-system, sans-serif !important;
+      background-color: transparent !important;
+    }
+
+    #GW-01-日本PSE電源與型錄線上翻閱-Root *,
+    #GW-01-日本PSE電源與型錄線上翻閱-Root *::before,
+    #GW-01-日本PSE電源與型錄線上翻閱-Root *::after {
+      box-sizing: border-box !important;
+    }
+
+    /* 文字防污染鎖定 */
+    #GW-01-日本PSE電源與型錄線上翻閱-Root p,
+    #GW-01-日本PSE電源與型錄線上翻閱-Root span,
+    #GW-01-日本PSE電源與型錄線上翻閱-Root a,
+    #GW-01-日本PSE電源與型錄線上翻閱-Root h2,
+    #GW-01-日本PSE電源與型錄線上翻閱-Root h3 {
+      line-height: 1.6 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      text-decoration: none !important;
+    }
+
+    /* 頂部引導資訊卡片 - 工業精品微漸層與左側飾條 */
+    #GW-01-日本PSE電源與型錄線上翻閱-Root .gw-header-box {
+      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+      border: 1px solid var(--gw-border) !important;
+      border-left: 4px solid var(--gw-blue) !important;
+      border-radius: 12px !important;
+      padding: 24px 28px !important;
+      margin-bottom: 24px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 16px !important;
+      box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04), 0 2px 6px -1px rgba(0, 0, 0, 0.02) !important;
+    }
+
+    /* 標籤列 */
+    #GW-01-日本PSE電源與型錄線上翻閱-Root .gw-tag-row {
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      flex-wrap: wrap !important;
+    }
+
+    #GW-01-日本PSE電源與型錄線上翻閱-Root .gw-badge {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 5px !important;
+      padding: 4px 10px !important;
+      border-radius: 6px !important;
+      font-size: 12.5px !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.02em !important;
+      background-color: #f0f9ff !important;
+      color: var(--gw-blue-dark) !important;
+      border: 1px solid #bae6fd !important;
+    }
+
+    #GW-01-日本PSE電源與型錄線上翻閱-Root .gw-badge-sub {
+      background-color: #f1f5f9 !important;
+      color: #475569 !important;
+      border-color: #e2e8f0 !important;
+    }
+
+    /* 標題設定 */
+    #GW-01-日本PSE電源與型錄線上翻閱-Root h2#GW-01-日本PSE電源與型錄線上翻閱-Title {
+      font-size: 22px !important;
+      font-weight: 700 !important;
+      color: var(--gw-text-dark) !important;
+      letter-spacing: -0.01em !important;
+      line-height: 1.4 !important;
+    }
+
+    /* 操作按鈕列（標題下方） */
+    #GW-01-日本PSE電源與型錄線上翻閱-Root .gw-action-row {
+      display: flex !important;
+      align-items: center !important;
+      gap: 12px !important;
+      flex-wrap: wrap !important;
+    }
+
+    /* 高質感按鈕共通基礎 */
+    #GW-01-日本PSE電源與型錄線上翻閱-Root .gw-btn-download,
+    #GW-01-日本PSE電源與型錄線上翻閱-Root .gw-btn-inquiry {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      padding: 9px 18px !important;
+      border-radius: 8px !important;
+      font-size: 13.5px !important;
+      font-weight: 600 !important;
+      color: #ffffff !important;
+      transition: all 0.2s ease !important;
+      cursor: pointer !important;
+      text-decoration: none !important;
+    }
+
+    #GW-01-日本PSE電源與型錄線上翻閱-Root .gw-btn-download svg,
+    #GW-01-日本PSE電源與型錄線上翻閱-Root .gw-btn-inquiry svg {
+      width: 16px !important;
+      height: 16px !important;
+      fill: currentColor !important;
+      flex-shrink: 0 !important;
+    }
+
+    /* PDF 型錄下載按鈕（品牌科技藍） */
+    #GW-01-日本PSE電源與型錄線上翻閱-Root .gw-btn-download {
+      border: 1.5px solid transparent !important;
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25) !important;
+    }
+
+    #GW-01-日本PSE電源與型錄線上翻閱-Root .gw-btn-download:hover {
+      background: linear-gradient(135deg, #0369a1 0%, #0284c7 100%) !important;
+      box-shadow: 0 6px 18px rgba(2, 132, 199, 0.35) !important;
+      transform: translateY(-1px) !important;
+      color: #ffffff !important;
+    }
+
+    #GW-01-日本PSE電源與型錄線上翻閱-Root .gw-btn-download:active {
+      transform: translateY(0) !important;
+      box-shadow: 0 2px 6px rgba(2, 132, 199, 0.25) !important;
+    }
+
+    /* 產品詢價按鈕（方案 C：ESG 節能翡翠綠，象徵綠能與環保商機） */
+    #GW-01-日本PSE電源與型錄線上翻閱-Root .gw-btn-inquiry {
+      border: 1.5px solid transparent !important;
+      color: #ffffff !important;
+      background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%) !important;
+      box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25) !important;
+    }
+
+    #GW-01-日本PSE電源與型錄線上翻閱-Root .gw-btn-inquiry:hover {
+      background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%) !important;
+      box-shadow: 0 6px 18px rgba(13, 148, 136, 0.35) !important;
+      transform: translateY(-1px) !important;
+      color: #ffffff !important;
+    }
+
+    #GW-01-日本PSE電源與型錄線上翻閱-Root .gw-btn-inquiry:active {
+      transform: translateY(0) !important;
+      box-shadow: 0 2px 6px rgba(13, 148, 136, 0.25) !important;
+    }
+
+    /* 專業日文介紹文 */
+    #GW-01-日本PSE電源與型錄線上翻閱-Root .gw-desc {
+      font-size: 14.5px !important;
+      line-height: 1.75 !important;
+      color: var(--gw-text-body) !important;
+      letter-spacing: 0.015em !important;
+    }
+
+    /* 快速操作功能提示小列 */
+    #GW-01-日本PSE電源與型錄線上翻閱-Root .gw-feature-chips {
+      display: flex !important;
+      align-items: center !important;
+      gap: 16px !important;
+      padding-top: 8px !important;
+      border-top: 1px dashed #e2e8f0 !important;
+      flex-wrap: wrap !important;
+    }
+
+    #GW-01-日本PSE電源與型錄線上翻閱-Root .gw-chip-item {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      font-size: 12.5px !important;
+      color: var(--gw-text-muted) !important;
+      font-weight: 500 !important;
+    }
+
+    #GW-01-日本PSE電源與型錄線上翻閱-Root .gw-chip-item svg {
+      width: 14px !important;
+      height: 14px !important;
+      fill: #0284c7 !important;
+      opacity: 0.9 !important;
+    }
+
+    /* 螢幕閱讀器與搜尋引擎無障礙摘要層 */
+    #GW-01-日本PSE電源與型錄線上翻閱-Root .gw-sr-only {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    /* Iframe 3D 電子書外框容器 */
+    #GW-01-日本PSE電源與型錄線上翻閱-Root .gw-iframe-wrap {
+      width: 100% !important;
+      border-radius: 12px !important;
+      overflow: hidden !important;
+      border: 1px solid rgba(0, 0, 0, 0.08) !important;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12) !important;
+      background-color: #333333 !important;
+    }
+
+    /* Iframe 本體 */
+    #GW-01-日本PSE電源與型錄線上翻閱-Root iframe {
+      width: 100% !important;
+      border: none !important;
+      display: block !important;
+      min-height: var(--iframe-min-desktop) !important;
+    }
+
+    /* 響應式斷點 (RWD) */
+    @media (max-width: 1023px) {
+      #GW-01-日本PSE電源與型錄線上翻閱-Root iframe {
+        min-height: var(--iframe-min-tablet) !important;
+      }
+
+      #GW-01-日本PSE電源與型錄線上翻閱-Root {
+        padding: 20px 10px !important;
+      }
+
+      #GW-01-日本PSE電源與型錄線上翻閱-Root h2#GW-01-日本PSE電源與型錄線上翻閱-Title {
+        font-size: 19px !important;
+      }
+    }
+
+    @media (max-width: 767px) {
+      #GW-01-日本PSE電源與型錄線上翻閱-Root iframe {
+        min-height: var(--iframe-min-mobile) !important;
+      }
+
+      #GW-01-日本PSE電源與型錄線上翻閱-Root {
+        padding: 15px 0 !important;
+      }
+
+      #GW-01-日本PSE電源與型錄線上翻閱-Root .gw-header-box {
+        padding: 18px 16px !important;
+        border-radius: 8px !important;
+        gap: 14px !important;
+      }
+
+      #GW-01-日本PSE電源與型錄線上翻閱-Root .gw-btn-download,
+      #GW-01-日本PSE電源與型錄線上翻閱-Root .gw-btn-inquiry {
+        width: 100% !important;
+        padding: 11px !important;
+      }
+
+      #GW-01-日本PSE電源與型錄線上翻閱-Root .gw-iframe-wrap {
+        border-radius: 8px !important;
+      }
+
+      #GW-01-日本PSE電源與型錄線上翻閱-Root .gw-desc {
+        font-size: 13.5px !important;
+      }
+
+      #GW-01-日本PSE電源與型錄線上翻閱-Root .gw-feature-chips {
+        gap: 10px !important;
+      }
+    }
+</style>
+<div class="gw-header-box">
+<div class="gw-tag-row"><span class="gw-badge"><svg fill="currentColor" height="13" viewbox="0 0 24 24" width="13"> <circle cx="12" cy="12" fill="none" r="9" stroke="currentColor" stroke-width="2"></circle> <path d="M12 7v5l3 3" fill="none" stroke="currentColor" stroke-width="2"></path> </svg> 日本 PSE 認證電源 </span> <span class="gw-badge gw-badge-sub">PSE 適合品・高効率 LED 電源・総合カタログ</span></div>
+
+<h2 id="GW-01-日本PSE電源與型錄線上翻閱-Title">金鍏電子 Goldenway&reg; - 日本 PSE 電源與 LED 照明綜合型錄 (PSE認証電源・総合カタログ)</h2>
+
+<div class="gw-action-row"><a class="gw-btn-download" download="金鍏電子_日本LED照明綜合型錄_総合カタログ.pdf" href="https://www.dropbox.com/scl/fi/8ra1v116klly47hz04ppf/LED-2601015.pdf?rlkey=vxe54jletb0fkvo3mr5srftox&amp;dl=1" rel="noopener noreferrer" target="_blank" title="PDF 型錄下載（PDFカタログダウンロード）"><svg viewbox="0 0 24 24"> <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"></path> </svg> <span>PDF 型錄下載（PDFカタログダウンロード）</span> </a> <a class="gw-btn-inquiry" href="https://www.goldenwayled.com/eforms.php?lang=tw&amp;tb=1&amp;id=4" rel="noopener noreferrer" target="_blank" title="產品詢價（製品のお見積り）"> <svg viewbox="0 0 24 24"> <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"></path> </svg> <span>產品詢價（製品のお見積り）</span> </a></div>
+
+<p class="gw-desc">本カタログは、金鍏電子（Goldenway）の日本仕様・電気用品安全法適合のPSE認証LED電源ユニット（定電流・定電圧ドライバ）および一体型LEDベースライト、高天井用LED照明、防湿・防塵投光器、道路・街路灯を網羅した総合カタログです。画面上で直接 3D ページめくり、拡大縮小、全画面表示にてPSE電源ユニットおよび各照明製品の詳細仕様をご確認いただけます。</p>
+
+<div class="gw-feature-chips"><span class="gw-chip-item"><svg viewbox="0 0 24 24"> <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"></path> </svg> ページめくり（翻頁瀏覽） </span> <span class="gw-chip-item"> <svg viewbox="0 0 24 24"> <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path> <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"></path> </svg> 拡大表示（放大檢視） </span> <span class="gw-chip-item"> <svg viewbox="0 0 24 24"> <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"></path> </svg> 全画面表示（全螢幕切換） </span> <span class="gw-chip-item"> <svg viewbox="0 0 24 24"> <rect height="7.5" rx="1.5" width="7.5" x="3" y="3"></rect> <rect height="7.5" rx="1.5" width="7.5" x="13.5" y="3"></rect> <rect height="7.5" rx="1.5" width="7.5" x="3" y="13.5"></rect> <rect height="7.5" rx="1.5" width="7.5" x="13.5" y="13.5"></rect> </svg> ページ一覧（頁面總覽） </span></div>
+</div>
+<!-- =========================================================================
+       SEO / GEO / AEO 語義優化與結構化資料層 (專為搜尋引擎與 AI 生成式問答最佳化)
+       - SEO (Search Engine Optimization): 關鍵字實體映射與語意標籤
+       - GEO (Generative Engine Optimization): 面向 ChatGPT、Perplexity、Google AI Overviews 的高事實密度結構
+       - AEO (Answer Engine Optimization): JSON-LD FAQPage 與 Direct Answer 結構化提取
+       ========================================================================= -->
+
+<div class="gw-sr-only">
+<h3>金鍏電子股份有限公司 (Goldenway LED) - 日本 PSE 認證電源與工業商業 LED 照明綜合指南</h3>
+
+<p>金鍏電子專注於節能 LED 商業照明、工業照明以及符合日本電氣用品安全法（DENAN）之高品質 PSE 認證 LED 電源供應器自主研發製造。 本綜合型錄提供完整產品規格參數、電氣特性、配光曲線與尺寸圖，支援台灣本土自製自銷與外銷日本 OEM / ODM 專案需求。</p>
+
+<h4>日本規格 PSE 認證 LED 電源裝置系列 (PSE Certified LED Driver)</h4>
+
+<ul>
+	<li><strong>電源系列規格：</strong>涵蓋 JP 系列、JS 系列、JB 系列、GS 系列、PC 系列、KV 系列等定電流與定電壓 LED 電源裝置。</li>
+	<li><strong>核心電氣特性：</strong>全電壓輸入（AC100-242V / AC100-277V 50/60Hz）、高功率因數（PF &gt; 0.95）、低諧波失真（THD &lt; 10%）、高轉換效率、內建防雷擊突波保護（Surge Protection 2kV ~ 4kV）。</li>
+	<li><strong>安規認證與標準：</strong>完全符合日本電氣用品安全法（菱形 PSE / 圓形 PSE 認證合格品）、RoHS 環保標準，具備過電壓、過電流、短路與過溫多重安全保護機制。</li>
+</ul>
+
+<h4>商業與工業 LED 照明全系列</h4>
+
+<ul>
+	<li><strong>辦公室/學校照明：</strong>日本一體型 LED 吸頂燈板燈 (BL 系列)、超薄方型嵌燈 (LL 系列)、高均勻度節能平板燈 (GW-555 / GW-552)。</li>
+	<li><strong>廠房/倉儲高天井燈：</strong>鹽水噴霧 1000 小時合格高天井燈與投光燈 (HBL / RL 系列)、透鏡廣角配光、耐高溫防腐蝕設計。</li>
+	<li><strong>戶外/特殊環境照明：</strong>防濕防塵 IP66 一體化工業照明、道路與街路燈、耐震型高工效照明。</li>
+</ul>
+
+<h4>常見問答 (FAQ - 供 AI 生成式搜尋與精選摘要提取)</h4>
+
+<dl>
+	<dt>問：金鍏電子的 LED 電源供應器是否符合日本 PSE 認證標準？</dt>
+	<dd>答：是的，金鍏電子外銷日本的專用 LED 電源裝置均嚴格遵循日本電氣用品安全法（DENAN法），取得特定電氣用品（菱形 PSE）或非特定電氣用品（圓形 PSE）適合證明，具備高壽命（超越 50,000 小時）與長達 5 年原廠保固支援。</dd>
+	<dt>問：如何索取金鍏電子日本規格 LED 電源與燈具的詳細報價？</dt>
+	<dd>答：您可以點擊上方「產品詢價（製品のお見積り）」按鈕前往官方諮詢表單，或聯繫金鍏電子專案團隊，我們提供專業照度模擬規劃、樣品測試評估與專案批量報價服務。</dd>
+	<dt>問：金鍏電子日本型錄是否支援離線查看與下載？</dt>
+	<dd>答：支援。除可直接於本頁面進行 3D 線上互動翻閱瀏覽外，亦可點擊「PDF 型錄下載（PDFカタログダウンロード）」獲取完整高解析度離線型錄檔案。</dd>
+</dl>
+</div>
+<!-- JSON-LD 結構化資料：結合 Product 與 FAQPage，最大化富媒體搜尋摘要 (Rich Snippets) 與 AI 知識圖譜收錄 -->
+
+<div class="gw-iframe-wrap"><iframe allowfullscreen="true" loading="lazy" mozallowfullscreen="true" scrolling="auto" src="https://tsenwu.github.io/doc-viewer/GWJP_catalog/index-img.html" title="金鍏電子 Goldenway - 日本 PSE 認證 LED 電源與照明綜合型錄線上 3D 翻閱 (PSE認証LED電源・総合カタログ)" webkitallowfullscreen="true"></iframe></div>
+</div>
