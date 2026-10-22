@@ -1,0 +1,742 @@
+<div aria-labelledby="GW-00-BL101支架燈競品評比-Title" id="GW-00-BL101支架燈競品評比-Root" role="region">
+<style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@500;600&family=Noto+Sans+TC:wght@400;500;600;700&display=swap');
+
+    /* ============================================================
+   ★ 區塊 GW-00-BL101支架燈競品評比
+   WebTech 後台專用獨立代碼 · 支援完整 RWD 響應式排版
+   窄版順序：1. 5 年累積電費 -> 2. 保固風險時間軸 -> 3. 五維雷達圖
+   配色：金鍏焦點為藍綠色 (#1b7a82)，競品為中性灰階
+   ============================================================ */
+
+    #GW-00-BL101支架燈競品評比-Root {
+      --gw00-teal: #1b7a82;
+      --gw00-teal-tint: rgba(27, 122, 130, 0.12);
+      --gw00-teal-bg: rgba(27, 122, 130, 0.06);
+      --gw00-ink: #2d3142;
+      --gw00-muted: #5f6b7c;
+      --gw00-light-gray: #a0aab2;
+      --gw00-mid-gray: #8c96a0;
+      --gw00-dark-gray: #707a84;
+      --gw00-border: rgba(60, 80, 70, 0.08);
+      --gw00-card-bg: #ffffff;
+
+      position: relative !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      margin: 0 !important;
+      padding: 24px 20px 18px !important;
+      /* 極低飽和度莫蘭迪灰綠漸層：清雅素淨，不突兀且自然銜接白底 */
+      background: 
+        radial-gradient(ellipse 90% 40% at 50% 0%, rgba(115, 145, 130, 0.07) 0%, rgba(115, 145, 130, 0) 70%),
+        linear-gradient(180deg, #fbfdfc 0%, #f4f7f5 50%, #ebf1ee 100%) !important;
+      font-family: 'Noto Sans TC', system-ui, -apple-system, sans-serif !important;
+      color: var(--gw00-ink) !important;
+      line-height: 1.5 !important;
+    }
+
+    #GW-00-BL101支架燈競品評比-Root *,
+    #GW-00-BL101支架燈競品評比-Root *::before,
+    #GW-00-BL101支架燈競品評比-Root *::after {
+      box-sizing: border-box !important;
+    }
+
+    /* 外層最大寬度容器 */
+    #GW-00-BL101支架燈競品評比-Root .gw00-container {
+      max-width: 1200px !important;
+      margin: 0 auto !important;
+      width: 100% !important;
+    }
+
+    /* 頂部標題區：收緊上下空白 */
+    #GW-00-BL101支架燈競品評比-Root .gw00-header {
+      text-align: center !important;
+      margin-bottom: 18px !important;
+    }
+
+    #GW-00-BL101支架燈競品評比-Root .gw00-eyebrow {
+      display: inline-block !important;
+      font-family: 'Geist Mono', ui-monospace, monospace !important;
+      font-size: 13px !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.16em !important;
+      text-transform: uppercase !important;
+      color: var(--gw00-teal) !important;
+      margin-bottom: 4px !important;
+    }
+
+    #GW-00-BL101支架燈競品評比-Root .gw00-title {
+      font-size: 26px !important;
+      font-weight: 700 !important;
+      color: var(--gw00-ink) !important;
+      margin: 0 0 6px 0 !important;
+      line-height: 1.35 !important;
+      letter-spacing: -0.01em !important;
+    }
+
+    #GW-00-BL101支架燈競品評比-Root .gw00-subtitle {
+      font-size: 14px !important;
+      color: var(--gw00-muted) !important;
+      margin: 0 !important;
+      line-height: 1.5 !important;
+    }
+
+    /* 核心響應式佈局 Flex/Grid 結構 */
+    #GW-00-BL101支架燈競品評比-Root .gw00-layout {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 18px !important;
+      width: 100% !important;
+    }
+
+    /* 卡片通用樣式 */
+    #GW-00-BL101支架燈競品評比-Root .gw00-card {
+      background: var(--gw00-card-bg) !important;
+      border-radius: 12px !important;
+      border: 1px solid var(--gw00-border) !important;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.035), 0 1px 3px rgba(0, 0, 0, 0.02) !important;
+      padding: 20px 18px !important;
+      width: 100% !important;
+      transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    }
+
+    #GW-00-BL101支架燈競品評比-Root .gw00-card:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06) !important;
+    }
+
+    /* 卡片內頂部標題 */
+    #GW-00-BL101支架燈競品評比-Root .gw00-card-head {
+      margin-bottom: 12px !important;
+    }
+
+    #GW-00-BL101支架燈競品評比-Root .gw00-card-tag {
+      font-family: 'Geist Mono', ui-monospace, monospace !important;
+      font-size: 11px !important;
+      font-weight: 600 !important;
+      color: var(--gw00-teal) !important;
+      letter-spacing: 0.12em !important;
+      display: block !important;
+      margin-bottom: 3px !important;
+    }
+
+    #GW-00-BL101支架燈競品評比-Root .gw00-card-title {
+      font-size: 17px !important;
+      font-weight: 700 !important;
+      color: var(--gw00-ink) !important;
+      margin: 0 0 3px 0 !important;
+    }
+
+    #GW-00-BL101支架燈競品評比-Root .gw00-card-desc {
+      font-size: 12px !important;
+      color: var(--gw00-muted) !important;
+      margin: 0 !important;
+    }
+
+    /* SVG 滿寬自適應容器 */
+    #GW-00-BL101支架燈競品評比-Root .gw00-svg-wrap {
+      width: 100% !important;
+      display: block !important;
+    }
+
+    #GW-00-BL101支架燈競品評比-Root svg {
+      width: 100% !important;
+      height: auto !important;
+      display: block !important;
+    }
+
+    /* 商用試算提示盒 */
+    #GW-00-BL101支架燈競品評比-Root .gw00-callout {
+      background: rgba(255, 255, 255, 0.88) !important;
+      border: 1px solid rgba(27, 122, 130, 0.28) !important;
+      border-radius: 10px !important;
+      padding: 12px 18px !important;
+      display: flex !important;
+      align-items: flex-start !important;
+      gap: 10px !important;
+      font-size: 13px !important;
+      line-height: 1.5 !important;
+      box-shadow: 0 2px 8px rgba(27, 122, 130, 0.05) !important;
+    }
+
+    #GW-00-BL101支架燈競品評比-Root .gw00-callout-icon {
+      font-size: 18px !important;
+      line-height: 1 !important;
+      flex-shrink: 0 !important;
+    }
+
+    #GW-00-BL101支架燈競品評比-Root .gw00-callout-text strong {
+      color: var(--gw00-teal) !important;
+      font-weight: 700 !important;
+    }
+
+    /* 底部註解：縮減 margin 與 padding */
+    #GW-00-BL101支架燈競品評比-Root .gw00-footer {
+      margin-top: 12px !important;
+      padding-top: 10px !important;
+      border-top: 1px solid rgba(27, 122, 130, 0.15) !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      flex-wrap: wrap !important;
+      gap: 8px !important;
+      font-size: 11px !important;
+      color: var(--gw00-muted) !important;
+    }
+
+    #GW-00-BL101支架燈競品評比-Root .gw00-footer strong {
+      color: var(--gw00-ink) !important;
+    }
+
+    /* ============================================================
+   RWD 順序控制：
+   桌機版 (>= 992px)：左側為五維雷達圖，右側為電費與保固兩卡片
+   窄螢幕版 (< 992px)：依序由上而下：
+   1. 5 年累積電費 -> 2. 保固覆蓋期 -> 3. 五維綜合戰力圖
+   ============================================================ */
+
+    @media (min-width: 992px) {
+      #GW-00-BL101支架燈競品評比-Root {
+        padding: 24px 28px 18px !important;
+      }
+
+      #GW-00-BL101支架燈競品評比-Root .gw00-layout {
+        display: grid !important;
+        grid-template-columns: 1fr 1.15fr !important;
+        gap: 20px !important;
+        align-items: start !important;
+      }
+
+      /* 桌機版左欄：雷達圖卡片（跨兩列高度） */
+      #GW-00-BL101支架燈競品評比-Root .gw00-card-radar {
+        grid-column: 1 !important;
+        grid-row: 1 / span 2 !important;
+        height: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+      }
+
+      /* 桌機版右欄：電費卡片（第 1 列） */
+      #GW-00-BL101支架燈競品評比-Root .gw00-card-cost {
+        grid-column: 2 !important;
+        grid-row: 1 !important;
+      }
+
+      /* 桌機版右欄：保固卡片（第 2 列） */
+      #GW-00-BL101支架燈競品評比-Root .gw00-card-warranty {
+        grid-column: 2 !important;
+        grid-row: 2 !important;
+      }
+
+      /* 桌機版跨欄：專案試算與註解 */
+      #GW-00-BL101支架燈競品評比-Root .gw00-bottom-wrap {
+        grid-column: 1 / span 2 !important;
+        margin-top: 4px !important;
+      }
+    }
+
+    /* 窄螢幕版 (手機與小平板 < 992px) */
+    @media (max-width: 991px) {
+      #GW-00-BL101支架燈競品評比-Root {
+        padding: 18px 14px 14px !important;
+      }
+
+      #GW-00-BL101支架燈競品評比-Root .gw00-title {
+        font-size: 20px !important;
+      }
+
+      #GW-00-BL101支架燈競品評比-Root .gw00-subtitle {
+        font-size: 13px !important;
+      }
+
+      /* 強制由上而下的精確順序 */
+      #GW-00-BL101支架燈競品評比-Root .gw00-card-cost {
+        order: 1 !important;
+      }
+
+      #GW-00-BL101支架燈競品評比-Root .gw00-card-warranty {
+        order: 2 !important;
+      }
+
+      #GW-00-BL101支架燈競品評比-Root .gw00-card-radar {
+        order: 3 !important;
+      }
+
+      #GW-00-BL101支架燈競品評比-Root .gw00-bottom-wrap {
+        order: 4 !important;
+      }
+    }
+</style>
+<div class="gw00-container"><!-- 標題區 -->
+<div class="gw00-header"><span class="gw00-eyebrow">TCO &amp; Capability Benchmark</span>
+<h2 class="gw00-title" id="GW-00-BL101支架燈競品評比-Title">4 呎 LED 支架燈規格與 5 年總持有成本 (TCO) 綜合評比</h2>
+
+<p class="gw00-subtitle">評測基準：每日運作約 6.8 小時（年運轉 2,500 小時）&middot; 商用電費以 5 元/度 計算 &middot; 4 呎燈具</p>
+</div>
+<!-- 響應式佈局主容器 -->
+
+<div class="gw00-layout"><!-- ========================================================
+         圖表 1：5 年單燈累積電費支出 (窄版第 1 位)
+         ======================================================== -->
+<div class="gw00-card gw00-card-cost">
+<div class="gw00-card-head"><span class="gw00-card-tag">PANEL 01 // 5-YEAR ENERGY COST</span>
+
+<h3 class="gw00-card-title">金鍏 - 超長壽命 &middot; 超級省電</h3>
+
+<p class="gw00-card-desc">基準：每年 2,500hr &times; 5年 = 12,500hr &middot; 電費 5元/度</p>
+</div>
+
+<div class="gw00-svg-wrap"><svg aria-label="5年累積電費比較長條圖" role="img" viewbox="0 0 540 180" xmlns="http://www.w3.org/2000/svg"> <!-- 刻度與參考線 (左移 25px 達成整體置中) --> <line stroke="rgba(45,49,66,0.25)" stroke-width="1" x1="85" x2="85" y1="20" y2="150"></line> <line stroke="rgba(45,49,66,0.08)" stroke-width="0.8" x1="210" x2="210" y1="20" y2="150"></line> <text fill="#5f6b7c" font-family="'Geist Mono', monospace" font-size="9" text-anchor="middle" x="210" y="166">$500</text> <line stroke="rgba(45,49,66,0.15)" stroke-dasharray="3 2" stroke-width="0.8" x1="335" x2="335" y1="20" y2="150"></line> <text fill="#1b7a82" font-family="'Geist Mono', monospace" font-size="9" font-weight="600" text-anchor="middle" x="335" y="166">$1,000</text> <line stroke="rgba(45,49,66,0.08)" stroke-width="0.8" x1="400" x2="400" y1="20" y2="150"></line> <text fill="#5f6b7c" font-family="'Geist Mono', monospace" font-size="9" text-anchor="middle" x="400" y="166">$1,250</text> <!-- 1. 金鍏 16W ($1,000，長條寬度 250) --> <text fill="#1b7a82" font-family="'Noto Sans TC', sans-serif" font-size="12" font-weight="700" text-anchor="end" x="75" y="42">金鍏 16W</text> <rect fill="rgba(27,122,130,0.15)" height="22" rx="3" stroke="#1b7a82" stroke-width="1.8" width="250" x="85" y="27"></rect> <text fill="#1b7a82" font-family="'Geist Mono', monospace" font-size="10" font-weight="700" x="95" y="42">140 lm/W</text> <text fill="#1b7a82" font-family="'Geist Mono', monospace" font-size="12" font-weight="700" x="343" y="43">$1,000</text> <text fill="#1b7a82" font-family="'Noto Sans TC', sans-serif" font-size="11" font-weight="700" x="398" y="43">★ 高光效、最省電</text> <!-- 2. 舞光 18W ($1,125，長條寬度 281) --> <text fill="#5f6b7c" font-family="'Noto Sans TC', sans-serif" font-size="12" font-weight="500" text-anchor="end" x="75" y="73">舞光 18W</text> <rect fill="rgba(160,170,178,0.18)" height="20" rx="3" stroke="#a0aab2" stroke-width="1" width="281" x="85" y="58"></rect> <text fill="#4f5d75" font-family="'Geist Mono', monospace" font-size="10" font-weight="600" x="95" y="72">115 lm/W</text> <text fill="#5f6b7c" font-family="'Geist Mono', monospace" font-size="11" x="374" y="73">$1,125</text> <text fill="#8c96a0" font-family="'Geist Mono', monospace" font-size="10" x="419" y="73">(多耗電 12.5%)</text> <!-- 3. 飛利浦 18W ($1,125) --> <text fill="#5f6b7c" font-family="'Noto Sans TC', sans-serif" font-size="12" font-weight="500" text-anchor="end" x="75" y="104">飛利浦 18W</text> <rect fill="rgba(140,150,160,0.18)" height="20" rx="3" stroke="#8c96a0" stroke-width="1" width="281" x="85" y="89"></rect> <text fill="#4f5d75" font-family="'Geist Mono', monospace" font-size="10" font-weight="600" x="95" y="103">100 lm/W</text> <text fill="#5f6b7c" font-family="'Geist Mono', monospace" font-size="11" x="374" y="104">$1,125</text> <text fill="#8c96a0" font-family="'Geist Mono', monospace" font-size="10" x="419" y="104">(多耗電 12.5%)</text> <!-- 4. 東亞 20W ($1,250，長條寬度 312) --> <text fill="#5f6b7c" font-family="'Noto Sans TC', sans-serif" font-size="12" font-weight="500" text-anchor="end" x="75" y="135">東亞 20W</text> <rect fill="rgba(112,122,132,0.18)" height="20" rx="3" stroke="#707a84" stroke-width="1" width="312" x="85" y="120"></rect> <text fill="#4f5d75" font-family="'Geist Mono', monospace" font-size="10" font-weight="600" x="95" y="134">90 lm/W</text> <text fill="#5f6b7c" font-family="'Geist Mono', monospace" font-size="11" x="405" y="135">$1,250</text> <text fill="#8c96a0" font-family="'Geist Mono', monospace" font-size="10" x="450" y="135">(多耗電 25%)</text> </svg></div>
+</div>
+<!-- ========================================================
+         圖表 2：原廠保固覆蓋期 vs 過保維修風險期 (窄版第 2 位)
+         ======================================================== -->
+
+<div class="gw00-card gw00-card-warranty">
+<div class="gw00-card-head"><span class="gw00-card-tag">PANEL 02 // WARRANTY TIMELINE</span>
+
+<h3 class="gw00-card-title">金鍏 - 超高品質 &middot; 最長保固</h3>
+
+<p class="gw00-card-desc">單位：運轉年數（每年 2,500 小時常態運轉）</p>
+</div>
+
+<div class="gw00-svg-wrap"><svg aria-label="保固年限與風險時間軸比較" role="img" viewbox="0 0 540 180" xmlns="http://www.w3.org/2000/svg"> <!-- 時間軸刻度線 --> <line stroke="rgba(45,49,66,0.25)" stroke-width="1" x1="110" x2="110" y1="20" y2="150"></line> <line stroke="rgba(45,49,66,0.08)" stroke-width="0.8" x1="180" x2="180" y1="20" y2="150"></line> <text fill="#5f6b7c" font-family="'Geist Mono', monospace" font-size="9" text-anchor="middle" x="180" y="166">第1年</text> <line stroke="rgba(45,49,66,0.08)" stroke-width="0.8" x1="250" x2="250" y1="20" y2="150"></line> <text fill="#5f6b7c" font-family="'Geist Mono', monospace" font-size="9" text-anchor="middle" x="250" y="166">第2年</text> <line stroke="rgba(45,49,66,0.08)" stroke-width="0.8" x1="320" x2="320" y1="20" y2="150"></line> <text fill="#5f6b7c" font-family="'Geist Mono', monospace" font-size="9" text-anchor="middle" x="320" y="166">第3年</text> <line stroke="rgba(45,49,66,0.08)" stroke-width="0.8" x1="390" x2="390" y1="20" y2="150"></line> <text fill="#5f6b7c" font-family="'Geist Mono', monospace" font-size="9" text-anchor="middle" x="390" y="166">第4年</text> <line stroke="rgba(45,49,66,0.18)" stroke-width="1" x1="460" x2="460" y1="20" y2="150"></line> <text fill="#1b7a82" font-family="'Geist Mono', monospace" font-size="9" font-weight="600" text-anchor="middle" x="460" y="166">第5年</text> <!-- 1. 金鍏 5年全保固 (寬度 350) --> <text fill="#1b7a82" font-family="'Noto Sans TC', sans-serif" font-size="12" font-weight="700" text-anchor="end" x="100" y="42">金鍏</text> <rect fill="#1b7a82" height="22" rx="3" width="350" x="110" y="27"></rect> <text fill="#ffffff" font-family="'Noto Sans TC', sans-serif" font-size="11" font-weight="700" text-anchor="middle" x="285" y="42">5 年完整原廠保固（台灣在地原廠保障）</text> <!-- 2. 舞光 2年 --> <text fill="#5f6b7c" font-family="'Noto Sans TC', sans-serif" font-size="12" font-weight="500" text-anchor="end" x="100" y="73">舞光</text> <rect fill="#a0aab2" height="20" rx="3" width="140" x="110" y="58"></rect> <text fill="#ffffff" font-family="'Noto Sans TC', sans-serif" font-size="10" text-anchor="middle" x="180" y="72">2年保固</text> <rect fill="none" height="20" rx="3" stroke="#d97706" stroke-dasharray="4 3" stroke-width="1.2" width="210" x="250" y="58"></rect> <text fill="#d97706" font-family="'Noto Sans TC', sans-serif" font-size="10" text-anchor="middle" x="355" y="72">⚠ 重新構制燈具與安裝人力成本</text> <!-- 3. 飛利浦 2年 --> <text fill="#5f6b7c" font-family="'Noto Sans TC', sans-serif" font-size="12" font-weight="500" text-anchor="end" x="100" y="104">飛利浦</text> <rect fill="#8c96a0" height="20" rx="3" width="140" x="110" y="89"></rect> <text fill="#ffffff" font-family="'Noto Sans TC', sans-serif" font-size="10" text-anchor="middle" x="180" y="103">2年保固</text> <rect fill="none" height="20" rx="3" stroke="#d97706" stroke-dasharray="4 3" stroke-width="1.2" width="210" x="250" y="89"></rect> <text fill="#d97706" font-family="'Noto Sans TC', sans-serif" font-size="10" text-anchor="middle" x="355" y="103">⚠ 重新構制燈具與安裝人力成本</text> <!-- 4. 東亞 1年 --> <text fill="#5f6b7c" font-family="'Noto Sans TC', sans-serif" font-size="12" font-weight="500" text-anchor="end" x="100" y="135">東亞</text> <rect fill="#707a84" height="20" rx="3" width="70" x="110" y="120"></rect> <text fill="#ffffff" font-family="'Noto Sans TC', sans-serif" font-size="10" text-anchor="middle" x="145" y="134">1年</text> <rect fill="none" height="20" rx="3" stroke="#dc2626" stroke-dasharray="4 3" stroke-width="1.2" width="280" x="180" y="120"></rect> <text fill="#dc2626" font-family="'Noto Sans TC', sans-serif" font-size="10" text-anchor="middle" x="320" y="134">⚠ 重新構制燈具與安裝人力成本</text> </svg></div>
+</div>
+<!-- ========================================================
+         圖表 3：五維綜合戰力圖（金鍏全面包圍）(窄版第 3 位)
+         ======================================================== -->
+
+<div class="gw00-card gw00-card-radar">
+<div class="gw00-card-head"><span class="gw00-card-tag">PANEL 03 // CAPABILITY RADAR</span>
+
+<h3 class="gw00-card-title">五維綜合評比</h3>
+
+<p class="gw00-card-desc">依光效、流明、保固、電費、能耗五大關鍵維度量化評比</p>
+</div>
+
+<div class="gw00-svg-wrap"><svg aria-label="五維綜合戰力雷達圖" role="img" viewbox="0 0 500 470" xmlns="http://www.w3.org/2000/svg"> <!-- 雷達圖中心 (cx=250, cy=235, R=140) --> <!-- 同心五邊形網格 --> <polygon fill="none" points="250,207 277,226 266,258 234,258 223,226" stroke="rgba(45,49,66,0.10)" stroke-width="0.8"></polygon> <polygon fill="none" points="250,179 303,218 283,280 217,280 197,218" stroke="rgba(45,49,66,0.10)" stroke-width="0.8"></polygon> <polygon fill="none" points="250,151 330,209 299,303 201,303 170,209" stroke="rgba(45,49,66,0.10)" stroke-width="0.8"></polygon> <polygon fill="none" points="250,123 356,201 316,325 184,325 144,201" stroke="rgba(45,49,66,0.10)" stroke-width="0.8"></polygon> <polygon fill="none" points="250,95 383,192 332,348 168,348 117,192" stroke="rgba(45,49,66,0.20)" stroke-width="1.2"></polygon> <!-- 5 條軸線 --> <line stroke="rgba(45,49,66,0.16)" stroke-width="1" x1="250" x2="250" y1="235" y2="95"></line> <line stroke="rgba(45,49,66,0.16)" stroke-width="1" x1="250" x2="383" y1="235" y2="192"></line> <line stroke="rgba(45,49,66,0.16)" stroke-width="1" x1="250" x2="332" y1="235" y2="348"></line> <line stroke="rgba(45,49,66,0.16)" stroke-width="1" x1="250" x2="168" y1="235" y2="348"></line> <line stroke="rgba(45,49,66,0.16)" stroke-width="1" x1="250" x2="117" y1="235" y2="192"></line> <!-- 頂端軸刻度數字 --> <text fill="#5f6b7c" font-family="'Geist Mono', monospace" font-size="8" text-anchor="end" x="244" y="210">2</text> <text fill="#5f6b7c" font-family="'Geist Mono', monospace" font-size="8" text-anchor="end" x="244" y="182">4</text> <text fill="#5f6b7c" font-family="'Geist Mono', monospace" font-size="8" text-anchor="end" x="244" y="154">6</text> <text fill="#5f6b7c" font-family="'Geist Mono', monospace" font-size="8" text-anchor="end" x="244" y="126">8</text> <text fill="#1b7a82" font-family="'Geist Mono', monospace" font-size="8" font-weight="700" text-anchor="end" x="244" y="98">10</text> <!-- 5 大指標標籤 --> <text fill="#2d3142" font-family="'Noto Sans TC', sans-serif" font-size="12" font-weight="700" text-anchor="middle" x="250" y="76">發光效率 (lm/W)</text> <text fill="#5f6b7c" font-family="'Geist Mono', monospace" font-size="9" text-anchor="middle" x="250" y="88">140 vs 90~115</text> <text fill="#2d3142" font-family="'Noto Sans TC', sans-serif" font-size="12" font-weight="600" text-anchor="start" x="396" y="190">總流明輸出 (lm)</text> <text fill="#5f6b7c" font-family="'Geist Mono', monospace" font-size="9" text-anchor="start" x="396" y="203">2,240 vs 1,800</text> <text fill="#1b7a82" font-family="'Noto Sans TC', sans-serif" font-size="12" font-weight="700" text-anchor="start" x="345" y="365">原廠保固年限 ★</text> <text fill="#1b7a82" font-family="'Geist Mono', monospace" font-size="9" text-anchor="start" x="345" y="378">5年 vs 1~2年</text> <text fill="#1b7a82" font-family="'Noto Sans TC', sans-serif" font-size="12" font-weight="700" text-anchor="end" x="155" y="365">5年電費節省 ★</text> <text fill="#1b7a82" font-family="'Geist Mono', monospace" font-size="9" text-anchor="end" x="155" y="378">$1,000 最低持有</text> <text fill="#2d3142" font-family="'Noto Sans TC', sans-serif" font-size="12" font-weight="600" text-anchor="end" x="104" y="190">低耗能省電率</text> <text fill="#5f6b7c" font-family="'Geist Mono', monospace" font-size="9" text-anchor="end" x="104" y="203">16W 最低瓦數</text> <!-- 競品多邊形（灰色階） --> <!-- 東亞 TOA (深中灰，虛線) --> <polygon fill="rgba(112,122,132,0.12)" points="250,145 356,201 266,280 208,291 184,235" stroke="#707a84" stroke-dasharray="3 3" stroke-width="1.3"></polygon> <!-- 飛利浦 Philips (中灰) --> <polygon fill="rgba(140,150,160,0.12)" points="250,136 356,201 283,280 188,320 150,203" stroke="#8c96a0" stroke-width="1.3"></polygon> <!-- 舞光 DanceLight (淺中灰) --> <polygon fill="rgba(160,170,178,0.12)" points="250,120 372,196 283,280 188,320 150,203" stroke="#a0aab2" stroke-width="1.3"></polygon> <!-- ★ 金鍏 Goldenway (藍綠色焦點，滿分全面包圍) --> <polygon fill="rgba(27,122,130,0.18)" points="250,95 383,192 332,348 168,348 117,192" stroke="#1b7a82" stroke-width="2.4"></polygon> <!-- 頂點圓點（金鍏專屬） --> <circle cx="250" cy="95" fill="#1b7a82" r="4.5" stroke="#ffffff" stroke-width="1.5"></circle> <circle cx="383" cy="192" fill="#1b7a82" r="4.5" stroke="#ffffff" stroke-width="1.5"></circle> <circle cx="332" cy="348" fill="#1b7a82" r="4.5" stroke="#ffffff" stroke-width="1.5"></circle> <circle cx="168" cy="348" fill="#1b7a82" r="4.5" stroke="#ffffff" stroke-width="1.5"></circle> <circle cx="117" cy="192" fill="#1b7a82" r="4.5" stroke="#ffffff" stroke-width="1.5"></circle> <!-- 底部圖例 (Legend) --> <g transform="translate(45, 430)"> <!-- 金鍏 --> <rect fill="#1b7a82" height="8" rx="2" width="16" x="0" y="0"></rect> <text fill="#1b7a82" font-family="'Noto Sans TC', sans-serif" font-size="11" font-weight="700" x="22" y="8">金鍏 16W (MIT)</text> <!-- 舞光 --> <rect fill="#a0aab2" height="8" rx="2" width="16" x="125" y="0"></rect> <text fill="#5f6b7c" font-family="'Noto Sans TC', sans-serif" font-size="11" font-weight="500" x="147" y="8">舞光 18W</text> <!-- 飛利浦 --> <rect fill="#8c96a0" height="8" rx="2" width="16" x="225" y="0"></rect> <text fill="#5f6b7c" font-family="'Noto Sans TC', sans-serif" font-size="11" font-weight="500" x="247" y="8">飛利浦 18W</text> <!-- 東亞 --> <rect fill="#707a84" height="8" rx="2" width="16" x="330" y="0"></rect> <text fill="#5f6b7c" font-family="'Noto Sans TC', sans-serif" font-size="11" font-weight="500" x="352" y="8">東亞 20W</text> </g> </svg></div>
+</div>
+<!-- ========================================================
+         底部跨欄：商業工程專案試算提示盒 + 數據出處
+         ======================================================== -->
+
+<div class="gw00-bottom-wrap">
+<div class="gw00-callout">
+<div class="gw00-callout-text"><strong>商用專案試算（安裝 100 盞）：</strong> 5 年直接省下 <strong>1.25 萬 ~ 2.5 萬元電費</strong>，更省下維修與換燈的人工與燈具支出成本！</div>
+</div>
+
+<div class="gw00-footer"><span>數據出處：各品牌 4 呎 LED 支架燈公開標示規格整理</span> <span>評估標準：每年 2,500 小時常態運轉 &middot; 電費 5 元/度 計算</span></div>
+</div>
+</div>
+</div>
+</div>
+
+<div aria-labelledby="GW-支架燈配線-Title" id="GW-支架燈配線與串接說明-Root">
+<style type="text/css">/* 1. 樣式封裝（緊接於 div 下一行，中間嚴禁插入任何 HTML 註解） */
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
+
+  #GW-支架燈配線與串接說明-Root {
+    font-family: 'Outfit', 'Noto Sans TC', sans-serif !important;
+    position: relative !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    background: transparent !important;
+    padding: 24px 4% !important; /* 精巧緊湊垂直間距，不占過大篇幅 */
+    margin: 0 !important;
+    --gw-primary: #0284c7;
+    --gw-primary-dark: #0369a1;
+    --gw-primary-light: #f0f9ff;
+    --gw-accent: #0d9488;
+    --gw-accent-light: #f0fdfa;
+    --gw-text-main: #1e293b;
+    --gw-text-muted: #64748b;
+    --gw-border-card: #e2e8f0;
+    --gw-surface: #ffffff;
+    --gw-surface-soft: #f8fafc;
+  }
+
+  #GW-支架燈配線與串接說明-Root *,
+  #GW-支架燈配線與串接說明-Root *::before,
+  #GW-支架燈配線與串接說明-Root *::after {
+    box-sizing: border-box !important;
+  }
+
+  /* 隱藏 SEO / GEO 語意摘要 */
+  #GW-支架燈配線與串接說明-Root .gw-sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+
+  /* 區塊主要居中外框（晶透簡約卡片） */
+  #GW-支架燈配線與串接說明-Root .gw-notice-wrapper {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    background: #ffffff !important;
+    border: 1px solid var(--gw-border-card) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.05) !important;
+    padding: 20px 24px !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  /* 頂部極細科技漸層光線 */
+  #GW-支架燈配線與串接說明-Root .gw-notice-wrapper::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 2.5px !important;
+    background: linear-gradient(90deg, #0284c7 0%, #38bdf8 50%, #0d9488 100%) !important;
+  }
+
+  /* 標頭與眉標 */
+  #GW-支架燈配線與串接說明-Root .gw-header-area {
+    text-align: center !important;
+    margin-bottom: 16px !important;
+  }
+
+  #GW-支架燈配線與串接說明-Root .gw-badge-pill {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    background-color: var(--gw-primary-light) !important;
+    border: 1px solid rgba(2, 132, 199, 0.18) !important;
+    color: var(--gw-primary-dark) !important;
+    font-size: 11.5px !important;
+    font-weight: 600 !important;
+    padding: 2px 10px !important;
+    border-radius: 20px !important;
+    letter-spacing: 0.06em !important;
+    margin-bottom: 6px !important;
+  }
+
+  #GW-支架燈配線與串接說明-Root .gw-main-title {
+    font-size: 21px !important;
+    font-weight: 600 !important;
+    color: var(--gw-text-main) !important;
+    line-height: 1.35 !important;
+    margin: 0 0 6px 0 !important;
+    letter-spacing: -0.01em !important;
+  }
+
+  #GW-支架燈配線與串接說明-Root .gw-sub-intro {
+    font-size: 13.5px !important;
+    color: var(--gw-text-muted) !important;
+    line-height: 1.6 !important;
+    max-width: 720px !important;
+    margin: 0 auto !important;
+  }
+
+  /* 雙欄方案對比網格 */
+  #GW-支架燈配線與串接說明-Root .gw-card-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+    margin-bottom: 14px !important;
+  }
+
+  /* 單張方案卡片（橫向圖文排版，極致緊湊清爽） */
+  #GW-支架燈配線與串接說明-Root .gw-plan-card {
+    background: var(--gw-surface-soft) !important;
+    border: 1px solid var(--gw-border-card) !important;
+    border-radius: 10px !important;
+    padding: 14px 16px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 14px !important;
+    position: relative !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  #GW-支架燈配線與串接說明-Root .gw-plan-card:hover {
+    transform: translateY(-1.5px);
+    box-shadow: 0 8px 18px -4px rgba(15, 23, 42, 0.06);
+    border-color: #cbd5e1 !important;
+  }
+
+  #GW-支架燈配線與串接說明-Root .gw-plan-card.gw-highlight-card {
+    background: linear-gradient(180deg, #f8fdfc 0%, #f0fdfa 100%) !important;
+    border-color: rgba(13, 148, 136, 0.28) !important;
+  }
+
+  /* 配件圖片容器（縮圖精簡展示，保留質感） */
+  #GW-支架燈配線與串接說明-Root .gw-cable-thumb-box {
+    width: 110px !important;
+    height: 110px !important;
+    flex-shrink: 0 !important;
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 8px !important;
+    padding: 4px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+  }
+
+  #GW-支架燈配線與串接說明-Root .gw-cable-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    display: block !important;
+    transition: transform 0.25s ease;
+  }
+
+  #GW-支架燈配線與串接說明-Root .gw-plan-card:hover .gw-cable-img {
+    transform: scale(1.04);
+  }
+
+  /* 卡片文字內容欄 */
+  #GW-支架燈配線與串接說明-Root .gw-card-body {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+  }
+
+  /* 卡片標題與標籤列 */
+  #GW-支架燈配線與串接說明-Root .gw-card-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+  }
+
+  #GW-支架燈配線與串接說明-Root .gw-card-title {
+    font-size: 15.5px !important;
+    font-weight: 600 !important;
+    color: var(--gw-text-main) !important;
+    margin: 0 !important;
+    line-height: 1.3 !important;
+  }
+
+  #GW-支架燈配線與串接說明-Root .gw-card-tag {
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    padding: 2px 7px !important;
+    border-radius: 4px !important;
+    letter-spacing: 0.04em !important;
+    white-space: nowrap !important;
+  }
+
+  #GW-支架燈配線與串接說明-Root .gw-tag-default {
+    background: #f1f5f9 !important;
+    color: #475569 !important;
+    border: 1px solid #cbd5e1 !important;
+  }
+
+  #GW-支架燈配線與串接說明-Root .gw-tag-custom {
+    background: var(--gw-accent-light) !important;
+    color: var(--gw-accent) !important;
+    border: 1px solid rgba(13, 148, 136, 0.3) !important;
+  }
+
+  /* 說明文案 */
+  #GW-支架燈配線與串接說明-Root .gw-card-desc {
+    font-size: 13px !important;
+    color: #334155 !important;
+    line-height: 1.55 !important;
+    margin: 0 !important;
+  }
+
+  /* 施工小撇步提示徽章（支援自訂圖示） */
+  #GW-支架燈配線與串接說明-Root .gw-pro-tip-badge {
+    background: #ffffff !important;
+    border: 1px solid rgba(13, 148, 136, 0.25) !important;
+    border-radius: 6px !important;
+    padding: 6px 9px !important;
+    font-size: 12px !important;
+    color: #0f766e !important;
+    line-height: 1.5 !important;
+    margin-top: 3px !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+  }
+
+  #GW-支架燈配線與串接說明-Root .gw-pro-tip-icon-img {
+    width: 16px !important;
+    height: 16px !important;
+    object-fit: contain !important;
+    flex-shrink: 0 !important;
+    margin-top: 1px !important;
+    display: inline-block !important;
+  }
+
+  #GW-支架燈配線與串接說明-Root .gw-pro-tip-badge strong {
+    color: #047857 !important;
+    font-weight: 600 !important;
+  }
+
+  /* 底部備註指引緊湊橫條 */
+  #GW-支架燈配線與串接說明-Root .gw-action-bar {
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 8px !important;
+    padding: 8px 14px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+    flex-wrap: wrap !important;
+  }
+
+  #GW-支架燈配線與串接說明-Root .gw-note-example-text {
+    font-size: 13px !important;
+    color: #334155 !important;
+    margin: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 7px !important;
+    user-select: all !important;
+  }
+
+  #GW-支架燈配線與串接說明-Root .gw-note-icon-svg {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: var(--gw-primary) !important;
+    flex-shrink: 0 !important;
+  }
+
+  #GW-支架燈配線與串接說明-Root .gw-note-example-text strong {
+    color: var(--gw-primary-dark) !important;
+    font-weight: 600 !important;
+  }
+
+  #GW-支架燈配線與串接說明-Root .gw-copy-btn {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    border: none !important;
+    background: var(--gw-primary) !important;
+    color: #ffffff !important;
+    font-family: inherit !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    padding: 6px 12px !important;
+    border-radius: 5px !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    white-space: nowrap !important;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+  }
+
+  #GW-支架燈配線與串接說明-Root .gw-copy-btn:hover {
+    background: var(--gw-primary-dark) !important;
+    transform: translateY(-1px);
+  }
+
+  #GW-支架燈配線與串接說明-Root .gw-copy-btn.gw-copied {
+    background: #10b981 !important;
+  }
+
+  /* 響應式配置：平板螢幕（900px 以下） */
+  @media screen and (max-width: 900px) {
+    #GW-支架燈配線與串接說明-Root .gw-card-grid {
+      grid-template-columns: 1fr !important;
+      gap: 12px !important;
+    }
+  }
+
+  /* 響應式配置：手機窄螢幕（640px 以下） */
+  @media screen and (max-width: 640px) {
+    #GW-支架燈配線與串接說明-Root {
+      padding: 16px 12px !important;
+    }
+    #GW-支架燈配線與串接說明-Root .gw-notice-wrapper {
+      padding: 16px 14px !important;
+    }
+    #GW-支架燈配線與串接說明-Root .gw-main-title {
+      font-size: 18px !important;
+    }
+    #GW-支架燈配線與串接說明-Root .gw-sub-intro {
+      font-size: 12.5px !important;
+    }
+    #GW-支架燈配線與串接說明-Root .gw-plan-card {
+      padding: 12px !important;
+      gap: 12px !important;
+    }
+    #GW-支架燈配線與串接說明-Root .gw-cable-thumb-box {
+      width: 86px !important;
+      height: 86px !important;
+    }
+    #GW-支架燈配線與串接說明-Root .gw-card-title {
+      font-size: 14.5px !important;
+    }
+    #GW-支架燈配線與串接說明-Root .gw-card-desc {
+      font-size: 12px !important;
+    }
+    #GW-支架燈配線與串接說明-Root .gw-action-bar {
+      flex-direction: column !important;
+      align-items: stretch !important;
+      gap: 8px !important;
+      padding: 10px 12px !important;
+    }
+    #GW-支架燈配線與串接說明-Root .gw-copy-btn {
+      width: 100% !important;
+      justify-content: center !important;
+      padding: 8px !important;
+    }
+  }
+</style>
+<!-- 2. 隱藏 GEO 語意摘要 -->
+<div class="gw-sr-only">金鍏電子支架燈隨附線材說明與串接更換指引：每盞出廠均標配專用電源線1條，適合單處光源安裝使用。若您有多盞連續串接需求，下單時可備註更換為雙頭串接線，免額外加價；串接連貫光帶時線路更俐落乾淨。施工小撇步：串接線另一端剪開去皮，亦可直接作為電源線靈活出線。結帳備註範例：購買 4 盞支架燈，需 1 條電源線 + 3 條串接線。</div>
+<!-- 3. 區塊可見 HTML 結構 -->
+
+<div class="gw-notice-wrapper"><!-- 標頭資訊 -->
+<div class="gw-header-area">
+<div class="gw-badge-pill"><span>隨附線材說明</span> <span>&bull;</span> <span>免額外加價</span></div>
+
+<h2 class="gw-main-title" id="GW-支架燈配線-Title">支架燈隨附線材說明 ‧ 依安裝需求彈性更換</h2>
+
+<p class="gw-sub-intro"><span style="color:#0369a1;"><strong>每盞出廠均標配專用電源線1條</strong></span>；若您有多盞連續串接需求，下單時可備註更換為串接線，免額外加價。<br />
+※ 隨附線材總數以購買燈具數量為限；<strong>若需超出燈具總數之線材，請另行加購，謝謝！</strong></p>
+</div>
+<!-- 雙欄情境卡片（附配件實拍圖） -->
+
+<div class="gw-card-grid"><!-- 方案 A：單盞獨立使用 -->
+<div class="gw-plan-card">
+<div class="gw-cable-thumb-box"><!-- 電源線實拍圖：上傳至官網後請將下方 src 替換為官網公開圖片網址 --><img alt="支架燈標配電源線" class="gw-cable-img" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/BL_101_111/e7adccd2763f7fec.jpg?v=0drrxhg" title="支架燈標配專用電源線" /></div>
+
+<div class="gw-card-body">
+<div class="gw-card-header">
+<h3 class="gw-card-title">單盞獨立使用</h3>
+<span class="gw-card-tag gw-tag-default">出廠預設</span></div>
+
+<p class="gw-card-desc">每盞皆附專用電源線 1 條，適合單處光源安裝使用。</p>
+</div>
+</div>
+<!-- 方案 B：多盞連續串接 -->
+
+<div class="gw-plan-card gw-highlight-card">
+<div class="gw-cable-thumb-box"><!-- 串接線實拍圖：上傳至官網後請將下方 src 替換為官網公開圖片網址 --><img alt="支架燈選配雙頭串接線" class="gw-cable-img" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/BL_101_111/1d774b1af260d61e.jpg?v=ohkgerr" title="支架燈選配雙頭串接線" /></div>
+
+<div class="gw-card-body">
+<div class="gw-card-header">
+<h3 class="gw-card-title">多盞連續串接</h3>
+<span class="gw-card-tag gw-tag-custom">可改配串接線</span></div>
+
+<p class="gw-card-desc">串接連貫光帶時，可將電源線免費換為雙頭串接線，線路更俐落。</p>
+
+<div class="gw-pro-tip-badge"><!-- ◀◀◀ 施工小撇步自訂圖示：請在下方 src 雙引號內替換為您自己上傳的圖示圖片網址 ◀◀◀ --><img alt="施工小撇步圖示" class="gw-pro-tip-icon-img" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/warning.png?v=e2wrx3f" title="施工小撇步" /> <span><strong>施工小撇步</strong>：串接線另一端剪開去皮，亦可直接作為電源線靈活出線！</span></div>
+</div>
+</div>
+</div>
+<!-- 底部備註指引緊湊橫條 -->
+
+<div class="gw-action-bar">
+<div class="gw-note-example-text"><span class="gw-note-icon-svg"><svg aria-hidden="true" fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="15"> <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path> <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path> </svg> </span> <span>備註範例：<strong id="gw-copy-target-text">購買 4 盞支架燈，需 1 條電源線 + 3 條串接線</strong></span></div>
+<button class="gw-copy-btn" id="gw-btn-copy-note" onclick="(function(){var t=document.getElementById('gw-copy-target-text').innerText.trim();navigator.clipboard.writeText(t).then(function(){var b=document.getElementById('gw-btn-copy-note');b.classList.add('gw-copied');b.innerText='已複製！';setTimeout(function(){b.classList.remove('gw-copied');b.innerText='複製範例';},2000);});})()" type="button"><svg aria-hidden="true" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="13"> <rect height="13" rx="2" ry="2" width="13" x="9" y="9"></rect> <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path> </svg> 複製範例</button></div>
+</div>
+</div>

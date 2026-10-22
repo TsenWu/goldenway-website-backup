@@ -1,868 +1,1396 @@
-<!-- ★ 品質宣告區塊：主標芫荽體＋內文 Noto Sans TC ★ --><!-- ✅ 引入字型：芫荽體 + Noto Sans TC -->
-<link href="https://cdn.jsdelivr.net/gh/ButTaiwan/iancnfont@latest/Iansui-Regular.css" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
-<style type="text/css">/* ===============================================
-   ★ 品質宣告區塊 .block-品質宣告
-   =============================================== */
-.block-品質宣告 {
-  position: relative;  /* ← 加這行即可防止遮罩穿透 */
-  /* ✅ 區塊背景圖設定 */
-  background: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/4644232229e34b5f.png?v=4gw258i') center center / cover no-repeat;
-
-  /* ✅ 區塊整體上下左右內距（＝視覺上的高度）→ 想改背景區塊高就是改這裡！ */
-  padding: 100px 60px; /* ↑↑↑ 可改成 80px 40px 會變矮，或 140px 更高 */
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 60px;               /* ✅ 左右文字與浮層的間距 */
-  flex-wrap: wrap;
-  box-sizing: border-box;
-
-  /* ✅ 預設內文字型（headline 除外） */
-  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
-}
-
-/* ✅ 背景濾暗遮罩層 */
-.block-品質宣告::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.3); /* ↑↑↑ 調整透明度／改成 rgba(0,0,0,0.1) 比較亮 */
-  z-index: 1;
-}
-.block-品質宣告 > * {
-  position: relative;
-  z-index: 2;
-}
+<div aria-labelledby="GW-01-BL101支架燈品質宣告-Title" id="GW-01-BL101支架燈品質宣告-Root" role="region">
+<style type="text/css">@import url('https://cdn.jsdelivr.net/gh/ButTaiwan/iancnfont@latest/Iansui-Regular.css');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
 
 /* ===============================================
-   ★ 主標文字 .headline
+   ★ 品質宣告區塊 GW-01-BL101支架燈品質宣告
+   保留原創排版、視覺尺寸、主標芫荽體與毛玻璃浮層群
    =============================================== */
-.block-品質宣告 .headline {
-  flex: 2;
-  /* ✅ 主標使用芫荽體（fallback 備援字體照保留） */
-  font-family: 'Iansui', 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
-
-  font-size: 28px;         /* ✅ 主標字級大小 */
-  font-weight: normal;     /* ✅ 芫荽體不建議用 bold */
-  line-height: 1.4;        /* ✅ 行高（上下段距離），可調小如 1.2 更緊湊 */
-  text-align: center;
-  white-space: pre-wrap;   /* ✅ 保留 <br> 換行 */
-
-  color: #ffffff;
-
-  /* ✅ 浮入動畫（可移除以下 3 行就會變成靜態主標） */
-  opacity: 0;
-  transform: translateY(20px);
-  animation: headlineFadeUp 0.8s ease-out 0.2s forwards;
+#GW-01-BL101支架燈品質宣告-Root {
+  position: relative !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  /* 區塊背景圖設定 */
+  background: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/4644232229e34b5f.png?v=4gw258i') center center / cover no-repeat !important;
+  /* 區塊整體上下左右內距（視覺高度） */
+  padding: 100px 60px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 60px !important;
+  flex-wrap: wrap !important;
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif !important;
 }
 
-/* ✅ 動畫設定：主標從底部浮上來 */
-@keyframes headlineFadeUp {
+#GW-01-BL101支架燈品質宣告-Root *,
+#GW-01-BL101支架燈品質宣告-Root *::before,
+#GW-01-BL101支架燈品質宣告-Root *::after {
+  box-sizing: border-box !important;
+}
+
+/* 背景濾暗遮罩層 */
+#GW-01-BL101支架燈品質宣告-Root::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: rgba(0, 0, 0, 0.3) !important;
+  z-index: 1 !important;
+}
+
+#GW-01-BL101支架燈品質宣告-Root > * {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+/* 主標文字 */
+#GW-01-BL101支架燈品質宣告-Root .gw01-headline {
+  flex: 2 !important;
+  font-family: 'Iansui', 'Noto Sans TC', 'Microsoft JhengHei', sans-serif !important;
+  font-size: 28px !important;
+  font-weight: normal !important;
+  line-height: 1.4 !important;
+  text-align: center !important;
+  white-space: pre-wrap !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: gw01Bl101HeadlineFadeUp 0.8s ease-out 0.2s forwards;
+}
+
+@keyframes gw01Bl101HeadlineFadeUp {
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* ===============================================
-   ★ 毛玻璃群組 .glass-group
-   =============================================== */
-.block-品質宣告 .glass-group {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 24px; /* ✅ 每張浮層卡片之間的垂直間距 */
+/* 毛玻璃群組 */
+#GW-01-BL101支架燈品質宣告-Root .gw01-glass-group {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 24px !important;
 }
 
-/* ===============================================
-   ★ 單張毛玻璃浮層 .glass-card
-   =============================================== */
-.block-品質宣告 .glass-card {
-  background: rgba(255, 255, 255, 0.2);      /* ✅ 浮層底色與透明度 */
-  backdrop-filter: blur(10px);               /* ✅ 毛玻璃核心效果 */
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 8px;                        /* ✅ 浮層圓角 */
-
-  padding: 20px;                             /* ✅ 浮層內距 */
-  color: #fff;
-  display: flex;
-  align-items: center;
-  gap: 16px;                                 /* ✅ icon 與文字的間距 */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);     /* ✅ 初始陰影 */
-
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.block-品質宣告 .glass-card:hover {
-  transform: translateY(-4px);              /* ✅ 滑入上浮距離 */
-  box-shadow: 0 10px 20px rgba(0,0,0,0.3);   /* ✅ 滑入陰影效果 */
+/* 單張毛玻璃浮層 */
+#GW-01-BL101支架燈品質宣告-Root .gw01-glass-card {
+  background: rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border-radius: 8px !important;
+  padding: 20px !important;
+  color: #fff !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
 }
 
-/* ===============================================
-   ★ icon 圖示設定
-   =============================================== */
-.block-品質宣告 .glass-card .icon {
-  width: 48px;         /* ✅ icon 寬度（會等比例縮放） */
-  height: 48px;
-  flex-shrink: 0;
-}
-.block-品質宣告 .glass-card .icon img {
-  width: 100%;
-  height: auto;
-  display: block;
+#GW-01-BL101支架燈品質宣告-Root .gw01-glass-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3) !important;
 }
 
-/* ===============================================
-   ★ 浮層文字區（內文字體繼承）
-   =============================================== */
-.block-品質宣告 .glass-card .text-group {
-  font-size: 14px;     /* ✅ 內文文字大小 */
-  line-height: 1.6;    /* ✅ 行距（中文建議介於1.4~1.8之間） */
-  opacity: 0.95;       /* ✅ 文字透明度，讓字體稍微柔和一點 */
+/* icon 圖示設定 */
+#GW-01-BL101支架燈品質宣告-Root .gw01-glass-card .gw01-icon {
+  width: 48px !important;
+  height: 48px !important;
+  flex-shrink: 0 !important;
 }
 
-/* ===============================================
-   ★ RWD：手機寬度下的排版調整
-   =============================================== */
+#GW-01-BL101支架燈品質宣告-Root .gw01-glass-card .gw01-icon img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+/* 浮層文字區 */
+#GW-01-BL101支架燈品質宣告-Root .gw01-glass-card .gw01-text-group {
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  opacity: 0.95 !important;
+  color: #ffffff !important;
+}
+
+/* RWD：手機寬度下的排版調整 */
 @media (max-width: 768px) {
-  .block-品質宣告 {
-    flex-direction: column;
-    text-align: center;
+  #GW-01-BL101支架燈品質宣告-Root {
+    flex-direction: column !important;
+    text-align: center !important;
+    padding: 60px 20px !important;
+    gap: 36px !important;
   }
-  .block-品質宣告 .glass-group {
-    width: 100%;
-    align-items: center;
+  #GW-01-BL101支架燈品質宣告-Root .gw01-glass-group {
+    width: 100% !important;
+    align-items: center !important;
   }
-  .block-品質宣告 .glass-card {
-    width: 100%;
-    max-width: 360px;
+  #GW-01-BL101支架燈品質宣告-Root .gw01-glass-card {
+    width: 100% !important;
+    max-width: 360px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #GW-01-BL101支架燈品質宣告-Root .gw01-headline {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  #GW-01-BL101支架燈品質宣告-Root .gw01-glass-card {
+    transition: none !important;
+    transform: none !important;
   }
 }
 </style>
-<!-- ✅ HTML 內容區塊 -->
-<div class="block-品質宣告"><!-- 主標 -->
-<div class="headline">燈具卓越之作<br />
-品質與工藝共襄盛名</div>
+<!-- 主標 -->
+<h1 class="gw01-headline" id="GW-01-BL101支架燈品質宣告-Title">燈具卓越之作<br />
+品質與工藝共襄盛名</h1>
 <!-- 毛玻璃浮層群組 -->
 
-<div class="glass-group">
-<div class="glass-card">
-<div class="icon"><img alt="台灣製造" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/taiwan.png?v=ptelq5t" /></div>
+<div class="gw01-glass-group">
+<div class="gw01-glass-card">
+<div class="gw01-icon"><img alt="台灣製造" fetchpriority="high" height="48" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/taiwan.png?v=ptelq5t" width="48" /></div>
 
-<div class="text-group">台灣研發 生產製造<br />
+<div class="gw01-text-group">台灣研發 生產製造<br />
 Taiwan researches, develops, and manufactures.</div>
 </div>
 
-<div class="glass-card">
-<div class="icon"><img alt="日本驅動器" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/japan.png?v=vt32z2" /></div>
+<div class="gw01-glass-card">
+<div class="gw01-icon"><img alt="日本驅動器" fetchpriority="high" height="48" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/japan.png?v=vt32z2" width="48" /></div>
 
-<div class="text-group">驅動器 日本規格<br />
+<div class="gw01-text-group">驅動器 日本規格<br />
 Drivers compliant with Japanese specifications.</div>
 </div>
 
-<div class="glass-card">
-<div class="icon"><img alt="美國光源" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/statue.png?v=2yzlwij" /></div>
+<div class="gw01-glass-card">
+<div class="gw01-icon"><img alt="美國光源" fetchpriority="high" height="48" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/statue.png?v=2yzlwij" width="48" /></div>
 
-<div class="text-group">光源 美國規格<br />
+<div class="gw01-text-group">光源 美國規格<br />
 Light sources compliant with U.S. specifications.</div>
 </div>
 </div>
 </div>
 
-<div style="height: 20px;">&nbsp;</div>
-<!-- ★ CREE晶粒區塊一 block-CREE晶粒（文字偏底＋漸層＋文字陰影） ★ -->
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
-<style type="text/css">.block-CREE晶粒 {
-  --hero-height: 650px;
-  --hero-bg-opacity: 0.9;
-  --gradient-angle: 45deg;
-  --title-gradient-stops:
-    #000000,
-    #848484,
-    #000000;
-  font-family: 'Noto Sans TC','Microsoft JhengHei',sans-serif;
+<div aria-labelledby="GW-02-BL101支架燈CREE晶粒-Title" id="GW-02-BL101支架燈CREE晶粒-Root" role="region">
+<style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
+
+/* ===============================================
+   ★ CREE晶粒區塊 GW-02-BL101支架燈CREE晶粒
+   底圖與標誌分離架構：
+   - 底圖：led.jpg (無標誌純淨底圖)
+   - 標誌：93e29f243ffbcfb6.png (獨立置頂居中，不隨螢幕被切)
+   - 下方文字偏底＋漸層＋文字陰影 原創動效完整保留
+   =============================================== */
+#GW-02-BL101支架燈CREE晶粒-Root {
+  --gw02-hero-height: 650px;
+  --gw02-hero-bg-opacity: 0.95;
+  --gw02-gradient-angle: 45deg;
+  --gw02-title-gradient-stops: #000000, #848484, #000000;
+  position: relative !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif !important;
 }
 
-.block-CREE晶粒 .hero-section {
-  position: relative;
-  width: 100%;
-  height: var(--hero-height);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding-bottom: 40px;
-  align-items: center;
-  overflow: hidden;
-}
-.block-CREE晶粒 .hero-section::before {
-  content: "";
-  position: absolute; inset: 0;
-  background:
-    url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/cree_led_01.png?v=f0x9gg4')
-    center/cover no-repeat;
-  opacity: var(--hero-bg-opacity);
-  z-index: -1;
+#GW-02-BL101支架燈CREE晶粒-Root *,
+#GW-02-BL101支架燈CREE晶粒-Root *::before,
+#GW-02-BL101支架燈CREE晶粒-Root *::after {
+  box-sizing: border-box !important;
 }
 
-@keyframes fadeInUp {
+#GW-02-BL101支架燈CREE晶粒-Root .gw02-hero-section {
+  position: relative !important;
+  width: 100% !important;
+  height: var(--gw02-hero-height) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important; /* 標誌置頂、文字置底 */
+  align-items: center !important;
+  padding: 40px 20px !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+
+/* 純淨無標誌底圖 */
+#GW-02-BL101支架燈CREE晶粒-Root .gw02-hero-section::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/led.jpg?v=ccfykss') center/cover no-repeat !important;
+  opacity: var(--gw02-hero-bg-opacity) !important;
+  z-index: 0 !important;
+}
+
+#GW-02-BL101支架燈CREE晶粒-Root .gw02-hero-section > * {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* 獨立頂部居中 CREE 標誌 */
+#GW-02-BL101支架燈CREE晶粒-Root .gw02-cree-logo-wrap {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  animation: gw02Bl101FadeInUp 0.8s ease-out 0.1s both !important;
+}
+
+#GW-02-BL101支架燈CREE晶粒-Root .gw02-cree-logo-wrap img {
+  width: 160px !important; /* 不用太大，精緻適中 */
+  max-width: 45% !important;
+  height: auto !important;
+  display: block !important;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25)) !important;
+}
+
+/* 下方文案群組容器 */
+#GW-02-BL101支架燈CREE晶粒-Root .gw02-text-group {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+@keyframes gw02Bl101FadeInUp {
   from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0);    }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* 副標 */
-.block-CREE晶粒 .hero-subtitle {
-  margin: 0;
-  font-size: 18px;
-  font-weight: 400;
-  color: rgba(0,0,0,0.6);
-  animation: fadeInUp 0.8s ease-out 0.2s both;
+#GW-02-BL101支架燈CREE晶粒-Root .gw02-hero-subtitle {
+  margin: 0 !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  color: rgba(0, 0, 0, 0.6) !important;
+  animation: gw02Bl101FadeInUp 0.8s ease-out 0.2s both;
 }
 
 /* 主標：漸層＋文字陰影 */
-.block-CREE晶粒 .hero-title {
-  margin: 8px 0 0;
-  font-size: 28px;
-  font-weight: 700;
-  background: linear-gradient(
-    var(--gradient-angle),
-    var(--title-gradient-stops)
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  /* 文字陰影，真正畫在字形後面 */
-  text-shadow:
-    2px 2px 4px rgba(44,44,44,0.0),
-    -1px -1px 2px rgba(255,255,255,0.0);
-
-  animation: fadeInUp 0.8s ease-out 0.4s both;
+#GW-02-BL101支架燈CREE晶粒-Root .gw02-hero-title {
+  margin: 8px 0 0 !important;
+  font-size: 28px !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  background: linear-gradient(var(--gw02-gradient-angle), var(--gw02-title-gradient-stops)) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  text-shadow: 2px 2px 4px rgba(44, 44, 44, 0.0), -1px -1px 2px rgba(255, 255, 255, 0.0) !important;
+  animation: gw02Bl101FadeInUp 0.8s ease-out 0.4s both;
 }
 
 /* 底線 */
-.block-CREE晶粒 .hero-underline {
-  margin-top: 16px;
-  width: 120px;
-  height: 4px;
-  background: rgba(0,0,0,0.6);
-  border-radius: 2px;
-  animation: fadeInUp 0.8s ease-out 0.6s both;
+#GW-02-BL101支架燈CREE晶粒-Root .gw02-hero-underline {
+  margin-top: 16px !important;
+  width: 120px !important;
+  height: 4px !important;
+  background: rgba(0, 0, 0, 0.6) !important;
+  border-radius: 2px !important;
+  animation: gw02Bl101FadeInUp 0.8s ease-out 0.6s both;
 }
 
 /* 手機微調 */
 @media (max-width: 768px) {
-  .block-CREE晶粒 .hero-section {
-    height: calc(var(--hero-height)*0.75);
-    padding-bottom: 20px;
+  #GW-02-BL101支架燈CREE晶粒-Root .gw02-hero-section {
+    height: calc(var(--gw02-hero-height) * 0.75) !important;
+    padding: 30px 16px 20px !important;
   }
-  .block-CREE晶粒 .hero-subtitle { font-size: 16px; animation-delay: 0.1s; }
-  .block-CREE晶粒 .hero-title    { font-size: 22px; animation-delay: 0.3s; }
-  .block-CREE晶粒 .hero-underline {
-    width: 80px; height: 3px; margin-top: 12px;
+  #GW-02-BL101支架燈CREE晶粒-Root .gw02-cree-logo-wrap img {
+    width: 130px !important;
+  }
+  #GW-02-BL101支架燈CREE晶粒-Root .gw02-hero-subtitle {
+    font-size: 15px !important;
+    animation-delay: 0.1s;
+  }
+  #GW-02-BL101支架燈CREE晶粒-Root .gw02-hero-title {
+    font-size: 22px !important;
+    animation-delay: 0.3s;
+  }
+  #GW-02-BL101支架燈CREE晶粒-Root .gw02-hero-underline {
+    width: 80px !important;
+    height: 3px !important;
+    margin-top: 12px !important;
     animation-delay: 0.5s;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  #GW-02-BL101支架燈CREE晶粒-Root .gw02-cree-logo-wrap,
+  #GW-02-BL101支架燈CREE晶粒-Root .gw02-hero-subtitle,
+  #GW-02-BL101支架燈CREE晶粒-Root .gw02-hero-title,
+  #GW-02-BL101支架燈CREE晶粒-Root .gw02-hero-underline {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
 </style>
-<div class="block-CREE晶粒">
-<div class="hero-section">
-<div class="hero-subtitle">─ 細節成就質感・光影定義空間 ─</div>
+<div class="gw02-hero-section"><!-- 獨立中間置頂 CREE 標誌 -->
+<div class="gw02-cree-logo-wrap"><img alt="CREE LEDs 美國晶粒標誌" height="42" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/93e29f243ffbcfb6.png?v=tf8lwrs" width="160" /></div>
+<!-- 下方原本文案與底線 -->
 
-<div class="hero-title">無藍光・無頻閃<br />
-專業照明新標竿</div>
+<div class="gw02-text-group">
+<div class="gw02-hero-subtitle">─ 細節成就質感・光影定義空間 ─</div>
 
-<div class="hero-underline">&nbsp;</div>
+<h2 class="gw02-hero-title" id="GW-02-BL101支架燈CREE晶粒-Title">無藍光・無頻閃<br />
+專業照明新標竿</h2>
+
+<div class="gw02-hero-underline">&nbsp;</div>
 </div>
 </div>
-<!-- ★ 光效區塊 block-光效區塊：可調背景＋左上浮層＋置中標題＋Icon＋Hover動畫（Icon 垂直置中版） ★ -->
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
-<style type="text/css">/* ============================================
-   區塊L： block-光效區塊（全域變數區，想改哪裡就改哪裡）
-============================================ */
-.block-光效區塊 {
-  --hero-height: 600px;    /* 區塊整體高度 */
-  --hero-bg-url: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/360%20370%20380/01-BL-360_light_efficiency.jpg?v=e1n7cdj'); /* 背景圖 URL */
-  --hero-bg-opacity: 0.1;  /* 背景圖遮罩透明度 0~1 */
+</div>
 
-  --overlay-bg: rgba(50,50,50,0.5); /* 左上浮層底色＋透明度 */
-  --overlay-radius: 6px;            /* 左上浮層圓角 */
-  --overlay-padding: 16px;          /* 左上浮層內距 */
-  --overlay-width: 350px;           /* 左上浮層最大寬 */
-  --overlay-color: #fff;            /* 左上浮層文字顏色 */
+<div aria-labelledby="GW-03-BL101支架燈光效-Title" id="GW-03-BL101支架燈光效-Root" role="region">
+<style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Outfit:wght@600;700&display=swap');
 
-  --title-color: #ffffff;           /* 標題文字顏色 */
-  --title-hover-color: #ffde00;     /* 標題滑過文字顏色 */
-  --title-fontsize: 36px;           /* 標題字級 */
-  --title-padding: 8px 16px;        /* 標題內距 */
+/* ============================================
+   ★ 光效區塊 GW-03-BL101支架燈光效
+   重新排版優化：
+   1. 深色半透明磨砂黑浮層 (rgba(15, 18, 14, 0.78) + blur 16px)，沈穩高級，文字對比極佳
+   2. 徹底解決平板/中螢幕文字與 140 lm/W 打架問題：
+      - 左欄與右欄 flex 分區（左文字浮層、右光效焦點），水平空間不再硬性撞在一起
+      - 窄螢幕時自然轉換為上方說明、下方中央光效大字
+   3. 原創底圖、文字內容、黃字標註、發光 hover 特效 100% 保留
+   ============================================ */
+#GW-03-BL101支架燈光效-Root {
+  --gw03-hero-height: 640px;
+  --gw03-hero-bg-url: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/BL_101_111/snipaste_2026-01-06_09-13-38.jpg?v=0f1ei48');
+  --gw03-icon-size: 48px;
 
-  --icon-size: 48px;                /* Icon 寬高 */
-  /* （Icon 不再用 margin-top，flex 會自動置中） */
-
-  font-family: 'Noto Sans TC','Microsoft JhengHei',sans-serif;
+  position: relative !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: 'Outfit', 'Noto Sans TC', 'Microsoft JhengHei', sans-serif !important;
+  overflow: hidden !important;
 }
 
-/* Hero 區塊 & 背景 */
-.block-光效區塊 .hero-section {
-  position: relative;
-  width: 100%;
-  height: var(--hero-height);
-  background: var(--hero-bg-url) center/cover no-repeat;
-  overflow: hidden;
-}
-.block-光效區塊 .hero-section::before {
-  content: "";
-  position: absolute; inset: 0;
-  background: rgba(0,0,0,var(--hero-bg-opacity));
-  z-index: 0;
+#GW-03-BL101支架燈光效-Root *,
+#GW-03-BL101支架燈光效-Root *::before,
+#GW-03-BL101支架燈光效-Root *::after {
+  box-sizing: border-box !important;
 }
 
-/* 左上浮層 */
-.block-光效區塊 .hero-section .overlay {
-  position: absolute;
-  top: 20px; left: 30px;                         /* 浮層對頂與左的間距 */
-  max-width: var(--overlay-width);
-  padding: var(--overlay-padding);
-  background: var(--overlay-bg);
-  border-radius: var(--overlay-radius);
-  color: var(--overlay-color);
-  font-size: 14px;
-  line-height: 1.6;
-  z-index: 1;
+#GW-03-BL101支架燈光效-Root .gw03-hero-section {
+  position: relative !important;
+  width: 100% !important;
+  min-height: var(--gw03-hero-height) !important;
+  background: var(--gw03-hero-bg-url) center/cover no-repeat !important;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 40px 5% !important;
+  box-sizing: border-box !important;
 }
 
-/* 置中標題 + Icon 容器（flex 置中） */
-.block-光效區塊 .hero-section .center-content {
-  position: absolute;
-  top: 30%; left: 50%;                           /* 水平置中+上下偏移 */
-  transform: translate(-50%, -50%);
-  display: flex;                                  /* ← 新增：啟用 flex */
-  flex-direction: column;                         /* 直向排列 */
-  align-items: center;                            /* 垂直置中 */
-  text-align: center;
-  z-index: 1;
+/* 輕微底層暗角，增強整體氛圍與文字可讀性 */
+#GW-03-BL101支架燈光效-Root .gw03-hero-section::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.25) 100%) !important;
+  z-index: 0 !important;
 }
 
-/* 標題文字 */
-.block-光效區塊 .center-content .title {
-  display: inline-block;
-  padding: var(--title-padding);
-  font-size: var(--title-fontsize);
-  font-weight: 700;
-  color: var(--title-color);
-  cursor: default;
-  transition: color .3s, transform .3s;
-  user-select: text;
-}
-/* hover 效果 */
-.block-光效區塊 .center-content .title:hover {
-  color: var(--title-hover-color);
-  transform: scale(1.05);
+/* 內容排版容器：左右分區，徹底避免打架 */
+#GW-03-BL101支架燈光效-Root .gw03-layout-container {
+  position: relative !important;
+  z-index: 2 !important;
+  width: 100% !important;
+  max-width: 1280px !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  gap: 40px !important;
 }
 
-/* Icon：不需要 margin-top，flex 會自動置中 */
-.block-光效區塊 .center-content .icon {
-  width: var(--icon-size);
-  height: var(--icon-size);
-  display: inline-block;
-  background: center/contain no-repeat var(--icon-url);
+/* ============================================
+   左側：深色半透明磨砂黑浮層
+   ============================================ */
+#GW-03-BL101支架燈光效-Root .gw03-overlay-card {
+  width: 100% !important;
+  max-width: 440px !important;
+  /* 磨砂半透明黑：加深底色 (0.58)，搭配 16px 模糊與柔和高光細邊框 */
+  background: rgba(14, 18, 14, 0.58) !important;
+  backdrop-filter: blur(16px) saturate(120%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(120%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  border-radius: 12px !important;
+  padding: 28px 26px !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35) !important;
+  color: #ffffff !important;
+  font-size: 14.5px !important;
+  line-height: 1.75 !important;
+  text-align: justify !important;
 }
 
-/* 手機版微調 */
+#GW-03-BL101支架燈光效-Root .gw03-highlight-text {
+  color: #ffde00 !important;
+  font-weight: 600 !important;
+  display: block !important;
+  margin-top: 12px !important;
+  line-height: 1.7 !important;
+}
+
+/* ============================================
+   右側：超高光效 140 lm/W 焦點標題與 Icon
+   ============================================ */
+#GW-03-BL101支架燈光效-Root .gw03-center-content {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  color: #ffffff !important;
+  padding: 10px !important;
+  margin-right: 8% !important; /* 精準避開斜照光棒的主體 */
+  flex-shrink: 0 !important;
+}
+
+#GW-03-BL101支架燈光效-Root .gw03-title {
+  display: inline-block !important;
+  padding: 8px 16px !important;
+  font-size: 38px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  cursor: default !important;
+  transition: color .3s ease, transform .3s ease !important;
+  user-select: text !important;
+  margin: 0 !important;
+  line-height: 1.3 !important;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.7) !important;
+}
+
+#GW-03-BL101支架燈光效-Root .gw03-title:hover {
+  color: #ffde00 !important;
+  transform: scale(1.05) !important;
+}
+
+#GW-03-BL101支架燈光效-Root .gw03-title span {
+  font-family: 'Outfit', sans-serif !important;
+  display: block !important;
+  font-size: 44px !important;
+  margin-top: 4px !important;
+}
+
+/* LED 晶粒圖示 */
+#GW-03-BL101支架燈光效-Root .gw03-icon {
+  width: var(--gw03-icon-size) !important;
+  height: var(--gw03-icon-size) !important;
+  margin-top: 14px !important;
+  display: inline-block !important;
+  background: center/contain no-repeat url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/led-strip__3_.png?v=j2lhnnw') !important;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6)) !important;
+}
+
+/* ============================================
+   RWD 響應式：中窄螢幕完美適應
+   ============================================ */
+/* 平板與中螢幕 (992px 以下)：收斂寬度，避免與光棒和標題撞擊 */
+@media (max-width: 1024px) {
+  #GW-03-BL101支架燈光效-Root .gw03-overlay-card {
+    max-width: 380px !important;
+    padding: 22px 20px !important;
+    font-size: 13.5px !important;
+  }
+  #GW-03-BL101支架燈光效-Root .gw03-title {
+    font-size: 32px !important;
+  }
+  #GW-03-BL101支架燈光效-Root .gw03-title span {
+    font-size: 38px !important;
+  }
+  #GW-03-BL101支架燈光效-Root .gw03-center-content {
+    margin-right: 0 !important;
+  }
+}
+
+/* 手機版 (768px 以下)：自動改為垂直排列（上文案、下大字），乾淨清爽不互撞 */
 @media (max-width: 768px) {
-  .block-光效區塊 {
-    --hero-height: 500px;
-    --overlay-width: 80%;
-    --title-fontsize: 26px;
-    --icon-size: 36px;
+  #GW-03-BL101支架燈光效-Root .gw03-hero-section {
+    min-height: 560px !important;
+    padding: 30px 16px !important;
+    align-items: stretch !important;
   }
-  .block-光效區塊 .hero-section .center-content {
-    top: 95%;                                    /* 手機上下偏移可獨立調整 */
-    transform: translate(-50%, -95%);            /* 手機上下偏移調整百分比 */
+  #GW-03-BL101支架燈光效-Root .gw03-layout-container {
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    gap: 32px !important;
+  }
+  #GW-03-BL101支架燈光效-Root .gw03-overlay-card {
+    max-width: 100% !important;
+    padding: 18px 16px !important;
+    font-size: 13px !important;
+  }
+  #GW-03-BL101支架燈光效-Root .gw03-title {
+    font-size: 26px !important;
+  }
+  #GW-03-BL101支架燈光效-Root .gw03-title span {
+    font-size: 34px !important;
+  }
+  #GW-03-BL101支架燈光效-Root .gw03-icon {
+    width: 38px !important;
+    height: 38px !important;
+    margin-top: 8px !important;
   }
 }
-</style>
-<!-- ===== HTML 結構 ===== -->
-<div class="block-光效區塊">
-<div class="hero-section"><!-- 左上浮層文字 -->
-<div class="overlay" style="text-align: justify;">發光效率越高代表其電能轉換成光的效率越高，即發出相同光通量所消耗的電能越少。目前世界各國均積極進行節能省碳的措施，並逐漸提高光源之發光效率相關規定，以降低照明應用所消耗的電力。<br />
-<br />
-<span style="color:#ffff00;">金鍏電子支架燈通過節能標章認證，節省的電費可在2~3年內回收燈具成本，有效實現高效節能與成本最佳化。</span></div>
-<!-- 置中標題 + Icon -->
 
-<div class="center-content">
-<div class="title">超高光效<br />
-140 lm/W</div>
-
-<div class="icon" style="--icon-url:url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/led-strip__3_.png?v=j2lhnnw');">&nbsp;</div>
-</div>
-</div>
-</div>
-<!-- ★ 四卡片區塊：四互動功能卡 ★ -->
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
-<style type="text/css">/* ===========================================
-   四卡片區塊：四互動功能卡
-   ----------------------------------------------------------------
-   • --card-width: 桌機版卡片寬度（可自行調整 px/rem/% 等）
-   • --card-width-mobile: 手機版卡片寬度（可自行調整 px/rem/% 等）
-   • 其餘可修改項目都註在下面
-   =========================================== */
-.feature-single {
-  display: flex;
-  justify-content: center;       /* 卡片水平置中 */
-  gap: 20px;             /* ★★ 這行：左右兩張卡片的間距，隨意改成你想要的 px/rem */
-  padding: 10px 20px;            /* ↑↑↑ 可調：區塊上下左右內距 */
-  box-sizing: border-box;
-  font-family: 'Noto Sans TC','Microsoft JhengHei',sans-serif;
-
-  /* ★★ 可調整：卡片寬度 ★★ */
-  --card-width: 350px;           /* 桌機版 */
-  --card-width-mobile: 90%;      /* 手機版 */
-}
-
-.feature-single .card {
-  width: var(--card-width);
-  background: rgba(124, 132, 87, 0.05); /* ↑↑↑ 可調：卡片底色＆透明度 */
-  border: 1px solid #7a8451;      /* 可自訂外框顏色與粗細 */
-  border-radius: 12px;           /* ↑↑↑ 可調：圓角 */
-  padding: 24px 16px;            /* ↑↑↑ 可調：卡片內距 */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  text-align: center;
-  transition: transform .2s, box-shadow .2s, background .2s;
-  box-sizing: border-box;
-}
-.feature-single .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-  background: rgba(147, 159, 69, 0.1);
-}
-
-.feature-single .card img {
-  width: 64px;                   /* ↑↑↑ 可調：圖示寬度 */
-  height: 64px;                  /* ↑↑↑ 可調：圖示高度 */
-  object-fit: contain;
-  margin-bottom: 16px;           /* ↑↑↑ 可調：圖示與標題間距 */
-}
-
-.feature-single .card h4 {
-  margin: 0 0 8px;               /* ↑↑↑ 可調：標題與內文間距 */
-  font-size: 18px;               /* ↑↑↑ 可調：標題字級 */
-  font-weight: 600;
-  color: #000000;                /* ↑↑↑ 可調：標題顏色 */
-}
-
-.feature-single .card p {
-  margin: 0;
-  font-size: 14px;               /* ↑↑↑ 可調：內文字級 */
-  line-height: 1.6;              /* ↑↑↑ 可調：內文行高 */
-  color: #7a7a7a;                /* ↑↑↑ 可調：內文顏色 */
-}
-
-/* 手機 RWD：調整卡片寬度 */
-@media (max-width: 768px) {
-  .feature-single {
-    flex-direction: column; /* ★★ 加這一行，讓卡片垂直排列 ★★ */
-    align-items: center;     /* 水平置中卡片 */
-  }
-
-  .feature-single .card {
-    width: var(--card-width-mobile);
+@media (prefers-reduced-motion: reduce) {
+  #GW-03-BL101支架燈光效-Root .gw03-title:hover {
+    transform: none !important;
   }
 }
 </style>
-<!-- ===== HTML 部分 ===== -->
-<div class="feature-single">
-<div class="card"><!-- 替換成你自己的圖片 & alt --><img alt="節能標章" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/7eefbf924662abb9.png?v=h82q6i" />
-<h4>節能標章 認證</h4>
+<div class="gw03-hero-section">
+<div class="gw03-layout-container"><!-- 左側：深色半透明磨砂黑浮層卡片 -->
+<div class="gw03-overlay-card">發光效率越高代表其電能轉換成光的效率越高，即發出相同光通量所消耗的電能越少。目前世界各國均積極進行節能省碳的措施，並逐漸提高光源之發光效率相關規定，以降低照明應用所消耗的電力。 <span class="gw03-highlight-text">金鍏電子支架燈高光效超省電，節省的電費可在2~3年內回收燈具成本，有效實現高效節能與成本最佳化。</span></div>
+<!-- 右側：超高光效 140 lm/W 標題 + Icon -->
 
-<p>省下電費達50-80%<br />
-2-3年內可回收燈具成本</p>
+<div class="gw03-center-content">
+<h2 class="gw03-title" id="GW-03-BL101支架燈光效-Title">超高光效 <span>140 lm/W</span></h2>
+
+<div aria-hidden="true" class="gw03-icon">&nbsp;</div>
+</div>
+</div>
+</div>
 </div>
 
-<div class="card"><!-- 替換成你自己的圖片 & alt --><img alt="BSMI" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/5acba6da902e8056.png?v=j7rn8xn" />
-<h4>BSMI 認證</h4>
+<div aria-labelledby="GW-04-BL101支架燈規格認證四小卡-Title" id="GW-04-BL101支架燈規格認證四小卡-Root" role="region">
+<style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
 
-<p>產品耐用年限 50,000小時<br />
-一盞高品質燈具可用上12年</p>
+/* ===============================================
+   ★ 規格認證四小卡 GW-04-BL101支架燈規格認證四小卡
+   保留四卡 Grid 矩陣排版與 Hover 特效
+   =============================================== */
+#GW-04-BL101支架燈規格認證四小卡-Root {
+  display: block !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 20px 20px !important;
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif !important;
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+  color: #333 !important;
+  background-color: transparent !important;
+}
+
+#GW-04-BL101支架燈規格認證四小卡-Root *,
+#GW-04-BL101支架燈規格認證四小卡-Root *::before,
+#GW-04-BL101支架燈規格認證四小卡-Root *::after {
+  box-sizing: border-box !important;
+}
+
+#GW-04-BL101支架燈規格認證四小卡-Root .gw-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0,0,0,0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+#GW-04-BL101支架燈規格認證四小卡-Root .gw04-card-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 24px !important;
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+}
+
+#GW-04-BL101支架燈規格認證四小卡-Root .gw04-card {
+  background: rgba(124, 132, 87, 0.05) !important;
+  border: 1px solid #7a8451 !important;
+  border-radius: 12px !important;
+  padding: 30px 20px !important;
+  text-align: center !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  height: 100% !important;
+}
+
+#GW-04-BL101支架燈規格認證四小卡-Root .gw04-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12) !important;
+  background: rgba(147, 159, 69, 0.15) !important;
+}
+
+#GW-04-BL101支架燈規格認證四小卡-Root .gw04-card img {
+  width: 64px !important;
+  height: 64px !important;
+  object-fit: contain !important;
+  margin-bottom: 20px !important;
+  display: block !important;
+  max-width: 100% !important;
+}
+
+#GW-04-BL101支架燈規格認證四小卡-Root .gw04-card h3 {
+  margin: 0 0 12px 0 !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: #1a1a1a !important;
+  line-height: 1.4 !important;
+}
+
+#GW-04-BL101支架燈規格認證四小卡-Root .gw04-card p {
+  margin: 0 !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  color: #555555 !important;
+  flex: 1 !important;
+}
+
+/* 平板 (1024px)：改為 2 欄 */
+@media (max-width: 1024px) {
+  #GW-04-BL101支架燈規格認證四小卡-Root .gw04-card-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+    max-width: 800px !important;
+  }
+}
+
+/* 手機 (600px)：改為 1 欄 (圖左文右) */
+@media (max-width: 600px) {
+  #GW-04-BL101支架燈規格認證四小卡-Root {
+    padding: 40px 16px !important;
+  }
+  #GW-04-BL101支架燈規格認證四小卡-Root .gw04-card-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  #GW-04-BL101支架燈規格認證四小卡-Root .gw04-card {
+    flex-direction: row !important;
+    text-align: left !important;
+    align-items: flex-start !important;
+    padding: 20px !important;
+  }
+  #GW-04-BL101支架燈規格認證四小卡-Root .gw04-card img {
+    margin-bottom: 0 !important;
+    margin-right: 16px !important;
+    width: 50px !important;
+    height: 50px !important;
+  }
+  #GW-04-BL101支架燈規格認證四小卡-Root .gw04-card h3 {
+    font-size: 18px !important;
+    margin-bottom: 6px !important;
+  }
+  #GW-04-BL101支架燈規格認證四小卡-Root .gw04-card p {
+    font-size: 14px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #GW-04-BL101支架燈規格認證四小卡-Root .gw04-card {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+</style>
+<div class="gw-sr-only">
+<h2 id="GW-04-BL101支架燈規格認證四小卡-Title">BL-101支架燈產品優勢 - 金鍏電子</h2>
+
+<ul>
+	<li>節能省電：省下電費達 50-80%。</li>
+	<li>BSMI 認證：產品耐用年限 5 萬小時。</li>
+	<li>CNS 檢測：無藍光、無頻閃、低光衰。</li>
+	<li>MIT 台灣製造：台灣研發生產製造。</li>
+</ul>
 </div>
 
-<div class="card"><!-- 替換成你自己的圖片 & alt --><img alt="CNS" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/b3c75efa65208e9e.png?v=91uc2t" />
-<h4>國家標準 CNS檢測</h4>
+<div class="gw04-card-grid">
+<div class="gw04-card"><img alt="節能省電" height="64" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/power-meter.png?v=7a6w0gj" width="64" />
+<div>
+<h3>節能省電</h3>
+
+<p>省下電費達 50-80%<br />
+2-3 年內可回收燈具成本</p>
+</div>
+</div>
+
+<div class="gw04-card"><img alt="BSMI 認證" height="64" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/5acba6da902e8056.png?v=j7rn8xn" width="64" />
+<div>
+<h3>BSMI 認證</h3>
+
+<p>產品耐用年限 5 萬小時<br />
+一盞高品質燈具可用上 12 年</p>
+</div>
+</div>
+
+<div class="gw04-card"><img alt="CNS 檢測" height="64" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/b3c75efa65208e9e.png?v=91uc2t" width="64" />
+<div>
+<h3>CNS 國家標準</h3>
 
 <p>無藍光、無頻閃、低光衰<br />
 不造成眼睛危害</p>
 </div>
+</div>
 
-<div class="card"><!-- 替換成你自己的圖片 & alt --><img alt="MIT" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/ef6c8577ac6ae0da.png?v=rxb6y5" />
-<h4>MIT 台灣製造</h4>
+<div class="gw04-card"><img alt="MIT 台灣製造" height="64" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/ef6c8577ac6ae0da.png?v=rxb6y5" width="64" />
+<div>
+<h3>MIT 台灣製造</h3>
 
 <p>台灣研發生產製造<br />
 超高品質保障使用安全</p>
 </div>
 </div>
-<!-- ★ 串接區塊：右圖左文＋手機版自動改上下排列 --><!-- ✅ 引入字型 -->
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
-<style type="text/css">/* ============================================
-   ✅ 串接區塊：block-串接區塊（右圖左文版）
-============================================ */
-.block-串接區塊 {
-  display: flex;
-  flex-wrap: wrap;               /* 讓手機版可自動換行 */
-  gap: 24px;                     /* ✅ 可調：左右欄間距 */
-  padding: 10px 20px;            /* ✅ 可調：整塊上下與左右的內距 */
-  box-sizing: border-box;
-  font-family: 'Noto Sans TC','Microsoft JhengHei',sans-serif;
-  direction: rtl;                /* ✅ 顛倒左右排列方向（圖在右，文在左） */
+</div>
+</div>
+
+<div aria-labelledby="GW-05-BL101支架燈串接-Title" id="GW-05-BL101支架燈串接-Root" role="region">
+<style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
+
+/* ============================================
+   ★ 串接區塊 GW-05-BL101支架燈串接（右圖左文版）
+   保留右圖左文、不斷光串接設計次標Hover動畫與icon
+   ============================================ */
+#GW-05-BL101支架燈串接-Root {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 24px !important;
+  padding: 20px 20px !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif !important;
+  direction: rtl !important;
+  background-color: transparent !important;
+  width: 100% !important;
 }
 
-/* ✅ 圖片區（原 col-left，現在在右側） */
-.block-串接區塊 .col-right {
-  flex: 2 1 0;                   /* ✅ 可調：佔整體寬度比例（2 代表大欄） */
-  direction: ltr;                /* 圖片內部恢復正常排列方向 */
-}
-.block-串接區塊 .col-right img {
-  display: block;
-  width: 100%;                  /* ✅ 可調：圖片寬度百分比 */
-  height: auto;
-  border-radius: 8px;           /* ✅ 可調：圖片圓角程度 */
+#GW-05-BL101支架燈串接-Root *,
+#GW-05-BL101支架燈串接-Root *::before,
+#GW-05-BL101支架燈串接-Root *::after {
+  box-sizing: border-box !important;
 }
 
-/* ✅ 文字區（原 col-right，現在在左側） */
-.block-串接區塊 .col-left {
-  flex: 1 1 0;                   /* ✅ 可調：佔整體寬度比例（1 代表小欄） */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;      /* ✅ 可調：垂直對齊方式（center 為垂直置中） */
-  gap: 16px;                    /* ✅ 可調：上下段落間距 */
-  direction: ltr;               /* 文字區內仍維持正常閱讀順序 */
+/* 圖片區（原 col-left，現在在右側） */
+#GW-05-BL101支架燈串接-Root .gw05-col-right {
+  flex: 2 1 0 !important;
+  direction: ltr !important;
 }
 
-/* ✅ 主標題 */
-.block-串接區塊 .col-left .headline {
-  margin: 0;
-  font-size: 32px;              /* ✅ 可調：主標字級 */
-  font-weight: 700;
-  color: #A33;                  /* ✅ 可調：主標文字顏色 */
-  text-align: center;
+#GW-05-BL101支架燈串接-Root .gw05-col-right img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  border-radius: 8px !important;
 }
 
-/* ✅ 次標標籤（以 <span> 呈現非連結效果） */
-.block-串接區塊 .col-left .subheadline {
-  display: inline-block;
-  padding: 6px 12px;            /* ✅ 可調：上下左右內距 */
-  background: rgba(248,182,45,0); /* ✅ 初始背景色（透明黃） */
-  border: 2px solid #000000;    /* ✅ 可調：邊框顏色與粗細 */
-  border-radius: 4px;           /* ✅ 可調：邊框圓角 */
-  font-size: 18px;              /* ✅ 可調：字級大小 */
-  color: #1A2E33;               /* ✅ 可調：文字顏色 */
-  text-align: center;
-  margin: 0 auto;               /* ✅ 可調：是否置中（auto 為左右置中） */
-  text-decoration: none;
-  transition: background-color 0.3s, color 0.3s;
-}
-.block-串接區塊 .col-left .subheadline:hover {
-  background-color: #F8B62D;    /* ✅ hover 時的底色 */
-  color: #000;                  /* ✅ hover 時的文字色 */
-  cursor: default;              /* ✅ 不出現手型，維持靜態文字效果 */
+/* 文字區（原 col-right，現在在左側） */
+#GW-05-BL101支架燈串接-Root .gw05-col-left {
+  flex: 1 1 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  gap: 16px !important;
+  direction: ltr !important;
 }
 
-/* ✅ 內文段落 */
-.block-串接區塊 .col-left p {
-  margin: 0;
-  font-size: 16px;              /* ✅ 可調：內文文字大小 */
-  line-height: 1.6;             /* ✅ 可調：行距 */
-  color: #555;                  /* ✅ 可調：文字顏色 */
-  text-align: center;           /* ✅ 可調：對齊方式 */
+/* 主標題 */
+#GW-05-BL101支架燈串接-Root .gw05-headline {
+  margin: 0 !important;
+  font-size: 32px !important;
+  font-weight: 700 !important;
+  color: #A33 !important;
+  text-align: center !important;
 }
 
-/* ✅ 小圖示 */
-.block-串接區塊 .col-left .side-image {
-  margin-top: 24px;             /* ✅ 可調：段落與小圖間距 */
-  text-align: center;
-}
-.block-串接區塊 .col-left .side-image img {
-  max-width: 300px;             /* ✅ 可調：圖示最大寬度 */
-  width: 35%;                   /* ✅ 可調：圖示相對寬度（百分比） */
-  height: auto;
+/* 次標標籤 */
+#GW-05-BL101支架燈串接-Root .gw05-subheadline {
+  display: inline-block !important;
+  padding: 6px 12px !important;
+  background: rgba(248,182,45,0) !important;
+  border: 2px solid #000000 !important;
+  border-radius: 4px !important;
+  font-size: 18px !important;
+  color: #1A2E33 !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+  text-decoration: none !important;
+  transition: background-color 0.3s, color 0.3s !important;
+  cursor: default !important;
 }
 
-/* ✅ 手機版 RWD */
+#GW-05-BL101支架燈串接-Root .gw05-subheadline:hover {
+  background-color: #F8B62D !important;
+  color: #000 !important;
+}
+
+/* 內文段落 */
+#GW-05-BL101支架燈串接-Root .gw05-col-left p {
+  margin: 0 !important;
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+  color: #555 !important;
+  text-align: center !important;
+}
+
+/* 小圖示 */
+#GW-05-BL101支架燈串接-Root .gw05-side-image {
+  margin-top: 24px !important;
+  text-align: center !important;
+}
+
+#GW-05-BL101支架燈串接-Root .gw05-side-image img {
+  max-width: 300px !important;
+  width: 35% !important;
+  height: auto !important;
+}
+
+/* 手機版 RWD */
 @media (max-width: 768px) {
-  .block-串接區塊 {
-    flex-direction: column;
-    direction: ltr;
+  #GW-05-BL101支架燈串接-Root {
+    flex-direction: column !important;
+    direction: ltr !important;
   }
-
-  .block-串接區塊 .col-left,
-  .block-串接區塊 .col-right {
-    flex: none;
-    width: 100%;
+  #GW-05-BL101支架燈串接-Root .gw05-col-left,
+  #GW-05-BL101支架燈串接-Root .gw05-col-right {
+    flex: none !important;
+    width: 100% !important;
   }
-
-  .block-串接區塊 .col-left {
-    margin-top: 8px;  /* ✅ 原本 24px 改為 8px，更貼近圖 */
+  #GW-05-BL101支架燈串接-Root .gw05-col-left {
+    margin-top: 8px !important;
   }
-
-  .block-串接區塊 .col-left .headline {
-    font-size: 28px;
+  #GW-05-BL101支架燈串接-Root .gw05-headline {
+    font-size: 28px !important;
   }
-
-  .block-串接區塊 .col-left .subheadline {
-    font-size: 16px;
+  #GW-05-BL101支架燈串接-Root .gw05-subheadline {
+    font-size: 16px !important;
   }
-
-  .block-串接區塊 .col-left p {
-    font-size: 14px;
+  #GW-05-BL101支架燈串接-Root .gw05-col-left p {
+    font-size: 14px !important;
   }
-
-  .block-串接區塊 .col-left .side-image {
-    margin-top: 8px;  /* ✅ 原本 24px 改為 8px，更貼近文字段落 */
+  #GW-05-BL101支架燈串接-Root .gw05-side-image {
+    margin-top: 8px !important;
   }
-
-  .block-串接區塊 .col-left .side-image img {
-    max-width: 200px;
+  #GW-05-BL101支架燈串接-Root .gw05-side-image img {
+    max-width: 200px !important;
   }
 }
 </style>
-<!-- ✅ HTML 結構區塊 -->
-<div class="block-串接區塊"><!-- ✅ 圖片區（右側） -->
-<div class="col-right"><img alt="串接燈具圖片" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/BL_101_111/bl_101_bg1.jpg?v=h99uhz" /></div>
-<!-- ✅ 文字區（左側） -->
+<!-- 圖片區（右側） -->
+<div class="gw05-col-right"><img alt="金鍏 BL-101 支架燈不斷光串接實景照" height="420" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/BL_101_111/bl_101_bg1.jpg?v=h99uhz" width="700" /></div>
+<!-- 文字區（左側） -->
 
-<div class="col-left"><!-- 主標題（可填內容） -->
-<h3 class="headline">&nbsp;</h3>
-<!-- 次標（不可點擊但有 hover 動畫） --><span class="subheadline">不斷光串接設計</span> <!-- 內文段落 -->
+<div class="gw05-col-left">
+<h2 id="GW-05-BL101支架燈串接-Title" style="display:none;">不斷光串接設計</h2>
+<span class="gw05-subheadline">不斷光串接設計</span>
 
-<p>燈具最多可串接達 <span style="color:#f8b62d;">17</span> 套<br />
+<p>燈具最多可串接達 <span style="color:#f8b62d; font-weight: bold;">17</span> 套<br />
 （串接線需額外加購）</p>
-<!-- 小圖示 -->
 
-<div class="side-image"><img alt="串接圖示" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/link.png?v=y3xbjxt" /></div>
+<div class="gw05-side-image"><img alt="金鍏支架燈層板燈BL-101串接" height="105" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/link.png?v=y3xbjxt" width="105" /></div>
 </div>
 </div>
-<!-- ★ 調光區塊：三浮層區塊 + 右側說明文字 ★ -->
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
-<style type="text/css">.block-色溫區塊 {
-  display: flex;
-  flex-wrap: wrap;
-  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
-  width: 100%;
-  background: #fff;
+
+<div aria-labelledby="GW-06-BL101支架燈色溫調光-Title" id="GW-06-BL101支架燈色溫調光-Root" role="region">
+<style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Outfit:wght@400;600;700&display=swap');
+
+/* ============================================
+   ★ 調光色溫區塊 GW-06-BL101支架燈色溫調光
+   純 CSS 防禦性互動機制（免 JavaScript，相容 WebTech CMS）
+   核心防護：
+   1. radio 直接包在按鈕 label 裡 → 不依賴 id / for，後台改動結構也點得到
+   2. 改用 :has() 判斷哪顆被選 → 不依賴 radio 與舞台的相鄰位置
+   3. 靜態保底：預設直接顯示 3000K 標籤與按鈕樣式 → 首次載入絕不留白
+   ============================================ */
+#GW-06-BL101支架燈色溫調光-Root {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  font-family: 'Outfit', 'Noto Sans TC', 'Microsoft JhengHei', sans-serif !important;
+  width: 100% !important;
+  background-color: #ffffff !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative !important;
 }
 
-/* 左側底圖區域 */
-.block-色溫區塊 .left-area {
-  flex: 2;
-  position: relative;
-  background: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/OL-747/pexels-andrew-8960464.jpg?v=ynzye1xe') center center / cover no-repeat;
-  min-height: 550px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  padding: 20px;
-  gap: 10px;   /* ✅ ← 這一行控制浮層間距 */
-  box-sizing: border-box;
+#GW-06-BL101支架燈色溫調光-Root *,
+#GW-06-BL101支架燈色溫調光-Root *::before,
+#GW-06-BL101支架燈色溫調光-Root *::after {
+  box-sizing: border-box !important;
 }
 
-/* 單一浮層 */
-.block-色溫區塊 .color-layer {
-  flex: 1;
-  max-width: 350px;
-  min-height: 500px; /* ✅ 調高浮層高度 */
-  background: rgba(255, 255, 255, 0.0); /* ✅ 可針對每層覆蓋調整 */
-  border-radius: 12px;
-  padding: 32px 20px 20px; /* ✅ 上右下：調整文字靠上 */
-  box-sizing: border-box;
-  transition: transform 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* ✅ 文字靠上 */
-  align-items: center;
-  text-align: center;
-  font-size: 18px;
-  font-weight: 500;
-  color: #000; /* ✅ 預設文字顏色 */
-}
-.block-色溫區塊 .color-layer:hover {
-  transform: translateY(-6px); /* ✅ 滑入浮動效果 */
+/* 隱藏 radio（仍可被 label 點擊與鍵盤操作） */
+#GW-06-BL101支架燈色溫調光-Root .gw06-radio {
+  position: absolute !important;
+  opacity: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  overflow: hidden !important;
 }
 
-/* 右側說明文字區 */
-.block-色溫區塊 .right-area {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 20px;
-  box-sizing: border-box;
-  text-align: center;
+/* 左側情境展示舞台 */
+#GW-06-BL101支架燈色溫調光-Root .gw06-stage {
+  flex: 2 1 480px !important;
+  position: relative !important;
+  min-height: 560px !important;
+  background: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/BL_101_111/123fe4952b11d065.jpg?v=n4fx24n') center center / cover no-repeat !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 28px 24px 32px !important;
 }
-.block-色溫區塊 .right-area .desc {
-  max-width: 400px;
-  font-size: 16px;
-  line-height: 1.8;
-  color: #333;
+
+/* 濾鏡層（預設 = 3000K 暖白） */
+#GW-06-BL101支架燈色溫調光-Root .gw06-filter-layer {
+  position: absolute !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  pointer-events: none !important;
+  transition: background-color 0.5s ease !important;
+  z-index: 1 !important;
+  background-color: rgba(255, 185, 80, 0.28) !important;
+  mix-blend-mode: multiply !important;
+}
+
+/* 頂部狀態標籤 */
+#GW-06-BL101支架燈色溫調光-Root .gw06-status-wrap {
+  position: relative !important;
+  z-index: 2 !important;
+  align-self: flex-start !important;
+  pointer-events: none !important;
+}
+
+#GW-06-BL101支架燈色溫調光-Root .gw06-stage-status {
+  background: rgba(255, 255, 255, 0.72) !important;
+  border: 1px solid rgba(255, 255, 255, 0.9) !important;
+  border-radius: 6px !important;
+  padding: 8px 16px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+  display: none !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+#GW-06-BL101支架燈色溫調光-Root .gw06-status-indicator {
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+  display: inline-block !important;
+}
+
+/* 靜態保底：預設顯示 3000K 標籤 */
+#GW-06-BL101支架燈色溫調光-Root .gw06-status-3000k {
+  display: flex !important;
+  color: #946808 !important;
+  border-color: rgba(232, 169, 57, 0.4) !important;
+}
+#GW-06-BL101支架燈色溫調光-Root .gw06-status-3000k .gw06-status-indicator { background-color: #e8a939 !important; }
+#GW-06-BL101支架燈色溫調光-Root .gw06-status-50pct { color: #3f4b3c !important; border-color: rgba(95, 108, 76, 0.35) !important; }
+#GW-06-BL101支架燈色溫調光-Root .gw06-status-50pct .gw06-status-indicator { background-color: #5f6c4c !important; }
+#GW-06-BL101支架燈色溫調光-Root .gw06-status-6500k { color: #1967d2 !important; border-color: rgba(25, 103, 210, 0.35) !important; }
+#GW-06-BL101支架燈色溫調光-Root .gw06-status-6500k .gw06-status-indicator { background-color: #1a73e8 !important; }
+
+/* 底部切換按鈕列 */
+#GW-06-BL101支架燈色溫調光-Root .gw06-ctrl-bar {
+  position: relative !important;
+  z-index: 3 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 12px !important;
+  flex-wrap: wrap !important;
+  background: rgba(255, 255, 255, 0.78) !important;
+  padding: 8px 12px !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  backdrop-filter: blur(14px) !important;
+  margin: 0 auto !important;
+}
+
+/* 按鈕（label，內含 radio） */
+#GW-06-BL101支架燈色溫調光-Root .gw06-label-btn {
+  position: relative !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid #d4dbd2 !important;
+  border-radius: 6px !important;
+  padding: 10px 18px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #3b4437 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  transition: all 0.25s ease !important;
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+}
+
+#GW-06-BL101支架燈色溫調光-Root .gw06-label-btn:hover {
+  transform: translateY(-2px) !important;
+  border-color: #5f6c4c !important;
+}
+
+/* 鍵盤操作時的焦點框 */
+#GW-06-BL101支架燈色溫調光-Root .gw06-label-btn:has(.gw06-radio:focus-visible) {
+  outline: 2px solid #5f6c4c !important;
+  outline-offset: 2px !important;
+}
+
+/* 小圓點 */
+#GW-06-BL101支架燈色溫調光-Root .gw06-btn-dot {
+  width: 9px !important;
+  height: 9px !important;
+  border-radius: 50% !important;
+  display: inline-block !important;
+  flex: 0 0 9px !important;
+}
+#GW-06-BL101支架燈色溫調光-Root .dot-warm { background: #e8a939 !important; }
+#GW-06-BL101支架燈色溫調光-Root .dot-dim { background: #717b7f !important; }
+#GW-06-BL101支架燈色溫調光-Root .dot-cool { background: #1a73e8 !important; }
+
+/* 靜態保底：預設選中狀態 3000K 按鈕 */
+#GW-06-BL101支架燈色溫調光-Root .gw06-btn-3000k {
+  background: #3a4432 !important;
+  color: #ffffff !important;
+  border-color: #3a4432 !important;
+  box-shadow: 0 4px 12px rgba(58, 68, 50, 0.2) !important;
+}
+
+/* =========================================================
+   切換邏輯：:has() 偵測哪顆 radio 被選取
+   ========================================================= */
+
+/* ---- 選 50% 柔和 ---- */
+#GW-06-BL101支架燈色溫調光-Root:has(.gw06-r-50pct:checked) .gw06-filter-layer {
+  background-color: rgba(0, 0, 0, 0.18) !important;
+  mix-blend-mode: normal !important;
+}
+#GW-06-BL101支架燈色溫調光-Root:has(.gw06-r-50pct:checked) .gw06-status-3000k { display: none !important; }
+#GW-06-BL101支架燈色溫調光-Root:has(.gw06-r-50pct:checked) .gw06-status-50pct { display: flex !important; }
+#GW-06-BL101支架燈色溫調光-Root:has(.gw06-r-50pct:checked) .gw06-btn-3000k {
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: #3b4437 !important;
+  border-color: #d4dbd2 !important;
+  box-shadow: none !important;
+}
+#GW-06-BL101支架燈色溫調光-Root:has(.gw06-r-50pct:checked) .gw06-btn-50pct {
+  background: #3a4432 !important;
+  color: #ffffff !important;
+  border-color: #3a4432 !important;
+  box-shadow: 0 4px 12px rgba(58, 68, 50, 0.2) !important;
+}
+
+/* ---- 選 6500K 晝光 ---- */
+#GW-06-BL101支架燈色溫調光-Root:has(.gw06-r-6500k:checked) .gw06-filter-layer {
+  background-color: rgba(180, 220, 255, 0.16) !important;
+  mix-blend-mode: screen !important;
+}
+#GW-06-BL101支架燈色溫調光-Root:has(.gw06-r-6500k:checked) .gw06-status-3000k { display: none !important; }
+#GW-06-BL101支架燈色溫調光-Root:has(.gw06-r-6500k:checked) .gw06-status-6500k { display: flex !important; }
+#GW-06-BL101支架燈色溫調光-Root:has(.gw06-r-6500k:checked) .gw06-btn-3000k {
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: #3b4437 !important;
+  border-color: #d4dbd2 !important;
+  box-shadow: none !important;
+}
+#GW-06-BL101支架燈色溫調光-Root:has(.gw06-r-6500k:checked) .gw06-btn-6500k {
+  background: #3a4432 !important;
+  color: #ffffff !important;
+  border-color: #3a4432 !important;
+  box-shadow: 0 4px 12px rgba(58, 68, 50, 0.2) !important;
+}
+
+/* 右側說明區塊 */
+#GW-06-BL101支架燈色溫調光-Root .gw06-right-area {
+  flex: 1 1 320px !important;
+  min-width: 320px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 48px 36px !important;
+  text-align: center !important;
+  background-color: #fbfcf9 !important;
+  border-left: 1px solid #e7ede3 !important;
+}
+
+#GW-06-BL101支架燈色溫調光-Root .gw06-side-tag {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: #5f6c4c !important;
+  letter-spacing: 0.08em !important;
+  margin-bottom: 8px !important;
+}
+
+#GW-06-BL101支架燈色溫調光-Root .gw06-main-title {
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  color: #252b24 !important;
+  margin: 0 0 16px 0 !important;
+  line-height: 1.35 !important;
+}
+
+#GW-06-BL101支架燈色溫調光-Root .gw06-desc-box {
+  max-width: 360px !important;
+  font-size: 15px !important;
+  line-height: 1.8 !important;
+  color: #565e53 !important;
+  margin-bottom: 24px !important;
+}
+
+#GW-06-BL101支架燈色溫調光-Root .gw06-desc-box span {
+  color: #252b24 !important;
+  font-weight: 600 !important;
+}
+
+#GW-06-BL101支架燈色溫調光-Root .gw06-note-badge {
+  display: inline-block !important;
+  background: #f0f3ec !important;
+  border: 1px solid #d4ded0 !important;
+  color: #4b5744 !important;
+  font-size: 13px !important;
+  padding: 6px 14px !important;
+  border-radius: 6px !important;
+  font-weight: 500 !important;
 }
 
 /* RWD 手機版 */
-@media (max-width: 768px) {
-  .block-色溫區塊 {
-    flex-direction: column;
+@media (max-width: 900px) {
+  #GW-06-BL101支架燈色溫調光-Root {
+    flex-direction: column !important;
   }
-  .block-色溫區塊 .left-area {
-    flex-direction: column;
-    gap: 5px;
-
-    min-height: 450px; /* ✅ ← 加這一行：調整手機版左側區塊高度 */
+  #GW-06-BL101支架燈色溫調光-Root .gw06-stage {
+    flex: 0 0 auto !important;
+    min-height: 540px !important;
+    padding: 20px 16px 24px !important;
   }
+  #GW-06-BL101支架燈色溫調光-Root .gw06-ctrl-bar {
+    width: 100% !important;
+    gap: 8px !important;
+    padding: 6px 8px !important;
+  }
+  #GW-06-BL101支架燈色溫調光-Root .gw06-label-btn {
+    padding: 8px 12px !important;
+    font-size: 13px !important;
+    flex: 1 1 auto !important;
+    justify-content: center !important;
+  }
+  #GW-06-BL101支架燈色溫調光-Root .gw06-right-area {
+    flex: 0 0 auto !important;
+    min-width: 0 !important;
+    border-left: none !important;
+    border-top: 1px solid #e7ede3 !important;
+    padding: 36px 20px !important;
+  }
+}
 
-  .block-色溫區塊 .color-layer {
-    max-width: 100%;
-    width: 100%;
-    min-height: auto;
+@media (prefers-reduced-motion: reduce) {
+  #GW-06-BL101支架燈色溫調光-Root .gw06-filter-layer,
+  #GW-06-BL101支架燈色溫調光-Root .gw06-label-btn {
+    transition: none !important;
   }
 }
 </style>
-<!-- ✅ HTML 結構 -->
-<div class="block-色溫區塊"><!-- 左側底圖與浮層群 -->
-<div class="left-area">
-<div class="color-layer" style="background: rgba(255,225,150,0.4); color: #5a3e00;">色溫3000K</div>
+<!-- 左側情境展示舞台 -->
+<div class="gw06-stage"><!-- 光學模擬濾鏡層 -->
+<div aria-hidden="true" class="gw06-filter-layer">&nbsp;</div>
+<!-- 頂部狀態標籤（依所選模式顯示） -->
 
-<div class="color-layer" style="background: rgba(0,0,0,0.3); color: #000;">光源輸出50%</div>
+<div aria-live="polite" class="gw06-status-wrap">
+<div class="gw06-stage-status gw06-status-3000k"><span>色溫 3000K 暖白光</span></div>
 
-<div class="color-layer" style="background: rgba(255,255,255,0.2); color: #4982b5;">光源輸出100%<br />
-色溫6500K</div>
+<div class="gw06-stage-status gw06-status-50pct"><span>光源輸出 50% 舒適微光</span></div>
+
+<div class="gw06-stage-status gw06-status-6500k"><span>光源輸出 100% / 色溫 6500K 晝光</span></div>
 </div>
-<!-- 右側文字區塊 -->
+<!-- 底部切換按鈕（radio 包在 label 內） -->
 
-<div class="right-area">
-<div class="desc">支援有線 / 無線調光<br />
-需額外搭配調光控制器<br />
-(選配)</div>
+<div aria-label="色溫與調光切換" class="gw06-ctrl-bar" role="radiogroup"><label class="gw06-label-btn gw06-btn-3000k"><input checked="checked" class="gw06-radio gw06-r-3000k" name="gw06_lighting_mode" type="radio" value="3000k" /> 色溫 3000K 暖白 </label> <label class="gw06-label-btn gw06-btn-50pct"> <input class="gw06-radio gw06-r-50pct" name="gw06_lighting_mode" type="radio" value="50pct" /> 光源輸出 50% 柔和 </label> <label class="gw06-label-btn gw06-btn-6500k"> <input class="gw06-radio gw06-r-6500k" name="gw06_lighting_mode" type="radio" value="6500k" /> 100% 輸出 / 6500K 晝光 </label></div>
+</div>
+<!-- 右側文字說明區 -->
+
+<div class="gw06-right-area">
+<div class="gw06-side-tag">SMART LIGHTING &amp; CCT</div>
+
+<h2 class="gw06-main-title" id="GW-06-BL101支架燈色溫調光-Title">支援有線 / 無線調光</h2>
+
+<div class="gw06-desc-box">支援 <span>光源輸出亮度調整</span> 與 <span>冷暖色溫平滑切換</span>。<br />
+無論是白天專注辦公所需的明亮日光，或是夜間休憩營造的溫馨暖意，皆能隨心掌控。</div>
+
+<div class="gw06-note-badge">※ 需額外搭配調光控制器（選配）</div>
 </div>
 </div>
 
-<div style="height: 10px;">&nbsp;</div>
-<!-- ★ 變色調光晶粒區塊：背景圖 + 左圖 + 圓浮層 + 右側毛玻璃資訊卡 ★ -->
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
-<style type="text/css">.block-變色調光晶粒 {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  padding: 60px;
-  background: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/BL_101_111/bl_101_bg2.jpg?v=1cw491i') center center / cover no-repeat;
-  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
-  box-sizing: border-box;
-  min-height: 700px; /* ✅ 桌機版最小高度 */
+<div aria-labelledby="GW-07-BL101支架燈變色調光晶粒-Title" id="GW-07-BL101支架燈變色調光晶粒-Root" role="region">
+<style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
+
+/* ============================================
+   ★ 變色調光晶粒區塊 GW-07-BL101支架燈變色調光晶粒
+   保留背景圖 + 左圖 + 圓浮層 + 右側毛玻璃資訊卡
+   ============================================ */
+#GW-07-BL101支架燈變色調光晶粒-Root {
+  position: relative !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 60px !important;
+  background: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/BL_101_111/bl_101_bg2.jpg?v=1cw491i') center center / cover no-repeat !important;
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif !important;
+  box-sizing: border-box !important;
+  min-height: 700px !important;
+  width: 100% !important;
+  margin: 0 !important;
 }
 
-/* 左側圖片區塊（可上傳圖片） */
-.block-變色調光晶粒 .image-area {
-  position: relative;
-  width: 50%;
-  min-width: 280px;
+#GW-07-BL101支架燈變色調光晶粒-Root *,
+#GW-07-BL101支架燈變色調光晶粒-Root *::before,
+#GW-07-BL101支架燈變色調光晶粒-Root *::after {
+  box-sizing: border-box !important;
 }
-.block-變色調光晶粒 .image-area img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 8px;
+
+/* 左側圖片區塊 */
+#GW-07-BL101支架燈變色調光晶粒-Root .gw07-image-area {
+  position: relative !important;
+  width: 50% !important;
+  min-width: 280px !important;
+}
+
+#GW-07-BL101支架燈變色調光晶粒-Root .gw07-image-area img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  border-radius: 8px !important;
 }
 
 /* 左下圓浮層（桌機版） */
-.block-變色調光晶粒 .circle-label {
-  position: absolute;
-  bottom: -20px;
-  left: 100px;
-  background: rgba(255,255,255,0.85);
-  border-radius: 50%;
-  padding: 16px;
-  width: 120px;         /* ✅ 桌機版大小 */
-  height: 120px;
-  text-align: center;
-  font-size: 16px;      /* ✅ 桌機版文字大小 */
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+#GW-07-BL101支架燈變色調光晶粒-Root .gw07-circle-label {
+  position: absolute !important;
+  bottom: -20px !important;
+  left: 100px !important;
+  background: rgba(255,255,255,0.85) !important;
+  border-radius: 50% !important;
+  padding: 16px !important;
+  width: 120px !important;
+  height: 120px !important;
+  text-align: center !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15) !important;
+  color: #000 !important;
 }
 
 /* 右側毛玻璃浮層 */
-.block-變色調光晶粒 .info-card {
-  background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 16px;
-  padding: 40px 32px;
-  width: 40%;
-  min-width: 280px;
-  text-align: center;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.block-變色調光晶粒 .info-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+#GW-07-BL101支架燈變色調光晶粒-Root .gw07-info-card {
+  background: rgba(255,255,255,0.7) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border-radius: 16px !important;
+  padding: 40px 32px !important;
+  width: 40% !important;
+  min-width: 280px !important;
+  text-align: center !important;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
 }
 
-.block-變色調光晶粒 .info-card h3 {
-  background: #000;
-  color: #fff;
-  font-size: 24px;
-  font-weight: 700;
-  padding: 8px 16px;
-  border-radius: 6px;
-  display: inline-block;
-  margin-bottom: 16px;
+#GW-07-BL101支架燈變色調光晶粒-Root .gw07-info-card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2) !important;
 }
-.block-變色調光晶粒 .info-card p {
-  font-size: 16px;
-  line-height: 1.6;
-  margin: 6px 0;
-  color: #333;
+
+#GW-07-BL101支架燈變色調光晶粒-Root .gw07-info-card h3 {
+  background: #000 !important;
+  color: #fff !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  padding: 8px 16px !important;
+  border-radius: 6px !important;
+  display: inline-block !important;
+  margin: 0 0 16px 0 !important;
+}
+
+#GW-07-BL101支架燈變色調光晶粒-Root .gw07-info-card p {
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+  margin: 6px 0 !important;
+  color: #333 !important;
+}
+
+#GW-07-BL101支架燈變色調光晶粒-Root .gw07-info-card a {
+  color: #0044cc !important;
+  text-decoration: underline !important;
 }
 
 @media (max-width: 768px) {
-  .block-變色調光晶粒 {
-    flex-direction: column;
-    padding: 40px 20px;
-    min-height: 540px; /* ✅ 手機版背景最小高度 */
+  #GW-07-BL101支架燈變色調光晶粒-Root {
+    flex-direction: column !important;
+    padding: 40px 20px !important;
+    min-height: 540px !important;
   }
-
-  .block-變色調光晶粒 .image-area {
-    width: 100%;
-    display: flex;                /* ✅ 讓圖片置中 */
-    justify-content: center;
-    margin-bottom: 40px;
-    position: relative;
+  #GW-07-BL101支架燈變色調光晶粒-Root .gw07-image-area {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    margin-bottom: 40px !important;
+    position: relative !important;
   }
-
-  .block-變色調光晶粒 .info-card {
-    width: 100%;
-    margin-bottom: 40px;
+  #GW-07-BL101支架燈變色調光晶粒-Root .gw07-info-card {
+    width: 100% !important;
+    margin-bottom: 40px !important;
   }
+  #GW-07-BL101支架燈變色調光晶粒-Root .gw07-circle-label {
+    bottom: -16px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 90px !important;
+    height: 90px !important;
+    font-size: 13px !important;
+  }
+}
 
-  .block-變色調光晶粒 .circle-label {
-    bottom: -16px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90px;               /* ✅ 手機版寬度 */
-    height: 90px;              /* ✅ 手機版高度 */
-    font-size: 13px;           /* ✅ 手機版字級 */
+@media (prefers-reduced-motion: reduce) {
+  #GW-07-BL101支架燈變色調光晶粒-Root .gw07-info-card {
+    transition: none !important;
+    transform: none !important;
   }
 }
 </style>
-<!-- ✅ HTML 結構 -->
-<div class="block-變色調光晶粒"><!-- 左側圖片區塊：上傳圖片即可替換 -->
-<div class="image-area"><img alt="BL-101變色調光晶粒" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/BL_101_111/bl_101_color2.png?v=iyyrdwm" />
-<div class="circle-label">變色調光<br />
+<!-- 左側圖片區塊 -->
+<div class="gw07-image-area"><img alt="BL-101變色調光晶粒" height="380" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/BL_101_111/bl_101_color2.png?v=iyyrdwm" width="560" />
+<div class="gw07-circle-label">變色調光<br />
 晶粒配置</div>
 </div>
 <!-- 右側資訊卡片 -->
 
-<div class="info-card">
+<div class="gw07-info-card">
+<h2 id="GW-07-BL101支架燈變色調光晶粒-Title" style="display:none;">變色調光晶粒</h2>
+
 <h3>變色調光晶粒</h3>
 
 <p>可設定<br />
@@ -870,588 +1398,760 @@ Light sources compliant with U.S. specifications.</div>
 <a href="https://www.goldenwayled.com/product_d.php?lang=tw&amp;tb=1&amp;id=297" target="_blank">**僅雙色溫款支援變色調光**</a></p>
 </div>
 </div>
-<!-- ★ 演色性區塊：右側文字浮層 + 滿版背景 ★ -->
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<style type="text/css">/* ========================================
-   ? 區塊設定：.block-演色性
+
+<div aria-labelledby="GW-08-BL101支架燈演色性-Title" id="GW-08-BL101支架燈演色性-Root" role="region">
+<style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
+
+/* ========================================
+   ★ 演色性區塊 GW-08-BL101支架燈演色性
+   桌機版：右側浮層
+   窄版面（手機/平板）：右側滿高 (top:0, bottom:0, right:0) 半透明毛玻璃磨砂質感浮層
    ======================================== */
-.block-演色性 {
-  position: relative;
-  width: 100%;
-  height: 600px; /* ✅ 可依需求調整整體高度 */
-  background: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/360%20370%20380/bl-360_ra80.jpg?v=0m07rjg') center/cover no-repeat;
-  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
-  overflow: hidden;
-  box-sizing: border-box;
+#GW-08-BL101支架燈演色性-Root {
+  position: relative !important;
+  width: 100% !important;
+  height: 600px !important;
+  background: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/360%20370%20380/bl-360_ra80.jpg?v=0m07rjg') center/cover no-repeat !important;
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-/* ✅ 右側浮層：垂直置中 */
-.block-演色性 .text-container {
-  position: absolute;
-  top: 50%;
-  right: 50px;
-  transform: translateY(-50%);
-  max-width: 320px;
-  color: #fff;
-  text-align: left;
+#GW-08-BL101支架燈演色性-Root *,
+#GW-08-BL101支架燈演色性-Root *::before,
+#GW-08-BL101支架燈演色性-Root *::after {
+  box-sizing: border-box !important;
 }
 
-/* ✅ 主標：框線樣式 + 滑入反白動畫 */
-.block-演色性 .title {
-  font-size: 32px;            /* ✅ 桌機主標 */
-  font-weight: 700;
-  display: inline-block;
-  padding: 8px 16px;
-  border: 2px solid #3d5a4a;
-  border-radius: 6px;
-  background: transparent;
-  color: #3d5a4a;
-  margin-bottom: 12px;
-  transition: all 0.3s ease;
-}
-.block-演色性 .title:hover {
-  background: #3d5a4a;
-  color: #fff;
+/* 桌機版右側浮層：垂直置中 */
+#GW-08-BL101支架燈演色性-Root .gw08-text-container {
+  position: absolute !important;
+  top: 50% !important;
+  right: 50px !important;
+  transform: translateY(-50%) !important;
+  max-width: 320px !important;
+  color: #3d5a4a !important;
+  text-align: left !important;
+  z-index: 2 !important;
 }
 
-/* ✅ 內容段落樣式 */
-.block-演色性 .desc {
-  font-size: 16px;            /* ✅ 桌機內容描述字級 */
-  line-height: 1.6;
-  color: #3d5a4a;
+/* 主標：框線樣式 + 滑入反白動畫 */
+#GW-08-BL101支架燈演色性-Root .gw08-title {
+  font-size: 32px !important;
+  font-weight: 700 !important;
+  display: inline-block !important;
+  padding: 8px 16px !important;
+  border: 2px solid #3d5a4a !important;
+  border-radius: 6px !important;
+  background: transparent !important;
+  color: #3d5a4a !important;
+  margin: 0 0 12px 0 !important;
+  transition: all 0.3s ease !important;
+}
+
+#GW-08-BL101支架燈演色性-Root .gw08-title:hover {
+  background: #3d5a4a !important;
+  color: #fff !important;
+}
+
+/* 內容段落樣式 */
+#GW-08-BL101支架燈演色性-Root .gw08-desc {
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+  color: #2e4438 !important;
+  margin: 0 !important;
 }
 
 /* ========================================
-   ? 手機版 RWD
+   窄版面（手機/平板 ≤768px）
+   半透明磨砂白底靠右「滿頂滿底」（滿滿的），文字清晰好讀，不壓到左側彩虹積木主體
    ======================================== */
 @media (max-width: 768px) {
-  .block-演色性 {
-    height: 360px !important; /* ✅ 手機版區塊高度 */
+  #GW-08-BL101支架燈演色性-Root {
+    height: 420px !important;
   }
-  .block-演色性 .text-container {
-    right: 10px !important;
-    left: 10px !important;
-    transform: translateY(-50%);
-    top: 50%;
-    max-width: none !important;
-    background: rgba(255, 255, 255, 0.85) !important;  /* ✅ 手機版白底半透明 */
-    padding: 16px !important;
-    border-radius: 8px;
-    text-align: left;
-    color: #3d5a4a !important;
+  #GW-08-BL101支架燈演色性-Root .gw08-text-container {
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    left: auto !important;
+    transform: none !important;
+    width: 50% !important;
+    max-width: 360px !important;
+    /* 高質感半透明磨砂白底（玻璃擬態） */
+    background: rgba(255, 255, 255, 0.65) !important;
+    backdrop-filter: blur(14px) saturate(130%) !important;
+    -webkit-backdrop-filter: blur(14px) saturate(130%) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.9) !important;
+    box-shadow: -8px 0 24px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 0 !important;
+    padding: 32px 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
   }
-  .block-演色性 .title {
+  #GW-08-BL101支架燈演色性-Root .gw08-title {
     font-size: 24px !important;
     padding: 6px 12px !important;
-    color: #3d5a4a !important;
-    border-color: #3d5a4a !important;
-    background: transparent !important;
+    color: #2b4235 !important;
+    border-color: #2b4235 !important;
+    background: rgba(255, 255, 255, 0.6) !important;
+    align-self: flex-start !important;
   }
-  .block-演色性 .desc {
-    font-size: 14px !important;
-    color: #3d5a4a !important;
+  #GW-08-BL101支架燈演色性-Root .gw08-desc {
+    font-size: 14.5px !important;
+    line-height: 1.7 !important;
+    color: #203127 !important;
+    font-weight: 500 !important;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8) !important;
+  }
+}
+
+/* 超窄小手機螢幕 (≤420px) 微調比例 */
+@media (max-width: 420px) {
+  #GW-08-BL101支架燈演色性-Root {
+    height: 400px !important;
+  }
+  #GW-08-BL101支架燈演色性-Root .gw08-text-container {
+    width: 50% !important;
+    padding: 20px 16px !important;
+  }
+  #GW-08-BL101支架燈演色性-Root .gw08-title {
+    font-size: 21px !important;
+    padding: 5px 10px !important;
+  }
+  #GW-08-BL101支架燈演色性-Root .gw08-desc {
+    font-size: 13.5px !important;
+    line-height: 1.6 !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #GW-08-BL101支架燈演色性-Root .gw08-title {
+    transition: none !important;
   }
 }
 </style>
-<!-- ✅ HTML 區塊 -->
-<div class="block-演色性">
-<div class="text-container">
-<div class="title">演色性 Ra≧80</div>
+<div class="gw08-text-container">
+<h2 class="gw08-title" id="GW-08-BL101支架燈演色性-Title">演色性 Ra≧80</h2>
 
-<div class="desc">演色性指數（CRI）是照明品質的重要衡量標準，用來判斷光源對物體色彩還原的真實度。<br />
+<div class="gw08-desc">演色性指數（CRI）是照明品質的重要衡量標準，用來判斷光源對物體色彩還原的真實度。<br />
 數值越高，色彩越自然鮮明，呈現效果也更貼近日光環境。</div>
 </div>
 </div>
-<!-- ★ 發光角度區塊：左文字＋右圖(img版) ★ -->
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
-<style type="text/css">/* ====================================
-   發光角度區塊：block-發光角度區塊
+
+<div aria-labelledby="GW-09-BL101支架燈發光角度-Title" id="GW-09-BL101支架燈發光角度-Root" role="region">
+<style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
+
+/* ====================================
+   ★ 發光角度區塊 GW-09-BL101支架燈發光角度
+   保留左文字（120°數值與icon）＋右圖(img版)
    ==================================== */
-.block-發光角度區塊 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
-  padding: 60px 40px;
-  background: #fff;
-  flex-wrap: wrap;
-  gap: 10px; /* ↑↑↑ 左右區塊間距（可調） */
+#GW-09-BL101支架燈發光角度-Root {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif !important;
+  padding: 60px 40px !important;
+  background: #fff !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+}
+
+#GW-09-BL101支架燈發光角度-Root *,
+#GW-09-BL101支架燈發光角度-Root *::before,
+#GW-09-BL101支架燈發光角度-Root *::after {
+  box-sizing: border-box !important;
 }
 
 /* 左側文字內容 */
-.block-發光角度區塊 .left-content {
-  flex: 1;
-  max-width: 560px;
-  z-index: 2;
-}
-.block-發光角度區塊 .left-content h3 {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #333;
-  text-align: center;
-}
-.block-發光角度區塊 .left-content .angle {
-  font-size: 46px;
-  font-weight: 700;
-  color: #E2B200;
-  margin-bottom: 16px; /* ↓↓↓ 數值與圖示距離 */
-  text-align: center;
-}
-.block-發光角度區塊 .left-content .icon-img {
-  width: 160px;          /* 圖片寬度 */
-  margin: 0 auto 24px;   /* 置中並與下方段落留白 */
-}
-.block-發光角度區塊 .left-content .desc {
-  font-size: 16px;
-  color: #333;
-  line-height: 1.8;
-  text-align: center;
-  margin-bottom: 12px;
-}
-.block-發光角度區塊 .left-content .note {
-  font-size: 14px;
-  color: #999;
-  text-align: center;
+#GW-09-BL101支架燈發光角度-Root .gw09-left-content {
+  flex: 1 !important;
+  max-width: 560px !important;
+  z-index: 2 !important;
 }
 
-/* 右側圖片（用 <img> 顯示） */
-.block-發光角度區塊 .right-image {
-  flex: 1;
-  max-width: 800px;
+#GW-09-BL101支架燈發光角度-Root .gw09-left-content h3 {
+  font-size: 24px !important;
+  font-weight: 600 !important;
+  margin: 0 0 8px 0 !important;
+  color: #333 !important;
+  text-align: center !important;
 }
-.block-發光角度區塊 .right-image img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  display: block;
+
+#GW-09-BL101支架燈發光角度-Root .gw09-left-content .gw09-angle {
+  font-size: 46px !important;
+  font-weight: 700 !important;
+  color: #E2B200 !important;
+  margin-bottom: 16px !important;
+  text-align: center !important;
+  line-height: 1.1 !important;
+}
+
+#GW-09-BL101支架燈發光角度-Root .gw09-left-content .gw09-icon-img {
+  width: 160px !important;
+  margin: 0 auto 24px !important;
+}
+
+#GW-09-BL101支架燈發光角度-Root .gw09-left-content .gw09-icon-img img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+#GW-09-BL101支架燈發光角度-Root .gw09-left-content .gw09-desc {
+  font-size: 16px !important;
+  color: #333 !important;
+  line-height: 1.8 !important;
+  text-align: center !important;
+  margin: 0 0 12px 0 !important;
+}
+
+#GW-09-BL101支架燈發光角度-Root .gw09-left-content .gw09-note {
+  font-size: 14px !important;
+  color: #999 !important;
+  text-align: center !important;
+  margin: 0 !important;
+}
+
+/* 右側圖片 */
+#GW-09-BL101支架燈發光角度-Root .gw09-right-image {
+  flex: 1 !important;
+  max-width: 800px !important;
+}
+
+#GW-09-BL101支架燈發光角度-Root .gw09-right-image img {
+  width: 100% !important;
+  height: auto !important;
+  border-radius: 8px !important;
+  display: block !important;
 }
 
 /* RWD 手機版 */
 @media (max-width: 768px) {
-  .block-發光角度區塊 {
-    flex-direction: column;
-    padding: 40px 20px;
+  #GW-09-BL101支架燈發光角度-Root {
+    flex-direction: column !important;
+    padding: 40px 20px !important;
   }
-  .block-發光角度區塊 .left-content {
-    max-width: 100%;
+  #GW-09-BL101支架燈發光角度-Root .gw09-left-content {
+    max-width: 100% !important;
   }
-  .block-發光角度區塊 .right-image {
-    width: 100%;
-    margin-top: 24px;
+  #GW-09-BL101支架燈發光角度-Root .gw09-right-image {
+    width: 100% !important;
+    margin-top: 24px !important;
   }
 }
 </style>
-<!-- ✅ HTML 區塊內容 -->
-<div class="block-發光角度區塊">
-<div class="left-content">
+<div class="gw09-left-content">
+<h2 id="GW-09-BL101支架燈發光角度-Title" style="display:none;">燈具發光角度</h2>
+
 <h3>燈具發光角度</h3>
 
-<div class="angle">120&deg;</div>
+<div class="gw09-angle">120&deg;</div>
 
-<div class="icon-img"><img alt="發光角度圖示" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/BL_101_111/bl_101_angle.png?v=b0dhtx8" /></div>
+<div class="gw09-icon-img"><img alt="金鍏支架燈層板燈BL-101發光角度線稿" height="100" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/BL_101_111/bl_101_angle.png?v=b0dhtx8" width="160" /></div>
 
-<div class="desc">燈具發光角度120&deg;，帶來照明無死角，<br />
-並提升環境光均勻度，能有效降低眩光。</div>
+<p class="gw09-desc">燈具發光角度120&deg;，帶來照明無死角，<br />
+並提升環境光均勻度，能有效降低眩光。</p>
 
-<div class="note">(長期待在高眩光環境，會導致煩躁、不舒服或視力受損)</div>
+<div class="gw09-note">(長期待在高眩光環境，會導致煩躁、不舒服或視力受損)</div>
 </div>
 
-<div class="right-image"><img alt="燈具發光角度圖" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/360%20370%20380/bl-360_bl-370_bl-380_angle_02.jpg?v=egx8i9i" /></div>
+<div class="gw09-right-image"><img alt="金鍏支架燈層板燈BL-101發光角度" height="450" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/BL_101_111/snipaste_2026-01-06_09-13-05.jpg?v=zq5cj3k" width="800" /></div>
 </div>
-<!-- ★ 模組化區塊：手機版寬度與內距已優化 -->
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
-<style type="text/css">.block-模組化區塊 {
-  --icon-width: 15%;
-  --hero-height: 800px;
-  --hero-bg-opacity: 1.0;
-  --overlay-max-width: 40%;
-  --overlay-padding: 20px;
-  --overlay-radius: 8px;
-  --subtitle-size: 32px;
-  --subtitle-color: rgba(41,64,108,1.0);
-  --text-size: 16px;
-  --text-color: rgba(41,64,108,1.0);
-  font-family: 'Noto Sans TC', sans-serif;
+
+<div aria-labelledby="GW-10-BL101支架燈模組化-Title" id="GW-10-BL101支架燈模組化-Root" role="region">
+<style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
+
+/* ====================================
+   ★ 模組化區塊 GW-10-BL101支架燈模組化
+   保留背景圖、底層毛玻璃Overlay浮層與Icon動畫
+   ==================================== */
+#GW-10-BL101支架燈模組化-Root {
+  --gw10-icon-width: 15%;
+  --gw10-hero-height: 800px;
+  --gw10-hero-bg-opacity: 1.0;
+  --gw10-overlay-max-width: 40%;
+  --gw10-overlay-padding: 20px;
+  --gw10-overlay-radius: 8px;
+  --gw10-subtitle-size: 32px;
+  --gw10-subtitle-color: rgba(41,64,108,1.0);
+  --gw10-text-size: 16px;
+  --gw10-text-color: rgba(41,64,108,1.0);
+  font-family: 'Noto Sans TC', sans-serif !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative !important;
 }
 
-.block-模組化區塊 .hero-section {
-  position: relative;
-  width: 100%;
-  height: var(--hero-height);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
+#GW-10-BL101支架燈模組化-Root *,
+#GW-10-BL101支架燈模組化-Root *::before,
+#GW-10-BL101支架燈模組化-Root *::after {
+  box-sizing: border-box !important;
 }
 
-.block-模組化區塊 .hero-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/BL_101_111/bl_101_bg3.jpg?v=dgwub39') center/cover no-repeat;
-  opacity: var(--hero-bg-opacity);
-  z-index: -1;
+#GW-10-BL101支架燈模組化-Root .gw10-hero-section {
+  position: relative !important;
+  width: 100% !important;
+  height: var(--gw10-hero-height) !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  overflow: hidden !important;
+}
+
+#GW-10-BL101支架燈模組化-Root .gw10-hero-section::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/BL_101_111/bl_101_bg3.jpg?v=dgwub39') center/cover no-repeat !important;
+  opacity: var(--gw10-hero-bg-opacity) !important;
+  z-index: 0 !important;
 }
 
 /* === Overlay 浮層區塊 === */
-.block-模組化區塊 .overlay {
-  position: absolute;
-  bottom: 5%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(250, 250, 240, 0.5);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  padding: var(--overlay-padding);
-  border-radius: var(--overlay-radius);
-  max-width: var(--overlay-max-width);
-  text-align: center;
-  z-index: 1;
+#GW-10-BL101支架燈模組化-Root .gw10-overlay {
+  position: absolute !important;
+  bottom: 5% !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  background: rgba(250, 250, 240, 0.5) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  padding: var(--gw10-overlay-padding) !important;
+  border-radius: var(--gw10-overlay-radius) !important;
+  max-width: var(--gw10-overlay-max-width) !important;
+  text-align: center !important;
+  z-index: 1 !important;
 }
 
-/* === Icon === */
-.block-模組化區塊 .hero-icon img {
-  width: var(--icon-width);
-  animation: fadeInUp 0.6s ease-out 0.2s both;
-}
-
-/* === 標語字體 === */
-.block-模組化區塊 .hero-subtitle {
-  margin: 12px 0 0;
-  font-size: var(--subtitle-size);
-  font-weight: 700;
-  color: var(--subtitle-color);
-  animation: fadeInUp 0.6s ease-out 0.4s both;
-}
-
-/* === 說明文字 === */
-.block-模組化區塊 .hero-text {
-  margin: 16px 0 0;
-  font-size: var(--text-size);
-  line-height: 1.6;
-  color: var(--text-color);
-  animation: fadeInUp 0.6s ease-out 0.6s both;
-}
-
-/* === 動畫 === */
-@keyframes fadeInUp {
+@keyframes gw10FadeInUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* === Icon === */
+#GW-10-BL101支架燈模組化-Root .gw10-hero-icon img {
+  width: var(--gw10-icon-width) !important;
+  animation: gw10FadeInUp 0.6s ease-out 0.2s both !important;
+}
+
+/* === 標語字體 === */
+#GW-10-BL101支架燈模組化-Root .gw10-hero-subtitle {
+  margin: 12px 0 0 0 !important;
+  font-size: var(--gw10-subtitle-size) !important;
+  font-weight: 700 !important;
+  color: var(--gw10-subtitle-color) !important;
+  animation: gw10FadeInUp 0.6s ease-out 0.4s both !important;
+}
+
+/* === 說明文字 === */
+#GW-10-BL101支架燈模組化-Root .gw10-hero-text {
+  margin: 16px 0 0 0 !important;
+  font-size: var(--gw10-text-size) !important;
+  line-height: 1.6 !important;
+  color: var(--gw10-text-color) !important;
+  animation: gw10FadeInUp 0.6s ease-out 0.6s both !important;
+  text-align: justify !important;
+}
+
 /* === 手機版 RWD 調整 === */
 @media (max-width: 768px) {
-  .block-模組化區塊 {
-    --overlay-padding: 20px;
+  #GW-10-BL101支架燈模組化-Root {
+    --gw10-overlay-padding: 20px;
   }
-
-  .block-模組化區塊 .overlay {
-    left: 10% !important;              /* ✅ 加：左邊距離 */
-    right: 10% !important;             /* ✅ 加：右邊距離 */
-    max-width: none !important;       /* ✅ 取消 max-width 限制 */
-    transform: none !important;       /* ✅ 取消水平置中 transform */
-    padding: var(--overlay-padding);  /* ✅ 確保內距保留 */
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+  #GW-10-BL101支架燈模組化-Root .gw10-overlay {
+    left: 10% !important;
+    right: 10% !important;
+    max-width: none !important;
+    transform: none !important;
+    padding: var(--gw10-overlay-padding) !important;
+    backdrop-filter: blur(6px) !important;
+    -webkit-backdrop-filter: blur(6px) !important;
   }
-
-  .block-模組化區塊 .hero-section {
-    height: 600px;
+  #GW-10-BL101支架燈模組化-Root .gw10-hero-section {
+    height: 600px !important;
   }
-
-  .block-模組化區塊 .hero-subtitle {
-    font-size: 24px;
+  #GW-10-BL101支架燈模組化-Root .gw10-hero-subtitle {
+    font-size: 24px !important;
     animation-delay: 0.3s;
   }
-
-  .block-模組化區塊 .hero-text {
-    font-size: 14px;
+  #GW-10-BL101支架燈模組化-Root .gw10-hero-text {
+    font-size: 14px !important;
     animation-delay: 0.5s;
   }
-
-  .block-模組化區塊 .hero-icon img {
-    width: 48px;
-    height: auto;
+  #GW-10-BL101支架燈模組化-Root .gw10-hero-icon img {
+    width: 48px !important;
+    height: auto !important;
     animation-delay: 0.1s;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  #GW-10-BL101支架燈模組化-Root .gw10-hero-icon img,
+  #GW-10-BL101支架燈模組化-Root .gw10-hero-subtitle,
+  #GW-10-BL101支架燈模組化-Root .gw10-hero-text {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
 </style>
-<!-- ✅ HTML 結構 -->
-<div class="block-模組化區塊">
-<div class="hero-section">
-<div class="overlay">
-<div class="hero-icon"><img src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/component.png?v=kb2169l" /></div>
+<div class="gw10-hero-section">
+<div class="gw10-overlay">
+<div class="gw10-hero-icon"><img alt="模組化設計圖示" height="60" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/component.png?v=kb2169l" width="60" /></div>
 
-<div class="hero-subtitle">模組化設計 x 長使用壽命</div>
+<h2 class="gw10-hero-subtitle" id="GW-10-BL101支架燈模組化-Title">模組化設計 x 長使用壽命</h2>
 
-<div class="hero-text" style="text-align: justify;">模組化設計將發熱的驅動器與光源分開，延長產品壽命。維修時可單獨更換損壞元件，降低維護成本。超長的使用壽命，更適合安裝於不易維護的空間場域，大幅減少後續管理難度與費用。</div>
+<p class="gw10-hero-text">模組化設計將發熱的驅動器與光源分開，延長產品壽命。維修時可單獨更換損壞元件，降低維護成本。超長的使用壽命，更適合安裝於不易維護的空間場域，大幅減少後續管理難度與費用。</p>
 </div>
 </div>
 </div>
-<!-- ★ ESG形象及保固區塊：背景圖 + 左文 + 毛玻璃右浮框 ★ -->
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
-<style type="text/css">/* ============================================
-   ? 區塊設定：.block-ESG形象及保固
-   • 區塊背景、內距、遮罩透明度
-   • 字體套用 Noto Sans TC
-   ============================================ */
-.block-ESG形象及保固 {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 80px 60px; /* ✅ 可調：整體上下左右內距 */
-  min-height: 600px;  /* ✅ 加這行即可控制整塊區塊顯示高度 */
-  background: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/snipaste_2025-05-29_10-57-56.jpg?v=i0x3dxv') center center / cover no-repeat; /* ✅ 可調：背景圖網址 */
-  background-color: rgba(255,255,255,1.0); /* ✅ 可調：若圖片無法載入的背景色 */
-  box-sizing: border-box;
-  font-family: 'Noto Sans TC','Microsoft JhengHei',sans-serif;
-  flex-wrap: wrap;
-}
 
-/* ✅ 可調：整體區塊半透明遮罩層（越小越透明） */
-.block-ESG形象及保固::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(255,255,255,0.6);
-  z-index: 1;
-}
-
-/* 所有內容浮在遮罩上方 */
-.block-ESG形象及保固 > * {
-  position: relative;
-  z-index: 2;
-}
+<div aria-labelledby="GW-11-BL101支架燈ESG形象保固-Title" id="GW-11-BL101支架燈ESG形象保固-Root" role="region">
+<style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
 
 /* ============================================
-   ? 左側文字區：.left-text
+   ★ ESG形象及保固區塊 GW-11-BL101支架燈ESG形象保固
+   保留背景圖 + 左文 + 毛玻璃右浮框
    ============================================ */
-.block-ESG形象及保固 .left-text {
-  flex: 2;
-  padding-right: 40px;             /* ✅ 可調：右間距 */
-  color: #555d32;                  /* ✅ 可調：文字顏色 */
-  font-size: 32px;                 /* ✅ 建議對應「內容描述」：16px（14px） */
-  line-height: 1.8;                /* ✅ 可調：行距 */
-  font-weight: 400;
-  text-align: left;
+#GW-11-BL101支架燈ESG形象保固-Root {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 80px 60px !important;
+  min-height: 600px !important;
+  background: url('https://system49.webtech.com.tw/web/202200228/archive/image/TSts/snipaste_2025-05-29_10-57-56.jpg?v=i0x3dxv') center center / cover no-repeat !important;
+  background-color: rgba(255,255,255,1.0) !important;
+  box-sizing: border-box !important;
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif !important;
+  flex-wrap: wrap !important;
+  width: 100% !important;
+  margin: 0 !important;
 }
 
-/* ============================================
-   ? 毛玻璃浮框卡片：.floating-box
-   ============================================ */
-.block-ESG形象及保固 .floating-box {
-  flex: 1;
-  background: rgba(255, 255, 255, 0.1);   /* ✅ 可調：浮框底色透明度 */
-  backdrop-filter: blur(12px);            /* ✅ 可調：毛玻璃模糊程度 */
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 12px;                    /* ✅ 可調：圓角大小 */
-  padding: 32px 24px;                     /* ✅ 可調：內距 */
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 400px;                       /* ✅ 可調：卡片最大寬度 */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* ✅ 初始陰影 */
+#GW-11-BL101支架燈ESG形象保固-Root *,
+#GW-11-BL101支架燈ESG形象保固-Root *::before,
+#GW-11-BL101支架燈ESG形象保固-Root *::after {
+  box-sizing: border-box !important;
 }
 
-/* ✅ 浮入動畫效果（可關閉） */
-.block-ESG形象及保固 .floating-box:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+/* 半透明遮罩層 */
+#GW-11-BL101支架燈ESG形象保固-Root::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: rgba(255,255,255,0.6) !important;
+  z-index: 1 !important;
+}
+
+#GW-11-BL101支架燈ESG形象保固-Root > * {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+/* 左側文字區 */
+#GW-11-BL101支架燈ESG形象保固-Root .gw11-left-text {
+  flex: 2 !important;
+  padding-right: 40px !important;
+  color: #555d32 !important;
+  font-size: 32px !important;
+  line-height: 1.8 !important;
+  font-weight: 400 !important;
+  text-align: center !important;
+}
+
+/* 毛玻璃浮框卡片 */
+#GW-11-BL101支架燈ESG形象保固-Root .gw11-floating-box {
+  flex: 1 !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-radius: 12px !important;
+  padding: 32px 24px !important;
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  max-width: 400px !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+#GW-11-BL101支架燈ESG形象保固-Root .gw11-floating-box:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2) !important;
 }
 
 /* icon 區塊 */
-.block-ESG形象及保固 .floating-box .icon {
-  width: 60px;     /* ✅ 可調：圖示寬度 */
-  height: 60px;    /* ✅ 可調：圖示高度 */
-  margin-bottom: 24px;
+#GW-11-BL101支架燈ESG形象保固-Root .gw11-icon {
+  width: 60px !important;
+  height: 60px !important;
+  margin-bottom: 24px !important;
 }
-.block-ESG形象及保固 .floating-box .icon img {
-  width: 100%;
-  height: auto;
+
+#GW-11-BL101支架燈ESG形象保固-Root .gw11-icon img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
 }
 
 /* 卡片標題 */
-.block-ESG形象及保固 .floating-box h3 {
-  font-size: 24px;       /* ✅ 對應「卡片標語」：18px（18px） */
-  font-weight: 700;
-  margin: 0 0 8px;
-  color: #555d32;
+#GW-11-BL101支架燈ESG形象保固-Root .gw11-floating-box h3 {
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  margin: 0 0 8px 0 !important;
+  color: #555d32 !important;
 }
 
-/* 分隔線樣式 */
-.block-ESG形象及保固 .floating-box hr {
-  width: 75%;
-  border: none;
-  border-top: 1px solid #555d32;
-  margin: 16px 0;
+/* 分隔線 */
+#GW-11-BL101支架燈ESG形象保固-Root .gw11-divider {
+  width: 75% !important;
+  border: none !important;
+  border-top: 1px solid #555d32 !important;
+  margin: 16px 0 !important;
 }
 
-/* 卡片內文段落 */
-.block-ESG形象及保固 .floating-box p {
-  font-size: 18px;       /* ✅ 對應「卡片內文」：14px（14px） */
-  margin: 4px 0;
-  color: #555d32;
-  line-height: 1.6;
+/* 卡片內文 */
+#GW-11-BL101支架燈ESG形象保固-Root .gw11-floating-box p {
+  font-size: 18px !important;
+  margin: 4px 0 !important;
+  color: #555d32 !important;
+  line-height: 1.6 !important;
 }
 
-/* ============================================
-   ? 手機版調整（小於768px寬）
-   ============================================ */
+/* 手機版調整 */
 @media (max-width: 768px) {
-  .block-ESG形象及保固 {
-    flex-direction: column;
-    padding: 40px 20px; /* ✅ 可調：手機版上下內距 */
-    min-height: 480px; /* ↑↑↑ 手機版區塊高度 */
-    text-align: center;
+  #GW-11-BL101支架燈ESG形象保固-Root {
+    flex-direction: column !important;
+    padding: 40px 20px !important;
+    min-height: 480px !important;
+    text-align: center !important;
   }
-  .block-ESG形象及保固 .left-text {
-    padding-right: 0;
-    margin-bottom: 40px; /* ✅ 左右區塊間距 */
-    font-size: 24px;     /* ✅ 手機版內容描述大小 */
+  #GW-11-BL101支架燈ESG形象保固-Root .gw11-left-text {
+    padding-right: 0 !important;
+    margin-bottom: 40px !important;
+    font-size: 24px !important;
   }
-  .block-ESG形象及保固 .floating-box h3 {
-    font-size: 20px;
+  #GW-11-BL101支架燈ESG形象保固-Root .gw11-floating-box h3 {
+    font-size: 20px !important;
   }
-  .block-ESG形象及保固 .floating-box p {
-    font-size: 16px;
+  #GW-11-BL101支架燈ESG形象保固-Root .gw11-floating-box p {
+    font-size: 16px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #GW-11-BL101支架燈ESG形象保固-Root .gw11-floating-box {
+    transition: none !important;
+    transform: none !important;
   }
 }
 </style>
-<!-- ✅ HTML 區塊內容 -->
-<div class="block-ESG形象及保固"><!-- 左側 ESG 宣告 -->
-<div class="left-text" style="text-align: center;">金鍏電子完成溫室氣體盤查<br />
-踐行 ESG 承諾，與國際標準接軌</div>
+<!-- 左側 ESG 宣告 -->
+<div class="gw11-left-text">
+<h2 id="GW-11-BL101支架燈ESG形象保固-Title" style="font-size: inherit; font-weight: inherit; margin: 0; color: inherit;">金鍏電子完成溫室氣體盤查<br />
+踐行 ESG 承諾，與國際標準接軌</h2>
+</div>
 <!-- 右側毛玻璃浮框卡片 -->
 
-<div class="floating-box">
-<div class="icon"><img alt="永續圖示" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/company-icon2.png?v=sxcfwnu" /></div>
+<div class="gw11-floating-box">
+<div class="gw11-icon"><img alt="永續圖示" height="60" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/company-icon2.png?v=sxcfwnu" width="60" /></div>
 
 <h3>保固五年 &times; 超越十年</h3>
 
-<hr />
+<div class="gw11-divider">&nbsp;</div>
+
 <p>超節能　高品質　低碳排</p>
 
 <p>長壽命　長保固　低光衰</p>
 </div>
 </div>
 
-<div class="_bd_row _bd_clearfix">
-<div class="_bd_column _bd_full">
-<hr /></div>
-</div>
-<!-- ★ 特色結尾互動區塊：block-特色互動結尾 ★ -->
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
-<style type="text/css">/* ===========================================
-   特色結尾互動區塊：block-特色互動結尾
-   ----------------------------------------------------------------
-   • --card-width: 桌機版卡片寬度（可自行調整 px/rem/% 等）
-   • --card-width-mobile: 手機版卡片寬度（可自行調整 px/rem/% 等）
-   • 其餘可修改項目都註在下面
+<div aria-labelledby="GW-12-BL101支架燈特色互動結尾-Title" id="GW-12-BL101支架燈特色互動結尾-Root" role="region">
+<style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
+
+/* ===========================================
+   ★ 特色結尾互動區塊 GW-12-BL101支架燈特色互動結尾
+   保留 4 張卡片水平置中、Hover 微浮效果與手機版垂直排列
    =========================================== */
-.block-特色互動結尾 {
-  display: flex;
-  justify-content: center;       /* 卡片群水平置中 */
-  gap: 20px;                      /* ↑↑↑ 可調：左右卡片間距 */
-  padding: 10px 20px;             /* ↑↑↑ 可調：整體區塊內距 */
-  box-sizing: border-box;
-  font-family: 'Noto Sans TC','Microsoft JhengHei',sans-serif;
-  --card-width: 350px;            /* ★ 可調：桌機版卡片寬度 */
-  --card-width-mobile: 90%;       /* ★ 可調：手機版卡片寬度 */
+#GW-12-BL101支架燈特色互動結尾-Root {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 20px !important;
+  padding: 20px 20px !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif !important;
+  --gw12-card-width: 350px;
+  --gw12-card-width-mobile: 90%;
+  width: 100% !important;
+  background-color: transparent !important;
 }
 
-.block-特色互動結尾 .card {
-  width: var(--card-width);
-  background: rgba(239, 239, 239, 0.2);  /* ↑↑↑ 可調：卡片底色透明度 */
-  border-radius: 12px;                  /* ↑↑↑ 可調：卡片圓角 */
-  padding: 24px 16px;                   /* ↑↑↑ 可調：卡片內距 */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  text-align: center;
-  transition: transform .2s, box-shadow .2s, background .2s;
-  box-sizing: border-box;
+#GW-12-BL101支架燈特色互動結尾-Root *,
+#GW-12-BL101支架燈特色互動結尾-Root *::before,
+#GW-12-BL101支架燈特色互動結尾-Root *::after {
+  box-sizing: border-box !important;
 }
 
-.block-特色互動結尾 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-  background: rgba(239, 239, 239, 0.3);
+#GW-12-BL101支架燈特色互動結尾-Root .gw12-card {
+  width: var(--gw12-card-width) !important;
+  background: rgba(239, 239, 239, 0.2) !important;
+  border-radius: 12px !important;
+  padding: 24px 16px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+  text-align: center !important;
+  transition: transform .2s, box-shadow .2s, background .2s !important;
 }
 
-.block-特色互動結尾 .card img {
-  width: 64px;                    /* ↑↑↑ 可調：圖示寬度 */
-  height: 64px;                   /* ↑↑↑ 可調：圖示高度 */
-  object-fit: contain;
-  margin-bottom: 16px;            /* ↑↑↑ 可調：圖示與標題間距 */
+#GW-12-BL101支架燈特色互動結尾-Root .gw12-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1) !important;
+  background: rgba(239, 239, 239, 0.3) !important;
 }
 
-.block-特色互動結尾 .card h4 {
-  margin: 0 0 8px;                /* ↑↑↑ 可調：標題與內文間距 */
-  font-size: 18px;               /* ↑↑↑ 可調：標題字級 */
-  font-weight: 600;
-  color: #000000;               /* ↑↑↑ 可調：標題顏色 */
+#GW-12-BL101支架燈特色互動結尾-Root .gw12-card img {
+  width: 64px !important;
+  height: 64px !important;
+  object-fit: contain !important;
+  margin-bottom: 16px !important;
+  display: inline-block !important;
 }
 
-.block-特色互動結尾 .card p {
-  margin: 0;
-  font-size: 14px;              /* ↑↑↑ 可調：內文字級 */
-  line-height: 1.6;
-  color: #7a7a7a;               /* ↑↑↑ 可調：內文顏色 */
+#GW-12-BL101支架燈特色互動結尾-Root .gw12-card h3 {
+  margin: 0 0 8px 0 !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  color: #000000 !important;
+  line-height: 1.3 !important;
+}
+
+#GW-12-BL101支架燈特色互動結尾-Root .gw12-card p {
+  margin: 0 !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  color: #7a7a7a !important;
 }
 
 @media (max-width: 768px) {
-  .block-特色互動結尾 {
-    flex-direction: column;     /* ★★ 手機版改為垂直排列卡片 */
-    align-items: center;        /* 水平置中卡片 */
+  #GW-12-BL101支架燈特色互動結尾-Root {
+    flex-direction: column !important;
+    align-items: center !important;
   }
+  #GW-12-BL101支架燈特色互動結尾-Root .gw12-card {
+    width: var(--gw12-card-width-mobile) !important;
+  }
+}
 
-  .block-特色互動結尾 .card {
-    width: var(--card-width-mobile);
+@media (prefers-reduced-motion: reduce) {
+  #GW-12-BL101支架燈特色互動結尾-Root .gw12-card {
+    transition: none !important;
+    transform: none !important;
   }
 }
 </style>
-<!-- ✅ HTML 結構 -->
-<div class="block-特色互動結尾">
-<div class="card"><img alt="照明節能技術" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/biosphere.png?v=wyw1h7n" />
-<h4>節能照明技術</h4>
+<h2 id="GW-12-BL101支架燈特色互動結尾-Title" style="display:none;">產品特色與保固承諾</h2>
+
+<div class="gw12-card"><img alt="照明節能技術" height="64" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/biosphere.png?v=wyw1h7n" width="64" />
+<h3>節能照明技術</h3>
 
 <p>有效減少能源浪費降低碳排<br />
 助力企業邁向ESG</p>
 </div>
 
-<div class="card"><img alt="Certainfy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/certificate__2_.png?v=8ebzs8" />
-<h4>專業認證把關</h4>
+<div class="gw12-card"><img alt="金鍏專業認證把關" height="64" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/certificate__2_.png?v=8ebzs8" width="64" />
+<h3>專業認證把關</h3>
 
 <p>通過多項國家/國際標準檢驗<br />
 品質保證，企業採購最安心</p>
 </div>
 
-<div class="card"><img alt="低光衰" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/shine.png?v=cemylus" />
-<h4>低光衰 很穩定</h4>
+<div class="gw12-card"><img alt="低光衰" height="64" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/shine.png?v=cemylus" width="64" />
+<h3>低光衰 很穩定</h3>
 
 <p>光效長效穩定<br />
 長期使用亮度無明顯衰減</p>
 </div>
 
-<div class="card"><img alt="壽命保固" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/reduction.png?v=m2ralzi" />
-<h4>長壽命 省成本</h4>
+<div class="gw12-card"><img alt="壽命保固" height="64" loading="lazy" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/reduction.png?v=m2ralzi" width="64" />
+<h3>長壽命 省成本</h3>
 
 <p>超長保固與使用壽命<br />
 大幅降低更換與維修成本</p>
 </div>
 </div>
 
-<div class="_bd_row _bd_clearfix">
-<div class="_bd_column _bd_full">
-<hr /></div>
-</div>
+<div aria-labelledby="GW-13-BL101支架燈適用安裝場域-Title" id="GW-13-BL101支架燈適用安裝場域-Root" role="region">
+<style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
 
-<div class="_bd_row _bd_clearfix">
-<div class="_bd_column _bd_full">
-<h1 class="size-48 _bd_is-title1-48 _bd_is-title-bold _bd_is-upper" style="text-align: center;">適用安裝場域</h1>
+/* ===========================================
+   ★ 適用安裝場域結尾 GW-13-BL101支架燈適用安裝場域
+   保留乾淨分隔線與大字標題排版
+   =========================================== */
+#GW-13-BL101支架燈適用安裝場域-Root {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 30px 20px 50px !important;
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif !important;
+  text-align: center !important;
+  background-color: transparent !important;
+}
 
-<p class="size-21" style="text-align: center;">室內照明 / 住宅照明 / 公共場所 / 小型商店 / 騎樓 / 層板櫥櫃招牌照明</p>
-</div>
+#GW-13-BL101支架燈適用安裝場域-Root *,
+#GW-13-BL101支架燈適用安裝場域-Root *::before,
+#GW-13-BL101支架燈適用安裝場域-Root *::after {
+  box-sizing: border-box !important;
+}
+
+#GW-13-BL101支架燈適用安裝場域-Root hr {
+  border: none !important;
+  border-top: 1px solid #dcdfd8 !important;
+  margin: 0 auto 36px !important;
+  max-width: 1200px !important;
+}
+
+#GW-13-BL101支架燈適用安裝場域-Root .gw13-title {
+  font-size: 36px !important;
+  font-weight: 700 !important;
+  color: #1a1a1a !important;
+  margin: 0 0 16px 0 !important;
+  letter-spacing: 0.05em !important;
+}
+
+#GW-13-BL101支架燈適用安裝場域-Root .gw13-desc {
+  font-size: 18px !important;
+  color: #555555 !important;
+  line-height: 1.8 !important;
+  margin: 0 auto !important;
+  max-width: 900px !important;
+}
+
+@media (max-width: 768px) {
+  #GW-13-BL101支架燈適用安裝場域-Root {
+    padding: 24px 16px 40px !important;
+  }
+  #GW-13-BL101支架燈適用安裝場域-Root .gw13-title {
+    font-size: 26px !important;
+  }
+  #GW-13-BL101支架燈適用安裝場域-Root .gw13-desc {
+    font-size: 15px !important;
+  }
+}
+</style>
+<hr />
+<h2 class="gw13-title" id="GW-13-BL101支架燈適用安裝場域-Title">適用安裝場域</h2>
+
+<p class="gw13-desc">室內照明 / 住宅照明 / 公共場所 / 小型商店 / 騎樓 / 層板櫥櫃招牌照明</p>
 </div>
