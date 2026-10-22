@@ -1,37 +1,96 @@
-<!-- ★ PDF 檢視器 with 全框底部邊框 ★ -->
-<style type="text/css">/* 外層容器：框線＋圓角＋隱藏多餘溢出 */
-  .pdf-wrapper {
-    width: 100%;
-    max‐width: 1200px;        /* ↑↑↑ 可調：最大寬度 */
-    margin: 0 auto;           /* 置中 */
-    border: 1px solid #ccc;   /* ↑↑↑ 可調：整圈框線顏色＆粗細 */
-    border-radius: 4px;       /* ↑↑↑ 可調：圓角 */
-    overflow: hidden;         /* 隱藏 iframe 內建邊框或捲軸外框 */
-  }
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&amp;family=Outfit:wght@400;700&amp;display=swap" rel="stylesheet" />
+<style type="text/css">/* 主容器與防截斷高度設定 */
+    #GW-Greenhouse-Root {
+        /* ? 未來如果要微調高度，請直接在這裡改數字，改完後整坨貼回後台覆蓋 */
+        --iframe-min-desktop: 800px; /* ? 桌機版最小高度 */
+        --iframe-min-tablet: 750px;  /* ? 平板版最小高度 */
+        --iframe-min-mobile: 600px;  /* ? 手機版最小高度 */
 
-  /* iframe 本體：不要自己畫邊框 */
-  .pdf-wrapper iframe {
-    display: block;
-    width: 100%;
-    height: 600px;            /* ↑↑↑ 可調：桌機版高度 */
-    border: none;
-  }
-
-  /* 手機版：用長寬比自動縮放 */
-  @media (max-width: 768px) {
-    .pdf-wrapper iframe {
-      height: auto;
-      aspect-ratio: 1 / 1.414; /* ↑↑↑ 可調：長寬比 */
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 20px 15px;
+        font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+        background-color: transparent;
     }
-  }
+
+    #GW-Greenhouse-Root *, #GW-Greenhouse-Root *::before, #GW-Greenhouse-Root *::after {
+        box-sizing: inherit;
+    }
+
+    /* 文字抗污染鎖定 */
+    #GW-Greenhouse-Root p, #GW-Greenhouse-Root span, #GW-Greenhouse-Root li, 
+    #GW-Greenhouse-Root a, #GW-Greenhouse-Root h2, #GW-Greenhouse-Root h3 {
+        color: #333333 !important;
+        line-height: 1.6 !important;
+        margin: 0 0 10px 0 !important;
+        padding: 0 !important;
+    }
+
+    /* SEO 隱形摘要層 */
+    #GW-Greenhouse-Root .sr-only {
+        position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+        overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;
+    }
+
+    /* Iframe 外觀容器 */
+    #GW-Greenhouse-Root .iframe-container {
+        width: 100%;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        background-color: #333;
+    }
+
+    /* Iframe 本體 */
+    #GW-Greenhouse-Root iframe {
+        width: 100%;
+        border: none;
+        display: block;
+        min-height: var(--iframe-min-desktop);
+    }
+
+    /* 響應式斷點 */
+    @media (max-width: 1024px) {
+        #GW-Greenhouse-Root iframe { min-height: var(--iframe-min-tablet); }
+        #GW-Greenhouse-Root { padding: 30px 10px; }
+    }
+    @media (max-width: 768px) {
+        #GW-Greenhouse-Root iframe { min-height: var(--iframe-min-mobile); }
+        #GW-Greenhouse-Root { padding: 20px 0; }
+    }
 </style>
-<div class="_bd_row _bd_clearfix">
-<div class="_bd_column _bd_full">
-<p>📑<b>金鍏電子【溫室氣體盤查報告書】</b></p>
-</div>
+<div id="GW-Greenhouse-Root">
+<div class="sr-only">
+<h2>金鍏電子 (Golden Way) 2023 溫室氣體盤查報告書 - ESG 永續發展</h2>
+
+<p>身為專業的節能照明與研發製造商，金鍏電子始終秉持 <strong>MIT 台灣製造的扎實工藝</strong>，積極落實企業永續發展與環境保護責任。我們透過公開這份 2023 年度溫室氣體盤查數據，展現品牌對減碳目標的堅定承諾，這與我們打造<strong>電源轉換效率 &gt;90%</strong> 且具備優質金屬板高效散熱設計的綠能照明產品理念完全一致。</p>
+
+<h3>報告核心技術與企業承諾指標</h3>
+
+<ul>
+	<li>溫室氣體盤查範疇：詳細記錄 2023 年度碳排放狀況，奠定減碳基石。</li>
+	<li>品牌自主研發精神：從照明機構設計到綠色製程，全面導入低碳與節能思維。</li>
+	<li>數位化永續實踐：採用線上 Real3D 互動電子書展示報告，大幅降低實體紙張印刷，落實無紙化綠能辦公。</li>
+</ul>
 </div>
 
-<div class="pdf-wrapper"><iframe frameborder="0" height="120" scrolling="no" src="https://1drv.ms/b/c/343d546307ac6ea3/IQRkvouISHM0SpTCa5jjn_S8AdPXbk8VjiYv3Mx5lj9CfJM" width="98"></iframe></div>
+<div class="iframe-container"><iframe allowfullscreen="true" loading="lazy" mozallowfullscreen="true" scrolling="auto" src="https://tsenwu.github.io/doc-viewer/GW_2023溫室氣體盤查/index-img.html" title="MIT 台灣製造 - 金鍏電子 2023 溫室氣體盤查報告書與節能照明承諾" webkitallowfullscreen="true"></iframe></div>
+</div>
+
+<div class="block-E-custom">
+<div class="wrapper"><!-- 標題框：自動撐開，不會影響下方內文寬度 --><a class="subheadline" href="https://www.goldenwayled.com/article.php?lang=tw&amp;tb=3" target="_blank">ESG專業照明規劃實績 </a> <!-- 內文：可比標題框更寬 -->
+
+<div class="text-wrapper">
+<p>金鍏電子已全面通過溫室氣體盤查，並持續導入最嚴謹的ESG管理規範， 積極協助國內外各大企業實現永續發展。<br />
+我們不僅專注於節能減碳，更以高效能LED照明方案， 協助企業提升能源管理效率、降低營運碳足跡，落實綠色轉型。</p>
+</div>
+<!-- （選擇性）Icon -->
+
+<div class="icon"><img alt="" src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/gw+esg_l.png?v=o8a8d5" /></div>
+</div>
+</div>
 <!-- ★ 區塊自訂 block-E-custom：標題框與內文各自獨立寬度 ★ -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&amp;display=swap" rel="stylesheet" />
 <style type="text/css">/* ====== 變數設定 ====== */
@@ -116,14 +175,29 @@
   }
 }
 </style>
-<div class="block-E-custom">
-<div class="wrapper"><!-- 標題框：自動撐開，不會影響下方內文寬度 --><a class="subheadline" href="https://your-link.com">ESG專業照明規劃實績 </a> <!-- 內文：可比標題框更寬 -->
-<div class="text-wrapper">
-<p>金鍏電子已全面通過溫室氣體盤查，並持續導入最嚴謹的ESG管理規範， 積極協助國內外各大企業實現永續發展。<br />
-我們不僅專注於節能減碳，更以高效能LED照明方案， 協助企業提升能源管理效率、降低營運碳足跡，落實綠色轉型。</p>
-</div>
-<!-- （選擇性）Icon -->
+<style type="text/css">/* 外層容器：框線＋圓角＋隱藏多餘溢出 */
+  .pdf-wrapper {
+    width: 100%;
+    max‐width: 1200px;        /* ↑↑↑ 可調：最大寬度 */
+    margin: 0 auto;           /* 置中 */
+    border: 1px solid #ccc;   /* ↑↑↑ 可調：整圈框線顏色＆粗細 */
+    border-radius: 4px;       /* ↑↑↑ 可調：圓角 */
+    overflow: hidden;         /* 隱藏 iframe 內建邊框或捲軸外框 */
+  }
 
-<div class="icon"><img src="https://system49.webtech.com.tw/web/202200228/archive/image/TSts/icon/gw+esg_l.png?v=o8a8d5" /></div>
-</div>
-</div>
+  /* iframe 本體：不要自己畫邊框 */
+  .pdf-wrapper iframe {
+    display: block;
+    width: 100%;
+    height: 600px;            /* ↑↑↑ 可調：桌機版高度 */
+    border: none;
+  }
+
+  /* 手機版：用長寬比自動縮放 */
+  @media (max-width: 768px) {
+    .pdf-wrapper iframe {
+      height: auto;
+      aspect-ratio: 1 / 1.414; /* ↑↑↑ 可調：長寬比 */
+    }
+  }
+</style>
