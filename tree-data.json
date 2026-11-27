@@ -484,15 +484,6 @@
   }
 ,
   {
-    "title": "日本PSE電源",
-    "path": "B. 產品介紹/日本PSE電源/",
-    "children": [
-    { "title": "日本PSE電源.html", "path": "B. 產品介紹/日本PSE電源/日本PSE電源.html" }
-
-    ]
-  }
-,
-  {
     "title": "智慧調光區",
     "path": "B. 產品介紹/智慧調光區/",
     "children": [
@@ -927,6 +918,15 @@
   { "title": "環境部7年節能綜合效益.html", "path": "E. 互動式圖表/環境部7年節能綜合效益.html" }
 ,
   { "title": "經濟型平板燈換裝效益試算.html", "path": "E. 互動式圖表/經濟型平板燈換裝效益試算.html" }
+
+  ]
+}
+,
+{
+  "title": "F. 日本PSE電源總覽",
+  "path": "F. 日本PSE電源總覽/",
+  "children": [
+  { "title": "日本PSE電源.html", "path": "F. 日本PSE電源總覽/日本PSE電源.html" }
 
   ]
 }
